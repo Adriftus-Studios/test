@@ -3,4 +3,4 @@ Xeane_test_initialize:
   debug: false
   events:
     on server start:
-      - announce Woo!
+      - announce "Test server is live!"
