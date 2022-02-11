@@ -29,8 +29,10 @@ bob_the_npc_interact:
                     trigger: /Goodbye/
                     script:
                     - chat "See you!"
-        2:
-            click trigger:
-                script:
-                    - chat "Wow step 2"
-                    - zap 1
+magic_healing_bell:
+    type: world
+    events:
+        after player right clicks bell:
+        - if <player.health_percentage> < 25:
+            - heal
+            - actionbar "<&[base]>The bell has healed you!"
