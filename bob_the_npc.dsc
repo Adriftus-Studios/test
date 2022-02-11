@@ -33,6 +33,6 @@ magic_healing_bell:
     type: world
     events:
         after player right clicks bell:
-        - if <player.health_percentage> < 25:
+        - if <player.health_percentage> < 100:
             - heal
             - actionbar "<&[base]>The bell has healed you!"
