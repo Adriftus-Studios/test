@@ -36,7 +36,5 @@ magic_support_bell:
         - if <player.health_percentage> < 100:
             - heal
             - chat "<&[player]>The bell has healed you!"
-        - if <player> picks up item:
-            - narrate "Yes you have picked an amogus"
         - if <player.health_percentage> = 100:
             - give steak quantity:1 player:<&[player]>
