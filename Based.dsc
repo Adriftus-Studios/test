@@ -29,10 +29,14 @@ bob_the_npc_interact:
                     trigger: /Goodbye/
                     script:
                     - chat "See you!"
-magic_healing_bell:
+magic_support_bell:
     type: world
     events:
         after player right clicks bell:
         - if <player.health_percentage> < 100:
             - heal
-            - chat "<&[base]>The bell has healed you!"
+            - chat "<&[player]>The bell has healed you!"
+        - if <player> picks up item:
+            - narrate "Yes you have picked an amogus"
+        - if <player.health_percentage> = 100:
+            - give steak quantity:1 player:<&[player]>
