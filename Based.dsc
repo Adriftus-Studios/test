@@ -37,7 +37,7 @@ magic_support_bell:
             - heal
             - actionbar "The bell has healed you!"
         - if <player.health_percentage> > 0:
-            - give steak quantity:1
+            - give steak quantity:1 player:<[target]>
 cool_looking_format:
     type: format
     format: <[name]> says <[text]>
