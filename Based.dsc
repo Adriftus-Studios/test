@@ -35,7 +35,7 @@ magic_support_bell:
         after player right clicks bell:
         - if <player.health_percentage> < 100:
             - heal
-            - actionbar "The bell has healed you!"
+            - actionbar "<[&base]>The bell has healed you!"
         - if <player.health_percentage> == 100:
             - give cooked_beef
-            - actionbar "Since your health is full, you get a steak instead!"
+            - actionbar "<[&base]>Since your health is full, you get a steak instead!"
