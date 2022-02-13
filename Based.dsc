@@ -5,7 +5,7 @@ bob_the_npc:
         - trigger name:click state:true
         on click:
         - chat "Hi! I'm chatting!"
-        - narrate "<green>Bob<&co> Hi! I'm narrating!"
+        - narrate "<red>Bob<&co> Hi! I'm narrating!"
     interact scripts:
     - 1 bob_the_npc_interact
 
