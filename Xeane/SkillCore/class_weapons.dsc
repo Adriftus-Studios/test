@@ -77,6 +77,9 @@ class_weapon_ability_selection_open:
     - define inventory <inventory[class_weapon_ability_selection]>
     - define items:-><player.flag[skills].keys.pad_right[5].with[filler].parse[proc[class_weapon_skilltree_item]]>
     - foreach <list[staff|moderator|admin]> as:rank:
+      # TODO Fix later
+      - define items:-><item[standard_filler]>
+      - foreach continue
       - if <player.has_permission[adriftus.<[rank]>]>:
         - define items:->:<element[<[rank]>].proc[class_weapon_skilltree_item]>
       - else:

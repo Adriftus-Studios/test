@@ -23,7 +23,7 @@ skill_core_processor:
         # If the skill tree exists, build the ability structure
         - else if <server.has_flag[skills.trees.<[skill_tree]>.script]>:
           - flag server skills.trees.<[skill_tree]>.<[skill].data_key[name]>:<[skill]>
-          - flag server skill.abilities.<[skill].data_key[name]>:<[skill]>
+          - flag server skills.abilities.<[skill].data_key[name]>:<[skill]>
         # If it gets this far, error with an unknown skill tree
         - else:
           - debug error "Skill from script <[skill].name> has an unknown Skill Tree: <[skill_tree]>"
