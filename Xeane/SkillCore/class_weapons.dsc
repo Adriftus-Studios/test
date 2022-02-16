@@ -100,7 +100,7 @@ class_weapon_skilltree_item:
   script:
     - if <[input]> == filler:
         - determine <item[standard_filler]>
-    - define skillTree_script <server.flag[skills.tree.<[input]>.script]>
+    - define skillTree_script <server.flag[skills.trees.<[input]>.script]>
     - determine <item[<[skillTree_script].data_key[display_item_script]>]>
 
 #/#
