@@ -5,7 +5,7 @@ impl_skilltree_Warrior:
   name: warrior
 
   # The display item of the skill tree for GUIs
-  display_item: impl_skillTree_warrior_icon
+  display_item_script: impl_skillTree_warrior_icon
 
   # Tags that will be checked to see if a player can have this skill tree
   requirements:
