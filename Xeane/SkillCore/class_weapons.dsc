@@ -79,7 +79,7 @@ class_weapon_ability_selection_open:
     - foreach <list[staff|moderator|admin]> as:rank:
       # TODO Fix later
       - define items:-><item[standard_filler]>
-      - foreach continue
+      - foreach next
       - if <player.has_permission[adriftus.<[rank]>]>:
         - define items:->:<element[<[rank]>].proc[class_weapon_skilltree_item]>
       - else:
