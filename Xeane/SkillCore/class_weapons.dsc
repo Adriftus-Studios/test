@@ -87,7 +87,7 @@ class_weapon_ability_selection_open:
     - if <player.has_flag[skills.trees]> && <player.flag[skills.trees].size> > 0:
       - define first <player.flag[skills.trees].keys.first>
       - if !<player.flag[skills.trees.<[first]>].keys.is_empty>:
-        - define items:->:<player.flag[skills.trees.<[first]>].keys.parse[proc[class_weapon_ability_item]]>
+        - define items:|:<player.flag[skills.trees.<[first]>].keys.parse[proc[class_weapon_ability_item]]>
     - give <[items]> to:<[inventory]>
 
 #/#
