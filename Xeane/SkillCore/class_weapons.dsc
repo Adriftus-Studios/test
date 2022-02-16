@@ -60,7 +60,7 @@ class_weapon_ability_selection:
   gui: true
   slots:
     - [] [standard_filler] [] [standard_filler] [] [standard_filler] [] [standard_filler] []
-    - [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
+    - [] [standard_filler] [standard_filler] [standard_filler] [] [standard_filler] [standard_filler] [standard_filler] []
     - [standard_filler] [] [] [] [] [] [] [] [standard_filler]
     - [standard_filler] [] [] [] [] [] [] [] [standard_filler]
     - [standard_filler] [] [] [] [] [] [] [] [standard_filler]
