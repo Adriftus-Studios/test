@@ -78,7 +78,7 @@ class_weapon_ability_selection_open:
     - define items:!|:<player.flag[skills.trees].keys.pad_right[5].with[filler].parse[proc[class_weapon_skilltree_item]]>
     - foreach <list[staff|moderator|admin]> as:rank:
       # TODO Fix later
-      - define items:->:<item[standard_filler]>
+      - define items:->:<item[standard_filler].with_flag[unique=<util.random_uuid>]>
       - foreach next
       - if <player.has_permission[adriftus.<[rank]>]>:
         - define items:->:<element[<[rank]>].proc[class_weapon_skilltree_item]>
@@ -100,7 +100,7 @@ class_weapon_skilltree_item:
   definitions: input
   script:
     - if <[input]> == filler:
-        - determine <item[standard_filler]>
+        - determine <item[standard_filler].with_flag[unique=<util.random_uuid>]>
     - define skillTree_script <server.flag[skills.trees.<[input]>.script]>
     - determine <item[<[skillTree_script].data_key[display_item_script]>]>
 
