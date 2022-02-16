@@ -75,7 +75,7 @@ class_weapon_ability_selection_open:
   debug: false
   script:
     - define inventory <inventory[class_weapon_ability_selection]>
-    - define items:-><player.flag[skills].keys.pad_right[5].with[filler].parse[proc[class_weapon_skilltree_item]]>
+    - define items:-><player.flag[skills.trees].keys.pad_right[5].with[filler].parse[proc[class_weapon_skilltree_item]]>
     - foreach <list[staff|moderator|admin]> as:rank:
       # TODO Fix later
       - define items:-><item[standard_filler]>
