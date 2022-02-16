@@ -75,15 +75,15 @@ class_weapon_ability_selection_open:
   debug: false
   script:
     - define inventory <inventory[class_weapon_ability_selection]>
-    - define items:-><player.flag[skills.trees].keys.pad_right[5].with[filler].parse[proc[class_weapon_skilltree_item]]>
+    - define items:->:<player.flag[skills.trees].keys.pad_right[5].with[filler].parse[proc[class_weapon_skilltree_item]]>
     - foreach <list[staff|moderator|admin]> as:rank:
       # TODO Fix later
-      - define items:-><item[standard_filler]>
+      - define items:->:<item[standard_filler]>
       - foreach next
       - if <player.has_permission[adriftus.<[rank]>]>:
         - define items:->:<element[<[rank]>].proc[class_weapon_skilltree_item]>
       - else:
-        - define items:-><item[standard_filler]>
+        - define items:->:<item[standard_filler]>
     - if <player.has_flag[skills.trees]> && <player.flag[skills.trees].size> > 0:
       - define first <player.flag[skills.trees].keys.first>
       - if !<player.flag[skills.trees.<[first]>].keys.is_empty>:
