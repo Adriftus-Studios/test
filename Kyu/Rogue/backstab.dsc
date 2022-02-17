@@ -1,24 +1,24 @@
-impl_skill_magic_missile:
+impl_skill_backstab:
   type: data
   # Internal Name MUST BE UNIQUE
-  name: magic_missile
+  name: backstab
 
   # Display data used in commands, and GUIs
-  display_item_script: impl_skill_magic_missile_icon
+  display_item_script: impl_skill_backstab_icon
 
   # Skill Tree (uses internal name)
-  skill_tree: mage
+  skill_tree: rogue
 
   # Unlock Requirements are checked when unlocking the ability
   unlock_requirements:
   - "true"
 
   # Cooldown
-  cooldown: 12s
+  cooldown: 6s
 
   # Task Script to bee run when the ability is used successfully
   # This Task Script MUST be within this file, as with any code associated with this skill
-  on_cast: impl_skill_magic_missile_task
+  on_cast: impl_skill_backstab_task
 
   # Is the ability harmful? (PvP Action)
   harmful: true
@@ -30,7 +30,7 @@ impl_skill_magic_missile:
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "<player.target[15]>"
+  - "<player.target[5]>"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
@@ -41,34 +41,29 @@ impl_skill_magic_missile:
   # Balance Values used in the script
   balance:
     damage: 6
-    speed: 6
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
-impl_skill_magic_missile_icon:
+impl_skill_backstab_icon:
   type: item
   material: feather
-  display name: "<&a>Magic Missile"
+  display name: "<&a>Backstab"
   lore:
-  - "<&b>Shoot a fireball at targets up to 15 blocks away"
-  - "<&b>Damages any enemies within its blast radius"
+  - "<&b>Move behind an enemy and backstab them for extra damage"
+  - "<&b>Only works in melee range"
   mechanisms:
-    custom_model_data: 3
+    custom_model_data: 4
 
 
 # The On Cast Task script has specific requirements, and limits
 # The only reliable context tags in this task will be `<player>`
 # The task must `determine` true or false if the ability was successful or not.
-impl_skill_magic_missile_task:
+impl_skill_backstab_task:
   type: task
   debug: false
   definitions: target
   script:
-    - shoot small_fireball origin:<player> destination:<[target].location> speed:<script[impl_skill_magic_missile].parsed_key[balance.speed]> script:impl_skill_magic_missile_damage_task shooter:<player>
+    - teleport <player> <[target].location.backward_flat.facing[<[target]>]>
+    - hurt <script[impl_skill_backstab].parsed_key[balance.damage]> <[target]> cause:ENTITY_ATTACK source:<player>
+    - playeffect effect:CRIT at:<[target].location> visibility:50 quantity:5 offset:1.0
     - determine true
-
-impl_skill_magic_missile_damage_task:
-  type: task
-  debug: false
-  script:
-    - hurt <script[impl_skill_magic_missile].parsed_key[balance.damage]> <[hit_entities]> cause:ENTITY_ATTACK source:<player>

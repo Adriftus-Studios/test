@@ -41,7 +41,7 @@ impl_skill_shield:
 
   # Balance Values used in the script
   balance:
-    health: 20
+    duration: 3
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
@@ -64,5 +64,5 @@ impl_skill_shield_task:
   definitions: target
   script:
     # Effect Level 10. A level of 5 and above gives full immunity to all damage. (Minecraft Wiki)
-    - cast damage_resistance duration:3 amplifier:9
+    - cast damage_resistance duration:<script[impl_skill_shield_task].parsed_key[balance.duration]> amplifier:9 no_ambient hide_particles no_icon
     - determine true

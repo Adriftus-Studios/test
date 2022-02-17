@@ -1,24 +1,24 @@
-impl_skill_magic_missile:
+impl_skill_poison_dagger:
   type: data
   # Internal Name MUST BE UNIQUE
-  name: magic_missile
+  name: poison_dagger
 
   # Display data used in commands, and GUIs
-  display_item_script: impl_skill_magic_missile_icon
+  display_item_script: impl_skill_poison_dagger_icon
 
   # Skill Tree (uses internal name)
-  skill_tree: mage
+  skill_tree: rogue
 
   # Unlock Requirements are checked when unlocking the ability
   unlock_requirements:
   - "true"
 
   # Cooldown
-  cooldown: 12s
+  cooldown: 15s
 
   # Task Script to bee run when the ability is used successfully
   # This Task Script MUST be within this file, as with any code associated with this skill
-  on_cast: impl_skill_magic_missile_task
+  on_cast: impl_skill_poison_dagger_task
 
   # Is the ability harmful? (PvP Action)
   harmful: true
@@ -40,35 +40,38 @@ impl_skill_magic_missile:
 
   # Balance Values used in the script
   balance:
-    damage: 6
     speed: 6
+    damage: 4
+    duration: 5
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
-impl_skill_magic_missile_icon:
+impl_skill_poison_dagger_icon:
   type: item
   material: feather
-  display name: "<&a>Magic Missile"
+  display name: "<&a>Poison Dagger"
   lore:
-  - "<&b>Shoot a fireball at targets up to 15 blocks away"
-  - "<&b>Damages any enemies within its blast radius"
+  - "<&b>Throw a poison-tipped knife at your enemies from up to 15 blocks away"
+  - "<&b>Deals damage and poisons them if it lands"
   mechanisms:
-    custom_model_data: 3
+    custom_model_data: 4
 
 
 # The On Cast Task script has specific requirements, and limits
 # The only reliable context tags in this task will be `<player>`
 # The task must `determine` true or false if the ability was successful or not.
-impl_skill_magic_missile_task:
+impl_skill_poison_dagger_task:
   type: task
   debug: false
   definitions: target
   script:
-    - shoot small_fireball origin:<player> destination:<[target].location> speed:<script[impl_skill_magic_missile].parsed_key[balance.speed]> script:impl_skill_magic_missile_damage_task shooter:<player>
+    - shoot spectral_arrow origin:<player> destination:<[target].location> speed:<script[impl_skill_poison_dagger].parsed_key[balance.speed]> script:impl_skill_poison_dagger_damage_task shooter:<player>
     - determine true
 
-impl_skill_magic_missile_damage_task:
+impl_skill_poison_dagger_damage_task:
   type: task
   debug: false
   script:
-    - hurt <script[impl_skill_magic_missile].parsed_key[balance.damage]> <[hit_entities]> cause:ENTITY_ATTACK source:<player>
+    # Level 1 Poison. 25 ticks per half-heart (1 HP). 0.8 Half-hearts per second (2 HP * 0.4) (Minecraft Wiki)
+    - hurt <script[impl_skill_poison_dagger].parsed_key[balance.damage]> <[hit_entities]> cause:ENTITY_ATTACK source:<player>
+    - cast poison <[hit_entities]> amplifier:0 duration:<script[impl_skill_poison_dagger].parsed_key[balance.duration]> no_ambient hide_particles no_icon
