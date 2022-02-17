@@ -65,7 +65,7 @@ impl_skill_poison_dagger_task:
   debug: false
   definitions: target
   script:
-    - shoot spectral_arrow origin:<player> destination:<[target].location> speed:<script[impl_skill_poison_dagger].parsed_key[balance.speed]> script:impl_skill_poison_dagger_damage_task shooter:<player>
+    - shoot arrow origin:<player> destination:<[target].location> speed:<script[impl_skill_poison_dagger].parsed_key[balance.speed]> script:impl_skill_poison_dagger_damage_task shooter:<player>
     - determine true
 
 impl_skill_poison_dagger_damage_task:
