@@ -64,5 +64,5 @@ impl_skill_sprint_task:
   definitions: target
   script:
     # Effect Level 2.
-    - cast speed duration:3 amplifier:1 no_ambient hide_particles no_icon
+    - cast speed duration:<script[impl_skill_sprint].parsed_key[balance.duration]> amplifier:1 no_ambient hide_particles no_icon
     - determine true

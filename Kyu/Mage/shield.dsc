@@ -64,5 +64,5 @@ impl_skill_shield_task:
   definitions: target
   script:
     # Effect Level 10. A level of 5 and above gives full immunity to all damage. (Minecraft Wiki)
-    - cast damage_resistance duration:<script[impl_skill_shield_task].parsed_key[balance.duration]> amplifier:9 no_ambient hide_particles no_icon
+    - cast damage_resistance duration:<script[impl_skill_shield].parsed_key[balance.duration]> amplifier:9 no_ambient hide_particles no_icon
     - determine true
