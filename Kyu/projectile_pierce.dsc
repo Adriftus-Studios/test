@@ -5,4 +5,4 @@ projectile_pierce_event:
   type: world
   events:
     on entity_flagged:projectile_pierce collides with entity:
-      - determine cancelled
+      - determine passively cancelled
