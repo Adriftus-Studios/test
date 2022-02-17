@@ -30,7 +30,7 @@ impl_skill_backstab:
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "<player.target[5]>"
+  - "<player.target.within[5]>"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
