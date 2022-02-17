@@ -64,7 +64,7 @@ impl_skill_piercing_shot_task:
   debug: false
   definitions: target
   script:
-    - shoot arrow origin:<player> destination:<[target].location> speed:<script[impl_skill_piercing_shot].parsed_key[balance.speed]> script:impl_skill_piercing_shot_damage_task shooter:<player> save:projectile
+    - shoot arrow origin:<player> destination:<[target].location> speed:<script[impl_skill_piercing_shot].parsed_key[balance.speed]> shooter:<player> save:projectile
     - flag <entry[projectile].shot_entity> projectile_pierce
     - flag <entry[projectile].shot_entity> damage <script[impl_skill_piercing_shot].parsed_key[balance.damage]>
     - flag <entry[projectile].shot_entity> source <player>
