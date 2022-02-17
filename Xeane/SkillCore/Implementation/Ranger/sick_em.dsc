@@ -62,7 +62,7 @@ impl_skill_sick_em_task:
   debug: false
   definitions: target
   script:
-    - spawn wolf <player.location> target:<[target]>
+    - spawn impl_skill_sick_em_entity <player.location> target:<[target]>
     - determine true
 
 impl_skill_sick_em_entity:
