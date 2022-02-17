@@ -1,36 +1,36 @@
-impl_skill_piercing_shot:
+impl_skill_blink:
   type: data
   # Internal Name MUST BE UNIQUE
-  name: piercing_shot
+  name: blink
 
   # Display data used in commands, and GUIs
-  display_item_script: impl_skill_piercing_shot_icon
+  display_item_script: impl_skill_blink_icon
 
   # Skill Tree (uses internal name)
-  skill_tree: ranger
+  skill_tree: mage
 
   # Unlock Requirements are checked when unlocking the ability
   unlock_requirements:
   - "true"
 
   # Cooldown
-  cooldown: 12s
+  cooldown: 8s
 
   # Task Script to bee run when the ability is used successfully
   # This Task Script MUST be within this file, as with any code associated with this skill
-  on_cast: impl_skill_piercing_shot_task
+  on_cast: impl_skill_blink_task
 
   # Is the ability harmful? (PvP Action)
-  harmful: true
+  harmful: false
 
   # Does using this ability flag you for PvP if it succeeds (even if not damaging)
-  pvp_flags: true
+  pvp_flags: false
 
   # Skill Targetting
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "<player.target[30]>"
+  - "<player>"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
@@ -40,35 +40,27 @@ impl_skill_piercing_shot:
 
   # Balance Values used in the script
   balance:
-    damage: 8
-    speed: 5
+    distance: 5
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
-impl_skill_piercing_shot_icon:
+impl_skill_blink_icon:
   type: item
   material: feather
-  display name: "<&a>Piercing Shot"
+  display name: "<&a>Blink"
   lore:
-  - "<&b>Shoot a piercing arrow at targets up to 30 blocks away"
-  - "<&b>Damages them and pierces through enemies"
+  - "<&b>Teleport 5 blocks directly ahead of you"
   mechanisms:
-    custom_model_data: 2
+    custom_model_data: 3
 
 
 # The On Cast Task script has specific requirements, and limits
 # The only reliable context tags in this task will be `<player>`
 # The task must `determine` true or false if the ability was successful or not.
-impl_skill_piercing_shot_task:
+impl_skill_blink_task:
   type: task
   debug: false
   definitions: target
   script:
-    - shoot arrow origin:<player> destination:<[target].location> speed:<script[impl_skill_piercing_shot].parsed_key[balance.speed]> script:impl_skill_piercing_shot_damage_task shooter:<player>
+    - teleport <player> <player.location.forward[5]>
     - determine true
-
-impl_skill_piercing_shot_damage_task:
-  type: task
-  debug: false
-  script:
-    - hurt <script[impl_skill_piercing_shot].parsed_key[balance.damage]> <[hit_entities]> cause:ENTITY_ATTACK source:<player>
