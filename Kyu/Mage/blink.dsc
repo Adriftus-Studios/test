@@ -62,5 +62,5 @@ impl_skill_blink_task:
   debug: false
   definitions: target
   script:
-    - teleport <player> <player.location.forward[5]>
+    - teleport <player> <player.location.forward_flat[5]>
     - determine true
