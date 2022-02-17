@@ -40,8 +40,8 @@ impl_skill_disengage:
 
   # Balance Values used in the script
   balance:
-    distance: 4
-    speed: 2
+    distance: 1
+    speed: 1
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
@@ -63,5 +63,5 @@ impl_skill_disengage_task:
   debug: false
   definitions: target
   script:
-    - push <player> destination:<player.location.backward_flat[<script[impl_skill_disengage].parsed_key[balance.speed]>].above[2]> no_rotate no_damage
+    - push <player> destination:<player.location.backward_flat[<script[impl_skill_disengage].parsed_key[balance.distance]>].above[2]> speed:<script[impl_skill_disengage].parsed_key[balance.speed]> no_rotate no_damage
     - determine true

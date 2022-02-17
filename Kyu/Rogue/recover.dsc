@@ -40,7 +40,6 @@ impl_skill_recover:
 
   # Balance Values used in the script
   balance:
-    warmup: 3s
     duration: 3
 
 # Display Icon for the skill itself
@@ -66,9 +65,9 @@ impl_skill_recover_task:
   script:
     - define health <player.health>
     - define location <player.location.simple>
-    - wait <script[impl_skill_recover].parsed_key[balance.warmup]>
+    - wait 3s
     - if <player.health> < <[health]> || !<player.location.simple.equals[<[location]>]>:
       - determine false
-    # Level 2 Regeneration. 25 ticks per half-heart (1 HP). 0.8 Half-hearts per second (2 HP * 0.4) (Minecraft Wiki)
-    - cast regeneration amplifier:1 duration:<script[impl_skill_recover].parsed_key[balance.duration]> no_ambient hide_particles no_icon
+    # Level 4 Regeneration. 6 ticks per half-heart (1 HP). 3.33 Half-hearts per second (2 HP * 1.665) (Minecraft Wiki)
+    - cast regeneration amplifier:3 duration:<script[impl_skill_recover].parsed_key[balance.duration]> no_ambient hide_particles no_icon
     - determine true
