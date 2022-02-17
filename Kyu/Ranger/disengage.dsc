@@ -63,5 +63,5 @@ impl_skill_disengage_task:
   debug: false
   definitions: target
   script:
-    - push <player> destination:<player.location.backward_flat[<script[impl_skill_disengage].parsed_key[balance.speed]>].above[2]> duration:1 no_rotate no_damage
+    - push <player> destination:<player.location.backward_flat[<script[impl_skill_disengage].parsed_key[balance.speed]>].above[2]> no_rotate no_damage
     - determine true
