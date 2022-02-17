@@ -40,7 +40,7 @@ impl_skill_explosive_arrow:
 
   # Balance Values used in the script
   balance:
-    power: 5
+    power: 3
     speed: 5
 
 # Display Icon for the skill itself
