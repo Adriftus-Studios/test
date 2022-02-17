@@ -66,10 +66,12 @@ impl_skill_piercing_shot_task:
   script:
     - shoot arrow origin:<player> destination:<[target].location> speed:<script[impl_skill_piercing_shot].parsed_key[balance.speed]> script:impl_skill_piercing_shot_damage_task shooter:<player> save:projectile
     - flag <entry[projectile].shot_entity> projectile_pierce
+    - flag <entry[projectile].shot_entity> damage <script[impl_skill_piercing_shot].parsed_key[balance.damage]>
+    - flag <entry[projectile].shot_entity> source <player>
     - determine true
 
-impl_skill_piercing_shot_damage_task:
-  type: task
-  debug: false
-  script:
-    - hurt <script[impl_skill_piercing_shot].parsed_key[balance.damage]> <[hit_entities]> cause:ENTITY_ATTACK source:<player>
+#impl_skill_piercing_shot_damage_task:
+#  type: task
+#  debug: false
+#  script:
+#    - hurt <script[impl_skill_piercing_shot].parsed_key[balance.damage]> <[hit_entities]> cause:ENTITY_ATTACK source:<player>
