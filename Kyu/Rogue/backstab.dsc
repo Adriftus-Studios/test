@@ -63,7 +63,7 @@ impl_skill_backstab_task:
   debug: false
   definitions: target
   script:
-    - teleport <player> <[target].location.backward_flat.facing[<[target]>]>
+    - teleport <player> <[target].location.backward_flat.with_pitch[0]>
     - hurt <script[impl_skill_backstab].parsed_key[balance.damage]> <[target]> cause:ENTITY_ATTACK source:<player>
     - playeffect effect:CRIT at:<[target].location> visibility:50 quantity:5 offset:1.0
     - determine true
