@@ -5,3 +5,4 @@ playtime:
     usage: /playtime (Name)
     script:
         - narrate "<light_purple><player.name> Has <duration[<player.statistic[PLAY_ONE_MINUTE]>t].in_hours.round> Hours Of Playtime"
+        - narrate "Nice "
