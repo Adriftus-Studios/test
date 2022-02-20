@@ -41,7 +41,7 @@ impl_skill_magic_missile:
   # Balance Values used in the script
   balance:
     damage: 6
-    speed: 6
+    speed: 2
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs

@@ -41,7 +41,7 @@ impl_skill_explosive_arrow:
   # Balance Values used in the script
   balance:
     power: 3
-    speed: 5
+    speed: 1
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
