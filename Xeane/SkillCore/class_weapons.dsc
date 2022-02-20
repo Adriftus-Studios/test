@@ -119,8 +119,8 @@ class_weapon_ability_selection_open:
       - if !<player.flag[skills.trees.<[first]>].keys.is_empty>:
         - define items:|:<player.flag[skills.trees.<[first]>].keys.parse[proc[class_weapon_ability_item]]>
     - give <[items]> to:<[inventory]>
-    - inventory open d:<[inventory]>
     - narrate <[inventory].slot[46].flag[hotkey]>
+    - inventory open d:<[inventory]>
 
 #/#
 #/#
