@@ -10,7 +10,7 @@ admin_item:
     - if <context.args.size> < 1:
       - narrate "You Dingbat."
       - stop
-    - define item <item[<context.args.get[1]>]||null>
+    - define item <item[<context.args.get[1]>].parse_color||null>
     - if <[item]> == null:
       - narrate "WTF is a <context.args.get[1]>?!"
       - stop
