@@ -18,6 +18,8 @@ class_weapon_hotkey_button:
   type: item
   debug: false
   material: feather
+  flags:
+    run_script: class_weapon_ability_selection_open
 
 #/
 # Test for script meta parser
@@ -73,8 +75,12 @@ class_weapon_ability_selection:
 class_weapon_ability_selection_open:
   type: task
   debug: false
+  definitions: hotkey
   script:
+    - if !<[hotkey].exists>:
+      - define hotkey <context.item.flag[hotkey]>
     - define inventory <inventory[class_weapon_ability_selection]>
+    - inventory set slot:46 destination:<[inventory]> origin:<item[standard_filler].with_flag[hotkey=<[hotkey]>]>
     - define items:!|:<player.flag[skills.trees].keys.pad_right[5].with[filler].parse[proc[class_weapon_skilltree_item]]>
     - foreach <list[staff|moderator|admin]> as:rank:
       # TODO Fix later
