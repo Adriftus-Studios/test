@@ -1,10 +1,10 @@
-impl_skill_piercing_shot:
+impl_skill_marksman_shot:
   type: data
   # Internal Name MUST BE UNIQUE
-  name: piercing_shot
+  name: marksman_shot
 
   # Display data used in commands, and GUIs
-  display_item_script: impl_skill_piercing_shot_icon
+  display_item_script: impl_skill_marksman_shot_icon
 
   # Skill Tree (uses internal name)
   skill_tree: ranger
@@ -18,7 +18,7 @@ impl_skill_piercing_shot:
 
   # Task Script to bee run when the ability is used successfully
   # This Task Script MUST be within this file, as with any code associated with this skill
-  on_cast: impl_skill_piercing_shot_task
+  on_cast: impl_skill_marksman_shot_task
 
   # Is the ability harmful? (PvP Action)
   harmful: true
@@ -41,17 +41,16 @@ impl_skill_piercing_shot:
   # Balance Values used in the script
   balance:
     damage: 8
-    speed: 5
+    speed: 4
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
-impl_skill_piercing_shot_icon:
+impl_skill_marksman_shot_icon:
   type: item
   material: feather
-  display name: "<&a>Piercing Shot"
+  display name: "<&a>Marksman Shot"
   lore:
-  - "<&b>Shoot a piercing arrow at targets up to 30 blocks away"
-  - "<&b>Damages them and pierces through enemies"
+  - "<&b>Shoot a high-velocity arrow at targets up to 30 blocks away"
   mechanisms:
     custom_model_data: 2
 
@@ -59,19 +58,16 @@ impl_skill_piercing_shot_icon:
 # The On Cast Task script has specific requirements, and limits
 # The only reliable context tags in this task will be `<player>`
 # The task must `determine` true or false if the ability was successful or not.
-impl_skill_piercing_shot_task:
+impl_skill_marksman_shot_task:
   type: task
   debug: false
   definitions: target
   script:
-    - shoot arrow origin:<player> destination:<[target].location> speed:<script[impl_skill_piercing_shot].parsed_key[balance.speed]> shooter:<player> save:projectile
-    - flag <entry[projectile].shot_entity> projectile_pierce
-    - flag <entry[projectile].shot_entity> damage <script[impl_skill_piercing_shot].parsed_key[balance.damage]>
-    - flag <entry[projectile].shot_entity> source <player>
+    - shoot arrow origin:<player> destination:<[target].location> speed:<script[impl_skill_marksman_shot].parsed_key[balance.speed]> script:impl_skill_marksman_shot_damage_task shooter:<player>
     - determine true
 
-#impl_skill_piercing_shot_damage_task:
-#  type: task
-#  debug: false
-#  script:
-#    - hurt <script[impl_skill_piercing_shot].parsed_key[balance.damage]> <[hit_entities]> cause:ENTITY_ATTACK source:<player>
+impl_skill_marksman_shot_damage_task:
+  type: task
+  debug: false
+  script:
+    - hurt <script[impl_skill_marksman_shot].parsed_key[balance.damage]> <[hit_entities]> cause:ENTITY_ATTACK source:<player>
