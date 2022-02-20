@@ -40,7 +40,7 @@ impl_skill_poison_dagger:
 
   # Balance Values used in the script
   balance:
-    speed: 6
+    speed: 3
     damage: 4
     duration: 5
 
