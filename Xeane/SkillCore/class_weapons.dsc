@@ -91,7 +91,7 @@ class_weapon_ability_selection:
     - [] [standard_filler] [standard_filler] [standard_filler] [] [standard_filler] [standard_filler] [standard_filler] []
     - [standard_filler] [] [] [] [] [] [] [] [standard_filler]
     - [standard_filler] [] [] [] [] [] [] [] [standard_filler]
-    - [standard_filler] [] [] [] [] [] [] [] [standard_filler]
+    - [standard_filler] [] [] [] [standard_filler] [] [] [] [standard_filler]
     - [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
 
 #/#
@@ -119,7 +119,6 @@ class_weapon_ability_selection_open:
       - if !<player.flag[skills.trees.<[first]>].keys.is_empty>:
         - define items:|:<player.flag[skills.trees.<[first]>].keys.parse[proc[class_weapon_ability_item]]>
     - give <[items]> to:<[inventory]>
-    - narrate <[inventory].slot[46].flag[hotkey]>
     - inventory open d:<[inventory]>
 
 #/#
@@ -144,4 +143,7 @@ class_weapon_ability_item:
   definitions: input
   script:
     - define skill_script <server.flag[skills.abilities.<[input]>]>
-    - determine <item[<[skill_script].data_key[display_item_script]>]>
+    - define item <item[<[skill_script].data_key[display_item_script]>]>
+    - flag <[item]> ability:<[skill_script].data_key[name]>
+    - flag <[item]> run_script:class_weapon_set_skill
+    - determine <[item]>
