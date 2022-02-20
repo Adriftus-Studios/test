@@ -33,13 +33,16 @@ mask_wear:
       - adjust <player> display_name:<[script].parsed_key[data.name]>
       - adjust <player> player_list_name:<[script].parsed_key[data.name]>
       - if <[script].parsed_key[data.type]> == skin:
-        - adjust <player> skin_blob:<[script].parsed_key[data.skin_blob]>
+        - flag <player> update_skin:<[script].parsed_key[data.skin_blob]>
     on player unequips item_flagged:mask:
       - define script <context.old_item.script>
       - team name:<player.name.substring[0,16]> option:NAME_TAG_VISIBILITY status:ALWAYS
       - adjust <player> display_name:<player.flag[defaults.display_name]>
       - adjust <player> player_list_name:<player.flag[defaults.display_name]>
       - if <[script].parsed_key[data.type]> == skin:
-        - adjust <player> skin_blob:<player.flag[defaults.skin_blob]>
+        - flag <player> update_skin:<player.flag[defaults.skin_blob]>
     on player right clicks block with:item_flagged:mask BUKKIT_PRIORITY:HIGHEST:
       - determine cancelled
+    on player closes PLAYER flagged:update_skin:
+      - adjust <player> skin_blob:<player.flag[update_skin]>
+      - flag player update_skin:!
