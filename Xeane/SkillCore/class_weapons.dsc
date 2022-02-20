@@ -51,7 +51,7 @@ class_weapon_open:
       - define map <script.parsed_key[data.item_format]>
       - define mechanisms <[map].keys.parse_tag[<[parse_value]>=<[map].get[<[parse_value]>]>].separated_by[;]>
       - if !<player.has_flag[hotkeys.<[hotkey_button]>]>:
-        - define items:->:<item[class_weapon_hotkey_button].with[<[mechanisms]>].with_flag[hotkey=<[hotkey_button]>]>
+        - define items:->:<item[class_weapon_hotkey_button].with[<[mechanisms]>].with_flag[hotkey:<[hotkey_button]>]>
       - else:
         - define skill_script <server.flag[skills.abilities.<player.flag[hotkeys.<[hotkey_button]>]>]>
         - define item <item[<[skill_script].data_key[display_item_script]>]>
@@ -104,11 +104,11 @@ class_weapon_ability_selection_open:
   definitions: hotkey
   script:
     - define inventory <inventory[class_weapon_ability_selection]>
-    - inventory set slot:46 destination:<[inventory]> origin:<item[standard_filler].with_flag[hotkey=<[hotkey]>]>
+    - inventory set slot:46 destination:<[inventory]> origin:<item[standard_filler].with_flag[hotkey:<[hotkey]>]>
     - define items:!|:<player.flag[skills.trees].keys.pad_right[5].with[filler].parse[proc[class_weapon_skilltree_item]]>
     - foreach <list[staff|moderator|admin]> as:rank:
       # TODO Fix later
-      - define items:->:<item[standard_filler].with_flag[unique=<util.random_uuid>]>
+      - define items:->:<item[standard_filler].with_flag[unique:<util.random_uuid>]>
       - foreach next
       - if <player.has_permission[adriftus.<[rank]>]>:
         - define items:->:<element[<[rank]>].proc[class_weapon_skilltree_item]>
@@ -131,7 +131,7 @@ class_weapon_skilltree_item:
   definitions: input
   script:
     - if <[input]> == filler:
-        - determine <item[standard_filler].with_flag[unique=<util.random_uuid>]>
+        - determine <item[standard_filler].with_flag[unique:<util.random_uuid>]>
     - define skillTree_script <server.flag[skills.trees.<[input]>.script]>
     - determine <item[<[skillTree_script].data_key[display_item_script]>]>
 
