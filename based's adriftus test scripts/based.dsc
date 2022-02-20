@@ -93,4 +93,12 @@ magic_support_bell:
         - if <player.health_percentage> == 100:
             - give cooked_beef
             - actionbar "Since your health is full, you get a steak instead!"
+spawn_sheep:
+    type: command
+    name: spawnsheep
+    description: Spawns a sheep at your location.
+    usage: /spawnsheep
+    script:
+    - spawn sheep <context.player.location>
+    - narrate "Sheep spawned!"
 >>>>>>> 325148a3e6ef81b4469e541f511de7cde5675586:based's adriftus test scripts/based.dsc
