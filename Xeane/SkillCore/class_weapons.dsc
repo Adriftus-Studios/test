@@ -91,7 +91,7 @@ class_weapon_ability_selection:
     - [] [standard_filler] [standard_filler] [standard_filler] [] [standard_filler] [standard_filler] [standard_filler] []
     - [standard_filler] [] [] [] [] [] [] [] [standard_filler]
     - [standard_filler] [] [] [] [] [] [] [] [standard_filler]
-    - [standard_filler] [] [] [] [standard_filler] [] [] [] [standard_filler]
+    - [standard_filler] [] [] [] [] [] [] [] [standard_filler]
     - [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
 
 #/#
