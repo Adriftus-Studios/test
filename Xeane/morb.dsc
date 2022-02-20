@@ -66,7 +66,7 @@ morb_events:
       - drop <[item]> <context.hit_entity.location.above[1]>
       - remove <context.hit_entity>
     on player right clicks block with:morb_filled:
-      - take item:<context.item> quantity:1
+      - take iteminhand quantity:1
       - shoot filled_morb_projectile speed:3.7 save:shot
       - flag <entry[shot].shot_entity> spawn:<context.item.flag[describe]>
     on filled_morb_projectile hits entity:
