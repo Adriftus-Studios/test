@@ -46,7 +46,7 @@ class_weapon_open:
   script:
     - define inventory <inventory[class_weapon_inventory]>
     - foreach <script.data_key[data.hotkeys]> as:hotkey_button:
-      - define map <script.data_key[data.item_format]>
+      - define map <script.parsed_key[data.item_format]>
       - define mechanisms <[map].keys.parse_tag[<[parse_value]>=<[map].get[<[parse_value]>].separated_by[;]>]>
       - define items:->:<item[class_weapon_hotkey_button].with[<[mechanisms]>].with_flag[hotkey_button=<[hotkey_button]>]>
     - give <[items]> to:<[inventory]>
