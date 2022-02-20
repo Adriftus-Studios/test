@@ -54,7 +54,11 @@ class_weapon_open:
         - define items:->:<item[class_weapon_hotkey_button].with[<[mechanisms]>].with_flag[hotkey_button=<[hotkey_button]>]>
       - else:
         - define skill_script <server.flag[skills.abilities.<player.flag[hotkeys.<[hotkey_button]>]>]>
-        - define items:->:<item[<[skill_script].data_key[display_item_script]>].with_flag[hotkey_button=<[hotkey_button]>]>
+        - define item <item[<[skill_script].data_key[display_item_script]>]>
+        - flag <[item]> hotkey_button:<[hotkey_button]>
+        - flag <[item]> run_script:class_weapon_click_handler
+        - adjust def:item "lore:<[item].lore.include[<&c>--------------|<&b>Right Click to Unbind]>"
+        - define items:->:<[item]>
     - give <[items]> to:<[inventory]>
     - inventory open d:<[inventory]>
 
