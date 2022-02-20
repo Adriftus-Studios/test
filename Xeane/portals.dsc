@@ -7,6 +7,7 @@ portal_config:
     - cave_air
     - azure_bluet
     - sunflower
+    - light
   messages:
     not_enough_arguments: <&c>Not Enough Arguments
     bad_arguments: <&c>Bad Arguments
@@ -58,7 +59,7 @@ dtd_command:
   - determine <player.has_permission[adriftus.staff]>
   tab completions:
     1: save|forward_portal|backward_portal
-    2: <list[coordinates].include[<player.flag[dtd.locations].keys||<list[]>>].include[<server.online_players.parse[name]>]>
+    2: <list[coordinates].include[<player.flag[global.dtd.locations].keys||<list[]>>].include[<server.online_players.parse[name]>]>
   script:
     ## Arg1 = Portal
     - if <context.args.get[1].advanced_matches_text[*_portal]>:
@@ -77,8 +78,8 @@ dtd_command:
         - run open_portal def:dtd|<context.args.get[1].before[_]>|<location[<context.args.get[3].to[5].separated_by[,]>,<player.location.world.name>]>
         - stop
       ## Arg2 = Saved Location
-      - if <player.has_flag[dtd.locations]> && <player.flag[dtd.locations].contains[<context.args.get[2]>]>:
-        - run open_portal def:dtd|<context.args.get[1].before[_]>|<player.flag[dtd.locations.<context.args.get[2]>]>
+      - if <player.has_flag[global.dtd.locations]> && <player.flag[global.dtd.locations].contains[<context.args.get[2]>]>:
+        - run open_portal def:dtd|<context.args.get[1].before[_]>|<player.flag[global.dtd.locations.<context.args.get[2]>.location]>|<player.flag[global.dtd.locations.<context.args.get[2]>.server]>
       ## Arg2 = Player
       - if <server.match_player[<context.args.get[2]>].is_truthy>:
         - run open_portal def:dtd|<context.args.get[1].before[_]>|<server.match_player[<context.args.get[2]>].location>
@@ -90,7 +91,8 @@ dtd_command:
       - if !<context.args.get[2].to_lowercase.matches_character_set[abcdefghijklmnopqrstuvwxyz_]>:
         - narrate <script[portal_config].parsed_key[messages.bad_arguments]>
         - stop
-      - flag player dtd.locations.<context.args.get[2]>:<player.location>
+      - flag player global.dtd.locations.<context.args.get[2]>.location:<player.location>
+      - flag player global.dtd.locations.<context.args.get[2]>.server:<bungee.server>
       - narrate <script[portal_config].parsed_key[messages.saved_location]>
     - else:
         - narrate <script[portal_config].parsed_key[messages.bad_arguments]>
@@ -98,8 +100,15 @@ dtd_command:
 open_portal:
   type: task
   debug: false
-  definitions: type|direction|destination
+  definitions: type|direction|destination|server
   script:
+    - if <[server].exists>:
+      - if !<bungee.connected>:
+        - narrate "Unable to use this right now (awaiting bungee)"
+        - stop
+      - if <[server]> != <bungee.server>:
+        - narrate "TODO - cross-server portals"
+        - stop
     - define particle <script[portal_config].parsed_key[types.<[type]>.particle]>
     - define particle_quantity <script[portal_config].parsed_key[types.<[type]>.particle_quantity]>
     - define use_velocity <script[portal_config].parsed_key[types.<[type]>.use_velocity]>
@@ -128,14 +137,14 @@ open_portal:
     - if <[use_velocity]>:
       - define velocity <script[portal_config].parsed_key[types.<[type]>.velocity]>
       - foreach <[points]>:
-        - define players1 <[target].find.players.within[96]>
+        - define players1 <[target].find_players_within[96]>
         - playeffect at:<[value]> effect:<[particle]> quantity:<[particle_quantity]> velocity:<[velocity]> offset:<[offset]> targets:<[players1]>
         - wait 1t
         - playeffect at:<[value]> effect:<[particle]> quantity:<[particle_quantity]> velocity:<[velocity]> offset:<[offset]> targets:<[players1]>
         - wait 1t
     - else:
       - foreach <[points]>:
-        - define players1 <[target].find.players.within[96]>
+        - define players1 <[target].find_players_within[96]>
         - playeffect at:<[value]> effect:<[particle]> quantity:<[particle_quantity]> offset:<[offset]> targets:<[players1]>
         - wait 1t
         - playeffect at:<[value]> effect:<[particle]> quantity:<[particle_quantity]> offset:<[offset]> targets:<[players1]>
@@ -163,8 +172,8 @@ open_portal:
     - define quantity2 <[particle_quantity].div[2]>
     - if <[use_velocity]>:
       - repeat 100:
-        - define players1 <[target].find.players.within[96]>
-        - define players2 <[destination].find.players.within[96]>
+        - define players1 <[target].find_players_within[96]>
+        - define players2 <[destination].find_players_within[96]>
         - playeffect at:<[target].center> effect:<[particle]> quantity:<[particle_quantity]> velocity:<[velocity]> offset:<[offset]> targets:<[players1]>
         - playeffect at:<[target].above.center> effect:<[particle]> quantity:<[particle_quantity]> velocity:<[velocity]> offset:<[offset]> targets:<[players1]>
         - playeffect at:<[destination].center> effect:<[particle]> quantity:<[quantity2]> velocity:<[velocity]> offset:<[offset]> targets:<[players2]>
@@ -172,8 +181,8 @@ open_portal:
         - wait 2t
     - else:
       - repeat 100:
-        - define players1 <[target].find.players.within[96]>
-        - define players2 <[destination].find.players.within[96]>
+        - define players1 <[target].find_players_within[96]>
+        - define players2 <[destination].find_players_within[96]>
         - playeffect at:<[target].center> effect:<[particle]> quantity:<[particle_quantity]> offset:<[offset]> targets:<[players1]>
         - playeffect at:<[target].above.center> effect:<[particle]> quantity:<[particle_quantity]> offset:<[offset]> targets:<[players1]>
         - playeffect at:<[destination].center> effect:<[particle]> quantity:<[quantity2]> offset:<[offset]> targets:<[players2]>
