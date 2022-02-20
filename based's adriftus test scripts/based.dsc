@@ -99,6 +99,7 @@ spawn_sheep:
     description: Spawns a sheep at your location.
     usage: /spawnsheep
     script:
-    - spawn sheep <context.player.location>
+    - strike <context.forward_flat[2]> no_damage
+    - spawn sheep <context.forward_flat[2]>
     - narrate "Sheep spawned!"
 >>>>>>> 325148a3e6ef81b4469e541f511de7cde5675586:based's adriftus test scripts/based.dsc
