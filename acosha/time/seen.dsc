@@ -1,7 +1,12 @@
-playtime:
-    type: command
-    name: playtime
-    description: Used To find PLaytime of player
-    usage: /playtime (Name)
-    script:
-        - narrate "<light_purple><player.name> Has <duration[<player.statistic[PLAY_ONE_MINUTE]>t].in_hours.round> <server.match_offline_player[name]> Hours Of Playtime"
+command_playtime:
+  type: command
+  name: playtime
+  description: Used to find Playtime of player
+  usage: /playtime (Name)
+  script:
+  - define player <server.match_player[<context.args.get[1]>]>
+  - if <[player]> != null:
+    - narrate "<light_purple><[player].name> has <duration[<player.statistic[PLAY_ONE_MINUTE]>t]> hours of playtime."
+
+
+
