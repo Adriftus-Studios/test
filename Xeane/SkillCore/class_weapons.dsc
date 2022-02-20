@@ -7,11 +7,11 @@ class_weapon_inventory:
   gui: true
   slots:
     - [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
-    - [standard_filler] [standard_filler] [] [] [] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
+    - [standard_filler] [standard_filler] [] [] [] [] [standard_filler] [standard_filler] [standard_filler]
     - [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
-    - [standard_filler] [standard_filler] [] [] [] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
+    - [standard_filler] [standard_filler] [] [] [] [] [standard_filler] [standard_filler] [standard_filler]
     - [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
-    - [standard_filler] [standard_filler] [] [] [] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
+    - [standard_filler] [standard_filler] [] [] [] [] [standard_filler] [standard_filler] [standard_filler]
 
 #/# Test for script meta parser
 class_weapon_hotkey_button:
