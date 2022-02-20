@@ -19,7 +19,7 @@ class_weapon_hotkey_button:
   debug: false
   material: feather
   flags:
-    run_script: class_weapon_ability_selection_open
+    run_script: class_weapon_click_handler
 
 #/
 # Test for script meta parser
@@ -50,9 +50,31 @@ class_weapon_open:
     - foreach <script.data_key[data.hotkeys]> as:hotkey_button:
       - define map <script.parsed_key[data.item_format]>
       - define mechanisms <[map].keys.parse_tag[<[parse_value]>=<[map].get[<[parse_value]>]>].separated_by[;]>
-      - define items:->:<item[class_weapon_hotkey_button].with[<[mechanisms]>].with_flag[hotkey_button=<[hotkey_button]>]>
+      - if !<player.has_flag[hotkeys.<[hotkey_button]>]>:
+        - define items:->:<item[class_weapon_hotkey_button].with[<[mechanisms]>].with_flag[hotkey_button=<[hotkey_button]>]>
+      - else:
+        - define skill_script <server.flag[skills.abilities.<player.flag[hotkeys.<[hotkey_button]>]>]>
+        - define items:->:<item[<[skill_script].data_key[display_item_script]>].with_flag[hotkey_button=<[hotkey_button]>]>
     - give <[items]> to:<[inventory]>
     - inventory open d:<[inventory]>
+
+class_weapon_click_handler:
+  type: task
+  debug: false
+  script:
+    - define hotkey <context.item.flag[hotkey]>
+    - if <context.click> == LEFT:
+      - inject class_weapon_ability_selection_open
+    - if <context.click> == RIGHT:
+      - inject class_weapon_clear_hotkey
+
+class_weapon_clear_hotkey:
+  type: task
+  debug: false
+  definitions: hotkey
+  script:
+    - flag player hotkeys.<[hotkey]>:!
+    - run class_weapon_open
 
 class_weapon_ability_selection:
   type: inventory
@@ -77,8 +99,6 @@ class_weapon_ability_selection_open:
   debug: false
   definitions: hotkey
   script:
-    - if !<[hotkey].exists>:
-      - define hotkey <context.item.flag[hotkey]>
     - define inventory <inventory[class_weapon_ability_selection]>
     - inventory set slot:46 destination:<[inventory]> origin:<item[standard_filler].with_flag[hotkey=<[hotkey]>]>
     - define items:!|:<player.flag[skills.trees].keys.pad_right[5].with[filler].parse[proc[class_weapon_skilltree_item]]>
@@ -96,6 +116,7 @@ class_weapon_ability_selection_open:
         - define items:|:<player.flag[skills.trees.<[first]>].keys.parse[proc[class_weapon_ability_item]]>
     - give <[items]> to:<[inventory]>
     - inventory open d:<[inventory]>
+    - narrate <[inventory].slot[46].flag[hotkey]>
 
 #/#
 #/#
