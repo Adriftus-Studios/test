@@ -30,7 +30,7 @@ impl_skill_bash:
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "<player.target[5]>"
+  - "<player.precise_target[5]>"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
@@ -41,8 +41,8 @@ impl_skill_bash:
   # Balance Values used in the script
   balance:
     damage: 5
-    movement_potion_level: -1
-    movement_potion_duration: 5s
+    duration: 5s
+    level: -1
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
@@ -66,5 +66,5 @@ impl_skill_bash_task:
   definitions: target
   script:
     - hurt <script[impl_skill_bash].parsed_key[balance.damage]> <[target]> cause:ENTITY_ATTACK source:<player>
-    - cast speed <[target]> amplifier:<script[impl_skill_bash].parsed_key[balance.movement_potion_level]> duration:<script[impl_skill_bash].parsed_key[balance.movement_potion_duration]> no_ambient hide_particles no_icon
+    - cast speed <[target]> duration:<script[impl_skill_bash].parsed_key[balance.duration]> amplifier:<script[impl_skill_bash].parsed_key[balance.level]> no_ambient hide_particles no_icon
     - determine true
