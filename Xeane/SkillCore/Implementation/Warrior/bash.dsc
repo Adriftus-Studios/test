@@ -65,6 +65,7 @@ impl_skill_bash_task:
   debug: false
   definitions: target
   script:
+    - push <player> destination:<[target].location> no_rotate no_damage
     - hurt <script[impl_skill_bash].parsed_key[balance.damage]> <[target]> cause:ENTITY_ATTACK source:<player>
     - cast speed <[target]> duration:<script[impl_skill_bash].parsed_key[balance.duration]> amplifier:<script[impl_skill_bash].parsed_key[balance.level]> no_ambient hide_particles no_icon
     - determine true
