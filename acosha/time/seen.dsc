@@ -9,6 +9,6 @@ command_playtime:
     - narrate "<light_purple><[player].name> has <duration[<[player].statistic[PLAY_ONE_MINUTE]>t].in_hours.round> hours of playtime."
   - else:
     - narrate "Please Insert Somone Online"
-
+    - stop
 
 
