@@ -132,8 +132,16 @@ class_weapon_skilltree_item:
     - if <[input]> == filler:
         - determine <item[standard_filler].with_flag[unique:<util.random_uuid>]>
     - define skillTree_script <server.flag[skills.trees.<[input]>.script]>
-    - determine <item[<[skillTree_script].data_key[display_item_script]>]>
+    - determine <item[<[skillTree_script].data_key[display_item_script]>].with_flag[skill:<[skillTree_script].data_key[name]>].with_flag[run_script:class_weapon_set_skillTree]>
 
+class_weapon_set_skillTree:
+  type: task
+  debug: false
+  script:
+    - define hotkey <context.inventory.slot[46].flag[hotkey]>
+    - define skill <context.item.flag[skill]>
+    - flag player hotkeys.<[hotkey]>:<[skill]>
+    - run class_weapon_open
 #/#
 #/#
 #/#
