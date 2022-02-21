@@ -143,7 +143,14 @@ class_weapon_ability_item:
   definitions: input
   script:
     - define skill_script <server.flag[skills.abilities.<[input]>]>
-    - define item <item[<[skill_script].data_key[display_item_script]>]>
-    - flag <[item]> ability:<[skill_script].data_key[name]>
-    - flag <[item]> run_script:class_weapon_set_skill
+    - define item <item[<[skill_script].data_key[display_item_script]>].with_flag[skill:<[skill_script].data_key[name]>].with_flag[run_script:class_weapon_set_skill]>
     - determine <[item]>
+
+class_weapon_set_skill:
+  type: task
+  debug: false
+  script:
+    - define hotkey <context.inventory.slot[46].flag[hotkey]>
+    - define skill <context.item.flag[skill]>
+    - flag player hotkeys.<[hotkey]>:<[skill]>
+    - run class_weapon_open

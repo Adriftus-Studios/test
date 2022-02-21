@@ -102,13 +102,6 @@ open_portal:
   debug: false
   definitions: type|direction|destination|server
   script:
-    - if <[server].exists>:
-      - if !<bungee.connected>:
-        - narrate "Unable to use this right now (awaiting bungee)"
-        - stop
-      - if <[server]> != <bungee.server>:
-        - narrate "TODO - cross-server portals"
-        - stop
     - define particle <script[portal_config].parsed_key[types.<[type]>.particle]>
     - define particle_quantity <script[portal_config].parsed_key[types.<[type]>.particle_quantity]>
     - define use_velocity <script[portal_config].parsed_key[types.<[type]>.use_velocity]>
@@ -122,6 +115,13 @@ open_portal:
     - if <[cube].blocks.filter_tag[<script[portal_config].data_key[whitelisted_blocks].contains[<[filter_value].material.name>].not>].size> >= 1:
       - narrate <script[portal_config].parsed_key[messages.no_room]>
       - stop
+    - if <[type]> == dtd && <[server].exists>:
+      - if !<bungee.connected>:
+        - narrate "Unable to use this right now (awaiting bungee)"
+        - stop
+      - if <[server]> != <bungee.server>:
+        - inject cross_server_portal
+        - stop
     - if !<[destination].chunk.is_loaded>:
       - chunkload <[destination].chunk> duration:10s
     - if !<script[portal_config].data_key[whitelisted_blocks].contains[<[destination].material.name>]>:
@@ -190,3 +190,9 @@ open_portal:
         - wait 2t
     - modifyblock <[target]> <[old_block1]>
     - modifyblock <[target].above> <[old_block2]>
+
+cross_server_portal:
+  type: task
+  debug: false
+  script:
+    - narrate "TODO - Cross-server portals"
