@@ -7,10 +7,10 @@ command_playtime:
   - define player <server.match_player[<context.args.get[1]>]>
   - if <context.args.size> < 1:
       - narrate "Please Use A Player Name"
-      - determine cancelled
+      - stop
   - if <[player]> = null:
     - narrate "Please Use A Actual Name"
-    - determine cancelled
+    - stop
   - else:
     - narrate "<light_purple><[player].name> has <duration[<[player].statistic[PLAY_ONE_MINUTE]>t].in_hours.round> hours of playtime."
 
