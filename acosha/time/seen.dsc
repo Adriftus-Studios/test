@@ -8,10 +8,10 @@ command_playtime:
   - if <context.args.size> < 1:
       - narrate "Please Use A Player Name"
       - stop
-  - if <[player].name> = null:
+  - if <player.name> = null:
     - narrate "Please Use A Actual Name"
     - stop
-  - else <[player].name> != null:
+  - else:
     - narrate "<light_purple><[player].name> has <duration[<[player].statistic[PLAY_ONE_MINUTE]>t].in_hours.round> hours of playtime."
 
 
