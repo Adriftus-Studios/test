@@ -1,10 +1,10 @@
-impl_skill_bash:
+impl_skill_sword_spin:
   type: data
   # Internal Name MUST BE UNIQUE
-  name: bash
+  name: sword_spin
 
   # Display data used in commands, and GUIs
-  display_item_script: impl_skill_bash_icon
+  display_item_script: impl_skill_sword_spin_icon
 
   # Skill Tree (uses internal name)
   skill_tree: warrior
@@ -18,7 +18,7 @@ impl_skill_bash:
 
   # Task Script to bee run when the ability is used successfully
   # This Task Script MUST be within this file, as with any code associated with this skill
-  on_cast: impl_skill_bash_task
+  on_cast: impl_skill_sword_spin_task
 
   # Is the ability harmful? (PvP Action)
   harmful: true
@@ -30,7 +30,7 @@ impl_skill_bash:
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "<player.precise_target[5]>"
+  - "<player.precise_target[3]>"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
@@ -40,19 +40,17 @@ impl_skill_bash:
 
   # Balance Values used in the script
   balance:
-    damage: 5
-    duration: 5s
-    level: -1
+    damage: 4
+    radius: 3
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
-impl_skill_bash_icon:
+impl_skill_sword_spin_icon:
   type: item
   material: feather
-  display name: "<&a>Bash"
+  display name: "<&a>Sword Spin"
   lore:
-  - "<&b>Bash your target within 5 blocks"
-  - "<&b>Damages them and slows for 5 seconds"
+  - "<&b>Damage and knock up any nearby enemies"
   mechanisms:
     custom_model_data: 1
 
@@ -60,12 +58,12 @@ impl_skill_bash_icon:
 # The On Cast Task script has specific requirements, and limits
 # The only reliable context tags in this task will be `<player>`
 # The task must `determine` true or false if the ability was successful or not.
-impl_skill_bash_task:
+impl_skill_sword_spin_task:
   type: task
   debug: false
   definitions: target
   script:
-    - push <player> destination:<[target].location> no_rotate no_damage
-    - hurt <script[impl_skill_bash].parsed_key[balance.damage]> <[target]> cause:ENTITY_ATTACK source:<player>
-    - cast speed <[target]> duration:<script[impl_skill_bash].parsed_key[balance.duration]> amplifier:<script[impl_skill_bash].parsed_key[balance.level]> no_ambient hide_particles no_icon
+    - hurt <script[impl_skill_sword_spin].parsed_key[balance.damage]> <player.location.find.living_entities.within[3].remove[<player>]> cause:ENTITY_ATTACK source:<player>
+    - foreach <player.location.find.living_entities.within[<script[impl_skill_sword_spin].parsed_key[balance.radius]>].remove[<player>]> as:entity:
+      - push <[entity]> destination:<[entity].location.above[2]> no_rotate
     - determine true
