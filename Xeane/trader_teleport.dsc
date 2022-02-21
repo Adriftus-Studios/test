@@ -4,7 +4,7 @@ trader_teleport:
   script:
     - flag player trader.last_location:<player.location>
     - repeat 40:
-      - playeffect effect:enchantment_table quantity:30 data:<element[0.2].mul[<[value]>].add[1]> at:<player.location.above[<element[1].add[<[loop_index].mul[0.1]>]>]>
+      - playeffect effect:enchantment_table quantity:30 data:<element[0.2].mul[<[value]>].add[1]> at:<player.location.above[<element[1].add[<[value].mul[0.1]>]>]>
       - wait 2t
     - repeat 10:
       - playeffect effect:redstone quantity:30 special_data:5|purple offset:0.6 at:<player.location.above[0.8]>
