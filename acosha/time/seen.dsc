@@ -8,7 +8,7 @@ command_playtime:
   - if <context.args.size> < 1:
       - narrate "Please Use A Player Name"
       - stop
-  - if <player.name> = null:
+  - if <[player]> = null:
     - narrate "Please Use A Actual Name"
     - stop
   - else:
