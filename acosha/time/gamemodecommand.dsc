@@ -5,9 +5,13 @@ gms_command:
   usage: /gms (Name)
   script:
     - if <Player.has_permission[adriftus.staff]>:
-      - adjust <player> gamemode:survival
+      - define player <server.match_player[<context.args.get[1]>].if_null[null]>
+      - adjust <[player]> gamemode:survival
+      - if <[player]> = null:
+            - narrate "<red><bold>Please Use A Name"
+            - stop
     - else:
-        - narrate "<bold><red> No Permmision"
+        - narrate "<bold><red>No Permmision"
 gmc_command:
   type: command
   name: gmc
@@ -15,9 +19,13 @@ gmc_command:
   usage: /gmc (Name)
   script:
     - if <Player.has_permission[adriftus.staff]>:
-      - adjust <player> gamemode:creative
+      - define player <server.match_player[<context.args.get[1]>].if_null[null]>
+      - adjust <[player]> gamemode:creative
+      - if <[player]> = null:
+            - narrate "<red><bold>Please Use A Name"
+            - stop
     - else:
-        - narrate "<bold><red> No Permmision"
+        - narrate "<bold><red>No Permmision"
 gma_command:
   type: command
   name: gma
@@ -28,10 +36,10 @@ gma_command:
       - define player <server.match_player[<context.args.get[1]>].if_null[null]>
       - adjust <[player]> gamemode:adventure
       - if <[player]> = null:
-            - narrate "<red><bold>Please Use A Name Who is Online"
+            - narrate "<red><bold>Please Use A Name"
             - stop
     - else:
-        - narrate "<bold><red> No Permmision"
+        - narrate "<bold><red>No Permmision"
 gmsp_command:
   type: command
   name: gmsp
@@ -39,6 +47,10 @@ gmsp_command:
   usage: /gmsp (Name)
   script:
     - if <Player.has_permission[adriftus.staff]>:
-      - adjust <player> gamemode:spectator
+      - define player <server.match_player[<context.args.get[1]>].if_null[null]>
+      - adjust <[player]> gamemode:spectator
+      - if <[player]> = null:
+            - narrate "<red><bold>Please Use A Name"
+            - stop
     - else:
-        - narrate "<bold><red> No Permmision"
+        - narrate "<bold><red>No Permmision"
