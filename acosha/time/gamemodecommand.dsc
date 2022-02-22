@@ -4,6 +4,9 @@ gms_command:
   description: Used to change gamemode adventure
   usage: /gms (Name)
   script:
+    - if <context.args.size> < 1:
+      - narrate "<red><bold>Please Use A Player Name"
+      - stop
     - define player <server.match_player[<context.args.get[1]>].if_null[null]>
     - if <Player.has_permission[adriftus.staff]>:
       - if <[player]> = null:
@@ -20,6 +23,9 @@ gmc_command:
   description: Used to change gamemode creative
   usage: /gmc (Name)
   script:
+    - if <context.args.size> < 1:
+      - narrate "<red><bold>Please Use A Player Name"
+      - stop
     - define player <server.match_player[<context.args.get[1]>].if_null[null]>
     - if <Player.has_permission[adriftus.staff]>:
       - if <[player]> = null:
@@ -36,6 +42,9 @@ gma_command:
   description: Used to Change Gamemode Adventure
   usage: /gma (Name)
   script:
+    - if <context.args.size> < 1:
+      - narrate "<red><bold>Please Use A Player Name"
+      - stop
     - define player <server.match_player[<context.args.get[1]>].if_null[null]>
     - if <Player.has_permission[adriftus.staff]>:
       - if <[player]> = null:
@@ -52,6 +61,9 @@ gmsp_command:
   description: Used to change gamemode spectator
   usage: /gmsp (Name)
   script:
+    - if <context.args.size> < 1:
+      - narrate "<red><bold>Please Use A Player Name"
+      - stop
     - define player <server.match_player[<context.args.get[1]>].if_null[null]>
     - if <Player.has_permission[adriftus.staff]>:
        - if <[player]> = null:
