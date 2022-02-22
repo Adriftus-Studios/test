@@ -204,21 +204,17 @@ class_weapon_use_event:
   type: world
   debug: false
   events:
-    on player left clicks block with:item_flagged:class_weapon flagged:hotkeys.sprint_left:
-      - if <player.is_sprinting>:
+    on player left clicks block with:item_flagged:class_weapon flagged:hotkeys:
+      - if <player.is_sprinting> && <player.has_flag[hotkeys.sprint_left]>:
         - run skill_core_use def:<player.flag[hotkeys.sprint_left]>
-    on player right clicks block with:item_flagged:class_weapon flagged:hotkeys.sprint_right:
-      - if <player.is_sprinting>:
-        - run skill_core_use def:<player.flag[hotkeys.sprint_right]>
-    on player left clicks block with:item_flagged:class_weapon flagged:hotkeys.sneak_left:
-      - if <player.is_sneaking>:
+      - else if <player.is_sneaking> && <player.has_flag[hotkeys.sneak_left]>:
         - run skill_core_use def:<player.flag[hotkeys.sneak_left]>
-    on player right clicks block with:item_flagged:class_weapon flagged:hotkeys.sneak_right:
-      - if <player.is_sneaking>:
-        - run skill_core_use def:<player.flag[hotkeys.sneak_right]>
-    on player left clicks block with:item_flagged:class_weapon flagged:hotkeys.left:
-      - if !<player.is_sneaking> && !<player.is_sprinting>:
+      - else if <player.has_flag[hotkeys.left]>:
         - run skill_core_use def:<player.flag[hotkeys.left]>
-    on player right clicks block with:item_flagged:class_weapon flagged:hotkeys.right:
-      - if !<player.is_sneaking> && !<player.is_sprinting>:
+    on player right clicks block with:item_flagged:class_weapon flagged:hotkeys:
+      - if <player.is_sprinting> && <player.has_flag[hotkeys.sprint_right]>:
+        - run skill_core_use def:<player.flag[hotkeys.sprint_right]>
+      - else if <player.is_sneaking> && <player.has_flag[hotkeys.sneak_right]>:
+        - run skill_core_use def:<player.flag[hotkeys.sneak_right]>
+      - else if <player.has_flag[hotkeys.right]>:
         - run skill_core_use def:<player.flag[hotkeys.right]>
