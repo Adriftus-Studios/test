@@ -12,4 +12,4 @@ firework_launcher_script:
     events:
         after player left clicks block with:firework_launcher:
             - wait 0.5s
-            - spawn firework <player.cursor_on>
+            - firework <player.cursor_on> random trail flicker
