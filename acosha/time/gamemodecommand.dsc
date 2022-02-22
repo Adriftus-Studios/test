@@ -20,8 +20,8 @@ gmc_command:
   description: Used to change gamemode creative
   usage: /gmc (Name)
   script:
+    - define player <server.match_player[<context.args.get[1]>].if_null[null]>
     - if <Player.has_permission[adriftus.staff]>:
-      - define player <server.match_player[<context.args.get[1]>].if_null[null]>
       - adjust <[player]> gamemode:creative
       - if <[player]> = null:
             - narrate "<red><bold>Please Use A Name"
