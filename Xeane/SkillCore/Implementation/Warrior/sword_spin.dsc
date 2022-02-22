@@ -66,5 +66,5 @@ impl_skill_sword_spin_task:
     - hurt <script[impl_skill_sword_spin].parsed_key[balance.damage]> <player.location.find.living_entities.within[3].remove[1]> cause:ENTITY_ATTACK source:<player>
     - foreach <player.location.find.living_entities.within[<script[impl_skill_sword_spin].parsed_key[balance.radius]>].remove[1]> as:entity:
       - playeffect effect:SWEEP_ATTACK at:<[entity].location> visibility:50 quantity:1 offset:0
-      - push <[entity]> origin:<[entity].location> destination:<[entity].location.above[2]> speed:0.5 duration:10t no_rotate
+      - push <[entity]> origin:<[entity].location> destination:<[entity].location.above[2]> speed:0.5 duration:1s no_rotate
     - determine true
