@@ -27,6 +27,7 @@ gmc_command:
     - if <context.args.size> < 1 && <Player.has_permission[adriftus.staff]>:
        - narrate "<green><player.name>'s Game Mode Changed To Creative"
        - adjust <player> gamemode:creative
+       - stop
     - define player <server.match_player[<context.args.get[1]>].if_null[null]>
     - if <Player.has_permission[adriftus.staff]>:
       - if <[player]> = null:
@@ -46,6 +47,7 @@ gma_command:
     - if <context.args.size> < 1 && <Player.has_permission[adriftus.staff]>:
       - narrate "<green><player.name>'s Game Mode Changed To Adventure"
       - adjust <player> gamemode:adventure
+      - stop
     - define player <server.match_player[<context.args.get[1]>].if_null[null]>
     - if <Player.has_permission[adriftus.staff]>:
       - if <[player]> = null:
@@ -65,6 +67,7 @@ gmsp_command:
     - if <context.args.size> < 1 && <Player.has_permission[adriftus.staff]>:
       - narrate "<green><player.name>'s Game Mode Changed To Spectator"
       - adjust <player> gamemode:Spectator
+      - stop
     - define player <server.match_player[<context.args.get[1]>].if_null[null]>
     - if <Player.has_permission[adriftus.staff]>:
        - if <[player]> = null:
