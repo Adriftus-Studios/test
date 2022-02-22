@@ -62,10 +62,9 @@ impl_skill_sick_em_task:
   debug: false
   definitions: target
   script:
-    - if <player.can_see[<[target]>]>:
-      - spawn impl_skill_sick_em_entity[owner=<player>] <player.location> target:<[target]>
-      - determine true
-    - determine false
+    - define entity <entity[impl_skill_sick_em_entity].with[tame=<player>;owner=<player>]>
+    - spawn <[entity]> <player.location> target:<[target]>
+    - determine true
 
 impl_skill_sick_em_entity:
   type: entity
