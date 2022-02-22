@@ -65,9 +65,8 @@ impl_skill_blink_task:
     - define target <player.location.with_pitch[0].precise_cursor_on[5].if_null[null]>
     - if <[target]> == null:
       - teleport <player.location.with_pitch[0].forward[5]>
-      - determine true
-    # change this to a key of allowed blocks for flowers and shit
     - else if <[target].above.material.is_solid.not>:
-      - teleport <[target].above[1]>
-      - determine true
-    - determine false
+      - teleport <[target].above>
+    - else:
+      - teleport <[target].backward>
+    - determine true
