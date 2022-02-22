@@ -4,9 +4,9 @@ gms_command:
   description: Used to change gamemode adventure
   usage: /gms (Name)
   script:
-    - if <context.args.size> < 1:
-      - narrate "<red><bold>Please Use A Player Name"
-      - stop
+    - if <context.args.size> < 1 && <Player.has_permission[adriftus.staff]>:
+      - narrate "<green><player.name>'s Game Mode Changed To Survival"
+      - adjust <player> gamemode:survival
     - define player <server.match_player[<context.args.get[1]>].if_null[null]>
     - if <Player.has_permission[adriftus.staff]>:
       - if <[player]> = null:
@@ -23,9 +23,9 @@ gmc_command:
   description: Used to change gamemode creative
   usage: /gmc (Name)
   script:
-    - if <context.args.size> < 1:
-      - narrate "<red><bold>Please Use A Player Name"
-      - stop
+    - if <context.args.size> < 1 && <Player.has_permission[adriftus.staff]>:
+       - narrate "<green><player.name>'s Game Mode Changed To Creative"
+       - adjust <player> gamemode:creative
     - define player <server.match_player[<context.args.get[1]>].if_null[null]>
     - if <Player.has_permission[adriftus.staff]>:
       - if <[player]> = null:
@@ -42,9 +42,9 @@ gma_command:
   description: Used to Change Gamemode Adventure
   usage: /gma (Name)
   script:
-    - if <context.args.size> < 1:
-      - narrate "<red><bold>Please Use A Player Name"
-      - stop
+    - if <context.args.size> < 1 && <Player.has_permission[adriftus.staff]>:
+      - narrate "<green><player.name>'s Game Mode Changed To Adventure"
+      - adjust <player> gamemode:adventure
     - define player <server.match_player[<context.args.get[1]>].if_null[null]>
     - if <Player.has_permission[adriftus.staff]>:
       - if <[player]> = null:
@@ -61,9 +61,9 @@ gmsp_command:
   description: Used to change gamemode spectator
   usage: /gmsp (Name)
   script:
-    - if <context.args.size> < 1:
-      - narrate "<red><bold>Please Use A Player Name"
-      - stop
+    - if <context.args.size> < 1 && <Player.has_permission[adriftus.staff]>:
+      - narrate "<green><player.name>'s Game Mode Changed To Spectator"
+      - adjust <player> gamemode:Spectator
     - define player <server.match_player[<context.args.get[1]>].if_null[null]>
     - if <Player.has_permission[adriftus.staff]>:
        - if <[player]> = null:
