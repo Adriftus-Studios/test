@@ -4,8 +4,7 @@ firework_launcher:
     display name: <red>Firework <yellow>Launcher
     lore:
     - Shoots fireworks
-    enchantments:
-    - sharpness:5
+
 
 firework_launcher_script:
     type: world
