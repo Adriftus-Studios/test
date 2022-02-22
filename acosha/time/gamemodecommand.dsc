@@ -6,12 +6,12 @@ gms_command:
   script:
     - define player <server.match_player[<context.args.get[1]>].if_null[null]>
     - if <Player.has_permission[adriftus.staff]>:
-      - adjust <[player]> gamemode:survival
       - if <[player]> = null:
-            - narrate "<red><bold>Please Use A Name"
+            - narrate "<red><bold>Please Use A Name That's Online"
             - stop
       - else:
          - narrate "<green><[player].name>'s Game Mode Changed To Survival"
+         - adjust <[player]> gamemode:survival
     - else:
         - narrate "<bold><red>No Permmision"
 gmc_command:
@@ -22,12 +22,12 @@ gmc_command:
   script:
     - define player <server.match_player[<context.args.get[1]>].if_null[null]>
     - if <Player.has_permission[adriftus.staff]>:
-      - adjust <[player]> gamemode:creative
       - if <[player]> = null:
-            - narrate "<red><bold>Please Use A Name"
+            - narrate "<red><bold>Please Use A Name That's Online"
             - stop
       - else:
         - narrate "<green><[player].name>'s Game Mode Changed To Creative"
+        - adjust <[player]> gamemode:creative
     - else:
         - narrate "<bold><red>No Permmision"
 gma_command:
@@ -38,12 +38,12 @@ gma_command:
   script:
     - define player <server.match_player[<context.args.get[1]>].if_null[null]>
     - if <Player.has_permission[adriftus.staff]>:
-      - adjust <[player]> gamemode:adventure
       - if <[player]> = null:
-            - narrate "<red><bold>Please Use A Name"
+            - narrate "<red><bold>Please Use A Name That's Online"
             - stop
       - else:
          - narrate "<green><[player].name>'s Game Mode Changed To Adventure"
+         - adjust <[player]> gamemode:adventure
     - else:
         - narrate "<bold><red>No Permmision"
 gmsp_command:
@@ -54,11 +54,11 @@ gmsp_command:
   script:
     - define player <server.match_player[<context.args.get[1]>].if_null[null]>
     - if <Player.has_permission[adriftus.staff]>:
-      - adjust <[player]> gamemode:spectator
-      - if <[player]> = null:
-            - narrate "<red><bold>Please Use A Name"
+       - if <[player]> = null:
+            - narrate "<red><bold>Please Use A Name That's Online"
             - stop
-      - else:
-        - narrate "<green><[player].name>'s Game Mode Changed To Spectator"
+       - else:
+            - narrate "<green><[player].name>'s Game Mode Changed To Spectator"
+            - adjust <[player]> gamemode:spectator
     - else:
         - narrate "<bold><red>No Permmision"
