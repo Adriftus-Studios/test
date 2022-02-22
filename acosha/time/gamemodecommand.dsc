@@ -7,7 +7,7 @@ gms_command:
     - if <Player.has_permission[adriftus.staff]>:
       - define player <server.match_player[<context.args.get[1]>].if_null[null]>
       - adjust <[player]> gamemode:survival
-      - narrate <green>Game Mode Changed To Survival
+      - narrate "<green>Game Mode Changed To Survival"
       - if <[player]> = null:
             - narrate "<red><bold>Please Use A Name"
             - stop
@@ -22,7 +22,7 @@ gmc_command:
     - if <Player.has_permission[adriftus.staff]>:
       - define player <server.match_player[<context.args.get[1]>].if_null[null]>
       - adjust <[player]> gamemode:creative
-      - narrate <green>Game Mode Changed To Creative
+      - narrate "<green>Game Mode Changed To Creative"
       - if <[player]> = null:
             - narrate "<red><bold>Please Use A Name"
             - stop
@@ -37,7 +37,7 @@ gma_command:
     - if <Player.has_permission[adriftus.staff]>:
       - define player <server.match_player[<context.args.get[1]>].if_null[null]>
       - adjust <[player]> gamemode:adventure
-      - narrate <green>Game Mode Changed To Survival
+      - narrate "<green>Game Mode Changed To Survival"
       - if <[player]> = null:
             - narrate "<red><bold>Please Use A Name"
             - stop
