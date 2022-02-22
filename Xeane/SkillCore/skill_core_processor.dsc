@@ -54,4 +54,4 @@ skill_core_use:
       - stop
 
     # Inject the skill script itself
-    - inject <[skill_script].data_key[on_cast]> def:<list_single[<[targets]>]>
+    - run <[skill_script].data_key[on_cast]> def:<list_single[<[targets]>]>
