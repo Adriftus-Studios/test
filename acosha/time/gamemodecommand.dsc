@@ -7,6 +7,7 @@ gms_command:
     - if <context.args.size> < 1 && <Player.has_permission[adriftus.staff]>:
       - narrate "<green><player.name>'s Game Mode Changed To Survival"
       - adjust <player> gamemode:survival
+      - stop
     - define player <server.match_player[<context.args.get[1]>].if_null[null]>
     - if <Player.has_permission[adriftus.staff]>:
       - if <[player]> = null:
