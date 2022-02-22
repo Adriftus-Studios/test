@@ -7,10 +7,11 @@ gms_command:
     - if <Player.has_permission[adriftus.staff]>:
       - define player <server.match_player[<context.args.get[1]>].if_null[null]>
       - adjust <[player]> gamemode:survival
-      - narrate "<green>Game Mode Changed To Survival"
       - if <[player]> = null:
             - narrate "<red><bold>Please Use A Name"
             - stop
+      - else:
+         - narrate "<green>Game Mode Changed To Survival"
     - else:
         - narrate "<bold><red>No Permmision"
 gmc_command:
@@ -22,10 +23,11 @@ gmc_command:
     - if <Player.has_permission[adriftus.staff]>:
       - define player <server.match_player[<context.args.get[1]>].if_null[null]>
       - adjust <[player]> gamemode:creative
-      - narrate "<green>Game Mode Changed To Creative"
       - if <[player]> = null:
             - narrate "<red><bold>Please Use A Name"
             - stop
+      - else:
+        - narrate "<green>Game Mode Changed To Creative"
     - else:
         - narrate "<bold><red>No Permmision"
 gma_command:
@@ -37,10 +39,11 @@ gma_command:
     - if <Player.has_permission[adriftus.staff]>:
       - define player <server.match_player[<context.args.get[1]>].if_null[null]>
       - adjust <[player]> gamemode:adventure
-      - narrate "<green>Game Mode Changed To Survival"
       - if <[player]> = null:
             - narrate "<red><bold>Please Use A Name"
             - stop
+      - else:
+         - narrate "<green>Game Mode Changed To Adventure"
     - else:
         - narrate "<bold><red>No Permmision"
 gmsp_command:
@@ -52,9 +55,10 @@ gmsp_command:
     - if <Player.has_permission[adriftus.staff]>:
       - define player <server.match_player[<context.args.get[1]>].if_null[null]>
       - adjust <[player]> gamemode:spectator
-      - narrate "<green>Game Mode Changed To Spectator"
       - if <[player]> = null:
             - narrate "<red><bold>Please Use A Name"
             - stop
+      - else:
+        - narrate "<green>Game Mode Changed To Spectator"
     - else:
         - narrate "<bold><red>No Permmision"
