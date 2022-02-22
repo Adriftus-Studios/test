@@ -64,5 +64,5 @@ impl_skill_blast_task:
   definitions: target
   script:
     - foreach <player.location.find.living_entities.within[<script[impl_skill_blast].parsed_key[balance.radius]>].remove[1]> as:entity:
-      - push <[entity]> destination:<[entity].location.backward_flat[2].above[1]> no_rotate
+      - push <[entity]> destination:<[entity].location.facing[<player>].backward_flat> speed:0.5 duration:5t no_rotate
     - determine true

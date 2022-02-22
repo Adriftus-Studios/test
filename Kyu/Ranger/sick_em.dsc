@@ -30,7 +30,7 @@ impl_skill_sick_em:
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "<player.precise_target[30]>"
+  - "<player>"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
@@ -49,7 +49,7 @@ impl_skill_sick_em_icon:
   material: feather
   display name: "<&a>Sick 'em!"
   lore:
-  - "<&b>Summon a wolf to target an enemy up to 30 blocks away"
+  - "<&b>Summon a wolf to assist you in battle"
   mechanisms:
     custom_model_data: 2
 
@@ -62,7 +62,8 @@ impl_skill_sick_em_task:
   debug: false
   definitions: target
   script:
-    - spawn impl_skill_sick_em_entity <player.location> target:<[target]>
+    - define entity <entity[impl_skill_sick_em_entity].with[custom_name=<&a><player.name><&sq>s<&sp>Wolf;tame=<player>;owner=<player>]>
+    - spawn <[entity]> <player.location>
     - determine true
 
 impl_skill_sick_em_entity:
