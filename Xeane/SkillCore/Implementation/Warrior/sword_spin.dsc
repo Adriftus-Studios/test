@@ -1,36 +1,36 @@
-impl_skill_recover:
+impl_skill_sword_spin:
   type: data
   # Internal Name MUST BE UNIQUE
-  name: recover
+  name: sword_spin
 
   # Display data used in commands, and GUIs
-  display_item_script: impl_skill_recover_icon
+  display_item_script: impl_skill_sword_spin_icon
 
   # Skill Tree (uses internal name)
-  skill_tree: rogue
+  skill_tree: warrior
 
   # Unlock Requirements are checked when unlocking the ability
   unlock_requirements:
   - "true"
 
   # Cooldown
-  cooldown: 20s
+  cooldown: 10s
 
   # Task Script to bee run when the ability is used successfully
   # This Task Script MUST be within this file, as with any code associated with this skill
-  on_cast: impl_skill_recover_task
+  on_cast: impl_skill_sword_spin_task
 
   # Is the ability harmful? (PvP Action)
-  harmful: false
+  harmful: true
 
   # Does using this ability flag you for PvP if it succeeds (even if not damaging)
-  pvp_flags: false
+  pvp_flags: true
 
   # Skill Targetting
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "<player>"
+  - "<player.precise_target[3]>"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
@@ -40,35 +40,31 @@ impl_skill_recover:
 
   # Balance Values used in the script
   balance:
-    duration: 3s
-    level: 3
+    damage: 4
+    radius: 3
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
-impl_skill_recover_icon:
+impl_skill_sword_spin_icon:
   type: item
   material: feather
-  display name: "<&a>Recover"
+  display name: "<&a>Sword Spin"
   lore:
-  - "<&b>Recover some health after a short warmup"
-  - "<&b>This skill is interruptible if you take damage or move"
+  - "<&b>Damage and knock up any nearby enemies"
   mechanisms:
-    custom_model_data: 4
+    custom_model_data: 1
 
 
 # The On Cast Task script has specific requirements, and limits
 # The only reliable context tags in this task will be `<player>`
 # The task must `determine` true or false if the ability was successful or not.
-impl_skill_recover_task:
+impl_skill_sword_spin_task:
   type: task
   debug: false
   definitions: target
   script:
-    - define health <player.health>
-    - define location <player.location>
-    - wait 3s
-    - if <player.health> < <[health]> || !<player.location.equals[<[location]>]>:
-      - determine false
-    # Level 4 Regeneration. 6 ticks per half-heart (1 HP). 3.33 Half-hearts per second (2 HP * 1.665) (Minecraft Wiki)
-    - cast regeneration duration:<script[impl_skill_recover].parsed_key[balance.duration]> amplifier:<script[impl_skill_recover].parsed_key[balance.level]> no_ambient hide_particles no_icon
+    - hurt <script[impl_skill_sword_spin].parsed_key[balance.damage]> <player.location.find.living_entities.within[3].remove[<player>]> cause:ENTITY_ATTACK source:<player>
+    - foreach <player.location.find.living_entities.within[<script[impl_skill_sword_spin].parsed_key[balance.radius]>].remove[<player>]> as:entity:
+      - playeffect effect:SWEEP_ATTACK at:<[entity].location> visibility:50 quantity:1 offset:0
+      - push <[entity]> destination:<[entity].location.above[2]> no_rotate
     - determine true

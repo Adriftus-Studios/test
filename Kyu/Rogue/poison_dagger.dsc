@@ -30,7 +30,7 @@ impl_skill_poison_dagger:
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "<player.target.within[15]>"
+  - "<player.precise_target[20]>"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
@@ -42,7 +42,7 @@ impl_skill_poison_dagger:
   balance:
     speed: 3
     damage: 4
-    duration: 5
+    duration: 5s
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
@@ -51,7 +51,7 @@ impl_skill_poison_dagger_icon:
   material: feather
   display name: "<&a>Poison Dagger"
   lore:
-  - "<&b>Throw a poison-tipped knife at your enemies from up to 15 blocks away"
+  - "<&b>Throw a poison-tipped knife at your enemies from up to 20 blocks away"
   - "<&b>Deals damage and poisons them if it lands"
   mechanisms:
     custom_model_data: 4
@@ -74,4 +74,4 @@ impl_skill_poison_dagger_damage_task:
   script:
     # Level 1 Poison. 25 ticks per half-heart (1 HP). 0.8 Half-hearts per second (2 HP * 0.4) (Minecraft Wiki)
     - hurt <script[impl_skill_poison_dagger].parsed_key[balance.damage]> <[hit_entities]> cause:ENTITY_ATTACK source:<player>
-    - cast poison <[hit_entities]> amplifier:0 duration:<script[impl_skill_poison_dagger].parsed_key[balance.duration]> no_ambient hide_particles no_icon
+    - cast poison <[hit_entities]> duration:<script[impl_skill_poison_dagger].parsed_key[balance.duration]> amplifier:0 no_ambient hide_particles no_icon

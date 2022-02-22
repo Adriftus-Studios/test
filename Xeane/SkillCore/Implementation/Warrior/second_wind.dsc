@@ -1,24 +1,24 @@
-impl_skill_recover:
+impl_skill_second_wind:
   type: data
   # Internal Name MUST BE UNIQUE
-  name: recover
+  name: second_wind
 
   # Display data used in commands, and GUIs
-  display_item_script: impl_skill_recover_icon
+  display_item_script: impl_skill_second_wind_icon
 
   # Skill Tree (uses internal name)
-  skill_tree: rogue
+  skill_tree: warrior
 
   # Unlock Requirements are checked when unlocking the ability
   unlock_requirements:
   - "true"
 
   # Cooldown
-  cooldown: 20s
+  cooldown: 30s
 
   # Task Script to bee run when the ability is used successfully
   # This Task Script MUST be within this file, as with any code associated with this skill
-  on_cast: impl_skill_recover_task
+  on_cast: impl_skill_second_wind_task
 
   # Is the ability harmful? (PvP Action)
   harmful: false
@@ -40,35 +40,27 @@ impl_skill_recover:
 
   # Balance Values used in the script
   balance:
-    duration: 3s
-    level: 3
+    health: <player.health_max.div[2].round>
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
-impl_skill_recover_icon:
+impl_skill_second_wind_icon:
   type: item
   material: feather
-  display name: "<&a>Recover"
+  display name: "<&a>Second Wind"
   lore:
-  - "<&b>Recover some health after a short warmup"
-  - "<&b>This skill is interruptible if you take damage or move"
+  - "<&b>Instantly recover 50<&pc> of your HP"
   mechanisms:
-    custom_model_data: 4
+    custom_model_data: 1
 
 
 # The On Cast Task script has specific requirements, and limits
 # The only reliable context tags in this task will be `<player>`
 # The task must `determine` true or false if the ability was successful or not.
-impl_skill_recover_task:
+impl_skill_second_wind_task:
   type: task
   debug: false
   definitions: target
   script:
-    - define health <player.health>
-    - define location <player.location>
-    - wait 3s
-    - if <player.health> < <[health]> || !<player.location.equals[<[location]>]>:
-      - determine false
-    # Level 4 Regeneration. 6 ticks per half-heart (1 HP). 3.33 Half-hearts per second (2 HP * 1.665) (Minecraft Wiki)
-    - cast regeneration duration:<script[impl_skill_recover].parsed_key[balance.duration]> amplifier:<script[impl_skill_recover].parsed_key[balance.level]> no_ambient hide_particles no_icon
+    - heal <script[impl_skill_second_wind].parsed_key[balance.health]>
     - determine true

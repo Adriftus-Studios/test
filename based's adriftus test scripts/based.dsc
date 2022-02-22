@@ -1,4 +1,3 @@
-
 bob_the_npc:
     type: assignment
     actions:
@@ -30,10 +29,7 @@ bob_the_npc_interact:
                     trigger: /Goodbye/
                     script:
                     - chat "See you!"
-
-cool_looking_format:
-    type: format
-    format: <[name]> says <[text]>
+#Approved
 
 support_bell:
     type: item
@@ -43,23 +39,74 @@ support_bell:
     - Gives you food, fills your hunger bar and fully insta-heals you!
     enchantments:
     - sharpness:5
+#Incomplete
 
-magic_support_bell:
+magic_replenishing_bell:
     type: world
+    item: support_bell
     events:
         after player right clicks bell:
         - if <player.health_percentage> < 100:
             - heal
-            - actionbar "The bell has healed you!"
-        - if <player.health_percentage> == 100:
-            - give cooked_beef
-            - actionbar "Since your health is full, you get a steak instead!"
+            - actionbar "The bell has healed you, <player.name.target>!"
+            - hurt <player>
+        - else if <player.has_flag[no_more]>
+        - if <player.food_level> < 100 :
+            - feed
+            - give cooked_beef quantity:64
+            - actionbar "Since you're in full health, you get a stack of steak while being fully fed!"
+            - flag player no_more
+#Approved, being reworked
+
+stone_gives_diamond:
+    type: world
+    events:
+        after player breaks stone:
+        - flag player count:+:1
+        - if [count] == 10:
+            - drop diamond <context.location>
+            - define count 0
+#Approved
+
+cool_thing:
+  type: world
+  debug: false
+  events:
+    on player right clicks block with:item_flagged:shooter:
+      - shoot <context.item.data_key[data.shoots]> speed:4
+#Approved
+
 spawn_sheep:
     type: command
     name: spawnsheep
     description: Spawns a sheep at your location.
     usage: /spawnsheep
     script:
-    - strike <context.forward_flat[2]> no_damage
-    - spawn sheep <context.forward_flat[2]>
-    - narrate "Sheep Spawned"
+    - if <player.location.forward[2].equals[air].not>:
+        - narrate "You do not have enough space to spawn a sheep"
+        - stop
+    - strike <player.location.forward[2]> no_damage
+    - spawn sheep <player.location.forward[2]>
+    - narrate "Sheep spawned!"
+#Approved, but not fully tested
+
+chest_lock_item:
+  type: item
+  material: iron_nugget
+  display name: <white>Iron Padlock
+  lore:
+    - <yellow><bold>Right-click a chest to lock it.
+
+chest_lock:
+    type: command
+    name: chestlock
+    description: Locks a chest to prevent stealing.
+    usage: /chestlock | /cl
+    script:
+        on player looks at chest with:chest_lock_item:
+            #- if <player> types "/cl" <== drafted line:
+            #    - flag <player> chest_owner
+            #- if <player.has_flag[chest_owner].not>:
+            #    - determine passively cancelled
+            #    - narrate "You do not own this chest."
+#Incomplete

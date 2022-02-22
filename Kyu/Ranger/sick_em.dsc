@@ -30,7 +30,7 @@ impl_skill_sick_em:
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "<player.target.within[20]>"
+  - "<player.precise_target[30]>"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
@@ -49,7 +49,7 @@ impl_skill_sick_em_icon:
   material: feather
   display name: "<&a>Sick 'em!"
   lore:
-  - "<&b>Summon a wolf to target an enemy up to 20 blocks away"
+  - "<&b>Summon a wolf to target an enemy up to 30 blocks away"
   mechanisms:
     custom_model_data: 2
 

@@ -40,7 +40,8 @@ impl_skill_sprint:
 
   # Balance Values used in the script
   balance:
-    duration: 1
+    duration: 1s
+    level: 4
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
@@ -63,5 +64,5 @@ impl_skill_sprint_task:
   definitions: target
   script:
     # Effect Level 5.
-    - cast speed duration:<script[impl_skill_sprint].parsed_key[balance.duration]> amplifier:4 no_ambient hide_particles no_icon
+    - cast speed duration:<script[impl_skill_sprint].parsed_key[balance.duration]> amplifier:<script[impl_skill_sprint].parsed_key[balance.level]> no_ambient hide_particles no_icon
     - determine true

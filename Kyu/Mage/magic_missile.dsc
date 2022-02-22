@@ -30,7 +30,7 @@ impl_skill_magic_missile:
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "<player.target.within[15]>"
+  - "<player.precise_target[25]>"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
@@ -50,7 +50,7 @@ impl_skill_magic_missile_icon:
   material: feather
   display name: "<&a>Magic Missile"
   lore:
-  - "<&b>Shoot a fireball at targets up to 15 blocks away"
+  - "<&b>Shoot a fireball at targets up to 25 blocks away"
   - "<&b>Damages any enemies within its blast radius"
   mechanisms:
     custom_model_data: 3
