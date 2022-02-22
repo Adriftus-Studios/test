@@ -101,7 +101,7 @@ class_weapon_ability_selection:
 class_weapon_ability_selection_open:
   type: task
   debug: false
-  definitions: hotkey
+  definitions: hotkey|skillTree
   script:
     - define inventory <inventory[class_weapon_ability_selection]>
     - inventory set slot:46 destination:<[inventory]> origin:<item[standard_filler].with_flag[hotkey:<[hotkey]>]>
@@ -115,9 +115,9 @@ class_weapon_ability_selection_open:
       - else:
         - define items:->:<item[standard_filler]>
     - if <player.has_flag[skills.trees]> && <player.flag[skills.trees].size> > 0:
-      - define first <player.flag[skills.trees].keys.first>
-      - if !<player.flag[skills.trees.<[first]>].keys.is_empty>:
-        - define items:|:<player.flag[skills.trees.<[first]>].keys.parse[proc[class_weapon_ability_item]]>
+      - define tree <[skillTree]||<player.flag[skills.trees].keys.first>>
+      - if !<player.flag[skills.trees.<[tree]>].keys.is_empty>:
+        - define items:|:<player.flag[skills.trees.<[tree]>].keys.parse[proc[class_weapon_ability_item]]>
     - give <[items]> to:<[inventory]>
     - inventory open d:<[inventory]>
 
@@ -132,16 +132,16 @@ class_weapon_skilltree_item:
     - if <[input]> == filler:
         - determine <item[standard_filler].with_flag[unique:<util.random_uuid>]>
     - define skillTree_script <server.flag[skills.trees.<[input]>.script]>
-    - determine <item[<[skillTree_script].data_key[display_item_script]>].with_flag[skill:<[skillTree_script].data_key[name]>].with_flag[run_script:class_weapon_set_skillTree]>
+    - determine <item[<[skillTree_script].data_key[display_item_script]>].with_flag[skillTree:<[skillTree_script].data_key[name]>].with_flag[run_script:class_weapon_set_skillTree]>
 
 class_weapon_set_skillTree:
   type: task
   debug: false
   script:
-    - define hotkey <context.inventory.slot[46].flag[hotkey]>
-    - define skill <context.item.flag[skill]>
-    - flag player hotkeys.<[hotkey]>:<[skill]>
-    - run class_weapon_open
+    - define hotkey <context.inventory.slot[45].flag[hotkey]>
+    - define skillTree <context.item.flag[skillTree]>
+    - run class_weapon_ability_selection_open def:<[hotkey]>|<[skillTree]>
+
 #/#
 #/#
 #/#
@@ -162,3 +162,40 @@ class_weapon_set_skill:
     - define skill <context.item.flag[skill]>
     - flag player hotkeys.<[hotkey]>:<[skill]>
     - run class_weapon_open
+
+class_weapon_add_skill:
+  type: task
+  debug: false
+  definitions: skillTree|skill
+  script:
+    - if !<server.has_flag[skills.trees.<[skillTree]>]>:
+      - debug error "UNKNOWN SKILL TREE<&co> <[skillTree]>"
+      - stop
+    - if !<server.has_flag[skills.trees.<[skillTree]>.<[skill]>]>:
+      - debug error "UNKNOWN SKILL<&co> <[skill]> in skillTree <[skillTree]>"
+      - stop
+    - define skill_script <server.flag[skills.trees.<[skillTree]>.<[skill]>]>
+    - flag player skills.trees.<[skillTree]>.<[skill]>:<[skill_script]>
+    - flag player skills.abilities.<[skill]>:<[skill_script]>
+
+class_weapon_remove_skill:
+  type: task
+  debug: false
+  definitions: skillTree|skill
+  script:
+    - if <player.has_flag[skills.trees.<[skillTree]>]>:
+      - flag player skills.trees.<[skillTree]>.<[skill]>:!
+      - if <player.flag[skills.trees.<[skillTree]>].is_empty>:
+        - flag player skills.trees.<[skillTree]>:!
+    - if !<player.has_flag[skills.abilities.<[skill]>]>:
+      - flag player skills.abilities.<[skill]>:!
+
+class_weapon_remove_skillTree:
+  type: task
+  debug: false
+  definitions: skillTree
+  script:
+    - if <player.has_flag[skills.trees.<[skillTree]>]>:
+      - foreach <player.flag[skills.tree.<[skillTree]>].keys> as:skill:
+        - flag player skills.abilities.<[skill]>:!
+      - flag player skills.trees.<[skillTree]>:!
