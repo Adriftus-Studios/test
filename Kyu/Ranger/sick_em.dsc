@@ -62,8 +62,10 @@ impl_skill_sick_em_task:
   debug: false
   definitions: target
   script:
-    - spawn impl_skill_sick_em_entity <player.location> target:<[target]>
-    - determine true
+    - if <player.can_see[<[target]>]>:
+      - spawn impl_skill_sick_em_entity[owner=<player>] <player.location> target:<[target]>
+      - determine true
+    - determine false
 
 impl_skill_sick_em_entity:
   type: entity
@@ -71,4 +73,3 @@ impl_skill_sick_em_entity:
   entity_type: wolf
   mechanisms:
     health_data: <script[impl_skill_sick_em].parsed_key[balance.health]>/<script[impl_skill_sick_em].parsed_key[balance.health]>
-    owner: <player>
