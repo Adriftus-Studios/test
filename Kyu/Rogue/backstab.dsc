@@ -30,7 +30,7 @@ impl_skill_backstab:
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "player.precise_target[5]"
+  - "<player.precise_target[5]>"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
@@ -63,7 +63,7 @@ impl_skill_backstab_task:
   debug: false
   definitions: target
   script:
-    - teleport <player> <[target].location.backward_flat.with_pitch[0]>
+    - teleport <[target].location.backward_flat.with_pitch[0]>
     - hurt <script[impl_skill_backstab].parsed_key[balance.damage]> <[target]> cause:ENTITY_ATTACK source:<player>
     - playeffect effect:CRIT at:<[target].location> visibility:50 quantity:5 offset:1.0
     - determine true
