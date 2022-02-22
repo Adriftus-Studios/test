@@ -41,6 +41,7 @@ impl_skill_recover:
   # Balance Values used in the script
   balance:
     duration: 3s
+    level: 3
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
@@ -69,5 +70,5 @@ impl_skill_recover_task:
     - if <player.health> < <[health]> || !<player.location.equals[<[location]>]>:
       - determine false
     # Level 4 Regeneration. 6 ticks per half-heart (1 HP). 3.33 Half-hearts per second (2 HP * 1.665) (Minecraft Wiki)
-    - cast regeneration amplifier:3 duration:<script[impl_skill_recover].parsed_key[balance.duration]> no_ambient hide_particles no_icon
+    - cast regeneration duration:<script[impl_skill_recover].parsed_key[balance.duration]> amplifier:<script[impl_skill_recover].parsed_key[balance.level]> no_ambient hide_particles no_icon
     - determine true
