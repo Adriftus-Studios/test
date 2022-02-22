@@ -62,7 +62,7 @@ impl_skill_sick_em_task:
   debug: false
   definitions: target
   script:
-    - define entity <entity[impl_skill_sick_em_entity].with[tame=<player>;owner=<player>]>
+    - define entity <entity[impl_skill_sick_em_entity].with[name=<&a><player.name><&sq>s<&sp>Wolf;tame=<player>;owner=<player>]>
     - spawn <[entity]> <player.location> target:<[target]>
     - determine true
 
