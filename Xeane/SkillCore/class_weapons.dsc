@@ -57,7 +57,7 @@ class_weapon_open:
         - define item <item[<[skill_script].data_key[display_item_script]>]>
         - flag <[item]> hotkey:<[hotkey_button]>
         - flag <[item]> run_script:class_weapon_click_handler
-        - adjust def:item "lore:<[item].lore.include[<&c>--------------|<&b>Right Click to Unbind]>"
+        - adjust def:item "lore:<[item].lore.include[<&c>--------------|<&a>Hotkey<&co><&sp><[hotkey_button]>|<&b>Right Click to Unbind]>"
         - define items:->:<[item]>
     - give <[items]> to:<[inventory]>
     - inventory open d:<[inventory]>
