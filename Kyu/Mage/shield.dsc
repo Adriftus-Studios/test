@@ -41,7 +41,7 @@ impl_skill_shield:
 
   # Balance Values used in the script
   balance:
-    duration: 3
+    duration: 3s
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
