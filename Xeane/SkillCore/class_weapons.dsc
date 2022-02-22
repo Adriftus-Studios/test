@@ -138,7 +138,7 @@ class_weapon_set_skillTree:
   type: task
   debug: false
   script:
-    - define hotkey <context.inventory.slot[45].flag[hotkey]>
+    - define hotkey <context.inventory.slot[46].flag[hotkey]>
     - define skillTree <context.item.flag[skillTree]>
     - run class_weapon_ability_selection_open def:<[hotkey]>|<[skillTree]>
 
@@ -199,3 +199,26 @@ class_weapon_remove_skillTree:
       - foreach <player.flag[skills.tree.<[skillTree]>].keys> as:skill:
         - flag player skills.abilities.<[skill]>:!
       - flag player skills.trees.<[skillTree]>:!
+
+class_weapon_use_event:
+  type: world
+  debug: false
+  events:
+    on player left clicks block with:item_flagged:class_weapon flagged:hotkeys.sprint_left:
+      - if <player.is_sprinting>:
+        - run skill_core_use def:<player.flag[hotkeys.sprint_left]>
+    on player right clicks block with:item_flagged:class_weapon flagged:hotkeys.sprint_right:
+      - if <player.is_sprinting>:
+        - run skill_core_use def:<player.flag[hotkeys.sprint_right]>
+    on player left clicks block with:item_flagged:class_weapon flagged:hotkeys.sneak_left:
+      - if <player.is_sneaking>:
+        - run skill_core_use def:<player.flag[hotkeys.sneak_left]>
+    on player right clicks block with:item_flagged:class_weapon flagged:hotkeys.sneak_right:
+      - if <player.is_sneaking>:
+        - run skill_core_use def:<player.flag[hotkeys.sneak_right]>
+    on player left clicks block with:item_flagged:class_weapon flagged:hotkeys.left:
+      - if !<player.is_sneaking> && !<player.is_sprinting>:
+        - run skill_core_use def:<player.flag[hotkeys.left]>
+    on player right clicks block with:item_flagged:class_weapon flagged:hotkeys.right:
+      - if !<player.is_sneaking> && !<player.is_sprinting>:
+        - run skill_core_use def:<player.flag[hotkeys.right]>
