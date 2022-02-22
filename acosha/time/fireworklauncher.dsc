@@ -9,7 +9,6 @@ firework_launcher:
 
 firework_launcher_script:
     type: world
-    item: support_bell
     events:
         after player left clicks block with:firework_launcher:
             - spawn firework <player.cursor_on>
