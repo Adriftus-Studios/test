@@ -37,10 +37,10 @@ class_weapon_open:
       - "Crouch_Right"
       - "Crouch_Drop"
       - "Crouch_Swap"
-      - "Run_Left"
-      - "Run_Right"
-      - "Run_Drop"
-      - "Run_Swap"
+      - "Sprint_Left"
+      - "Sprint_Right"
+      - "Sprint_Drop"
+      - "Sprint_Swap"
     item_format:
       display: <&a><[hotkey_button]>
       lore:
