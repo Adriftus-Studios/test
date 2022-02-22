@@ -71,3 +71,4 @@ impl_skill_sick_em_entity:
   entity_type: wolf
   mechanisms:
     health_data: <script[impl_skill_sick_em].parsed_key[balance.health]>/<script[impl_skill_sick_em].parsed_key[balance.health]>
+    owner: <player>
