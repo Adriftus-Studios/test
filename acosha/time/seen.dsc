@@ -12,7 +12,9 @@ command_playtime:
     - narrate "<red><bold>Please Use A Name Who is Online"
     - stop
   - else:
-    - narrate "<light_purple><bold><[player].name> Has <duration[<[player].statistic[PLAY_ONE_MINUTE]>t].in_hours.round> Hours Of Playtime."
-
+    - if <Player.has_permission[adriftus.staff]>:
+      - narrate "<light_purple><bold><[player].name> Has <duration[<[player].statistic[PLAY_ONE_MINUTE]>t].in_hours.round> Hours Of Playtime."
+    - else:
+      - narrate "<light_purple><bold><player.name> Has <duration[<player.statistic[PLAY_ONE_MINUTE]>t].in_hours.round> Hours Of Playtime."
 
 
