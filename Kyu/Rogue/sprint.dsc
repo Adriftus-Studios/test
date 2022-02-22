@@ -40,7 +40,7 @@ impl_skill_sprint:
 
   # Balance Values used in the script
   balance:
-    duration: 1
+    duration: 1s
     level: 4
 
 # Display Icon for the skill itself
