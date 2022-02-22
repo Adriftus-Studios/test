@@ -4,5 +4,5 @@ gms_command:
   description: Used to change gamemode survival
   usage: /gms
   script:
-    - if <Player.has_permission[adriftus.gamemode.gms]>:
+    - if <Player.has_permission[adriftus.staff]>:
       - adjust <player> gamemode:survival
