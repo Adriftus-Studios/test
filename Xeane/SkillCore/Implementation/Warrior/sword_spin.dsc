@@ -63,8 +63,8 @@ impl_skill_sword_spin_task:
   debug: false
   definitions: target
   script:
-    - hurt <script[impl_skill_sword_spin].parsed_key[balance.damage]> <player.location.find.living_entities.within[3].remove[<player>]> cause:ENTITY_ATTACK source:<player>
-    - foreach <player.location.find.living_entities.within[<script[impl_skill_sword_spin].parsed_key[balance.radius]>].remove[<player>]> as:entity:
+    - hurt <script[impl_skill_sword_spin].parsed_key[balance.damage]> <player.location.find.living_entities.within[3].remove[1]> cause:ENTITY_ATTACK source:<player>
+    - foreach <player.location.find.living_entities.within[<script[impl_skill_sword_spin].parsed_key[balance.radius]>].remove[1]> as:entity:
       - playeffect effect:SWEEP_ATTACK at:<[entity].location> visibility:50 quantity:1 offset:0
       - push <[entity]> destination:<[entity].location.above[2]> no_rotate
     - determine true
