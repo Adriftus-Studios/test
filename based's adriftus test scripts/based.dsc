@@ -40,7 +40,6 @@ support_bell:
     enchantments:
     - sharpness:5
 #Incomplete
-
 magic_replenishing_bell:
     type: world
     item: support_bell
@@ -82,11 +81,11 @@ spawn_sheep:
     description: Spawns a sheep at your location.
     usage: /spawnsheep
     script:
-    - if <player.location.forward[2].equals[air].not>:
+    - if <player.location.forward_flat[2].equals[air].not>:
         - narrate "You do not have enough space to spawn a sheep"
         - stop
-    - strike <player.location.forward[2]> no_damage
-    - spawn sheep <player.location.forward[2]>
+    - strike <player.location.forward_flat[2]> no_damage
+    - spawn sheep <player.location.forward_flat[2]>
     - narrate "Sheep spawned!"
 #Approved, but not fully tested
 
