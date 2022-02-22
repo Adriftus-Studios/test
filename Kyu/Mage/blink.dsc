@@ -65,8 +65,8 @@ impl_skill_blink_task:
     - define target <player.location.with_pitch[0].precise_cursor_on[5].if_null[null]>
     - if <[target]> == null:
       - teleport <player.location.with_pitch[0].forward[5]>
-    - else if <[target].above.material.is_solid.not>:
+    - else if <[target].above.material.is_solid.not> && <[target].material.is_solid>:
       - teleport <[target].above>
-    - else:
-      - teleport <[target].backward>
+    - else if <[target].above.material.is_solid> && <[target].material.is_solid>:
+      - teleport <[target].above.backward>
     - determine true
