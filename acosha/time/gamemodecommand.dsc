@@ -11,7 +11,7 @@ gms_command:
             - narrate "<red><bold>Please Use A Name"
             - stop
       - else:
-         - narrate "<green>Game Mode Changed To Survival"
+         - narrate "<green><[player].name>Game Mode Changed To Survival"
     - else:
         - narrate "<bold><red>No Permmision"
 gmc_command:
@@ -27,7 +27,7 @@ gmc_command:
             - narrate "<red><bold>Please Use A Name"
             - stop
       - else:
-        - narrate "<green>Game Mode Changed To Creative"
+        - narrate "<green><[player].name>Game Mode Changed To Creative"
     - else:
         - narrate "<bold><red>No Permmision"
 gma_command:
@@ -43,7 +43,7 @@ gma_command:
             - narrate "<red><bold>Please Use A Name"
             - stop
       - else:
-         - narrate "<green>Game Mode Changed To Adventure"
+         - narrate "<green><[player].name>Game Mode Changed To Adventure"
     - else:
         - narrate "<bold><red>No Permmision"
 gmsp_command:
@@ -59,6 +59,6 @@ gmsp_command:
             - narrate "<red><bold>Please Use A Name"
             - stop
       - else:
-        - narrate "<green>Game Mode Changed To Spectator"
+        - narrate "<green><[player].name>Game Mode Changed To Spectator"
     - else:
         - narrate "<bold><red>No Permmision"
