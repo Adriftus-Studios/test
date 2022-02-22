@@ -20,9 +20,9 @@ gmc_command:
         - narrate "<bold><red> No Permmision"
 gma_command:
   type: command
-  name: gms
+  name: gma
   description: Used to change gamemode survival
-  usage: /gms
+  usage: /gma
   script:
     - if <Player.has_permission[adriftus.staff]>:
       - adjust <player> gamemode:adventure
@@ -30,9 +30,9 @@ gma_command:
         - narrate "<bold><red> No Permmision"
 gmsp_command:
   type: command
-  name: gms
+  name: gmsp
   description: Used to change gamemode survival
-  usage: /gms
+  usage: /gmsp
   script:
     - if <Player.has_permission[adriftus.staff]>:
       - adjust <player> gamemode:spectator
