@@ -97,7 +97,6 @@ chest_lock_item:
   lore:
     - <yellow><bold>Right-click a chest to lock it.
 
-
 chest_lock:
     type: command
     name: chestlock
@@ -108,6 +107,6 @@ chest_lock:
             #- if <player> types "/cl" <== drafted line:
             #    - flag <player> chest_owner
             #- if <player.has_flag[chest_owner].not>:
-            #    - determine cancelled
+            #    - determine passively cancelled
             #    - narrate "You do not own this chest."
 #Incomplete
