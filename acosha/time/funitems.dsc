@@ -11,5 +11,5 @@ firework_launcher_script:
     type: world
     events:
         after player left clicks block with:firework_launcher:
-            - wait 2s
+            - wait 0.5s
             - spawn firework <player.cursor_on>
