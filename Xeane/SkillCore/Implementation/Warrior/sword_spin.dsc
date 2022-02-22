@@ -1,24 +1,24 @@
-impl_skill_backstab:
+impl_skill_sword_spin:
   type: data
   # Internal Name MUST BE UNIQUE
-  name: backstab
+  name: sword_spin
 
   # Display data used in commands, and GUIs
-  display_item_script: impl_skill_backstab_icon
+  display_item_script: impl_skill_sword_spin_icon
 
   # Skill Tree (uses internal name)
-  skill_tree: rogue
+  skill_tree: warrior
 
   # Unlock Requirements are checked when unlocking the ability
   unlock_requirements:
   - "true"
 
   # Cooldown
-  cooldown: 6s
+  cooldown: 10s
 
   # Task Script to bee run when the ability is used successfully
   # This Task Script MUST be within this file, as with any code associated with this skill
-  on_cast: impl_skill_backstab_task
+  on_cast: impl_skill_sword_spin_task
 
   # Is the ability harmful? (PvP Action)
   harmful: true
@@ -30,7 +30,7 @@ impl_skill_backstab:
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "<player.precise_target[5]>"
+  - "<player.precise_target[3]>"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
@@ -40,30 +40,31 @@ impl_skill_backstab:
 
   # Balance Values used in the script
   balance:
-    damage: 6
+    damage: 4
+    radius: 3
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
-impl_skill_backstab_icon:
+impl_skill_sword_spin_icon:
   type: item
   material: feather
-  display name: "<&a>Backstab"
+  display name: "<&a>Sword Spin"
   lore:
-  - "<&b>Move behind an enemy and backstab them for extra damage"
-  - "<&b>Only works in melee range"
+  - "<&b>Damage and knock up any nearby enemies"
   mechanisms:
-    custom_model_data: 4
+    custom_model_data: 1
 
 
 # The On Cast Task script has specific requirements, and limits
 # The only reliable context tags in this task will be `<player>`
 # The task must `determine` true or false if the ability was successful or not.
-impl_skill_backstab_task:
+impl_skill_sword_spin_task:
   type: task
   debug: false
   definitions: target
   script:
-    - teleport <player> <[target].location.backward_flat.with_pitch[0]>
-    - hurt <script[impl_skill_backstab].parsed_key[balance.damage]> <[target]> cause:ENTITY_ATTACK source:<player>
-    - playeffect effect:CRIT at:<[target].location> visibility:50 quantity:5 offset:1.0
+    - hurt <script[impl_skill_sword_spin].parsed_key[balance.damage]> <player.location.find.living_entities.within[3].remove[<player>]> cause:ENTITY_ATTACK source:<player>
+    - foreach <player.location.find.living_entities.within[<script[impl_skill_sword_spin].parsed_key[balance.radius]>].remove[<player>]> as:entity:
+      - playeffect effect:SWEEP_ATTACK at:<[entity].location> visibility:50 quantity:1 offset:0
+      - push <[entity]> destination:<[entity].location.above[2]> no_rotate
     - determine true

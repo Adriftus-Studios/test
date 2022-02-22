@@ -1,36 +1,36 @@
-impl_skill_backstab:
+impl_skill_second_wind:
   type: data
   # Internal Name MUST BE UNIQUE
-  name: backstab
+  name: second_wind
 
   # Display data used in commands, and GUIs
-  display_item_script: impl_skill_backstab_icon
+  display_item_script: impl_skill_second_wind_icon
 
   # Skill Tree (uses internal name)
-  skill_tree: rogue
+  skill_tree: warrior
 
   # Unlock Requirements are checked when unlocking the ability
   unlock_requirements:
   - "true"
 
   # Cooldown
-  cooldown: 6s
+  cooldown: 30s
 
   # Task Script to bee run when the ability is used successfully
   # This Task Script MUST be within this file, as with any code associated with this skill
-  on_cast: impl_skill_backstab_task
+  on_cast: impl_skill_second_wind_task
 
   # Is the ability harmful? (PvP Action)
-  harmful: true
+  harmful: false
 
   # Does using this ability flag you for PvP if it succeeds (even if not damaging)
-  pvp_flags: true
+  pvp_flags: false
 
   # Skill Targetting
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "<player.precise_target[5]>"
+  - "<player>"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
@@ -40,30 +40,27 @@ impl_skill_backstab:
 
   # Balance Values used in the script
   balance:
-    damage: 6
+    health: <player.health_max.div[2].round>
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
-impl_skill_backstab_icon:
+impl_skill_second_wind_icon:
   type: item
   material: feather
-  display name: "<&a>Backstab"
+  display name: "<&a>Second Wind"
   lore:
-  - "<&b>Move behind an enemy and backstab them for extra damage"
-  - "<&b>Only works in melee range"
+  - "<&b>Instantly recover 50<&pc> of your HP"
   mechanisms:
-    custom_model_data: 4
+    custom_model_data: 1
 
 
 # The On Cast Task script has specific requirements, and limits
 # The only reliable context tags in this task will be `<player>`
 # The task must `determine` true or false if the ability was successful or not.
-impl_skill_backstab_task:
+impl_skill_second_wind_task:
   type: task
   debug: false
   definitions: target
   script:
-    - teleport <player> <[target].location.backward_flat.with_pitch[0]>
-    - hurt <script[impl_skill_backstab].parsed_key[balance.damage]> <[target]> cause:ENTITY_ATTACK source:<player>
-    - playeffect effect:CRIT at:<[target].location> visibility:50 quantity:5 offset:1.0
+    - heal <script[impl_skill_second_wind].parsed_key[balance.health]>
     - determine true
