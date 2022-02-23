@@ -388,11 +388,9 @@ Banner_Designer_Function:
     on player places block:
       - if <context.location.cuboids.contains_any_text[banner_designer_]>:
         - determine cancelled
-    after player enters cuboid:
-      - if <context.area.contains_any_text[banner_designer_]>:
+    after player enters banner_designer_*
         - adjust <player> hide_from_players
-    after player exits cuboid:
-      - if <context.area.contains_any_text[banner_designer_]>:
+    after player exits banner_designer_*
         - adjust <player> show_to_players
 
 Banner_Designer_Update:
