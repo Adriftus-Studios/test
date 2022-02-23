@@ -10,6 +10,7 @@ gms_command:
       - stop
     - if !<Player.has_permission[adriftus.staff.gms]>:
       - narrate "<bold><red>No Permmision"
+      - stop
     - define player <server.match_player[<context.args.get[1]>].if_null[null]>
     - if <Player.has_permission[adriftus.staff.gms]>:
       - if <[player]> = null:
