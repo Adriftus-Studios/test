@@ -10,10 +10,8 @@ Banner_Designer_Config:
       default: <list[===============|Banner|Designer|===============]>
     Layer:
       default: <list[<&sp>|Insert<&sp>Token|Above|<&sp>]>
-      in_use: <list[<&sp>|Machine|In<&sp>Use|<&sp>]>
     Pattern:
       default: <list[<&sp>|Insert<&sp>Token|<&lt>------|<&sp>]>
-      in_use: <list[<&sp>|Machine|In<&sp>Use|<&sp>]>
   Color:
     0: White
     1: Red
@@ -390,6 +388,12 @@ Banner_Designer_Function:
     on player places block:
       - if <context.location.cuboids.contains_any_text[banner_designer_]>:
         - determine cancelled
+    on player enters cuboid:
+      - if <context.area.contains_any_text[banner_designer_]>:
+        - adjust <player> hide_from_players
+    on player exits cuboid:
+      - if <context.area.contains_any_text[banner_designer_]>:
+        - adjust <player> show_to_players
 
 Banner_Designer_Update:
   type: task
@@ -412,8 +416,6 @@ Banner_Designer_Update:
     - else:
       - adjust <player> sign_update:<location[banner_designer_<[uuid]>_patternsign]>|<list[]>
   start:
-    - adjust banner_designer_<[uuid]>_layersign sign_contents:<script[Banner_Designer_Config].parsed_key[Signs.Layer.in_use]>
-    - adjust banner_designer_<[uuid]>_patternsign sign_contents:<script[Banner_Designer_Config].parsed_key[Signs.Pattern.in_use]>
     - adjust <player> "sign_update:<location[banner_designer_<[uuid]>_layersign]>|<list_single[||==[ LAYER ]==||].include_single[].include_single[<aqua>Base].include_single[||============||]>"
     - adjust <player> "sign_update:<location[banner_designer_<[uuid]>_colorsign]>|<list_single[||==[ COLOR ]==||].include_single[].include_single[<aqua>White].include_single[||============||]>"
     - adjust <player> sign_update:<location[banner_designer_<[uuid]>_patternsign]>|<list[]>
@@ -422,8 +424,6 @@ Banner_Designer_Update:
     - run Generic_Freeze_Task instantly def:<player>|freeze|banner_designer_<[uuid]>_viewpoint
     - title "title:<blue>Launched <bold>Banner Designer" subtitle:<script[Banner_Designer_Config].parsed_key[Modes.Test.subtitle]> targets:<player> fade_in:15t stay:1s fade_out:15t
   stop:
-    - adjust banner_designer_<[uuid]>_layersign sign_contents:<script[Banner_Designer_Config].parsed_key[Signs.Layer.default]>
-    - adjust banner_designer_<[uuid]>_patternsign sign_contents:<script[Banner_Designer_Config].parsed_key[Signs.Pattern.default]>
     - adjust <player> sign_update:banner_designer_<[uuid]>_layersign|<location[banner_designer_<[uuid]>_layersign].sign_contents>
     - adjust <player> sign_update:banner_designer_<[uuid]>_colorsign|<location[banner_designer_<[uuid]>_colorsign].sign_contents>
     - adjust <player> sign_update:banner_designer_<[uuid]>_patternsign|<location[banner_designer_<[uuid]>_patternsign].sign_contents>
