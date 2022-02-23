@@ -203,38 +203,53 @@ class_weapon_use_event:
   type: world
   debug: false
   events:
-    on player left clicks block with:item_flagged:class_weapon flagged:hotkeys:
+    on player left clicks block with:item_flagged:class_weapon flagged:hotkeys bukkit_priority:LOW:
       - if <player.is_sprinting> && <player.has_flag[hotkeys.sprint_left]>:
         - run skill_core_use def:<player.flag[hotkeys.sprint_left]>
+        - determine cancelled
       - else if <player.is_sneaking> && <player.has_flag[hotkeys.sneak_left]>:
         - run skill_core_use def:<player.flag[hotkeys.sneak_left]>
+        - determine cancelled
       - else if <player.has_flag[hotkeys.left]>:
         - run skill_core_use def:<player.flag[hotkeys.left]>
-    on player right clicks block with:item_flagged:class_weapon flagged:hotkeys:
+        - determine cancelled
+    on player right clicks block with:item_flagged:class_weapon flagged:hotkeys bukkit_priority:LOW:
       - if <player.is_sprinting> && <player.has_flag[hotkeys.sprint_right]>:
         - run skill_core_use def:<player.flag[hotkeys.sprint_right]>
+        - determine cancelled
       - else if <player.is_sneaking> && <player.has_flag[hotkeys.sneak_right]>:
         - run skill_core_use def:<player.flag[hotkeys.sneak_right]>
+        - determine cancelled
       - else if <player.has_flag[hotkeys.right]>:
         - run skill_core_use def:<player.flag[hotkeys.right]>
-    on player right clicks entity with:item_flagged:class_weapon flagged:hotkeys:
+        - determine cancelled
+    on player right clicks entity with:item_flagged:class_weapon flagged:hotkeys bukkit_priority:LOW:
       - if <player.is_sprinting> && <player.has_flag[hotkeys.sprint_right]>:
         - run skill_core_use def:<player.flag[hotkeys.sprint_right]>
+        - determine cancelled
       - else if <player.is_sneaking> && <player.has_flag[hotkeys.sneak_right]>:
         - run skill_core_use def:<player.flag[hotkeys.sneak_right]>
+        - determine cancelled
       - else if <player.has_flag[hotkeys.right]>:
         - run skill_core_use def:<player.flag[hotkeys.right]>
-    on player swaps items main:item_flagged:class_weapon flagged:hotkeys:
+        - determine cancelled
+    on player swaps items main:item_flagged:class_weapon flagged:hotkeys bukkit_priority:LOW:
       - if <player.is_sprinting> && <player.has_flag[hotkeys.sprint_swap]>:
         - run skill_core_use def:<player.flag[hotkeys.sprint_swap]>
+        - determine cancelled
       - else if <player.is_sneaking> && <player.has_flag[hotkeys.sneak_swap]>:
         - run skill_core_use def:<player.flag[hotkeys.sneak_swap]>
+        - determine cancelled
       - else if <player.has_flag[hotkeys.swap]>:
         - run skill_core_use def:<player.flag[hotkeys.swap]>
-    on player drops item_flagged:class_weapon flagged:hotkeys:
+        - determine cancelled
+    on player drops item_flagged:class_weapon flagged:hotkeys bukkit_priority:LOW:
       - if <player.is_sprinting> && <player.has_flag[hotkeys.sprint_drop]>:
         - run skill_core_use def:<player.flag[hotkeys.sprint_drop]>
+        - determine cancelled
       - else if <player.is_sneaking> && <player.has_flag[hotkeys.sneak_drop]>:
         - run skill_core_use def:<player.flag[hotkeys.sneak_drop]>
+        - determine cancelled
       - else if <player.has_flag[hotkeys.drop]>:
         - run skill_core_use def:<player.flag[hotkeys.drop]>
+        - determine cancelled
