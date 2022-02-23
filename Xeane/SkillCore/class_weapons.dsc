@@ -7,7 +7,7 @@ class_weapon_inventory:
   gui: true
   slots:
     - [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
-    - [standard_filler] [standard_filler] [] [] [] [] [standard_filler] [standard_filler] [standard_filler]
+    - [standard_filler] [standard_filler] [standard_filler] [] [] [] [standard_filler] [standard_filler] [standard_filler]
     - [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
     - [standard_filler] [standard_filler] [] [] [] [] [standard_filler] [standard_filler] [standard_filler]
     - [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
@@ -29,7 +29,6 @@ class_weapon_open:
   debug: false
   data:
     hotkeys:
-      - "Left"
       - "Right"
       - "Drop"
       - "Swap"
@@ -218,3 +217,24 @@ class_weapon_use_event:
         - run skill_core_use def:<player.flag[hotkeys.sneak_right]>
       - else if <player.has_flag[hotkeys.right]>:
         - run skill_core_use def:<player.flag[hotkeys.right]>
+    on player right clicks entity with:item_flagged:class_weapon flagged:hotkeys:
+      - if <player.is_sprinting> && <player.has_flag[hotkeys.sprint_right]>:
+        - run skill_core_use def:<player.flag[hotkeys.sprint_right]>
+      - else if <player.is_sneaking> && <player.has_flag[hotkeys.sneak_right]>:
+        - run skill_core_use def:<player.flag[hotkeys.sneak_right]>
+      - else if <player.has_flag[hotkeys.right]>:
+        - run skill_core_use def:<player.flag[hotkeys.right]>
+    on player swaps items main:item_flagged:class_weapon flagged:hotkeys:
+      - if <player.is_sprinting> && <player.has_flag[hotkeys.sprint_swap]>:
+        - run skill_core_use def:<player.flag[hotkeys.sprint_swap]>
+      - else if <player.is_sneaking> && <player.has_flag[hotkeys.sneak_swap]>:
+        - run skill_core_use def:<player.flag[hotkeys.sneak_swap]>
+      - else if <player.has_flag[hotkeys.swap]>:
+        - run skill_core_use def:<player.flag[hotkeys.swap]>
+    on player drops item_flagged:class_weapon flagged:hotkeys:
+      - if <player.is_sprinting> && <player.has_flag[hotkeys.sprint_drop]>:
+        - run skill_core_use def:<player.flag[hotkeys.sprint_drop]>
+      - else if <player.is_sneaking> && <player.has_flag[hotkeys.sneak_drop]>:
+        - run skill_core_use def:<player.flag[hotkeys.sneak_drop]>
+      - else if <player.has_flag[hotkeys.drop]>:
+        - run skill_core_use def:<player.flag[hotkeys.drop]>
