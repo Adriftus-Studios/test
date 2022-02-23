@@ -4,7 +4,7 @@ gms_command:
   description: Used to change gamemode adventure
   usage: /gms (Name)
   script:
-    - if <context.args.size> < 1 && <Player.has_permission[adriftus.staff.gms]>:
+    - if <context.args.size> < 1 && <Player.has_permission[adriftus.staff]>:
       - narrate "<green><player.name>'s Game Mode Changed To Survival"
       - adjust <player> gamemode:survival
       - stop
@@ -12,7 +12,7 @@ gms_command:
       - narrate "<bold><red>No Permmision"
       - stop
     - define player <server.match_player[<context.args.get[1]>].if_null[null]>
-    - if <Player.has_permission[adriftus.staff.gms]>:
+    - if <Player.has_permission[adriftus.staff]>:
       - if <[player]> = null:
             - narrate "<red><bold>Please Use A Name That's Online"
             - stop
