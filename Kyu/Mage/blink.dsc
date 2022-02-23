@@ -46,12 +46,12 @@ impl_skill_blink:
 # "lore" field might be used in chat diplays, and other GUIs
 impl_skill_blink_icon:
   type: item
-  material: feather
+  material: iron_nugget
   display name: "<&a>Blink"
   lore:
   - "<&b>Teleport 5 blocks directly ahead of you"
   mechanisms:
-    custom_model_data: 3
+    custom_model_data: 7
 
 
 # The On Cast Task script has specific requirements, and limits

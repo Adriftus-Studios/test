@@ -47,13 +47,13 @@ impl_skill_magic_missile:
 # "lore" field might be used in chat diplays, and other GUIs
 impl_skill_magic_missile_icon:
   type: item
-  material: feather
+  material: iron_nugget
   display name: "<&a>Magic Missile"
   lore:
   - "<&b>Shoot a fireball at targets up to 25 blocks away"
   - "<&b>Damages any enemies within its blast radius"
   mechanisms:
-    custom_model_data: 3
+    custom_model_data: 6
 
 
 # The On Cast Task script has specific requirements, and limits

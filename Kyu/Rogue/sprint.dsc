@@ -47,12 +47,12 @@ impl_skill_sprint:
 # "lore" field might be used in chat diplays, and other GUIs
 impl_skill_sprint_icon:
   type: item
-  material: feather
+  material: iron_nugget
   display name: "<&a>Sprint"
   lore:
   - "<&b>Gain a short burst of speed"
   mechanisms:
-    custom_model_data: 4
+    custom_model_data: 15
 
 
 # The On Cast Task script has specific requirements, and limits

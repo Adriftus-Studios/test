@@ -47,13 +47,13 @@ impl_skill_recover:
 # "lore" field might be used in chat diplays, and other GUIs
 impl_skill_recover_icon:
   type: item
-  material: feather
+  material: iron_nugget
   display name: "<&a>Recover"
   lore:
   - "<&b>Recover some health after a short warmup"
   - "<&b>This skill is interruptible if you take damage or move"
   mechanisms:
-    custom_model_data: 4
+    custom_model_data: 16
 
 
 # The On Cast Task script has specific requirements, and limits

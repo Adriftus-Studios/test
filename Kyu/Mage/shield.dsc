@@ -47,12 +47,12 @@ impl_skill_shield:
 # "lore" field might be used in chat diplays, and other GUIs
 impl_skill_shield_icon:
   type: item
-  material: feather
+  material: iron_nugget
   display name: "<&a>Shield"
   lore:
   - "<&b>Shield yourself from incoming damage for 3 seconds"
   mechanisms:
-    custom_model_data: 3
+    custom_model_data: 8
 
 
 # The On Cast Task script has specific requirements, and limits

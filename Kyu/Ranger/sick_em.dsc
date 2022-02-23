@@ -46,12 +46,12 @@ impl_skill_sick_em:
 # "lore" field might be used in chat diplays, and other GUIs
 impl_skill_sick_em_icon:
   type: item
-  material: feather
+  material: iron_nugget
   display name: "<&a>Sick 'em!"
   lore:
   - "<&b>Summon a wolf to assist you in battle"
   mechanisms:
-    custom_model_data: 2
+    custom_model_data: 21
 
 
 # The On Cast Task script has specific requirements, and limits

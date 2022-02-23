@@ -46,13 +46,13 @@ impl_skill_backstab:
 # "lore" field might be used in chat diplays, and other GUIs
 impl_skill_backstab_icon:
   type: item
-  material: feather
+  material: iron_nugget
   display name: "<&a>Backstab"
   lore:
   - "<&b>Move behind an enemy and backstab them for extra damage"
   - "<&b>Only works in melee range"
   mechanisms:
-    custom_model_data: 4
+    custom_model_data: 14
 
 
 # The On Cast Task script has specific requirements, and limits

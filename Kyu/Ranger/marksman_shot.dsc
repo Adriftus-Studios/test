@@ -47,12 +47,12 @@ impl_skill_marksman_shot:
 # "lore" field might be used in chat diplays, and other GUIs
 impl_skill_marksman_shot_icon:
   type: item
-  material: feather
+  material: iron_nugget
   display name: "<&a>Marksman Shot"
   lore:
   - "<&b>Shoot a high-velocity arrow at targets up to 30 blocks away"
   mechanisms:
-    custom_model_data: 2
+    custom_model_data: 18
 
 
 # The On Cast Task script has specific requirements, and limits

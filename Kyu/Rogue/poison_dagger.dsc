@@ -48,13 +48,13 @@ impl_skill_poison_dagger:
 # "lore" field might be used in chat diplays, and other GUIs
 impl_skill_poison_dagger_icon:
   type: item
-  material: feather
+  material: iron_nugget
   display name: "<&a>Poison Dagger"
   lore:
   - "<&b>Throw a poison-tipped knife at your enemies from up to 20 blocks away"
   - "<&b>Deals damage and poisons them if it lands"
   mechanisms:
-    custom_model_data: 4
+    custom_model_data: 17
 
 
 # The On Cast Task script has specific requirements, and limits

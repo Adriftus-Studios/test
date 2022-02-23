@@ -47,12 +47,12 @@ impl_skill_disengage:
 # "lore" field might be used in chat diplays, and other GUIs
 impl_skill_disengage_icon:
   type: item
-  material: feather
+  material: iron_nugget
   display name: "<&a>Disengage"
   lore:
   - "<&b>Leap backwards to put some distance between yourself and your enemies"
   mechanisms:
-    custom_model_data: 2
+    custom_model_data: 19
 
 
 # The On Cast Task script has specific requirements, and limits
