@@ -26,7 +26,7 @@ gmc_command:
   description: Used to change gamemode creative
   usage: /gmc (Name)
   script:
-    - if <context.args.size> < 1 && <Player.has_permission[adriftus.staff]>:
+    - if <context.args.size> < 1 && <Player.has_permission[adriftus.staff.gmc]>:
        - narrate "<green><player.name>'s Game Mode Changed To Creative"
        - adjust <player> gamemode:creative
        - stop
