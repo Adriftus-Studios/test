@@ -64,7 +64,7 @@ stone_gives_diamond:
         - flag player count:+:1
         - if [count] == 10:
             - drop diamond <context.location>
-            - define count 0
+            - flag count 0
 #Approved
 
 cool_thing:
@@ -81,9 +81,9 @@ spawn_sheep:
     description: Spawns a sheep at your location.
     usage: /spawnsheep
     script:
-    - if <player.location.forward_flat[2].equals[air].not>:
+    - if <location.forward[2].material.equals[air].not>:
         - narrate "You do not have enough space to spawn a sheep"
-        - stop
+        - determine cancelled
     - strike <player.location.forward_flat[2]> no_damage
     - spawn sheep <player.location.forward_flat[2]>
     - narrate "Sheep spawned!"
