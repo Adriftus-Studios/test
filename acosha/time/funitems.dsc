@@ -14,7 +14,12 @@ torch_launcher_script:
     type: world
     events:
         after player left clicks block with:torch_launcher:
-        - modifyblock <player.cursor_on.above> torch
+        - if <player.cursor_on.material.is_solid> :
+            - modifyblock <player.cursor_on.above> torch
+        - else :
+            - narrate "<red>Must Be Placed On Solid Block"
+            - stop
+
 
 
 firework_launcher_script:
