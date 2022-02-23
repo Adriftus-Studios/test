@@ -10,7 +10,7 @@ firework_launcher_script:
     type: world
     events:
         after player left clicks block with:firework_launcher:
-            - ratelimit <player> 3s
+            - ratelimit <player> 9s
             - firework <player.cursor_on> random trail primary:red fade:blue
             - wait 3s
             - firework <player.cursor_on> random trail primary:white fade:red
