@@ -63,5 +63,5 @@ impl_skill_disengage_task:
   debug: false
   definitions: target
   script:
-    - push <player> origin:<player.location.with_pitch[0]> destination:<player.location.backward_flat[<script[impl_skill_disengage].parsed_key[balance.distance]>].above[2]> speed:<script[impl_skill_disengage].parsed_key[balance.speed]> no_rotate no_damage
+    - adjust <player> velocity:<player.location.with_pitch[35].sub[<player.location.with_pitch[35].backward>]>
     - determine true
