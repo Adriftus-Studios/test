@@ -48,9 +48,9 @@ impl_skill_strike:
 impl_skill_strike_icon:
   type: item
   material: feather
-  display name: "<&a>strike"
+  display name: "<&a>Strike"
   lore:
-  - "<&b>strike your target within 5 blocks"
+  - "<&b>Strike your target within 5 blocks"
   - "<&b>Damages them and prevents any healing for 5 seconds"
   mechanisms:
     custom_model_data: 1
