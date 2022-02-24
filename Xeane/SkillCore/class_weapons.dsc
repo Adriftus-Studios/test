@@ -235,7 +235,7 @@ class_weapon_use_event:
       - else if <player.has_flag[hotkeys.right]> && !<player.is_sneaking> && !<player.is_sprinting>:
         - run skill_core_use def:<player.flag[hotkeys.right]>
         - determine cancelled
-    on player right clicks entity with:item_flagged:class_weapon flagged:hotkeys bukkit_priority:LOW:
+    on player right clicks horse|villager with:item_flagged:class_weapon flagged:hotkeys bukkit_priority:LOW:
       - ratelimit <player> 2t
       - if <player.is_sprinting> && <player.has_flag[hotkeys.sprint_right]>:
         - run skill_core_use def:<player.flag[hotkeys.sprint_right]>
