@@ -20,32 +20,41 @@ inventory_class_selector:
   - [f] [f] [f] [f] [f] [f] [f] [f] [f]
   - [f] [f] [inventory_class_selector_mage_icon] [f] [f] [f] [inventory_class_selector_ranger_icon] [f] [f]
   - [f] [f] [f] [f] [f] [f] [f] [f] [f]
-  - [f] [f] [inventory_class_selector_rogue_icon] [f] [f] [f] [] [f] [f]
+  - [f] [f] [inventory_class_selector_rogue_icon] [f] [f] [f] [inventory_class_selector_warrior_icon] [f] [f]
   - [f] [f] [f] [f] [f] [f] [f] [f] [f]
 
 inventory_class_selector_mage_icon:
   type: item
-  material: feather
+  material: iron_nugget
   display name: "<&a>Mage"
   data:
     class_impl: impl_skilltree_Mage
   mechanisms:
-    custom_model_data: 3
+    custom_model_data: 22
 
 inventory_class_selector_ranger_icon:
   type: item
-  material: feather
+  material: iron_nugget
   display name: "<&a>Ranger"
   data:
     class_impl: impl_skilltree_Ranger
   mechanisms:
-    custom_model_data: 2
+    custom_model_data: 23
 
 inventory_class_selector_rogue_icon:
   type: item
-  material: feather
+  material: iron_nugget
   display name: "<&a>Rogue"
   data:
     class_impl: impl_skilltree_Rogue
   mechanisms:
-    custom_model_data: 4
+    custom_model_data: 24
+
+inventory_class_selector_warrior_icon:
+  type: item
+  material: iron_nugget
+  display name: "<&a>Warrior"
+  data:
+    class_impl: impl_skilltree_Warrior
+  mechanisms:
+    custom_model_data: 25
