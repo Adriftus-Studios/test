@@ -247,7 +247,6 @@ class_weapon_use_event:
         - run skill_core_use def:<player.flag[hotkeys.right]>
         - determine cancelled
     on player swaps items offhand:item_flagged:class_weapon flagged:hotkeys bukkit_priority:LOW:
-      - ratelimit <player> 2t
       - if <player.is_sprinting> && <player.has_flag[hotkeys.sprint_swap]>:
         - run skill_core_use def:<player.flag[hotkeys.sprint_swap]>
         - determine cancelled
