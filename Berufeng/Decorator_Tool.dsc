@@ -66,17 +66,15 @@ Decorator_Tool_Decorative_Blocks:
   type: world
   debug: true
   events:
-    on player right clicks block priority:1:
-      - if <server.has_flag[decorative_block.<context.location.simple>]>:
-        - determine passively cancelled
-        - if <script[Decorator_Tool_Config].data_key[Config.do_message]> && !<player.has_flag[decorative_block_warn]>:
-          - narrate <script[Decorator_Tool_Config].data_key[Config.message].parsed>
-          - flag <player> decorative_block_warn duration:<script[Decorator_Tool_Config].data_key[Config.cooldown]>
-    on player stands on material:
-      - if <server.has_flag[decorative_block.<context.location.simple>]>:
+    on player right clicks block location_flagged:decorator_tool_decorative priority:1:
+      - determine passively cancelled
+      - if <script[Decorator_Tool_Config].data_key[Config.do_message]> && !<player.has_flag[decorative_block_warn]>:
+        - narrate <script[Decorator_Tool_Config].data_key[Config.message].parsed>
+        - flag <player> decorative_block_warn duration:<script[Decorator_Tool_Config].data_key[Config.cooldown]>
+    on player stands on material location_flagged:decorator_tool_decorative:
         - determine cancelled
     # Decorator tool functionality.
-    on player clicks block with:decorator_tool_item priority:1:
+    on player clicks block with:decorator_tool_item priority:0:
       - determine passively cancelled
       - if <player.is_sneaking> && <context.click_type> == right_click_block:
         - if <context.location.material.supports[switched]>:
@@ -92,23 +90,23 @@ Decorator_Tool_Decorative_Blocks:
           - else if !<context.location.material.supports[switched]> && !<context.location.has_inventory> && !<script[Decorator_Tool_Config].data_key[Config.misc_blocks].contains[<context.location.material.name>]> && !<context.location.material.name.ends_with[_bed]>:
             - narrate "<dark_gray>You cannot make <context.location.material.item.formatted> decorative."
             - stop
-          - if <server.has_flag[decorative_block.<context.location.simple>]>:
+          - if <context.location.has_flag[decorator_tool_decorative]>:
             - narrate "<dark_gray>This <gray><context.location.material.translated_name> <dark_gray>is already decorative!"
             - stop
           - narrate "<aqua>Made this <gray><context.location.material.translated_name> <aqua>decorative."
-          - flag server decorative_block.<context.location.simple>
-          - if <context.location.material.supports[half]> && !<context.location.material.name.ends_with[_trapdoor]>:
+          - flag <context.location> decorator_tool_decorative
+          - if <context.location.other_block||null> != null:
             - narrate "<aqua>(Also added adjacent block.)"
-            - flag server decorative_block.<context.location.other_block.simple>
+            - flag <context.location.other_block> decorator_tool_decorative
         - case left_click_block:
-          - if !<server.has_flag[decorative_block.<context.location.simple>]>:
+          - if !<context.location.has_flag[decorator_tool_decorative]>:
             - narrate "<dark_gray>This <gray><context.location.material.translated_name> <dark_gray>is not decorative!"
             - stop
           - narrate "<red>This <gray><context.location.material.translated_name> <red>is no longer decorative."
-          - flag server decorative_block.<context.location.simple>:!
-          - if <context.location.material.supports[half]> && !<context.location.material.name.ends_with[_trapdoor]>:
+          - flag <context.location> decorator_tool_decorative:!
+          - if <context.location.other_block||null> != null:
             - narrate "<red>(Also removed adjacent block.)"
-            - flag server decorative_block.<context.location.other_block.simple>:!
+            - flag <context.location.other_block> decorator_tool_decorative:!
     # Item protection. (Prevents decorator tool from being transfered to another inventory.)
     on player drops decorator_tool_item:
       - determine passively cancelled
@@ -130,25 +128,25 @@ Decorator_Tool_Decorative_Blocks:
         - wait 1t
         - inventory update
     # If any player breaks a decorative block, alerts them and removes decoration flag.
-    on player breaks block priority:1:
-      - if <server.has_flag[decorative_block.<context.location.simple>]>:
-        - narrate "<red>You broke a decorative <context.location.material.translated_name.to_lowercase>."
-        - flag server decorative_block.<context.location.simple>:!
-        - if <context.location.material.supports[half]> && !<context.location.material.name.ends_with[_trapdoor]>:
-          - narrate "<red>(Also removed adjacent block.)"
-          - flag server decorative_block.<context.location.other_block.simple>:!
+    on player breaks block location_flagged:decorator_tool_decorative:
+      - narrate "<red>You broke a decorative <context.location.material.translated_name.to_lowercase>."
+      - flag <context.location> decorator_tool_decorative:!
+      - if <context.location.other_block||null> != null:
+        - narrate "<red>(Also removed adjacent block.)"
+        - flag <context.location.other_block> decorator_tool_decorative:!
+        - modifyblock <context.location.other_block> air
 
 Decorator_Tool_Armor_Stands:
   type: world
   debug: false
   events:
     on armor_stand damaged priority:1:
-      - if <context.entity.has_flag[decorative]>:
+      - if <context.entity.has_flag[decorator_tool_decorative]>:
         - determine passively cancelled
     on armor_stand damaged by player with:decorator_tool_item:
       - determine passively cancelled
-      - if !<context.entity.has_flag[decorative]>:
-        - flag <context.entity> decorative
+      - if !<context.entity.has_flag[decorator_tool_decorative]>:
+        - flag <context.entity> decorator_tool_decorative
         - adjust <context.entity> gravity:false
         - adjust <context.entity> invulnerable:true
         - adjust <context.entity> collidable:false
@@ -187,8 +185,8 @@ Decorator_Tool_Armor_Stands:
             - adjust <context.entity> visible:<context.entity.visible.not>
     on player right clicks armor_stand with:decorator_tool_item:
       - determine passively cancelled
-      - if !<context.entity.has_flag[decorative]>:
-        - flag <context.entity> decorative
+      - if !<context.entity.has_flag[decorator_tool_decorative]>:
+        - flag <context.entity> decorator_tool_decorative
         - adjust <context.entity> gravity:false
         - adjust <context.entity> invulnerable:true
         - adjust <context.entity> collidable:false
