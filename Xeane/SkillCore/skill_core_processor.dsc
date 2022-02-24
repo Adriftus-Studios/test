@@ -37,6 +37,12 @@ skill_core_use:
     - if !<player.has_flag[skills.abilities.<[skill]>]>:
       - narrate "<&c>You do not have this skill."
       - stop
+
+    # Cooldown Check
+    - if <player.has_flag[cooldown.<[skill]>]>:
+      - narrate "<&c>This ability is on cooldown<&co> <player.flag_expiration[cooldown.<[skill]>].from_now.formatted>"
+      - stop
+
     # Make sure the skill is currently loaded
     - if !<server.has_flag[skills.abilities.<[skill]>]>:
       - debug error "<&c>Unknown skill used: <[skill]>"
@@ -55,4 +61,8 @@ skill_core_use:
     - define targets <[targets].get[1]> if:<[targets].size.equals[1]>
 
     # Inject the skill script itself
-    - run <[skill_script].data_key[on_cast]> def:<list_single[<[targets]>]>
+    - run <[skill_script].data_key[on_cast]> def:<list_single[<[targets]>]> save:skill
+
+    # Cooldown if successful
+    - if <entry[skill].created_queue.determination>:
+      - flag player cooldowns.<[skill]> duration:<[skill_script].data_key[cooldown]||30s>
