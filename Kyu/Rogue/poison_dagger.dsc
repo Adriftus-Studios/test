@@ -14,7 +14,7 @@ impl_skill_poison_dagger:
   - "true"
 
   # Cooldown
-  cooldown: 15s
+  cooldown: 20s
 
   # Task Script to bee run when the ability is used successfully
   # This Task Script MUST be within this file, as with any code associated with this skill
@@ -40,9 +40,9 @@ impl_skill_poison_dagger:
 
   # Balance Values used in the script
   balance:
-    speed: 3
+    speed: 5
     damage: 4
-    duration: 5s
+    duration: 10s
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
@@ -65,7 +65,10 @@ impl_skill_poison_dagger_task:
   debug: false
   definitions: target
   script:
-    - shoot arrow origin:<player> destination:<[target].location> speed:<script[impl_skill_poison_dagger].parsed_key[balance.speed]> script:impl_skill_poison_dagger_damage_task shooter:<player>
+    - shoot arrow origin:<player> speed:<script[impl_skill_poison_dagger].parsed_key[balance.speed]> script:impl_skill_poison_dagger_damage_task shooter:<player> save:dagger
+    - while <entry[dagger].shot_entity.is_spawned>:
+      - playeffect effect:spell_witch at:<entry[dagger].spawned_entity.location> quantity:5 offset:0.1
+      - wait 1t
     - determine true
 
 impl_skill_poison_dagger_damage_task:
@@ -74,4 +77,4 @@ impl_skill_poison_dagger_damage_task:
   script:
     # Level 1 Poison. 25 ticks per half-heart (1 HP). 0.8 Half-hearts per second (2 HP * 0.4) (Minecraft Wiki)
     - hurt <script[impl_skill_poison_dagger].parsed_key[balance.damage]> <[hit_entities]> cause:ENTITY_ATTACK source:<player>
-    - cast poison <[hit_entities]> duration:<script[impl_skill_poison_dagger].parsed_key[balance.duration]> amplifier:0 no_ambient hide_particles no_icon
+    - cast poison <[hit_entities]> duration:<script[impl_skill_poison_dagger].parsed_key[balance.duration]> amplifier:0
