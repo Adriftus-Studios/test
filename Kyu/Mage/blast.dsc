@@ -65,5 +65,5 @@ impl_skill_blast_task:
   script:
     - foreach <[targets]> as:target:
       - define vector <[target].location.sub[<player.location>]>
-      - adjust <[target]> velocity:<[vector].add[0,0.5,0]>
+      - adjust <[target]> velocity:<[vector].with_y[0.5]>
     - determine true
