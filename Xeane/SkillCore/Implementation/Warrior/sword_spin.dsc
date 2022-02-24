@@ -63,6 +63,6 @@ impl_skill_sword_spin_task:
   definitions: targets
   script:
     - rotate duration:10t frequency:1t yaw:90 <player>
-    - hurt <script[impl_skill_sword_spin].parsed_key[balance.damage]> <[targets]> cause:ENTITY_ATTACK source:<player>
     - playeffect effect:SWEEP_ATTACK at:<[targets].parse[location]> visibility:50 quantity:1 offset:0
+    - hurt <script[impl_skill_sword_spin].parsed_key[balance.damage]> <[targets]> cause:ENTITY_ATTACK source:<player>
     - determine true
