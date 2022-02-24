@@ -300,4 +300,9 @@ class_weapon_skills_command:
   usage: /skills
   description: customize skills hotkeys
   script:
+    - if <context.args.get[1]||null> == help:
+      - narrate "<&b>/select_class <&a> chooses your class"
+      - narrate "<&b>/skills <&a> chooses your hotkeys"
+      - narrate "<&b>/class_weapon <&a> sets your held item as a class weapon"
+      - stop
     - run class_weapon_open
