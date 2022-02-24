@@ -63,5 +63,5 @@ impl_skill_disengage_task:
   debug: false
   definitions: target
   script:
-    - adjust <player> velocity:<player.location.with_pitch[35].sub[<player.location.with_pitch[35].backward>]>
+    - adjust <player> velocity:<player.location.with_pitch[35].backward.sub[<player.location.with_pitch[35]>]>
     - determine true
