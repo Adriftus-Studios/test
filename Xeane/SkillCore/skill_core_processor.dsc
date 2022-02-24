@@ -45,11 +45,11 @@ skill_core_use:
 
     # get our definitions from the data script
     - define skill_script <server.flag[skills.abilities.<[skill]>]>
-    - define targets <[skill_script].parsed_key[targetting_tags].combine.if_null[null]>
+    - define targets <[skill_script].parsed_key[targetting_tags].combine.if_null[null].exclude[null]>
 
     # Make sure there are valid targets
     - narrate "pre-processing targets - <[targets]>"
-    - if <[targets]> == null || <[targets].is_empty>:
+    - if <[targets].is_empty>:
       - debug error "Skill <[skill]> had errors in targetting tags."
       - narrate <[skill_script].parsed_key[messages.no_target]>
       - stop
