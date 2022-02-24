@@ -79,6 +79,7 @@ impl_skill_magic_missile_damage_task:
   script:
     - hurt <script[impl_skill_magic_missile].parsed_key[balance.damage]> <context.hit_entity> cause:ENTITY_ATTACK source:<player>
     - remove <context.projectile>
+
 impl_skill_magic_missile_remove_task:
   type: task
   debug: false
