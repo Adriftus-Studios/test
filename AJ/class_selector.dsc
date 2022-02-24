@@ -11,16 +11,17 @@ inventory_class_selector_events:
 inventory_class_selector:
   type: inventory
   inventory: chest
-  size: 45
+  size: 54
   title: Class Selector
   gui: true
   definitions:
     f: <item[standard_filler]>
   slots:
+  - [f] [inventory_class_selector_mage_icon] [f] [inventory_class_selector_warrior_icon] [f] [inventory_class_selector_rogue_icon] [f] [inventory_class_selector_ranger_icon] [f]
   - [f] [f] [f] [f] [f] [f] [f] [f] [f]
-  - [f] [f] [inventory_class_selector_mage_icon] [f] [f] [f] [inventory_class_selector_ranger_icon] [f] [f]
   - [f] [f] [f] [f] [f] [f] [f] [f] [f]
-  - [f] [f] [inventory_class_selector_rogue_icon] [f] [f] [f] [inventory_class_selector_warrior_icon] [f] [f]
+  - [f] [f] [f] [f] [f] [f] [f] [f] [f]
+  - [f] [f] [f] [f] [f] [f] [f] [f] [f]
   - [f] [f] [f] [f] [f] [f] [f] [f] [f]
 
 inventory_class_selector_mage_icon:
