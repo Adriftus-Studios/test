@@ -1,10 +1,10 @@
-impl_skill_bash:
+impl_skill_strike:
   type: data
   # Internal Name MUST BE UNIQUE
-  name: bash
+  name: strike
 
   # Display data used in commands, and GUIs
-  display_item_script: impl_skill_bash_icon
+  display_item_script: impl_skill_strike_icon
 
   # Skill Tree (uses internal name)
   skill_tree: warrior
@@ -18,7 +18,7 @@ impl_skill_bash:
 
   # Task Script to bee run when the ability is used successfully
   # This Task Script MUST be within this file, as with any code associated with this skill
-  on_cast: impl_skill_bash_task
+  on_cast: impl_skill_strike_task
 
   # Is the ability harmful? (PvP Action)
   harmful: true
@@ -42,17 +42,16 @@ impl_skill_bash:
   balance:
     damage: 5
     duration: 5s
-    level: -1
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
-impl_skill_bash_icon:
+impl_skill_strike_icon:
   type: item
   material: feather
-  display name: "<&a>Bash"
+  display name: "<&a>strike"
   lore:
-  - "<&b>Bash your target within 5 blocks"
-  - "<&b>Damages them and slows for 5 seconds"
+  - "<&b>strike your target within 5 blocks"
+  - "<&b>Damages them and prevents any healing for 5 seconds"
   mechanisms:
     custom_model_data: 1
 
@@ -60,11 +59,16 @@ impl_skill_bash_icon:
 # The On Cast Task script has specific requirements, and limits
 # The only reliable context tags in this task will be `<player>`
 # The task must `determine` true or false if the ability was successful or not.
-impl_skill_bash_task:
+impl_skill_strike_task:
   type: task
   debug: false
   definitions: target
   script:
-    - hurt <script[impl_skill_bash].parsed_key[balance.damage]> <[target]> cause:ENTITY_ATTACK source:<player>
-    - cast speed <[target]> duration:<script[impl_skill_bash].parsed_key[balance.duration]> amplifier:<script[impl_skill_bash].parsed_key[balance.level]> no_ambient hide_particles no_icon
-    - determine true
+    - hurt <script[impl_skill_strike].parsed_key[balance.damage]> <[target]> cause:ENTITY_ATTACK source:<player>
+    - flag <[target]> no_heal duration:<script[impl_skill_strike].parsed_key[balance.duration]>
+    - determine passively true
+    - if <[target].is_player>:
+      - worldborder <[target]> center:200000,0,200000,<player.location.world> size:5
+      - wait <script[impl_skill_strike].parsed_key[balance.duration]>
+      - if <[target].is_online>:
+        - worldborder <[target]> reset

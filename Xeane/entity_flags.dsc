@@ -20,6 +20,11 @@ entity_flags:
     on entity_flagged:no_damage_once damaged:
       - flag <context.entity> invulnerable_once:!
       - determine cancelled
+    on entity_flagged:no_heal heals:
+      - determine cancelled
+    on entity_flagged:no_heal_once heals:
+      - flag <context.entity> no_heal_once:!
+      - determine cancelled
     on player kicked for flying flagged:no_fly_kick:
       - determine passively FLY_COOLDOWN:<player.flag_expiration[no_fly_kick].duration_since[<util.time_now>]>
       - determine cancelled

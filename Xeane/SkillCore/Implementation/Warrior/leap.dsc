@@ -50,7 +50,7 @@ impl_skill_leap_icon:
   material: feather
   display name: "<&a>leap"
   lore:
-  - "<&b>leap towards your cursor"
+  - "<&b>leap across the room, and kick em in the nuts!"
   mechanisms:
     custom_model_data: 1
 
