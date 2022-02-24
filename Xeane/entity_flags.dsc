@@ -35,3 +35,7 @@ entity_flags:
       - stop if:<context.entity.has_flag[showfake].not>
       - determine passively cancelled
       - showfake <context.entity.fallingblock_material> <context.location> players:<context.location.find_players_within[40]> duration:1m
+    on entity_flagged:on_hit_entity hits entity bukkit_priority:LOWEST:
+      - inject <context.projectile.flag[on_hit_entity]>
+    on entity_flagged:on_hit_block hits block bukkit_priority:LOWEST:
+      - inject <context.projectile.flag[on_hit_entity]>

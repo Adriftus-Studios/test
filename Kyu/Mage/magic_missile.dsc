@@ -14,7 +14,7 @@ impl_skill_magic_missile:
   - "true"
 
   # Cooldown
-  cooldown: 12s
+  cooldown: 5s
 
   # Task Script to bee run when the ability is used successfully
   # This Task Script MUST be within this file, as with any code associated with this skill
@@ -64,11 +64,22 @@ impl_skill_magic_missile_task:
   debug: false
   definitions: target
   script:
-    - shoot small_fireball origin:<player> speed:<script[impl_skill_magic_missile].parsed_key[balance.speed]> script:impl_skill_magic_missile_damage_task shooter:<player>
-    - determine true
+    - shoot dropped_item[item=blue_dye;pickup_delay=100s;gravity=false] origin:<player> speed:<script[impl_skill_magic_missile].parsed_key[balance.speed]> shooter:<player> save:shot
+    - determine passively true
+    - flag <entry[shot].shot_entity> on_hit_entity:impl_skill_magic_missile_damage_task
+    - flag <entry[shot].shot_entity> on_hit_block:impl_skill_magic_missile_remove_task
+    - while <entry[shot].shot_entity.exists>:
+      - playeffect at:<entry[shot].shot_entity.location> effect:spell quantity:5 offset:0.1
+      - wait 2t
 
 impl_skill_magic_missile_damage_task:
   type: task
   debug: false
   script:
-    - hurt <script[impl_skill_magic_missile].parsed_key[balance.damage]> <[hit_entities]> cause:ENTITY_ATTACK source:<player>
+    - hurt <script[impl_skill_magic_missile].parsed_key[balance.damage]> <context.hit_entity> cause:ENTITY_ATTACK source:<player>
+
+impl_skill_magic_missile_remove_task:
+  type: task
+  debug: false
+  script:
+    - remove <context.projectile>
