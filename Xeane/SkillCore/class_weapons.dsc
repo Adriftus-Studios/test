@@ -195,7 +195,7 @@ class_weapon_remove_skillTree:
   definitions: skillTree
   script:
     - if <player.has_flag[skills.trees.<[skillTree]>]>:
-      - foreach <player.flag[skills.tree.<[skillTree]>].keys> as:skill:
+      - foreach <player.flag[skills.trees.<[skillTree]>].keys> as:skill:
         - flag player skills.abilities.<[skill]>:!
       - flag player skills.trees.<[skillTree]>:!
 
@@ -205,7 +205,7 @@ class_weapon_add_skillTree:
   definitions: skillTree
   script:
     - if <server.has_flag[skills.trees.<[skillTree]>]>:
-      - foreach <server.flag[skills.tree.<[skillTree]>].keys> as:skill:
+      - foreach <server.flag[skills.trees.<[skillTree]>].keys> as:skill:
         - flag player skills.abilities.<[skill]>:<server.flag[<server.flag[skills.tree.<[skillTree]>.<[skill]>]>]>
         - flag player skills.trees.<[skillTree]>.<[skill]>:<server.flag[<server.flag[skills.tree.<[skillTree]>.<[skill]>]>]>
 
