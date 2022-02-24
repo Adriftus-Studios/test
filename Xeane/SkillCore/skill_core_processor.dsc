@@ -48,13 +48,11 @@ skill_core_use:
     - define targets <[skill_script].parsed_key[targetting_tags].combine.if_null[null].exclude[null]>
 
     # Make sure there are valid targets
-    - narrate "pre-processing targets - <[targets]>"
     - if <[targets].is_empty>:
       - debug error "Skill <[skill]> had errors in targetting tags."
       - narrate <[skill_script].parsed_key[messages.no_target]>
       - stop
     - define targets <[targets].get[1]> if:<[targets].size.equals[1]>
-    - narrate "post-processing targets - <[targets]>"
 
     # Inject the skill script itself
     - run <[skill_script].data_key[on_cast]> def:<list_single[<[targets]>]>
