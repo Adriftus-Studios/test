@@ -258,9 +258,6 @@ class_weapon_use_event:
         - run skill_core_use def:<player.flag[hotkeys.swap]>
         - determine cancelled
     on player drops item_flagged:class_weapon flagged:hotkeys bukkit_priority:LOW:
-      - narrate <player.item_in_hand>
-      - narrate <context.item>
-      - stop if:<context.item.equals[<player.item_in_hand>].not>
       - if <player.is_sprinting> && <player.has_flag[hotkeys.sprint_drop]>:
         - run skill_core_use def:<player.flag[hotkeys.sprint_drop]>
         - determine cancelled
