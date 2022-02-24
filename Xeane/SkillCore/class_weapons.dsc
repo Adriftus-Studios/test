@@ -269,7 +269,7 @@ class_weapon_select:
   name: select_class
   usage: /select_class (class)
   description: Selects Class
-  tab complete:
+  tab completions:
     1: rogue|warrior|mage|ranger
   script:
     - if <context.args.size> < 1:
