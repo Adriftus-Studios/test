@@ -62,5 +62,6 @@ impl_skill_leap_task:
   debug: false
   definitions: target
   script:
-    - adjust <player> velocity:<player.location.with_pitch[<player.location.pitch.min[-35].max[-75]>].direction.vector.normalize.mul[3]>
+    - adjust <player> velocity:<player.location.with_pitch[<player.location.pitch.min[-35].max[-75]>].direction.vector.normalize.mul[2]>
+    - flag player no_fall_damage_once duration:5s
     - determine true
