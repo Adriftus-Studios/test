@@ -63,4 +63,5 @@ impl_skill_second_wind_task:
   definitions: target
   script:
     - heal <script[impl_skill_second_wind].parsed_key[balance.health]>
+    - playeffect effect:totem at:<player.location.above[1.5]> quantity:20 offset:0.5
     - determine true
