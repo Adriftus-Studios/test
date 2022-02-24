@@ -64,5 +64,8 @@ impl_skill_shield_task:
   definitions: target
   script:
     # Effect Level 10. A level of 5 and above gives full immunity to all damage. (Minecraft Wiki)
-    - cast damage_resistance duration:<script[impl_skill_shield].parsed_key[balance.duration]> amplifier:9 no_ambient hide_particles no_icon
+    - flag <[target]> no_damage duration:<script[impl_skill_shield].data_key[balance.duration]>
+    - repeat 30:
+      - playeffect effect:spell at:<player.location.above[1]> offset:0.8 quantity:5
+      - wait 2t
     - determine true
