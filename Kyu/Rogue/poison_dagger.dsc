@@ -66,6 +66,7 @@ impl_skill_poison_dagger_task:
   definitions: target
   script:
     - shoot arrow origin:<player> speed:<script[impl_skill_poison_dagger].parsed_key[balance.speed]> script:impl_skill_poison_dagger_damage_task shooter:<player> save:dagger
+    - adjust <entry[dagger].shot_entity> damage:<script[impl_skill_poison_dagger].parsed_key[balance.damage]>
     - while <entry[dagger].shot_entity.is_spawned>:
       - playeffect effect:spell_witch at:<entry[dagger].spawned_entity.location> quantity:5 offset:0.1
       - wait 1t
@@ -76,5 +77,4 @@ impl_skill_poison_dagger_damage_task:
   debug: false
   script:
     # Level 1 Poison. 25 ticks per half-heart (1 HP). 0.8 Half-hearts per second (2 HP * 0.4) (Minecraft Wiki)
-    - hurt <script[impl_skill_poison_dagger].parsed_key[balance.damage]> <[hit_entities]> cause:ENTITY_ATTACK source:<player>
     - cast poison <[hit_entities]> duration:<script[impl_skill_poison_dagger].parsed_key[balance.duration]> amplifier:0
