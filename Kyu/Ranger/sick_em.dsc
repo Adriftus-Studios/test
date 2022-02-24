@@ -30,7 +30,7 @@ impl_skill_sick_em:
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "<player>"
+  - "<player.target||null>"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
@@ -62,8 +62,10 @@ impl_skill_sick_em_task:
   debug: false
   definitions: target
   script:
-    - define entity <entity[impl_skill_sick_em_entity].with[custom_name=<&a><player.name><&sq>s<&sp>Wolf;tame=<player>;owner=<player>]>
-    - spawn <[entity]> <player.location>
+    - if <[target]> == null:
+      - determine false
+    - define entity <entity[impl_skill_sick_em_entity].with[custom_name=<&a><player.name><&sq>s<&sp>Wolf;tame=true;owner=<player>]>
+    - spawn <[entity]> <player.location> target:<[target]>
     - determine true
 
 impl_skill_sick_em_entity:
