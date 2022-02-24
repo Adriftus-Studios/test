@@ -64,7 +64,8 @@ impl_skill_magic_missile_task:
   debug: false
   definitions: target
   script:
-    - shoot arrow[hide_from_players;gravity=false] origin:<player> speed:<script[impl_skill_magic_missile].parsed_key[balance.speed]> shooter:<player> save:shot
+    - shoot arrow origin:<player> speed:<script[impl_skill_magic_missile].parsed_key[balance.speed]> shooter:<player> save:shot
+    - adjust <entry[shot].shot_entity> hide_from_players
     - determine passively true
     - flag <entry[shot].shot_entity> on_hit_entity:impl_skill_magic_missile_damage_task
     - flag <entry[shot].shot_entity> on_hit_block:impl_skill_magic_missile_remove_task
