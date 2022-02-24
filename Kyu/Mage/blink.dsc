@@ -30,7 +30,7 @@ impl_skill_blink:
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "<player>"
+  - "none"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
@@ -63,7 +63,7 @@ impl_skill_blink_task:
   definitions: target
   script:
     - define target <player.location.with_pitch[0].precise_cursor_on[5].if_null[null]>
-    - if <[target]> == null:
+    - if <[target]> == null || !<[target].is_solid>:
       - teleport <player.location.with_pitch[0].forward[5]>
     - else if <[target].above.material.is_solid.not> && <[target].material.is_solid>:
       - teleport <[target].above>
