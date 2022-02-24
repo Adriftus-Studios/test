@@ -62,9 +62,6 @@ impl_skill_sword_spin_task:
   debug: false
   definitions: targets
   script:
-    - narrate <[targets]>
-    - narrate <[targets].object_type>
-    - narrate <[targets].parse[location]>
     - rotate duration:10t frequency:1t yaw:90 <player>
     - hurt <script[impl_skill_sword_spin].parsed_key[balance.damage]> <[targets]> cause:ENTITY_ATTACK source:<player>
     - playeffect effect:SWEEP_ATTACK at:<[targets].parse[location]> visibility:50 quantity:1 offset:0
