@@ -65,8 +65,11 @@ impl_skill_sick_em_task:
     - if <[target]> == null:
       - determine false
     - define entity <entity[impl_skill_sick_em_entity].with[custom_name=<&a><player.name><&sq>s<&sp>Wolf;tame=true;owner=<player>]>
-    - spawn <[entity]> <player.location> target:<[target]>
-    - determine true
+    - spawn <[entity]> <player.location> target:<[target]> save:ent
+    - determine passively true
+    - wait 10s
+    - if <entry[ent].spawned_entity.exists>:
+      - remove <entry[ent].spawned_entity>
 
 impl_skill_sick_em_entity:
   type: entity
