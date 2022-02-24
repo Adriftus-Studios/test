@@ -30,7 +30,7 @@ impl_skill_magic_missile:
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "<player.precise_target[25]>"
+  - "none"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
@@ -64,7 +64,7 @@ impl_skill_magic_missile_task:
   debug: false
   definitions: target
   script:
-    - shoot small_fireball origin:<player> destination:<[target].location> speed:<script[impl_skill_magic_missile].parsed_key[balance.speed]> script:impl_skill_magic_missile_damage_task shooter:<player>
+    - shoot small_fireball origin:<player> speed:<script[impl_skill_magic_missile].parsed_key[balance.speed]> script:impl_skill_magic_missile_damage_task shooter:<player>
     - determine true
 
 impl_skill_magic_missile_damage_task:
