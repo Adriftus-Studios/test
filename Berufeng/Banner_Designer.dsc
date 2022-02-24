@@ -177,6 +177,7 @@ Banner_Designer_Create:
                 - define completebutton <context.location.add[0,3,-1]>
                 - define resetbutton <context.location.add[1,0,-2]>
                 - define exitbutton <context.location.add[-1,0,-2]>
+                - define cuboidorigin <context.location.add[1,-1,-4]>
                 - define away SOUTH
                 - define viewpoint <context.location.center.add[0,-0.5,-4].with_pose[-6,0]>
               - case east:
@@ -187,6 +188,7 @@ Banner_Designer_Create:
                 - define completebutton <context.location.add[1,3,0]>
                 - define resetbutton <context.location.add[2,0,1]>
                 - define exitbutton <context.location.add[2,0,-1]>
+                - define cuboidorigin <context.location.add[4,-1,1]>
                 - define away WEST
                 - define viewpoint <context.location.center.add[4,-0.5,0].with_pose[-6,90]>
               - case south:
@@ -197,6 +199,7 @@ Banner_Designer_Create:
                 - define completebutton <context.location.add[0,3,1]>
                 - define resetbutton <context.location.add[-1,0,2]>
                 - define exitbutton <context.location.add[1,0,2]>
+                - define cuboidorigin <context.location.add[-1,-1,4]>
                 - define away NORTH
                 - define viewpoint <context.location.center.add[0,-0.5,4].with_pose[-6,-180]>
               - case west:
@@ -207,6 +210,7 @@ Banner_Designer_Create:
                 - define completebutton <context.location.add[-1,3,0]>
                 - define resetbutton <context.location.add[-2,0,-1]>
                 - define exitbutton <context.location.add[-2,0,1]>
+                - define cuboidorigin <context.location.add[-4,-1,-1]>
                 - define away EAST
                 - define viewpoint <context.location.center.add[-4,-0.5,0].with_pose[-6,-90]>
             - modifyblock <[low].to_cuboid[<[high]>]> netherite_block
@@ -235,7 +239,7 @@ Banner_Designer_Create:
             - note <[completebutton]> as:banner_designer_<[uuid]>_complete
             - note <[completebutton].below[3]> as:banner_designer_<[uuid]>_layersign
             - note <[viewpoint]> as:banner_designer_<[uuid]>_viewpoint
-            - note <[resetbutton].to_cuboid[<[high]>]> as:banner_designer_<[uuid]>
+            - note <[cuboidorigin].to_cuboid[<[high]>]> as:banner_designer_<[uuid]>
           - else:
             - narrate "<dark_green>Create an <green>Banner Designer <dark_green>machine here, facing <aqua><context.location.material.direction><dark_green>?"
             - narrate "<green><italic>Click again <dark_green><italic>to confirm."
@@ -389,9 +393,9 @@ Banner_Designer_Function:
       - if <context.location.cuboids.contains_any_text[banner_designer_]>:
         - determine cancelled
     after player enters banner_designer_*:
-        - adjust <player> hide_from_players
+      - adjust <player> hide_from_players
     after player exits banner_designer_*:
-        - adjust <player> show_to_players
+      - adjust <player> show_to_players
 
 Banner_Designer_Update:
   type: task
