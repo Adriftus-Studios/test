@@ -37,10 +37,11 @@ impl_skill_leap:
   messages:
     # Every script should have `no_target` value, unless it is a self target
     no_target: "<&c>You have no target within range."
+    not_on_ground: "<&c>You must be on the ground to jump"
 
   # Balance Values used in the script
   balance:
-    speed: 3
+    vector_multiplier: 2
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
@@ -62,6 +63,9 @@ impl_skill_leap_task:
   debug: false
   definitions: target
   script:
-    - adjust <player> velocity:<player.location.with_pitch[<player.location.pitch.min[-35].max[-75]>].direction.vector.normalize.mul[2]>
-    - flag player no_fall_damage_once duration:5s
-    - determine true
+    - if <player.is_on_ground>:
+      - adjust <player> velocity:<player.location.with_pitch[<player.location.pitch.min[-35].max[-75]>].direction.vector.normalize.mul[<script[impl_skill_leap].data_key[balance.vector_multiplier]>]>
+      - flag player no_fall_damage_once duration:5s
+      - determine true
+    - narrate <script[impl_skill_leap].parsed_key[messages.not_on_ground]>
+    - determine false
