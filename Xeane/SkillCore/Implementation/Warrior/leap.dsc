@@ -48,9 +48,10 @@ impl_skill_leap:
 impl_skill_leap_icon:
   type: item
   material: feather
-  display name: "<&a>leap"
+  display name: "<&a>Leap"
   lore:
-  - "<&b>leap across the room, and kick em in the nuts!"
+  - "<&b>Leap forward in a range of directions"
+  - "<&b>You will not take fall damage for 5 seconds"
   mechanisms:
     custom_model_data: 1
 
