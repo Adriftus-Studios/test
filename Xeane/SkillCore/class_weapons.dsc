@@ -214,6 +214,7 @@ class_weapon_use_event:
   debug: false
   events:
     on player left clicks block with:item_flagged:class_weapon flagged:hotkeys bukkit_priority:LOW:
+      - ratelimit <player> 1t
       - if <player.is_sprinting> && <player.has_flag[hotkeys.sprint_left]>:
         - run skill_core_use def:<player.flag[hotkeys.sprint_left]>
         - determine cancelled
@@ -224,6 +225,7 @@ class_weapon_use_event:
         - run skill_core_use def:<player.flag[hotkeys.left]>
         - determine cancelled
     on player right clicks block with:item_flagged:class_weapon flagged:hotkeys bukkit_priority:LOW:
+      - ratelimit <player> 1t
       - if <player.is_sprinting> && <player.has_flag[hotkeys.sprint_right]>:
         - run skill_core_use def:<player.flag[hotkeys.sprint_right]>
         - determine cancelled
@@ -234,6 +236,7 @@ class_weapon_use_event:
         - run skill_core_use def:<player.flag[hotkeys.right]>
         - determine cancelled
     on player right clicks entity with:item_flagged:class_weapon flagged:hotkeys bukkit_priority:LOW:
+      - ratelimit <player> 1t
       - if <player.is_sprinting> && <player.has_flag[hotkeys.sprint_right]>:
         - run skill_core_use def:<player.flag[hotkeys.sprint_right]>
         - determine cancelled
@@ -244,6 +247,7 @@ class_weapon_use_event:
         - run skill_core_use def:<player.flag[hotkeys.right]>
         - determine cancelled
     on player swaps items offhand:item_flagged:class_weapon flagged:hotkeys bukkit_priority:LOW:
+      - ratelimit <player> 1t
       - if <player.is_sprinting> && <player.has_flag[hotkeys.sprint_swap]>:
         - run skill_core_use def:<player.flag[hotkeys.sprint_swap]>
         - determine cancelled
@@ -254,6 +258,7 @@ class_weapon_use_event:
         - run skill_core_use def:<player.flag[hotkeys.swap]>
         - determine cancelled
     on player drops item_flagged:class_weapon flagged:hotkeys bukkit_priority:LOW:
+      - ratelimit <player> 1t
       - if <player.is_sprinting> && <player.has_flag[hotkeys.sprint_drop]>:
         - run skill_core_use def:<player.flag[hotkeys.sprint_drop]>
         - determine cancelled
