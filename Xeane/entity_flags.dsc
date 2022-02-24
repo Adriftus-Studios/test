@@ -38,4 +38,4 @@ entity_flags:
     on entity_flagged:on_hit_entity hits entity bukkit_priority:LOWEST:
       - inject <context.projectile.flag[on_hit_entity]>
     on entity_flagged:on_hit_block hits block bukkit_priority:LOWEST:
-      - inject <context.projectile.flag[on_hit_entity]>
+      - inject <context.projectile.flag[on_hit_block]>
