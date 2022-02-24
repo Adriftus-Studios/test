@@ -63,7 +63,10 @@ impl_skill_blast_task:
   debug: false
   definitions: targets
   script:
+    - playeffect effect:explosion_huge at:<player.location> quantity:5 offset:0.5
     - foreach <[targets]> as:target:
       - define vector <[target].location.sub[<player.location>]>
       - adjust <[target]> velocity:<[vector].normalize.with_y[0.3]>
+      - if !<[target].effects_data.parse[get[name]].contains[SPEED]>:
+        - cast speed amplifier:-2 duration:10s
     - determine true
