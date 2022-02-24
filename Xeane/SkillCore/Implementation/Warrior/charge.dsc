@@ -1,10 +1,10 @@
-impl_skill_charge:
+impl_skill_leap:
   type: data
   # Internal Name MUST BE UNIQUE
-  name: charge
+  name: leap
 
   # Display data used in commands, and GUIs
-  display_item_script: impl_skill_charge_icon
+  display_item_script: impl_skill_leap_icon
 
   # Skill Tree (uses internal name)
   skill_tree: warrior
@@ -18,7 +18,7 @@ impl_skill_charge:
 
   # Task Script to bee run when the ability is used successfully
   # This Task Script MUST be within this file, as with any code associated with this skill
-  on_cast: impl_skill_charge_task
+  on_cast: impl_skill_leap_task
 
   # Is the ability harmful? (PvP Action)
   harmful: true
@@ -44,12 +44,12 @@ impl_skill_charge:
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
-impl_skill_charge_icon:
+impl_skill_leap_icon:
   type: item
   material: feather
-  display name: "<&a>Charge"
+  display name: "<&a>leap"
   lore:
-  - "<&b>Charge towards your enemies up to 8 blocks away"
+  - "<&b>leap towards your cursor"
   mechanisms:
     custom_model_data: 1
 
@@ -57,12 +57,10 @@ impl_skill_charge_icon:
 # The On Cast Task script has specific requirements, and limits
 # The only reliable context tags in this task will be `<player>`
 # The task must `determine` true or false if the ability was successful or not.
-impl_skill_charge_task:
+impl_skill_leap_task:
   type: task
   debug: false
   definitions: target
   script:
-    - if <player.can_see[<[target]>]>:
-      - push <player> destination:<[target].location> speed:<script[impl_skill_charge].parsed_key[balance.speed]> force_along no_rotate no_damage
-      - determine true
-    - determine false
+    - adjust <player> velocity:<player.location.with_pitch[<player.location.pitch.min[-35].max[-75]>].direction.vector.normalize.mul[3]>
+    - determine true
