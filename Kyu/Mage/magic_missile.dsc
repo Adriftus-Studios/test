@@ -69,8 +69,8 @@ impl_skill_magic_missile_task:
     - determine passively true
     - flag <entry[shot].shot_entity> on_hit_entity:impl_skill_magic_missile_damage_task
     - flag <entry[shot].shot_entity> on_hit_block:impl_skill_magic_missile_remove_task
-    - while <entry[shot].shot_entity.exists>:
-      - playeffect at:<entry[shot].shot_entity.location> effect:spell quantity:5 offset:0.1
+    - while <entry[shot].shot_entity.is_spawned>:
+      - playeffect at:<entry[shot].shot_entity.location> effect:end_rod quantity:8 offset:0.1
       - wait 2t
 
 impl_skill_magic_missile_damage_task:
@@ -78,7 +78,7 @@ impl_skill_magic_missile_damage_task:
   debug: false
   script:
     - hurt <script[impl_skill_magic_missile].parsed_key[balance.damage]> <context.hit_entity> cause:ENTITY_ATTACK source:<player>
-
+    - remove <context.projectile>
 impl_skill_magic_missile_remove_task:
   type: task
   debug: false
