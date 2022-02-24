@@ -76,5 +76,5 @@ impl_skill_sick_em_entity:
   debug: false
   entity_type: wolf
   mechanisms:
-    walk_speed: 0.4
+    speed: 0.4
     health_data: <script[impl_skill_sick_em].parsed_key[balance.health]>/<script[impl_skill_sick_em].parsed_key[balance.health]>
