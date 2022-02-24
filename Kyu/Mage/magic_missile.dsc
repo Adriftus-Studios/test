@@ -70,8 +70,8 @@ impl_skill_magic_missile_task:
     - flag <entry[shot].shot_entity> on_hit_entity:impl_skill_magic_missile_damage_task
     - flag <entry[shot].shot_entity> on_hit_block:impl_skill_magic_missile_remove_task
     - while <entry[shot].shot_entity.is_spawned>:
-      - playeffect at:<entry[shot].shot_entity.location> effect:end_rod quantity:8 offset:0.1
-      - wait 2t
+      - playeffect at:<entry[shot].shot_entity.location> effect:end_rod quantity:8 visibility:50 offset:0.1
+      - wait 1t
 
 impl_skill_magic_missile_damage_task:
   type: task
