@@ -49,7 +49,7 @@ skill_core_use:
 
     # Make sure there are valid targets
     - define targets <[targets].get[1]> if:<[targets].size.equals[1]>
-    - if <[targets]> == null:
+    - if <[targets]> == null || <[targets].is_empty>:
       - debug error "Skill <[skill]> had errors in targetting tags."
       - narrate <[skill_script].parsed_key[messages.no_target]>
       - stop

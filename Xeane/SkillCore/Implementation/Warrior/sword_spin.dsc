@@ -30,7 +30,7 @@ impl_skill_sword_spin:
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "<player.precise_target[3]>"
+  - "<player.location.find_entities.within[3].exclude[<player>]>"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
@@ -41,7 +41,6 @@ impl_skill_sword_spin:
   # Balance Values used in the script
   balance:
     damage: 4
-    radius: 3
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
@@ -61,10 +60,8 @@ impl_skill_sword_spin_icon:
 impl_skill_sword_spin_task:
   type: task
   debug: false
-  definitions: target
+  definitions: targets
   script:
-    - hurt <script[impl_skill_sword_spin].parsed_key[balance.damage]> <player.location.find.living_entities.within[3].remove[1]> cause:ENTITY_ATTACK source:<player>
-    - foreach <player.location.find.living_entities.within[<script[impl_skill_sword_spin].parsed_key[balance.radius]>].remove[1]> as:entity:
-      - playeffect effect:SWEEP_ATTACK at:<[entity].location> visibility:50 quantity:1 offset:0
-      - push <[entity]> origin:<[entity].location.with_pitch[0]> destination:<[entity].location.above[2]> speed:0.5 duration:1s no_rotate
+    - hurt <script[impl_skill_sword_spin].parsed_key[balance.damage]> <[targets]> cause:ENTITY_ATTACK source:<player>
+    - playeffect effect:SWEEP_ATTACK at:<[targets].parse[location]> visibility:50 quantity:1 offset:0
     - determine true

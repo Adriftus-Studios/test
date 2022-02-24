@@ -67,7 +67,7 @@ impl_skill_recover_task:
     - define health <player.health>
     - define location <player.location>
     - wait 3s
-    - if <player.health> < <[health]> || !<player.location.equals[<[location]>]>:
+    - if <player.health> <= <[health]> || !<player.location.equals[<[location]>]>:
       - determine false
     # Level 4 Regeneration. 6 ticks per half-heart (1 HP). 3.33 Half-hearts per second (2 HP * 1.665) (Minecraft Wiki)
     - cast regeneration duration:<script[impl_skill_recover].parsed_key[balance.duration]> amplifier:<script[impl_skill_recover].parsed_key[balance.level]> no_ambient hide_particles no_icon
