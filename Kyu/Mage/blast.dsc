@@ -30,7 +30,7 @@ impl_skill_blast:
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "<player.precise_target[5]>"
+  - "<player.location.find_entities.within[5]>"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
@@ -61,8 +61,9 @@ impl_skill_blast_icon:
 impl_skill_blast_task:
   type: task
   debug: false
-  definitions: target
+  definitions: targets
   script:
-    - foreach <player.location.find.living_entities.within[<script[impl_skill_blast].parsed_key[balance.radius]>].remove[1]> as:entity:
-      - push <[entity]> destination:<[entity].location.facing[<player>].with_pitch[0].backward_flat> speed:0.5 duration:5t no_rotate
+    - foreach <[targets]> as:target:
+      - define vector <player.location.sub[<[target].location>]>
+      - adjust <[target]> velocity:<[vector].add[0,0.5,0]>
     - determine true
