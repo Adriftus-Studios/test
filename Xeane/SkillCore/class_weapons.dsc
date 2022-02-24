@@ -199,6 +199,16 @@ class_weapon_remove_skillTree:
         - flag player skills.abilities.<[skill]>:!
       - flag player skills.trees.<[skillTree]>:!
 
+class_weapon_add_skillTree:
+  type: task
+  debug: false
+  definitions: skillTree
+  script:
+    - if <server.has_flag[skills.trees.<[skillTree]>]>:
+      - foreach <server.flag[skills.tree.<[skillTree]>].keys> as:skill:
+        - flag player skills.abilities.<[skill]>:<server.flag[<server.flag[skills.tree.<[skillTree]>.<[skill]>]>]>
+        - flag player skills.trees.<[skillTree]>.<[skill]>:<server.flag[<server.flag[skills.tree.<[skillTree]>.<[skill]>]>]>
+
 class_weapon_use_event:
   type: world
   debug: false
@@ -253,3 +263,41 @@ class_weapon_use_event:
       - else if <player.has_flag[hotkeys.drop]> && !<player.is_sneaking> && !<player.is_sprinting>:
         - run skill_core_use def:<player.flag[hotkeys.drop]>
         - determine cancelled
+
+class_weapon_select:
+  type: command
+  name: select_class
+  usage: /select_class (class)
+  description: Selects Class
+  tab complete:
+    1: rogue|warrior|mage|ranger
+  script:
+    - if <context.args.size> < 1:
+      - narrate "<element[You must specify a class, dumbass].rainbow>"
+      - stop
+    - if !<list[rogue|warrior|mage|ranger].contains[<context.args.get[1]>]>:
+      - narrate "<element[Unknown class, dumbass].rainbow>"
+      - stop
+    - if <player.has_flag[class]>:
+      - run class_weapon_remove_skillTree def:<player.flag[class]>
+    - run class_weapon_add_skillTree def:<context.args.get[1]>
+    - flag player class:<context.args.get[1]>
+
+class_weapon_give:
+  type: command
+  name: class_weapon
+  usage: /class_weapon
+  description: turns held item into a class weapon
+  script:
+    - if <player.item_in_hand.material.name> == air:
+      - narrate "<element[You have to be holding an item, dumbass].rainbow>"
+      - stop
+    - inventory flag slot:<player.held_item_slot> class_weapon:true
+
+class_weapon_skills_command:
+  type: command
+  name: skills
+  usage: /skills
+  description: customize skills hotkeys
+  script:
+    - run class_weapon_open
