@@ -50,7 +50,7 @@ impl_skill_leap_icon:
   material: feather
   display name: "<&a>Leap"
   lore:
-  - "<&b>Leap forward in a range of directions"
+  - "<&b>Leap forward in a range of angles"
   - "<&b>You will not take fall damage for 5 seconds"
   mechanisms:
     custom_model_data: 1
