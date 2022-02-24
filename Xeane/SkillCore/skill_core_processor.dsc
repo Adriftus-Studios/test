@@ -64,5 +64,5 @@ skill_core_use:
     - run <[skill_script].data_key[on_cast]> def:<list_single[<[targets]>]> save:skill
 
     # Cooldown if successful
-    - if <entry[skill].created_queue.determination||true>:
+    - if <entry[skill].created_queue.determination.get[1]||true>:
       - flag player cooldowns.<[skill]> duration:<[skill_script].data_key[cooldown]||30s>
