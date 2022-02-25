@@ -18,7 +18,11 @@ koth_events:
     on player joins:
       - if !<player.has_flag[koth.current]>:
         - flag player koth.current.points:0
-
+    on player jumps flagged:koth_hop:
+      - define location <player.location>
+      - if <[location].pitch> < -25 && <player.location.y> <= 35:
+        - wait 1t
+        - adjust <player> velocity:<[location].with_pitch[<[location].pitch.sub[5]>].direction.vector.mul[10]>
 
 koth_start:
   type: task
@@ -54,3 +58,11 @@ koth_run_area:
       - wait 1t
       - flag server koth.current.leader:<server.online_players_flagged[koth.current].sort_by_number[flag[koth.current.points]].first>
       - wait 1s
+
+koth_enable_hop:
+  type: task
+  debug: false
+  script:
+    - foreach <world[orient].players.exclude[<cuboid[spawn].players>]>:
+      - flag <[value]> koth_hop duration:10s
+      - flag <[value]> no_fall_damage:10s
