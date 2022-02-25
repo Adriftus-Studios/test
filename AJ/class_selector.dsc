@@ -19,10 +19,10 @@ inventory_class_selector:
   slots:
   - [f] [inventory_class_selector_mage_icon] [f] [inventory_class_selector_warrior_icon] [f] [inventory_class_selector_rogue_icon] [f] [inventory_class_selector_ranger_icon] [f]
   - [f] [f] [f] [f] [f] [f] [f] [f] [f]
-  - [f] [f] [f] [f] [f] [f] [f] [f] [f]
-  - [f] [f] [f] [f] [f] [f] [f] [f] [f]
-  - [f] [f] [f] [f] [f] [f] [f] [f] [f]
-  - [f] [f] [f] [f] [f] [f] [f] [f] [f]
+  - [f] [impl_skill_blast_icon] [f] [impl_skill_leap_icon] [f] [impl_skill_backstab_icon] [f] [impl_skill_disengage_icon] [f]
+  - [f] [impl_skill_blink_icon] [f] [impl_skill_second_wind_icon] [f] [impl_skill_poison_dagger_icon] [f] [impl_skill_explosive_arrow_icon] [f]
+  - [f] [impl_skill_magic_missile_icon] [f] [impl_skill_strike_icon] [f] [impl_skill_recover_icon] [f] [impl_skill_marksman_shot_icon] [f]
+  - [f] [impl_skill_shield_icon] [f] [impl_skill_sword_spin_icon] [f] [impl_skill_sprint_icon] [f] [impl_skill_sick_em_icon] [f]
 
 inventory_class_selector_mage_icon:
   type: item
