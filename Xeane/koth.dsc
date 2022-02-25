@@ -34,11 +34,12 @@ koth_events:
 koth_start:
   type: task
   debug: false
+  definitions: immediate
   script:
     - announce <script[koth_config].data_key[messages.warning_5]>
-    - wait 4m
+    - wait 4m if:<[immediate].not||true>
     - announce <script[koth_config].data_key[messages.warning_1]>
-    - wait 1m
+    - wait 1m if:<[immediate].not||true>
     - flag <server.players_flagged[koth.current]> koth.current:!
     - announce <script[koth_config].data_key[messages.start]>
     - flag <world[orient].players> koth.current.points:0
