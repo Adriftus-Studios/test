@@ -37,7 +37,7 @@ class_weapon_open:
       - "Sneak_Drop"
       - "Sneak_Swap"
       - "Sprint_Left"
-      - "Sprint_Right"w
+      - "Sprint_Right"
       - "Sprint_Drop"
       - "Sprint_Swap"
     item_format:
