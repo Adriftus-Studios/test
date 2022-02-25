@@ -78,3 +78,10 @@ koth_enable_hop:
     - foreach <world[orient].players.exclude[<cuboid[spawn].players>]>:
       - flag <[value]> koth_hop duration:10s
       - flag <[value]> no_fall_damage:10s
+
+koth_get_direction:
+  type: task
+  debug: false
+  script:
+    - define direction <ellipsoid[current_koth].location.sub[<player.location>].normalize>
+    - narrate <element[180].sub[<[direction].z.atan2[<[direction].x>].to_degrees>]>
