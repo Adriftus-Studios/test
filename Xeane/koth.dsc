@@ -84,7 +84,7 @@ koth_get_direction:
   debug: false
   data:
     font_map:
-      -90: <element[b].font[minecraft:default]>
+      "-90": <element[b].font[minecraft:default]>
       "-45": <element[b].font[minecraft:default]>
       "0": <element[a].font[minecraft:default]>
       "45": <element[a].font[minecraft:default]>
