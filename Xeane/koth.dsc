@@ -84,15 +84,15 @@ koth_get_direction:
   debug: false
   data:
     font_map:
-      "-90": <element[b].font[minecraft:default]>
-      "-45": <element[b].font[minecraft:default]>
-      "0": <element[a].font[minecraft:default]>
-      "45": <element[a].font[minecraft:default]>
-      "90": <element[a].font[minecraft:default]>
-      "135": <element[a].font[minecraft:default]>
-      "180": <element[a].font[minecraft:default]>
-      "225": <element[a].font[minecraft:default]>
-      "270": <element[a].font[minecraft:default]>
+      "-90": <element[b].font[adriftus:default]>
+      "-45": <element[b].font[adriftus:default]>
+      "0": <element[a].font[adriftus:default]>
+      "45": <element[a].font[adriftus:default]>
+      "90": <element[a].font[adriftus:default]>
+      "135": <element[a].font[adriftus:default]>
+      "180": <element[a].font[adriftus:default]>
+      "225": <element[a].font[adriftus:default]>
+      "270": <element[a].font[adriftus:default]>
   script:
     - define yaw <player.location.direction[<ellipsoid[current_koth].location>].yaw.sub[<player.location.yaw>].round_to_precision[45]>
     - flag <player> koth.current.direction:<script.parsed_key[data.font_map.<[yaw]>]>
