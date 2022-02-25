@@ -43,7 +43,7 @@ koth_start:
     - announce <script[koth_config].data_key[messages.start]>
     - repeat 3:
       - run start_koth_area
-    - define winner <server.online_players.sort_by_number[flag[koth.current.points]].first>
+    - define winner <server.online_players.sort_by_number[flag[koth.current.points]].last>
     - announce <script[koth_config].parsed_key[messages.winner]>
     - run koth_start
 
@@ -66,7 +66,7 @@ koth_run_area:
       - flag <ellipsoid[current_koth].players> koth.current.points:++
       - flag <ellipsoid[current_koth].players> koth.global.points:++
       - wait 1t
-      - flag server koth.current.leader:<server.online_players_flagged[koth.current].sort_by_number[flag[koth.current.points]].first>
+      - flag server koth.current.leader:<server.online_players_flagged[koth.current].sort_by_number[flag[koth.current.points]].last>
       - wait 1s
     - if <server.has_flag[koth.global.koth_location.<[location]>.beacon_glass]>:
       - modifyblock <server.has_flag[koth.global.koth_location.<[location]>.beacon_glass]> red_stained_glass
