@@ -83,9 +83,12 @@ koth_run_area:
     - note <[location].as_location.to_ellipsoid[<[radius]>,<[radius]>,<[radius]>]> as:current_koth
     - announce <script[koth_config].parsed_key[messages.announce_location]>
     # 6,000t is 5 minutes
+    - bossbar create current_koth title:<[location_name]> progress:1 color:green
     - define particles <ellipsoid[current_koth].shell.filter[material.name.equals[air]]>
     - repeat 6000:
       - if <[value].mod[20]> == 0:
+        - define color <list[green|yellow|red].get[<[value].div[100].round_up>]>
+        - bossbar update current_koth title:<[location_name]> progress:1 color:green progress:<element[300].sub[<[value].div[20].round>].div[300]>
         - playeffect at:<[particles]> effect:dragon_breath quantity:1 targets:<world[orient].players> offset:0.05
         - flag <ellipsoid[current_koth].players> koth.current.points:++
         - flag <ellipsoid[current_koth].players> koth.global.points:++
@@ -94,7 +97,6 @@ koth_run_area:
         - flag server koth.current.leader.name:<[leader].display_name>
         - flag server koth.current.leader.points:<[leader].flag[koth.current.points]>
       - wait 1t
-
     - if <server.has_flag[koth.global.koth_location.<[location]>.beacon_glass]>:
       - modifyblock <server.has_flag[koth.global.koth_location.<[location]>.beacon_glass]> red_stained_glass
 
