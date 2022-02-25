@@ -142,6 +142,8 @@ koth_update_directions:
     - wait 2t
     - while <ellipsoid[current_koth].exists>:
       - foreach <world[orient].players> as:target:
+        - if !<[target].is_online>:
+          - foreach next
         - define yaw <[target].location.direction[<ellipsoid[current_koth].location>].yaw.sub[<[target].location.yaw>].round_to_precision[45]>
         - flag <[target]> koth.current.direction:<script.parsed_key[data.font_map.<[yaw]>]>
         - if <[loop_index].mod[10]> == 0:
