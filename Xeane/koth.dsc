@@ -70,9 +70,10 @@ koth_run_area:
         - playeffect at:<[particles]> effect:dragon_breath quantity:1 targets:<world[orient].players> offset:0.05
         - flag <ellipsoid[current_koth].players> koth.current.points:++
         - flag <ellipsoid[current_koth].players> koth.global.points:++
-      - define leader <server.online_players_flagged[koth.current].sort_by_number[flag[koth.current.points]].last>
-      - flag server koth.current.leader.name:<[leader].display_name>
-      - flag server koth.current.leader.points:<[leader].flag[koth.current.points]>
+      - if !<server.online_players_flagged[koth.current].is_empty>:
+        - define leader <server.online_players_flagged[koth.current].sort_by_number[flag[koth.current.points]].last>
+        - flag server koth.current.leader.name:<[leader].display_name>
+        - flag server koth.current.leader.points:<[leader].flag[koth.current.points]>
       - wait 1t
 
     - if <server.has_flag[koth.global.koth_location.<[location]>.beacon_glass]>:
