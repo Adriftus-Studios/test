@@ -22,6 +22,7 @@ koth_events:
         - flag player koth.global.points:0
         - flag player koth.global.kills:0
         - flag player koth.global.deaths:0
+        - flag player koth.current.direction:<element[<&nbsp>]>
     on player jumps flagged:koth_hop:
       - define location <player.location>
       - if <[location].pitch> < -25 && <player.location.y> <= 35:
@@ -46,6 +47,7 @@ koth_start:
     - flag <server.players_flagged[koth.current]> koth.current:!
     - announce <script[koth_config].parsed_key[messages.start]>
     - flag <world[orient].players> koth.current.points:0
+    - run koth_update_directions
     - repeat 3:
       - ~run koth_run_area
     - note remove as:current_koth
@@ -67,7 +69,6 @@ koth_run_area:
     - announce <script[koth_config].parsed_key[messages.announce_location]>
     # 6,000t is 5 minutes
     - define particles <ellipsoid[current_koth].shell.filter[material.name.equals[air]]>
-    - run koth_update_directions save:direction_queue
     - repeat 6000:
       - if <[value].mod[20]> == 0:
         - playeffect at:<[particles]> effect:dragon_breath quantity:1 targets:<world[orient].players> offset:0.05
@@ -105,6 +106,7 @@ koth_update_directions:
       "225": <&chr[6916]>
       "270": <&chr[6909]>
   script:
+    - wait 2t
     - while <ellipsoid[current_koth].exists>:
       - foreach <world[orient].players> as:target:
         - define yaw <[target].location.direction[<ellipsoid[current_koth].location>].yaw.sub[<player.location.yaw>].round_to_precision[45]>
