@@ -50,7 +50,7 @@ impl_skill_stealth_icon:
   display name: "<&a>Stealth"
   lore:
   - "<&b>Turn invisible to ambush your enemies or escape"
-  - "<&b>This skill will be interrupted if you take damage"
+  - "<&b>This skill will be interrupted if you take or deal damage"
   mechanisms:
     custom_model_data: 16
 
