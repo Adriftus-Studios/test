@@ -28,11 +28,12 @@ koth_start:
     - announce <script[koth_config].data_key[messages.start]>
     - run start_koth_area
 
-run_koth_area:
+koth_run_area:
   type: task
   debug: false
   script:
     - define location <location[<server.flag[koth.global.koth_location].keys.random>]>
+    - define location_name <server.flag[koth.global.koth_location.<[location]>].name>
     - define radius <script[koth_config].data_key[koth_radius]>
     - note <[location].to_ellipsoid[<[radius]>,<[radius]>,<[radius]>]> as:current_koth
     - announce <script[koth_config].data_key[messages.announce_location]>
