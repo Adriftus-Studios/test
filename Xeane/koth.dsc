@@ -61,7 +61,7 @@ koth_countdown:
       - define color <list[green|yellow|red].get[<[value].div[100].round_up>]>
       - define color_symbol <list[<&a>|<&e>|<&c>].get[<[value].div[100].round_up>]>
       - define time <duration[300s].sub[<[value]>s].formatted>
-      - bossbar update countdown "title:<[color_symbol]>Countdown <[time]>" progress:<element[300].div[<element[300].sub[<[value]>]>]> color:<[color]>
+      - bossbar update countdown "title:<[color_symbol]>Countdown <[time]>" progress:<element[300].sub[<[value]>].div[300]> color:<[color]>
       - wait 1s
     - bossbar remove countdown
 
