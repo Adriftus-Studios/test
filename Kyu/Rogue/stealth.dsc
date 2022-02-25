@@ -64,7 +64,7 @@ impl_skill_stealth_task:
   definitions: target
   script:
     - cast invisibility duration:<script[impl_skill_stealth].parsed_key[balance.duration]> amplifier:0 no_ambient hide_particles no_icon
-    - fakeequip <player> for:<server.online_players.remove[<player>]> head:air chest:air legs:air boots:air duration:<script[impl_skill_stealth].parsed_key[balance.duration]>
+    - fakeequip <player> for:<server.online_players.filter_tag[<[filter_value].equals[<player>].not>]> head:air chest:air legs:air boots:air offhand:air hand:air duration:<script[impl_skill_stealth].parsed_key[balance.duration]>
     - flag <player> on_next_damage:impl_skill_stealth_task_remove
     - flag <player> on_next_hit:impl_skill_stealth_task_remove
     - determine true
