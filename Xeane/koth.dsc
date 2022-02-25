@@ -56,6 +56,18 @@ koth_start:
     - announce <script[koth_config].parsed_key[messages.winner]>
     - run koth_start
 
+koth_countdown:
+  type: task
+  debug: false
+  script:
+    - bossbar create countdown "title: Countdown <duration[300s].formatted>" progress:1 color:green players:<world[orient].players>
+    - repeat 300:
+      - define color <list[green|yellow|red].get[<[value].div[100].round_up>]>
+      - define time <duration[300s].sub[<[value]>s]>
+      - bossbar update countdown "title: Countdown <[time]>" progress:<element[300].div[<element[300].sub[<[value]>]>]> color:<[color]>
+      - wait 1s
+    - bossbar remove countdown
+
 koth_run_area:
   type: task
   debug: false
