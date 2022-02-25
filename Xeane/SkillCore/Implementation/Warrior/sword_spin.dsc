@@ -46,7 +46,7 @@ impl_skill_sword_spin:
 # "lore" field might be used in chat diplays, and other GUIs
 impl_skill_sword_spin_icon:
   type: item
-  material: feather
+  material: iron_nugget
   display name: "<&a>Sword Spin"
   lore:
   - "<&b>Damage and knock up any nearby enemies"

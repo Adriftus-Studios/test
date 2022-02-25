@@ -47,7 +47,7 @@ impl_skill_leap:
 # "lore" field might be used in chat diplays, and other GUIs
 impl_skill_leap_icon:
   type: item
-  material: feather
+  material: iron_nugget
   display name: "<&a>Leap"
   lore:
   - "<&b>Leap forward in a range of angles"

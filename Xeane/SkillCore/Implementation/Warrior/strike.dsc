@@ -47,7 +47,7 @@ impl_skill_strike:
 # "lore" field might be used in chat diplays, and other GUIs
 impl_skill_strike_icon:
   type: item
-  material: feather
+  material: iron_nugget
   display name: "<&a>Strike"
   lore:
   - "<&b>Strike your target within 5 blocks"
