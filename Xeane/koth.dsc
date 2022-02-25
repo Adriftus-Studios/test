@@ -36,6 +36,9 @@ koth_start:
   debug: false
   definitions: immediate
   script:
+    - if !<server.has_flag[koth.current.leader]>:
+      - flag server koth.current.leader.name:<&6>Awaiting...
+      - flag server koth.current.leader.points:<&6>Awaiting...
     - announce <script[koth_config].data_key[messages.warning_5]>
     - wait 4m if:<[immediate].not||true>
     - announce <script[koth_config].data_key[messages.warning_1]>
