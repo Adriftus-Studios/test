@@ -117,6 +117,11 @@ koth_update_directions:
   debug: false
   data:
     font_map:
+      "-360": <&chr[6911]>
+      "-315": <&chr[6912]>
+      "-270": <&chr[6913]>
+      "-225": <&chr[6914]>
+      "-180": <&chr[6915]>
       "-135": <&chr[6916]>
       "-90": <&chr[6909]>
       "-45": <&chr[6910]>
@@ -127,6 +132,8 @@ koth_update_directions:
       "180": <&chr[6915]>
       "225": <&chr[6916]>
       "270": <&chr[6909]>
+      "315": <&chr[6910]>
+      "360": <&chr[6911]>
   script:
     - wait 2t
     - while <ellipsoid[current_koth].exists>:
