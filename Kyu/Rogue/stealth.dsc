@@ -64,15 +64,23 @@ impl_skill_stealth_task:
   definitions: target
   script:
     - cast invisibility duration:<script[impl_skill_stealth].parsed_key[balance.duration]> amplifier:0 no_ambient hide_particles no_icon
-    - fakeequip <player> for:<server.online_players.remove[<player>]> head:air chest:air legs:air boots:air duration:<script[impl_skill_stealth].parsed_key[balance.duration]>
-    - flag <player> on_next_damage:impl_skill_stealth_task_remove
-    - flag <player> on_next_hit:impl_skill_stealth_task_remove
+    - fakeequip <player> for:<server.online_players.filter_tag[<[filter_value].equals[<player>].not>]> head:air chest:air legs:air boots:air offhand:air hand:air duration:<script[impl_skill_stealth].parsed_key[balance.duration]>
+    - flag <player> on_next_damage:impl_skill_stealth_task_remove_damage
+    - flag <player> on_next_hit:impl_skill_stealth_task_remove_hit
     - determine true
 
-impl_skill_stealth_task_remove:
+impl_skill_stealth_task_remove_damage:
   type: task
   debug: false
   script:
-    - flag <player> invisibility_once:!
-    - cast invisibility remove <player>
-    - fakeequip <player> reset
+    - flag <context.entity> invisibility_once:!
+    - cast invisibility remove <context.entity>
+    - fakeequip <context.entity> reset
+
+impl_skill_stealth_task_remove_hit:
+  type: task
+  debug: false
+  script:
+    - flag <context.damager> invisibility_once:!
+    - cast invisibility remove <context.damager>
+    - fakeequip <context.damager> reset
