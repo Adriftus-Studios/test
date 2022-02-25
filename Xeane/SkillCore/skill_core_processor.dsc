@@ -40,7 +40,7 @@ skill_core_use:
 
     # Cooldown Check
     - if <player.has_flag[cooldown.<[skill]>]>:
-      - narrate "<&c>This ability is on cooldown<&co> <player.flag_expiration[cooldown.<[skill]>].from_now.formatted>"
+      - actionbar "<&c><[skill].replace[_].with[<&sp>].to_titlecase> is on cooldown<&co> <player.flag_expiration[cooldown.<[skill]>].from_now.formatted>"
       - stop
 
     # Make sure the skill is currently loaded
@@ -56,7 +56,7 @@ skill_core_use:
     # Make sure there are valid targets
     - if <[targets].is_empty>:
       - debug error "Skill <[skill]> had errors in targetting tags."
-      - narrate <[skill_script].parsed_key[messages.no_target]>
+      - actionbar <[skill_script].parsed_key[messages.no_target]>
       - stop
     - define targets <[targets].get[1]> if:<[targets].size.equals[1]>
 
