@@ -12,7 +12,7 @@ inventory_class_selector:
   type: inventory
   inventory: chest
   size: 54
-  title: Class Selector
+  title: <&f><&font[adriftus:guis]><&chr[F808]><&chr[6907]>
   gui: true
   definitions:
     f: <item[standard_filler]>
