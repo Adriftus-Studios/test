@@ -71,7 +71,7 @@ koth_run_area:
       - wait 1t
       - define leader <server.online_players_flagged[koth.current].sort_by_number[flag[koth.current.points]].last>
       - flag server koth.current.leader.name:<[leader].display_name>
-      - flag server koth.current.leader.point:<[leader].flag[koth.current.points]>
+      - flag server koth.current.leader.points:<[leader].flag[koth.current.points]>
       - wait 1s
     - if <server.has_flag[koth.global.koth_location.<[location]>.beacon_glass]>:
       - modifyblock <server.has_flag[koth.global.koth_location.<[location]>.beacon_glass]> red_stained_glass
