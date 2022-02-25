@@ -18,11 +18,11 @@ koth_events:
     on player joins:
       - if !<player.has_flag[koth.current]>:
         - flag player koth.current.points:0
+        - flag player koth.current.direction:<element[<&nbsp>]>
       - if !<player.has_flag[koth.global]>:
         - flag player koth.global.points:0
         - flag player koth.global.kills:0
         - flag player koth.global.deaths:0
-        - flag player koth.current.direction:<element[<&nbsp>]>
     on player jumps flagged:koth_hop:
       - define location <player.location>
       - if <[location].pitch> < -25 && <player.location.y> <= 35:
