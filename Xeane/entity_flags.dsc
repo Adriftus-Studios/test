@@ -25,6 +25,11 @@ entity_flags:
     on entity_flagged:no_heal_once heals:
       - flag <context.entity> no_heal_once:!
       - determine cancelled
+    on entity_flagged:on_next_damage damaged:
+      - foreach <context.entity.flag[on_next_damage]>:
+        - if <script[<[value]>].exists>:
+          - inject <[value]>
+      - flag <context.entity> on_next_damage:!
     on player kicked for flying flagged:no_fly_kick:
       - determine passively FLY_COOLDOWN:<player.flag_expiration[no_fly_kick].duration_since[<util.time_now>]>
       - determine cancelled

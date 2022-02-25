@@ -1,10 +1,10 @@
-impl_skill_recover:
+impl_skill_stealth:
   type: data
   # Internal Name MUST BE UNIQUE
-  name: recover
+  name: stealth
 
   # Display data used in commands, and GUIs
-  display_item_script: impl_skill_recover_icon
+  display_item_script: impl_skill_stealth_icon
 
   # Skill Tree (uses internal name)
   skill_tree: rogue
@@ -14,11 +14,11 @@ impl_skill_recover:
   - "true"
 
   # Cooldown
-  cooldown: 20s
+  cooldown: 35s
 
   # Task Script to bee run when the ability is used successfully
   # This Task Script MUST be within this file, as with any code associated with this skill
-  on_cast: impl_skill_recover_task
+  on_cast: impl_skill_stealth_task
 
   # Is the ability harmful? (PvP Action)
   harmful: false
@@ -40,18 +40,17 @@ impl_skill_recover:
 
   # Balance Values used in the script
   balance:
-    duration: 3s
-    level: 3
+    duration: 25s
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
-impl_skill_recover_icon:
+impl_skill_stealth_icon:
   type: item
   material: iron_nugget
-  display name: "<&a>Recover"
+  display name: "<&a>Stealth"
   lore:
-  - "<&b>Recover some health after a short warmup"
-  - "<&b>This skill is interruptible if you take damage or move"
+  - "<&b>Turn invisible to ambush your enemies or escape"
+  - "<&b>This skill will be interrupted if you take damage"
   mechanisms:
     custom_model_data: 16
 
@@ -59,16 +58,20 @@ impl_skill_recover_icon:
 # The On Cast Task script has specific requirements, and limits
 # The only reliable context tags in this task will be `<player>`
 # The task must `determine` true or false if the ability was successful or not.
-impl_skill_recover_task:
+impl_skill_stealth_task:
   type: task
   debug: false
   definitions: target
   script:
-    - define health <player.health>
-    - define location <player.location>
-    - wait 3s
-    - if <player.health> <= <[health]> || !<player.location.equals[<[location]>]>:
-      - determine false
-    # Level 4 Regeneration. 6 ticks per half-heart (1 HP). 3.33 Half-hearts per second (2 HP * 1.665) (Minecraft Wiki)
-    - cast regeneration duration:<script[impl_skill_recover].parsed_key[balance.duration]> amplifier:<script[impl_skill_recover].parsed_key[balance.level]> no_ambient hide_particles no_icon
+    - cast invisibility duration:<script[impl_skill_stealth].parsed_key[balance.duration]> amplifier:0 no_ambient hide_particles no_icon
+    - fakeequip <player> for:<server.online_players.remove[<player>]> head:air chest:air legs:air boots:air offhand:air hand:air duration:<script[impl_skill_stealth].parsed_key[balance.duration]>
+    - flag <player> on_next_damage:impl_skill_stealth_task_remove
     - determine true
+
+impl_skill_stealth_task_remove:
+  type: task
+  debug: false
+  script:
+    - flag <player> invisibility_once:!
+    - cast invisibility remove <player>
+    - fakeequip <player> reset
