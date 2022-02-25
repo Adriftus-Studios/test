@@ -41,7 +41,7 @@ koth_run_area:
   debug: false
   script:
     - define location <server.flag[koth.global.koth_location].keys.random>
-    - define location_name <server.flag[koth.global.koth_location.<[location]>]>
+    - define location_name <server.flag[koth.global.koth_location.<[location]>.name]>
     - flag server koth.current.koth_location:<[location_name]>
     - define radius <script[koth_config].data_key[koth_radius]>
     - note <[location].as_location.to_ellipsoid[<[radius]>,<[radius]>,<[radius]>]> as:current_koth
