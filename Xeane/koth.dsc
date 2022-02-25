@@ -43,6 +43,7 @@ koth_start:
     - announce <script[koth_config].data_key[messages.start]>
     - repeat 3:
       - run start_koth_area
+    - note remove as:current_koth
     - define winner <server.online_players.sort_by_number[flag[koth.current.points]].last>
     - announce <script[koth_config].parsed_key[messages.winner]>
     - run koth_start
@@ -61,12 +62,15 @@ koth_run_area:
     - announce <script[koth_config].parsed_key[messages.announce_location]>
     # 6,000t is 5 minutes
     - define particles <ellipsoid[current_koth].shell.filter[material.name.equals[air]]>
+    - run koth_update_directions save:direction_queue
     - repeat 3000:
       - playeffect at:<[particles]> effect:dragon_breath quantity:1 targets:<world[orient].players> offset:0.05
       - flag <ellipsoid[current_koth].players> koth.current.points:++
       - flag <ellipsoid[current_koth].players> koth.global.points:++
       - wait 1t
-      - flag server koth.current.leader:<server.online_players_flagged[koth.current].sort_by_number[flag[koth.current.points]].last>
+      - define leader <server.online_players_flagged[koth.current].sort_by_number[flag[koth.current.points]].last>
+      - flag server koth.current.leader.name:<[leader].display_name>
+      - flag server koth.current.leader.point:<[leader].flag[koth.current.points]>
       - wait 1s
     - if <server.has_flag[koth.global.koth_location.<[location]>.beacon_glass]>:
       - modifyblock <server.has_flag[koth.global.koth_location.<[location]>.beacon_glass]> red_stained_glass
@@ -79,20 +83,24 @@ koth_enable_hop:
       - flag <[value]> koth_hop duration:10s
       - flag <[value]> no_fall_damage:10s
 
-koth_get_direction:
+koth_update_directions:
   type: task
   debug: false
   data:
     font_map:
-      "-90": <element[b].font[adriftus:default]>
-      "-45": <element[b].font[adriftus:default]>
-      "0": <element[a].font[adriftus:default]>
-      "45": <element[a].font[adriftus:default]>
-      "90": <element[a].font[adriftus:default]>
-      "135": <element[a].font[adriftus:default]>
-      "180": <element[a].font[adriftus:default]>
-      "225": <element[a].font[adriftus:default]>
-      "270": <element[a].font[adriftus:default]>
+      "-90": <element[a].font[adriftus:direction]>
+      "-45": <element[b].font[adriftus:direction]>
+      "0": <element[c].font[adriftus:direction]>
+      "45": <element[d].font[adriftus:direction]>
+      "90": <element[e].font[adriftus:direction]>
+      "135": <element[f].font[adriftus:direction]>
+      "180": <element[g].font[adriftus:direction]>
+      "225": <element[h].font[adriftus:direction]>
+      "270": <element[i].font[adriftus:direction]>
   script:
-    - define yaw <player.location.direction[<ellipsoid[current_koth].location>].yaw.sub[<player.location.yaw>].round_to_precision[45]>
-    - flag <player> koth.current.direction:<script.parsed_key[data.font_map.<[yaw]>]>
+    - while <ellipsoid[current_koth].exists>:
+      - foreach <world[orient].players> as:target:
+        - define yaw <[target].location.direction[<ellipsoid[current_koth].location>].yaw.sub[<player.location.yaw>].round_to_precision[45]>
+        - flag <[target]> koth.current.direction:<script.parsed_key[data.font_map.<[yaw]>]>
+        - if <[loop_index].mod[10]> == 0:
+          - wait 1t
