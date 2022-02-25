@@ -40,7 +40,7 @@ impl_skill_sprint:
 
   # Balance Values used in the script
   balance:
-    duration: 1s
+    duration: 2s
     level: 4
 
 # Display Icon for the skill itself
@@ -63,6 +63,8 @@ impl_skill_sprint_task:
   debug: false
   definitions: target
   script:
-    # Effect Level 5.
-    - cast speed duration:<script[impl_skill_sprint].parsed_key[balance.duration]> amplifier:<script[impl_skill_sprint].parsed_key[balance.level]> no_ambient hide_particles no_icon
-    - determine true
+    - if <player.is_on_ground>:
+      # Effect Level 5.
+      - cast speed duration:<script[impl_skill_sprint].parsed_key[balance.duration]> amplifier:<script[impl_skill_sprint].parsed_key[balance.level]> no_ambient hide_particles no_icon
+      - determine true
+    - determine false
