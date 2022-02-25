@@ -83,5 +83,5 @@ koth_get_direction:
   type: task
   debug: false
   script:
-    - define direction <ellipsoid[current_koth].location.sub[<player.location>].normalize>
+    - define direction <ellipsoid[current_koth].location.direction.vector.sub[<player.location.direction.vector>].normalize>
     - narrate <element[180].sub[<[direction].z.atan2[<[direction].x>].to_degrees>]>
