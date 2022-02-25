@@ -12,6 +12,9 @@ koth_events:
   debug: false
   events:
     after server start:
+      - if !<server.worlds.parse[name].contains[orient]>:
+        - createworld orient
+        - wait 10s
       - run koth_start
     on player joins:
       - if !<player.has_flag[koth.current]>:
@@ -21,6 +24,7 @@ koth_events:
         - flag player koth.global.points:0
         - flag player koth.global.kills:0
         - flag player koth.global.deaths:0
+        - flag player koth.global.wins:0
     on player jumps flagged:koth_hop:
       - define location <player.location>
       - if <[location].pitch> < -25:
@@ -48,6 +52,7 @@ koth_start:
       - ~run koth_run_area
     - note remove as:current_koth
     - define winner <server.online_players.sort_by_number[flag[koth.current.points]].last>
+    - flag <[winner]> koth.global.wins:++
     - announce <script[koth_config].parsed_key[messages.winner]>
     - run koth_start
 
