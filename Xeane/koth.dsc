@@ -60,8 +60,9 @@ koth_run_area:
     - note <[location].as_location.to_ellipsoid[<[radius]>,<[radius]>,<[radius]>]> as:current_koth
     - announce <script[koth_config].data_key[messages.announce_location]>
     # 6,000t is 5 minutes
+    - define particles <ellipsoid[current_koth].shell.filter[material.name.equals[air]]>
     - repeat 3000:
-      - playeffect at:<ellipsoid[current_koth].shell> effect:dragon_breath quantity:1 targets:<world[orient].players>
+      - playeffect at:<[particles]> effect:dragon_breath quantity:1 targets:<world[orient].players>
       - flag <ellipsoid[current_koth].players> koth.current.points:++
       - flag <ellipsoid[current_koth].players> koth.global.points:++
       - wait 1t
