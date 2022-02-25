@@ -40,6 +40,7 @@ koth_start:
     - if !<server.has_flag[koth.current.leader]>:
       - flag server koth.current.leader.name:<&6>Awaiting...
       - flag server koth.current.leader.points:<&6>Awaiting...
+    - flag server koth.current.koth_location:<&6>Awaiting...
     - announce <script[koth_config].data_key[messages.warning_5]>
     - wait 4m if:<[immediate].not||true>
     - announce <script[koth_config].parsed_key[messages.warning_1]>
@@ -117,3 +118,4 @@ koth_update_directions:
         - if <[loop_index].mod[10]> == 0:
           - wait 1t
       - wait 2t
+    - flag <server.players_flagged[koth.current.direction]> koth.current.direction:<&nbsp>
