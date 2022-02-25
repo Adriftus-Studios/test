@@ -87,9 +87,12 @@ koth_enable_hop:
   type: task
   debug: false
   script:
-    - foreach <world[orient].players.exclude[<cuboid[spawn].players>]>:
+    - define targets <world[orient].players.exclude[<cuboid[spawn].players>]>
+    - foreach <[targets]>:
       - flag <[value]> koth_hop duration:10s
       - flag <[value]> no_fall_damage:10s
+    - wait 10s
+    - flag <[targets]> no_fall_damage_once duration:15s
 
 koth_update_directions:
   type: task
