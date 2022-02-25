@@ -16,7 +16,7 @@ koth_events:
     on player joins:
       - if !<player.has_flag[koth.current]>:
         - flag player koth.current.points:0
-        - flag player koth.current.direction:<element[<&nbsp>]>
+        - flag player koth.current.direction:<&sp>
       - if !<player.has_flag[koth.global]>:
         - flag player koth.global.points:0
         - flag player koth.global.kills:0
@@ -55,7 +55,7 @@ koth_countdown:
   type: task
   debug: false
   script:
-    - flag <server.players_flagged[koth.current.direction]> koth.current.direction:<&nbsp>
+    - flag <server.players_flagged[koth.current.direction]> koth.current.direction:<&sp>
     - bossbar create countdown "title:Countdown <duration[300s].formatted>" progress:1 color:green players:<world[orient].players>
     - repeat 300:
       - define color <list[green|yellow|red].get[<[value].div[100].round_up>]>
