@@ -37,7 +37,7 @@ class_weapon_open:
       - "Sneak_Drop"
       - "Sneak_Swap"
       - "Sprint_Left"
-      - "Sprint_Right"
+      - "Sprint_Right"w
       - "Sprint_Drop"
       - "Sprint_Swap"
     item_format:
@@ -49,7 +49,7 @@ class_weapon_open:
     - foreach <script.data_key[data.hotkeys]> as:hotkey_button:
       - define map <script.parsed_key[data.item_format]>
       - define mechanisms <[map].keys.parse_tag[<[parse_value]>=<[map].get[<[parse_value]>]>].separated_by[;]>
-      - if !<player.has_flag[hotkeys.<[hotkey_button]>]> || !<server.has_flag[skills.abilities.<player.has_flag[hotkeys.<[hotkey_button]>]>]>:
+      - if !<player.has_flag[hotkeys.<[hotkey_button]>]> || !<server.has_flag[skills.abilities.<player.flag[hotkeys.<[hotkey_button]>]>]>:
         - define items:->:<item[class_weapon_hotkey_button].with[<[mechanisms]>].with_flag[hotkey:<[hotkey_button]>]>
       - else:
         - define skill_script <server.flag[skills.abilities.<player.flag[hotkeys.<[hotkey_button]>]>]>
