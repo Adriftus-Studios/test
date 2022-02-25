@@ -41,6 +41,7 @@ koth_start:
     - wait 1m
     - flag <server.players_flagged[koth.current]> koth.current:!
     - announce <script[koth_config].data_key[messages.start]>
+    - flag <world[orient].players> koth.current.points:0
     - repeat 3:
       - ~run koth_run_area
     - note remove as:current_koth
