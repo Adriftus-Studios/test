@@ -87,8 +87,8 @@ koth_run_area:
     - define particles <ellipsoid[current_koth].shell.filter[material.name.equals[air]]>
     - repeat 6000:
       - if <[value].mod[20]> == 0:
-        - define color <list[green|yellow|red].get[<[value].div[100].round_up>]>
-        - bossbar update current_koth title:<[location_name]> progress:1 color:green progress:<element[300].sub[<[value].div[20].round>].div[300]>
+        - define color <list[green|yellow|red].get[<[value].div[2000].round_up>]>
+        - bossbar update current_koth color:<[color]> progress:<element[300].sub[<[value].div[20].round>].div[300]>
         - playeffect at:<[particles]> effect:dragon_breath quantity:1 targets:<world[orient].players> offset:0.05
         - flag <ellipsoid[current_koth].players> koth.current.points:++
         - flag <ellipsoid[current_koth].players> koth.global.points:++
