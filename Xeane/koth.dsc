@@ -95,4 +95,4 @@ koth_get_direction:
       "270": <element[a].font[minecraft:default]>
   script:
     - define yaw <player.location.direction[<ellipsoid[current_koth].location>].yaw.sub[<player.location.yaw>].round_to_precision[45]>
-    - flag <player> koth.current.direction:<script.parsed_key[data.<[yaw]>]>
+    - flag <player> koth.current.direction:<script.parsed_key[data.font_map.<[yaw]>]>
