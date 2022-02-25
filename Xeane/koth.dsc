@@ -55,6 +55,7 @@ koth_countdown:
   type: task
   debug: false
   script:
+    - flag <server.players_flagged[koth.current.direction]> koth.current.direction:<&nbsp>
     - bossbar create countdown "title:Countdown <duration[300s].formatted>" progress:1 color:green players:<world[orient].players>
     - repeat 300:
       - define color <list[green|yellow|red].get[<[value].div[100].round_up>]>
@@ -126,4 +127,3 @@ koth_update_directions:
         - if <[loop_index].mod[10]> == 0:
           - wait 1t
       - wait 2t
-    - flag <server.players_flagged[koth.current.direction]> koth.current.direction:<&nbsp>
