@@ -1,8 +1,6 @@
 koth_config:
   type: data
   messages:
-    warning_5: "<&a>Starting in 5 minutes"
-    warning_1: "<&a>Starting in 1 minute"
     start: "<&b>Start"
     announce_location: "<&a>New KOTH Location <[location_name]>!"
     winner: "<[winner].name> has won!"
@@ -41,10 +39,7 @@ koth_start:
       - flag server koth.current.leader.name:<&6>Awaiting...
       - flag server koth.current.leader.points:<&6>Awaiting...
     - flag server koth.current.koth_location:<&6>Awaiting...
-    - announce <script[koth_config].data_key[messages.warning_5]>
-    - wait 4m if:<[immediate].not||true>
-    - announce <script[koth_config].parsed_key[messages.warning_1]>
-    - wait 1m if:<[immediate].not||true>
+    - run ~koth_countdown if:<[immediate].not||true>
     - flag <server.players_flagged[koth.current]> koth.current:!
     - announce <script[koth_config].parsed_key[messages.start]>
     - flag <world[orient].players> koth.current.points:0
@@ -63,8 +58,9 @@ koth_countdown:
     - bossbar create countdown "title:Countdown <duration[300s].formatted>" progress:1 color:green players:<world[orient].players>
     - repeat 300:
       - define color <list[green|yellow|red].get[<[value].div[100].round_up>]>
+      - define color_symbol <list[<&a>|<&e>|<&c>].get[<[value].div[100].round_up>]>
       - define time <duration[300s].sub[<[value]>s].formatted>
-      - bossbar update countdown "title:Countdown <[time]>" progress:<element[300].div[<element[300].sub[<[value]>]>]> color:<[color]>
+      - bossbar update countdown "title:<[color_symbol]>Countdown <[time]>" progress:<element[300].div[<element[300].sub[<[value]>]>]> color:<[color]>
       - wait 1s
     - bossbar remove countdown
 
