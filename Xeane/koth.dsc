@@ -114,3 +114,4 @@ koth_update_directions:
         - narrate "<&4>[DEBUG]<&r>Set Direction Flag to <script.parsed_key[data.font_map.<[yaw]>]>" targets:<[target]>
         - if <[loop_index].mod[10]> == 0:
           - wait 1t
+      - wait 1t
