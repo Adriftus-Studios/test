@@ -25,7 +25,7 @@ koth_events:
         - flag player koth.global.deaths:0
     on player jumps flagged:koth_hop:
       - define location <player.location>
-      - if <[location].pitch> < -25 && <player.location.y> <= 35:
+      - if <[location].pitch> < -25:
         - wait 1t
         - adjust <player> velocity:<[location].with_pitch[<[location].pitch.sub[5]>].direction.vector.mul[10]>
     on player dies in:orient bukkit_priority:MONITOR:
