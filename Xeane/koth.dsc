@@ -60,11 +60,11 @@ koth_countdown:
   type: task
   debug: false
   script:
-    - bossbar create countdown "title: Countdown <duration[300s].formatted>" progress:1 color:green players:<world[orient].players>
+    - bossbar create countdown "title:Countdown <duration[300s].formatted>" progress:1 color:green players:<world[orient].players>
     - repeat 300:
       - define color <list[green|yellow|red].get[<[value].div[100].round_up>]>
       - define time <duration[300s].sub[<[value]>s]>
-      - bossbar update countdown "title: Countdown <[time]>" progress:<element[300].div[<element[300].sub[<[value]>]>]> color:<[color]>
+      - bossbar update countdown "title:Countdown <[time]>" progress:<element[300].div[<element[300].sub[<[value]>]>]> color:<[color]>
       - wait 1s
     - bossbar remove countdown
 
