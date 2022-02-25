@@ -82,6 +82,17 @@ koth_enable_hop:
 koth_get_direction:
   type: task
   debug: false
+  data:
+    font_map:
+      -90: <element[b].font[minecraft:default]>
+      "-45": <element[b].font[minecraft:default]>
+      "0": <element[a].font[minecraft:default]>
+      "45": <element[a].font[minecraft:default]>
+      "90": <element[a].font[minecraft:default]>
+      "135": <element[a].font[minecraft:default]>
+      "180": <element[a].font[minecraft:default]>
+      "225": <element[a].font[minecraft:default]>
+      "270": <element[a].font[minecraft:default]>
   script:
-    - define direction <ellipsoid[current_koth].location.sub[<player.location>].normalize>
-    - narrate <element[180].sub[<[direction].z.atan2[<[direction].x>].to_degrees>]>
+    - define yaw <player.location.direction[<ellipsoid[current_koth].location>].yaw.sub[<player.location.yaw>].round_to_precision[45]>
+    - flag <player> koth.current.direction:<script.parsed_key[data.<[yaw]>]>
