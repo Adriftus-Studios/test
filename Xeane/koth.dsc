@@ -36,12 +36,12 @@ koth_start:
   debug: false
   definitions: immediate
   script:
-    - announce <script[koth_config].data_key[messages.warning_5]>
+    - announce <script[koth_config].parsed_key[messages.warning_5]>
     - wait 4m if:<[immediate].not||true>
-    - announce <script[koth_config].data_key[messages.warning_1]>
+    - announce <script[koth_config].parsed_key[messages.warning_1]>
     - wait 1m if:<[immediate].not||true>
     - flag <server.players_flagged[koth.current]> koth.current:!
-    - announce <script[koth_config].data_key[messages.start]>
+    - announce <script[koth_config].parsed_key[messages.start]>
     - flag <world[orient].players> koth.current.points:0
     - repeat 3:
       - ~run koth_run_area
