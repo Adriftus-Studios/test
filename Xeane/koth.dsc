@@ -97,6 +97,7 @@ koth_run_area:
         - flag server koth.current.leader.name:<[leader].display_name>
         - flag server koth.current.leader.points:<[leader].flag[koth.current.points]>
       - wait 1t
+    - bossbar remove current_koth
     - if <server.has_flag[koth.global.koth_location.<[location]>.beacon_glass]>:
       - modifyblock <server.has_flag[koth.global.koth_location.<[location]>.beacon_glass]> red_stained_glass
 
