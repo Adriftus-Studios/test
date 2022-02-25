@@ -58,7 +58,7 @@ koth_run_area:
       - modifyblock <server.has_flag[koth.global.koth_location.<[location]>.beacon_glass]> green_stained_glass
     - define radius <script[koth_config].data_key[koth_radius]>
     - note <[location].as_location.to_ellipsoid[<[radius]>,<[radius]>,<[radius]>]> as:current_koth
-    - announce <script[koth_config].data_key[messages.announce_location]>
+    - announce <script[koth_config].parsed_key[messages.announce_location]>
     # 6,000t is 5 minutes
     - define particles <ellipsoid[current_koth].shell.filter[material.name.equals[air]]>
     - repeat 3000:
