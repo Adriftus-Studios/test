@@ -25,6 +25,10 @@ koth_events:
         - flag player koth.global.kills:0
         - flag player koth.global.deaths:0
         - flag player koth.global.wins:0
+      - if <server.current_bossbars.contains[current_koth]>:
+        - bossbar update current_koth players:<world[orient].players>
+      - else if <server.current_bossbars.contains[countdown]>:
+        - bossbar update countdown players:<world[orient].players>
     on player jumps flagged:koth_hop:
       - define location <player.location>
       - if <[location].pitch> < -25:
