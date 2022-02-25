@@ -46,7 +46,7 @@ impl_skill_second_wind:
 # "lore" field might be used in chat diplays, and other GUIs
 impl_skill_second_wind_icon:
   type: item
-  material: feather
+  material: iron_nugget
   display name: "<&a>Second Wind"
   lore:
   - "<&b>Instantly recover 50<&pc> of your HP"
