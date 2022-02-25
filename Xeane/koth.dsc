@@ -109,6 +109,7 @@ koth_update_directions:
   debug: false
   data:
     font_map:
+      "-135": <&chr[6916]>
       "-90": <&chr[6909]>
       "-45": <&chr[6910]>
       "0": <&chr[6911]>
