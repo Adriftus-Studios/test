@@ -109,7 +109,8 @@ koth_update_directions:
     - wait 2t
     - while <ellipsoid[current_koth].exists>:
       - foreach <world[orient].players> as:target:
-        - define yaw <[target].location.direction[<ellipsoid[current_koth].location>].yaw.sub[<player.location.yaw>].round_to_precision[45]>
+        - define yaw <[target].location.direction[<ellipsoid[current_koth].location>].yaw.sub[<[target].location.yaw>].round_to_precision[45]>
         - flag <[target]> koth.current.direction:<script.parsed_key[data.font_map.<[yaw]>]>
         - if <[loop_index].mod[10]> == 0:
           - wait 1t
+      - wait 2t
