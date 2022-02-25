@@ -41,10 +41,10 @@ koth_start:
       - flag server koth.current.leader.points:<&6>Awaiting...
     - announce <script[koth_config].data_key[messages.warning_5]>
     - wait 4m if:<[immediate].not||true>
-    - announce <script[koth_config].data_key[messages.warning_1]>
+    - announce <script[koth_config].parsed_key[messages.warning_1]>
     - wait 1m if:<[immediate].not||true>
     - flag <server.players_flagged[koth.current]> koth.current:!
-    - announce <script[koth_config].data_key[messages.start]>
+    - announce <script[koth_config].parsed_key[messages.start]>
     - flag <world[orient].players> koth.current.points:0
     - repeat 3:
       - ~run koth_run_area
@@ -95,15 +95,15 @@ koth_update_directions:
   debug: false
   data:
     font_map:
-      "-90": <element[a].font[adriftus:direction]>
-      "-45": <element[b].font[adriftus:direction]>
-      "0": <element[c].font[adriftus:direction]>
-      "45": <element[d].font[adriftus:direction]>
-      "90": <element[e].font[adriftus:direction]>
-      "135": <element[f].font[adriftus:direction]>
-      "180": <element[g].font[adriftus:direction]>
-      "225": <element[h].font[adriftus:direction]>
-      "270": <element[i].font[adriftus:direction]>
+      "-90": <&chr[6909]>
+      "-45": <&chr[6910]>
+      "0": <&chr[6911]>
+      "45": <&chr[6912]>
+      "90": <&chr[6913]>
+      "135": <&chr[6914]>
+      "180": <&chr[6915]>
+      "225": <&chr[6916]>
+      "270": <&chr[6909]>
   script:
     - while <ellipsoid[current_koth].exists>:
       - foreach <world[orient].players> as:target:
