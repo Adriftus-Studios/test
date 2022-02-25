@@ -36,13 +36,13 @@ koth_start:
   debug: false
   script:
     - announce <script[koth_config].data_key[messages.warning_5]>
-    - flag <server.players_flagged[koth.current]> koth.current:!
     - wait 4m
     - announce <script[koth_config].data_key[messages.warning_1]>
     - wait 1m
+    - flag <server.players_flagged[koth.current]> koth.current:!
     - announce <script[koth_config].data_key[messages.start]>
     - repeat 3:
-      - ~run start_koth_area
+      - ~run koth_run_area
     - note remove as:current_koth
     - define winner <server.online_players.sort_by_number[flag[koth.current.points]].last>
     - announce <script[koth_config].parsed_key[messages.winner]>
