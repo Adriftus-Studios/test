@@ -18,12 +18,19 @@ koth_events:
     on player joins:
       - if !<player.has_flag[koth.current]>:
         - flag player koth.current.points:0
+      - if !<player.has_flag[koth.global]>:
+        - flag player koth.global.points:0
+        - flag player koth.global.kills:0
+        - flag player koth.global.deaths:0
     on player jumps flagged:koth_hop:
       - define location <player.location>
       - if <[location].pitch> < -25 && <player.location.y> <= 35:
         - wait 1t
         - adjust <player> velocity:<[location].with_pitch[<[location].pitch.sub[5]>].direction.vector.mul[10]>
-
+    on player dies in:orient bukkit_priority:MONITOR:
+      - flag player koth.global.deaths:++
+      - if <context.damager.exists>:
+        - flag <context.damager> koth.global.kills:++
 koth_start:
   type: task
   debug: false
