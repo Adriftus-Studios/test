@@ -63,7 +63,7 @@ impl_skill_stealth_task:
   debug: false
   definitions: target
   script:
-    - cast invisibility duration:<script[impl_skill_stealth].parsed_key[balance.duration]> amplifier:0 no_ambient hide_particles no_icon
+    - cast invisibility duration:<script[impl_skill_stealth].parsed_key[balance.duration]> amplifier:0 no_ambient hide_particles
     - fakeequip <player> for:<server.online_players.filter_tag[<[filter_value].equals[<player>].not>]> head:air chest:air legs:air boots:air offhand:air hand:air duration:<script[impl_skill_stealth].parsed_key[balance.duration]>
     - playsound <player.location> sound:BLOCK_PORTAL_AMBIENT volume:0.5 sound_category:players
     - flag <player> on_next_damage:impl_skill_stealth_task_remove_damage
