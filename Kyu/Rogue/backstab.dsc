@@ -66,4 +66,5 @@ impl_skill_backstab_task:
     - teleport <[target].location.backward_flat.with_pitch[0]>
     - hurt <script[impl_skill_backstab].parsed_key[balance.damage]> <[target]> cause:ENTITY_ATTACK source:<player>
     - playeffect effect:CRIT at:<[target].location> visibility:50 quantity:5 offset:1.0
+    - playsound <player.location> sound:ENTITY_PLAYER_HURT_FREEZE volume:5.0 sound_category:players
     - determine true

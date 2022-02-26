@@ -50,7 +50,7 @@ impl_skill_magic_missile_icon:
   material: iron_nugget
   display name: "<&a>Magic Missile"
   lore:
-  - "<&b>Shoot a fireball at targets up to 25 blocks away"
+  - "<&b>Shoot a magic missile at targets up to 25 blocks away"
   - "<&b>Damages any enemies within its blast radius"
   mechanisms:
     custom_model_data: 6
@@ -66,6 +66,7 @@ impl_skill_magic_missile_task:
   script:
     - shoot arrow origin:<player> speed:<script[impl_skill_magic_missile].parsed_key[balance.speed]> shooter:<player> save:shot
     - adjust <entry[shot].shot_entity> hide_from_players
+    - playsound <player.location> sound:ENTITY_ENDER_DRAGON_SHOOT volume:5.0 sound_category:players
     - determine passively true
     - flag <entry[shot].shot_entity> on_hit_entity:impl_skill_magic_missile_damage_task
     - flag <entry[shot].shot_entity> on_hit_block:impl_skill_magic_missile_remove_task

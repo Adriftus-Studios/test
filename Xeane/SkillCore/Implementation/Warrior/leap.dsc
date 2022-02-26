@@ -66,6 +66,7 @@ impl_skill_leap_task:
   script:
     - if <player.is_on_ground>:
       - adjust <player> velocity:<player.location.with_pitch[<player.location.pitch.min[-35].max[-75]>].direction.vector.normalize.mul[<script[impl_skill_leap].data_key[balance.vector_multiplier]>]>
+      - playsound <player.location> sound:ENTITY_GOAT_LONG_JUMP volume:5.0 sound_category:players
       - flag player no_fall_damage_once duration:5s
       - determine true
     - narrate <script[impl_skill_leap].parsed_key[messages.not_on_ground]>

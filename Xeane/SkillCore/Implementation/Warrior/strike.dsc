@@ -65,6 +65,7 @@ impl_skill_strike_task:
   definitions: target
   script:
     - hurt <script[impl_skill_strike].parsed_key[balance.damage]> <[target]> cause:ENTITY_ATTACK source:<player>
+    - playsound <player.location> sound:ENTITY_WITHER_SHOOT volume:5.0 sound_category:players
     - flag <[target]> no_heal duration:<script[impl_skill_strike].parsed_key[balance.duration]>
     - determine passively true
     - if <[target].is_player>:

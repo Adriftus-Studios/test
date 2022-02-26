@@ -64,6 +64,7 @@ impl_skill_marksman_shot_task:
   definitions: target
   script:
     - shoot arrow origin:<player> destination:<[target].location> speed:<script[impl_skill_marksman_shot].parsed_key[balance.speed]> script:impl_skill_marksman_shot_damage_task shooter:<player>
+    - playsound <player.location> sound:ITEM_CROSSBOW_SHOOT volume:5.0 sound_category:players
     - determine true
 
 impl_skill_marksman_shot_damage_task:

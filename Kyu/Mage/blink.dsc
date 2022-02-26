@@ -69,4 +69,5 @@ impl_skill_blink_task:
       - teleport <[target].above>
     - else if <[target].above.material.is_solid> && <[target].material.is_solid>:
       - teleport <[target].above.backward>
+    - playsound <player.location> sound:ENTITY_ENDERMAN_TELEPORT volume:5.0 sound_category:players
     - determine true

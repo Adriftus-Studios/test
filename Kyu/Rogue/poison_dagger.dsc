@@ -66,6 +66,7 @@ impl_skill_poison_dagger_task:
   definitions: target
   script:
     - playeffect effect:spell_witch at:<player.eye_location.points_between[<player.precise_target_position>].distance[0.33]> quantity:5 offset:0.1
+    - playsound <player.location> sound:ENTITY_WITCH_THROW volume:5.0 sound_category:players
     - hurt <[target]> <script[impl_skill_poison_dagger].parsed_key[balance.damage]> cause:ENTITY_ATTACK source:<player>
     # Level 1 Poison. 25 ticks per half-heart (1 HP). 0.8 Half-hearts per second (2 HP * 0.4) (Minecraft Wiki)
     - cast poison <[target]> duration:<script[impl_skill_poison_dagger].parsed_key[balance.duration]> amplifier:0

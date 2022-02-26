@@ -65,6 +65,7 @@ impl_skill_shield_task:
   script:
     # Effect Level 10. A level of 5 and above gives full immunity to all damage. (Minecraft Wiki)
     - flag <[target]> no_damage duration:<script[impl_skill_shield].data_key[balance.duration]>
+    - playsound <player.location> sound:ENTITY_IRON_GOLEM_REPAIR volume:5.0 sound_category:players
     - repeat 30:
       - playeffect effect:spell at:<player.location.above[1]> offset:0.8 quantity:5
       - wait 2t

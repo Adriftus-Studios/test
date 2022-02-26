@@ -66,6 +66,7 @@ impl_skill_sick_em_task:
       - determine false
     - define entity <entity[impl_skill_sick_em_entity].with[custom_name=<&a><player.name><&sq>s<&sp>Wolf;tame=true;owner=<player>]>
     - spawn <[entity]> <player.location> target:<[target]> save:ent
+    - playsound <player.location> sound:ENTITY_WOLF_GROWL volume:5.0 sound_category:players
     - determine passively true
     - wait 10s
     - if <entry[ent].spawned_entity.exists>:

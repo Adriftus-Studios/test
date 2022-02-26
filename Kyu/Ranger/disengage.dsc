@@ -64,4 +64,5 @@ impl_skill_disengage_task:
   definitions: target
   script:
     - adjust <player> velocity:<player.location.with_pitch[35].backward.sub[<player.location.with_pitch[35]>]>
+    - playsound <player.location> sound:ENTITY_GOAT_LONG_JUMP volume:5.0 sound_category:players
     - determine true

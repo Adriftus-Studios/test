@@ -66,5 +66,6 @@ impl_skill_sprint_task:
     - if <player.is_on_ground>:
       # Effect Level 5.
       - cast speed duration:<script[impl_skill_sprint].parsed_key[balance.duration]> amplifier:<script[impl_skill_sprint].parsed_key[balance.level]> no_ambient hide_particles no_icon
+      - playsound <player.location> sound:ENTITY_SPLASH_POTION_BREAK volume:5.0 sound_category:players
       - determine true
     - determine false

@@ -64,4 +64,5 @@ impl_skill_second_wind_task:
   script:
     - heal <script[impl_skill_second_wind].parsed_key[balance.health]>
     - playeffect effect:totem at:<player.location.above[2]> quantity:20 offset:0.25
+    - playsound <player.location> sound:ENTITY_SPLASH_POTION_BREAK volume:5.0 sound_category:players
     - determine true
