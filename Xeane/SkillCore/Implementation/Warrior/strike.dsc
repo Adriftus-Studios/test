@@ -53,7 +53,7 @@ impl_skill_strike_icon:
   - "<&b>Strike your target within 5 blocks"
   - "<&b>Damages them and prevents any healing for 5 seconds"
   mechanisms:
-    custom_model_data: 1
+    custom_model_data: 10
 
 
 # The On Cast Task script has specific requirements, and limits

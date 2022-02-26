@@ -53,7 +53,7 @@ impl_skill_leap_icon:
   - "<&b>Leap forward in a range of angles"
   - "<&b>You will not take fall damage for 5 seconds"
   mechanisms:
-    custom_model_data: 1
+    custom_model_data: 11
 
 
 # The On Cast Task script has specific requirements, and limits

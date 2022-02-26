@@ -51,7 +51,7 @@ impl_skill_sword_spin_icon:
   lore:
   - "<&b>Damage and knock up any nearby enemies"
   mechanisms:
-    custom_model_data: 1
+    custom_model_data: 13
 
 
 # The On Cast Task script has specific requirements, and limits

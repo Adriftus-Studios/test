@@ -51,7 +51,7 @@ impl_skill_second_wind_icon:
   lore:
   - "<&b>Instantly recover 50<&pc> of your HP"
   mechanisms:
-    custom_model_data: 1
+    custom_model_data: 12
 
 
 # The On Cast Task script has specific requirements, and limits
