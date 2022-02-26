@@ -3,8 +3,9 @@ falling_block_trap:
   debug: false
   script:
     - define material <context.location.material>
+    - stop if:<[material].name.equals[air]>
     - modifyblock <context.location> air
-    - spawn falling_block[fallingblock_material=<[material]>] <context.location.center> save:block
+    - spawn falling_block[fallingblock_type=<[material]>] <context.location.center> save:block
     - flag <entry[block].spawned_entity> on_fall:cancel
     - wait 5s
     - modifyblock <context.location> <[material]>
