@@ -80,11 +80,12 @@ koth_run_area:
   type: task
   debug: false
   script:
-    - define location <server.flag[koth.global.koth_location].keys.random>
-    - define location_name <server.flag[koth.global.koth_location.<[location]>.name]>
+    - define location_id <server.flag[koth.global.koth_location].keys.random>
+    - define location <server.flag[koth.global.koth_location.<[location_id]>.location]>
+    - define location_name <server.flag[koth.global.koth_location.<[location_id]>.name]>
     - flag server koth.current.koth_location:<[location_name]>
-    - if <server.has_flag[koth.global.koth_location.<[location]>.beacon_glass]>:
-      - modifyblock <server.has_flag[koth.global.koth_location.<[location]>.beacon_glass]> green_stained_glass
+    - if <server.has_flag[koth.global.koth_location.<[location_id]>.beacon_glass]>:
+      - modifyblock <server.has_flag[koth.global.koth_location.<[location_id]>.beacon_glass]> green_stained_glass
     - define radius <script[koth_config].data_key[koth_radius]>
     - note <[location].as_location.to_ellipsoid[<[radius]>,<[radius]>,<[radius]>]> as:current_koth
     - announce <script[koth_config].parsed_key[messages.announce_location]>
