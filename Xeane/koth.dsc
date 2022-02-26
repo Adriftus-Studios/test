@@ -49,7 +49,6 @@ koth_start:
       - flag server koth.current.leader.points:<&6>Awaiting...
     - flag server koth.current.koth_location:<&6>Awaiting...
     - ~run koth_countdown if:<[immediate].not||true>
-    - flag <server.players_flagged[koth.current]> koth.current:!
     - announce <script[koth_config].parsed_key[messages.start]>
     - flag <server.players_flagged[koth.current.points]> koth.current.points:0
     - run koth_update_directions
