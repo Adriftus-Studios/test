@@ -11,4 +11,4 @@ block_properties:
         - narrate "<&a>Bypassing Infinite Chest Restriction With Admin Permissions."
       - else:
         - determine passively cancelled
-        - inventory open d:generic[title=<&6><context.location.inventory.title>;size=36;contents=<context.location.inventory.list_contents>]
+        - inventory open d:generic[title=<context.location.flag[infinite_chest]>;size=36;contents=<context.location.inventory.list_contents>]
