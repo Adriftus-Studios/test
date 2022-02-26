@@ -56,7 +56,7 @@ koth_start:
       - ~run koth_run_area
       - wait 1t
     - note remove as:current_koth
-    - define winner <server.online_players.sort_by_number[flag[koth.current.points]].last>
+    - define winner <server.online_players_flagged[koth.current.points].sort_by_number[flag[koth.current.points]].last>
     - flag <[winner]> koth.global.wins:++
     - announce <script[koth_config].parsed_key[messages.winner]>
     - run koth_start
