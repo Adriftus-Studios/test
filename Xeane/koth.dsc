@@ -44,6 +44,8 @@ koth_start:
   debug: false
   definitions: immediate
   script:
+    - while <world[orient].players.is_empty>:
+      - wait 1s
     - if !<server.has_flag[koth.current.leader]>:
       - flag server koth.current.leader.name:<&6>Awaiting...
       - flag server koth.current.leader.points:<&6>Awaiting...
