@@ -51,10 +51,11 @@ koth_start:
     - ~run koth_countdown if:<[immediate].not||true>
     - flag <server.players_flagged[koth.current]> koth.current:!
     - announce <script[koth_config].parsed_key[messages.start]>
-    - flag <world[orient].players> koth.current.points:0
+    - flag <server.players_flagged[koth.current.points]> koth.current.points:0
     - run koth_update_directions
     - repeat 3:
       - ~run koth_run_area
+      - wait 1t
     - note remove as:current_koth
     - define winner <server.online_players.sort_by_number[flag[koth.current.points]].last>
     - flag <[winner]> koth.global.wins:++
