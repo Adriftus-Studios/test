@@ -14,7 +14,7 @@ impl_skill_sprint:
   - "true"
 
   # Cooldown
-  cooldown: 12s
+  cooldown: 10s
 
   # Task Script to bee run when the ability is used successfully
   # This Task Script MUST be within this file, as with any code associated with this skill
