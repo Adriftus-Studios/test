@@ -84,7 +84,7 @@ koth_run_area:
     - define location_name <server.flag[koth.global.koth_location.<[location_id]>.name]>
     - flag server koth.current.koth_location:<[location_name]>
     - if <server.has_flag[koth.global.koth_location.<[location_id]>.beacon_glass]>:
-      - modifyblock <server.has_flag[koth.global.koth_location.<[location_id]>.beacon_glass]> green_stained_glass
+      - modifyblock <server.flag[koth.global.koth_location.<[location_id]>.beacon_glass]> green_stained_glass
     - define radius <script[koth_config].data_key[koth_radius]>
     - note <[location].as_location.to_ellipsoid[<[radius]>,<[radius]>,<[radius]>]> as:current_koth
     - announce <script[koth_config].parsed_key[messages.announce_location]>
