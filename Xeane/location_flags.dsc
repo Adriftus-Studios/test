@@ -9,4 +9,4 @@ block_properties:
     on player right clicks block_flagged:infinite_chest:
       - if !<player.has_permission[adriftus.admin]> || !<player.is_sneaking>:
         - determine passively cancelled
-        - inventory open "d:generic[title=<&6>Armory Chest;size=36;contents=<context.location.inventory.list_contents>]"
+        - inventory open d:generic[title=<&6><context.location.inventory.title>;size=36;contents=<context.location.inventory.list_contents>]
