@@ -56,7 +56,7 @@ koth_start:
     - run koth_update_directions
     - repeat 3:
       - ~run koth_run_area
-      - wait 1t
+      - wait 1s
     - note remove as:current_koth
     - if <server.online_players_flagged[koth.current.points].size> > 0:
       - define winner <server.online_players_flagged[koth.current.points].sort_by_number[flag[koth.current.points]].last>
@@ -92,7 +92,7 @@ koth_run_area:
     - note <[location].as_location.to_ellipsoid[<[radius]>,<[radius]>,<[radius]>]> as:current_koth
     - announce <script[koth_config].parsed_key[messages.announce_location]>
     # 6,000t is 5 minutes
-    - bossbar create current_koth title:<[location_name]> progress:1 color:green
+    - bossbar create current_koth title:<[location_name]> progress:1 color:green players:<world[orient].players>
     - define particles <ellipsoid[current_koth].shell.filter[material.name.equals[air]]>
     - repeat 6000:
       - if <[value].mod[20]> == 0:
