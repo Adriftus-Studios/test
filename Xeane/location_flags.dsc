@@ -6,6 +6,8 @@ block_properties:
       - determine cancelled
     on player breaks block location_flagged:on_break:
       - inject <context.location.flag[on_break]>
+    on player steps on block_flagged:on_step:
+      - inject <context.location.flag[on_step]>
     on player right clicks chest location_flagged:infinite_chest:
       - if <player.has_permission[adriftus.admin]> && <player.is_sneaking>:
         - narrate "<&a>Bypassing Infinite Chest Restriction With Admin Permissions."
