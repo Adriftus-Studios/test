@@ -33,11 +33,11 @@ koth_events:
         - bossbar update current_koth players:<world[orient].players>
       - else if <server.current_bossbars.contains[countdown]>:
         - bossbar update countdown players:<world[orient].players>
-    on player jumps flagged:koth_hop:
+    on player jumps flagged:koth_liftoff:
       - define location <player.location>
-      - if <[location].pitch> < -25:
+      - if <[location].pitch> < -75:
         - wait 1t
-        - adjust <player> velocity:<[location].with_pitch[<[location].pitch.sub[5]>].direction.vector.mul[10]>
+        - run koth_launcher def:true
     on player dies in:orient bukkit_priority:MONITOR:
       - flag player koth.global.deaths:++
       - if <context.damager.exists>:
@@ -51,7 +51,7 @@ koth_events:
       - determine NO_DROPS
     on player enters koth_area:
       - flag <player> no_damage:!
-      - flag <player> koth_hop:!
+      - flag <player> koth_liftoff:!
       - adjust <player> gliding:false if:<player.gliding>
     after player enters spawn_launcher:
       - inject koth_launcher
@@ -82,7 +82,7 @@ koth_start:
     - note remove as:current_koth
     - flag server koth.current.last_hill:!
     - heal <world[orient].players>
-    - flag <server.online_players> no_damage
+    - flag <world[orient].players> no_damage
     - teleport <world[orient].players.filter[location.is_in[spawn].not]> <location[spawn_location]>
     - if <server.online_players_flagged[koth.current.points].size> > 0:
       - define winner <server.online_players_flagged[koth.current.points].sort_by_number[flag[koth.current.points]].last>
@@ -136,21 +136,14 @@ koth_run_area:
         - flag server koth.current.leader.name:<[leader].display_name>
         - flag server koth.current.leader.points:<[leader].flag[koth.current.points]>
       - wait 1t
-    - run koth_enable_hop
     - bossbar remove current_koth
     - note remove as:koth_area
+    - flag <world[orient].players> koth_liftoff
+    - announce to_flagged:koth_liftoff "<&e>Look straight up and jump to activate flight."
     - flag server koth.current.last_hill:<[location_id]>
     - worldborder <world[orient].players> reset
     - if <server.has_flag[koth.global.koth_location.<[location_id]>.beacon_glass]>:
       - modifyblock <server.has_flag[koth.global.koth_location.<[location_id]>.beacon_glass]> red_stained_glass
-
-koth_enable_hop:
-  type: task
-  debug: false
-  script:
-    - define targets <world[orient].players.filter[location.is_in[spawn].not]>
-    - foreach <[targets]>:
-      - flag <[value]> koth_hop
 
 koth_update_directions:
   type: task
@@ -189,10 +182,20 @@ koth_update_directions:
 koth_launcher:
   type: task
   debug: false
+  definitions: not_spawn
   script:
     - look <ellipsoid[current_koth].location.with_y[275]> if:<ellipsoid[current_koth].exists>
-    - adjust <player> velocity:0,10,0
-    - wait 1.5s
+    - if <[not_spawn]||false>:
+      - adjust <player> gravity:false
+      - while <player.is_online> && <player.location.y> < 250:
+        - adjust <player> velocity:0,1,0
+        - wait 1s
+      - adjust <player> gravity:true
+    - else:
+      - adjust <player> velocity:0,10,0
+      - wait 1.5s
+    - if !<player.is_online>:
+      - stop
     - define chest <player.equipment.get[3]||air>
     - fakeequip <player> chest:<[chest]> for:<server.online_players>
     - equip <player> chest:elytra
