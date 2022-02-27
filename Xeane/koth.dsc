@@ -79,6 +79,7 @@ koth_start:
       - ~run koth_run_area def:<[value]>
       - wait 1s
     - note remove as:current_koth
+    - flag server koth.current.last_hill:!
     - teleport <world[orient].players.filter[location.is_in[spawn].not]> <location[spawn_location]>
     - if <server.online_players_flagged[koth.current.points].size> > 0:
       - define winner <server.online_players_flagged[koth.current.points].sort_by_number[flag[koth.current.points]].last>
@@ -105,7 +106,8 @@ koth_run_area:
   debug: false
   definitions: round
   script:
-    - define location_id <server.flag[koth.global.koth_location].keys.random>
+    - define last_hill <server.flag[koth.current.last_hill]||null>
+    - define location_id <server.flag[koth.global.koth_location].keys.exclude[<[last_hill]>].random>
     - define location <server.flag[koth.global.koth_location.<[location_id]>.location]>
     - define location_name <server.flag[koth.global.koth_location.<[location_id]>.name]>
     - flag server koth.current.koth_location:<[location_name]>
@@ -133,6 +135,7 @@ koth_run_area:
       - wait 1t
     - bossbar remove current_koth
     - note remove as:koth_area
+    - flag server koth.current.last_hill:<[location_id]>
     - worldborder <world[orient].players> reset
     - if <server.has_flag[koth.global.koth_location.<[location_id]>.beacon_glass]>:
       - modifyblock <server.has_flag[koth.global.koth_location.<[location_id]>.beacon_glass]> red_stained_glass
