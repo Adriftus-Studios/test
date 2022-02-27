@@ -48,3 +48,11 @@ loadout_update_visual:
   - stop if:<[player].is_truthy.not>
   - stop if:<[loadoutNumber].is_truthy.not>
   - stop if:<[player].has_flag[loadout.display.<[loadoutNumber]>]>
+  - define armorstand <location[loadout.<[loadoutNumber]>].find_entities[armor_stand].within[0.00001]>
+  - define hand:<[player].flag[loadout.display.<[loadoutNumber]>.hand]>
+  - define offhand:<[player].flag[loadout.display.<[loadoutNumber]>.offhand]>
+  - define head:<[player].flag[loadout.display.<[loadoutNumber]>.head]>
+  - define chest:<[player].flag[loadout.display.<[loadoutNumber]>.chest]>
+  - define legs:<[player].flag[loadout.display.<[loadoutNumber]>.legs]>
+  - define boots:<[player].flag[loadout.display.<[loadoutNumber]>.feet]>
+  - fakeequip <[armorstand]> for:<[player]> hand:<[hand]> offhand:<[offhand]> head:<[head]> chest:<[chest]> legs:<[legs]> boots:<[boots]>
