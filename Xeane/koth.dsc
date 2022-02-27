@@ -43,6 +43,7 @@ koth_events:
     on player respawns:
       - determine passively <location[spawn_location]>
       - flag <player> no_damage
+      - wait 1t
       - worldborder reset <player>
     on player dies bukkit_priority:HIGHEST:
       - determine NO_DROPS
