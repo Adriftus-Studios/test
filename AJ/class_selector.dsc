@@ -6,7 +6,7 @@ inventory_class_selector_events:
     - if <context.item.script.data_key[data.class_impl].exists>:
       - define impl <context.item.script.data_key[data.class_impl].as_script>
       - define class <[impl].data_key[name]>
-      - run class_weapon_add_skillTree def:<[class]>
+      - run class_select def:<[class]>
 
 inventory_class_selector:
   type: inventory
