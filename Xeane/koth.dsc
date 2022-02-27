@@ -41,7 +41,7 @@ koth_events:
       - if <context.damager.exists>:
         - flag <context.damager> koth.global.kills:++
     on player respawns:
-      - determine passively <world[orient].spawn_location>
+      - determine passively <location[spawn_location]>
       - flag <player> no_damage
       - worldborder reset <player>
     on player dies bukkit_priority:HIGHEST:
@@ -185,6 +185,7 @@ koth_launcher:
   type: task
   debug: false
   script:
+    - look <ellipsoid[current_koth].location.with_y[275]> if:<ellipsoid[current_koth].exists>
     - adjust <player> velocity:0,10,0
     - wait 1.5s
     - define chest <player.equipment_map.get[chest]||air>
