@@ -16,6 +16,7 @@ koth_events:
         - createworld orient
         - wait 10s
       - run koth_start
+      - run koth_spawn_launcher_particles
     on player joins:
       - if !<player.has_flag[koth.current]>:
         - flag player koth.current.points:0
@@ -175,3 +176,10 @@ koth_launcher:
       - wait 1s
     - equip <player> chest:<[chest]>
     - fakeequip <player> reset
+
+koth_spawn_launcher_particles:
+  type: task
+  debug: false
+  script:
+    - while <cuboid[spawn_launcher].exists>:
+      - playeffect at:<cuboid[spawn_launcher].blocks.random[5]> effect:dragon_breath quantity:3 offset:0.5 velocity:0,0.5,0 targets:<world[orient].players>
