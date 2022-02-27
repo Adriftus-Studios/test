@@ -57,7 +57,7 @@ koth_events:
       - inject koth_launcher
     after player exits spawn:
       - flag <player> koth_hop
-      - if <ellipsoid[current_koth].exists>:
+      - if <ellipsoid[current_koth].exists> && <player.is_online>:
         - worldborder <player> center:<ellipsoid[current_koth].location> size:50
 
 koth_start:
@@ -199,10 +199,11 @@ koth_launcher:
     - adjust <player> velocity:<player.location.direction.vector>
     - wait 1t
     - adjust <player> gliding:true
-    - while <player.gliding>:
+    - while <player.is_online> && <player.gliding>:
       - wait 1s
-    - equip <player> chest:<[chest]>
-    - fakeequip <player> reset for:<server.online_players>
+    - if <player.is_online>:
+      - equip <player> chest:<[chest]>
+      - fakeequip <player> reset for:<server.online_players>
 
 koth_spawn_launcher_particles:
   type: task
