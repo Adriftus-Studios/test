@@ -201,7 +201,7 @@ koth_launcher:
     - while <player.gliding>:
       - wait 1s
     - equip <player> chest:<[chest]>
-    - fakeequip <player> reset
+    - fakeequip <player> reset for:<server.online_players>
 
 koth_spawn_launcher_particles:
   type: task
