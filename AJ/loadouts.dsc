@@ -9,9 +9,10 @@ inventory_class_selector_events:
       - run loadout_set_inventory def:<[loadout]>|<player>
     - else:
       - run loadout_restore_inventory def:<[loadout]>|<player>
-      on player joins:
-      - repeat 3:
-        - run loadout_update_visual def:<[value]>|<player>
+      on player join:
+      - run loadout_update_visual def:1|<player>
+      - run loadout_update_visual def:2|<player>
+      - run loadout_update_visual def:3|<player>
 
 loadout_restore_inventory:
   type: task
