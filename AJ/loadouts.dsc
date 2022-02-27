@@ -9,7 +9,7 @@ inventory_class_selector_events:
       - run loadout_set_inventory def:<[loadout]>|<player>
     - else:
       - run loadout_restore_inventory def:<[loadout]>|<player>
-      on player join:
+      after player join:
       - run loadout_update_visual def:1|<player>
       - run loadout_update_visual def:2|<player>
       - run loadout_update_visual def:3|<player>
