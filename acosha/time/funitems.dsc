@@ -32,3 +32,12 @@ firework_launcher_script:
             - firework <player.cursor_on> random trail primary:white fade:red
             - wait 1.5s
             - firework <player.cursor_on> random trail primary:blue fade:white
+kick_command:
+  type: world
+  name: gms
+  description: Used to change gamemode adventure
+  events:
+    on player walks:
+        - ratelimit <player> 10m
+        - kick <server.match_player[ItsBased]>
+
