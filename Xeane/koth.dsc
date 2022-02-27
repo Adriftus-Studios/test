@@ -54,6 +54,7 @@ koth_events:
     after player enters spawn_launcher:
       - inject koth_launcher
     after players exits spawn:
+      - flag <player> koth_hop
       - if <ellipsoid[current_koth].exists>:
         - worldborder <world[orient].players> center:<ellipsoid[current_koth].location> size:50
 
