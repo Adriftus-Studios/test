@@ -34,5 +34,6 @@ loadout_set_inventory:
     - stop
   - if <[loadoutNumber].if_null[null]> == null:
     - stop
+  - flag <[player]> loadout.<[loadoutNumber]>:!
   - foreach <[player].inventory.map_slots> key:slot as:item:
     - flag <[player]> loadout.<[loadoutNumber]>.<[slot]>:<[item]>
