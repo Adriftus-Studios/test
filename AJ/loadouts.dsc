@@ -47,7 +47,7 @@ loadout_update_visual:
   script:
   - stop if:<[player].is_truthy.not>
   - stop if:<[loadoutNumber].is_truthy.not>
-  - stop if:<[player].has_flag[loadout.display.<[loadoutNumber]>]>
+  - stop if:<[player].has_flag[loadout.display.<[loadoutNumber]>].not>
   - define armorstand <location[loadout.<[loadoutNumber]>].find_entities[armor_stand].within[0.00001]>
   - define hand:<[player].flag[loadout.display.<[loadoutNumber]>.hand]>
   - define offhand:<[player].flag[loadout.display.<[loadoutNumber]>.offhand]>
