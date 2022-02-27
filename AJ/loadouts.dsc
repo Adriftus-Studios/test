@@ -21,9 +21,9 @@ loadout_restore_inventory:
     - stop
   - if !<[player].has_flag[loadout.<[loadoutNumber]>]>:
     - stop
-  - inventory clear d:<player.inventory>
-  - foreach <[player].inventory.map_slots> key:slot as:item:
-    - flag <[player]> loadout.<[loadoutNumber]>.<[slot]>:<[item]>
+  - inventory clear d:<[player].inventory>
+  - foreach <[player].flag[loadout.<[loadoutNumber]>]> key:slot as:item:
+    - inventory set d:<[player].inventory> slot:<[slot]> o:<[item]>
 
 loadout_set_inventory:
   type: task
