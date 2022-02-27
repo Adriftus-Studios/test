@@ -41,12 +41,21 @@ koth_events:
       - if <context.damager.exists>:
         - flag <context.damager> koth.global.kills:++
     on player respawns:
-      - determine <world[orient].spawn_location>
+      - determine passively <world[orient].spawn_location>
+      - flag <player> no_damage
+      - worldborder reset <player>
     on player dies bukkit_priority:HIGHEST:
       - determine NO_DROPS
-      
+    on player enters koth_area:
+      - flag <player> no_damage:!
+      - flag <player> koth_hop:!
+      - adjust <player> gliding:false if:<player.gliding>
+      - flag <player> no_fall_damage_once duration:15s
     after player enters spawn_launcher:
       - inject koth_launcher
+    after players exits spawn:
+      - if <ellipsoid[current_koth].exists>:
+        - worldborder <world[orient].players> center:<ellipsoid[current_koth].location> size:50
 
 koth_start:
   type: task
@@ -99,7 +108,9 @@ koth_run_area:
     - if <server.has_flag[koth.global.koth_location.<[location_id]>.beacon_glass]>:
       - modifyblock <server.flag[koth.global.koth_location.<[location_id]>.beacon_glass]> green_stained_glass
     - define radius <script[koth_config].data_key[koth_radius]>
-    - note <[location].as_location.to_ellipsoid[<[radius]>,<[radius]>,<[radius]>]> as:current_koth
+    - note <[location].to_ellipsoid[<[radius]>,<[radius]>,<[radius]>]> as:current_koth
+    - note <[location].sub[50,200,50].to_cuboid[<[location].add[50,200,50]>]> as:koth_area
+    - worldborder <world[orient].players> center:<[location]> size:50
     - announce <script[koth_config].parsed_key[messages.announce_location]>
     # 6,000t is 5 minutes
     - bossbar create current_koth title:<[location_name]> (<[round]>/3) progress:1 color:green players:<world[orient].players>
@@ -117,6 +128,7 @@ koth_run_area:
         - flag server koth.current.leader.points:<[leader].flag[koth.current.points]>
       - wait 1t
     - bossbar remove current_koth
+    - worldborder <world[orient].players> reset
     - if <server.has_flag[koth.global.koth_location.<[location_id]>.beacon_glass]>:
       - modifyblock <server.has_flag[koth.global.koth_location.<[location_id]>.beacon_glass]> red_stained_glass
 
@@ -177,7 +189,6 @@ koth_launcher:
     - adjust <player> velocity:<player.location.direction.vector>
     - wait 1t
     - adjust <player> gliding:true
-    - flag <[targets]> no_fall_damage_once duration:1m
     - while <player.gliding>:
       - wait 1s
     - equip <player> chest:<[chest]>
