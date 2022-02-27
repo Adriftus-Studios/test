@@ -205,6 +205,7 @@ class_weapon_add_skillTree:
   definitions: skillTree
   script:
     - if <server.has_flag[skills.trees.<[skillTree]>]>:
+      - flag player class:<[skillTree]>
       - foreach <server.flag[skills.trees.<[skillTree]>].keys.exclude[script]> as:skill:
         - flag player skills.abilities.<[skill]>:<server.flag[<server.flag[skills.tree.<[skillTree]>.<[skill]>]>]>
         - flag player skills.trees.<[skillTree]>.<[skill]>:<server.flag[<server.flag[skills.tree.<[skillTree]>.<[skill]>]>]>
@@ -272,13 +273,13 @@ class_select:
   debug: false
   definitions: class
   script:
-    - if !<list[rogue|warrior|mage|ranger].contains[<[class]>]>:
+    - if !<list[rogue|warrior|mage|ranger].contains[<context.args.get[1]>]>:
       - narrate "<element[Unknown class - <[class]>].rainbow>"
       - stop
     - if <player.has_flag[class]>:
       - run class_weapon_remove_skillTree def:<player.flag[class]>
-    - run class_weapon_add_skillTree def:<[class]>
-    - flag player class:<[class]>
+    - run class_weapon_add_skillTree def:<context.args.get[1]>
+    - flag player class:<context.args.get[1]>
 
 class_weapon_select:
   type: command
