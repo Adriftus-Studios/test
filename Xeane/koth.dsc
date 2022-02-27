@@ -53,7 +53,7 @@ koth_events:
       - flag <player> no_fall_damage_once duration:15s
     after player enters spawn_launcher:
       - inject koth_launcher
-    after players exits spawn:
+    after player exits spawn:
       - flag <player> koth_hop
       - if <ellipsoid[current_koth].exists>:
         - worldborder <world[orient].players> center:<ellipsoid[current_koth].location> size:50
