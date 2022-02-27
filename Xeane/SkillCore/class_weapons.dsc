@@ -272,7 +272,7 @@ class_select:
   debug: false
   definitions: class
   script:
-    - if !<list[rogue|warrior|mage|ranger].contains[<context.args.get[1]>]>:
+    - if !<list[rogue|warrior|mage|ranger].contains[<[class]>]>:
       - narrate "<element[Unknown class - <[class]>].rainbow>"
       - stop
     - if <player.has_flag[class]>:
