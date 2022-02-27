@@ -14,7 +14,7 @@ impl_skill_sprint:
   - "true"
 
   # Cooldown
-  cooldown: 12s
+  cooldown: 10s
 
   # Task Script to bee run when the ability is used successfully
   # This Task Script MUST be within this file, as with any code associated with this skill
@@ -40,19 +40,19 @@ impl_skill_sprint:
 
   # Balance Values used in the script
   balance:
-    duration: 1s
+    duration: 2s
     level: 4
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
 impl_skill_sprint_icon:
   type: item
-  material: feather
+  material: iron_nugget
   display name: "<&a>Sprint"
   lore:
   - "<&b>Gain a short burst of speed"
   mechanisms:
-    custom_model_data: 4
+    custom_model_data: 15
 
 
 # The On Cast Task script has specific requirements, and limits
@@ -63,6 +63,9 @@ impl_skill_sprint_task:
   debug: false
   definitions: target
   script:
-    # Effect Level 5.
-    - cast speed duration:<script[impl_skill_sprint].parsed_key[balance.duration]> amplifier:<script[impl_skill_sprint].parsed_key[balance.level]> no_ambient hide_particles no_icon
-    - determine true
+    - if <player.is_on_ground>:
+      # Effect Level 5.
+      - cast speed duration:<script[impl_skill_sprint].parsed_key[balance.duration]> amplifier:<script[impl_skill_sprint].parsed_key[balance.level]> no_ambient hide_particles no_icon
+      - playsound <player.location> sound:ENTITY_SPLASH_POTION_BREAK volume:5.0 sound_category:players
+      - determine true
+    - determine false

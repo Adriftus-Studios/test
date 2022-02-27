@@ -30,7 +30,7 @@ impl_skill_sick_em:
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "<player>"
+  - "<player.target||null>"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
@@ -46,12 +46,12 @@ impl_skill_sick_em:
 # "lore" field might be used in chat diplays, and other GUIs
 impl_skill_sick_em_icon:
   type: item
-  material: feather
+  material: iron_nugget
   display name: "<&a>Sick 'em!"
   lore:
   - "<&b>Summon a wolf to assist you in battle"
   mechanisms:
-    custom_model_data: 2
+    custom_model_data: 21
 
 
 # The On Cast Task script has specific requirements, and limits
@@ -62,13 +62,20 @@ impl_skill_sick_em_task:
   debug: false
   definitions: target
   script:
-    - define entity <entity[impl_skill_sick_em_entity].with[custom_name=<&a><player.name><&sq>s<&sp>Wolf;tame=<player>;owner=<player>]>
-    - spawn <[entity]> <player.location>
-    - determine true
+    - if <[target]> == null:
+      - determine false
+    - define entity <entity[impl_skill_sick_em_entity].with[custom_name=<&a><player.name><&sq>s<&sp>Wolf;tame=true;owner=<player>]>
+    - spawn <[entity]> <player.location> target:<[target]> save:ent
+    - playsound <player.location> sound:ENTITY_WOLF_GROWL volume:5.0 sound_category:players
+    - determine passively true
+    - wait 10s
+    - if <entry[ent].spawned_entity.exists>:
+      - remove <entry[ent].spawned_entity>
 
 impl_skill_sick_em_entity:
   type: entity
   debug: false
   entity_type: wolf
   mechanisms:
+    speed: 0.4
     health_data: <script[impl_skill_sick_em].parsed_key[balance.health]>/<script[impl_skill_sick_em].parsed_key[balance.health]>

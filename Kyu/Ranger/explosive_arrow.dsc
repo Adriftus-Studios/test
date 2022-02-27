@@ -47,12 +47,12 @@ impl_skill_explosive_arrow:
 # "lore" field might be used in chat diplays, and other GUIs
 impl_skill_explosive_arrow_icon:
   type: item
-  material: feather
+  material: iron_nugget
   display name: "<&a>Explosive Arrow"
   lore:
   - "<&b>Shoot an explosive arrow at targets up to 20 blocks away"
   mechanisms:
-    custom_model_data: 2
+    custom_model_data: 20
 
 
 # The On Cast Task script has specific requirements, and limits

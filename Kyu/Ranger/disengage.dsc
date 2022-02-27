@@ -47,12 +47,12 @@ impl_skill_disengage:
 # "lore" field might be used in chat diplays, and other GUIs
 impl_skill_disengage_icon:
   type: item
-  material: feather
+  material: iron_nugget
   display name: "<&a>Disengage"
   lore:
   - "<&b>Leap backwards to put some distance between yourself and your enemies"
   mechanisms:
-    custom_model_data: 2
+    custom_model_data: 19
 
 
 # The On Cast Task script has specific requirements, and limits
@@ -63,5 +63,6 @@ impl_skill_disengage_task:
   debug: false
   definitions: target
   script:
-    - push <player> origin:<player.location.with_pitch[0]> destination:<player.location.backward_flat[<script[impl_skill_disengage].parsed_key[balance.distance]>].above[2]> speed:<script[impl_skill_disengage].parsed_key[balance.speed]> no_rotate no_damage
+    - adjust <player> velocity:<player.location.with_pitch[35].backward.sub[<player.location.with_pitch[35]>]>
+    - playsound <player.location> sound:ENTITY_GOAT_LONG_JUMP volume:5.0 sound_category:players
     - determine true

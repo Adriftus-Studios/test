@@ -92,17 +92,20 @@ spawn_sheep:
 chest_lock_item:
   type: item
   material: iron_nugget
-  display name: <white><bold>Iron Padlock
+  display name: <white>Iron Padlock
   lore:
     - <yellow><bold>Right-click a chest to lock it.
 
 chest_lock:
-    type: world
-    events:
-            after player right clicks chest|large_chest with:chest_lock_item:
-            - if <player.has_flag[chest_owner]>:
-                - determine cancelled:false
-            - if <player.has_flag[chest_owner].not>:
-                - narrate "You do not own this chest."
-                - determine cancelled
+    type: command
+    name: chestlock
+    description: Locks a chest to prevent stealing.
+    usage: /chestlock | /cl
+    script:
+        on player looks at chest with:chest_lock_item:
+            #- if <player> types "/cl" <== drafted line:
+            #    - flag <player> chest_owner
+            #- if <player.has_flag[chest_owner].not>:
+            #    - determine passively cancelled
+            #    - narrate "You do not own this chest."
 #Incomplete

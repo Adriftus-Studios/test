@@ -30,7 +30,7 @@ impl_skill_blast:
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "<player.precise_target[5]>"
+  - "<player.location.find_entities.within[5].exclude[<player>]>"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
@@ -47,12 +47,12 @@ impl_skill_blast:
 # "lore" field might be used in chat diplays, and other GUIs
 impl_skill_blast_icon:
   type: item
-  material: feather
+  material: iron_nugget
   display name: "<&a>Blast"
   lore:
   - "<&b>Blast away any nearby enemies"
   mechanisms:
-    custom_model_data: 3
+    custom_model_data: 9
 
 
 # The On Cast Task script has specific requirements, and limits
@@ -61,8 +61,12 @@ impl_skill_blast_icon:
 impl_skill_blast_task:
   type: task
   debug: false
-  definitions: target
+  definitions: targets
   script:
-    - foreach <player.location.find.living_entities.within[<script[impl_skill_blast].parsed_key[balance.radius]>].remove[1]> as:entity:
-      - push <[entity]> destination:<[entity].location.facing[<player>].with_pitch[0].backward_flat> speed:0.5 duration:5t no_rotate
+    - playeffect effect:explosion_huge at:<player.location> quantity:5 offset:0.5
+    - foreach <[targets]> as:target:
+      - define vector <[target].location.sub[<player.location>]>
+      - adjust <[target]> velocity:<[vector].normalize.with_y[0.3]>
+      - if !<[target].effects_data.parse[get[name]].contains[SPEED]>:
+        - cast speed amplifier:-2 duration:10s <[target]>
     - determine true

@@ -47,12 +47,12 @@ impl_skill_marksman_shot:
 # "lore" field might be used in chat diplays, and other GUIs
 impl_skill_marksman_shot_icon:
   type: item
-  material: feather
+  material: iron_nugget
   display name: "<&a>Marksman Shot"
   lore:
   - "<&b>Shoot a high-velocity arrow at targets up to 30 blocks away"
   mechanisms:
-    custom_model_data: 2
+    custom_model_data: 18
 
 
 # The On Cast Task script has specific requirements, and limits
@@ -64,6 +64,7 @@ impl_skill_marksman_shot_task:
   definitions: target
   script:
     - shoot arrow origin:<player> destination:<[target].location> speed:<script[impl_skill_marksman_shot].parsed_key[balance.speed]> script:impl_skill_marksman_shot_damage_task shooter:<player>
+    - playsound <player.location> sound:ITEM_CROSSBOW_SHOOT volume:5.0 sound_category:players
     - determine true
 
 impl_skill_marksman_shot_damage_task:

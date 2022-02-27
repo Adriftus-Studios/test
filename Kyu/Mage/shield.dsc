@@ -47,12 +47,12 @@ impl_skill_shield:
 # "lore" field might be used in chat diplays, and other GUIs
 impl_skill_shield_icon:
   type: item
-  material: feather
+  material: iron_nugget
   display name: "<&a>Shield"
   lore:
   - "<&b>Shield yourself from incoming damage for 3 seconds"
   mechanisms:
-    custom_model_data: 3
+    custom_model_data: 8
 
 
 # The On Cast Task script has specific requirements, and limits
@@ -64,5 +64,9 @@ impl_skill_shield_task:
   definitions: target
   script:
     # Effect Level 10. A level of 5 and above gives full immunity to all damage. (Minecraft Wiki)
-    - cast damage_resistance duration:<script[impl_skill_shield].parsed_key[balance.duration]> amplifier:9 no_ambient hide_particles no_icon
+    - flag <[target]> no_damage duration:<script[impl_skill_shield].data_key[balance.duration]>
+    - playsound <player.location> sound:ENTITY_IRON_GOLEM_REPAIR volume:5.0 sound_category:players
+    - repeat 30:
+      - playeffect effect:spell at:<player.location.above[1]> offset:0.8 quantity:5
+      - wait 2t
     - determine true

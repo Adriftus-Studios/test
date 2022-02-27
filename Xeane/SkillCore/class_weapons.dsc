@@ -7,7 +7,7 @@ class_weapon_inventory:
   gui: true
   slots:
     - [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
-    - [standard_filler] [standard_filler] [] [] [] [] [standard_filler] [standard_filler] [standard_filler]
+    - [standard_filler] [standard_filler] [standard_filler] [] [] [] [standard_filler] [standard_filler] [standard_filler]
     - [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
     - [standard_filler] [standard_filler] [] [] [] [] [standard_filler] [standard_filler] [standard_filler]
     - [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
@@ -29,7 +29,6 @@ class_weapon_open:
   debug: false
   data:
     hotkeys:
-      - "Left"
       - "Right"
       - "Drop"
       - "Swap"
@@ -50,7 +49,7 @@ class_weapon_open:
     - foreach <script.data_key[data.hotkeys]> as:hotkey_button:
       - define map <script.parsed_key[data.item_format]>
       - define mechanisms <[map].keys.parse_tag[<[parse_value]>=<[map].get[<[parse_value]>]>].separated_by[;]>
-      - if !<player.has_flag[hotkeys.<[hotkey_button]>]>:
+      - if !<player.has_flag[hotkeys.<[hotkey_button]>]> || !<server.has_flag[skills.abilities.<player.flag[hotkeys.<[hotkey_button]>]>]>:
         - define items:->:<item[class_weapon_hotkey_button].with[<[mechanisms]>].with_flag[hotkey:<[hotkey_button]>]>
       - else:
         - define skill_script <server.flag[skills.abilities.<player.flag[hotkeys.<[hotkey_button]>]>]>
@@ -196,25 +195,130 @@ class_weapon_remove_skillTree:
   definitions: skillTree
   script:
     - if <player.has_flag[skills.trees.<[skillTree]>]>:
-      - foreach <player.flag[skills.tree.<[skillTree]>].keys> as:skill:
+      - foreach <player.flag[skills.trees.<[skillTree]>].keys> as:skill:
         - flag player skills.abilities.<[skill]>:!
       - flag player skills.trees.<[skillTree]>:!
+
+class_weapon_add_skillTree:
+  type: task
+  debug: false
+  definitions: skillTree
+  script:
+    - if <server.has_flag[skills.trees.<[skillTree]>]>:
+      - foreach <server.flag[skills.trees.<[skillTree]>].keys.exclude[script]> as:skill:
+        - flag player skills.abilities.<[skill]>:<server.flag[<server.flag[skills.tree.<[skillTree]>.<[skill]>]>]>
+        - flag player skills.trees.<[skillTree]>.<[skill]>:<server.flag[<server.flag[skills.tree.<[skillTree]>.<[skill]>]>]>
 
 class_weapon_use_event:
   type: world
   debug: false
   events:
-    on player left clicks block with:item_flagged:class_weapon flagged:hotkeys:
+    on player left clicks block with:item_flagged:class_weapon flagged:hotkeys bukkit_priority:LOW:
+      - ratelimit <player> 2t
       - if <player.is_sprinting> && <player.has_flag[hotkeys.sprint_left]>:
         - run skill_core_use def:<player.flag[hotkeys.sprint_left]>
+        - determine cancelled
       - else if <player.is_sneaking> && <player.has_flag[hotkeys.sneak_left]>:
         - run skill_core_use def:<player.flag[hotkeys.sneak_left]>
-      - else if <player.has_flag[hotkeys.left]>:
+        - determine cancelled
+      - else if <player.has_flag[hotkeys.left]> && !<player.is_sneaking> && !<player.is_sprinting>:
         - run skill_core_use def:<player.flag[hotkeys.left]>
-    on player right clicks block with:item_flagged:class_weapon flagged:hotkeys:
+        - determine cancelled
+    on player right clicks block with:item_flagged:class_weapon flagged:hotkeys bukkit_priority:LOW:
+      - ratelimit <player> 2t
       - if <player.is_sprinting> && <player.has_flag[hotkeys.sprint_right]>:
         - run skill_core_use def:<player.flag[hotkeys.sprint_right]>
+        - determine cancelled
       - else if <player.is_sneaking> && <player.has_flag[hotkeys.sneak_right]>:
         - run skill_core_use def:<player.flag[hotkeys.sneak_right]>
-      - else if <player.has_flag[hotkeys.right]>:
+        - determine cancelled
+      - else if <player.has_flag[hotkeys.right]> && !<player.is_sneaking> && !<player.is_sprinting>:
         - run skill_core_use def:<player.flag[hotkeys.right]>
+        - determine cancelled
+    on player right clicks horse|villager with:item_flagged:class_weapon flagged:hotkeys bukkit_priority:LOW:
+      - ratelimit <player> 2t
+      - if <player.is_sprinting> && <player.has_flag[hotkeys.sprint_right]>:
+        - run skill_core_use def:<player.flag[hotkeys.sprint_right]>
+        - determine cancelled
+      - else if <player.is_sneaking> && <player.has_flag[hotkeys.sneak_right]>:
+        - run skill_core_use def:<player.flag[hotkeys.sneak_right]>
+        - determine cancelled
+      - else if <player.has_flag[hotkeys.right]> && !<player.is_sneaking> && !<player.is_sprinting>:
+        - run skill_core_use def:<player.flag[hotkeys.right]>
+        - determine cancelled
+    on player swaps items offhand:item_flagged:class_weapon flagged:hotkeys bukkit_priority:LOW:
+      - if <player.is_sprinting> && <player.has_flag[hotkeys.sprint_swap]>:
+        - run skill_core_use def:<player.flag[hotkeys.sprint_swap]>
+        - determine cancelled
+      - else if <player.is_sneaking> && <player.has_flag[hotkeys.sneak_swap]>:
+        - run skill_core_use def:<player.flag[hotkeys.sneak_swap]>
+        - determine cancelled
+      - else if <player.has_flag[hotkeys.swap]> && !<player.is_sneaking> && !<player.is_sprinting>:
+        - run skill_core_use def:<player.flag[hotkeys.swap]>
+        - determine cancelled
+    on player drops item_flagged:class_weapon flagged:hotkeys bukkit_priority:LOW:
+      - if <player.is_sprinting> && <player.has_flag[hotkeys.sprint_drop]>:
+        - run skill_core_use def:<player.flag[hotkeys.sprint_drop]>
+        - determine cancelled
+      - else if <player.is_sneaking> && <player.has_flag[hotkeys.sneak_drop]>:
+        - run skill_core_use def:<player.flag[hotkeys.sneak_drop]>
+        - determine cancelled
+      - else if <player.has_flag[hotkeys.drop]> && !<player.is_sneaking> && !<player.is_sprinting>:
+        - run skill_core_use def:<player.flag[hotkeys.drop]>
+        - determine cancelled
+
+class_select:
+  type: task
+  debug: false
+  definitions: class
+  script:
+    - if !<list[rogue|warrior|mage|ranger].contains[<[class]>]>:
+      - narrate "<element[Unknown class - <[class]>].rainbow>"
+      - stop
+    - if <player.has_flag[class]>:
+      - run class_weapon_remove_skillTree def:<player.flag[class]>
+    - run class_weapon_add_skillTree def:<[class]>
+    - flag player class:<[class]>
+
+class_weapon_select:
+  type: command
+  name: select_class
+  usage: /select_class (class)
+  description: Selects Class
+  tab completions:
+    1: rogue|warrior|mage|ranger
+  script:
+    - if <context.args.size> < 1:
+      - narrate "<element[You must specify a class, dumbass].rainbow>"
+      - stop
+    - if !<list[rogue|warrior|mage|ranger].contains[<context.args.get[1]>]>:
+      - narrate "<element[Unknown class, dumbass].rainbow>"
+      - stop
+    - if <player.has_flag[class]>:
+      - run class_weapon_remove_skillTree def:<player.flag[class]>
+    - run class_weapon_add_skillTree def:<context.args.get[1]>
+    - flag player class:<context.args.get[1]>
+
+class_weapon_give:
+  type: command
+  name: class_weapon
+  usage: /class_weapon
+  description: turns held item into a class weapon
+  script:
+    - if <player.item_in_hand.material.name> == air:
+      - narrate "<element[You have to be holding an item, dumbass].rainbow>"
+      - stop
+    - inventory flag slot:<player.held_item_slot> class_weapon:true
+
+class_weapon_skills_command:
+  type: command
+  name: skills
+  usage: /skills
+  description: customize skills hotkeys
+  script:
+    - if <context.args.get[1]||null> == help:
+      - narrate "<&b>/select_class <&a> chooses your class"
+      - narrate "<&b>/skills <&a> chooses your hotkeys"
+      - narrate "<&b>/class_weapon <&a> sets your held item as a class weapon"
+      - stop
+    - run class_weapon_open

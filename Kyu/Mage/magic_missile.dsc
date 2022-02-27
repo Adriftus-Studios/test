@@ -14,7 +14,7 @@ impl_skill_magic_missile:
   - "true"
 
   # Cooldown
-  cooldown: 12s
+  cooldown: 5s
 
   # Task Script to bee run when the ability is used successfully
   # This Task Script MUST be within this file, as with any code associated with this skill
@@ -30,7 +30,7 @@ impl_skill_magic_missile:
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "<player.precise_target[25]>"
+  - "none"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
@@ -47,13 +47,13 @@ impl_skill_magic_missile:
 # "lore" field might be used in chat diplays, and other GUIs
 impl_skill_magic_missile_icon:
   type: item
-  material: feather
+  material: iron_nugget
   display name: "<&a>Magic Missile"
   lore:
-  - "<&b>Shoot a fireball at targets up to 25 blocks away"
+  - "<&b>Shoot a magic missile at targets up to 25 blocks away"
   - "<&b>Damages any enemies within its blast radius"
   mechanisms:
-    custom_model_data: 3
+    custom_model_data: 6
 
 
 # The On Cast Task script has specific requirements, and limits
@@ -64,11 +64,25 @@ impl_skill_magic_missile_task:
   debug: false
   definitions: target
   script:
-    - shoot small_fireball origin:<player> destination:<[target].location> speed:<script[impl_skill_magic_missile].parsed_key[balance.speed]> script:impl_skill_magic_missile_damage_task shooter:<player>
-    - determine true
+    - shoot arrow origin:<player> speed:<script[impl_skill_magic_missile].parsed_key[balance.speed]> shooter:<player> save:shot
+    - adjust <entry[shot].shot_entity> hide_from_players
+    - playsound <player.location> sound:ENTITY_ENDER_DRAGON_SHOOT volume:5.0 sound_category:players
+    - determine passively true
+    - flag <entry[shot].shot_entity> on_hit_entity:impl_skill_magic_missile_damage_task
+    - flag <entry[shot].shot_entity> on_hit_block:impl_skill_magic_missile_remove_task
+    - while <entry[shot].shot_entity.is_spawned>:
+      - playeffect at:<entry[shot].shot_entity.location> effect:end_rod quantity:8 visibility:50 offset:0.1
+      - wait 1t
 
 impl_skill_magic_missile_damage_task:
   type: task
   debug: false
   script:
-    - hurt <script[impl_skill_magic_missile].parsed_key[balance.damage]> <[hit_entities]> cause:ENTITY_ATTACK source:<player>
+    - hurt <script[impl_skill_magic_missile].parsed_key[balance.damage]> <context.hit_entity> cause:ENTITY_ATTACK source:<player>
+    - remove <context.projectile>
+
+impl_skill_magic_missile_remove_task:
+  type: task
+  debug: false
+  script:
+    - remove <context.projectile>

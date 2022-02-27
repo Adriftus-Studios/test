@@ -46,12 +46,12 @@ impl_skill_second_wind:
 # "lore" field might be used in chat diplays, and other GUIs
 impl_skill_second_wind_icon:
   type: item
-  material: feather
+  material: iron_nugget
   display name: "<&a>Second Wind"
   lore:
   - "<&b>Instantly recover 50<&pc> of your HP"
   mechanisms:
-    custom_model_data: 1
+    custom_model_data: 12
 
 
 # The On Cast Task script has specific requirements, and limits
@@ -63,4 +63,6 @@ impl_skill_second_wind_task:
   definitions: target
   script:
     - heal <script[impl_skill_second_wind].parsed_key[balance.health]>
+    - playeffect effect:totem at:<player.location.above[2]> quantity:20 offset:0.25
+    - playsound <player.location> sound:ENTITY_SPLASH_POTION_BREAK volume:5.0 sound_category:players
     - determine true

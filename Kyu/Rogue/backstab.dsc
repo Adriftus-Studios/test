@@ -30,7 +30,7 @@ impl_skill_backstab:
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "<player.precise_target[5]>"
+  - "<player.precise_target[5]||null>"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
@@ -46,13 +46,13 @@ impl_skill_backstab:
 # "lore" field might be used in chat diplays, and other GUIs
 impl_skill_backstab_icon:
   type: item
-  material: feather
+  material: iron_nugget
   display name: "<&a>Backstab"
   lore:
   - "<&b>Move behind an enemy and backstab them for extra damage"
   - "<&b>Only works in melee range"
   mechanisms:
-    custom_model_data: 4
+    custom_model_data: 14
 
 
 # The On Cast Task script has specific requirements, and limits
@@ -66,4 +66,5 @@ impl_skill_backstab_task:
     - teleport <[target].location.backward_flat.with_pitch[0]>
     - hurt <script[impl_skill_backstab].parsed_key[balance.damage]> <[target]> cause:ENTITY_ATTACK source:<player>
     - playeffect effect:CRIT at:<[target].location> visibility:50 quantity:5 offset:1.0
+    - playsound <player.location> sound:ENTITY_PLAYER_HURT_FREEZE volume:5.0 sound_category:players
     - determine true

@@ -20,6 +20,21 @@ entity_flags:
     on entity_flagged:no_damage_once damaged:
       - flag <context.entity> invulnerable_once:!
       - determine cancelled
+    on entity_flagged:no_heal heals:
+      - determine cancelled
+    on entity_flagged:no_heal_once heals:
+      - flag <context.entity> no_heal_once:!
+      - determine cancelled
+    on entity_flagged:on_next_damage damaged:
+      - foreach <context.entity.flag[on_next_damage]>:
+        - if <script[<[value]>].exists>:
+          - inject <[value]>
+      - flag <context.entity> on_next_damage:!
+    on entity_flagged:on_next_hit damages entity:
+      - foreach <context.damager.flag[on_next_hit]>:
+        - if <script[<[value]>].exists>:
+          - inject <[value]>
+      - flag <context.damager> on_next_hit:!
     on player kicked for flying flagged:no_fly_kick:
       - determine passively FLY_COOLDOWN:<player.flag_expiration[no_fly_kick].duration_since[<util.time_now>]>
       - determine cancelled
@@ -32,6 +47,12 @@ entity_flags:
         - determine passively cancelled
         - inject <context.entity.flag[shift_right_click_script]>
     on material falls:
-      - stop if:<context.entity.has_flag[showfake].not>
-      - determine passively cancelled
-      - showfake <context.entity.fallingblock_material> <context.location> players:<context.location.find_players_within[40]> duration:1m
+      - if <context.entity.has_flag[showfake]>:
+        - determine passively cancelled
+        - showfake <context.entity.fallingblock_material> <context.location> players:<context.location.find_players_within[40]> duration:1m
+      - else if <context.entity.has_flag[on_fall]>:
+        - inject <context.entity.flag[on_fall]>
+    on entity_flagged:on_hit_entity hits entity bukkit_priority:LOWEST:
+      - inject <context.projectile.flag[on_hit_entity]>
+    on entity_flagged:on_hit_block hits block bukkit_priority:LOWEST:
+      - inject <context.projectile.flag[on_hit_block]>
