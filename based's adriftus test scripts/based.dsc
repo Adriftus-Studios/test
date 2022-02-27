@@ -98,10 +98,11 @@ chest_lock_item:
 chest_lock:
     type: world
     events:
-            on player right clicks chest|large_chest with:chest_lock_item:
-            - if <player.has_flag[chest_owner]>:
-                - determine cancelled:false
-            - if <player.has_flag[chest_owner].not>:
-                - narrate "You do not own this chest."
-                - stop
-#Incomplete
+            on player right clicks chest|trapped_chest|barrel with:chest_lock_item:
+                - flag 
+                - flag <[location]> owner:<player.uuid>
+                - if <location.flag[].is[==].to[<player.uuid>]>:
+                    - determine cancelled:false
+                    - narrate "This is a very cool opening of the chest."
+                - if <context.location.other_block||null> != null:
+                    - flag <context.location.other_block> owner:<player>
