@@ -267,6 +267,19 @@ class_weapon_use_event:
         - run skill_core_use def:<player.flag[hotkeys.drop]>
         - determine cancelled
 
+class_select:
+  type: task
+  debug: false
+  definitions: class
+  script:
+    - if !<list[rogue|warrior|mage|ranger].contains[<context.args.get[1]>]>:
+      - narrate "<element[Unknown class - <[class]>].rainbow>"
+      - stop
+    - if <player.has_flag[class]>:
+      - run class_weapon_remove_skillTree def:<player.flag[class]>
+    - run class_weapon_add_skillTree def:<context.args.get[1]>
+    - flag player class:<context.args.get[1]>
+
 class_weapon_select:
   type: command
   name: select_class
