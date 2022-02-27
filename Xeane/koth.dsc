@@ -40,6 +40,8 @@ koth_events:
       - flag player koth.global.deaths:++
       - if <context.damager.exists>:
         - flag <context.damager> koth.global.kills:++
+    on player dies bukkit_priority:HIGHEST:
+      - determine NO_DROPS
     after player enters spawn_launcher:
       - inject koth_launcher
 
