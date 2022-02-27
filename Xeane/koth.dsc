@@ -177,6 +177,7 @@ koth_launcher:
     - adjust <player> velocity:<player.location.direction.vector>
     - wait 1t
     - adjust <player> gliding:true
+    - flag <[targets]> no_fall_damage_once duration:1m
     - while <player.gliding>:
       - wait 1s
     - equip <player> chest:<[chest]>
