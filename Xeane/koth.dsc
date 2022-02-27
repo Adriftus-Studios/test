@@ -79,7 +79,7 @@ koth_start:
     - announce <script[koth_config].parsed_key[messages.start]>
     - flag <server.players_flagged[koth.current.points]> koth.current.points:0
     - run koth_update_directions
-    - adjust <world[orient].players> can_fly:false
+    - adjust <server.players_flagged[flying_on]> can_fly:false
     - flag <world[orient].players> koth_liftoff:!
     - repeat 3:
       - ~run koth_run_area def:<[value]>
@@ -88,6 +88,7 @@ koth_start:
     - flag server koth.current.last_hill:!
     - heal <world[orient].players>
     - adjust <world[orient].players> can_fly:true
+    - flag server flying_on:!|:<world[orient].players>
     - narrate "<&a>Flight has been enabled for Countdown." targets:<world[orient].players>
     - flag <world[orient].players> no_damage
     - if <server.online_players_flagged[koth.current.points].size> > 0:
