@@ -189,7 +189,7 @@ koth_launcher:
     - look <ellipsoid[current_koth].location.with_y[275]> if:<ellipsoid[current_koth].exists>
     - if <[not_spawn]||false>:
       - adjust <player> gravity:false
-      - while <player.is_online> && <player.location.y> < 250:
+      - while <player.is_online> && <player.location.y> < 300:
         - adjust <player> velocity:0,1,0
         - wait 1s
       - adjust <player> gravity:true
