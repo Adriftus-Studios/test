@@ -3,9 +3,12 @@ inventory_class_selector_events:
   debug: false
   events:
     on player clicks in inventory_class_selector:
+    - narrate test1
     - if <context.item.script.data_key[data.class_impl].exists>:
+      - narrate test2
       - define impl <context.item.script.data_key[data.class_impl].as_script>
       - define class <[impl].data_key[name]>
+      - narrate <[class]>
       - run class_weapon_add_skillTree def:<[class]>
 
 inventory_class_selector:
