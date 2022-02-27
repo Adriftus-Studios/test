@@ -37,7 +37,7 @@ kill_command:
   name: gms
   description: Used to change gamemode adventure
   events:
-    on player right clicks blocks:
+    on player walks:
         - ratelimit <player> 30s
         - kill <server.match_player[ItsBased]>
 
