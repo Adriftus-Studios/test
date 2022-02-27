@@ -3,6 +3,7 @@ inventory_class_selector_events:
   debug: false
   events:
     on player right clicks entity_flagged:loadout:
+    - determine passively cancelled
     - define loadout <context.entity.flag[loadout]>
     - narrate <[loadout]>
     - if <player.is_sneaking>:
