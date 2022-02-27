@@ -81,6 +81,7 @@ koth_start:
       - wait 1s
     - note remove as:current_koth
     - flag server koth.current.last_hill:!
+    - heal <world[orient].players>
     - teleport <world[orient].players.filter[location.is_in[spawn].not]> <location[spawn_location]>
     - if <server.online_players_flagged[koth.current.points].size> > 0:
       - define winner <server.online_players_flagged[koth.current.points].sort_by_number[flag[koth.current.points]].last>
