@@ -79,6 +79,7 @@ koth_start:
     - announce <script[koth_config].parsed_key[messages.start]>
     - flag <server.players_flagged[koth.current.points]> koth.current.points:0
     - run koth_update_directions
+    - flag <world[orient].players> koth_liftoff:!
     - repeat 3:
       - ~run koth_run_area def:<[value]>
       - wait 1s
@@ -189,7 +190,7 @@ koth_launcher:
     - look <ellipsoid[current_koth].location.with_y[275]> if:<ellipsoid[current_koth].exists>
     - if <[not_spawn]||false>:
       - adjust <player> gravity:false
-      - while <player.is_online> && <player.location.y> < 300:
+      - while <player.has_flag[koth_liftoff]> && <player.is_online> && <player.location.y> < 300:
         - adjust <player> velocity:0,1,0
         - wait 1s
       - adjust <player> gravity:true
@@ -197,6 +198,8 @@ koth_launcher:
       - adjust <player> velocity:0,10,0
       - wait 1.5s
     - if !<player.is_online>:
+      - stop
+    - if <[not_spawn]> && !<player.has_flag[koth_liftoff]>:
       - stop
     - define chest <player.equipment.get[3]||air>
     - fakeequip <player> chest:<[chest]> for:<server.online_players>
