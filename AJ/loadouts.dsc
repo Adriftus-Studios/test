@@ -23,10 +23,13 @@ loadout_restore_inventory:
   script:
   - stop if:<[player].is_truthy.not>
   - stop if:<[loadoutNumber].is_truthy.not>
-  - stop if:<[player].has_flag[loadout.items.<[loadoutNumber]>].not>
+  - if <[player].has_flag[loadout.items.<[loadoutNumber]>].not>:
+    - narrate "<&c>You have not set this loadout; To set a loadout, shift right click the armorstand with items in your inventory."
+    - stop
   - inventory clear d:<[player].inventory>
   - foreach <[player].flag[loadout.items.<[loadoutNumber]>]> key:slot as:item:
     - inventory set d:<[player].inventory> slot:<[slot]> o:<[item]>
+  - narrate "<&e>Loadout <[loadoutNumber]> restored."
 
 loadout_set_inventory:
   type: task
@@ -45,6 +48,7 @@ loadout_set_inventory:
   - flag <[player]> loadout.display.<[loadoutNumber]>.feet:<player.equipment_map.get[boots].if_null[<item[air]>]>
   - flag <[player]> loadout.display.<[loadoutNumber]>.hand:<player.item_in_hand>
   - flag <[player]> loadout.display.<[loadoutNumber]>.offhand:<player.item_in_offhand>
+  - narrate "<&e>You have set loadout <[loadoutNumber]>."
   - run loadout_update_visual def:<[loadoutNumber]>|<[player]>
 
 loadout_update_visual:
