@@ -205,7 +205,6 @@ class_weapon_add_skillTree:
   definitions: skillTree
   script:
     - if <server.has_flag[skills.trees.<[skillTree]>]>:
-      - flag player class:<[skillTree]>
       - foreach <server.flag[skills.trees.<[skillTree]>].keys.exclude[script]> as:skill:
         - flag player skills.abilities.<[skill]>:<server.flag[<server.flag[skills.tree.<[skillTree]>.<[skill]>]>]>
         - flag player skills.trees.<[skillTree]>.<[skill]>:<server.flag[<server.flag[skills.tree.<[skillTree]>.<[skill]>]>]>
