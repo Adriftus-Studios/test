@@ -33,14 +33,18 @@ skill_core_use:
   debug: false
   definitions: skill
   script:
+    # Check for the Global Cooldown
+    - if <player.has_flag[skills.cooldowns.global]>:
+      - narrate "<&c>You have <player.flag_expiration[skills.cooldowns.global].from_now.formatted> before you can use an ability again."
+
     # Check that the entity has the ability
     - if !<player.has_flag[skills.abilities.<[skill]>]>:
       - narrate "<&c>You do not have this skill."
       - stop
 
     # Cooldown Check
-    - if <player.has_flag[cooldown.<[skill]>]>:
-      - actionbar "<&c><[skill].replace[_].with[<&sp>].to_titlecase> is on cooldown<&co> <player.flag_expiration[cooldown.<[skill]>].from_now.formatted>"
+    - if <player.has_flag[skills.cooldowns.<[skill]>]>:
+      - actionbar "<&c><[skill].replace[_].with[<&sp>].to_titlecase> is on cooldown<&co> <player.flag_expiration[skills.cooldowns.<[skill]>].from_now.formatted>"
       - stop
 
     # Make sure the skill is currently loaded
@@ -65,4 +69,5 @@ skill_core_use:
 
     # Cooldown if successful
     - if <entry[skill].created_queue.determination.get[1]||true>:
-      - flag player cooldown.<[skill]> duration:<[skill_script].data_key[cooldown]||30s>
+      - flag player skills.cooldowns.<[skill]> duration:<[skill_script].data_key[cooldown]||30s>
+      - flag player skills.cooldowns.global:1.5s
