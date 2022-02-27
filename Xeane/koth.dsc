@@ -193,7 +193,7 @@ koth_launcher:
     - look <ellipsoid[current_koth].location.with_y[275]> if:<ellipsoid[current_koth].exists>
     - adjust <player> velocity:0,10,0
     - wait 1.5s
-    - define chest <player.equipment_map.get[chest]||air>
+    - define chest <player.equipment.get[3]||air>
     - fakeequip <player> chest:<[chest]> for:<server.online_players>
     - equip <player> chest:elytra
     - adjust <player> velocity:<player.location.direction.vector>
