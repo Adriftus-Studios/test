@@ -9,6 +9,9 @@ inventory_class_selector_events:
       - run loadout_set_inventory def:<[loadout]>|<player>
     - else:
       - run loadout_restore_inventory def:<[loadout]>|<player>
+      on player joins:
+      - repeat 3:
+        - run loadout_update_visual def:<[value]>|<player>
 
 loadout_restore_inventory:
   type: task
@@ -39,6 +42,7 @@ loadout_set_inventory:
   - flag <[player]> loadout.display.<[loadoutNumber]>.feet:<player.equipment_map.get[boots].if_null[<item[air]>]>
   - flag <[player]> loadout.display.<[loadoutNumber]>.hand:<player.item_in_hand>
   - flag <[player]> loadout.display.<[loadoutNumber]>.offhand:<player.item_in_offhand>
+  - run loadout_update_visual def:<[loadoutNumber]>|<[player]>
 
 loadout_update_visual:
   type: task
