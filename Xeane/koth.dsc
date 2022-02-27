@@ -78,6 +78,7 @@ koth_start:
       - ~run koth_run_area def:<[value]>
       - wait 1s
     - note remove as:current_koth
+    - teleport <world[orient].players.filter[location.is_in[spawn].not]>
     - if <server.online_players_flagged[koth.current.points].size> > 0:
       - define winner <server.online_players_flagged[koth.current.points].sort_by_number[flag[koth.current.points]].last>
       - flag <[winner]> koth.global.wins:++
