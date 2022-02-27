@@ -39,6 +39,9 @@ koth_events:
       - flag player koth.global.deaths:++
       - if <context.damager.exists>:
         - flag <context.damager> koth.global.kills:++
+    after player enters spawn_launcher:
+      - inject koth_launcher
+
 koth_start:
   type: task
   debug: false
@@ -155,3 +158,20 @@ koth_update_directions:
         - if <[loop_index].mod[10]> == 0:
           - wait 1t
       - wait 2t
+
+koth_launcher:
+  type: task
+  debug: false
+  script:
+    - adjust <player> velocity:0,10,0
+    - wait 3s
+    - define chest <player.equipment_map.get[chest]||air>
+    - fakeequip <player> chest:<[chest]> for:<server.online_players>
+    - equip <player> chest:elytra
+    - adjust <player> velocity:<player.location.direction.vector>
+    - wait 1t
+    - adjust <player> gliding:true
+    - while <player.gliding>:
+      - wait 1s
+    - equip <player> chest:<[chest]>
+    - fakeequip <player> reset
