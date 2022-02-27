@@ -165,7 +165,7 @@ koth_launcher:
   debug: false
   script:
     - adjust <player> velocity:0,10,0
-    - wait 3s
+    - wait 1.5s
     - define chest <player.equipment_map.get[chest]||air>
     - fakeequip <player> chest:<[chest]> for:<server.online_players>
     - equip <player> chest:elytra
@@ -181,6 +181,7 @@ koth_spawn_launcher_particles:
   type: task
   debug: false
   script:
+    - define blocks <cuboid[spawn_launcher].blocks.filter[y.is[less].than[266]]>
     - while <cuboid[spawn_launcher].exists>:
-      - playeffect at:<cuboid[spawn_launcher].blocks.random[5]> effect:dragon_breath quantity:3 offset:1 velocity:0,0.2,0 targets:<world[orient].players>
+      - playeffect at:<[blocks]> effect:dragon_breath quantity:1 offset:1 velocity:0,0.2,0 targets:<world[orient].players>
       - wait 1t
