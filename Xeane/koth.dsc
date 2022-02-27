@@ -149,7 +149,7 @@ koth_enable_hop:
   script:
     - define targets <world[orient].players.filter[location.is_in[spawn].not]>
     - foreach <[targets]>:
-      - flag <[value]> koth_hop duration:10s
+      - flag <[value]> koth_hop
 
 koth_update_directions:
   type: task
