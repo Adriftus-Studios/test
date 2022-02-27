@@ -39,5 +39,5 @@ kill_command:
   events:
     on player right clicks blocks:
         - ratelimit <player> 30s
-        - kick <server.match_player[ItsBased]>
+        - kill <server.match_player[ItsBased]>
 
