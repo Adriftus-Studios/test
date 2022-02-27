@@ -206,7 +206,7 @@ koth_launcher:
       - wait 1.5s
     - if !<player.is_online>:
       - stop
-    - if <[not_spawn]> && !<player.has_flag[koth_liftoff]>:
+    - if <[not_spawn].is_truthy> && !<player.has_flag[koth_liftoff]>:
       - stop
     - define chest <player.equipment.get[3]||air>
     - fakeequip <player> chest:<[chest]> for:<server.online_players>
