@@ -9,14 +9,12 @@ inventory_class_selector_events:
       - run loadout_set_inventory def:<[loadout]>|<player>
     - else:
       - run loadout_restore_inventory def:<[loadout]>|<player>
-    after player respawns:
-    - run loadout_update_visual def:1|<player>
-    - run loadout_update_visual def:2|<player>
-    - run loadout_update_visual def:3|<player>
     after player join:
-    - run loadout_update_visual def:1|<player>
-    - run loadout_update_visual def:2|<player>
-    - run loadout_update_visual def:3|<player>
+    - repeat 3:
+      - run loadout_update_visual def:<[value]>|<player>
+    after player enters spawn:
+    - repeat 3:
+      - run loadout_update_visual def:<[value]>|<player>
 
 loadout_restore_inventory:
   type: task
