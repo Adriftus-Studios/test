@@ -44,7 +44,7 @@ magic_replenishing_bell:
     type: world
     item: support_bell
     events:
-        after player right clicks bell:
+        after player right clicks support_bell:
         - if <player.health_percentage> < 100:
             - heal
             - actionbar "The bell has healed you, <player.name.target>!"
@@ -95,14 +95,13 @@ chest_lock_item:
   display name: <white><bold>Iron Padlock
   lore:
     - <yellow><bold>Right-click a chest to lock it.
-
 chest_lock:
     type: world
     events:
-            after player right clicks chest|large_chest with:chest_lock_item:
+            on player right clicks chest|large_chest with:chest_lock_item:
             - if <player.has_flag[chest_owner]>:
                 - determine cancelled:false
             - if <player.has_flag[chest_owner].not>:
                 - narrate "You do not own this chest."
-                - determine cancelled
+                - stop
 #Incomplete
