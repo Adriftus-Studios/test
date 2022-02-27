@@ -70,4 +70,4 @@ skill_core_use:
     # Cooldown if successful
     - if <entry[skill].created_queue.determination.get[1]||true>:
       - flag player skills.cooldowns.<[skill]> duration:<[skill_script].data_key[cooldown]||30s>
-      - flag player skills.cooldowns.global:1.5s
+      - flag player skills.cooldowns.global duration:1.5s
