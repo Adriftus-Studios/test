@@ -15,12 +15,9 @@ loadout_restore_inventory:
   debug: false
   definitions: loadoutNumber|player
   script:
-  - if <[player].if_null[null]> == null:
-    - stop
-  - if <[loadoutNumber].if_null[null]> == null:
-    - stop
-  - if !<[player].has_flag[loadout.<[loadoutNumber]>]>:
-    - stop
+  - stop if:<[player].is_truthy.not>
+  - stop if:<[loadoutNumber].is_truthy.not>
+  - stop if:<[player].has_flag[loadout.<[loadoutNumber]>].not>
   - inventory clear d:<[player].inventory>
   - foreach <[player].flag[loadout.<[loadoutNumber]>]> key:slot as:item:
     - inventory set d:<[player].inventory> slot:<[slot]> o:<[item]>
@@ -30,10 +27,8 @@ loadout_set_inventory:
   debug: false
   definitions: loadoutNumber|player
   script:
-  - if <[player].if_null[null]> == null:
-    - stop
-  - if <[loadoutNumber].if_null[null]> == null:
-    - stop
+  - stop if:<[player].is_truthy.not>
+  - stop if:<[loadoutNumber].is_truthy.not>
   - flag <[player]> loadout.<[loadoutNumber]>:!
   - foreach <[player].inventory.map_slots> key:slot as:item:
     - flag <[player]> loadout.<[loadoutNumber]>.<[slot]>:<[item]>
