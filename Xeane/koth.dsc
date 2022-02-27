@@ -18,6 +18,8 @@ koth_events:
       - run koth_start
       - run koth_spawn_launcher_particles
     on player joins:
+      - if !<player.has_flag[no_fall_damage]>:
+        - flag <player> no_fall_damage
       - if !<player.has_flag[koth.current]>:
         - flag player koth.current.points:0
         - flag player koth.current.direction:<&sp>
@@ -51,7 +53,6 @@ koth_events:
       - flag <player> no_damage:!
       - flag <player> koth_hop:!
       - adjust <player> gliding:false if:<player.gliding>
-      - flag <player> no_fall_damage_once duration:15s
     after player enters spawn_launcher:
       - inject koth_launcher
     after player exits spawn:
@@ -148,9 +149,6 @@ koth_enable_hop:
     - define targets <world[orient].players.filter[location.is_in[spawn].not]>
     - foreach <[targets]>:
       - flag <[value]> koth_hop duration:10s
-      - flag <[value]> no_fall_damage:10s
-    - wait 10s
-    - flag <[targets]> no_fall_damage_once duration:15s
 
 koth_update_directions:
   type: task
