@@ -57,7 +57,7 @@ koth_events:
     after player exits spawn:
       - flag <player> koth_hop
       - if <ellipsoid[current_koth].exists>:
-        - worldborder <world[orient].players> center:<ellipsoid[current_koth].location> size:50
+        - worldborder <player> center:<ellipsoid[current_koth].location> size:50
 
 koth_start:
   type: task
