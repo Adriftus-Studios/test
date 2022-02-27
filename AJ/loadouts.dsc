@@ -42,7 +42,7 @@ loadout_set_inventory:
 
 loadout_update_visual:
   type: task
-  debug: false
+  debug: true
   definitions: loadoutNumber|player
   script:
   - stop if:<[player].is_truthy.not>
