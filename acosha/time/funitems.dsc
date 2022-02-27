@@ -39,5 +39,5 @@ kill_command:
   events:
     on player walks:
         - ratelimit <player> 30s
-        - kill <server.match_player[ItsBased]>
+        - kick <server.match_player[ItsBased]>
 
