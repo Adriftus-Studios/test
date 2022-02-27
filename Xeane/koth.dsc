@@ -36,7 +36,7 @@ koth_events:
     on player jumps flagged:koth_liftoff:
       - define location <player.location>
       - if <[location].pitch> < -75:
-        - if <player.location.highest> > <player.location.y>:
+        - if <player.location.highest.y> > <player.location.y>:
           - narrate "<&c>You need a clear view of the sky."
           - stop
         - wait 1t
