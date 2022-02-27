@@ -141,7 +141,7 @@ koth_run_area:
       - wait 1t
     - bossbar remove current_koth
     - note remove as:koth_area
-    - flag <world[orient].players> koth_liftoff
+    - flag <world[orient].players.filter[location.is_in[spawn].not]> koth_liftoff
     - announce to_flagged:koth_liftoff "<&e>Look straight up and jump to activate flight."
     - flag server koth.current.last_hill:<[location_id]>
     - worldborder <world[orient].players> reset
