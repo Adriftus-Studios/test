@@ -128,6 +128,7 @@ koth_run_area:
         - flag server koth.current.leader.points:<[leader].flag[koth.current.points]>
       - wait 1t
     - bossbar remove current_koth
+    - note remove as:koth_area
     - worldborder <world[orient].players> reset
     - if <server.has_flag[koth.global.koth_location.<[location_id]>.beacon_glass]>:
       - modifyblock <server.has_flag[koth.global.koth_location.<[location_id]>.beacon_glass]> red_stained_glass
