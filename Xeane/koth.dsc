@@ -79,6 +79,7 @@ koth_start:
     - announce <script[koth_config].parsed_key[messages.start]>
     - flag <server.players_flagged[koth.current.points]> koth.current.points:0
     - run koth_update_directions
+    - adjust <world[orient].players> can_fly:false
     - flag <world[orient].players> koth_liftoff:!
     - repeat 3:
       - ~run koth_run_area def:<[value]>
@@ -86,6 +87,8 @@ koth_start:
     - note remove as:current_koth
     - flag server koth.current.last_hill:!
     - heal <world[orient].players>
+    - adjust <world[orient].players> can_fly:true
+    - narrate "<&a>Flight has been enabled for Countdown." targets:<world[orient].players>
     - flag <world[orient].players> no_damage
     - if <server.online_players_flagged[koth.current.points].size> > 0:
       - define winner <server.online_players_flagged[koth.current.points].sort_by_number[flag[koth.current.points]].last>
@@ -141,8 +144,9 @@ koth_run_area:
       - wait 1t
     - bossbar remove current_koth
     - note remove as:koth_area
-    - flag <world[orient].players.filter[location.is_in[spawn].not]> koth_liftoff
-    - announce to_flagged:koth_liftoff "<&e>Look straight up and jump to activate flight."
+    - if <[round]> != 3:
+      - flag <world[orient].players.filter[location.is_in[spawn].not]> koth_liftoff
+      - announce to_flagged:koth_liftoff "<&e>Look straight up and jump to activate flight."
     - flag server koth.current.last_hill:<[location_id]>
     - worldborder <world[orient].players> reset
     - if <server.has_flag[koth.global.koth_location.<[location_id]>.beacon_glass]>:
