@@ -68,8 +68,3 @@ impl_skill_strike_task:
     - playsound <player.location> sound:ENTITY_WITHER_SHOOT volume:5.0 sound_category:players
     - flag <[target]> no_heal duration:<script[impl_skill_strike].parsed_key[balance.duration]>
     - determine passively true
-    - if <[target].is_player>:
-      - worldborder <[target]> center:200000,0,200000,<player.location.world> size:5
-      - wait <script[impl_skill_strike].parsed_key[balance.duration]>
-      - if <[target].is_online>:
-        - worldborder <[target]> reset
