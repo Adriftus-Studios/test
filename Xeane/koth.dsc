@@ -133,6 +133,7 @@ koth_run_area:
         - flag server koth.current.leader.name:<[leader].display_name>
         - flag server koth.current.leader.points:<[leader].flag[koth.current.points]>
       - wait 1t
+    - run koth_enable_hop
     - bossbar remove current_koth
     - note remove as:koth_area
     - flag server koth.current.last_hill:<[location_id]>
@@ -144,7 +145,7 @@ koth_enable_hop:
   type: task
   debug: false
   script:
-    - define targets <world[orient].players.exclude[<cuboid[spawn].players>]>
+    - define targets <world[orient].players.filter[location.is_in[spawn].not]>
     - foreach <[targets]>:
       - flag <[value]> koth_hop duration:10s
       - flag <[value]> no_fall_damage:10s
