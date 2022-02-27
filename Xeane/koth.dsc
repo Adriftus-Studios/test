@@ -182,5 +182,5 @@ koth_spawn_launcher_particles:
   debug: false
   script:
     - while <cuboid[spawn_launcher].exists>:
-      - playeffect at:<cuboid[spawn_launcher].blocks.random[5]> effect:dragon_breath quantity:3 offset:0.5 velocity:0,0.5,0 targets:<world[orient].players>
-      - wait 2t
+      - playeffect at:<cuboid[spawn_launcher].blocks.random[5]> effect:dragon_breath quantity:3 offset:1 velocity:0,0.2,0 targets:<world[orient].players>
+      - wait 1t
