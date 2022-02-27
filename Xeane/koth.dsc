@@ -112,7 +112,7 @@ koth_run_area:
     - define radius <script[koth_config].data_key[koth_radius]>
     - note <[location].to_ellipsoid[<[radius]>,<[radius]>,<[radius]>]> as:current_koth
     - note <[location].sub[50,200,50].to_cuboid[<[location].add[50,200,50]>]> as:koth_area
-    - worldborder <world[orient].players> center:<[location]> size:50
+    - worldborder <world[orient].players.filter[location.is_in[spawn]]> center:<[location]> size:50
     - announce <script[koth_config].parsed_key[messages.announce_location]>
     # 6,000t is 5 minutes
     - bossbar create current_koth title:<[location_name]> (<[round]>/3) progress:1 color:green players:<world[orient].players>
