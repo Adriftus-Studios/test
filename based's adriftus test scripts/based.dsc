@@ -95,14 +95,19 @@ chest_lock_item:
   display name: <white><bold>Iron Padlock
   lore:
     - <yellow><bold>Right-click a chest to lock it.
+
 chest_lock:
     type: world
     events:
-            on player right clicks chest|trapped_chest|barrel with:chest_lock_item:
-                - flag 
-                - flag <[location]> owner:<player.uuid>
-                - if <location.flag[].is[==].to[<player.uuid>]>:
-                    - determine cancelled:false
-                    - narrate "This is a very cool opening of the chest."
-                - if <context.location.other_block||null> != null:
-                    - flag <context.location.other_block> owner:<player>
+        on player right clicks chest|trapped_chest|barrel with:chest_lock_item:
+            - determine passively cancelled
+            - if <context.location.has_flag[locked_chest]>:
+                - narrate "This chest is already locked."
+                - stop
+            - flag <context.location> locked_chest:<player.uuid>
+            - if <context.location.other_block.exists>:
+                - flag <context.location.other_block> locked_chest:<player.uuid>
+        on player right clicks block location_flagged:locked_chest:
+            - if <context.location.flag[locked_chest]> != <player.uuid>:
+                - determine passively cancelled
+                - narrate "This chest belongs to <context.location.flag[locked_chest].as_player.name>."
