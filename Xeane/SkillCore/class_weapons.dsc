@@ -277,8 +277,8 @@ class_select:
       - stop
     - if <player.has_flag[class]>:
       - run class_weapon_remove_skillTree def:<player.flag[class]>
-    - run class_weapon_add_skillTree def:<context.args.get[1]>
-    - flag player class:<context.args.get[1]>
+    - run class_weapon_add_skillTree def:<[class]>
+    - flag player class:<[class]>
 
 class_weapon_select:
   type: command
