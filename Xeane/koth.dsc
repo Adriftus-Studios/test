@@ -184,4 +184,4 @@ koth_spawn_launcher_particles:
     - define blocks <cuboid[spawn_launcher].blocks.filter[y.is[less].than[266]]>
     - while <cuboid[spawn_launcher].exists>:
       - playeffect at:<[blocks]> effect:dragon_breath quantity:1 offset:1 velocity:0,0.2,0 targets:<world[orient].players>
-      - wait 1t
+      - wait 2t
