@@ -9,6 +9,8 @@ inventory_class_selector_events:
       - run loadout_set_inventory def:<[loadout]>|<player>
     - else:
       - run loadout_restore_inventory def:<[loadout]>|<player>
+    on entity_flagged:loadout damaged:
+    - determine cancelled
     after player join:
     - repeat 3:
       - run loadout_update_visual def:<[value]>|<player>
