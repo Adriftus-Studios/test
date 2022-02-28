@@ -5,4 +5,4 @@ zanzabar_events:
     on player exits zanzabar:
     - determine passively cancelled
     - if <player.location.y> < 61:
-      - kill <player>
+      - teleport <player.world.spawn_location>
