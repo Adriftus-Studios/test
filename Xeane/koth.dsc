@@ -59,6 +59,7 @@ koth_events:
       - flag <player> koth_liftoff:!
       - adjust <player> gliding:false if:<player.gliding>
     after player enters spawn_launcher:
+      - ratelimit <player> 5s
       - inject koth_launcher
     after player exits spawn:
       - flag <player> koth_hop
