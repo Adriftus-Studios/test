@@ -97,7 +97,7 @@ koth_start:
       - define winner <server.online_players_flagged[koth.current.points].sort_by_number[flag[koth.current.points]].last>
       - flag <[winner]> koth.global.wins:++
       - announce <script[koth_config].parsed_key[messages.winner]>
-      - run koth_win_events def:<[win_sounds]>>
+      - run koth_win_events def:<[win_sounds]>
     - run koth_start
 
 koth_countdown:
