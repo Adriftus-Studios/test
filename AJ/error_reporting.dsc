@@ -1,3 +1,15 @@
+
+command_cause_error:
+  type: command
+  debug: false
+  name: cause_error
+  script:
+  - define flags <player.list_flags>
+  - define map <player.flag[<player.list_flags.first>]>
+  - define location <player.location>
+  - define entity <player.entity>
+  - narrate <element[test].div[1]>
+
 command_debugmode:
   type: command
   debug: false
@@ -23,7 +35,6 @@ error_handler_events:
     - ratelimit 1t <[msg]>
     - announce to_flagged:debugmode "<&c>An exception has been thrown... <&l><&click[<[msg]>].type[COPY_TO_CLIPBOARD]><&hover[<[msg]>].type[SHOW_TEXT]><&lb>Click to copy!<&rb><&end_hover><&end_click>"
     on script generates error:
-    - stop if:<context.script.filename.ends_with[staffmode.dsc]>
     - stop if:<context.script.exists.not>
     - stop if:<context.script.equals[<script>]>
     - if <context.message.ends_with[is<&sp>invalid!]> && <context.message.starts_with[Tag<&sp><&lt>inventory<&lb>]> && !<player.has_flag[debugmode]>:
