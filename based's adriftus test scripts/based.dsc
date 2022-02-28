@@ -141,3 +141,11 @@ spawn_sheep:
         - narrate "You do not have enough space to spawn a sheep"
         - determine passively cancelled
 #Incomplete
+
+confirm_test:
+    type: command
+    name: confirmtest
+    description: confirmation testing
+    usage: /confirmtest
+    script:
+    - run confirm_script_text
