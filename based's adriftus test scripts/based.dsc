@@ -86,7 +86,7 @@ spawn_sheep:
     - strike <player.location.forward_flat[2]> no_damage
     - spawn sheep <player.location.forward_flat[2]>
     - narrate "Sheep spawned!"
-#Approved, but not fully tested
+#Incomplete
 
 chest_lock_item:
   type: item
