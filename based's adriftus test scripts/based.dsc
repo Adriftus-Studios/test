@@ -81,12 +81,13 @@ spawn_sheep:
     usage: /spawnsheep
     script:
     - run confirm_script_text def:Run_This_Script
-    - if <player.location.forward_flat[2].equals[air].not>:
+    - if <player.location.forward_flat[2].equals[air]>:
+        - strike <player.location.forward_flat[2]> no_damage
+        - spawn sheep <player.location.forward_flat[2]>
+        - narrate "Sheep spawned!"
+    - else:
         - narrate "You do not have enough space to spawn a sheep"
         - determine passively cancelled
-    - strike <player.location.forward_flat[2]> no_damage
-    - spawn sheep <player.location.forward_flat[2]>
-    - narrate "Sheep spawned!"
 #Incomplete
 
 chest_lock_item:
