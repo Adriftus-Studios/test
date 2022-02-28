@@ -139,4 +139,4 @@ interactable_text_testing:
     type: task
     script:
         - flag amogus "amogus is sus"
-        - narrate "You can <element[click here].on_click[spawn_sheep].type[RUN_COMMAND]> to test out the confirmation menu!"
+        - narrate "You can <element[click here].on_click[/spawn_sheep].type[RUN_COMMAND]> to test out the confirmation menu!"
