@@ -134,3 +134,9 @@ confirm_script_gui:
     script:
         - inventory open
 #Incomplete
+
+interactable_text_testing:
+    type: task
+    script:
+        - flag amogus "amogus is sus"
+        - narrate "You can <element[ok].on_click[click here].type[RUN_COMMAND]> to test out the confirmation menu!"
