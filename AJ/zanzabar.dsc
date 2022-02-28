@@ -3,4 +3,6 @@ zanzabar_events:
   debug: false
   events:
     on player exits zanzabar:
-    - determine cancelled
+    - determine passively cancelled
+    - if <player.location.y> < 61:
+      - kill <player>
