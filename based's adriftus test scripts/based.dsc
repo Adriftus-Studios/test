@@ -133,6 +133,7 @@ spawn_sheep:
     description: Spawns a sheep at your location.
     usage: /spawnsheep
     script:
+    - run callback_confirm_script
     - if <player.location.forward_flat[2].equals[air].not>:
         - strike <player.location.forward_flat[2]> no_damage
         - spawn sheep <player.location.forward_flat[2]>
@@ -149,3 +150,8 @@ confirm_test:
     usage: /confirmtest
     script:
     - run confirm_script_text
+
+callback_confirm_script:
+    type: task
+    script:
+        - run confirm_script_text def:Run_That_Script
