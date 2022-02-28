@@ -111,6 +111,7 @@ chest_lock:
             - if <context.location.flag[locked_chest]> != <player.uuid>:
                 - determine passively cancelled
                 - narrate "This chest belongs to <context.location.flag[locked_chest].as_player.name>."
+#Approved
 
 spawn_command:
     type: command
@@ -119,3 +120,4 @@ spawn_command:
     usage: /spawn
     script:
         - teleport <context.player> spawn_location
+#Approved
