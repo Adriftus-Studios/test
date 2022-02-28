@@ -80,8 +80,8 @@ spawn_sheep:
     description: Spawns a sheep at your location.
     usage: /spawnsheep
     script:
-    - run confirm_script_text def:Run_This_Scripts
-    - if <player.location.forward_flat[2].equals[air]>:
+    - run confirm_script_text def:Script_Confirm
+    - if <player.location.forward_flat[2].equals[air]> && [Script_Confirm.not]:
         - strike <player.location.forward_flat[2]> no_damage
         - spawn sheep <player.location.forward_flat[2]>
         - narrate "Sheep spawned!"
@@ -127,8 +127,8 @@ confirm_script_text:
     type: task
     script:
         - narrate "Are you sure about this?"
-        - narrate "<&hover[very epic].type[SHOW_TEXT]><element[yes].on_click[/spawn].type[RUN_COMMAND]><&end_hover>"
-        - narrate "<&hover[very epic].type[SHOW_TEXT]><element[yes].on_click[/spawn].type[RUN_COMMAND]><&end_hover>"
+        - narrate "<&hover[very epic].type[SHOW_TEXT]><element[<green><bold><underline>[Yes]].on_click[/spawn].type[RUN_COMMAND]><&end_hover>"
+        - narrate "<&hover[very epic].type[SHOW_TEXT]><element[<red><bold><underline>[No]].on_click[/spawn].type[RUN_COMMAND]><&end_hover>"
 #Incomplete
 
 confirm_script_gui:
