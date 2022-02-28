@@ -82,7 +82,7 @@ spawn_sheep:
     script:
     - if <player.location.forward_flat[2].equals[air].not>:
         - narrate "You do not have enough space to spawn a sheep"
-        - determine cancelled
+        - determine passively cancelled
     - strike <player.location.forward_flat[2]> no_damage
     - spawn sheep <player.location.forward_flat[2]>
     - narrate "Sheep spawned!"
@@ -139,4 +139,4 @@ interactable_text_testing:
     type: task
     script:
         - flag amogus "amogus is sus"
-        - narrate "You can <element[click here].on_click[/spawn_sheep].type[RUN_COMMAND]> to test out the confirmation menu!"
+        - narrate "<&hover[very epic].type[SHOW_TEXT]>You can <element[click here].on_click[/spawn_sheep].type[RUN_COMMAND]> to /spawn!<&end_hover>"
