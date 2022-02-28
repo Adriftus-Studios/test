@@ -138,4 +138,4 @@ confirm_script_gui:
 interactable_text_testing:
     type: task
     script:
-        - narrate "<&hover[very epic].type[SHOW_TEXT]>You can <element[click here].on_click[/spawn_sheep].type[RUN_COMMAND]> to /spawn!<&end_hover>"
+        - narrate "You can <&hover[very epic].type[SHOW_TEXT]><element[click here].on_click[/spawn_sheep].type[RUN_COMMAND]><&end_hover> to /spawn!"
