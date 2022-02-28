@@ -74,21 +74,6 @@ cool_thing:
       - shoot <context.item.data_key[data.shoots]> speed:4
 #Approved
 
-spawn_sheep:
-    type: command
-    name: spawnsheep
-    description: Spawns a sheep at your location.
-    usage: /spawnsheep
-    script:
-    - if <player.location.forward_flat[2].equals[air]>:
-        - strike <player.location.forward_flat[2]> no_damage
-        - spawn sheep <player.location.forward_flat[2]>
-        - narrate "Sheep spawned!"
-    - else:
-        - narrate "You do not have enough space to spawn a sheep"
-        - determine passively cancelled
-#Incomplete
-
 chest_lock_item:
   type: item
   material: iron_nugget
@@ -112,6 +97,7 @@ chest_lock:
                 - determine passively cancelled
                 - narrate "This chest belongs to <context.location.flag[locked_chest].as_player.name>."
 #Approved
+#Issue - flag isn't deleted when chest is destroyed
 
 spawn_command:
     type: command
@@ -129,14 +115,27 @@ confirm_script_text:
         - narrate "<&hover[very epic].type[SHOW_TEXT]><element[<green><bold><underline>[Yes]].on_click[/spawn].type[RUN_COMMAND]><&end_hover>"
         - narrate "<&hover[very epic].type[SHOW_TEXT]><element[<red><bold><underline>[No]].on_click[/spawn].type[RUN_COMMAND]><&end_hover>"
 #Incomplete
-
 confirm_script_gui:
     type: task
     script:
         - inventory open
 #Incomplete
-
 interactable_text_testing:
     type: task
     script:
         - narrate "You can <&hover[very epic].type[SHOW_TEXT]><element[click here].on_click[/spawn].type[RUN_COMMAND]><&end_hover> to /spawn!"
+
+spawn_sheep:
+    type: command
+    name: spawnsheep
+    description: Spawns a sheep at your location.
+    usage: /spawnsheep
+    script:
+    - if <material[player.location.forward_flat[2]].is_solid>:
+        - strike <player.location.forward_flat[2]> no_damage
+        - spawn sheep <player.location.forward_flat[2]>
+        - narrate "Sheep spawned!"
+    - else:
+        - narrate "You do not have enough space to spawn a sheep"
+        - determine passively cancelled
+#Incomplete
