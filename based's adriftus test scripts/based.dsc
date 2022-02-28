@@ -125,13 +125,15 @@ interactable_text_testing:
     script:
         - narrate "You can <&hover[very epic].type[SHOW_TEXT]><element[click here].on_click[/spawn].type[RUN_COMMAND]><&end_hover> to /spawn!"
 
+#Approved
+
 spawn_sheep:
     type: command
     name: spawnsheep
     description: Spawns a sheep at your location.
     usage: /spawnsheep
     script:
-    - if <material[player.location.forward_flat[2]].is_solid>:
+    - if <player.location.forward_flat[2].equals[air].not>:
         - strike <player.location.forward_flat[2]> no_damage
         - spawn sheep <player.location.forward_flat[2]>
         - narrate "Sheep spawned!"
