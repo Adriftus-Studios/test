@@ -81,7 +81,7 @@ spawn_sheep:
     usage: /spawnsheep
     script:
     - run confirm_script_text def:Script_Confirm
-    - if <player.location.forward_flat[2].equals[air]> && [Script_Confirm.not]:
+    - if <player.location.forward_flat[2].equals[air]>:
         - strike <player.location.forward_flat[2]> no_damage
         - spawn sheep <player.location.forward_flat[2]>
         - narrate "Sheep spawned!"
