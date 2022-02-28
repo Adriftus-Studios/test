@@ -233,7 +233,7 @@ koth_win_events:
 
     - define win_sounds <list[ENTITY_FIREWORK_ROCKET_LARGE_BLAST|ENTITY_FIREWORK_ROCKET_BLAST_FAR|ENTITY_FIREWORK_ROCKET_TWINKLE|ENTITY_FIREWORK_ROCKET_LAUNCH]>
     - repeat 6 as:koth_win:
-      - playsound <server.online_players> sound:<[win_sounds]>.random volume:1
+      - playsound <server.online_players> sound:<[win_sounds].random> volume:1
       - wait 5t
 
 koth_spawn_launcher_particles:
