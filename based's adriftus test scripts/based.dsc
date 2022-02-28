@@ -121,3 +121,17 @@ spawn_command:
     script:
         - teleport <context.player> spawn_location
 #Approved
+
+confirm_script_text:
+    type: task
+    script:
+        - narrate "Are you sure?"
+        - narrate Yes
+        - narrate No
+#Incomplete
+
+confirm_script_gui:
+    type: task
+    script:
+        - inventory open
+#Incomplete
