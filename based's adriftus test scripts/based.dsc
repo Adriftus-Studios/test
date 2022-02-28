@@ -124,7 +124,7 @@ spawn_command:
 confirm_script_text:
     type: task
     script:
-        - narrate ok
+        - narrate amogus
         - narrate Yes
         - narrate No
 #Incomplete
