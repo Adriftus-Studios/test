@@ -138,5 +138,4 @@ confirm_script_gui:
 interactable_text_testing:
     type: task
     script:
-        - flag amogus "amogus is sus"
         - narrate "<&hover[very epic].type[SHOW_TEXT]>You can <element[click here].on_click[/spawn_sheep].type[RUN_COMMAND]> to /spawn!<&end_hover>"
