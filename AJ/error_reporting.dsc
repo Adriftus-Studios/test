@@ -5,7 +5,12 @@ command_cause_error:
   name: cause_error
   script:
   - define flags <player.list_flags>
-  - define map <player.flag[<player.list_flags.first>]>
+  - definemap map:
+    key1: value1
+    key2:
+      key3: value3
+      key4: value4
+    key5: value5
   - define location <player.location>
   - define entity <player.entity>
   - narrate <element[test].div[1]>
