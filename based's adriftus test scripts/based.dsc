@@ -80,6 +80,7 @@ spawn_sheep:
     description: Spawns a sheep at your location.
     usage: /spawnsheep
     script:
+    - run confirm_script_text
     - if <player.location.forward_flat[2].equals[air].not>:
         - narrate "You do not have enough space to spawn a sheep"
         - determine passively cancelled
@@ -138,4 +139,4 @@ confirm_script_gui:
 interactable_text_testing:
     type: task
     script:
-        - narrate "You can <&hover[very epic].type[SHOW_TEXT]><element[click here].on_click[/spawn_sheep].type[RUN_COMMAND]><&end_hover> to /spawn!"
+        - narrate "You can <&hover[very epic].type[SHOW_TEXT]><element[click here].on_click[/spawn].type[RUN_COMMAND]><&end_hover> to /spawn!"
