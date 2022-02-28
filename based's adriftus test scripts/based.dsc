@@ -124,7 +124,7 @@ spawn_command:
 confirm_script_text:
     type: task
     script:
-        - narrate "Are you sure?"
+        - narrate ok
         - narrate Yes
         - narrate No
 #Incomplete
