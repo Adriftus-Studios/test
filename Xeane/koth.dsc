@@ -59,6 +59,7 @@ koth_events:
       - flag <player> koth_liftoff:!
       - adjust <player> gliding:false if:<player.gliding>
     after player enters spawn_launcher:
+      - ratelimit <player> 5s
       - inject koth_launcher
     after player exits spawn:
       - flag <player> koth_hop
@@ -97,6 +98,7 @@ koth_start:
       - define winner <server.online_players_flagged[koth.current.points].sort_by_number[flag[koth.current.points]].last>
       - flag <[winner]> koth.global.wins:++
       - announce <script[koth_config].parsed_key[messages.winner]>
+      - run koth_win_events def:<[win_sounds]>
     - run koth_start
 
 koth_countdown:
@@ -194,6 +196,7 @@ koth_launcher:
   debug: false
   definitions: not_spawn
   script:
+    - playsound <player> sound:ENTITY_ENDER_DRAGON_FLAP volume:1
     - look <ellipsoid[current_koth].location.with_y[275]> if:<ellipsoid[current_koth].exists>
     - if <[not_spawn]||false>:
       - adjust <player> gravity:false
@@ -206,7 +209,7 @@ koth_launcher:
       - wait 1.5s
     - if !<player.is_online>:
       - stop
-    - if <[not_spawn]> && !<player.has_flag[koth_liftoff]>:
+    - if <[not_spawn].is_truthy> && !<player.has_flag[koth_liftoff]>:
       - stop
     - define chest <player.equipment.get[3]||air>
     - fakeequip <player> chest:<[chest]> for:<server.online_players>
@@ -219,6 +222,20 @@ koth_launcher:
     - if <player.is_online>:
       - equip <player> chest:<[chest]>
       - fakeequip <player> reset for:<server.online_players>
+
+koth_win_events:
+  type: task
+  debug: false
+  script:
+
+    # Need to teleport all players to a specific point, and face them towards the winner/winners(on live)
+    #   then inject the win treasure drops (the items, like gold, emerald, diamond, etc flying all over them)
+    # Noted location at the top of the palace in the throne room
+
+    - define win_sounds <list[ENTITY_FIREWORK_ROCKET_LARGE_BLAST|ENTITY_FIREWORK_ROCKET_BLAST_FAR|ENTITY_FIREWORK_ROCKET_TWINKLE|ENTITY_FIREWORK_ROCKET_LAUNCH]>
+    - repeat 6 as:koth_win:
+      - playsound <server.online_players> sound:<[win_sounds].random> volume:1
+      - wait 5t
 
 koth_spawn_launcher_particles:
   type: task

@@ -39,7 +39,6 @@ support_bell:
     - Gives you food, fills your hunger bar and fully insta-heals you!
     enchantments:
     - sharpness:5
-#Incomplete
 magic_replenishing_bell:
     type: world
     item: support_bell
@@ -75,20 +74,6 @@ cool_thing:
       - shoot <context.item.data_key[data.shoots]> speed:4
 #Approved
 
-spawn_sheep:
-    type: command
-    name: spawnsheep
-    description: Spawns a sheep at your location.
-    usage: /spawnsheep
-    script:
-    - if <player.location.forward_flat[2].equals[air].not>:
-        - narrate "You do not have enough space to spawn a sheep"
-        - determine cancelled
-    - strike <player.location.forward_flat[2]> no_damage
-    - spawn sheep <player.location.forward_flat[2]>
-    - narrate "Sheep spawned!"
-#Approved, but not fully tested
-
 chest_lock_item:
   type: item
   material: iron_nugget
@@ -111,3 +96,57 @@ chest_lock:
             - if <context.location.flag[locked_chest]> != <player.uuid>:
                 - determine passively cancelled
                 - narrate "This chest belongs to <context.location.flag[locked_chest].as_player.name>."
+#Approved
+#Issue - flag isn't deleted when chest is destroyed
+
+spawn_command:
+    type: command
+    name: spawn
+    description: Spawns.
+    usage: /spawn
+    script:
+        - teleport <context.player> spawn_location
+#Approved
+
+confirm_script_text:
+    type: task
+    script:
+        - narrate "Are you sure about this?"
+        - narrate "<&hover[Yes, I am].type[SHOW_TEXT]><element[<green><bold><underline>[Yes]].on_click[true].type[RUN_COMMAND]><&end_hover>"
+        - narrate "<&hover[Nope, I'm not].type[SHOW_TEXT]><element[<red><bold><underline>[No]].on_click[false].type[RUN_COMMAND]><&end_hover>"
+#Incomplete
+confirm_script_gui:
+    type: task
+    script:
+        - inventory open
+#Incomplete
+interactable_text_testing:
+    type: task
+    script:
+        - narrate "You can <&hover[very epic].type[SHOW_TEXT]><element[click here].on_click[/spawn].type[RUN_COMMAND]><&end_hover> to /spawn!"
+
+#Approved
+
+spawn_sheep:
+    type: command
+    name: spawnsheep
+    description: Spawns a sheep at your location.
+    usage: /spawnsheep
+    script:
+    - ~run confirm_script_text
+    - if <player.location.forward_flat[2].equals[air].not>:
+        - strike <player.location.forward_flat[2]> no_damage
+        - spawn sheep <player.location.forward_flat[2]>
+        - narrate "Sheep spawned!"
+    - else:
+        - narrate "You do not have enough space to spawn a sheep"
+        - determine passively cancelled
+#Incomplete
+
+confirm_test:
+    type: command
+    name: confirmtest
+    description: confirmation testing
+    usage: /confirmtest
+    script:
+    - run confirm_script_text
