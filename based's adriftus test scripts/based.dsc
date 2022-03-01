@@ -112,8 +112,8 @@ confirm_script_text:
     type: task
     script:
         - narrate "Are you sure about this?"
-        - narrate "<&hover[very epic].type[SHOW_TEXT]><element[<green><bold><underline>[Yes]].on_click[/spawn].type[RUN_COMMAND]><&end_hover>"
-        - narrate "<&hover[very epic].type[SHOW_TEXT]><element[<red><bold><underline>[No]].on_click[/spawn].type[RUN_COMMAND]><&end_hover>"
+        - narrate "<&hover[Yes, I am].type[SHOW_TEXT]><element[<green><bold><underline>[Yes]].on_click[true].type[RUN_COMMAND]><&end_hover>"
+        - narrate "<&hover[Nope, I'm not].type[SHOW_TEXT]><element[<red><bold><underline>[No]].on_click[false].type[RUN_COMMAND]><&end_hover>"
 #Incomplete
 confirm_script_gui:
     type: task
@@ -133,7 +133,7 @@ spawn_sheep:
     description: Spawns a sheep at your location.
     usage: /spawnsheep
     script:
-    - run callback_confirm_script
+    - ~run confirm_script_text
     - if <player.location.forward_flat[2].equals[air].not>:
         - strike <player.location.forward_flat[2]> no_damage
         - spawn sheep <player.location.forward_flat[2]>
@@ -150,8 +150,3 @@ confirm_test:
     usage: /confirmtest
     script:
     - run confirm_script_text
-
-callback_confirm_script:
-    type: task
-    script:
-        - run confirm_script_text def:Run_That_Script
