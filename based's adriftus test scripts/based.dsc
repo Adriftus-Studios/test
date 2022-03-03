@@ -108,13 +108,6 @@ spawn_command:
         - teleport <context.player> spawn_location
 #Approved
 
-confirm_script_text:
-    type: task
-    script:
-        - narrate "Are you sure about this?"
-        - narrate "<&hover[Yes, I am].type[SHOW_TEXT]><element[<green><bold><underline>[Yes]].on_click[true].type[RUN_COMMAND]><&end_hover>"
-        - narrate "<&hover[Nope, I'm not].type[SHOW_TEXT]><element[<red><bold><underline>[No]].on_click[false].type[RUN_COMMAND]><&end_hover>"
-#Incomplete
 confirm_script_gui:
     type: task
     script:
@@ -127,26 +120,32 @@ interactable_text_testing:
 
 #Approved
 
-spawn_sheep:
+confirm_script_text:
+    type: task
+    script:
+        - narrate "Are you sure about this?"
+        - narrate "<&hover[Yes, I am].type[SHOW_TEXT]><element[<green><bold><underline>[Yes]].on_click[true].type[RUN_COMMAND]><&end_hover>"
+        - narrate "<&hover[No, I'm not].type[SHOW_TEXT]><element[<red><bold><underline>[No]].on_click[false].type[RUN_COMMAND]><&end_hover>"
+        - flag playerResponse <context.message>
+#Incomplete
+spawn_sheep_command:
     type: command
     name: spawnsheep
     description: Spawns a sheep at your location.
     usage: /spawnsheep
     script:
-    - ~run confirm_script_text
-    - if <player.location.forward_flat[2].equals[air].not>:
-        - strike <player.location.forward_flat[2]> no_damage
-        - spawn sheep <player.location.forward_flat[2]>
-        - narrate "Sheep spawned!"
-    - else:
-        - narrate "You do not have enough space to spawn a sheep"
-        - determine passively cancelled
+    - ~run confirm_script_text save:playerResponse
+    - waituntil <entry[playerResponse].created_queue.equals[true]>:
+        - run spawn_sheep
 #Incomplete
-
-confirm_test:
-    type: command
-    name: confirmtest
-    description: confirmation testing
-    usage: /confirmtest
+spawn_sheep:
+    type: task
     script:
-    - run confirm_script_text
+        - if <player.location.forward_flat[2].equals[air].not>:
+            - strike <player.location.forward_flat[2]> no_damage
+            - spawn sheep <player.location.forward_flat[2]>
+            - narrate "Sheep spawned!"
+        - else:
+            - narrate "You do not have enough space to spawn a sheep."
+            - determine passively cancelled
+#It works
