@@ -127,7 +127,7 @@ spawn_sheep_command:
     description: Spawns a sheep at your location.
     usage: /spawnsheep
     script:
-    - flag player Confirmation:true
+    - flag player Confirmation:confirm_script_text
     - if <player.has_flag[Confirmation]>:
         - run spawn_sheep
     - else:
