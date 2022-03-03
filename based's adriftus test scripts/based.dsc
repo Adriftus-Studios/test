@@ -127,8 +127,7 @@ spawn_sheep_command:
     description: Spawns a sheep at your location.
     usage: /spawnsheep
     script:
-    - ~run confirm_script_text save:playerResponse
-    - waituntil <entry[playerResponse].determination[true]>:
+    - waituntil <proc[confirm_script_text]>:
         - run spawn_sheep
 #Incomplete
 spawn_sheep:
