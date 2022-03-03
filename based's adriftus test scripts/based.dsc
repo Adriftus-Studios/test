@@ -124,10 +124,10 @@ confirm_script_text:
     type: task
     script:
         - narrate "Are you sure about this?"
-        - define true:
-            - narrate "<&hover[Yes, I am].type[SHOW_TEXT]><element[<green><bold><underline>[Yes]].on_click[true].type[RUN_COMMAND]><&end_hover>"
-        - define false:
-            - narrate "<&hover[No, I'm not].type[SHOW_TEXT]><element[<red><bold><underline>[No]].on_click[false].type[RUN_COMMAND]><&end_hover>"
+        - narrate "<&hover[Yes, I am].type[SHOW_TEXT]><element[<green><bold><underline>[Yes]].on_click[true].type[RUN_COMMAND]><&end_hover>":
+            - determine true
+        - narrate "<&hover[No, I'm not].type[SHOW_TEXT]><element[<red><bold><underline>[No]].on_click[false].type[RUN_COMMAND]><&end_hover>":
+            - determine false
 #Incomplete
 spawn_sheep_command:
     type: command
