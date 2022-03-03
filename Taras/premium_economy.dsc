@@ -1,16 +1,24 @@
 premium_currency_command:
     type: command
-    # The name of the currency is linked to the name datakey of this command
+    ## The name of the currency is linked to the name datakey of this command ##
     name: orbsus
     description: A command for the premium currency on this server
-    # Might need to change the usage if you change the name
+    #- Might need to change the usage if you change the name -#
     usage: /orbsus
     script:
         - define currencyName <script[premium_currency_command].data_key[name]>
+
+        # % ██ [ View other players balance ] ██
+        #- Requires the [adriftus.economy.other] permission -#
         - if <context.args.size> > 0 && <player.has_permission[adriftus.economy.other]> && <server.online_players.parse[name].contains[<context.args.get[1]>]>:
             - define player <player[<context.args.get[1]>]>
             - narrate "<&b><[player].name> <[currencyName]> balance is: <[player].flag[economy.premium].round_to[2]>"
-        - else if <context.args.size> > 0 && <player.has_permission[adriftus.economy]>:
+
+        # % ██ [ Economy modifier commands ] ██
+        #- Requires the [adriftus.economy.admin] permission -#
+        - else if <context.args.size> > 0 && <player.has_permission[adriftus.economy.admin]>:
+
+            # % ██ [ Checks to make sure all arguments are present ] ██
             - if !<context.args.get[2].exists>:
                 - narrate "<&c>Please specify a player name"
                 - stop
@@ -23,22 +31,30 @@ premium_currency_command:
             - if !<context.args.get[3].is_integer>:
                 - narrate "<&c>Please make sure your amount is a number"
                 - stop
+
+            # % ██ [ Run code based on argument ] ██
             - choose <context.args.get[1]>:
                 - case give:
                     - run premium_currency_give def:<context.args.get[2]>|<context.args.get[3]>
                     - narrate "<&a>Successfully deposited <context.args.get[3]> <[currencyName]> to <context.args.get[2]>'s account"
                 - case remove:
                     - run premium_currency_remove def:<context.args.get[2]>|<context.args.get[3]> save:outcome
+
+                    # % ██ [ Check if the balance was removed successfully ] ██
                     - if <entry[outcome].created_queue.determination.first>:
                         - narrate "<&a>Successfully removed <context.args.get[3]> <[currencyName]> from <context.args.get[2]>'s account"
                     - else:
                         - narrate "<&c><context.args.get[2]> does not have enough funds, to remove <context.args.get[3]> <[currencyName]>"
                 - case set:
                     - run premium_currency_set def:<context.args.get[2]>|<context.args.get[3]> save:outcome
+
+                    # % ██ [ Check if the balance was set successfully ] ██
                     - if <entry[outcome].created_queue.determination.first>:
                         - narrate "<&a>Successfully set <context.args.get[2]>'s account to <context.args.get[3]> <[currencyName]>"
                     - else:
                         - narrate "<&c>You cannot set account balance below 0 <[currencyName]>"
+
+        # % ██ [ Print current players balance ] ██
         - else:
             - narrate "<&b>You're <[currencyName]> balance is: <player.flag[economy.premium].round_to[2]>"
 
@@ -46,9 +62,12 @@ premium_currency_event_handler:
     type: world
     events:
         on player joins:
+            # % ██ [ Used to set initial currency ] ██
             - if !<player.has_flag[economy.premium]>:
                 - flag <player> economy.premium:0
 
+## External ##
+# % ██ [ Give player curency ] ██
 premium_currency_give:
     type: task
     definitions: player|amount
@@ -57,6 +76,9 @@ premium_currency_give:
         - flag <player[<[player]>]> economy.premium:<[newBal]>
         - narrate "<&a><[amount]> <script[premium_currency_command].data_key[name]> has been deposited to you're account" targets:<player[<[player]>]>
 
+## External ##
+# % ██ [ Remove player curency ] ██
+#- Returns false if it fails to remove the currency -#
 premium_currency_remove:
     type: task
     definitions: player|amount
@@ -68,6 +90,9 @@ premium_currency_remove:
         - narrate "<&c><[amount]> <script[premium_currency_command].data_key[name]> has been deducted from you're account" targets:<player[<[player]>]>
         - determine true
 
+## External ##
+# % ██ [ Set player curency ] ██
+#- Returns false if it fails to set the currency -#
 premium_currency_set:
     type: task
     definitions: player|amount
