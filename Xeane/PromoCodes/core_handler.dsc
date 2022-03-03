@@ -13,7 +13,7 @@ code_redemption_command:
       - narrate "<&c>This code has expired."
       - stop
     - if <yaml[global.player.<player.uuid>].contains[codes.<context.args.get[1]>]>:
-      - narrate "<&c>You have already redeemed this code on <yaml[global.player.<player.uuid>].parsed_key[codes.<context.args.get[1]>].format[mm/dd/yyyy]>"
+      - narrate "<&c>You have already redeemed this code on <yaml[global.player.<player.uuid>].read[codes.<context.args.get[1]>].format[mm/dd/yyyy]>"
       - stop
     - run <script[promo_code_<context.args.get[1]>].data_key[run_task]>
     - run global_player_data_modify def:<player.uuid>|codes.<context.args.get[1]>|<util.time_now>

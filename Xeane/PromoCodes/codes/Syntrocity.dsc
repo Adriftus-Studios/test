@@ -13,4 +13,5 @@ promo_code_syntrocity_task:
     - execute as_server "lp user <player.name> permission set adriftus.chat.color"
     - execute as_server "lp user <player.name> permission set adriftus.chat.link_item"
     - narrate "<element[Welcome to the Synternet!].rainbow>"
-    - narrate "<&e>You can also use chat colors, and color when renaming items in an anvil.<&nl>You can also link your held item by putting [item] in chat."
+    - narrate "<&e>You have unlocked a new title!! <&b>/titles"
+    - narrate "<&e>You can also use colors in chat and when renaming items in an anvil!<&nl>You can also link your held item by putting [item] in chat."
