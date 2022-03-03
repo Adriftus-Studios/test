@@ -141,12 +141,12 @@ spawn_sheep:
         - else:
             - narrate "You do not have enough space to spawn a sheep."
             - determine passively cancelled
-#It works
+#It works, no changes needed
 confirm_script_text:
-    type: task
+    type: procedure
     script:
         - narrate "Are you sure about this?"
-        - narrate <&hover[Confirm].type[show_text]><element[<green><bold><underline>[Yes]].on_click[true].type[RUN_COMMAND]><&end_hover><reset>
+        - narrate <&hover[Confirm].type[show_text]><element[<green><bold><underline>[Yes]].on_click[true]><&end_hover><reset>
         - narrate <&hover[Cancel].type[show_text]><element[<red><bold><underline>[No]].on_click[false]><&end_hover><reset>
         - if element[true]:
             - determine true
