@@ -128,7 +128,7 @@ spawn_sheep_command:
     usage: /spawnsheep
     script:
     - ~run confirm_script_text save:playerResponse
-    - waituntil <entry[playerResponse].command.equals[true]>:
+    - waituntil <entry[playerResponse].determination.equals[true]>:
         - run spawn_sheep
 #Incomplete
 spawn_sheep:
@@ -146,5 +146,5 @@ confirm_script_text:
     type: task
     script:
         - narrate "Are you sure about this?"
-        - narrate "<&hover[Yes, I do].type[show_text]><element[<green><bold><underline>[Yes]].on_click[(true)].type[RUN_COMMAND]><&end_hover><reset>"
-        - narrate "<&hover[No, I don't].type[show_text]><element[<red><bold><underline>[No]].on_click[(false)]><&end_hover><reset>"
+        - narrate "<&hover[Yes, I do].type[show_text]><element[<green><bold><underline>[Yes]].on_click[true(Boolean)].type[RUN_COMMAND]><&end_hover><reset>"
+        - narrate "<&hover[No, I don't].type[show_text]><element[<red><bold><underline>[No]].on_click[false(Boolean)]><&end_hover><reset>"
