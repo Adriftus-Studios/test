@@ -127,18 +127,24 @@ interactable_text_testing:
 
 #Approved
 
-spawn_sheep:
+spawn_sheep_command:
     type: command
     name: spawnsheep
     description: Spawns a sheep at your location.
     usage: /spawnsheep
     script:
     - ~run confirm_script_text save:playerResponse
-    - if <player.location.forward_flat[2].equals[air].not> && <entry[playerResponse].created_queue.equals[true]>:
-        - strike <player.location.forward_flat[2]> no_damage
-        - spawn sheep <player.location.forward_flat[2]>
-        - narrate "Sheep spawned!"
-    - else:
-        - narrate "You do not have enough space to spawn a sheep"
-        - determine passively cancelled
-#Incomplete
+    - waituntil <entry[playerResponse].created_queue.equals[true]>:
+        - run spawn_sheep
+#To be tested
+spawn_sheep:
+    type: task
+    script:
+        - if <player.location.forward_flat[2].equals[air].not>:
+            - strike <player.location.forward_flat[2]> no_damage
+            - spawn sheep <player.location.forward_flat[2]>
+            - narrate "Sheep spawned!"
+        - else:
+            - narrate "You do not have enough space to spawn a sheep"
+            - determine passively cancelled
+#Also to be tested
