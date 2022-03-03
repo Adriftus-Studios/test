@@ -120,13 +120,6 @@ interactable_text_testing:
 
 #Approved
 
-confirm_script_text:
-    type: task
-    script:
-        - narrate "Are you sure about this?"
-        - narrate "<&hover[Yes, I am].type[SHOW_TEXT]><element[<green><bold><underline>[Yes]].on_click[true].type[RUN_COMMAND]><&end_hover>"
-        - narrate "             <&hover[No, I'm not].type[SHOW_TEXT]><element[<red><bold><underline>[No]].on_click[false].type[RUN_COMMAND]><&end_hover>"
-        - flag playerResponse <context.message>
 #Incomplete
 spawn_sheep_command:
     type: command
@@ -141,6 +134,7 @@ spawn_sheep_command:
 spawn_sheep:
     type: task
     script:
+        - clickable confirm_script_text save:Confirmation
         - if <player.location.forward_flat[2].equals[air].not>:
             - strike <player.location.forward_flat[2]> no_damage
             - spawn sheep <player.location.forward_flat[2]>
@@ -149,3 +143,10 @@ spawn_sheep:
             - narrate "You do not have enough space to spawn a sheep."
             - determine passively cancelled
 #It works
+confirm_script_text:
+    type: task
+    script:
+        - narrate "Are you sure about this?"
+        - narrate "<&hover[Yes, I am].type[SHOW_TEXT]><element[<green><bold><underline>[Yes]].on_click[/spawnsheep].type[RUN_COMMAND]><&end_hover>"
+        - narrate "<&hover[No, I'm not].type[SHOW_TEXT]><element[<red><bold><underline>[No]].on_click[false].type[RUN_COMMAND]><&end_hover>"
+        - flag playerResponse <context.message>
