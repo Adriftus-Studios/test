@@ -145,7 +145,7 @@ spawn_sheep:
             - determine passively cancelled
 #It works, no changes needed
 confirm_script_text:
-    type: procedure
+    type: task
     script:
         - narrate "Are you sure about this?"
         - narrate <&hover[Confirm].type[show_text]><element[<green><bold><underline>[Yes]].on_click[element[true].as_boolean]><&end_hover><reset>
