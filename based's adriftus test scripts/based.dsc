@@ -120,13 +120,6 @@ interactable_text_testing:
 
 #Approved
 
-confirm_script_text:
-    type: task
-    script:
-        - narrate "Are you sure about this?"
-        - narrate "<&hover[Yes, I am].type[SHOW_TEXT]><element[<green><bold><underline>[Yes]].on_click[true].type[RUN_COMMAND]><&end_hover>"
-        - narrate "<&hover[No, I'm not].type[SHOW_TEXT]><element[<red><bold><underline>[No]].on_click[false].type[RUN_COMMAND]><&end_hover>"
-        - flag playerResponse <context.message>
 #Incomplete
 spawn_sheep_command:
     type: command
@@ -134,8 +127,7 @@ spawn_sheep_command:
     description: Spawns a sheep at your location.
     usage: /spawnsheep
     script:
-    - ~run confirm_script_text save:playerResponse
-    - waituntil <entry[playerResponse].created_queue.equals[true]>:
+    - waituntil <proc[confirm_script_text]>:
         - run spawn_sheep
 #Incomplete
 spawn_sheep:
@@ -148,4 +140,14 @@ spawn_sheep:
         - else:
             - narrate "You do not have enough space to spawn a sheep."
             - determine passively cancelled
-#It works
+#It works, no changes needed
+confirm_script_text:
+    type: procedure
+    script:
+        - narrate "Are you sure about this?"
+        - narrate <&hover[Confirm].type[show_text]><element[<green><bold><underline>[Yes]].on_click[true]><&end_hover><reset>
+        - narrate <&hover[Cancel].type[show_text]><element[<red><bold><underline>[No]].on_click[false]><&end_hover><reset>
+        - if element[true]:
+            - determine true
+        - else:
+            - determine false
