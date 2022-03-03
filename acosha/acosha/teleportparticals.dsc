@@ -17,4 +17,6 @@ telepart:
      - foreach <[points]>:
         - playeffect <[particle]> at:<[value]> quantity:200 offset:0.6 visibility:500
         - wait 1s 
-        - playeffect <[particle]> at:<[value]> quantity:200 offset:0.6 visibility:500
+        - playeffect <[particle]> at:<[value]> quantity:100 offset:0.6 visibility:500
+        - wait 1s 
+        - playeffect <[particle]> at:<[value]> quantity:50 offset:0.6 visibility:500
