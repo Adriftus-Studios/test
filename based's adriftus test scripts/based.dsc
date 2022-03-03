@@ -135,7 +135,7 @@ spawn_sheep_command:
     usage: /spawnsheep
     script:
   #  - ~run confirm_script_text save:playerResponse
-    - inject confirm_script_text path::playerResponse
+    - inject confirm_script_text path:playerResponse
     - waituntil <entry[playerResponse].created_queue.equals["true"]>:
         - run spawn_sheep
 #Incomplete
