@@ -108,13 +108,6 @@ spawn_command:
         - teleport <context.player> spawn_location
 #Approved
 
-confirm_script_text:
-    type: task
-    script:
-        - narrate "Are you sure about this?"
-        - narrate "<&hover[Yes, I am].type[SHOW_TEXT]><element[<green><bold><underline>[Yes]].on_click[true].type[RUN_COMMAND]><&end_hover>"
-        - narrate "<&hover[Nope, I'm not].type[SHOW_TEXT]><element[<red><bold><underline>[No]].on_click[false].type[RUN_COMMAND]><&end_hover>"
-#Incomplete
 confirm_script_gui:
     type: task
     script:
@@ -127,6 +120,15 @@ interactable_text_testing:
 
 #Approved
 
+confirm_script_text:
+    type: task
+    script:
+        - narrate "Are you sure about this?"
+        - define true:
+            - narrate "<&hover[Yes, I am].type[SHOW_TEXT]><element[<green><bold><underline>[Yes]].on_click[true].type[RUN_COMMAND]><&end_hover>"
+        - define false:
+            - narrate "<&hover[No, I'm not].type[SHOW_TEXT]><element[<red><bold><underline>[No]].on_click[false].type[RUN_COMMAND]><&end_hover>"
+#Incomplete
 spawn_sheep_command:
     type: command
     name: spawnsheep
@@ -136,7 +138,7 @@ spawn_sheep_command:
     - ~run confirm_script_text save:playerResponse
     - waituntil <entry[playerResponse].created_queue.equals[true]>:
         - run spawn_sheep
-#To be tested
+#Incomplete
 spawn_sheep:
     type: task
     script:
@@ -145,6 +147,6 @@ spawn_sheep:
             - spawn sheep <player.location.forward_flat[2]>
             - narrate "Sheep spawned!"
         - else:
-            - narrate "You do not have enough space to spawn a sheep"
+            - narrate "You do not have enough space to spawn a sheep."
             - determine passively cancelled
-#Also to be tested
+#It works
