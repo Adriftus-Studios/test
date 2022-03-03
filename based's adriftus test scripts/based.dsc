@@ -127,13 +127,16 @@ spawn_sheep_command:
     description: Spawns a sheep at your location.
     usage: /spawnsheep
     script:
-    - waituntil <proc[confirm_script_text]>:
+    - ~run confirm_script_text save:playerConfirmation
+    - if <entry[playerConfirmation].equals[true]>:
         - run spawn_sheep
+    - else:
+        - narrate Cancelled.
 #Incomplete
 spawn_sheep:
     type: task
     script:
-        - if <player.location.forward_flat[2].equals[air].not>:
+        - if <player.location.forward_flat[2].material.name.equals[air].not>:
             - strike <player.location.forward_flat[2]> no_damage
             - spawn sheep <player.location.forward_flat[2]>
             - narrate "Sheep spawned!"
@@ -145,9 +148,6 @@ confirm_script_text:
     type: procedure
     script:
         - narrate "Are you sure about this?"
-        - narrate <&hover[Confirm].type[show_text]><element[<green><bold><underline>[Yes]].on_click[true]><&end_hover><reset>
-        - narrate <&hover[Cancel].type[show_text]><element[<red><bold><underline>[No]].on_click[false]><&end_hover><reset>
-        - if element[true]:
-            - determine true
-        - else:
-            - determine false
+        - narrate <&hover[Confirm].type[show_text]><element[<green><bold><underline>[Yes]].on_click[element[true].as_boolean]><&end_hover><reset>
+        - narrate <&hover[Cancel].type[show_text]><element[<red><bold><underline>[No]].on_click[element[false].as_boolean]><&end_hover><reset>
+        - determine <context.boolean>
