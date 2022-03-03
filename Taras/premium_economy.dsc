@@ -53,19 +53,19 @@ premium_currency_give:
     type: task
     definitions: player|amount
     script:
-        - define newBal <player.flag[economy.premium].add[<[amount]>]>
+        - define newBal <player[<[player]>].flag[economy.premium].add[<[amount]>]>
         - flag <player[<[player]>]> economy.premium:<[newBal]>
-        - narrate "<&a><[amount]> <script[premium_currency_command].data_key[name]> has been deposited to you're account"
+        - narrate "<&a><[amount]> <script[premium_currency_command].data_key[name]> has been deposited to you're account" targets:<player[<[player]>]>
 
 premium_currency_remove:
     type: task
     definitions: player|amount
     script:
-        - define newBal <player.flag[economy.premium].sub[<[amount]>]>
+        - define newBal <player[<[player]>].flag[economy.premium].sub[<[amount]>]>
         - if <[newBal]> < 0:
             - determine false
         - flag <player[<[player]>]> economy.premium:<[newBal]>
-        - narrate "<&c><[amount]> <script[premium_currency_command].data_key[name]> has been deducted from you're account"
+        - narrate "<&c><[amount]> <script[premium_currency_command].data_key[name]> has been deducted from you're account" targets:<player[<[player]>]>
         - determine true
 
 premium_currency_set:
@@ -75,5 +75,5 @@ premium_currency_set:
         - if <[amount]> < 0:
             - determine false
         - flag <player[<[player]>]> economy.premium:<[amount]>
-        - narrate "<&b>You're account has been set to <[amount]> <script[premium_currency_command].data_key[name]>"
+        - narrate "<&b>You're account has been set to <[amount]> <script[premium_currency_command].data_key[name]>" targets:<player[<[player]>]>
         - determine true
