@@ -127,12 +127,12 @@ spawn_sheep_command:
     description: Spawns a sheep at your location.
     usage: /spawnsheep
     script:
-    - ~run confirm_script_text save:playerConfirmation
-    - if <entry[playerConfirmation].equals[true]>:
+    - flag player Confirmation:true
+    - if <player.has_flag[Confirmation]>:
         - run spawn_sheep
     - else:
         - narrate Cancelled.
-#Incomplete
+# |  Incomplete
 spawn_sheep:
     type: task
     script:
