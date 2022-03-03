@@ -15,5 +15,8 @@ code_redemption_command:
     - if <yaml[global.player.<player.uuid>].contains[codes.<context.args.get[1]>]>:
       - narrate "<&c>You have already redeemed this code on <yaml[global.player.<player.uuid>].read[codes.<context.args.get[1]>].format[MM/dd/yyyy]>"
       - stop
+    - narrate <&e>----------------------------
+    - narrate "<&a>Code Redeemed<&co> <&b><context.args.get[1].to_titlecase><&a>!"
+    - narrate <&e>----------------------------<&nl>
     - run <script[promo_code_<context.args.get[1]>].data_key[run_task]>
     - run global_player_data_modify def:<player.uuid>|codes.<context.args.get[1]>|<util.time_now>
