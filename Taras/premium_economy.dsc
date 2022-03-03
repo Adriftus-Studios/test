@@ -12,7 +12,7 @@ premium_currency_command:
         #- Requires the [adriftus.economy.other] permission -#
         - if <context.args.size> > 0 && <player.has_permission[adriftus.economy.other]> && <server.online_players.parse[name].contains[<context.args.get[1]>]>:
             - define player <player[<context.args.get[1]>]>
-            - narrate "<&b><[player].name> <[currencyName]> balance is: <[player].flag[economy.premium].round_to[2]>"
+            - narrate "<&b><[player].name> <[currencyName]> balance is: <proc[premium_currency_global_get].context[<[player]>].round_to[2]>"
 
         # % ██ [ Economy modifier commands ] ██
         #- Requires the [adriftus.economy.admin] permission -#
@@ -56,15 +56,29 @@ premium_currency_command:
 
         # % ██ [ Print current players balance ] ██
         - else:
-            - narrate "<&b>You're <[currencyName]> balance is: <player.flag[economy.premium].round_to[2]>"
+            - narrate "<&b>You're <[currencyName]> balance is: <proc[premium_currency_global_get].context[<player>].round_to[2]>"
 
 premium_currency_event_handler:
     type: world
     events:
         on player joins:
             # % ██ [ Used to set initial currency ] ██
-            - if !<player.has_flag[economy.premium]>:
-                - flag <player> economy.premium:0
+            - if !<yaml[global.player.<player.uuid>].contains[economy.premium]>:
+                - run premium_currency_global_set def:<player>|0
+
+## Internal ##
+premium_currency_global_get:
+    type: procedure
+    definitions: player
+    script:
+        - determine <yaml[global.player.<player[<[player]>]>].read[economy.premium]>
+
+## Internal ##
+premium_currency_global_set:
+    type: task
+    definitions: player|amount
+    script:
+        - run global_player_data_modify def:<player[<[player]>].uuid>|economy.premium|<[amount]>
 
 ## External ##
 # % ██ [ Give player curency ] ██
@@ -72,8 +86,9 @@ premium_currency_give:
     type: task
     definitions: player|amount
     script:
-        - define newBal <player[<[player]>].flag[economy.premium].add[<[amount]>]>
-        - flag <player[<[player]>]> economy.premium:<[newBal]>
+        - define currentBal <proc[premium_currency_global_get].context[<[player]>]>
+        - define newBal <[currentBal].add[<[amount]>]>
+        - run premium_currency_global_set def:<[player]>|<[newBal]>
         - narrate "<&a><[amount]> <script[premium_currency_command].data_key[name]> has been deposited to you're account" targets:<player[<[player]>]>
 
 ## External ##
@@ -83,10 +98,11 @@ premium_currency_remove:
     type: task
     definitions: player|amount
     script:
-        - define newBal <player[<[player]>].flag[economy.premium].sub[<[amount]>]>
+        - define currentBal <proc[premium_currency_global_get].context[<[player]>]>
+        - define newBal <[currentBal].sub[<[amount]>]>
         - if <[newBal]> < 0:
             - determine false
-        - flag <player[<[player]>]> economy.premium:<[newBal]>
+        - run premium_currency_global_set def:<[player]>|<[newBal]>
         - narrate "<&c><[amount]> <script[premium_currency_command].data_key[name]> has been deducted from you're account" targets:<player[<[player]>]>
         - determine true
 
@@ -99,6 +115,6 @@ premium_currency_set:
     script:
         - if <[amount]> < 0:
             - determine false
-        - flag <player[<[player]>]> economy.premium:<[amount]>
+        - run premium_currency_global_set def:<[player]>|<[amount]>
         - narrate "<&b>You're account has been set to <[amount]> <script[premium_currency_command].data_key[name]>" targets:<player[<[player]>]>
         - determine true
