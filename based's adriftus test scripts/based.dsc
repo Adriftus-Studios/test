@@ -146,7 +146,8 @@ spawn_sheep:
 confirm_script_text:
     type: task
     script:
+        - clickable spawn_sheep save:sheepie
         - narrate "Are you sure about this?"
-        - narrate "<&hover[Yes, I am].type[SHOW_TEXT]><element[<green><bold><underline>[Yes]].on_click[<entry[spawn_sheep_command].command>].type[RUN_COMMAND]><&end_hover>"
+        - narrate "<&hover[Yes, I am].type[SHOW_TEXT]><element[<green><bold><underline>[Yes]].on_click[<entry[sheepie].command>].type[RUN_COMMAND]><&end_hover>"
         - narrate "<&hover[No, I'm not].type[SHOW_TEXT]><element[<red><bold><underline>[No]].on_click[false].type[RUN_COMMAND]><&end_hover>"
         - flag playerResponse <context.message>
