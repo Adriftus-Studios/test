@@ -158,10 +158,10 @@ cancelCommand:
         - narrate <red><bold>Cancelled.<reset>
 # Used for confirmScriptText
 
-# |---------------How to use the confirmation menu in other scripts (Example)---------------|
+# |         How to use the confirmation menu in other scripts (Example)         |
 # | In command script -
 # | script:
 # | - clickable relatedTaskScript save:Confirm usages:1
 # | - inject confirmScriptText
 
-# | 1. Be sure to seperate the command process in a different task script (I might change my mind on that to make it simpler)
+# | 1. Be sure to seperate the command process in a different task script
