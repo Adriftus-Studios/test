@@ -128,7 +128,7 @@ spawnSheepCommand:
     script:
     - clickable spawnSheep save:Confirm usages:1
     - inject confirmScriptText
-# |  Incomplete
+# It works
 spawnSheep:
     type: task
     script:
@@ -139,14 +139,8 @@ spawnSheep:
         - else:
             - narrate "You do not have enough space to spawn a sheep."
             - determine passively cancelled
-# | It works, no changes needed
-cancelCommand:
-    type: command
-    name: cancelcommand
-    description: Cancels a command.
-    usage: /cancelcommand
-    script:
-        - narrate <red><bold>Cancelled.<reset>
+# It works, no changes needed
+
 confirmScriptText:
     type: task
     script:
@@ -154,9 +148,21 @@ confirmScriptText:
         - narrate "Are you sure about this?"
         - narrate <&hover[Confirm].type[show_text]><element[<green><bold><underline>[Yes]].on_click[<entry[Confirm].command>]><&end_hover><reset>
         - narrate <&hover[Cancel].type[show_text]><element[<red><bold><underline>[No]].on_click[<entry[Cancel].command>]><&end_hover><reset>
+# BUG SPOTTED - Option A can be used even after Option B was clicked on.
+cancelCommand:
+    type: command
+    name: cancelcommand
+    description: Cancels a command.
+    usage: /cancelcommand
+    script:
+        - narrate <red><bold>Cancelled.<reset>
+# Used for confirmScriptText
 
 # |---------------How to use the confirmation menu in other scripts (Example)---------------|
-# | TO BE FILLED IN AFTER COMPLETION
+# | In command script -
+# | script:
+# | - clickable relatedTaskScript save:Confirm usages:1
+# | - inject confirmScriptText
 
 # | 1. Be sure to seperate the command process in a different task script (I might change my mind on that to make it simpler)
 
