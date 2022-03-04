@@ -63,8 +63,8 @@ premium_currency_event_handler:
     events:
         on player joins:
             # % ██ [ Used to set initial currency ] ██
+            - wait 5t
             - if !<yaml[global.player.<player.uuid>].contains[economy.premium]>:
-                - wait 5t
                 - run premium_currency_global_set def:<player>|0
 
 ## Internal ##
