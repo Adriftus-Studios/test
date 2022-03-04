@@ -165,10 +165,3 @@ cancelCommand:
 # | - inject confirmScriptText
 
 # | 1. Be sure to seperate the command process in a different task script (I might change my mind on that to make it simpler)
-
-# | Alternatives
-# | 1. Make commands that return yes or no
-# | 2. Callback
-# | 3.
-# | 4.
-# | 5.
