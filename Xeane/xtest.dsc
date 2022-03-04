@@ -8,3 +8,6 @@ test_command:
     no_perms: 1|2
   tab completions:
     1: <tern[<player.has_permission[adriftus.staff]>].pass[<script.data_key[data.perms]>].fail[<script.data_key[data.no_perms]>]>
+  script:
+    - narrate "Doesn't do shit"
+    
