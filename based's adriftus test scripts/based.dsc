@@ -156,3 +156,12 @@ confirm_script_text:
             - determine true
         - else if <element[false].as_boolean.equals[false]>:
             - determine false
+
+
+# | Alternatives
+#   1. Make commands that return yes or no
+#
+#
+#
+#
+#
