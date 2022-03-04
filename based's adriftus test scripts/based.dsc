@@ -159,9 +159,8 @@ confirm_script_text:
 
 
 # | Alternatives
-#   1. Make commands that return yes or no
-#
-#
-#
-#
-#
+# | 1. Make commands that return yes or no
+# | 2. Callback
+# | 3.
+# | 4.
+# | 5.
