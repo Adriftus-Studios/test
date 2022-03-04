@@ -148,7 +148,7 @@ cancel_command:
     description: Cancels a command.
     usage: /cancelcommand
     script:
-        - narrate Cancelled.
+        - narrate <red><bold>Cancelled.<reset>
 confirm_script_text:
     type: task
     script:
