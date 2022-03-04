@@ -127,27 +127,32 @@ spawn_sheep_command:
     description: Spawns a sheep at your location.
     usage: /spawnsheep
     script:
-    - flag player Confirmation:confirm_script_text
-    - if <player.has_flag[Confirmation]>:
+    - ~run confirm_script_text save:Confirmation
+    - if <entry[Confirmation].equals[true]>:
         - run spawn_sheep
-    - else:
+    - else if <entry[Confirmation].equals[false]>:
         - narrate Cancelled.
+        - stop
+
 # |  Incomplete
 spawn_sheep:
     type: task
     script:
-        - if <player.location.forward_flat[2].material.name.equals[air].not>:
+        - if <player.location.forward_flat[2].equals[air].not>:
             - strike <player.location.forward_flat[2]> no_damage
             - spawn sheep <player.location.forward_flat[2]>
             - narrate "Sheep spawned!"
         - else:
             - narrate "You do not have enough space to spawn a sheep."
             - determine passively cancelled
-#It works, no changes needed
+# | It works, no changes needed
 confirm_script_text:
     type: task
     script:
         - narrate "Are you sure about this?"
         - narrate <&hover[Confirm].type[show_text]><element[<green><bold><underline>[Yes]].on_click[element[true].as_boolean]><&end_hover><reset>
         - narrate <&hover[Cancel].type[show_text]><element[<red><bold><underline>[No]].on_click[element[false].as_boolean]><&end_hover><reset>
-        - determine <context.boolean>
+        - if <element[true].as_boolean.equals[true]>:
+            - determine true
+        - else if <element[false].as_boolean.equals[false]>:
+            - determine false
