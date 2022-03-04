@@ -11,13 +11,12 @@ premium_currency_command:
         # % ██ [ View other players balance ] ██
         #- Requires the [adriftus.economy.other] permission -#
         - if <context.args.size> > 0 && <player.has_permission[adriftus.economy.other]> && <server.online_players.parse[name].contains[<context.args.get[1]>]>:
-            - define player <player[<context.args.get[1]>]>
+            - define player <server.match_player[<context.args.get[1]>]>
             - narrate "<&b><[player].name> <[currencyName]> balance is: <proc[premium_currency_global_get].context[<[player]>].round_to[2]>"
 
         # % ██ [ Economy modifier commands ] ██
         #- Requires the [adriftus.economy.admin] permission -#
         - else if <context.args.size> > 0 && <player.has_permission[adriftus.economy.admin]>:
-
             # % ██ [ Checks to make sure all arguments are present ] ██
             - if !<context.args.get[2].exists>:
                 - narrate "<&c>Please specify a player name"
@@ -33,24 +32,25 @@ premium_currency_command:
                 - stop
 
             # % ██ [ Run code based on argument ] ██
+            - define player <server.match_player[<context.args.get[2]>]>
             - choose <context.args.get[1]>:
                 - case give:
-                    - run premium_currency_give def:<context.args.get[2]>|<context.args.get[3]>
-                    - narrate "<&a>Successfully deposited <context.args.get[3]> <[currencyName]> to <context.args.get[2]>'s account"
+                    - run premium_currency_give def:<[player]>|<context.args.get[3]>
+                    - narrate "<&a>Successfully deposited <context.args.get[3]> <[currencyName]> to <[player].name>'s account"
                 - case remove:
-                    - run premium_currency_remove def:<context.args.get[2]>|<context.args.get[3]> save:outcome
+                    - run premium_currency_remove def:<[player]>|<context.args.get[3]> save:outcome
 
                     # % ██ [ Check if the balance was removed successfully ] ██
                     - if <entry[outcome].created_queue.determination.first>:
-                        - narrate "<&a>Successfully removed <context.args.get[3]> <[currencyName]> from <context.args.get[2]>'s account"
+                        - narrate "<&a>Successfully removed <context.args.get[3]> <[currencyName]> from <[player].name>'s account"
                     - else:
-                        - narrate "<&c><context.args.get[2]> does not have enough funds, to remove <context.args.get[3]> <[currencyName]>"
+                        - narrate "<&c><[player].name> does not have enough funds, to remove <context.args.get[3]> <[currencyName]>"
                 - case set:
-                    - run premium_currency_set def:<context.args.get[2]>|<context.args.get[3]> save:outcome
+                    - run premium_currency_set def:<[player]>|<context.args.get[3]> save:outcome
 
                     # % ██ [ Check if the balance was set successfully ] ██
                     - if <entry[outcome].created_queue.determination.first>:
-                        - narrate "<&a>Successfully set <context.args.get[2]>'s account to <context.args.get[3]> <[currencyName]>"
+                        - narrate "<&a>Successfully set <[player].name>'s account to <context.args.get[3]> <[currencyName]>"
                     - else:
                         - narrate "<&c>You cannot set account balance below 0 <[currencyName]>"
 
@@ -71,14 +71,14 @@ premium_currency_global_get:
     type: procedure
     definitions: player
     script:
-        - determine <yaml[global.player.<player[<[player]>]>].read[economy.premium]>
+        - determine <yaml[global.player.<[player].uuid>].read[economy.premium]>
 
 ## Internal ##
 premium_currency_global_set:
     type: task
     definitions: player|amount
     script:
-        - run global_player_data_modify def:<player[<[player]>].uuid>|economy.premium|<[amount]>
+        - run global_player_data_modify def:<[player].uuid>|economy.premium|<[amount]>
 
 ## External ##
 # % ██ [ Give player curency ] ██
@@ -89,7 +89,7 @@ premium_currency_give:
         - define currentBal <proc[premium_currency_global_get].context[<[player]>]>
         - define newBal <[currentBal].add[<[amount]>]>
         - run premium_currency_global_set def:<[player]>|<[newBal]>
-        - narrate "<&a><[amount]> <script[premium_currency_command].data_key[name]> has been deposited to you're account" targets:<player[<[player]>]>
+        - narrate "<&a><[amount]> <script[premium_currency_command].data_key[name]> has been deposited to you're account" targets:<[player]>
 
 ## External ##
 # % ██ [ Remove player curency ] ██
@@ -103,7 +103,7 @@ premium_currency_remove:
         - if <[newBal]> < 0:
             - determine false
         - run premium_currency_global_set def:<[player]>|<[newBal]>
-        - narrate "<&c><[amount]> <script[premium_currency_command].data_key[name]> has been deducted from you're account" targets:<player[<[player]>]>
+        - narrate "<&c><[amount]> <script[premium_currency_command].data_key[name]> has been deducted from you're account" targets:<[player]>
         - determine true
 
 ## External ##
@@ -116,5 +116,5 @@ premium_currency_set:
         - if <[amount]> < 0:
             - determine false
         - run premium_currency_global_set def:<[player]>|<[amount]>
-        - narrate "<&b>You're account has been set to <[amount]> <script[premium_currency_command].data_key[name]>" targets:<player[<[player]>]>
+        - narrate "<&b>You're account has been set to <[amount]> <script[premium_currency_command].data_key[name]>" targets:<[player]>
         - determine true
