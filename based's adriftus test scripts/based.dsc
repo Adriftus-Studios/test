@@ -127,8 +127,7 @@ spawnSheepCommand:
     description: Spawns a sheep at your location.
     usage: /spawnsheep
     script:
-    - clickable spawnSheep save:Confirm usages:1
-    - inject confirmScriptText
+    - run confirmScriptText def:spawnSheep
 # It works
 spawnSheep:
     type: task
@@ -144,12 +143,24 @@ spawnSheep:
 
 confirmScriptText:
     type: task
+    definitions: callback
     script:
-        - clickable cancelCommand save:Cancel usages:1
+        - flag player callback:<[callback]>
+        - clickable confirmScriptText_callback def:true save:Confirm usages:1
+        - clickable confirmScriptText_callback def:false save:Cancel usages:1
         - narrate "Are you sure about this?"
         - narrate <&hover[Confirm].type[show_text]><element[<green><bold><underline>[Yes]].on_click[<entry[Confirm].command>]><&end_hover><reset>
         - narrate <&hover[Cancel].type[show_text]><element[<red><bold><underline>[No]].on_click[<entry[Cancel].command>]><&end_hover><reset>
-# BUG SPOTTED - Option A can be used even after Option B was clicked on.
+#Very approved
+confirmScriptText_callback:
+  type: task
+  debug: false
+  definitions: bool
+  script:
+    - if <[bool]> && <player.has_flag[callback]>:
+      - inject <player.flag[callback]>
+    - flag player callback:!
+#Very approved
 cancelCommand:
     type: command
     name: cancelcommand
@@ -162,8 +173,4 @@ cancelCommand:
 # |---          How to use the confirmation menu in other scripts (Example)         ---|
 # | In command script -
 # | script:
-# | - clickable relatedTaskScript save:Confirm usages:1
-# | - inject confirmScriptText
-
-### |--- IMPORTANT ---| ###
-### => Be sure to seperate the command process in a different task script
+# | - run confirmScriptText def:spawnSheep
