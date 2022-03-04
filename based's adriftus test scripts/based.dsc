@@ -126,13 +126,9 @@ spawn_sheep_command:
     description: Spawns a sheep at your location.
     usage: /spawnsheep
     script:
-    - clickable spawn_sheep save:Confirmation
-    - inject confirm_script_text boolean:Confirmation
-    - if <entry[Confirmation].equals[true]>:
-        - run spawn_sheep
-    - else if <entry[Confirmation].equals[false]>:
-        - narrate Cancelled.
-        - stop
+    - clickable spawn_sheep save:Confirm usages:1
+    - clickable cancel_command save:Cancel usages:1
+    - inject confirm_script_text
 
 # |  Incomplete
 spawn_sheep:
@@ -146,29 +142,24 @@ spawn_sheep:
             - narrate "You do not have enough space to spawn a sheep."
             - determine passively cancelled
 # | It works, no changes needed
+cancel_command:
+    type: command
+    name: cancelcommand
+    description: Cancels a command.
+    usage: /cancelcommand
+    script:
+        - narrate Cancelled.
 confirm_script_text:
     type: task
     script:
         - narrate "Are you sure about this?"
         - narrate <&hover[Confirm].type[show_text]><element[<green><bold><underline>[Yes]].on_click[<entry[Confirmation].command>]><&end_hover><reset>
-        - narrate <&hover[Cancel].type[show_text]><element[<red><bold><underline>[No]].on_click[- narrate Cancelled]><&end_hover><reset>
+        - narrate <&hover[Cancel].type[show_text]><element[<red><bold><underline>[No]].on_click[<entry[Cancel].command>]><&end_hover><reset>
 
-# |-----How to use the confirmation menu in other scripts (Example)-----|
-# |relevantCommand:
-# |type: command
-# |name: relevantcommand
-# |description: Insert relevant description.
-# |usage: /relevantcommand
-# |script:
-# |     - ~run confirm_script_text save:Confirmation
-# |     - if <entry[Confirmation].equals[true]>:
-# |         - run relevantTaskScript
-# |     - else if <entry[Confirmation].equals[false]>:
-# |         - narrate Cancelled.
-# |         - stop
+# |---------------How to use the confirmation menu in other scripts (Example)---------------|
+# | TO BE FILLED IN AFTER COMPLETION
 
 # | 1. Be sure to seperate the command process in a different task script (I might change my mind on that to make it simpler)
-
 
 # | Alternatives
 # | 1. Make commands that return yes or no
