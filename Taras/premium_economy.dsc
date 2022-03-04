@@ -5,8 +5,8 @@ premium_currency_command:
     description: A command for the premium currency on this server
     #- Might need to change the usage if you change the name -#
     tab completions:
-        1: <tern[<player.has_permission[adriftus.economy.admin]>].pass[<list[give|remove|set].include[<server.online_players>]>].fail[<server.online_players>]>
-        2: <server.online_players>
+        1: <tern[<player.has_permission[adriftus.economy.admin]>].pass[<list[give|remove|set].include[<server.online_players.parse[name]>]>].fail[<server.online_players>]>
+        2: <server.online_players.parse[name]>
         3: <tern[<player.has_permission[adriftus.economy.admin]>].pass[<&lb>amount<&rb>].fail[]>
     usage: /orbsus
     script:
