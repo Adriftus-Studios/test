@@ -1,4 +1,4 @@
-bob_the_npc:
+bobTheNPC:
     type: assignment
     actions:
         on assignment:
@@ -7,9 +7,9 @@ bob_the_npc:
         - chat "Hi! I'm chatting!"
         - narrate "<red>Bob<&co> Hi! I'm narrating!"
     interact scripts:
-    - 1 bob_the_npc_interact
+    - 1 bobTheNPCInteract
 
-bob_the_npc_interact:
+bobTheNPCInteract:
     type: interact
     steps:
         1:
@@ -31,7 +31,7 @@ bob_the_npc_interact:
                     - chat "See you!"
 #Approved
 
-support_bell:
+supportBell:
     type: item
     material: bell
     display name: <gold>Support Bell
@@ -39,7 +39,7 @@ support_bell:
     - Gives you food, fills your hunger bar and fully insta-heals you!
     enchantments:
     - sharpness:5
-magic_replenishing_bell:
+magicReplenishingBell:
     type: world
     item: support_bell
     events:
@@ -56,7 +56,7 @@ magic_replenishing_bell:
             - flag player no_more
 #Approved, being reworked
 
-stone_gives_diamond:
+stoneGivesDiamond:
     type: world
     events:
         after player breaks stone:
@@ -66,7 +66,7 @@ stone_gives_diamond:
             - flag count 0
 #Appproved
 
-cool_thing:
+coolThing:
   type: world
   debug: false
   events:
@@ -74,17 +74,17 @@ cool_thing:
       - shoot <context.item.data_key[data.shoots]> speed:4
 #Approved
 
-chest_lock_item:
+chestLockItem:
   type: item
   material: iron_nugget
   display name: <white><bold>Iron Padlock
   lore:
     - <yellow><bold>Right-click a chest to lock it.
 
-chest_lock:
+chestLock:
     type: world
     events:
-        on player right clicks chest|trapped_chest|barrel with:chest_lock_item:
+        on player right clicks chest|trapped_chest|barrel with:chestLockItem:
             - determine passively cancelled
             - if <context.location.has_flag[locked_chest]>:
                 - narrate "This chest is already locked."
@@ -98,8 +98,9 @@ chest_lock:
                 - narrate "This chest belongs to <context.location.flag[locked_chest].as_player.name>."
 #Approved
 #Issue - flag isn't deleted when chest is destroyed
+#Issue - Idea isn't very clear
 
-spawn_command:
+spawnCommand:
     type: command
     name: spawn
     description: Spawns.
@@ -108,29 +109,28 @@ spawn_command:
         - teleport <context.player> spawn_location
 #Approved
 
-confirm_script_gui:
+confirmScriptGUI:
     type: task
     script:
         - inventory open
 #Incomplete
-interactable_text_testing:
+interactableTextTesting:
     type: task
     script:
         - narrate "You can <&hover[very epic].type[SHOW_TEXT]><element[click here].on_click[/spawn].type[RUN_COMMAND]><&end_hover> to /spawn!"
 
 #Approved
 
-#Incomplete
-spawn_sheep_command:
+spawnSheepCommand:
     type: command
     name: spawnsheep
     description: Spawns a sheep at your location.
     usage: /spawnsheep
     script:
-    - waituntil <proc[confirm_script_text]>:
-        - run spawn_sheep
-#Incomplete
-spawn_sheep:
+    - clickable spawnSheep save:Confirm usages:1
+    - inject confirmScriptText
+# It works
+spawnSheep:
     type: task
     script:
         - if <player.location.forward_flat[2].equals[air].not>:
@@ -140,14 +140,30 @@ spawn_sheep:
         - else:
             - narrate "You do not have enough space to spawn a sheep."
             - determine passively cancelled
-#It works, no changes needed
-confirm_script_text:
-    type: procedure
+# It works, no changes needed
+
+confirmScriptText:
+    type: task
     script:
+        - clickable cancelCommand save:Cancel usages:1
         - narrate "Are you sure about this?"
-        - narrate <&hover[Confirm].type[show_text]><element[<green><bold><underline>[Yes]].on_click[true]><&end_hover><reset>
-        - narrate <&hover[Cancel].type[show_text]><element[<red><bold><underline>[No]].on_click[false]><&end_hover><reset>
-        - if element[true]:
-            - determine true
-        - else:
-            - determine false
+        - narrate <&hover[Confirm].type[show_text]><element[<green><bold><underline>[Yes]].on_click[<entry[Confirm].command>]><&end_hover><reset>
+        - narrate <&hover[Cancel].type[show_text]><element[<red><bold><underline>[No]].on_click[<entry[Cancel].command>]><&end_hover><reset>
+# BUG SPOTTED - Option A can be used even after Option B was clicked on.
+cancelCommand:
+    type: command
+    name: cancelcommand
+    description: Cancels a command.
+    usage: /cancelcommand
+    script:
+        - narrate <red><bold>Cancelled.<reset>
+# Used for confirmScriptText
+
+# |---          How to use the confirmation menu in other scripts (Example)         ---|
+# | In command script -
+# | script:
+# | - clickable relatedTaskScript save:Confirm usages:1
+# | - inject confirmScriptText
+
+### |--- IMPORTANT ---| ###
+### => Be sure to seperate the command process in a different task script
