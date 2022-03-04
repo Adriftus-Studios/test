@@ -98,6 +98,7 @@ chestLock:
                 - narrate "This chest belongs to <context.location.flag[locked_chest].as_player.name>."
 #Approved
 #Issue - flag isn't deleted when chest is destroyed
+#Issue - Idea isn't very clear
 
 spawnCommand:
     type: command
