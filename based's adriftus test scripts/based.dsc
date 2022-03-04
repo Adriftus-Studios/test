@@ -120,14 +120,13 @@ interactable_text_testing:
 
 #Approved
 
-#Incomplete
 spawn_sheep_command:
     type: command
     name: spawnsheep
     description: Spawns a sheep at your location.
     usage: /spawnsheep
     script:
-    - ~run confirm_script_text save:Confirmation
+    - inject confirm_script_text boolean:Confirmation
     - if <entry[Confirmation].equals[true]>:
         - run spawn_sheep
     - else if <entry[Confirmation].equals[false]>:
@@ -158,20 +157,20 @@ confirm_script_text:
             - determine false
 
 # |-----How to use the confirmation menu in other scripts (Example)-----|
-#relevantCommand:
-#   type: command
-#   name: relevantcommand
-#   description: Insert relevant description.
-#   usage: /relevantcommand
-#   script:
-#       - ~run confirm_script_text save:Confirmation
-#   - if <entry[Confirmation].equals[true]>:
-#       - run relevantTaskScript
-#   - else if <entry[Confirmation].equals[false]>:
-#       - narrate Cancelled.
-#       - stop
-#
-#   1. Be sure to seperate the command process in a different task script (I might change my mind on that to make it simpler)
+# |relevantCommand:
+# |type: command
+# |name: relevantcommand
+# |description: Insert relevant description.
+# |usage: /relevantcommand
+# |script:
+# |     - ~run confirm_script_text save:Confirmation
+# |     - if <entry[Confirmation].equals[true]>:
+# |         - run relevantTaskScript
+# |     - else if <entry[Confirmation].equals[false]>:
+# |         - narrate Cancelled.
+# |         - stop
+
+# | 1. Be sure to seperate the command process in a different task script (I might change my mind on that to make it simpler)
 
 
 # | Alternatives
