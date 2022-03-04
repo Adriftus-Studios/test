@@ -129,7 +129,6 @@ spawn_sheep_command:
     - clickable spawn_sheep save:Confirm usages:1
     - clickable cancel_command save:Cancel usages:1
     - inject confirm_script_text
-
 # |  Incomplete
 spawn_sheep:
     type: task
@@ -153,7 +152,7 @@ confirm_script_text:
     type: task
     script:
         - narrate "Are you sure about this?"
-        - narrate <&hover[Confirm].type[show_text]><element[<green><bold><underline>[Yes]].on_click[<entry[Confirmation].command>]><&end_hover><reset>
+        - narrate <&hover[Confirm].type[show_text]><element[<green><bold><underline>[Yes]].on_click[<entry[Confirm].command>]><&end_hover><reset>
         - narrate <&hover[Cancel].type[show_text]><element[<red><bold><underline>[No]].on_click[<entry[Cancel].command>]><&end_hover><reset>
 
 # |---------------How to use the confirmation menu in other scripts (Example)---------------|
