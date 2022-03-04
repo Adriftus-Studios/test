@@ -151,7 +151,7 @@ confirm_script_text:
     script:
         - narrate "Are you sure about this?"
         - narrate <&hover[Confirm].type[show_text]><element[<green><bold><underline>[Yes]].on_click[<entry[Confirmation].command>]><&end_hover><reset>
-        - narrate <&hover[Cancel].type[show_text]><element[<red><bold><underline>[No]].on_click[cancelled]><&end_hover><reset>
+        - narrate <&hover[Cancel].type[show_text]><element[<red><bold><underline>[No]].on_click[- narrate Cancelled]><&end_hover><reset>
 
 # |-----How to use the confirmation menu in other scripts (Example)-----|
 # |relevantCommand:
