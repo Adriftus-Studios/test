@@ -157,6 +157,22 @@ confirm_script_text:
         - else if <element[false].as_boolean.equals[false]>:
             - determine false
 
+# |-----How to use the confirmation menu in other scripts (Example)-----|
+#relevantCommand:
+#   type: command
+#   name: relevantcommand
+#   description: Insert relevant description.
+#   usage: /relevantcommand
+#   script:
+#       - ~run confirm_script_text save:Confirmation
+#   - if <entry[Confirmation].equals[true]>:
+#       - run relevantTaskScript
+#   - else if <entry[Confirmation].equals[false]>:
+#       - narrate Cancelled.
+#       - stop
+#
+#   1. Be sure to seperate the command process in a different task script (I might change my mind on that to make it simpler)
+
 
 # | Alternatives
 # | 1. Make commands that return yes or no
