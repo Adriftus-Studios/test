@@ -126,6 +126,7 @@ spawn_sheep_command:
     description: Spawns a sheep at your location.
     usage: /spawnsheep
     script:
+    - clickable spawn_sheep save:Confirmation
     - inject confirm_script_text boolean:Confirmation
     - if <entry[Confirmation].equals[true]>:
         - run spawn_sheep
@@ -149,12 +150,8 @@ confirm_script_text:
     type: task
     script:
         - narrate "Are you sure about this?"
-        - narrate <&hover[Confirm].type[show_text]><element[<green><bold><underline>[Yes]].on_click[true]><&end_hover><reset>
-        - narrate <&hover[Cancel].type[show_text]><element[<red><bold><underline>[No]].on_click[false]><&end_hover><reset>
-        - if <element[true].as_boolean.equals[true]>:
-            - determine true
-        - else if <element[false].as_boolean.equals[false]>:
-            - determine false
+        - narrate <&hover[Confirm].type[show_text]><element[<green><bold><underline>[Yes]].on_click[<entry[Confirmation].command>]><&end_hover><reset>
+        - narrate <&hover[Cancel].type[show_text]><element[<red><bold><underline>[No]].on_click[cancelled]><&end_hover><reset>
 
 # |-----How to use the confirmation menu in other scripts (Example)-----|
 # |relevantCommand:
