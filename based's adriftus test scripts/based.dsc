@@ -163,8 +163,24 @@ confirmScriptText_callback:
         - narrate <red><bold>Cancelled.<reset>
     - flag player callback:!
 #Very approved
-
 # |---          How to use the confirmation menu in other scripts (Example)         ---|
 # | In command script -
 # | script:
 # | - run confirmScriptText def:spawnSheep
+
+switchGamemode:
+    type: command
+    name: switchGamemode
+    debug: false
+    description: Switches the player between Creative and Survival.
+    usage: /switchgamemode
+    aliases:
+        - sgm
+    permissions: modelock.creative | modelock.survival
+    script:
+        - if <player.gamemode.equals[creative]>:
+            - adjust <player> gamemode:survival
+            - narrate "<yellow><bold><underline>Switched to Survival mode."
+        - else if <player.gamemode.equals[survival]>:
+            - adjust <player> gamemode:creative
+            - narrate "<yellow><bold><underline>Switched to Creative mode."
