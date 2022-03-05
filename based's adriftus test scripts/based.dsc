@@ -178,5 +178,5 @@ switchGamemode:
     permissions: modelock.creative | modelock.survival
     script:
         - narrate "Choose the following gamemodes:"
-        - narrate "<&hover[Click here to switch to Survival mode].type[show_text]><element[<yellow><bold><underline>Survival].on_click[/ex adjust <player> gamemode:survival].type[run_command]><&end_hover><reset>"
-        - narrate "<&hover[Click here to switch to Creative mode].type[show_text]><element[<yellow><bold><underline>Creative].on_click[/ex adjust <player> gamemode:creative].type[run_command]><&end_hover><reset>"
+        - narrate "<&hover[Click here to switch to Survival mode].type[show_text]><element[<yellow><bold><underline>Survival].on_click[/ex -q adjust <player> gamemode:survival].type[run_command]><&end_hover><reset>"
+        - narrate "<&hover[Click here to switch to Creative mode].type[show_text]><element[<yellow><bold><underline>Creative].on_click[/ex -q adjust <player> gamemode:creative].type[run_command]><&end_hover><reset>"
