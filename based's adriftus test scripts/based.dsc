@@ -180,5 +180,7 @@ switchGamemode:
     script:
         - if <player.gamemode.equals[creative]>:
             - adjust <player> gamemode:survival
+            - narrate "<yellow><bold><underline>Switched to Survival mode."
         - else if <player.gamemode.equals[survival]>:
             - adjust <player> gamemode:creative
+            - narrate "<yellow><bold><underline>Switched to Creative mode."
