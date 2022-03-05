@@ -159,16 +159,10 @@ confirmScriptText_callback:
   script:
     - if <[bool]> && <player.has_flag[callback]>:
       - inject <player.flag[callback]>
+    - else if <[bool].equals[false]>:
+        - narrate <red><bold>Cancelled.<reset>
     - flag player callback:!
 #Very approved
-cancelCommand:
-    type: command
-    name: cancelcommand
-    description: Cancels a command.
-    usage: /cancelcommand
-    script:
-        - narrate <red><bold>Cancelled.<reset>
-# Used for confirmScriptText
 
 # |---          How to use the confirmation menu in other scripts (Example)         ---|
 # | In command script -
