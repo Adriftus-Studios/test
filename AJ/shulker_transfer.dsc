@@ -42,20 +42,20 @@ easy_shulker_transfer:
     - else:
       - define inventory <player.item_in_hand.flag[big_shulker]||<list[]>>
       - define size 54
-    - define chest_items <[inventory]>
-    - define shulker_items <context.location.inventory.list_contents>
-    - while <[shulker_items].size> != 0:
-      - define i <[shulker_items].get[1]>
+    - define shulker_items <[inventory]>
+    - define chest_items <context.location.inventory.list_contents.filter[material.name.ends_with[shulker_box].not]>
+    - while <[chest_items].size> != 0:
+      - define i <[chest_items].get[1]>
       - narrate <[loop_index]>
-      - if <[chest_items].include[<[i]>].size> > <[size]>:
+      - if <[shulker_items].include[<[i]>].size> > <[size]>:
         - while stop
       - else:
-        - define chest_items <[chest_items].include[<[i]>]>
-        - define shulker_items <[shulker_items].remove[1]>
-    - narrate <[shulker_items].size>
+        - define shulker_items <[shulker_items].include[<[i]>]>
+        - define chest_items <[chest_items].remove[1]>
     - narrate <[chest_items].size>
+    - narrate <[shulker_items].size>
     - if <player.item_in_hand.script.name.equals[big_shulker_item].not.if_null[true]>:
-      - inventory adjust d:<player.inventory> slot:<player.held_item_slot> inventory_contents:<[chest_items]>
+      - inventory adjust d:<player.inventory> slot:<player.held_item_slot> inventory_contents:<[shulker_items]>
     - else:
-      - inventory flag d:<player.inventory> slot:<player.held_item_slot> big_shulker:<[chest_items]>
-    - adjust <context.location.inventory> contents:<[shulker_items]>
+      - inventory flag d:<player.inventory> slot:<player.held_item_slot> big_shulker:<[shulker_items]>
+    - adjust <context.location.inventory> contents:<[chest_items].include[<context.location.inventory.list_contents.filter[material.name.ends_with[shulker_box]]>]>
