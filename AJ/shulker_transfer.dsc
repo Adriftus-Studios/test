@@ -45,7 +45,7 @@ easy_shulker_transfer:
           - inventory flag d:<player.inventory> slot:<player.held_item_slot> big_shulker:<[shulker_items]>
         - adjust <context.location.inventory> contents:<[chest_items]>
         - narrate "<&e>Transferred <[after].sub[<[before]>]> stacks of items."
-      - else:
+      - else if <player.flag[shulker_transfer.mode]> == chest_to_shulker:
         - if <player.item_in_hand.script.name.equals[big_shulker_item].not.if_null[true]>:
           - define inventory <player.item_in_hand.inventory_contents>
           - define size 27
