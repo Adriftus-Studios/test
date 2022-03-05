@@ -174,7 +174,9 @@ switchGamemode:
     definitions: mode
     debug: false
     description: Opens a text menu to switch gamemodes.
-    usage: /switchgamemode | /sgm
+    usage: /switchgamemode
+    aliases:
+        - sgm
     permissions: modelock.creative | modelock.survival
     script:
         - narrate "Choose the following gamemodes:"
