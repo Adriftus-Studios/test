@@ -178,10 +178,10 @@ switchGamemode:
         - sgm
     permissions: modelock.creative | modelock.survival
     script:
-        - if <player.gamemode.equals[creative]>:
+        - if <player.gamemode.equals[CREATIVE]>:
             - adjust <player> gamemode:survival
             - narrate "<yellow><bold><underline>Switched to Survival mode."
-        - else if <player.gamemode.equals[survival]>:
+        - else if <player.gamemode.equals[SURVIVAL]>:
             - adjust <player> gamemode:creative
             - narrate "<yellow><bold><underline>Switched to Creative mode."
 
