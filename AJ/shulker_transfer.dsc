@@ -70,8 +70,7 @@ easy_shulker_transfer:
             - narrate "<&e>Items transferred successfully."
             - stop
     - else:
-      - stop if:<player.item_in_hand.has_flag[big_shulker].not>
-      - define inventory <player.item_in_hand.flag[big_shulker]>
+      - define inventory <player.item_in_hand.flag[big_shulker]||<list[]>>
       - define items <context.location.inventory.list_contents.filter[material.name.ends_with[shulker_box].not]>
       - if <[inventory].include[<[items]>].size> < 55:
         - inventory adjust d:<player.inventory> slot:<player.held_item_slot> inventory_contents:<[items]>
@@ -79,7 +78,7 @@ easy_shulker_transfer:
         - narrate "<&e>Items transferred successfully."
         - stop
       - else:
-        - define new_items <player.item_in_hand.flag[big_shulker]>
+        - define new_items <player.item_in_hand.flag[big_shulker]||<list[]>>
         - while <[items].is_empty.not>:
           - define i <[items].get[1]>
           - if <[new_items].size> < 54:
