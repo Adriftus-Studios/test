@@ -171,12 +171,12 @@ confirmScriptText_callback:
 switchGamemode:
     type: command
     name: switchGamemode
-    debug: false
     description: Switches the player between Creative and Survival.
     usage: /switchgamemode
     aliases:
         - sgm
-    permissions: modelock.creative | modelock.survival
+    permissions: modelock.creative; modelock.survival;
+    permission message: <red><bold>Access denied.
     script:
         - if <player.gamemode.equals[CREATIVE]>:
             - adjust <player> gamemode:survival
@@ -184,6 +184,21 @@ switchGamemode:
         - else if <player.gamemode.equals[SURVIVAL]>:
             - adjust <player> gamemode:creative
             - narrate "<yellow><bold><underline>Switched to Creative mode."
+#Make a menu version for other gamemodes.
+
+resetWorldborder:
+    type: command
+    name: resetworldborder
+    debug: false
+    description: Resets the world border for the player.
+    usage: /resetworldborder
+    aliases:
+        - rwb
+    permissions: adriftus.worldborder.reset
+    permission message: <red><bold>Access denied.
+    script:
+        - worldborder <player> reset
+#
 
 seeInventory:
     type: command
@@ -195,10 +210,12 @@ seeInventory:
         - inventory
     permissions: adriftus.inventory.view
     script:
-        - inventory destination:<server.match_player>
+        - inventory open destination:<server.match_player>
+#
 
 unknownCommand:
     type: world
     events:
         on unknown command:
             - narrate "<red><bold><underline>Imagine typing an unknown command."
+#
