@@ -172,6 +172,7 @@ switchGamemode:
     type: command
     name: switchGamemode
     definitions: mode
+    debug: false
     description: Opens a text menu to switch gamemodes.
     usage: /switchgamemode | /sgm
     permissions: modelock.creative | modelock.survival
