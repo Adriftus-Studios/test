@@ -171,14 +171,14 @@ confirmScriptText_callback:
 switchGamemode:
     type: command
     name: switchGamemode
-    definitions: mode
     debug: false
-    description: Opens a text menu to switch gamemodes.
+    description: Switches the player between Creative and Survival.
     usage: /switchgamemode
     aliases:
         - sgm
     permissions: modelock.creative | modelock.survival
     script:
-        - narrate "Choose the following gamemodes:"
-        - narrate "<&hover[Click here to switch to Survival mode].type[show_text]><element[<yellow><bold><underline>Survival].on_click[/ex -q adjust <player> gamemode:survival].type[run_command]><&end_hover><reset>"
-        - narrate "<&hover[Click here to switch to Creative mode].type[show_text]><element[<yellow><bold><underline>Creative].on_click[/ex -q adjust <player> gamemode:creative].type[run_command]><&end_hover><reset>"
+        - if <player.gamemode.equals[creative]>:
+            - adjust <player> gamemode:survival
+        - else if <player.gamemode.equals[survival]>:
+            - adjust <player> gamemode:creative
