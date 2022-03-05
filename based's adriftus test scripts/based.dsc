@@ -180,10 +180,10 @@ switchGamemode:
     script:
         - if <player.gamemode.equals[CREATIVE]>:
             - adjust <player> gamemode:survival
-            - narrate "<yellow><bold><underline>Switched to Survival mode."
+            - narrate "<yellow><bold><underline>Switched to Survival mode.<reset>"
         - else if <player.gamemode.equals[SURVIVAL]>:
             - adjust <player> gamemode:creative
-            - narrate "<yellow><bold><underline>Switched to Creative mode."
+            - narrate "<yellow><bold><underline>Switched to Creative mode.<reset>"
 #Make a menu version for other gamemodes.
 
 resetWorldborder:
@@ -198,6 +198,7 @@ resetWorldborder:
     permission message: <red><bold>Access denied.
     script:
         - worldborder <player> reset
+        - narrate "<bold><yellow>The world border has been reset.<reset>"
 #
 
 seeInventory:
@@ -205,12 +206,12 @@ seeInventory:
     name: seeInventory
     debug: false
     description: Displays the inventory of a player.
-    usage: /seeinventory
+    usage: /seeinventory <&lt>player<&gt>
     aliases:
         - inventory
     permissions: adriftus.inventory.view
     script:
-        - inventory open destination:<server.match_player>
+        - inventory open destination:<player>
 #
 
 unknownCommand:
