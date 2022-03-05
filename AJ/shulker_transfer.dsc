@@ -13,7 +13,7 @@ easy_shulker_transfer:
       - if <[inventory].can_fit[<[items]>]>:
         - inventory adjust d:<player.inventory> slot:<player.held_item_slot> inventory_contents:<list[]>
         - inventory swap d:<context.location.inventory> o:<context.location.inventory.include[<[items]>]>
-        - narrate "<&e>Items transferred successfully."
+        - narrate "<&e>Items transferred successfully. 1"
         - stop
       - else:
         - while <[items].is_empty.not>:
@@ -24,15 +24,15 @@ easy_shulker_transfer:
           - else:
             - inventory adjust d:<player.inventory> slot:<player.held_item_slot> inventory_contents:<[items]>
             - inventory swap d:<context.location.inventory> o:<[inventory]>
-            - narrate "<&e>Items transferred successfully."
+            - narrate "<&e>Items transferred successfully. 2"
             - stop
     - else:
       - stop if:<player.item_in_hand.has_flag[big_shulker].not>
       - define items <player.item_in_hand.flag[big_shulker]>
       - if <[inventory].can_fit[<[items]>]>:
-        - inventory adjust d:<player.inventory> slot:<player.held_item_slot> inventory_contents:<list[]>
+        - inventory flag d:<player.inventory> slot:<player.held_item_slot> big_shulker:<list[]>
         - inventory swap d:<context.location.inventory> o:<context.location.inventory.include[<[items]>]>
-        - narrate "<&e>Items transferred successfully."
+        - narrate "<&e>Items transferred successfully. 3"
         - stop
       - else:
         - while <[items].is_empty.not>:
@@ -43,7 +43,7 @@ easy_shulker_transfer:
           - else:
             - inventory flag d:<player.inventory> slot:<player.held_item_slot> big_shulker:<[items]>
             - inventory swap d:<context.location.inventory> o:<[inventory]>
-            - narrate "<&e>Items transferred successfully."
+            - narrate "<&e>Items transferred successfully. 4"
             - stop
     on player left clicks block:
     - stop if:<player.item_in_hand.material.name.ends_with[shulker_box].not>
@@ -55,7 +55,7 @@ easy_shulker_transfer:
       - if <[inventory].include[<[items]>].size> < 28:
         - inventory adjust d:<player.inventory> slot:<player.held_item_slot> inventory_contents:<[items]>
         - inventory clear d:<context.location.inventory>
-        - narrate "<&e>Items transferred successfully."
+        - narrate "<&e>Items transferred successfully. 5"
         - stop
       - else:
         - define new_items <player.item_in_hand.inventory_contents>
@@ -67,15 +67,15 @@ easy_shulker_transfer:
           - else:
             - inventory adjust d:<player.inventory> slot:<player.held_item_slot> inventory_contents:<[new_items]>
             - adjust <context.location.inventory> contents:<[items]>
-            - narrate "<&e>Items transferred successfully."
+            - narrate "<&e>Items transferred successfully. 6"
             - stop
     - else:
       - define inventory <player.item_in_hand.flag[big_shulker]||<list[]>>
       - define items <context.location.inventory.list_contents.filter[material.name.ends_with[shulker_box].not]>
       - if <[inventory].include[<[items]>].size> < 55:
-        - inventory adjust d:<player.inventory> slot:<player.held_item_slot> inventory_contents:<[items]>
+        - inventory flag d:<player.inventory> slot:<player.held_item_slot> big_shulker:<[inventory].include[<[items]>]>
         - inventory clear d:<context.location.inventory>
-        - narrate "<&e>Items transferred successfully."
+        - narrate "<&e>Items transferred successfully. 7"
         - stop
       - else:
         - define new_items <player.item_in_hand.flag[big_shulker]||<list[]>>
@@ -87,5 +87,5 @@ easy_shulker_transfer:
           - else:
             - inventory flag d:<player.inventory> slot:<player.held_item_slot> big_shulker:<[new_items]>
             - adjust <context.location.inventory> contents:<[items]>
-            - narrate "<&e>Items transferred successfully."
+            - narrate "<&e>Items transferred successfully. 8"
             - stop
