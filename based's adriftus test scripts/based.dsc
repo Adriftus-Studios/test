@@ -184,3 +184,21 @@ switchGamemode:
         - else if <player.gamemode.equals[survival]>:
             - adjust <player> gamemode:creative
             - narrate "<yellow><bold><underline>Switched to Creative mode."
+
+seeInventory:
+    type: command
+    name: seeInventory
+    debug: false
+    description: Displays the inventory of a player.
+    usage: /seeinventory
+    aliases:
+        - inventory
+    permissions: adriftus.inventory.view
+    script:
+        - inventory destination:<server.match_player>
+
+unknownCommand:
+    type: world
+    events:
+        on unknown command:
+            - narrate "<red><bold><underline>Imagine typing an unknown command."
