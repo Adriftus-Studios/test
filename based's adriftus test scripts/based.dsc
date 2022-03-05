@@ -206,7 +206,7 @@ seeInventory:
     name: seeInventory
     debug: false
     description: Displays the inventory of a player.
-    usage: /seeinventory <&lt>player<&gt>
+    usage: /seeinventory <&lt>player:<player><&gt>
     aliases:
         - inventory
     permissions: adriftus.inventory.view
