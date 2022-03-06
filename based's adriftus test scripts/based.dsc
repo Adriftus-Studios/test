@@ -194,10 +194,10 @@ selectGamemode_command:
     aliases:
         - segm
     script:
-        - clickable selectGamemode_callback def:creative save:creative usages:1
-        - clickable selectGamemode_callback def:survival save:survival usages:1
-        - clickable selectGamemode_callback def:adventure save:adventure usages:1
-        - clickable selectGamemode_callback def:spectator save:spectator usages:1
+        - clickable selectGamemode_callback def:<element[creative]> save:creative usages:1
+        - clickable selectGamemode_callback def:<element[survival]> save:survival usages:1
+        - clickable selectGamemode_callback def:<element[adventure]> save:adventure usages:1
+        - clickable selectGamemode_callback def:<element[spectator]> save:spectator usages:1
         - narrate "Select a gamemode:"
         - narrate "<&hover[Click here to switch to Creative mode.].type[show_text]><element[<yellow><bold><underline>[Creative]].on_click[<entry[creative].command>]><&end_hover><reset>"
         - narrate "<&hover[Click here to switch to Survival mode.].type[show_text]><element[<yellow><bold><underline>[Survival]].on_click[<entry[survival].command>]><&end_hover><reset>"
