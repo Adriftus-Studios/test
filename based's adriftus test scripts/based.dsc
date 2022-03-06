@@ -194,35 +194,35 @@ selectGamemode_command:
     aliases:
         - segm
     script:
-        - flag player callback:<[callback]>
-        - clickable selectGamemode_callback def:Creative save:Creative usages:1
-        - clickable selectGamemode_callback def:Survival save:Survival usages:1
-        - clickable selectGamemode_callback def:Adventure save:Adventure usages:1
-        - clickable selectGamemode_callback def:Spectator save:Spectator usages:1
+        - clickable selectGamemode_callback def:creative save:creative usages:1
+        - clickable selectGamemode_callback def:survival save:survival usages:1
+        - clickable selectGamemode_callback def:adventure save:adventure usages:1
+        - clickable selectGamemode_callback def:spectator save:spectator usages:1
         - narrate "Select a gamemode:"
-        - narrate "<&hover[Click here to switch to Creative mode.].type[show_text]><element[<yellow><bold><underline>[Creative]].on_click[<entry[Creative].command>]><&end_hover><reset>"
-        - narrate "<&hover[Click here to switch to Survival mode.].type[show_text]><element[<yellow><bold><underline>[Survival]].on_click[<entry[Survival].command>]><&end_hover><reset>"
-        - narrate "<&hover[Click here to switch to Adventure mode.].type[show_text]><element[<yellow><bold><underline>[Adventure]].on_click[<entry[Adventure].command>]><&end_hover><reset>"
-        - narrate "<&hover[Click here to switch to Spectator mode.].type[show_text]><element[<yellow><bold><underline>[Spectator]].on_click[<entry[Spectator].command>]><&end_hover><reset>"
+        - narrate "<&hover[Click here to switch to Creative mode.].type[show_text]><element[<yellow><bold><underline>[Creative]].on_click[<entry[creative].command>]><&end_hover><reset>"
+        - narrate "<&hover[Click here to switch to Survival mode.].type[show_text]><element[<yellow><bold><underline>[Survival]].on_click[<entry[survival].command>]><&end_hover><reset>"
+        - narrate "<&hover[Click here to switch to Adventure mode.].type[show_text]><element[<yellow><bold><underline>[Adventure]].on_click[<entry[adventure].command>]><&end_hover><reset>"
+        - narrate "<&hover[Click here to switch to Spectator mode.].type[show_text]><element[<yellow><bold><underline>[Spectator]].on_click[<entry[spectator].command>]><&end_hover><reset>"
 #
 
 selectGamemode_callback:
     type: task
     definitions: gamemode
     script:
-        - if (<[gamemode]> == <element[Creative]>) && <player.has_flag[callback]>:
+        - flag player callback:<[callback]>
+        - if <definition[gamemode].equals[element[creative]]> && <player.has_flag[callback]>:
             - adjust <player> gamemode:creative
             - narrate "<green>You have switched to <bold><underline>Creative<reset><green> mode."
             - flag player callback:!
-        - else if <[gamemode]> == <element[Survival]> && <[bool]>:
+        - else if <definition[gamemode].equals[element[survival]]> && <player.has_flag[callback]>:
             - adjust <player> gamemode:survival
             - narrate "<green>You have switched to <bold><underline>Survival<reset><green> mode."
             - flag player callback:!
-        - else if <[gamemode]> == <element[Adventure]> && <[bool]>:
+        - else if <[gamemode]> == <element[adventure]> && <player.has_flag[callback]>:
             - adjust <player> gamemode:adventure
             - narrate "<green>You have switched to <bold><underline>Adventure<reset><green> mode."
             - flag player callback:!
-        - else if <[gamemode]> == <element[Spectator]> && <[bool]>:
+        - else if <[gamemode]> == <element[spectator]> && <player.has_flag[callback]>:
             - adjust <player> gamemode:spectator
             - narrate "<green>You have switched to <bold><underline>Spectator<reset><green> mode."
             - flag player callback:!
