@@ -210,18 +210,15 @@ selectGamemode_callback:
     type: task
     definitions: gamemode
     script:
-        - if <[gamemode]> == <element[Creative]>:
+        - flag <player> bool:true
+        - if (<[gamemode]> == <element[Creative]>) && <[bool]>:
             - adjust <player> gamemode:creative
-            - flag player callback:!
-        - else if <[gamemode]> == <element[Survival]>:
+        - else if <[gamemode]> == <element[Survival]> && <[bool]>:
             - adjust <player> gamemode:survival
-            - flag player callback:!
-        - else if <[gamemode]> == <element[Adventure]>:
+        - else if <[gamemode]> == <element[Adventure]> && <[bool]>:
             - adjust <player> gamemode:adventure
-            - flag player callback:!
-        - else if <[gamemode]> == <element[Spectator]>:
+        - else if <[gamemode]> == <element[Spectator]> && <[bool]>:
             - adjust <player> gamemode:spectator
-            - flag player callback:!
 
 resetWorldborder:
     type: command
