@@ -109,7 +109,7 @@ spawnCommand:
         - teleport <context.player> spawn_location
 #Approved
 
-confirmScriptGUI:
+confirmScript_GUI:
     type: task
     script:
         - inventory open
@@ -121,7 +121,7 @@ interactableTextTesting:
 
 #Approved
 
-spawnSheepCommand:
+spawnSheep_command:
     type: command
     name: spawnsheep
     description: Spawns a sheep at your location.
@@ -166,7 +166,7 @@ confirmScriptText_callback:
 # |---          How to use the confirmation menu in other scripts (Example)         ---|
 # | In command script -
 # | script:
-# | - run confirmScriptText def:spawnSheep
+# | - run confirmScriptText def:relevantTaskScript
 
 switchGamemode:
     type: command
@@ -174,7 +174,7 @@ switchGamemode:
     description: Switches the player between Creative and Survival.
     usage: /switchgamemode
     aliases:
-        - sgm
+        - swgm
     permissions: modelock.creative; modelock.survival;
     permission message: <red><bold>Access denied.
     script:
@@ -185,6 +185,43 @@ switchGamemode:
             - adjust <player> gamemode:creative
             - narrate "<yellow><bold><underline>Switched to Creative mode.<reset>"
 #Make a menu version for other gamemodes.
+
+selectGamemode_command:
+    type: command
+    name: selectGamemode
+    description: Opens a menu to select a particular gamemode.
+    usage: /selectgamemode
+    aliases:
+        - segm
+    script:
+        - flag player callback:<[callback]>
+        - clickable selectGamemode_callback def:Creative save:Creative usages:1
+        - clickable selectGamemode_callback def:Survival save:Survival usages:1
+        - clickable selectGamemode_callback def:Adventure save:Adventure usages:1
+        - clickable selectGamemode_callback def:Spectator save:Spectator usages:1
+        - narrate "Select a gamemode:"
+        - narrate "<&hover[Click here to switch to Creative mode.].type[show_text]><element[<yellow><bold><underline>[Creative]].on_click[<entry[Creative].command>]><&end_hover><reset>"
+        - narrate "<&hover[Click here to switch to Survival mode.].type[show_text]><element[<yellow><bold><underline>[Survival]].on_click[<entry[Survival].command>]><&end_hover><reset>"
+        - narrate "<&hover[Click here to switch to Adventure mode.].type[show_text]><element[<yellow><bold><underline>[Adventure]].on_click[<entry[Adventure].command>]><&end_hover><reset>"
+        - narrate "<&hover[Click here to switch to Spectator mode.].type[show_text]><element[<yellow><bold><underline>[Spectator]].on_click[<entry[Spectator].command>]><&end_hover><reset>"
+#
+
+selectGamemode_callback:
+    type: task
+    definitions: gamemode
+    script:
+        - if <[gamemode]> == <element[Creative]>:
+            - adjust <player> gamemode:creative
+            - flag player callback:!
+        - else if <[gamemode]> == <element[Survival]>:
+            - adjust <player> gamemode:survival
+            - flag player callback:!
+        - else if <[gamemode]> == <element[Adventure]>:
+            - adjust <player> gamemode:adventure
+            - flag player callback:!
+        - else if <[gamemode]> == <element[Spectator]>:
+            - adjust <player> gamemode:spectator
+            - flag player callback:!
 
 resetWorldborder:
     type: command
@@ -204,14 +241,17 @@ resetWorldborder:
 seeInventory:
     type: command
     name: seeInventory
+    definitions: name
     debug: false
     description: Displays the inventory of a player.
-    usage: /seeinventory <&lt>player:<player><&gt>
+    usage: /seeinventory <&lt>[name]<&gt>
     aliases:
         - inventory
     permissions: adriftus.inventory.view
+    tab completions:
+        1: <server.match_player[[name]]>
     script:
-        - inventory open destination:<player>
+        - inventory open destination:<server.match_player[[name]]>
 #
 
 unknownCommand:
