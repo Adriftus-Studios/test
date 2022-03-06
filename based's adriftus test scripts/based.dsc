@@ -211,22 +211,20 @@ selectGamemode_callback:
     definitions: gamemode
     script:
         - define bool true
+        - flag player bool
         - if (<[gamemode]> == <element[Creative]>) && <[bool]>:
             - adjust <player> gamemode:creative
-            - define bool false
             - narrate "<green>You have switched to <bold><underline>Creative<reset><green> mode."
         - else if <[gamemode]> == <element[Survival]> && <[bool]>:
             - adjust <player> gamemode:survival
-            - define bool false
             - narrate "<green>You have switched to <bold><underline>Survival<reset><green> mode."
         - else if <[gamemode]> == <element[Adventure]> && <[bool]>:
             - adjust <player> gamemode:adventure
-            - define bool false
             - narrate "<green>You have switched to <bold><underline>Adventure<reset><green> mode."
         - else if <[gamemode]> == <element[Spectator]> && <[bool]>:
             - adjust <player> gamemode:spectator
-            - define bool false
             - narrate "<green>You have switched to <bold><underline>Spectator<reset><green> mode."
+        - flag player bool:!
 
 resetWorldborder:
     type: command
