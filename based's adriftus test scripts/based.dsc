@@ -215,13 +215,13 @@ selectGamemode_callback:
         - if (<[gamemode]> == <element[Creative]>) && <[bool]>:
             - adjust <player> gamemode:creative
             - narrate "<green>You have switched to <bold><underline>Creative<reset><green> mode."
-        - else if <[gamemode]> == <element[Survival]> && <[bool]>:
+        - if <[gamemode]> == <element[Survival]> && <[bool]>:
             - adjust <player> gamemode:survival
             - narrate "<green>You have switched to <bold><underline>Survival<reset><green> mode."
-        - else if <[gamemode]> == <element[Adventure]> && <[bool]>:
+        - if <[gamemode]> == <element[Adventure]> && <[bool]>:
             - adjust <player> gamemode:adventure
             - narrate "<green>You have switched to <bold><underline>Adventure<reset><green> mode."
-        - else if <[gamemode]> == <element[Spectator]> && <[bool]>:
+        - if <[gamemode]> == <element[Spectator]> && <[bool]>:
             - adjust <player> gamemode:spectator
             - narrate "<green>You have switched to <bold><underline>Spectator<reset><green> mode."
         - flag player bool:!
