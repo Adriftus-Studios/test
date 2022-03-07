@@ -19,7 +19,7 @@ custom_recipe_inventory:
 
 custom_recipe_inventory_open:
   type: task
-  debug: false
+  debug: true
   definitions: recipe_id
   script:
     - define inventory <inventory[custom_recipe_inventory]>
