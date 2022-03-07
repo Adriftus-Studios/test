@@ -23,5 +23,5 @@ custom_recipe_inventory_open:
   definitions: recipe_id
   script:
     - define inventory <inventory[custom_recipe_inventory]>
-    - give <server.recipe_items[<[recipe_id]>]> to:<[inventory]>
+    - adjust <[inventory]> matrix:<server.recipe_items[<[recipe_id]>]>
     - inventory open d:<[inventory]>
