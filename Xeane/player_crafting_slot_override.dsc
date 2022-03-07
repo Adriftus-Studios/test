@@ -4,7 +4,7 @@ player_crafting_slots_override_events:
   data:
     items:
       - "crafting_table[display=<&e>Crafting Table;flag=run_script:player_crafting_slots_open_crafting]"
-      - "shulker_box[display=<&6>Adriftus Chest;flag=run_script:adriftus_chest_inventory_open]"
+      - "stone[display=<&6>Adriftus Chest;flag=run_script:adriftus_chest_inventory_open]"
       - "feather[display=<&b>Menu;flag=run_script:player_crafting_slots_open_crafting]"
       - "diamond[display=<&a>Wallet;flag=run_script:player_crafting_slots_open_crafting]"
   set_inv:
