@@ -23,5 +23,6 @@ custom_recipe_inventory_open:
   definitions: recipe_id
   script:
     - define inventory <inventory[custom_recipe_inventory]>
+    - foreach <list[<server.recipe_result[<[recipe_id]>]>].include[<server.recipe_items[<[recipe_id]>].replace_text[material<&co>].with[]>]>:
+      - inventory set slot:<[loop_index]> d:<[inventory]> o:<[value]>
     - inventory open d:<[inventory]>
-    - adjust <player.open_inventory> matrix:<server.recipe_items[<[recipe_id]>].replace_text[material<&co>].with[]>
