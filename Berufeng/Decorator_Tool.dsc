@@ -95,7 +95,7 @@ Decorator_Tool_Decorative_Blocks:
             - stop
           - narrate "<aqua>Made this <gray><context.location.material.translated_name> <aqua>decorative."
           - flag <context.location> decorator_tool_decorative
-          - if <context.location.other_block||null> != null:
+          - if <context.location.other_block.exists>:
             - narrate "<aqua>(Also added adjacent block.)"
             - flag <context.location.other_block> decorator_tool_decorative
         - case left_click_block:
@@ -104,7 +104,7 @@ Decorator_Tool_Decorative_Blocks:
             - stop
           - narrate "<red>This <gray><context.location.material.translated_name> <red>is no longer decorative."
           - flag <context.location> decorator_tool_decorative:!
-          - if <context.location.other_block||null> != null:
+          - if <context.location.other_block.exists>:
             - narrate "<red>(Also removed adjacent block.)"
             - flag <context.location.other_block> decorator_tool_decorative:!
     # Item protection. (Prevents decorator tool from being transfered to another inventory.)
@@ -131,7 +131,7 @@ Decorator_Tool_Decorative_Blocks:
     on player breaks block location_flagged:decorator_tool_decorative:
       - narrate "<red>You broke a decorative <context.location.material.translated_name.to_lowercase>."
       - flag <context.location> decorator_tool_decorative:!
-      - if <context.location.other_block||null> != null:
+      - if <context.location.other_block.exists>:
         - narrate "<red>(Also removed adjacent block.)"
         - flag <context.location.other_block> decorator_tool_decorative:!
         - modifyblock <context.location.other_block> air
