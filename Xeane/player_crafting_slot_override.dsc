@@ -1,6 +1,6 @@
 player_crafting_slots_override_events:
   type: world
-  debug: false
+  debug: true
   data:
     items:
       - "stone[display=<&e>Crafting;flag=run_script:player_crafting_slots_open_crafting]"
