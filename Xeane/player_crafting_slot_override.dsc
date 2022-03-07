@@ -13,7 +13,7 @@ player_crafting_slots_override_events:
         - inventory set slot:<[value]> o:air d:<[inv]>
       - wait 1t
       - foreach <script.data_key[data.items]>:
-        - inventory set slot:<[loop_index].add[1]> o:<[value].as_item> d:<[inv]>
+        - inventory set slot:<[loop_index].add[1]> o:<[value].parsed> d:<[inv]>
       - inventory set slot:1 o:air d:<[inv]>
   events:
     on player clicks in PLAYER bukkit_priority:HIGH:
