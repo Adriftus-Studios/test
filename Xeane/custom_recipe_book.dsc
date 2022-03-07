@@ -24,5 +24,6 @@ custom_recipe_inventory_open:
   script:
     - define inventory <inventory[custom_recipe_inventory]>
     - foreach <list[<server.recipe_result[<[recipe_id]>]>].include[<server.recipe_items[<[recipe_id]>].replace_text[material<&co>].with[]>]>:
+      - foreach next if:<[value].material.name.equals[air].if_null[false]>
       - inventory set slot:<[loop_index]> d:<[inventory]> o:<[value]>
     - inventory open d:<[inventory]>
