@@ -18,7 +18,7 @@ confetti_snowball_shooter:
       - determine passively cancelled
       - ratelimit <player> 2t
       - playsound sound:ENTITY_SNOWBALL_THROW <player.location> pitch:0.1 volume:0.4
-      - shoot snowball speed:2 script:confetti_explosion
+      - shoot snowball[item=snowball[custom_model_data=1]] speed:2 script:confetti_explosion
 
 
 
@@ -30,7 +30,7 @@ confetti_explosion:
   script:
     - define colors <list[22,255,216|241,134,255|241,228,47|0,200,0]>
     - repeat 10:
-      - playeffect effect:redstone at:<[location]> quantity:20 special_data:<util.random.int[1].to[3]>|<util.random.int[0].to[255]>,<util.random.int[0].to[255]>,<util.random.int[0].to[255]> offset:0.5
+      - playeffect effect:redstone at:<[location]> visibility:50 quantity:20 special_data:<util.random.int[1].to[3]>|<util.random.int[0].to[255]>,<util.random.int[0].to[255]>,<util.random.int[0].to[255]> offset:0.5
 
 
 
