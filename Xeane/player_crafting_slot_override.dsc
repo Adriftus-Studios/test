@@ -7,7 +7,7 @@ player_crafting_slots_override_events:
       - "stone[display=<&a>Crafting;flag=run_script:open_crafting_grid;flag=cancelled:true]"
       - "stone[display=<&a>Crafting;flag=run_script:open_crafting_grid;flag=cancelled:true]"
       - "stone[display=<&a>Crafting;flag=run_script:open_crafting_grid;flag=cancelled:true]"
-      - "stone[display=<&a>Crafting;flag=run_script:open_crafting_grid;flag=cancelled:true]"
+    result: "stone[display=<&a>Crafting;flag=run_script:open_crafting_grid;flag=cancelled:true]"
   events:
     on player closes PLAYER:
       - define inv <player.open_inventory>
@@ -15,4 +15,5 @@ player_crafting_slots_override_events:
         - inventory set slot:<[value]> o:air d:<[inv]>
       - wait 1t
       - foreach <script.data_key[data.items]>:
-        - inventory set slot:<[loop_index]> o:<[value].parsed> d:<[inv]>
+        - inventory set slot:<[loop_index].add[1]> o:<[value].parsed> d:<[inv]>
+      - inventory set slot:1 o:<script.data_key[data.result]> d:<[inv]>
