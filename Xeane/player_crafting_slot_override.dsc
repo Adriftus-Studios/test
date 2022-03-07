@@ -9,6 +9,9 @@ player_crafting_slots_override_events:
       - "stone[display=<&a>Crafting;flag=run_script:player_crafting_slots_open_crafting]"
     result: "stone[display=<&a>Crafting;flag=run_script:player_crafting_slots_open_crafting]"
   events:
+    on player clicks in PLAYER bukkit_priority:HIGH:
+      - if <context.raw_slot> < 6:
+        - determine cancelled
     on player closes PLAYER:
       - define inv <player.open_inventory>
       - repeat 5:
