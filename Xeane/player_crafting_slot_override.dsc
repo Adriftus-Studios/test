@@ -15,6 +15,7 @@ player_crafting_slots_override_events:
       - foreach <script.data_key[data.items]>:
         - inventory set slot:<[loop_index].add[1]> o:<[value].parsed> d:<[inv]>
       - inventory set slot:1 o:air d:<[inv]>
+      - inventory update
   events:
     on player clicks in PLAYER bukkit_priority:HIGH:
         - determine cancelled if:<context.raw_slot.equals[1]>
