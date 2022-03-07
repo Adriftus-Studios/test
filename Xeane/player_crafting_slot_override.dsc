@@ -18,8 +18,6 @@ player_crafting_slots_override_events:
 
     on player closes PLAYER:
       - define inv <player.open_inventory>
-      - if <[inv].slot[6].exists>:
-        - stop
       - repeat 5:
         - inventory set slot:<[value]> o:air d:<[inv]>
       - wait 1t
