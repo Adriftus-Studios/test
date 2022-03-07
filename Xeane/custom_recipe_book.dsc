@@ -26,4 +26,5 @@ custom_recipe_inventory_open:
     - foreach <list[<server.recipe_result[<[recipe_id]>]>].include[<server.recipe_items[<[recipe_id]>].replace_text[material<&co>].with[]>]>:
       - foreach next if:<[value].material.name.equals[air].if_null[false]>
       - inventory set slot:<[loop_index]> d:<[inventory]> o:<[value]>
+    - adjust <[inventory]> title:<server.recipe_result[<[recipe_id]>].display>
     - inventory open d:<[inventory]>
