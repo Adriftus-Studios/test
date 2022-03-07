@@ -3,10 +3,10 @@ player_crafting_slots_override_events:
   debug: false
   data:
     items:
-      - "stone[display=<&a>Crafting;flag=run_script:player_crafting_slots_open_crafting]"
-      - "stone[display=<&a>Crafting;flag=run_script:player_crafting_slots_open_crafting]"
-      - "stone[display=<&a>Crafting;flag=run_script:player_crafting_slots_open_crafting]"
-      - "stone[display=<&a>Crafting;flag=run_script:player_crafting_slots_open_crafting]"
+      - "stone[display=<&e>Crafting;flag=run_script:player_crafting_slots_open_crafting]"
+      - "stone[display=<&6>Adriftus Chest;flag=run_script:player_crafting_slots_open_crafting]"
+      - "stone[display=<&b>Menu;flag=run_script:player_crafting_slots_open_crafting]"
+      - "stone[display=<&a>Wallet;flag=run_script:player_crafting_slots_open_crafting]"
   events:
     on player clicks in PLAYER bukkit_priority:HIGH:
         - determine cancelled if:<context.raw_slot.equals[1]>
