@@ -3,15 +3,11 @@ player_crafting_slots_override_events:
   debug: true
   data:
     items:
-      - "stone[display=<&e>Crafting;flag=run_script:player_crafting_slots_open_crafting]"
-      - "stone[display=<&6>Adriftus Chest;flag=run_script:adriftus_chest_inventory_open]"
-      - "stone[display=<&b>Menu;flag=run_script:player_crafting_slots_open_crafting]"
-      - "stone[display=<&a>Wallet;flag=run_script:player_crafting_slots_open_crafting]"
-  events:
-    on player clicks in PLAYER bukkit_priority:HIGH:
-        - determine cancelled if:<context.raw_slot.equals[1]>
-
-    on player closes PLAYER:
+      - "crafting_table[display=<&e>Crafting;flag=run_script:player_crafting_slots_open_crafting]"
+      - "chest[display=<&6>Adriftus Chest;flag=run_script:adriftus_chest_inventory_open]"
+      - "feather[display=<&b>Menu;flag=run_script:player_crafting_slots_open_crafting]"
+      - "diamond[display=<&a>Wallet;flag=run_script:player_crafting_slots_open_crafting]"
+  set_inv:
       - define inv <player.open_inventory>
       - repeat 5:
         - inventory set slot:<[value]> o:air d:<[inv]>
@@ -19,6 +15,13 @@ player_crafting_slots_override_events:
       - foreach <script.data_key[data.items]>:
         - inventory set slot:<[loop_index].add[1]> o:<[value].parsed> d:<[inv]>
       - inventory set slot:1 o:air d:<[inv]>
+  events:
+    on player clicks in PLAYER bukkit_priority:HIGH:
+        - determine cancelled if:<context.raw_slot.equals[1]>
+    after player joins:
+      - inject locally path:set_inv
+    on player closes PLAYER:
+      - inject locally path:set_inv
 
 player_crafting_slots_open_crafting:
   type: task
