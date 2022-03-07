@@ -3,9 +3,10 @@ custom_recipe_data_initializer:
   debug: false
   build_item_list:
     - flag server recipe_book:!
-    - foreach <server.scripts.filter[container_type.equals[item]].parse[name]>:
-      - if !<[value].as_item.recipe_ids.is_empty>:
-        
+    - foreach <server.scripts.filter[container_type.equals[item]].parse[name]> as:item_script:
+      - if !<[item_script].as_item.recipe_ids.is_empty>:
+        - foreach <[item_script].as_item.recipe_ids> as:recipe_id:
+          - flag server recipe_book.<[item_script]>.<[recipe_id]>:!|:<list[<server.recipe_result[<[recipe_id]>]>].include[<server.recipe_items[<[recipe_id]>].replace_text[material<&co>].with[]>]>
   events:
     on server start:
       - inject locally path:build_item_list
