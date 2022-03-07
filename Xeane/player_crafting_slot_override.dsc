@@ -24,4 +24,5 @@ player_crafting_slots_open_crafting:
   script:
     - determine passively <item[air]>
     - adjust <player> item_on_cursor:<context.item>
+    - wait 1t
     - inventory open d:workbench
