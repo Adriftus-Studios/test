@@ -3,10 +3,10 @@ player_crafting_slots_override_events:
   debug: true
   data:
     items:
-      - "crafting_table[display=<&e>Crafting Table;flag=run_script:player_crafting_slots_open_crafting]"
-      - "stone[display=<&6>Adriftus Chest;flag=run_script:adriftus_chest_inventory_open]"
-      - "feather[display=<&b>Menu;flag=run_script:player_crafting_slots_open_crafting]"
-      - "diamond[display=<&a>Wallet;flag=run_script:player_crafting_slots_open_crafting]"
+      - "crafting_table[display=<&e>Crafting Table;flag=run_script:player_crafting_slots_open_button;flag=script:open_crafting_grid]"
+      - "stone[display=<&6>Adriftus Chest;flag=run_script:player_crafting_slots_open_button;flag=script:adriftus_chest_inventory_open]"
+      - "feather[display=<&b>Menu;flag=run_script:player_crafting_slots_open_button;flag=script:player_crafting_slots_open_crafting]"
+      - "diamond[display=<&a>Wallet;flag=run_script:player_crafting_slots_open_button;flag=script:player_crafting_slots_open_crafting]"
   set_inv:
       - define inv <player.open_inventory>
       - repeat 5:
@@ -24,11 +24,12 @@ player_crafting_slots_override_events:
     on player closes PLAYER:
       - inject locally path:set_inv
 
-player_crafting_slots_open_crafting:
+player_crafting_slots_open_button:
   type: task
   debug: false
   script:
     - determine passively <item[air]>
     - adjust <player> item_on_cursor:<context.item>
-    - wait 1t
-    - inventory open d:workbench
+    - define script <context.item.flag[script]>
+    - wait 2t
+    - inject <[script]>
