@@ -3,11 +3,11 @@ player_crafting_slots_override_events:
   debug: false
   data:
     items:
-      - "stone[display=<&a>Crafting;flag=run_script:player_crafting_slots_open_crafting;flag=cancelled:true]"
-      - "stone[display=<&a>Crafting;flag=run_script:player_crafting_slots_open_crafting;flag=cancelled:true]"
-      - "stone[display=<&a>Crafting;flag=run_script:player_crafting_slots_open_crafting;flag=cancelled:true]"
-      - "stone[display=<&a>Crafting;flag=run_script:player_crafting_slots_open_crafting;flag=cancelled:true]"
-    result: "stone[display=<&a>Crafting;flag=run_script:player_crafting_slots_open_crafting;flag=cancelled:true]"
+      - "stone[display=<&a>Crafting;flag=run_script:player_crafting_slots_open_crafting]"
+      - "stone[display=<&a>Crafting;flag=run_script:player_crafting_slots_open_crafting]"
+      - "stone[display=<&a>Crafting;flag=run_script:player_crafting_slots_open_crafting]"
+      - "stone[display=<&a>Crafting;flag=run_script:player_crafting_slots_open_crafting]"
+    result: "stone[display=<&a>Crafting;flag=run_script:player_crafting_slots_open_crafting]"
   events:
     on player closes PLAYER:
       - define inv <player.open_inventory>
