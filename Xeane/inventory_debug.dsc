@@ -12,3 +12,5 @@ inventory_debug:
       - narrate "context.raw_slot<&co> <context.raw_slot>"
       - narrate "context.action<&co> <context.action>"
       - narrate "context.hotbar_button<&co> <context.hotbar_button>"
+    on player closes PLAYER flagged:inventory_debug:
+      - narrate <context.inventory>
