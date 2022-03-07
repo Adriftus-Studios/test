@@ -2,7 +2,7 @@ inventory_debug:
   type: world
   debug: false
   events:
-    on player_flagged:inventory_debug clicks item in inventory:
+    on player clicks item in inventory flagged:inventory_debug:
       - narrate "context.item<&co> <context.item>"
       - narrate "context.inventory<&co> <context.inventory>"
       - narrate "context.clicked_inventory<&co> <context.clicked_inventory>"
