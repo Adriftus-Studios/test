@@ -3,11 +3,11 @@ player_crafting_slots_override_events:
   debug: false
   data:
     items:
-      - "stone[display=<&a>Crafting;flag=run_script:open_crafting_grid;flag=cancelled:true]"
-      - "stone[display=<&a>Crafting;flag=run_script:open_crafting_grid;flag=cancelled:true]"
-      - "stone[display=<&a>Crafting;flag=run_script:open_crafting_grid;flag=cancelled:true]"
-      - "stone[display=<&a>Crafting;flag=run_script:open_crafting_grid;flag=cancelled:true]"
-    result: "stone[display=<&a>Crafting;flag=run_script:open_crafting_grid;flag=cancelled:true]"
+      - "stone[display=<&a>Crafting;flag=run_script:player_crafting_slots_open_crafting;flag=cancelled:true]"
+      - "stone[display=<&a>Crafting;flag=run_script:player_crafting_slots_open_crafting;flag=cancelled:true]"
+      - "stone[display=<&a>Crafting;flag=run_script:player_crafting_slots_open_crafting;flag=cancelled:true]"
+      - "stone[display=<&a>Crafting;flag=run_script:player_crafting_slots_open_crafting;flag=cancelled:true]"
+    result: "stone[display=<&a>Crafting;flag=run_script:player_crafting_slots_open_crafting;flag=cancelled:true]"
   events:
     on player closes PLAYER:
       - define inv <player.open_inventory>
@@ -16,4 +16,11 @@ player_crafting_slots_override_events:
       - wait 1t
       - foreach <script.data_key[data.items]>:
         - inventory set slot:<[loop_index].add[1]> o:<[value].parsed> d:<[inv]>
-      - inventory set slot:1 o:<script.data_key[data.result]> d:<[inv]>
+      - inventory set slot:1 o:<script.data_key[data.result].parsed> d:<[inv]>
+
+player_crafting_slots_open_crafting:
+  type: task
+  debug: false
+  script:
+    - wait 1t
+    - inventory open d:workbench
