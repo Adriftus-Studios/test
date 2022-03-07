@@ -11,9 +11,6 @@ player_crafting_slots_override_events:
     on player clicks in PLAYER bukkit_priority:HIGH:
         - determine cancelled if:<context.raw_slot.equals[1]>
 
-    after player joins:
-      - inventory open d:<player.inventory>
-
     on player closes PLAYER:
       - define inv <player.open_inventory>
       - repeat 5:
