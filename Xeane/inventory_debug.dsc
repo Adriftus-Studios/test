@@ -12,8 +12,4 @@ inventory_debug:
       - narrate "context.raw_slot<&co> <context.raw_slot>"
       - narrate "context.action<&co> <context.action>"
       - narrate "context.hotbar_button<&co> <context.hotbar_button>"
-    on player closes PLAYER flagged:inventory_debug:
-      - define inv <player.open_inventory>
-      - inventory set slot:2 o:air d:<[inv]>
-      - wait 1t
-      - inventory set slot:2 o:stone d:<[inv]>
+      - narrate "<player.open_inventory.slot[6]>"
