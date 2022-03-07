@@ -3,8 +3,8 @@ player_crafting_slots_override_events:
   debug: true
   data:
     items:
-      - "crafting_table[display=<&e>Crafting;flag=run_script:player_crafting_slots_open_crafting]"
-      - "chest[display=<&6>Adriftus Chest;flag=run_script:adriftus_chest_inventory_open]"
+      - "crafting_table[display=<&e>Crafting Table;flag=run_script:player_crafting_slots_open_crafting]"
+      - "ender_chest[display=<&6>Adriftus Chest;flag=run_script:adriftus_chest_inventory_open]"
       - "feather[display=<&b>Menu;flag=run_script:player_crafting_slots_open_crafting]"
       - "diamond[display=<&a>Wallet;flag=run_script:player_crafting_slots_open_crafting]"
   set_inv:
