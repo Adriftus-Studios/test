@@ -5,8 +5,11 @@ admin_mode_spectator:
   description: spectator mode, with particles!
   permission: adriftus.admin
   script:
-    - adjust <player>
-    - inject admin_mode_spectator_loop
+    - if <player.gamemode> != SPECTATOR:
+      - adjust <player> gamemode:spectator
+      - inject admin_mode_spectator_loop
+    - else:
+      - adjust <player> gamemode:creative
 
 admin_mode_spectator_loop:
   type: task
