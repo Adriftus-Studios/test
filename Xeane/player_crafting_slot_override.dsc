@@ -7,11 +7,10 @@ player_crafting_slots_override_events:
       - "stone[display=<&a>Crafting;flag=run_script:player_crafting_slots_open_crafting]"
       - "stone[display=<&a>Crafting;flag=run_script:player_crafting_slots_open_crafting]"
       - "stone[display=<&a>Crafting;flag=run_script:player_crafting_slots_open_crafting]"
-    result: "stone[display=<&a>Crafting;flag=run_script:player_crafting_slots_open_crafting]"
   events:
     on player clicks in PLAYER bukkit_priority:HIGH:
-      - if <context.raw_slot> < 6:
-        - determine cancelled
+        - determine cancelled if:<context.raw_slot.equals[1]>
+
     on player closes PLAYER:
       - define inv <player.open_inventory>
       - repeat 5:
@@ -19,7 +18,7 @@ player_crafting_slots_override_events:
       - wait 1t
       - foreach <script.data_key[data.items]>:
         - inventory set slot:<[loop_index].add[1]> o:<[value].parsed> d:<[inv]>
-      - inventory set slot:1 o:<script.data_key[data.result].parsed> d:<[inv]>
+      - inventory set slot:1 o:air d:<[inv]>
 
 player_crafting_slots_open_crafting:
   type: task
