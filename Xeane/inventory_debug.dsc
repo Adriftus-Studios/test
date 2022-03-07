@@ -16,3 +16,6 @@ inventory_debug:
       - narrate <context.inventory.slot[2]>
       - inventory set slot:2 o:stone d:<player.open_inventory>
       - narrate <context.inventory.slot[2]>
+      - define inv <player.open_inventory>
+      - wait 1t
+      - inventory set slot:2 o:stone d:<[inv]>
