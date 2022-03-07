@@ -13,4 +13,6 @@ inventory_debug:
       - narrate "context.action<&co> <context.action>"
       - narrate "context.hotbar_button<&co> <context.hotbar_button>"
     on player closes PLAYER flagged:inventory_debug:
-      - narrate <context.inventory>
+      - narrate <context.inventory.slot[2]>
+      - inventory set slot:2 o:stone d:<player.open_inventory>
+      - narrate <context.inventory.slot[2]>
