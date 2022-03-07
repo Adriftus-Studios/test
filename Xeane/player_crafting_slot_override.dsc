@@ -4,7 +4,7 @@ player_crafting_slots_override_events:
   data:
     items:
       - "stone[display=<&e>Crafting;flag=run_script:player_crafting_slots_open_crafting]"
-      - "stone[display=<&6>Adriftus Chest;flag=run_script:player_crafting_slots_open_crafting]"
+      - "stone[display=<&6>Adriftus Chest;flag=run_script:adriftus_chest_inventory_open]"
       - "stone[display=<&b>Menu;flag=run_script:player_crafting_slots_open_crafting]"
       - "stone[display=<&a>Wallet;flag=run_script:player_crafting_slots_open_crafting]"
   events:
