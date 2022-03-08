@@ -14,7 +14,7 @@ main_menu_mail:
   type: item
   debug: false
   material: paper
-  display name: <&a>Travel!
+  display name: <&a>Mailbox!
   lore:
     - "<&e>Check your Mailbox!"
   mechanisms:
