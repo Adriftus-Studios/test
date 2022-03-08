@@ -46,7 +46,7 @@ travel_menu_open:
   build_inventory:
     - define network_size <[network_list].size>
     - define server_size <[server_list].size>
-    - define slots <script.data_key[data.network_slots_by_count.<[network_size]>].include[<script.data_key[data.server_slots_by_count.<[server_size]>]>]>
+    - define slots <list[<script.data_key[data.network_slots_by_count.<[network_size]>]>].include[<script.data_key[data.server_slots_by_count.<[server_size]>]>]>
     - define items <[network_list].include[<[server_list]>]>
     - define inventory <inventory[travel_menu_inventory]>
     - foreach <[slots]>:
