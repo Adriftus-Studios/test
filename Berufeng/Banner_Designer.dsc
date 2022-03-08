@@ -670,7 +670,7 @@ Banner_Designer_Save:
           - narrate "<dark_gray>Saving your banner."
           - inject Banner_Designer_Converter instantly
           - wait 1t
-          - give <[converter_result]>
+          - give <[converter_result].as_item.with[hides=ALL;display=<white>Banner]>
         - default:
           - narrate "<dark_red>You cannot save your design in this mode."
           - stop
@@ -931,16 +931,22 @@ Banner_Token_Single:
 Banner_Item_Town:
   type: item
   debug: false
-  material: blue_banner
+  material: light_blue_banner
   display name: <blue><bold>[Town Flag Banner]
+  mechanisms:
+    hides: ALL
+    patterns: blue/STRIPE_TOP|blue/STRIPE_CENTER|light_blue/TRIANGLES_BOTTOM|light_blue/BORDER|light_blue/GRADIENT|blue/GRADIENT_UP
   lore:
   - Use: Place a Town Flag anywhere in your town!
 
 Banner_Item_Nation:
   type: item
   debug: false
-  material: yellow_banner
+  material: orange_banner
   display name: <gold><bold>[National Flag Banner]
+  mechanisms:
+    hides: ALL
+    patterns: yellow/STRIPE_LEFT|yellow/STRIPE_RIGHT|yellow/STRIPE_DOWNRIGHT|orange/TRIANGLES_TOP|orange/TRIANGLES_BOTTOM|orange/BORDER|yellow/GRADIENT_UP
   lore:
   - Use: Place a National Flag anywhere in your nation!
 
@@ -949,6 +955,9 @@ Banner_Item_Personal:
   debug: false
   material: red_banner
   display name: <red><bold>[Personal Emblem Banner]
+  mechanisms:
+    hides: ALL
+    patterns: orange/STRIPE_TOP|orange/STRIPE_MIDDLE|orange/STRIPE_RIGHT|red/HALF_HORIZONTAL_MIRROR|orange/STRIPE_LEFT|red/TRIANGLES_TOP|red/TRIANGLES_BOTTOM|red/BORDER|red/GRADIENT_UP
   lore:
   - Use: Place on the ground to display your Personal Emblem!
 
