@@ -20,8 +20,6 @@ player_crafting_slots_override_events:
       - inventory set slot:1 o:<script.data_key[data.mailbox.true].parsed> d:<[inv]>
       - inventory update
   events:
-    on player clicks in PLAYER bukkit_priority:HIGH:
-        - determine cancelled if:<context.raw_slot.equals[1]>
     after player joins:
       - inject locally path:set_inv
     on player closes PLAYER:
@@ -31,8 +29,11 @@ player_crafting_slots_open_button:
   type: task
   debug: false
   script:
-    - determine passively <item[air]>
-    - adjust <player> item_on_cursor:<context.item>
+    - if <context.raw_slot> == 1:
+      - determine passively cancelled
+    - else:
+      - determine passively <item[air]>
+      - adjust <player> item_on_cursor:<context.item>
     - define script <context.item.flag[script]>
     - wait 2t
     - inject <[script]>

@@ -10,13 +10,13 @@ main_menu_cosmetics:
   flags:
     run_script: cancel
 
-main_menu_mail:
+main_menu_help:
   type: item
   debug: false
   material: paper
-  display name: <&a>Mailbox!
+  display name: <&a>Help!
   lore:
-    - "<&e>Check your Mailbox!"
+    - "<&e>Request Help!"
   mechanisms:
     custom_model_data: 1
   flags:
@@ -60,5 +60,5 @@ main_menu_inventory:
   title: <&a>Menu Placeholder!
   slots:
     - [] [] [] [] [] [] [] [] []
-    - [] [main_menu_cosmetics] [] [main_menu_mail] [] [main_menu_commands] [] [main_menu_settings] []
+    - [] [main_menu_help] [] [main_menu_cosmetics] [] [main_menu_commands] [] [main_menu_settings] []
     - [] [] [] [] [] [] [] [] []
