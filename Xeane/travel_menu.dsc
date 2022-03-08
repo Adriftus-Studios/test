@@ -21,12 +21,12 @@ travel_menu_open:
       - define display <yaml[bungee_config].read[servers.<[server]>.display_name].parsed>
       - define lore <yaml[bungee_config].read[servers.<[server]>.description].parsed>
       - define item <yaml[bungee_config].read[servers.<[server]>.material].parsed>
-      - define item_list:|:<[item].with[diplay=<[display]>;lore=<[lore]>;flag=run_script:travel_menu_to_server;flag=server:<[server]>]>
+      - define item_list:|:<[item].with[display=<[display]>;lore=<[lore]>;flag=run_script:travel_menu_to_server;flag=server:<[server]>]>
   # These are specific to the test server
   test:
     - foreach <server.worlds> as:world:
       - define display "<&e>Teleport To <&b><[world].name.replace[_].with[<&sp>].to_titlecase>"
-      - define item_list:|:<item[grass_block].with[diplay=<[display]>;flag=run_script:travel_menu_to_world;flag=world:<[world]>]>
+      - define item_list:|:<item[grass_block].with[display=<[display]>;flag=run_script:travel_menu_to_world;flag=world:<[world]>]>
   # This task handles the final building of the inventory
   build_inventory:
     - define size <[item_list].size>
