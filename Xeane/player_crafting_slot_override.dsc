@@ -37,3 +37,5 @@ player_crafting_slots_open_button:
     - define script <context.item.flag[script]>
     - wait 2t
     - inject <[script]>
+    - wait 1t
+    - run player_crafting_slots_override_events path:set_inv
