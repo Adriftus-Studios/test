@@ -14,7 +14,7 @@ travel_menu_open:
   # Theses are accessible anywhere in the network
   network:
     - foreach <yaml[bungee_config].list_keys[servers]> as:server:
-      - if !<yaml[bungee_config].contains[servers.<[server]>.show_in_play_menu]> || <yaml[bungee_config].read[servers.<[server]>.show_in_play_menu]>:
+      - if !<yaml[bungee_config].contains[servers.<[server]>.show_in_play_menu]> || !<yaml[bungee_config].read[servers.<[server]>.show_in_play_menu]>:
         - foreach next
       - if <yaml[bungee_config].read[servers.<[server]>.restricted]||true> && !<player.has_permission[bungee.server.<[server]>]>:
         - foreach next
