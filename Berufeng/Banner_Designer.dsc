@@ -233,7 +233,7 @@ Banner_Designer_Data:
 
 Banner_Designer_Create:
   type: world
-  debug: true
+  debug: false
   events:
     on player right clicks block type:loom with:decorator_tool_item priority:0:
     # For creating Banner Designer machines.
@@ -384,7 +384,7 @@ Banner_Designer_Start:
 
 Banner_Designer_Function:
   type: world
-  debug: true
+  debug: false
   events:
     on player right clicks observer with:banner_token_* in:banner_designer_*:
       - determine passively cancelled
@@ -737,7 +737,7 @@ Banner_Designer_Save:
 
 Banner_Designer_Placement:
   type: world
-  debug: true
+  debug: false
   events:
     on player places banner_item_*:
       - choose <context.item_in_hand.script.name.after[item_]>:
@@ -810,11 +810,9 @@ Banner_Designer_Placement:
             - flag <context.location> custom_banner:!
             - flag <[nation]> placed_banners:<-:<context.location.simple>
 
-
-
 Banner_Designer_World_Update:
   type: task
-  debug: true
+  debug: false
   definitions: new_banner|mode|player
   script:
   - choose <[mode]>:
@@ -859,7 +857,7 @@ Banner_Designer_Reset:
 
 Banner_Designer_Crash_Handler:
   type: world
-  debug: true
+  debug: false
   events:
     on player quits flagged:banner_machine_in_use:
       - define uuid:<player.flag[banner_machine_in_use]>
