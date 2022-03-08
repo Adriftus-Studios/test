@@ -2,15 +2,30 @@ travel_menu_open:
   type: task
   debug: false
   data:
-    slots_by_count:
-      1: 14
-      2: 13|15
-      3: 11|14|17
-      4: 11|13|15|17
-      5: 12|22|14|24|16
-      6: 11|21|13|15|25|17
+    server_slots_by_count:
+      1: 32
+      2: 30|32
+      3: 29|32|35
+      4: 31|33|39|43
+      5: 30|32|34|40|42
+      6: 29|31|33|35|39|43
       7: 11|21|13|23|15|25|17
       8: 11|29|13|31|15|33|17|35
+    network_slots_by_count:
+      1: 5
+      2: 4|6
+      3: 3|5|7
+      4: 2|4|6|8
+      5: 1|3|5|7|9
+    # NETWORK ITEMS
+    #- [1] [2] [3] [4] [5] [6] [7] [8] [9]
+    #- [10] [11] [12] [13] [14] [15] [16] [17] [18]
+
+    # SERVER SLOTS
+    #- [19] [20] [21] [22] [23] [24] [25] [26] [27]
+    #- [28] [29] [30] [31] [32] [33] [34] [35] [36]
+    #- [37] [38] [39] [40] [41] [42] [43] [44] [45]
+    #- [46] [47] [48] [49] [50] [51] [52] [53] [54]
   # Theses are accessible anywhere in the network
   network:
     - foreach <yaml[bungee_config].list_keys[servers]> as:server:
@@ -21,22 +36,23 @@ travel_menu_open:
       - define display <yaml[bungee_config].read[servers.<[server]>.display_name].parsed>
       - define lore <yaml[bungee_config].read[servers.<[server]>.description].parsed>
       - define item <item[<yaml[bungee_config].read[servers.<[server]>.material]>]>
-      - define item_list:|:<[item].with[display=<[display]>;lore=<[lore]>;flag=run_script:travel_menu_to_server;flag=server:<[server]>]>
+      - define network_items:|:<[item].with[display=<[display]>;lore=<[lore]>;flag=run_script:travel_menu_to_server;flag=server:<[server]>]>
   # These are specific to the test server
   test:
     - foreach <server.worlds> as:world:
       - define display "<&e>Teleport To <&b><[world].name.replace[_].with[<&sp>].to_titlecase>"
-      - define item_list:|:<item[grass_block].with[display=<[display]>;flag=run_script:travel_menu_to_world;flag=world:<[world]>]>
+      - define server_list:|:<item[grass_block].with[display=<[display]>;flag=run_script:travel_menu_to_world;flag=world:<[world]>]>
   # This task handles the final building of the inventory
   build_inventory:
-    - define size <[item_list].size>
-    - if <[size]> == 0:
-      - determine cancelled
+    - define network_size <[network_list].size>
+    - define server_size <[server_list].size>
+    - define slots <script.data_key[data.network_slots_by_count.<[network_size]>].include[<script.data_key[data.server_slots_by_count.<[server_size]>]>]>
+    - define items <[network_list].include[<[server_list]>]>
     - define inventory <inventory[travel_menu_inventory]>
-    - foreach <script.data_key[data.slots_by_count.<[size]>]>:
-      - inventory set slot:<[value]> o:<[item_list].get[<[loop_index]>]> d:<[inventory]>
+    - foreach <[slots]>:
+      - inventory set slot:<[value]> o:<[items].get[<[loop_index]>]> d:<[inventory]>
   script:
-    - define item_list <list>
+    - define server_list <list>
     - inject locally path:network
     - if <script.data_key[<bungee.server>].exists>:
       - inject locally path:<bungee.server>
