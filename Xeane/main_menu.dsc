@@ -60,7 +60,7 @@ main_menu_mail:
 
 main_menu_inventory_open:
   type: task
-  debug: true
+  debug: false
   script:
     - define inventory <inventory[main_menu_inventory]>
     - define "lore:!|:<&e>Title<&co> <proc[get_player_title]>"
