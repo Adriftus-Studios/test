@@ -65,7 +65,7 @@ Banner_Designer_Config:
 
 Banner_Designer_Version:
   type: data
-  version: 1.0.0
+  version: 1.0.1
   last_updated: 2022_03_07
 
 Banner_Designer_Data:
@@ -749,6 +749,9 @@ Banner_Designer_Placement:
           - else:
             - flag <context.location> custom_banner.personal:<player.uuid>
             - flag <player> placed_banners_personal_emblem:->:<context.location.simple>
+            - define save_banner:<player.flag[banner_designer_personal_emblem]>
+            - inject Banner_Designer_Converter instantly
+            - run Banner_Designer_World_Update instantly def.new_banner:<[converter_result]> def.mode:personal def.player:<player>
         - case town:
           - if <player.town> != <context.location.town||null>:
             - determine passively cancelled
@@ -762,6 +765,9 @@ Banner_Designer_Placement:
           - else:
             - flag <context.location> custom_banner.town:<player.town>
             - flag <player.town> placed_banners:->:<context.location.simple>
+            - define save_banner:<player.town.flag[banner_design]>
+            - inject Banner_Designer_Converter instantly
+            - run Banner_Designer_World_Update instantly def.new_banner:<[converter_result]> def.mode:town def.player:<player>
         - case nation:
           - if <player.nation> != <context.location.nation||null>:
             - determine passively cancelled
@@ -775,6 +781,9 @@ Banner_Designer_Placement:
           - else:
             - flag <context.location> custom_banner.nation:<player.nation>
             - flag <player.nation> placed_banners:->:<context.location.simple>
+            - define save_banner:<player.nation.flag[banner_design]>
+            - inject Banner_Designer_Converter instantly
+            - run Banner_Designer_World_Update instantly def.new_banner:<[converter_result]> def.mode:nation def.player:<player>
     on player breaks *_banner location_flagged:custom_banner:
       - choose <context.location.flag[custom_banner].keys.get[1]>:
         - case personal:
@@ -810,7 +819,6 @@ Banner_Designer_World_Update:
   script:
   - choose <[mode]>:
     - case personal:
-      - narrate "<red>Updating <player.name>'s personal emblem in all applicable places." targets:<player>
       - foreach <[player].flag[placed_banners_personal_emblem]>:
         - define facing_direction:<[value].as_location.material.direction>
         - if <[value].as_location.material.contains_any_text[_wall_]>:
@@ -820,7 +828,6 @@ Banner_Designer_World_Update:
         - adjustblock <[value].as_location> direction:<[facing_direction]>
         - adjust <[value].as_location> patterns:<[new_banner].as_item.patterns>
     - case town:
-      - narrate "<blue>This script will update the town's existing banners in the world."
       - foreach <[player].town.flag[placed_banners]>:
         - define facing_direction:<[value].as_location.material.direction>
         - if <[value].as_location.material.contains_any_text[_wall_]>:
@@ -830,7 +837,6 @@ Banner_Designer_World_Update:
         - adjustblock <[value].as_location> direction:<[facing_direction]>
         - adjust <[value].as_location> patterns:<[new_banner].as_item.patterns>
     - case nation:
-      - narrate "<gold>This script will update the nation's existing banners in the world."
       - foreach <[player].nation.flag[placed_banners]>:
         - define facing_direction:<[value].as_location.material.direction>
         - if <[value].as_location.material.contains_any_text[_wall_]>:
