@@ -46,6 +46,12 @@ main_menu_settings:
   flags:
     run_script: cancel
 
+main_menu_inventory_open:
+  type: task
+  debug: false
+  script:
+    - inventory open d:main_menu_inventory
+
 main_menu_inventory:
   type: inventory
   debug: false
