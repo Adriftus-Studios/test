@@ -13,7 +13,7 @@ main_menu_cosmetics:
 main_menu_help:
   type: item
   debug: false
-  material: paper
+  material: raw_salmon
   display name: <&a>Help!
   lore:
     - "<&e>Request Help!"
@@ -46,11 +46,26 @@ main_menu_settings:
   flags:
     run_script: cancel
 
+main_menu_mail:
+  type: item
+  debug: false
+  material: paper
+  display name: <&a>Mailbox!
+  lore:
+    - "<&e>Check your Mailbox!"
+  mechanisms:
+    custom_model_data: 1
+  flags:
+    run_script: cancel
+
 main_menu_inventory_open:
   type: task
   debug: false
   script:
-    - inventory open d:main_menu_inventory
+    - define inventory <inventory[main_menu_inventory]>
+    - define player_title <proc[get_player_title]>
+    - inventory set slot:5 "o:<item[player_head].with[display=<[player_title]> <player.display_name>;skull_skin=<player.skull_skin>]>" d:<[inventory]>
+    - inventory open d:<[inventory]>
 
 main_menu_inventory:
   type: inventory
@@ -60,5 +75,5 @@ main_menu_inventory:
   title: <&a>Menu Placeholder!
   slots:
     - [] [] [] [] [] [] [] [] []
-    - [] [main_menu_help] [] [main_menu_cosmetics] [] [main_menu_commands] [] [main_menu_settings] []
-    - [] [] [] [] [] [] [] [] []
+    - [] [main_menu_mail] [] [main_menu_cosmetics] [] [main_menu_commands] [] [main_menu_settings] []
+    - [] [] [] [] [main_menu_help] [] [] [] []
