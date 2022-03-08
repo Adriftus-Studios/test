@@ -20,7 +20,7 @@ travel_menu_open:
         - foreach next
       - define display <yaml[bungee_config].read[servers.<[server]>.display_name].parsed>
       - define lore <yaml[bungee_config].read[servers.<[server]>.description].parsed>
-      - define item <yaml[bungee_config].read[servers.<[server]>.material].parsed>
+      - define item <item[<yaml[bungee_config].read[servers.<[server]>.material]>]>
       - define item_list:|:<[item].with[display=<[display]>;lore=<[lore]>;flag=run_script:travel_menu_to_server;flag=server:<[server]>]>
   # These are specific to the test server
   test:
