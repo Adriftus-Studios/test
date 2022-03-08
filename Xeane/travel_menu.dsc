@@ -63,12 +63,14 @@ travel_menu_to_world:
   type: task
   debug: false
   script:
+    - determine passively cancelled
     - teleport <player> <context.item.flag[world].spawn_location>
 
 travel_menu_to_server:
   type: task
   debug: false
   script:
+    - determine passively cancelled
     - adjust <player> send_to:<context.item.flag[server]>
 
 travel_menu_inventory:
