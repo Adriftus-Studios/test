@@ -7,6 +7,9 @@ player_crafting_slots_override_events:
       - "stone[display=<&6>Adriftus Chest;flag=run_script:player_crafting_slots_open_button;flag=script:adriftus_chest_inventory_open]"
       - "piston[display=<&b>Menu;flag=run_script:player_crafting_slots_open_button;flag=script:main_menu_inventory_open]"
       - "feather[display=<&a>Travel;flag=run_script:player_crafting_slots_open_button;flag=script:travel_menu_open]"
+    mailbox:
+      true: "paper[display=<&a>Mailbox;flag=run_script:player_crafting_slots_open_button;flag=script:travel_menu_open]"
+      false: "paper[display=<&a>Mailbox;flag=run_script:player_crafting_slots_open_button;flag=script:travel_menu_open]"
   set_inv:
       - define inv <player.open_inventory>
       - repeat 5:
@@ -14,7 +17,7 @@ player_crafting_slots_override_events:
       - wait 1t
       - foreach <script.data_key[data.items]>:
         - inventory set slot:<[loop_index].add[1]> o:<[value].parsed> d:<[inv]>
-      - inventory set slot:1 o:air d:<[inv]>
+      - inventory set slot:1 o:<script.data_key[data.mailbox.true]> d:<[inv]>
       - inventory update
   events:
     on player clicks in PLAYER bukkit_priority:HIGH:
