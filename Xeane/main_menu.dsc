@@ -63,8 +63,9 @@ main_menu_inventory_open:
   debug: false
   script:
     - define inventory <inventory[main_menu_inventory]>
-    - define player_title <proc[get_player_title]>
-    - inventory set slot:5 "o:<item[player_head].with[display=<[player_title]> <player.display_name>;skull_skin=<player.skull_skin>]>" d:<[inventory]>
+    - define "lore:|:<&e>Title<&co> <proc[get_player_title]>"
+    - define "lore:|:<&e>Server<&co> <&7><&lb><server.flag[display_name]||<bungee.server>>"
+    - inventory set slot:5 o:<item[player_head].with[display=<player.display_name>;lore=<[lore]>;skull_skin=<player.skull_skin>]> d:<[inventory]>
     - inventory open d:<[inventory]>
 
 main_menu_inventory:
