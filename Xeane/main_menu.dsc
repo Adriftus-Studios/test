@@ -10,13 +10,13 @@ main_menu_cosmetics:
   flags:
     run_script: cancel
 
-main_menu_travel:
+main_menu_mail:
   type: item
   debug: false
-  material: feather
+  material: paper
   display name: <&a>Travel!
   lore:
-    - "<&e>Travel around the server/network!"
+    - "<&e>Check your Mailbox!"
   mechanisms:
     custom_model_data: 1
   flags:
@@ -60,5 +60,5 @@ main_menu_inventory:
   title: <&a>Menu Placeholder!
   slots:
     - [] [] [] [] [] [] [] [] []
-    - [] [main_menu_cosmetics] [] [main_menu_travel] [] [main_menu_commands] [] [main_menu_settings] []
+    - [] [main_menu_cosmetics] [] [main_menu_mail] [] [main_menu_commands] [] [main_menu_settings] []
     - [] [] [] [] [] [] [] [] []
