@@ -20,7 +20,7 @@ teleportation_animation_sky_portal:
   task: teleportation_animation_sink_run
 
 
-teleportation_animation_sink_run:
+teleportation_animation_sky_portal_run:
   type: task
   debug: false
   definitions: destination|color
