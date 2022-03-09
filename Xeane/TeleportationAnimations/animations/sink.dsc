@@ -27,6 +27,7 @@ teleportation_animation_sink_run:
   definitions: destination|color
   script:
     - flag <player> no_suffocate
+    - adjust <player> gravity:false
     - define foot_location <player.location>
     - define targets <player.location.find_players_within[60]>
     - repeat 5:
@@ -42,3 +43,4 @@ teleportation_animation_sink_run:
       - teleport <player> <player.location.above[0.2]>
       - wait 2t
     - flag <player> no_suffocate:!
+    - adjust <player> gravity:true
