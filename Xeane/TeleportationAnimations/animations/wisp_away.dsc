@@ -45,5 +45,5 @@ teleportation_animation_wisp_away_run:
       - wait 2t
     - adjust <player> gamemode:<[gamemode]>
     - repeat 3:
-      - playeffect at:<[destination]> offset:<element[0.7].mul[<[value]>]> effect:redstone special_data:5|<[color]> quantity:<element[30].mul[<[value]>]> targets:<[targets]>
+      - playeffect at:<[destination]> offset:<element[1].mul[<[value]>]> effect:redstone special_data:5|<[color]> quantity:<element[30].mul[<[value]>]> targets:<[targets]>
       - wait 1t
