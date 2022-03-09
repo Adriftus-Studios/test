@@ -28,7 +28,7 @@ teleportation_animation_default_run:
     - repeat 5:
       - playeffect at:<player.location.above> offset:0.4 effect:redstone special_data:5|<[color]> quantity:20
       - wait 1t
-    - playeffect at:<player.location.above> offset:0.4 effect:redstone special_data:5|<[color]> quantity:20
+    - playeffect at:<[destination].above> offset:0.4 effect:redstone special_data:5|<[color]> quantity:20
     - wait 1t
-    - playeffect at:<player.location.above> offset:0.4 effect:redstone special_data:5|<[color]> quantity:20
+    - playeffect at:<[destination].above> offset:0.4 effect:redstone special_data:5|<[color]> quantity:20
     - teleport <player> <[destination]>
