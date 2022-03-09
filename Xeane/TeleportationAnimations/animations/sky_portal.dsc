@@ -17,7 +17,7 @@ teleportation_animation_sky_portal:
   colorable: true
 
   # The task for running the animation
-  task: teleportation_animation_sink_run
+  task: teleportation_animation_sky_portal_run
 
 
 teleportation_animation_sky_portal_run:
