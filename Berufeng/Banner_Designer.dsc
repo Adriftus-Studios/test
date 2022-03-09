@@ -65,8 +65,8 @@ Banner_Designer_Config:
 
 Banner_Designer_Version:
   type: data
-  version: 1.0.2
-  last_updated: 2022_03_07
+  version: 1.0.3
+  last_updated: 2022_03_09
 
 Banner_Designer_Data:
   type: data
@@ -235,10 +235,11 @@ Banner_Designer_Create:
   type: world
   debug: false
   events:
-    on player right clicks block type:loom with:decorator_tool_item priority:0:
+    on player right clicks block type:loom priority:0:
     # For creating Banner Designer machines.
       - if <context.location.above.material.name> == diamond_block:
-        - if <player.is_sneaking>:
+        - if <player.is_sneaking> && <player.is_op>:
+          - determine passively cancelled
           - if <player.has_flag[banner_designer_createready]>:
             - flag <player> banner_designer_createready:!
             - define uuid <util.random_uuid>
@@ -325,11 +326,11 @@ Banner_Designer_Create:
             - if <player.has_flag[banner_designer_createready]>:
               - narrate <dark_red><italic>Canceled.
               - flag <player> banner_designer_createready:!
-    on player right clicks birch_wall_sign with:decorator_tool_item:
+    on player right clicks birch_wall_sign:
     # For removal of existing machines.
       - if <context.location.cuboids.contains_any_text[banner_designer_]||false>:
         - determine passively cancelled
-        - if <player.is_sneaking>:
+        - if <player.is_sneaking> && <player.is_op>:
           - if <player.has_flag[banner_designer_destroyready]>:
             - flag <player> banner_machine_in_use:!
             - flag <player> banner_designer_destroyready:!
