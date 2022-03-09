@@ -39,6 +39,7 @@ teleportation_animation_wisp_away_run:
       - teleport <player> <[starting_location].add[<[vector].mul[<[value]>]>].with_y[<[original_y].add[<[value]>]>]>
       - wait 2t
     - teleport <player> <[destination].with_y[<[destination].y.add[31]>]>
+    - define targets <player.location.find_players_within[100]>
     - repeat 30:
       - playeffect at:<player.location> offset:0.4 effect:redstone special_data:5|<[color]> quantity:30 targets:<[targets]>
       - teleport <player> <[destination].with_y[<[destination].y.add[<element[31].sub[<[value]>]>]>]>
