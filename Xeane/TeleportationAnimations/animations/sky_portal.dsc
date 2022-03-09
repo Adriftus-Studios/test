@@ -26,13 +26,13 @@ teleportation_animation_sky_portal_run:
   definitions: destination|color
   script:
     - adjust <player> gravity:false
-    - define foot_location <player.location>
+    - define portal_location <player.location.above[4]>
     - define targets <player.location.find_players_within[60]>
     - repeat 5:
-      - playeffect at:<[foot_location]> offset:0.4 effect:redstone special_data:5|<[color]> quantity:30 targets:<[targets]>
+      - playeffect at:<[portal_location]> offset:0.4 effect:redstone special_data:5|<[color]> quantity:30 targets:<[targets]>
       - wait 2t
     - repeat 10:
-      - playeffect at:<[foot_location]> offset:0.4 effect:redstone special_data:5|<[color]> quantity:30 targets:<[targets]>
+      - playeffect at:<[portal_location]> offset:0.4 effect:redstone special_data:5|<[color]> quantity:30 targets:<[targets]>
       - teleport <player> <player.location.above[0.2]>
       - wait 2t
     - playeffect at:<[destination]> offset:0.2 effect:redstone special_data:5|<[color]> quantity:10 targets:<[targets]>
