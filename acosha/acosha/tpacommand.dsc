@@ -6,10 +6,14 @@ tpa_command:
     usage: /tpa (name)
     script:
        - if <context.args.size> < 1:
-            - narrate "<green> This Player Is Not A Player"
+            - narrate "<red>This Player Is Not A Player"
             - stop
        - define player <server.match_player[<context.args.get[1]>].if_null[null]>
-       - teleport <[player]>
+       - if <[player]> = null:
+            - narrate "<red><bold>Please Use A Name That's Online"
+            - stop
+       - else:
+            - teleport <[player]>
     
 
 
