@@ -729,7 +729,7 @@ Banner_Designer_Save:
       - narrate "<dark_red>Are you sure you want to save this BLANK banner?"
       - narrate "<red>Your token will be consumed and your banner wiped clean."
       - narrate "<gray><italic>Click again to confirm."
-      - title "title:<dark_red>Overwrite with BLANK banner and exit?" "subtitle:<gray>Click again to confirm." targets:<player> fade_in:5t stay:1s fade_out:5t
+      - title title:<dark_red>Overwrite? "subtitle:<gray>Click again to confirm." targets:<player> fade_in:5t stay:1s fade_out:5t
       - flag <player> banner_designer_blankready
       - wait <script[Banner_Designer_Config].data_key[Cooldown]>
       - if <player.has_flag[banner_designer_blankready]>:
