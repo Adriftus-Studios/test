@@ -1,4 +1,4 @@
-bob_the_npc:
+bobTheNPC:
     type: assignment
     actions:
         on assignment:
@@ -7,9 +7,9 @@ bob_the_npc:
         - chat "Hi! I'm chatting!"
         - narrate "<red>Bob<&co> Hi! I'm narrating!"
     interact scripts:
-    - 1 bob_the_npc_interact
+    - 1 bobTheNPCInteract
 
-bob_the_npc_interact:
+bobTheNPCInteract:
     type: interact
     steps:
         1:
@@ -31,7 +31,7 @@ bob_the_npc_interact:
                     - chat "See you!"
 #Approved
 
-support_bell:
+supportBell:
     type: item
     material: bell
     display name: <gold>Support Bell
@@ -39,7 +39,7 @@ support_bell:
     - Gives you food, fills your hunger bar and fully insta-heals you!
     enchantments:
     - sharpness:5
-magic_replenishing_bell:
+magicReplenishingBell:
     type: world
     item: support_bell
     events:
@@ -56,7 +56,7 @@ magic_replenishing_bell:
             - flag player no_more
 #Approved, being reworked
 
-stone_gives_diamond:
+stoneGivesDiamond:
     type: world
     events:
         after player breaks stone:
@@ -66,7 +66,7 @@ stone_gives_diamond:
             - flag count 0
 #Appproved
 
-cool_thing:
+coolThing:
   type: world
   debug: false
   events:
@@ -74,17 +74,17 @@ cool_thing:
       - shoot <context.item.data_key[data.shoots]> speed:4
 #Approved
 
-chest_lock_item:
+chestLockItem:
   type: item
   material: iron_nugget
   display name: <white><bold>Iron Padlock
   lore:
     - <yellow><bold>Right-click a chest to lock it.
 
-chest_lock:
+chestLock:
     type: world
     events:
-        on player right clicks chest|trapped_chest|barrel with:chest_lock_item:
+        on player right clicks chest|trapped_chest|barrel with:chestLockItem:
             - determine passively cancelled
             - if <context.location.has_flag[locked_chest]>:
                 - narrate "This chest is already locked."
@@ -98,8 +98,9 @@ chest_lock:
                 - narrate "This chest belongs to <context.location.flag[locked_chest].as_player.name>."
 #Approved
 #Issue - flag isn't deleted when chest is destroyed
+#Issue - Idea isn't very clear
 
-spawn_command:
+spawnCommand:
     type: command
     name: spawn
     description: Spawns.
@@ -108,38 +109,27 @@ spawn_command:
         - teleport <context.player> spawn_location
 #Approved
 
-confirm_script_gui:
+confirmScript_GUI:
     type: task
     script:
         - inventory open
 #Incomplete
-interactable_text_testing:
+interactableTextTesting:
     type: task
     script:
         - narrate "You can <&hover[very epic].type[SHOW_TEXT]><element[click here].on_click[/spawn].type[RUN_COMMAND]><&end_hover> to /spawn!"
 
 #Approved
 
-confirm_script_text:
-    type: task
-    script:
-        - narrate "Are you sure about this?"
-        - narrate "<&hover[Yes, I am].type[SHOW_TEXT]><element[<green><bold><underline>[Yes]].on_click[true].type[RUN_COMMAND]><&end_hover>":
-            - determine true
-        - narrate "<&hover[No, I'm not].type[SHOW_TEXT]><element[<red><bold><underline>[No]].on_click[false].type[RUN_COMMAND]><&end_hover>":
-            - determine false
-#Incomplete
-spawn_sheep_command:
+spawnSheep_command:
     type: command
     name: spawnsheep
     description: Spawns a sheep at your location.
     usage: /spawnsheep
     script:
-    - ~run confirm_script_text save:playerResponse
-    - waituntil <entry[playerResponse].created_queue.equals[true]>:
-        - run spawn_sheep
-#Incomplete
-spawn_sheep:
+    - run confirmScriptText def:spawnSheep
+# It works
+spawnSheep:
     type: task
     script:
         - if <player.location.forward_flat[2].equals[air].not>:
@@ -149,4 +139,128 @@ spawn_sheep:
         - else:
             - narrate "You do not have enough space to spawn a sheep."
             - determine passively cancelled
-#It works
+# It works, no changes needed
+
+confirmScriptText:
+    type: task
+    definitions: callback
+    script:
+        - flag player callback:<[callback]>
+        - clickable confirmScriptText_callback def:true save:Confirm usages:1
+        - clickable confirmScriptText_callback def:false save:Cancel usages:1
+        - narrate "Are you sure about this?"
+        - narrate <&hover[Confirm].type[show_text]><element[<green><bold><underline>[Yes]].on_click[<entry[Confirm].command>]><&end_hover><reset>
+        - narrate <&hover[Cancel].type[show_text]><element[<red><bold><underline>[No]].on_click[<entry[Cancel].command>]><&end_hover><reset>
+#Very approved
+confirmScriptText_callback:
+  type: task
+  debug: false
+  definitions: bool
+  script:
+    - if <[bool]> && <player.has_flag[callback]>:
+      - inject <player.flag[callback]>
+    - else if <[bool].equals[false]>:
+        - narrate <red><bold>Cancelled.<reset>
+    - flag player callback:!
+#Very approved
+# |---          How to use the confirmation menu in other scripts (Example)         ---|
+# | In command script -
+# | script:
+# | - run confirmScriptText def:relevantTaskScript
+
+switchGamemode:
+    type: command
+    name: switchGamemode
+    description: Switches the player between Creative and Survival.
+    usage: /switchgamemode
+    aliases:
+        - swgm
+    permissions: modelock.creative; modelock.survival;
+    permission message: <red><bold>Access denied.
+    script:
+        - if <player.gamemode.equals[CREATIVE]>:
+            - adjust <player> gamemode:survival
+            - narrate "<yellow><bold><underline>Switched to Survival mode.<reset>"
+        - else if <player.gamemode.equals[SURVIVAL]>:
+            - adjust <player> gamemode:creative
+            - narrate "<yellow><bold><underline>Switched to Creative mode.<reset>"
+#Make a menu version for other gamemodes.
+
+selectGamemode_command:
+    type: command
+    name: selectGamemode
+    description: Opens a menu to select a particular gamemode.
+    usage: /selectgamemode
+    aliases:
+        - segm
+    script:
+        - clickable selectGamemode_callback def:<element[creative]> save:creative usages:1
+        - clickable selectGamemode_callback def:<element[survival]> save:survival usages:1
+        - clickable selectGamemode_callback def:<element[adventure]> save:adventure usages:1
+        - clickable selectGamemode_callback def:<element[spectator]> save:spectator usages:1
+        - narrate "Select a gamemode:"
+        - narrate "<&hover[Click here to switch to Creative mode.].type[show_text]><element[<yellow><bold><underline>[Creative]].on_click[<entry[creative].command>]><&end_hover><reset>"
+        - narrate "<&hover[Click here to switch to Survival mode.].type[show_text]><element[<yellow><bold><underline>[Survival]].on_click[<entry[survival].command>]><&end_hover><reset>"
+        - narrate "<&hover[Click here to switch to Adventure mode.].type[show_text]><element[<yellow><bold><underline>[Adventure]].on_click[<entry[adventure].command>]><&end_hover><reset>"
+        - narrate "<&hover[Click here to switch to Spectator mode.].type[show_text]><element[<yellow><bold><underline>[Spectator]].on_click[<entry[spectator].command>]><&end_hover><reset>"
+#
+
+selectGamemode_callback:
+    type: task
+    definitions: gamemode
+    script:
+        - flag player callback:<[callback]>
+        - if <definition[gamemode].equals[element[creative]]> && <player.has_flag[callback]>:
+            - adjust <player> gamemode:creative
+            - narrate "<green>You have switched to <bold><underline>Creative<reset><green> mode."
+            - flag player callback:!
+        - else if <definition[gamemode].equals[element[survival]]> && <player.has_flag[callback]>:
+            - adjust <player> gamemode:survival
+            - narrate "<green>You have switched to <bold><underline>Survival<reset><green> mode."
+            - flag player callback:!
+        - else if <[gamemode]> == <element[adventure]> && <player.has_flag[callback]>:
+            - adjust <player> gamemode:adventure
+            - narrate "<green>You have switched to <bold><underline>Adventure<reset><green> mode."
+            - flag player callback:!
+        - else if <[gamemode]> == <element[spectator]> && <player.has_flag[callback]>:
+            - adjust <player> gamemode:spectator
+            - narrate "<green>You have switched to <bold><underline>Spectator<reset><green> mode."
+            - flag player callback:!
+
+resetWorldborder:
+    type: command
+    name: resetworldborder
+    debug: false
+    description: Resets the world border for the player.
+    usage: /resetworldborder
+    aliases:
+        - rwb
+    permissions: adriftus.worldborder.reset
+    permission message: <red><bold>Access denied.
+    script:
+        - worldborder <player> reset
+        - narrate "<bold><yellow>The world border has been reset.<reset>"
+#
+
+seeInventory:
+    type: command
+    name: seeInventory
+    definitions: name
+    debug: false
+    description: Displays the inventory of a player.
+    usage: /seeinventory <&lt>[name]<&gt>
+    aliases:
+        - inventory
+    permissions: adriftus.inventory.view
+    tab completions:
+        1: <server.match_player[[name]]>
+    script:
+        - inventory open destination:<server.match_player[[name]]>
+#
+
+unknownCommand:
+    type: world
+    events:
+        on unknown command:
+            - narrate "<red><bold><underline>Imagine typing an unknown command."
+#
