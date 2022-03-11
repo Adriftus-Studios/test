@@ -13,7 +13,11 @@ tpa_command:
             - narrate "<red><bold>Please Use A Name That's Online"
             - stop
        - else:
-            - teleport <[player]>
+            - wait 3s
+            - narrate "<green>3"
+            - narrate "<green>2"
+            - narrate "<green>1"
+            - teleport <player> <[player]>
             - narrate "You have Teleported to <[player]>"
 
 
