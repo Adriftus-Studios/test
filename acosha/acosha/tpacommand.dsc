@@ -14,7 +14,7 @@ tpa_command:
             - stop
        - else:
             - flag <[player]> tpaccept
-            - narrate "Wait For Player To Accept"
+            - narrate "<green>Wait For Player To Accept"
 
 tpaccept_command:
     type: command
@@ -30,6 +30,10 @@ tpaccept_command:
                - narrate "<red><bold>This Is Not A Player"
                - stop
            - else:
+               - wait 3s
+               - narrate "Teleporting In 3"
+               - narrate "2"
+               - narrate "1"
                - teleport <[name]> <player.location>
                - narrate "<green>Player Teleporting"
                - stop
