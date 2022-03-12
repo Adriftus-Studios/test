@@ -31,11 +31,11 @@ tpaccept_command:
                - stop
            - else:
                - run teleportation_animation_run
-               - narrate "<yellow>Teleporting In 3"
+               - narrate "<yellow>Teleporting In 3" targets:<[name]>|<player>
                - wait 1s
-               - narrate "<yellow>Teleporting In 2"
+               - narrate "<yellow>Teleporting In 2" targets:<[name]>|<player>
                - wait 1s
-               - narrate "<yellow>Teleporting In 1"
+               - narrate "<yellow>Teleporting In 1" targets:<[name]>|<player>
                - wait 1s
                - teleport <[name]> <player.location>
                - narrate "<green>Player Teleported"
