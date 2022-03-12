@@ -13,7 +13,18 @@ tpa_command:
             - narrate "<red><bold>This Is Not A Player"
             - stop
        - else:
-            - teleport <player> <[player].location>
-            - narrate "<green>You have Teleported to <[player].name>"
+            - flag <[player]> tpaccept
+            - narrate "Wait For PLayer To Accept"
 
+tpaccept_command:
+    type: command
+    name: tpaccept
+    description: Used To Request A Teleport
+    usage: /tpaccept (name)
+    script:
+     - if <player.has_flag[tpaccept]>:
+          - define name <server.match_player[<context.args.get[1]>].if_null[null]>
+          - teleport <[name]> <player.location>
+     - else:
+          - stop
 
