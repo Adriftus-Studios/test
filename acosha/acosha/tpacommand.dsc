@@ -16,8 +16,11 @@ tpa_command:
                - narrate "You Can Not Tpaccept Yourself"
                - stop
        - else:
-            - narrate "<yellow>Wait For Player To Accept"
-            - narrate "<yellow>You Have Been Requested To Be Teleported To By <player.name>" targets:<[player]>
+            - narrate "<yellow><[player]> Has 10 Second To Accept"
+            - narrate "<yellow>You Have 10 Seconds To Teleport <player.name> To You" targets:<[player]>
+            - wait 10s
+            - flag <[player]> tpaccept:!
+            
 
 tpaccept_command:
     type: command
@@ -36,14 +39,20 @@ tpaccept_command:
                - narrate "You Can Not Tpaccept Yourself"
                - stop
            - else:
-               - narrate "<yellow>Teleporting In 3" targets:<[name]>|<player>
-               - wait 1s
-               - narrate "<yellow>Teleporting In 2" targets:<[name]>|<player>
-               - wait 1s
-               - narrate "<yellow>Teleporting In 1" targets:<[name]>|<player>
-               - wait 1s
-               - teleport <[name]> <player.location>
-               - narrate "<green>Player Teleported"
-               - stop
+               - if <player.has_flag[tpaccept]> :
+                    - narrate "<yellow>Teleporting In 3" targets:<[name]>|<player>
+                    - wait 1s
+                    - narrate "<yellow>Teleporting In 2" targets:<[name]>|<player>
+                    - wait 1s
+                    - narrate "<yellow>Teleporting In 1" targets:<[name]>|<player>
+                    - wait 1s
+                    - teleport <[name]> <player.location>
+                    - narrate "<green>Player Teleported"
+                    - flag <player> tpaccept:!
+                    - stop
+               - else:
+                    - narrate "No Pending Teleportations"
+                    - stop
+
 
 
