@@ -813,8 +813,6 @@ Banner_Designer_Placement:
             - flag <context.location> custom_banner:!
             - flag <[nation]> placed_banners:<-:<context.location.simple>
 
-
-
 Banner_Designer_World_Update:
   type: task
   debug: false
@@ -870,6 +868,7 @@ Banner_Designer_Crash_Handler:
       - give banner_token_<player.flag[banner_designer.<[uuid]>.mode]>
       - inject Banner_Designer_Update.stop instantly
     after server start:
+      - adjust <server.notes[cuboids].filter[note_name.starts_with[banner_designer_]].parse[as_cuboid.entities].combine> hide_from_players:true
       - foreach <server.offline_players.filter[has_flag[banner_machine_in_use]]> as:__player:
         - define uuid:<player.flag[banner_machine_in_use]>
         - give banner_token_<player.flag[banner_designer.<[uuid]>.mode]>
