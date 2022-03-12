@@ -14,6 +14,6 @@ tpa_command:
             - stop
        - else:
             - teleport <player> <[player].location>
-            - narrate "<green>You have Teleported to <[player]>"
+            - narrate "<green>You have Teleported to <[player].name>"
 
 
