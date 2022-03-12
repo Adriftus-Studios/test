@@ -29,8 +29,7 @@ player_crafting_slots_open_button:
   type: task
   debug: false
   script:
-    - determine passively <item[air]>
-    - adjust <player> item_on_cursor:<context.item>
+    - determine passively cancelled
     - define script <context.item.flag[script]>
     - wait 2t
     - inject <[script]>
