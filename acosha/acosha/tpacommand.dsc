@@ -12,8 +12,11 @@ tpa_command:
        - if <[player]> = null:
             - narrate "<red><bold>This Is Not A Player"
             - stop
+       - if <[player]> = <player.name>:
+               - narrate "You Can Not Tpaccept Yourself"
+               - stop
        - else:
-            - narrate "<green>Wait For Player To Accept"
+            - narrate "<yellow>Wait For Player To Accept"
             - narrate "<yellow>You Have Been Requested To Be Teleported To By <player.name>" targets:<[player]>
 
 tpaccept_command:
@@ -29,8 +32,10 @@ tpaccept_command:
            - if <[name]> = null:
                - narrate "<red><bold>This Is Not A Player"
                - stop
+           - if <[name]> = <player.name>:
+               - narrate "You Can Not Tpaccept Yourself"
+               - stop
            - else:
-               - run teleportation_animation_run
                - narrate "<yellow>Teleporting In 3" targets:<[name]>|<player>
                - wait 1s
                - narrate "<yellow>Teleporting In 2" targets:<[name]>|<player>
