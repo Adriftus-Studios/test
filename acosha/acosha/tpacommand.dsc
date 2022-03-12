@@ -13,9 +13,8 @@ tpa_command:
             - narrate "<red><bold>This Is Not A Player"
             - stop
        - else:
-            - flag <[player]> tpaccept
             - narrate "<green>Wait For Player To Accept"
-            - narrate "<red>You Have Been Requested To Be Teleported To" targets:<[player]>
+            - narrate "<yellow>You Have Been Requested To Be Teleported To By <player.name>" targets:<[player]>
 
 tpaccept_command:
     type: command
