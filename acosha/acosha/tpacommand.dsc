@@ -16,6 +16,7 @@ tpa_command:
                - narrate "You Can Not Tpaccept Yourself"
                - stop
        - else:
+            - flag <[player]> tpaccept
             - narrate "<yellow><[player].name> Has 10 Second To Accept"
             - narrate "<yellow>You Have 10 Seconds To Teleport <player.name> To You" targets:<[player]>
             - wait 10s
