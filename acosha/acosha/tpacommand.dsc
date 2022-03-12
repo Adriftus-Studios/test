@@ -30,11 +30,11 @@ tpaccept_command:
                - narrate "<red><bold>This Is Not A Player"
                - stop
            - else:
-               - narrate "Teleporting In 3"
+               - narrate "<yellow>Teleporting In 3"
                - wait 1s
-               - narrate "2"
+               - narrate "<yellow>Teleporting In 2"
                - wait 1s
-               - narrate "1"
+               - narrate "<yellow>Teleporting In 1"
                - wait 1s
                - teleport <[name]> <player.location>
                - narrate "<green>Player Teleporting"
