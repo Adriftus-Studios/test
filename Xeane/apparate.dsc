@@ -23,7 +23,7 @@ fun_apparate:
       - adjust <player> velocity:<[points].get[<[value].add[1]>].sub[<[points].get[<[value]>]>]>
       - wait 2t
     - define new_vector <[destination].above[31].sub[<player.location>].normalize>
-    - while <player.location.distance[<[destination].above[31]>]> > 31:
+    - while <player.location.distance[<[destination].above[31]>]> > 41:
       - define new_targets <player.location.find_players_within[100]>
       - repeat 10:
         - adjust <player> velocity:<[new_vector]>
