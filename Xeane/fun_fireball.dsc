@@ -13,5 +13,5 @@ fun_fireball:
     - playeffect at:<player.eye_location.forward[3]> effect:FLAME quantity:10 offset:0.2 targets:<[targets]>
     - wait 1t
   - repeat 3:
-    - playeffect at:<player.eye_location.forward[3].points_between[<player.eye_location.forward[20]>].distance[0.5]> quantity:5 offset:0.2 targets:<[targets]>
+    - playeffect at:<player.eye_location.forward[3].points_between[<player.eye_location.forward[20]>].distance[0.5]> effect:flame quantity:5 offset:0.2 targets:<[targets]>
     - wait 1t
