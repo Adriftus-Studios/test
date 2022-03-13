@@ -15,6 +15,8 @@ fun_apparate:
     - adjust <player> gamemode:spectator
     - adjust <player> gravity:false
     - adjust <player> can_fly:false
+    - define fly_speed <player.fly_speed>
+    - adjust <player> fly_speed:0.001
     - repeat 30:
       - playeffect at:<player.location> offset:0.4 effect:redstone special_data:5|black quantity:30 targets:<[targets]>
       - adjust <player> velocity:<[points].get[<[value].add[1]>].sub[<[points].get[<[value]>]>]>
@@ -34,6 +36,7 @@ fun_apparate:
       - wait 2t
     - adjust <player> gamemode:<[gamemode]>
     - adjust <player> gravity:true
+    - adjust <player> fly_speed:<[fly_speed]>
     - repeat 3:
       - playeffect at:<[destination]> offset:<element[0.7].mul[<[value]>]> effect:redstone special_data:10|black quantity:<element[30].mul[<[value]>]> targets:<[targets]>
       - wait 1t
