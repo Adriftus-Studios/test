@@ -38,13 +38,13 @@ teleportation_animation_wisp_away_run:
     - adjust <player> can_fly:false
     - repeat 30:
       - playeffect at:<player.location> offset:0.4 effect:redstone special_data:5|<[color]> quantity:30 targets:<[targets]>
-      - adjust <player> <[vector]>
+      - adjust <player> velocity:<[vector]>
       - wait 2t
     - teleport <player> <[destination].with_y[<[destination].y.add[31]>]>
     - define targets <player.location.find_players_within[100]>
     - repeat 30:
       - playeffect at:<player.location> offset:0.4 effect:redstone special_data:5|<[color]> quantity:30 targets:<[targets]>
-      - adjust <player> velocity:0,-0.1,0
+      - adjust <player> velocity:0,-0.15,0
       - wait 2t
     - adjust <player> gamemode:<[gamemode]>
     - adjust <player> gravity:true
