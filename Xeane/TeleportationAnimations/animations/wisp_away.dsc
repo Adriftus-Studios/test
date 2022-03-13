@@ -28,7 +28,7 @@ teleportation_animation_wisp_away_run:
     - define gamemode <player.gamemode>
     - define targets <player.location.find_players_within[100]>
     - define starting_location <player.location>
-    - define vector <[destination].sub[<player.location>].with_y[<player.location.y.add[31].min[<[destination].y.add[31]>]>].normalize.mul[30.1]>
+    - define vector <[destination].sub[<player.location>].with_y[<player.location.y.add[31].max[<[destination].y.add[31]>]>].normalize.mul[30.1]>
     - define points <proc[define_curve1].context[<player.location>|<player.location.add[<[vector]>]>|5|90|1]>
     - define original_y <player.location.y>
     - repeat 10:
