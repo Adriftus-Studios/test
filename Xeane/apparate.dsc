@@ -6,7 +6,7 @@ fun_apparate:
     - define gamemode <player.gamemode>
     - define targets <player.location.find_players_within[100]>
     - define starting_location <player.location>
-    - define vector <[destination].sub[<player.location>].with_y[<player.location.y.add[31].max[<[destination].y.add[31]>]>].normalize.mul[30.1]>
+    - define vector <[destination].sub[<player.location>].normalize.mul[30.1]>
     - define y <player.location.y.add[31].max[<[destination].y.add[31]>].max[<player.location.highest.y.add[14]>]>
     - define points <proc[define_curve1].context[<player.location>|<player.location.add[<[vector]>].with_y[<[y]>]>|5|90|1]>
     - define original_y <player.location.y>
@@ -39,5 +39,5 @@ fun_apparate:
     - adjust <player> gravity:true
     - adjust <player> fly_speed:<[fly_speed]>
     - repeat 3:
-      - playeffect at:<[destination].above.center> offset:<element[0.5].mul[<[value]>]> effect:redstone special_data:10|black quantity:<element[30].mul[<[value]>]> targets:<[targets]>
+      - playeffect at:<player.location> offset:<element[0.5].mul[<[value]>]> effect:redstone special_data:10|black quantity:<element[30].mul[<[value]>]> targets:<[targets]>
       - wait 1t
