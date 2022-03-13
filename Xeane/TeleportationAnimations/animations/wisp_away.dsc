@@ -28,7 +28,7 @@ teleportation_animation_wisp_away_run:
     - define gamemode <player.gamemode>
     - define targets <player.location.find_players_within[100]>
     - define starting_location <player.location>
-    - define vector <player.location.add[<player.location.sub[<[destination]>]>].normalize>
+    - define vector <player.location.add[<[destination].sub[<player.location>]>].with_y[300].normalize>
     - define original_y <player.location.y>
     - repeat 10:
       - playeffect at:<player.location> offset:0.4 effect:redstone special_data:5|<[color]> quantity:30 targets:<[targets]>
@@ -44,7 +44,7 @@ teleportation_animation_wisp_away_run:
     - define targets <player.location.find_players_within[100]>
     - repeat 30:
       - playeffect at:<player.location> offset:0.4 effect:redstone special_data:5|<[color]> quantity:30 targets:<[targets]>
-      - adjust <player> velocity:0,-0.15,0
+      - adjust <player> velocity:0,-0.3,0
       - wait 2t
     - adjust <player> gamemode:<[gamemode]>
     - adjust <player> gravity:true
