@@ -30,7 +30,7 @@ fun_apparate:
     - define points <proc[define_curve1].context[<player.location>|<[destination]>|5|90|1]>
     - repeat <[points].size.sub[1]>:
       - playeffect at:<player.location> offset:0.4 effect:redstone special_data:5|black quantity:30 targets:<[targets]>
-      - adjust <player> velocity:<[points].get[<[value].add[1]>].sub[<[points].get[<[value]>]>].normalize>
+      - adjust <player> velocity:<[points].get[<[value].add[1]>].sub[<[points].get[<[value]>]>].normalize.div[2]>
       - wait 2t
     - adjust <player> gamemode:<[gamemode]>
     - adjust <player> gravity:true
