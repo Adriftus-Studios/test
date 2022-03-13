@@ -29,7 +29,7 @@ fun_apparate:
         - playeffect at:<player.location> offset:0.4 effect:redstone special_data:5|black quantity:30 targets:<[new_targets]>
         - wait 2t
     - define targets <player.location.find_players_within[100]>
-    - define vector <[destination].sub[<player.location>].with_y[0].normalize.mul[3]>
+    - define vector <[destination].sub[<player.location>].with_y[0].normalize.mul[2]>
     - define points <proc[define_curve1].context[<player.location>|<[destination].sub[<[vector]>]>|5|90|1]>
     - repeat <[points].size.sub[1]>:
       - playeffect at:<player.location> offset:0.4 effect:redstone special_data:5|black quantity:30 targets:<[targets]>
