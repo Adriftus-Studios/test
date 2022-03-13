@@ -12,6 +12,8 @@ fun_fireball:
   - repeat 10:
     - playeffect at:<player.eye_location.forward[3]> effect:FLAME quantity:10 offset:0.2 targets:<[targets]>
     - wait 1t
-  - repeat 3:
-    - playeffect at:<player.eye_location.forward[3].points_between[<player.eye_location.forward[20]>].distance[0.5]> effect:flame quantity:5 offset:0.2 targets:<[targets]>
-    - wait 1t
+  - define points <player.eye_location.forward[3].points_between[<player.eye_location.forward[20]>].distance[0.5]>
+  - repeat <[points].size>:
+    - if <[value].mod[2]> == 0:
+      - wait 1t
+    - playeffect at:<[points].get[<[value]>]> effect:flame quantity:5 offset:0.2 targets:<[targets]>
