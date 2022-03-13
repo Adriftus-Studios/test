@@ -7,7 +7,7 @@ fun_apparate:
     - define targets <player.location.find_players_within[100]>
     - define starting_location <player.location>
     - define vector <[destination].sub[<player.location>].with_y[<player.location.y.add[31].max[<[destination].y.add[31]>]>].normalize.mul[30.1]>
-    - define y <player.location.y.add[31].max[<[destination].y.add[31]>].max[<player.location.highest.y.add[31]>]>
+    - define y <player.location.y.add[31].max[<[destination].y.add[31]>].max[<player.location.highest.y.add[14]>]>
     - define points <proc[define_curve1].context[<player.location>|<player.location.add[<[vector]>].with_y[<[y]>]>|5|90|1]>
     - define original_y <player.location.y>
     - repeat 10:
