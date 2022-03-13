@@ -28,7 +28,7 @@ fun_apparate:
         - wait 2t
     - define targets <player.location.find_players_within[100]>
     - define points <proc[define_curve1].context[<player.location>|<[destination]>|5|90|1]>
-    - repeat 30:
+    - repeat <[points].sub[1]>:
       - playeffect at:<player.location> offset:0.4 effect:redstone special_data:5|black quantity:30 targets:<[targets]>
       - adjust <player> velocity:<[points].get[<[value].add[1]>].sub[<[points].get[<[value]>]>]>
       - wait 2t
