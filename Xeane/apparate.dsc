@@ -21,7 +21,7 @@ fun_apparate:
       - playeffect at:<player.location> offset:0.4 effect:redstone special_data:5|black quantity:30 targets:<[targets]>
       - adjust <player> velocity:<[points].get[<[value].add[1]>].sub[<[points].get[<[value]>]>]>
       - wait 2t
-    - define new_vector <[destination].above[31].sub[<player.location>].normalize>
+    - define new_vector <[destination].with_y[<player.location.y>].sub[<player.location>].normalize>
     - while <player.location.distance[<[destination].above[31]>]> > 41:
       - define new_targets <player.location.find_players_within[100]>
       - repeat 10:
