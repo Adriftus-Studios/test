@@ -14,6 +14,7 @@ fun_apparate:
       - playeffect at:<player.location> offset:0.4 effect:redstone special_data:5|black quantity:30 targets:<[targets]>
       - wait 2t
     - adjust <player> gamemode:spectator
+    - adjust <player> can_fly:true
     - define fly_speed <player.fly_speed>
     - adjust <player> fly_speed:0
     - repeat <[points].size.sub[1]>:
@@ -35,6 +36,7 @@ fun_apparate:
       - wait 2t
     - adjust <player> gamemode:<[gamemode]>
     - adjust <player> fly_speed:<[fly_speed]>
+    - adjust <player> can_fly:false
     - repeat 3:
       - playeffect at:<player.location> offset:<element[0.5].mul[<[value]>]> effect:redstone special_data:10|black quantity:<element[30].mul[<[value]>]> targets:<[targets]>
       - wait 1t
