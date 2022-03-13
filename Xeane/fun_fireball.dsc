@@ -9,7 +9,7 @@ fun_fireball:
   - repeat <[map].get[1].size>:
     - playeffect at:<[map].keys.parse_tag[<[map].get[<[parse_value]>].get[<[value]>]>]> effect:FLAME quantity:10 offset:0 targets:<[targets]>
     - wait 1t
-  - repeat 20:
+  - repeat 10:
     - playeffect at:<player.eye_location.forward[3]> effect:FLAME quantity:10 offset:0.2 targets:<[targets]>
     - wait 1t
   - repeat 3:
