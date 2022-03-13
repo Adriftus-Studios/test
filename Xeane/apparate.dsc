@@ -35,5 +35,5 @@ fun_apparate:
     - adjust <player> gamemode:<[gamemode]>
     - adjust <player> gravity:true
     - repeat 3:
-      - playeffect at:<[destination]> offset:<element[1].mul[<[value]>]> effect:redstone special_data:10|black quantity:<element[30].mul[<[value]>]> targets:<[targets]>
+      - playeffect at:<[destination]> offset:<element[0.7].mul[<[value]>]> effect:redstone special_data:10|black quantity:<element[30].mul[<[value]>]> targets:<[targets]>
       - wait 1t
