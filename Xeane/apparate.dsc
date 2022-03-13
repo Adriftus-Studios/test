@@ -13,6 +13,7 @@ fun_apparate:
     - repeat 10:
       - playeffect at:<player.location> offset:0.4 effect:redstone special_data:5|black quantity:30 targets:<[targets]>
       - wait 2t
+      - stop if:<player.is_online.not>
     - adjust <player> gamemode:spectator
     - adjust <player> can_fly:true
     - define fly_speed <player.fly_speed>
@@ -21,6 +22,7 @@ fun_apparate:
       - playeffect at:<player.location> offset:0.4 effect:redstone special_data:5|black quantity:30 targets:<[targets]>
       - adjust <player> velocity:<[points].get[<[value].add[1]>].sub[<[points].get[<[value]>]>]>
       - wait 2t
+      - inject fun_apparate_end if:<player.is_online.not>
     - define new_vector <[destination].with_y[<player.location.y>].sub[<player.location>].normalize>
     - while <player.location.distance[<[destination].with_y[<[y]>]>]> > 50:
       - define new_targets <player.location.find_players_within[100]>
@@ -28,6 +30,7 @@ fun_apparate:
         - adjust <player> velocity:<[new_vector]>
         - playeffect at:<player.location> offset:0.4 effect:redstone special_data:5|black quantity:30 targets:<[new_targets]>
         - wait 2t
+        - inject fun_apparate_end if:<player.is_online.not>
     - define targets <player.location.find_players_within[100]>
     - define vector <[destination].sub[<player.location>].with_y[0].normalize.mul[2]>
     - define points <proc[define_curve1].context[<player.location>|<[destination].sub[<[vector]>]>|5|90|1]>
@@ -35,9 +38,18 @@ fun_apparate:
       - playeffect at:<player.location> offset:0.4 effect:redstone special_data:5|black quantity:30 targets:<[targets]>
       - adjust <player> velocity:<[points].get[<[value].add[1]>].sub[<[points].get[<[value]>]>].normalize.div[1.6]>
       - wait 2t
-    - adjust <player> gamemode:<[gamemode]>
-    - adjust <player> fly_speed:<[fly_speed]>
-    - adjust <player> can_fly:false
+      - inject fun_apparate_end if:<player.is_online.not>
     - repeat 3:
       - playeffect at:<player.location> offset:<element[0.5].mul[<[value]>]> effect:redstone special_data:10|black quantity:<element[30].mul[<[value]>]> targets:<[targets]>
       - wait 1t
+      - inject fun_apparate_end if:<player.is_online.not>
+
+fun_apparate_end:
+  type: task
+  debug: false
+  definitions: gamemode|fly_speed
+  script:
+    - adjust <player> gamemode:<[gamemode]>
+    - adjust <player> fly_speed:<[fly_speed]>
+    - adjust <player> can_fly:false
+    - stop
