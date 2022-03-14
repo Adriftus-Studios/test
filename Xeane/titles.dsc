@@ -4,7 +4,7 @@ titles_equip:
   definitions: title_id
   script:
     - define title_id <context.item.flag[cosmetic].if_null[default]> if:<[title_id].exists.not>
-    - define map <map[titles.current=<context.item.flag[title]>;titles.current_tag=<yaml[titles].read[titles.<context.item.flag[title]>.tag].parse_color>]>
+    - define map <map[titles.current=<context.item.flag[cosmetic]>;titles.current_tag=<yaml[titles].read[titles.<context.item.flag[cosmetic]>.tag].parse_color>]>
     - run global_player_data_modify_multiple def:<player.uuid>|<[map]>
 
 titles_unlock:
