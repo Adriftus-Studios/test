@@ -48,7 +48,7 @@ cosmetic_selection_inventory_open:
       players_list: <yaml[global.player.<player.uuid>].list_keys[bowtrails.unlocked]>
       material: <yaml[bowtrails].read[bowtrails.<[cosmetic]>.icon]>
       display_name: <yaml[bowtrails].parsed_key[bowtrails.<[cosmetic]>.name].parse_color>
-      preview: "<&e>Trail Type<&co> <&r><yaml[bowtrails].parsed_key[bowtrails.<[cosmetic]>.tag].parse_color>"
+      preview: "<&e>Trail Type<&co> <&r><yaml[bowtrails].parsed_key[bowtrails.<[cosmetic]>.type]>"
       description: <yaml[bowtrails].parsed_key[bowtrails.<[cosmetic]>.description].parse_color>
       current: <yaml[global.player.<player.uuid>].read[bowtrails.current].if_null[default]>
       equip_task: bowtrails_equip
