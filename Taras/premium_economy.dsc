@@ -60,7 +60,7 @@ premium_currency_command:
 
         # % ██ [ Print current players balance ] ██
         - else:
-            - narrate "<&b>You're <[currencyName]> balance is: <proc[premium_currency_global_get_current].context[<player>].round_to[2]>"
+            - narrate "<&b>You're <[currencyName]> balance is: <player.proc[premium_currency_display]>"
 
 ## Internal ##
 premium_currency_global_get_current:
@@ -103,7 +103,7 @@ premium_currency_remove:
         - if !<[reason].exists>:
           - debug error "Script tried to give premium currency wtihout specifying a reason."
           - determine false
-        - define currentBal <proc[premium_currency_global_get_current].context[<[player]>]>
+        - define currentBal <yaml[global.player.<[player].uuid>].read[economy.premium.current]>
         - define newBal <[currentBal].sub[<[amount]>]>
         - if <[newBal]> < 0:
           - debug error "Script tried to take premium currency without checking the balance first."
@@ -129,3 +129,19 @@ premium_currency_set:
         - define message "```<[player].name> was set to <[amount]> Premium Currency<&nl>Reason<&co> <[reason]>```"
         - bungeerun relay discord_sendMessage "def:Adriftus Staff|manager-logs|<[message].escaped>"
         - determine true
+
+premium_currency_can_afford:
+  type: procedure
+  debug: false
+  definitions: player|amount
+  script:
+    - define balance <yaml[global.player.<[player].uuid>].read[economy.premium.current]>
+    - determine <[amount].is_less_than_or_equal_to[<[balance]>]>
+
+premium_currency_display:
+  type: procedure
+  debug: false
+  definitions: player
+  script:
+    - define balance <yaml[global.player.<[player].uuid>].read[economy.premium.current].if_null[0]>
+    - determine "<&6><[balance]> Ⓐ"
