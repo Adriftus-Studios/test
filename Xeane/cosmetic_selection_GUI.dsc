@@ -1,7 +1,6 @@
 cosmetic_configuration:
   type: data
   display_data:
-    displayname: "<&e>"
     lore:
     - "<&b><&m>---<&r><&8><&m>｜-<&r>  <&8><&m>+--------------------------+<&r>  <&8><&m>-｜<&b><&m>---"
     - "<&7>* <&e>Name: <&7><[display]>"
@@ -61,12 +60,11 @@ cosmetic_selection_inventory_open:
     # Build the cosmetic icons
     - foreach <[cosmetics].get[<[start]>].to[<[end]>]> as:cosmetic:
       - define material <script.parsed_key[data.<[type]>.material]>
-      - define display <script[cosmetic_configuration].parsed_key[display_data.displayname]>
       - define preview <script.parsed_key[data.<[type]>.preview]>
       - define description <script.parsed_key[data.<[type]>.description]>
       - define equip_script <script.parsed_key[data.<[type]>.equip_task]>
       - define lore <script[cosmetic_configuration].parsed_key[display_data.lore]>
-      - define items:|:<item[<[material]>[display=<&6><[display]>;lore=<[lore]>;flag=run_script:<[equip_script]>;flag=cosmetic:<[cosmetic]>]]>
+      - define items:|:<item[<[material]>[display=<&6>;lore=<[lore]>;flag=run_script:<[equip_script]>;flag=cosmetic:<[cosmetic]>]]>
     - define inventory <inventory[generic[title=<[title]>;size=54]]>
 
     # Put the items into the new inventory
