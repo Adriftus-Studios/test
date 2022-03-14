@@ -4,9 +4,7 @@ mask_encanto_isabella:
     category: Encanto
     material: allium
     display_name: <&b>Encanto<&co> <&d>Isabella
-    lore:
-    - "<&e>Take on an alternative appearance"
-    - "<&e>While wearing this, you are disguised"
+    description: "<&e>It's <&d>Isabella<&e> from <&6>Encanto"
   mask_data:
     id: encanto_isabella
     name: <&d>Isabella

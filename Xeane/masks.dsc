@@ -4,8 +4,7 @@ mask_ender_wizard:
     category: Adriftus
     material: end_crystal
     display_name: <&d>Ender Wizard Mask
-    lore:
-    - "<&d>Free the End!"
+    description: "<&d>Free the End!"
   mask_data:
     id: ender_wizard
     display_name: <&d>Ender Wizard

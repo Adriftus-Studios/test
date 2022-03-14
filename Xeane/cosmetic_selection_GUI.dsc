@@ -1,3 +1,20 @@
+cosmetic_configuration:
+  type: data
+  display_data:
+    displayname: '&e'
+    lore:
+    - '&b&m---&r&8&m｜-&r  &8&m+--------------------------+&r  &8&m-｜&b&m---'
+    - '&7* &eName: &7<[display]>'
+    - '&7* &ePreview: &r<yaml[titles].read[titles.<[cosmetic]>.tag].parse_color.parsed>'
+    - '&7* &eDescription: &7<[description]>'
+    - '&r'
+    - '&7* Want more cool cosmetics? let us know!'
+    - '&7  Buy more cosmetics, available at the shops!'
+    - '&r'
+    - '&aClick to use this cosmetic.'
+    - '&b&m---&r&8&m｜-&r  &8&m+--------------------------+&r  &8&m-｜&b&m---'
+    - '&r'
+
 cosmetic_selection_inventory_open:
   type: task
   debug: false
@@ -12,16 +29,16 @@ cosmetic_selection_inventory_open:
       players_list: <yaml[global.player.<player.uuid>].list_keys[masks.unlocked]>
       material: <server.flag[masks.ids.<[cosmetic]>].data_key[display_data.material]>
       display_name: <server.flag[masks.ids.<[cosmetic]>].parsed_key[display_data.display_name]>
-      lore: <server.flag[masks.ids.<[cosmetic]>].parsed_key[display_data.lore]>
+      description: <server.flag[masks.ids.<[cosmetic]>].parsed_key[display_data.description]>
       current: <yaml[global.player.<player.uuid>].read[masks.current.id].if_null[default]>
       equip_task: mask_wear
       remove_task: mask_remove
     titles:
       inventory_title: <&e>Titles
       players_list: <yaml[global.player.<player.uuid>].list_keys[titles.unlocked]>
-      material: <yaml[titles].parsed_key[gui.tag_select_item.material]>
+      material: nametag
       display_name: <[cosmetic]>
-      lore: <yaml[titles].read[gui.tag_select_item.lore].parse[parse_color.parsed]>
+      description: <yaml[titles].parsed_key[titles.<[cosmetic]>.description]>
       current: <yaml[global.player.<player.uuid>].read[titles.current].if_null[default]>
       equip_task: titles_equip
       remove_task: titles_remove
@@ -42,9 +59,10 @@ cosmetic_selection_inventory_open:
     # Build the cosmetic icons
     - foreach <[cosmetics].get[<[start]>].to[<[end]>]> as:cosmetic:
       - define material <script.parsed_key[data.<[type]>.material]>
-      - define display <script.parsed_key[data.<[type]>.display_name]>
-      - define lore <script.parsed_key[data.<[type]>.lore]>
+      - define display <script[cosmetic_configuration].parsed_key[display_data.displayname]>
+      - define description <script.parsed_key[data.<[type]>.description]>
       - define equip_script <script.parsed_key[data.<[type]>.equip_task]>
+      - define lore <script[cosmetic_configuration].parsed_key[display_data.lore].parse_color>
       - define items:|:<item[<[material]>[display=<&6><[display]>;lore=<[lore]>;flag=run_script:<[equip_script]>;flag=cosmetic:<[cosmetic]>]]>
     - define inventory <inventory[generic[title=<[title]>;size=54]]>
 
