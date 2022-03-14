@@ -7,6 +7,9 @@ titles_equip:
     - define title_id <context.item.flag[cosmetic].if_null[default]> if:<[title_id].exists.not>
     - define map <map[titles.current=<context.item.flag[cosmetic]>;titles.current_tag=<yaml[titles].read[titles.<context.item.flag[cosmetic]>.tag].parse_color>]>
     - run global_player_data_modify_multiple def:<player.uuid>|<[map]>
+    - if <context.inventory.exists>:
+      - define info_item <context.inventory.slot[<script[cosmetic_selection_inventory_open].data_key[data.remove_slot]>]>
+      - run cosmetic_selection_inventory_open def:<[info_item].flag[type]>|<[info_item].flag[page]>
 
 titles_unlock:
   type: task
@@ -24,6 +27,9 @@ titles_remove:
     - determine passively cancelled
     - define title_id <context.item.flag[cosmetic].if_null[default]> if:<[title_id].exists.not>
     - run global_player_data_modify def:<player.uuid>|titles.current|!
+    - if <context.inventory.exists>:
+      - define info_item <context.inventory.slot[<script[cosmetic_selection_inventory_open].data_key[data.remove_slot]>]>
+      - run cosmetic_selection_inventory_open def:<[info_item].flag[type]>|<[info_item].flag[page]>
 
 titles_initialize:
   type: world
