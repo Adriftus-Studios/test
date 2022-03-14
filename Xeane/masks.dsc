@@ -3,7 +3,7 @@ mask_ender_wizard:
   display_data:
     category: Adriftus
     material: end_crystal
-    display_name: <&d>Ender Wizard
+    display_name: <&6>Adriftus<&co> <&d>Ender Wizard
     description: "<&d>Free the End!"
   mask_data:
     id: ender_wizard
