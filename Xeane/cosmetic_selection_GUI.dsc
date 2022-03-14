@@ -3,17 +3,17 @@ cosmetic_configuration:
   display_data:
     displayname: '&e'
     lore:
-    - '&b&m---&r&8&m｜-&r  &8&m+--------------------------+&r  &8&m-｜&b&m---'
-    - '&7* &eName: &7<[display]>'
-    - '&7* &ePreview: &r<yaml[titles].read[titles.<[cosmetic]>.tag].parse_color.parsed>'
-    - '&7* &eDescription: &7<[description]>'
-    - '&r'
-    - '&7* Want more cool cosmetics? let us know!'
-    - '&7  Buy more cosmetics, available at the shops!'
-    - '&r'
-    - '&aClick to use this cosmetic.'
-    - '&b&m---&r&8&m｜-&r  &8&m+--------------------------+&r  &8&m-｜&b&m---'
-    - '&r'
+    - '<&b><&m>---<&r><&8><&m>｜-<&r>  <&8><&m>+--------------------------+<&r>  <&8><&m>-｜<&b><&m>---'
+    - '<&7>* <&e>Name: <&7><[display]>'
+    - '<&7* &ePreview: <&r><yaml[titles].read[titles.<[cosmetic]>.tag].parse_color.parsed>'
+    - '<&7* &eDescription: <&7><[description]>'
+    - '<&r>'
+    - '<&7>* Want more cool cosmetics? let us know!'
+    - '<&7>  Buy more cosmetics, available at the shops!'
+    - '<&r>'
+    - '<&a>Click to use this cosmetic.'
+    - '<&b><&m>---<&r><&8><&m>｜-<&r>  <&8><&m>+--------------------------+<&r>  <&8><&m>-｜<&b><&m>---'
+    - '<&r>'
 
 cosmetic_selection_inventory_open:
   type: task
