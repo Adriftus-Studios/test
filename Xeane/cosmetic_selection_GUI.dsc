@@ -4,7 +4,7 @@ cosmetic_configuration:
     lore:
     - "<&b><&m>---<&r><&8><&m>｜-<&r>  <&8><&m>+--------------------------+<&r>  <&8><&m>-｜<&b><&m>---"
     - "<&7>* <&e>Name: <&7><[display]>"
-    - "<&7>* <&e>Preview: <&r><[preview]>"
+    - "<&7>* <[preview]>"
     - "<&7>* <&e>Description: <&7><[description]>"
     - "<&r>"
     - "<&7>* Want more cool cosmetics? let us know!"
@@ -29,7 +29,7 @@ cosmetic_selection_inventory_open:
       material: <server.flag[masks.ids.<[cosmetic]>].data_key[display_data.material]>
       display_name: <server.flag[masks.ids.<[cosmetic]>].parsed_key[display_data.display_name]>
       description: <server.flag[masks.ids.<[cosmetic]>].parsed_key[display_data.description]>
-      preview: <server.flag[masks.ids.<[cosmetic]>].parsed_key[mask_data.display_name]>
+      preview: "<&e>Disguised Name<&co> <&r><server.flag[masks.ids.<[cosmetic]>].parsed_key[mask_data.display_name]>"
       current: <yaml[global.player.<player.uuid>].read[masks.current.id].if_null[default]>
       equip_task: mask_wear
       remove_task: mask_remove
@@ -38,11 +38,21 @@ cosmetic_selection_inventory_open:
       players_list: <yaml[global.player.<player.uuid>].list_keys[titles.unlocked]>
       material: name_tag
       display_name: <[cosmetic]>
-      preview: <yaml[titles].parsed_key[titles.<[cosmetic]>.tag].parse_color>
+      preview: "<&e>Preview<&co> <&r><yaml[titles].parsed_key[titles.<[cosmetic]>.tag].parse_color>"
       description: <yaml[titles].parsed_key[titles.<[cosmetic]>.description].parse_color>
       current: <yaml[global.player.<player.uuid>].read[titles.current].if_null[default]>
       equip_task: titles_equip
       remove_task: titles_remove
+    bowtrails:
+      inventory_title: <&e>Bowtrails
+      players_list: <yaml[global.player.<player.uuid>].list_keys[bowtrails.unlocked]>
+      material: <yaml[bowtrails].read[bowtrails.<[cosmetic]>.icon]>
+      display_name: <yaml[bowtrails].parsed_key[bowtrails.<[cosmetic]>.name].parse_color>
+      preview: "<&e>Trail Type<&co> <&r><yaml[bowtrails].parsed_key[bowtrails.<[cosmetic]>.tag].parse_color>"
+      description: <yaml[bowtrails].parsed_key[bowtrails.<[cosmetic]>.description].parse_color>
+      current: <yaml[global.player.<player.uuid>].read[bowtrails.current].if_null[default]>
+      equip_task: bowtrails_equip
+      remove_task: bowtrails_remove
   script:
     # Sanity Check
     - if !<[type].exists>:
