@@ -10,9 +10,9 @@ cosmetic_selection_inventory_open:
     masks:
       inventory_title: <&d>Masks
       players_list: <yaml[global.player.<player.uuid>].list_keys[masks.unlocked]>
-      material: <server.flag[masks.ids.<[cosmetic]>].data_key[material]>
-      display_name: <server.flag[masks.ids.<[cosmetic]>].data_key[display_name]>
-      lore: <server.flag[masks.ids.<[cosmetic]>].data_key[lore]>
+      material: <server.flag[masks.ids.<[cosmetic]>].data_key[display_data.material]>
+      display_name: <server.flag[masks.ids.<[cosmetic]>].data_key[display_data.display_name]>
+      lore: <server.flag[masks.ids.<[cosmetic]>].data_key[display_data.lore]>
       current: <yaml[global.player.<player.uuid>].read[masks.current.id]>
       equip_task: mask_wear
       remove_task: mask_remove
