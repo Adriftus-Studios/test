@@ -21,7 +21,7 @@ cosmetic_selection_inventory_open:
       players_list: <yaml[global.player.<player.uuid>].list_keys[titles.unlocked]>
       material: <yaml[titles].parsed_key[gui.tag_select_item.material]>
       display_name: <yaml[titles].parsed_key[gui.tag_select_item.displayname].parse_color.parsed>
-      lore: <yaml[titles].parsed_key[gui.tag_select_item.lore]>
+      lore: <yaml[titles].data_key[gui.tag_select_item.lore].parse[parse_color.parsed]>
       current: <yaml[global.player.<player.uuid>].read[titles.current].if_null[default]>
       equip_task: titles_equip
       remove_task: titles_remove
