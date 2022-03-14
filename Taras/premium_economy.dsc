@@ -60,20 +60,20 @@ premium_currency_command:
 
         # % ██ [ Print current players balance ] ██
         - else:
-            - narrate "<&b>You're <[currencyName]> balance is: <player.proc[premium_currency_display]>"
+            - narrate "<&b>Your <[currencyName]> balance is: <player.proc[premium_currency_display]>"
 
 ## Internal ##
 premium_currency_global_get_current:
     type: procedure
     definitions: player
     script:
-        - determine <yaml[global.player.<[player].uuid>].read[economy.premium.current]>
+        - determine <yaml[global.player.<[player].uuid>].read[economy.premium.current].if_null[0]>
 ## Internal ##
 premium_currency_global_get_lifetime:
     type: procedure
     definitions: player
     script:
-        - determine <yaml[global.player.<[player].uuid>].read[economy.premium.lifetime]>
+        - determine <yaml[global.player.<[player].uuid>].read[economy.premium.lifetime].if_null[0]>
 
 ## External ##
 # % ██ [ Give player curency ] ██
@@ -84,8 +84,8 @@ premium_currency_give:
         - if !<[reason].exists>:
           - debug error "Script tried to give premium currency wtihout specifying a reason."
           - stop
-        - define currentBal <yaml[global.player.<[player].uuid>].read[economy.premium.current]>
-        - define lifetimeBal <yaml[global.player.<[player].uuid>].read[economy.premium.lifetime]>
+        - define currentBal <yaml[global.player.<[player].uuid>].read[economy.premium.current].if_null[0]>
+        - define lifetimeBal <yaml[global.player.<[player].uuid>].read[economy.premium.lifetime].if_null[0]>
         - define newBal <[currentBal].add[<[amount]>]>
         - define newLifetime <[lifetimeBal].add[<[amount]>]>
         - define map <map[economy.premium.current=<[newBal]>;economy.premium.lifetime=<[newLifetime]>]>
@@ -103,7 +103,7 @@ premium_currency_remove:
         - if !<[reason].exists>:
           - debug error "Script tried to give premium currency wtihout specifying a reason."
           - determine false
-        - define currentBal <yaml[global.player.<[player].uuid>].read[economy.premium.current]>
+        - define currentBal <yaml[global.player.<[player].uuid>].read[economy.premium.current].if_null[0]>
         - define newBal <[currentBal].sub[<[amount]>]>
         - if <[newBal]> < 0:
           - debug error "Script tried to take premium currency without checking the balance first."
@@ -135,7 +135,7 @@ premium_currency_can_afford:
   debug: false
   definitions: player|amount
   script:
-    - define balance <yaml[global.player.<[player].uuid>].read[economy.premium.current]>
+    - define balance <yaml[global.player.<[player].uuid>].read[economy.premium.current].if_null[0]>
     - determine <[amount].is_less_than_or_equal_to[<[balance]>]>
 
 premium_currency_display:
