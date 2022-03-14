@@ -45,7 +45,7 @@ cosmetic_selection_inventory_open:
       - define display <script.parsed_key[data.<[type]>.display_name]>
       - define lore <script.parsed_key[data.<[type]>.lore]>
       - define equip_script <script.parsed_key[data.<[type]>.equip_task]>
-      - define items:|:<item[<[material]>[display=<[display]>;lore=<[lore]>;flag=run_script:<[equip_script]>;flag=cosmetic:<[cosmetic]>]]>
+      - define items:|:<item[<[material]>[display=<&6><[display]>;lore=<[lore]>;flag=run_script:<[equip_script]>;flag=cosmetic:<[cosmetic]>]]>
     - define inventory <inventory[generic[title=<[title]>;size=54]]>
 
     # Put the items into the new inventory
