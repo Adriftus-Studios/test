@@ -37,7 +37,7 @@ cosmetic_selection_inventory_open:
     titles:
       inventory_title: <&e>Titles
       players_list: <yaml[global.player.<player.uuid>].list_keys[titles.unlocked]>
-      material: nametag
+      material: name_tag
       display_name: <[cosmetic]>
       preview: <yaml[titles].parsed_key[titles.<[cosmetic]>.tag].parse_color>
       description: <yaml[titles].parsed_key[titles.<[cosmetic]>.description].parse_color>
