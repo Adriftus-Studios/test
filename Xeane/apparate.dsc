@@ -43,6 +43,7 @@ fun_apparate:
       - playeffect at:<player.location> offset:<element[0.5].mul[<[value]>]> effect:redstone special_data:10|black quantity:<element[30].mul[<[value]>]> targets:<[targets]>
       - wait 1t
       - inject fun_apparate_end if:<player.is_online.not>
+    - inject fun_apparate_end
 
 fun_apparate_end:
   type: task
