@@ -65,19 +65,19 @@ cosmetic_selection_inventory_open:
       - define description <script.parsed_key[data.<[type]>.description]>
       - define equip_script <script.parsed_key[data.<[type]>.equip_task]>
       - define lore <script[cosmetic_configuration].parsed_key[display_data.lore]>
-      - define items:|:<item[<[material]>].with[lore=<[lore]>;flag=run_script:<[equip_script]>;flag=cosmetic:<[cosmetic]>].with[display=<&6>]>
+      - define items:|:<item[<[material]>].with[lore=<[lore]>;flag=run_script:<[equip_script]>;flag=cosmetic:<[cosmetic]>]>
     - define inventory <inventory[generic[title=<[title]>;size=54]]>
 
     # Put the items into the new inventory
     - foreach <[items]>:
-      - inventory set slot:<[slots].get[<[loop_index]>]> o:<[value]> d:<[inventory]>
+      - inventory set slot:<[slots].get[<[loop_index]>]> o:<[value].with[display=<&6>]> d:<[inventory]>
 
     # Build the "unequip cosmetic" item, and store pagination data on it
     - define cosmetic <script.parsed_key[data.<[type]>.current]>
     - if <[cosmetic]> != default:
       - define material <script.parsed_key[data.<[type]>.material]>
       - define display "<&e>Unequip Cosmetic"
-      - define lore "<&e>Left Click to Unequip|<&e>Current<&co> <script.parsed_key[data.<[type]>.display_name]>"
+      - define lore "<&e>Left Click to Unequip|<&e>Current<&co> <script.parsed_key[data.<[type]>.preview]>"
       - define remove_script <script.parsed_key[data.<[type]>.remove_task]>
       - define item <item[<[material]>[display=<[display]>;lore=<[lore]>;flag=run_script:<[remove_script]>;flag=page:<[page]>;flag=type:<[type]>]]>
     - else:
