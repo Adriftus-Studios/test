@@ -52,7 +52,7 @@ cosmetic_selection_inventory_open:
       - define remove_script <script.parsed_key[data.<[type]>.remove_task]>
       - define item <item[<[material]>[display=<[display]>;lore=<[lore]>;flag=run_script:<[remove_script]>;flag=page:<[page]>;flag=type:<[type]>]]>
     - else:
-      - define item "barrier[display=<&e>No Cosmetic Equipped;run_script=cancel]"
+      - define item "barrier[display=<&e>No Cosmetic Equipped;flag=run_script:cancel]"
     - inventory set slot:<script.data_key[data.remove_slot]> o:<[item]> d:<[inventory]>
 
     # Next Page Button
