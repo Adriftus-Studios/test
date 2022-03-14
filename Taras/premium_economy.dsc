@@ -39,10 +39,10 @@ premium_currency_command:
             - define player <server.match_player[<context.args.get[2]>]>
             - choose <context.args.get[1]>:
                 - case give:
-                    - run premium_currency_give def:<[player]>|<context.args.get[3]>
+                    - run premium_currency_give "def:<[player]>|<context.args.get[3]>|COMMAND by <player.name> (<player.uuid>)"
                     - narrate "<&a>Successfully deposited <context.args.get[3]> <[currencyName]> to <[player].name>'s account"
                 - case remove:
-                    - run premium_currency_remove def:<[player]>|<context.args.get[3]> save:outcome
+                    - run premium_currency_remove "def:<[player]>|<context.args.get[3]>|COMMAND by <player.name> (<player.uuid>)" save:outcome
 
                     # % ██ [ Check if the balance was removed successfully ] ██
                     - if <entry[outcome].created_queue.determination.first>:
@@ -50,7 +50,7 @@ premium_currency_command:
                     - else:
                         - narrate "<&c><[player].name> does not have enough funds, to remove <context.args.get[3]> <[currencyName]>"
                 - case set:
-                    - run premium_currency_set def:<[player]>|<context.args.get[3]> save:outcome
+                    - run premium_currency_set "def:<[player]>|<context.args.get[3]>|COMMAND by <player.name> (<player.uuid>)" save:outcome
 
                     # % ██ [ Check if the balance was set successfully ] ██
                     - if <entry[outcome].created_queue.determination.first>:
@@ -91,7 +91,7 @@ premium_currency_give:
         - define map <map[economy.premium.current=<[newBal]>;economy.premium.lifetime=<[newLifetime]>]>
         - run global_player_data_modify_multiple def:<[player].uuid>|<[map]>
         - define message "<[player].name> has been given <[amount]> Premium Currency<&nl>Reason<&co><[reason]>"
-        - ~bungeerun discord_sendMessage def:626078288556851230|712309385019523155|<[message].escaped>
+        - bungeerun discord_sendMessage def:626078288556851230|712309385019523155|<[message].escaped>
 
 ## External ##
 # % ██ [ Remove player curency ] ██
@@ -102,12 +102,16 @@ premium_currency_remove:
     script:
         - if !<[reason].exists>:
           - debug error "Script tried to give premium currency wtihout specifying a reason."
-          - stop
+          - determine false
         - define currentBal <proc[premium_currency_global_get_current].context[<[player]>]>
         - define newBal <[currentBal].sub[<[amount]>]>
+        - if <[newBal]> < 0:
+          - debug error "Script tried to take premium currency without checking the balance first."
+          - determine false
         - run global_player_data_modify def:<[player].uuid>|economy.premium.current|<[amount]>
         - define message "<[player].name> has spent <[amount]> Premium Currency<&nl>Reason<&co><[reason]>"
-        - ~bungeerun discord_sendMessage def:626078288556851230|712309385019523155|<[message].escaped>
+        - bungeerun discord_sendMessage def:626078288556851230|712309385019523155|<[message].escaped>
+        - determine true
 
 ## External ##
 # % ██ [ Set player curency ] ██
@@ -118,9 +122,10 @@ premium_currency_set:
     script:
         - if !<[reason].exists>:
           - debug error "Script tried to give premium currency wtihout specifying a reason."
-          - stop
+          - determine false
         - if <[amount]> < 0:
-            - determine false
+          - determine false
         - run global_player_data_modify def:<[player].uuid>|economy.premium.current|<[amount]>
         - define message "<[player].name> was set to <[amount]> Premium Currency<&nl>Reason<&co><[reason]>"
-        - ~bungeerun discord_sendMessage def:626078288556851230|712309385019523155|<[message].escaped>
+        - bungeerun discord_sendMessage def:626078288556851230|712309385019523155|<[message].escaped>
+        - determine true
