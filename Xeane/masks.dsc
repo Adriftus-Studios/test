@@ -52,6 +52,8 @@ mask_wear:
       - if !<script[mask_<[mask_id]>].exists>:
         - debug error "UNKNOWN MASK<&co> <[mask_id]>"
         - stop
+      - inventory close
+      - wait 1t
       - define script <script[mask_<[mask_id]>]>
       - run global_player_data_modify def:<player.uuid>|masks.current|<[script].parsed_key[mask_data]>
       - adjust <player> skin_blob:<yaml[global.player.<player.uuid>].read[masks.current.skin_blob]>
@@ -61,5 +63,7 @@ mask_remove:
   debug: false
   definitions: mask_id
   script:
+    - inventory close
+    - wait 1t
     - run global_player_data_modify def:<player.uuid>|masks.current|!
     - adjust <player> skin_blob:<yaml[global.player.<player.uuid>].read[defaults.skin_blob]>
