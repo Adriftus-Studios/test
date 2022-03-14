@@ -16,7 +16,7 @@ premium_currency_command:
         #- Requires the [adriftus.economy.other] permission -#
         - if <context.args.size> > 0 && <player.has_permission[adriftus.economy.other]> && <server.online_players.parse[name].contains[<context.args.get[1]>]>:
             - define player <server.match_player[<context.args.get[1]>]>
-            - narrate "<&b><[player].name> <[currencyName]> balance is: <proc[premium_currency_global_get].context[<[player]>].round_to[2]>"
+            - narrate "<&b><[player].name> <[currencyName]> balance is: <proc[premium_currency_global_get_current].context[<[player]>].round_to[2]>"
 
         # % ██ [ Economy modifier commands ] ██
         #- Requires the [adriftus.economy.admin] permission -#
@@ -60,66 +60,67 @@ premium_currency_command:
 
         # % ██ [ Print current players balance ] ██
         - else:
-            - narrate "<&b>You're <[currencyName]> balance is: <proc[premium_currency_global_get].context[<player>].round_to[2]>"
-
-premium_currency_event_handler:
-    type: world
-    events:
-        on player joins:
-            # % ██ [ Used to set initial currency ] ██
-            - wait 5t
-            - if !<yaml[global.player.<player.uuid>].contains[economy.premium]>:
-                - run premium_currency_global_set def:<player>|0
+            - narrate "<&b>You're <[currencyName]> balance is: <proc[premium_currency_global_get_current].context[<player>].round_to[2]>"
 
 ## Internal ##
-premium_currency_global_get:
+premium_currency_global_get_current:
     type: procedure
     definitions: player
     script:
-        - determine <yaml[global.player.<[player].uuid>].read[economy.premium]>
-
+        - determine <yaml[global.player.<[player].uuid>].read[economy.premium.current]>
 ## Internal ##
-premium_currency_global_set:
-    type: task
-    definitions: player|amount
+premium_currency_global_get_lifetime:
+    type: procedure
+    definitions: player
     script:
-        - run global_player_data_modify def:<[player].uuid>|economy.premium|<[amount]>
+        - determine <yaml[global.player.<[player].uuid>].read[economy.premium.lifetime]>
 
 ## External ##
 # % ██ [ Give player curency ] ██
 premium_currency_give:
     type: task
-    definitions: player|amount
+    definitions: player|amount|reason
     script:
-        - define currentBal <proc[premium_currency_global_get].context[<[player]>]>
+        - if !<[reason].exists>:
+          - debug error "Script tried to give premium currency wtihout specifying a reason."
+          - stop
+        - define currentBal <yaml[global.player.<[player].uuid>].read[economy.premium.current]>
+        - define lifetimeBal <yaml[global.player.<[player].uuid>].read[economy.premium.lifetime]>
         - define newBal <[currentBal].add[<[amount]>]>
-        - run premium_currency_global_set def:<[player]>|<[newBal]>
-        - narrate "<&a><[amount]> <script[premium_currency_command].data_key[name]> has been deposited to you're account" targets:<[player]>
+        - define newLifetime <[lifetimeBal].add[<[amount]>]>
+        - define map <map[economy.premium.current=<[newBal]>;economy.premium.lifetime=<[newLifetime]>]>
+        - run global_player_data_modify_multiple def:<[player].uuid>|<[map]>
+        - define message "<[player].name> has been given <[amount]> Premium Currency<&nl>Reason<&co><[reason]>"
+        - ~bungeerun discord_sendMessage def:626078288556851230|712309385019523155|<[message].escaped>
 
 ## External ##
 # % ██ [ Remove player curency ] ██
 #- Returns false if it fails to remove the currency -#
 premium_currency_remove:
     type: task
-    definitions: player|amount
+    definitions: player|amount|reason
     script:
-        - define currentBal <proc[premium_currency_global_get].context[<[player]>]>
+        - if !<[reason].exists>:
+          - debug error "Script tried to give premium currency wtihout specifying a reason."
+          - stop
+        - define currentBal <proc[premium_currency_global_get_current].context[<[player]>]>
         - define newBal <[currentBal].sub[<[amount]>]>
-        - if <[newBal]> < 0:
-            - determine false
-        - run premium_currency_global_set def:<[player]>|<[newBal]>
-        - narrate "<&c><[amount]> <script[premium_currency_command].data_key[name]> has been deducted from you're account" targets:<[player]>
-        - determine true
+        - run global_player_data_modify def:<[player].uuid>|economy.premium.current|<[amount]>
+        - define message "<[player].name> has spent <[amount]> Premium Currency<&nl>Reason<&co><[reason]>"
+        - ~bungeerun discord_sendMessage def:626078288556851230|712309385019523155|<[message].escaped>
 
 ## External ##
 # % ██ [ Set player curency ] ██
 #- Returns false if it fails to set the currency -#
 premium_currency_set:
     type: task
-    definitions: player|amount
+    definitions: player|amount|reason
     script:
+        - if !<[reason].exists>:
+          - debug error "Script tried to give premium currency wtihout specifying a reason."
+          - stop
         - if <[amount]> < 0:
             - determine false
-        - run premium_currency_global_set def:<[player]>|<[amount]>
-        - narrate "<&b>You're account has been set to <[amount]> <script[premium_currency_command].data_key[name]>" targets:<[player]>
-        - determine true
+        - run global_player_data_modify def:<[player].uuid>|economy.premium.current|<[amount]>
+        - define message "<[player].name> was set to <[amount]> Premium Currency<&nl>Reason<&co><[reason]>"
+        - ~bungeerun discord_sendMessage def:626078288556851230|712309385019523155|<[message].escaped>
