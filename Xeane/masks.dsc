@@ -18,8 +18,8 @@ mask_wear_events:
   initialize:
     - flag server masks:!
     - foreach <server.scripts.filter[name.starts_with[mask_]].filter[container_type.equals[DATA]]>:
-      - flag server masks.categories.<[value].data_key[display_data.category]>.<[value].data_key[id]>:<[value]>
-      - flag server masks.ids.<[value].data_key[id]>:<[value]>
+      - flag server masks.categories.<[value].data_key[display_data.category]>.<[value].data_key[mask_data.id]>:<[value]>
+      - flag server masks.ids.<[value].data_key[mask_data.id]>:<[value]>
   events:
     on player joins:
       - waituntil rate:10t <yaml.list.contains[global.player.<player.uuid>].or[<player.is_online.not>]>
