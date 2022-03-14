@@ -48,6 +48,7 @@ mask_wear:
   debug: false
   definitions: mask_id
   script:
+      - determine passivel cancelled
       - define mask_id <context.item.flag[cosmetic].if_null[default]> if:<[mask_id].exists.not>
       - if !<script[mask_<[mask_id]>].exists>:
         - debug error "UNKNOWN MASK<&co> <[mask_id]>"
@@ -63,6 +64,7 @@ mask_remove:
   debug: false
   definitions: mask_id
   script:
+    - determine passivel cancelled
     - inventory close
     - wait 1t
     - run global_player_data_modify def:<player.uuid>|masks.current|!
