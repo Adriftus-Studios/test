@@ -13,7 +13,7 @@ cosmetic_selection_inventory_open:
       material: <server.flag[masks.ids.<[cosmetic]>].data_key[display_data.material]>
       display_name: <server.flag[masks.ids.<[cosmetic]>].parsed_key[display_data.display_name]>
       lore: <server.flag[masks.ids.<[cosmetic]>].parsed_key[display_data.lore]>
-      current: <yaml[global.player.<player.uuid>].read[masks.current.id]>
+      current: <yaml[global.player.<player.uuid>].read[masks.current.id].if_null[default]>
       equip_task: mask_wear
       remove_task: mask_remove
   script:
@@ -44,7 +44,7 @@ cosmetic_selection_inventory_open:
       - inventory set slot:<[slots].get[<[loop_index]>]> o:<[value]> d:<[inventory]>
 
     # Build the "unequip cosmetic" item, and store pagination data on it
-    - define cosmetic <script.parsed_key[data.<[type]>.current].if_null[default]>
+    - define cosmetic <script.parsed_key[data.<[type]>.current]>
     - if <[cosmetic]> != default:
       - define material <script.parsed_key[data.<[type]>.material]>
       - define display "<&e>Unequip Cosmetic"
