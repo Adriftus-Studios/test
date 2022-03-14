@@ -60,6 +60,7 @@ cosmetic_selection_inventory_open:
     # Build the cosmetic icons
     - foreach <[cosmetics].get[<[start]>].to[<[end]>]> as:cosmetic:
       - define material <script.parsed_key[data.<[type]>.material]>
+      - define display <script.parsed_key[data.<[type]>.display_name]>
       - define preview <script.parsed_key[data.<[type]>.preview]>
       - define description <script.parsed_key[data.<[type]>.description]>
       - define equip_script <script.parsed_key[data.<[type]>.equip_task]>
