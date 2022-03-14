@@ -25,7 +25,7 @@ cosmetic_selection_inventory_open:
     # Define our initialization data
     - define page 1 if:<[page].exists.not>
     - define title <script.parsed_key[data.<[type]>.inventory_title]>
-    - define slots <script.data_key[data.slots_used]>
+    - define slots <list[<script.data_key[data.slots_used]>]>
     - define start <[page].sub[1].mul[<[slots].size>].add[1]>
     - define end <[slots].size.mul[<[page]>]>
     - define cosmetics <script.parsed_key[data.<[type]>.players_list]>
