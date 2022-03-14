@@ -4,7 +4,7 @@ mask_encanto_isabella:
     category: Encanto
     material: allium
     display_name: <&b>Encanto<&co> <&d>Isabella
-    description: "<&e>It's <&d>Isabella<&e> from <&6>Encanto"
+    description: "<&d>Isabella<&e> from <&6>Encanto"
   mask_data:
     id: encanto_isabella
     display_name: <&d>Isabella
