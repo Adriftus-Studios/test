@@ -64,7 +64,7 @@ mask_remove:
   debug: false
   definitions: mask_id
   script:
-    - determine passivel cancelled
+    - determine passively cancelled
     - inventory close
     - wait 1t
     - run global_player_data_modify def:<player.uuid>|masks.current|!
