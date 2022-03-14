@@ -30,6 +30,7 @@ cosmetic_selection_inventory_open:
       material: <server.flag[masks.ids.<[cosmetic]>].data_key[display_data.material]>
       display_name: <server.flag[masks.ids.<[cosmetic]>].parsed_key[display_data.display_name]>
       description: <server.flag[masks.ids.<[cosmetic]>].parsed_key[display_data.description]>
+      preview: <server.flag[masks.ids.<[cosmetic]>].parsed_key[mask_data.display_name]>
       current: <yaml[global.player.<player.uuid>].read[masks.current.id].if_null[default]>
       equip_task: mask_wear
       remove_task: mask_remove
@@ -38,7 +39,8 @@ cosmetic_selection_inventory_open:
       players_list: <yaml[global.player.<player.uuid>].list_keys[titles.unlocked]>
       material: nametag
       display_name: <[cosmetic]>
-      description: <yaml[titles].parsed_key[titles.<[cosmetic]>.description]>
+      preview: <yaml[titles].parsed_key[titles.<[cosmetic]>.tag].parse_color>
+      description: <yaml[titles].parsed_key[titles.<[cosmetic]>.description].parse_color>
       current: <yaml[global.player.<player.uuid>].read[titles.current].if_null[default]>
       equip_task: titles_equip
       remove_task: titles_remove
@@ -60,6 +62,7 @@ cosmetic_selection_inventory_open:
     - foreach <[cosmetics].get[<[start]>].to[<[end]>]> as:cosmetic:
       - define material <script.parsed_key[data.<[type]>.material]>
       - define display <script[cosmetic_configuration].parsed_key[display_data.displayname]>
+      - define preview <script.parsed_key[data.<[type]>.preview]>
       - define description <script.parsed_key[data.<[type]>.description]>
       - define equip_script <script.parsed_key[data.<[type]>.equip_task]>
       - define lore <script[cosmetic_configuration].parsed_key[display_data.lore].parse_color>
