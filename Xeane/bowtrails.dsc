@@ -1,0 +1,47 @@
+bowtrails_equip:
+  type: task
+  debug: false
+  definitions: bowtrail_id
+  script:
+    - determine passively cancelled
+    - define bowtrail_id <context.item.flag[cosmetic].if_null[default]> if:<[bowtrail_id].exists.not>
+    - define map <map[bowtrails.current=<context.item.flag[cosmetic]>;bowtrails.current_tag=<yaml[bowtrails].read[bowtrails.<context.item.flag[cosmetic]>.tag].parse_color>]>
+    - run global_player_data_modify_multiple def:<player.uuid>|<[map]>
+    - if <context.inventory.exists>:
+      - define info_item <context.inventory.slot[<script[cosmetic_selection_inventory_open].data_key[data.remove_slot]>]>
+      - run cosmetic_selection_inventory_open def:<[info_item].flag[type]>|<[info_item].flag[page]>
+
+bowtrails_unlock:
+  type: task
+  debug: false
+  definitions: bowtrail_id
+  script:
+    - if <yaml[bowtrails].contains[bowtrails.<[bowtrail_id]>]> && !<yaml[global.player.<player.uuid>].contains[bowtrails.unlocked.<[bowtrail_id]>]>:
+      - run global_player_data_modify def:<player.uuid>|bowtrails.unlocked.<[bowtrail_id]>|true
+
+bowtrails_remove:
+  type: task
+  debug: false
+  definitions: bowtrail_id
+  script:
+    - determine passively cancelled
+    - define bowtrail_id <context.item.flag[cosmetic].if_null[default]> if:<[bowtrail_id].exists.not>
+    - run global_player_data_modify def:<player.uuid>|bowtrails.current|!
+    - if <context.inventory.exists>:
+      - define info_item <context.inventory.slot[<script[cosmetic_selection_inventory_open].data_key[data.remove_slot]>]>
+      - run cosmetic_selection_inventory_open def:<[info_item].flag[type]>|<[info_item].flag[page]>
+
+bowtrails_initialize:
+  type: world
+  debug: false
+  load_yaml:
+    - if <yaml.list.contains[bowtrails]>:
+      - yaml id:bowtrails unload
+    - if <server.has_file[data/global/network/bowtrails.yml]>:
+      - ~yaml id:bowtrails load:data/global/network/bowtrails.yml
+  events:
+    on server start:
+      - inject locally path:load_yaml
+    on reload scripts:
+      - yaml id:bowtrails unload
+      - inject locally path:load_yaml
