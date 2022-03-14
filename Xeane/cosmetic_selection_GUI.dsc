@@ -44,12 +44,15 @@ cosmetic_selection_inventory_open:
       - inventory set slot:<[slots].get[<[loop_index]>]> o:<[value]> d:<[inventory]>
 
     # Build the "unequip cosmetic" item, and store pagination data on it
-    - define cosmetic <script.parsed_key[data.<[type]>.current]>
-    - define material <script.parsed_key[data.<[type]>.material]>
-    - define display "<&e>Unequip Cosmetic"
-    - define lore "<&e>Left Click to Unequip|<&e>Current<&co> <script.parsed_key[data.<[type]>.display_name]>"
-    - define remove_script <script.parsed_key[data.<[type]>.remove_task]>
-    - define item <item[<[material]>[display=<[display]>;lore=<[lore]>;flag=run_script:<[remove_script]>;flag=page:<[page]>;flag=type:<[type]>]]>
+    - define cosmetic <script.parsed_key[data.<[type]>.current].if_null[default]>
+    - if <[cosmetic]> != default:
+      - define material <script.parsed_key[data.<[type]>.material]>
+      - define display "<&e>Unequip Cosmetic"
+      - define lore "<&e>Left Click to Unequip|<&e>Current<&co> <script.parsed_key[data.<[type]>.display_name]>"
+      - define remove_script <script.parsed_key[data.<[type]>.remove_task]>
+      - define item <item[<[material]>[display=<[display]>;lore=<[lore]>;flag=run_script:<[remove_script]>;flag=page:<[page]>;flag=type:<[type]>]]>
+    - else:
+      - define item "barrier[display=<&e>No Cosmetic Equipped;run_script=cancel]"
     - inventory set slot:<script.data_key[data.remove_slot]> o:<[item]> d:<[inventory]>
 
     # Next Page Button
