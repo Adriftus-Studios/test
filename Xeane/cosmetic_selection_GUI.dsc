@@ -14,6 +14,31 @@ cosmetic_configuration:
     - "<&b><&m>---<&r><&8><&m>｜-<&r>  <&8><&m>+--------------------------+<&r>  <&8><&m>-｜<&b><&m>---"
     - "<&r>"
 
+cosmetic_menu_masks:
+  type: item
+  material: totem_of_undying
+  display name: <&d>Masks
+  lore:
+    - "<&e>Take on different appearances"
+    - "<&e>Completely disguise yourself!"
+
+cosmetic_menu_titles:
+  type: item
+  material: name_tag
+  display name: <&B>Title!
+  lore:
+    - "<&e>Titles appear above your head"
+    - "<&e>They are also in chat player info."
+
+cosmetic_menu_bowtrails:
+  type: item
+  material: crossbow
+  display name: <&d>Masks
+  lore:
+    - "<&e>Spiff up your bow shots!"
+    - "<&e>Grab your bow, and show off."
+
+
 cosmetic_main_menu_open:
   type: task
   debug: false
