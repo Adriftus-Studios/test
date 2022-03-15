@@ -47,32 +47,24 @@ mask_wear:
   debug: false
   definitions: mask_id
   script:
-    - if <context.inventory.exists>:
-      - define info_item <context.inventory.slot[<script[cosmetic_selection_inventory_open].data_key[data.slot_data.remove_slot]>]>
-    - determine passively cancelled
-    - define mask_id <context.item.flag[cosmetic].if_null[default]> if:<[mask_id].exists.not>
-    - if !<script[mask_<[mask_id]>].exists>:
-      - debug error "UNKNOWN MASK<&co> <[mask_id]>"
-      - stop
-    - inventory close
-    - wait 1t
-    - define script <script[mask_<[mask_id]>]>
-    - run global_player_data_modify def:<player.uuid>|masks.current|<[script].parsed_key[mask_data]>
-    - adjust <player> skin_blob:<yaml[global.player.<player.uuid>].read[masks.current.skin_blob]>
-    - wait 1t
-    - run cosmetic_selection_inventory_open def:<[info_item].flag[type]>|<[info_item].flag[page]>
+      - determine passively cancelled
+      - define mask_id <context.item.flag[cosmetic].if_null[default]> if:<[mask_id].exists.not>
+      - if !<script[mask_<[mask_id]>].exists>:
+        - debug error "UNKNOWN MASK<&co> <[mask_id]>"
+        - stop
+      - inventory close
+      - wait 1t
+      - define script <script[mask_<[mask_id]>]>
+      - run global_player_data_modify def:<player.uuid>|masks.current|<[script].parsed_key[mask_data]>
+      - adjust <player> skin_blob:<yaml[global.player.<player.uuid>].read[masks.current.skin_blob]>
 
 mask_remove:
   type: task
   debug: false
   definitions: mask_id
   script:
-    - if <context.inventory.exists>:
-      - define info_item <context.inventory.slot[<script[cosmetic_selection_inventory_open].data_key[data.slot_data.remove_slot]>]>
     - determine passively cancelled
     - inventory close
     - wait 1t
     - run global_player_data_modify def:<player.uuid>|masks.current|!
     - adjust <player> skin_blob:<yaml[global.player.<player.uuid>].read[defaults.skin_blob]>
-    - wait 1t
-    - run cosmetic_selection_inventory_open def:<[info_item].flag[type]>|<[info_item].flag[page]>
