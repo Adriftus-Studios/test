@@ -96,11 +96,11 @@ cosmetic_selection_inventory_open:
 
     # Next Page Button
     - if <[cosmetics].size> > <[end]>:
-      - inventory set slot:<script.data_key[data.next_page]> o:<item[leather_horse_armor].with[display_name=<&a>Next<&sp>Page;flag=run_script:cosmetics_next_page;color=green;custom_model_data=7]> d:<[inventory]>
+      - inventory set slot:<script.data_key[data.next_page]> o:<item[leather_horse_armor].with[hides=all;display_name=<&a>Next<&sp>Page;flag=run_script:cosmetics_next_page;color=green;custom_model_data=7]> d:<[inventory]>
 
     # Previous Page Button
     - if <[page]> != 1:
-      - inventory set slot:<script.data_key[data.previous_page]> o:<item[leather_horse_armor].with[display_name=<&a>Previous<&sp>Page;flag=run_script:cosmetics_previous_page;color=green;custom_model_data=6]> d:<[inventory]>
+      - inventory set slot:<script.data_key[data.previous_page]> o:<item[leather_horse_armor].with[hides=all;display_name=<&a>Previous<&sp>Page;flag=run_script:cosmetics_previous_page;color=green;custom_model_data=6]> d:<[inventory]>
 
     # Open The Inventory
     - inventory open d:<[inventory]>
