@@ -66,8 +66,9 @@ cosmetic_selection_inventory_open:
     slot_data:
       slots_used: 11|12|13|14|15|16|17|20|21|22|23|24|25|26|29|30|31|32|33|34|35|38|39|40|41|42|43|44
       remove_slot: 50
-      next_page: 54
-      previous_page: 46
+      next_page: 45
+      previous_page: 37
+      back: 46
     masks:
       inventory_title: <&chr[F808]><&f><&chr[6912].font[adriftus:guis]>
       players_list: <yaml[global.player.<player.uuid>].list_keys[masks.unlocked]>
@@ -146,6 +147,8 @@ cosmetic_selection_inventory_open:
     - if <[page]> != 1:
       - inventory set slot:<script.data_key[data.slot_data.previous_page]> o:<item[leather_horse_armor].with[hides=all;display_name=<&a>Previous<&sp>Page;flag=run_script:cosmetics_previous_page;color=green;custom_model_data=6]> d:<[inventory]>
 
+    # Back to Cosmetics
+    - inventory set slot:<script.data_key[data.slot_data.back]> o:<item[leather_horse_armor].with[hides=all;display_name=<&a>Back<&sp>To<&sp>Cosmetics;flag=run_script:cosmetic_main_menu_open;color=red;custom_model_data=6]> d:<[inventory]>
     # Open The Inventory
     - inventory open d:<[inventory]>
 
