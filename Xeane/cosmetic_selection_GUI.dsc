@@ -87,7 +87,7 @@ cosmetic_selection_inventory_open:
     - if <[cosmetic]> != default:
       - define material <script.parsed_key[data.<[type]>.material]>
       - define display "<&e>Unequip Cosmetic"
-      - define lore "<&e>Left Click to Unequip|<&e>Current<&co> <script.parsed_key[data.<[type]>.display]>"
+      - define lore "<&e>Left Click to Unequip|<&e>Current<&co> <script.parsed_key[data.<[type]>.display_name]>"
       - define remove_script <script.parsed_key[data.<[type]>.remove_task]>
       - define item <item[<[material]>[display=<[display]>;lore=<[lore]>;flag=run_script:<[remove_script]>;flag=page:<[page]>;flag=type:<[type]>]]>
     - else:
