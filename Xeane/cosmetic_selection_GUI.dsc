@@ -64,7 +64,7 @@ cosmetic_selection_inventory_open:
   definitions: type|page
   data:
     slot_data:
-      slots_used: 11|12|13|14|15|16|17|20|21|22|23|24|25|26|29|30|31|32|33|34|35|38|39|40|41|42|43|44
+      slots_used: 11|12|13|14|15|16|17|20|21|22|23|24|25|26|29|30|31|32|33|34|35
       remove_slot: 50
       next_page: 45
       previous_page: 37
@@ -80,7 +80,7 @@ cosmetic_selection_inventory_open:
       equip_task: mask_wear
       remove_task: mask_remove
     titles:
-      inventory_title: <&chr[F808]><&f><&chr[6912].font[adriftus:guis]>
+      inventory_title: <&chr[F808]><&f><&chr[6910].font[adriftus:guis]>
       players_list: <yaml[global.player.<player.uuid>].list_keys[titles.unlocked]>
       material: name_tag
       display_name: <[cosmetic]>
@@ -90,7 +90,7 @@ cosmetic_selection_inventory_open:
       equip_task: titles_equip
       remove_task: titles_remove
     bowtrails:
-      inventory_title: <&chr[F808]><&f><&chr[6912].font[adriftus:guis]>
+      inventory_title: <&chr[F808]><&f><&chr[6911].font[adriftus:guis]>
       players_list: <yaml[global.player.<player.uuid>].list_keys[bowtrails.unlocked]>
       material: <yaml[bowtrails].read[bowtrails.<[cosmetic]>.icon]>
       display_name: <yaml[bowtrails].parsed_key[bowtrails.<[cosmetic]>.name].parse_color>
