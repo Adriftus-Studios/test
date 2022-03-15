@@ -14,6 +14,25 @@ cosmetic_configuration:
     - "<&b><&m>---<&r><&8><&m>｜-<&r>  <&8><&m>+--------------------------+<&r>  <&8><&m>-｜<&b><&m>---"
     - "<&r>"
 
+cosmetic_main_menu_open:
+  type: task
+  debug: false
+  data:
+    slots_by_count:
+      1: 5
+      2: 4|6
+      3: 3|5|7
+      4: 2|4|6|8
+      5: 1|3|5|7|9
+  script:
+    - foreach <script[cosmetic_selection_inventory_open].list_keys[data].exclude[slot_data]>:
+      - define items:|:<item[cosmetic_menu_<[value]>].with_flag[run_script:cosmetic_selection_inventory_open].with_flag[cosmetic_type:<[value]>]>
+    - define inventory <inventory[generic[title=<&d>Cosmetics;size=9]]>
+    - define slots <list[<script.data_key[data.slots_by_count].get[<[items].size>]>]>
+    - foreach <[items]>:
+      - inventory set slot:<[slots].get[<[loop_index]>]> o:<[value]> d:<[inventory]>
+    - inventory open d:<[inventory]>
+
 cosmetic_selection_inventory_open:
   type: task
   debug: false
@@ -57,8 +76,7 @@ cosmetic_selection_inventory_open:
   script:
     # Sanity Check
     - if !<[type].exists>:
-      - debug error "Something tried opening the cosmetic selection without a TYPE specified."
-      - stop
+      - define type <context.item.flag[cosmetic_type]>
 
     # Define our initialization data
     - define page 1 if:<[page].exists.not>
