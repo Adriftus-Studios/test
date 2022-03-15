@@ -7,7 +7,7 @@ bowtrails_equip:
     - define bowtrail_id <context.item.flag[cosmetic].if_null[default]> if:<[bowtrail_id].exists.not>
     - run global_player_data_modify def:<player.uuid>|bowtrails.current|<context.item.flag[cosmetic]>
     - if <context.inventory.exists>:
-      - define info_item <context.inventory.slot[<script[cosmetic_selection_inventory_open].data_key[data.remove_slot]>]>
+      - define info_item <context.inventory.slot[<script[cosmetic_selection_inventory_open].data_key[data.slot_data.remove_slot]>]>
       - run cosmetic_selection_inventory_open def:<[info_item].flag[type]>|<[info_item].flag[page]>
 
 bowtrails_unlock:
@@ -27,7 +27,7 @@ bowtrails_remove:
     - define bowtrail_id <context.item.flag[cosmetic].if_null[default]> if:<[bowtrail_id].exists.not>
     - run global_player_data_modify def:<player.uuid>|bowtrails.current|!
     - if <context.inventory.exists>:
-      - define info_item <context.inventory.slot[<script[cosmetic_selection_inventory_open].data_key[data.remove_slot]>]>
+      - define info_item <context.inventory.slot[<script[cosmetic_selection_inventory_open].data_key[data.slot_data.remove_slot]>]>
       - run cosmetic_selection_inventory_open def:<[info_item].flag[type]>|<[info_item].flag[page]>
 
 bowtrails_initialize:

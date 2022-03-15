@@ -19,10 +19,11 @@ cosmetic_selection_inventory_open:
   debug: false
   definitions: type|page
   data:
-    slots_used: 11|12|13|14|15|16|17|20|21|22|23|24|25|26|29|30|31|32|33|34|35|38|39|40|41|42|43|44
-    remove_slot: 50
-    next_page: 54
-    previous_page: 46
+    slot_data:
+      slots_used: 11|12|13|14|15|16|17|20|21|22|23|24|25|26|29|30|31|32|33|34|35|38|39|40|41|42|43|44
+      remove_slot: 50
+      next_page: 54
+      previous_page: 46
     masks:
       inventory_title: <&chr[F808]><&f><&chr[6912].font[adriftus:guis]>
       players_list: <yaml[global.player.<player.uuid>].list_keys[masks.unlocked]>
@@ -62,7 +63,7 @@ cosmetic_selection_inventory_open:
     # Define our initialization data
     - define page 1 if:<[page].exists.not>
     - define title <script.parsed_key[data.<[type]>.inventory_title]>
-    - define slots <list[<script.data_key[data.slots_used]>]>
+    - define slots <list[<script.data_key[data.slot_data.slots_used]>]>
     - define start <[page].sub[1].mul[<[slots].size>].add[1]>
     - define end <[slots].size.mul[<[page]>]>
     - define cosmetics <script.parsed_key[data.<[type]>.players_list]>
@@ -92,15 +93,15 @@ cosmetic_selection_inventory_open:
       - define item <item[<[material]>[display=<[display]>;lore=<[lore]>;flag=run_script:<[remove_script]>;flag=page:<[page]>;flag=type:<[type]>]]>
     - else:
       - define item "barrier[display=<&e>No Cosmetic Equipped;flag=run_script:cancel;flag=page:<[page]>;flag=type:<[type]>]"
-    - inventory set slot:<script.data_key[data.remove_slot]> o:<[item]> d:<[inventory]>
+    - inventory set slot:<script.data_key[data.slot_data.remove_slot]> o:<[item]> d:<[inventory]>
 
     # Next Page Button
     - if <[cosmetics].size> > <[end]>:
-      - inventory set slot:<script.data_key[data.next_page]> o:<item[leather_horse_armor].with[hides=all;display_name=<&a>Next<&sp>Page;flag=run_script:cosmetics_next_page;color=green;custom_model_data=7]> d:<[inventory]>
+      - inventory set slot:<script.data_key[data.slot_data.next_page]> o:<item[leather_horse_armor].with[hides=all;display_name=<&a>Next<&sp>Page;flag=run_script:cosmetics_next_page;color=green;custom_model_data=7]> d:<[inventory]>
 
     # Previous Page Button
     - if <[page]> != 1:
-      - inventory set slot:<script.data_key[data.previous_page]> o:<item[leather_horse_armor].with[hides=all;display_name=<&a>Previous<&sp>Page;flag=run_script:cosmetics_previous_page;color=green;custom_model_data=6]> d:<[inventory]>
+      - inventory set slot:<script.data_key[data.slot_data.previous_page]> o:<item[leather_horse_armor].with[hides=all;display_name=<&a>Previous<&sp>Page;flag=run_script:cosmetics_previous_page;color=green;custom_model_data=6]> d:<[inventory]>
 
     # Open The Inventory
     - inventory open d:<[inventory]>
@@ -109,13 +110,13 @@ cosmetics_next_page:
   type: task
   debug: false
   script:
-    - define info_item <context.inventory.slot[<script[cosmetic_selection_inventory_open].data_key[data.remove_slot]>]>
+    - define info_item <context.inventory.slot[<script[cosmetic_selection_inventory_open].data_key[data.slot_data.remove_slot]>]>
     - run cosmetic_selection_inventory_open def:<[info_item].flag[type]>|<[info_item].flag[page].add[1]>
 
 cosmetics_previous_page:
   type: task
   debug: false
   script:
-    - define info_item <context.inventory.slot[<script[cosmetic_selection_inventory_open].data_key[data.remove_slot]>]>
+    - define info_item <context.inventory.slot[<script[cosmetic_selection_inventory_open].data_key[data.slot_data.remove_slot]>]>
     - run cosmetic_selection_inventory_open def:<[info_item].flag[type]>|<[info_item].flag[page].sub[1]>
 
