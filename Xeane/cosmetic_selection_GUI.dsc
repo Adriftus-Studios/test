@@ -25,7 +25,7 @@ cosmetic_menu_masks:
 cosmetic_menu_titles:
   type: item
   material: name_tag
-  display name: <&B>Title!
+  display name: <&6>Titles
   lore:
     - "<&e>Titles appear above your head"
     - "<&e>They are also in chat player info."
@@ -33,7 +33,7 @@ cosmetic_menu_titles:
 cosmetic_menu_bowtrails:
   type: item
   material: crossbow
-  display name: <&d>Masks
+  display name: <&b>Bowtrails
   lore:
     - "<&e>Spiff up your bow shots!"
     - "<&e>Grab your bow, and show off."
