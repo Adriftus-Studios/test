@@ -24,7 +24,7 @@ cosmetic_selection_inventory_open:
     next_page: 54
     previous_page: 46
     masks:
-      inventory_title: <&f><&chr[6912].font[adriftus:guis]>
+      inventory_title: <&chr[F808]><&chr[6912]><&f><&chr[6912].font[adriftus:guis]>
       players_list: <yaml[global.player.<player.uuid>].list_keys[masks.unlocked]>
       material: <server.flag[masks.ids.<[cosmetic]>].data_key[display_data.material]>
       display_name: <server.flag[masks.ids.<[cosmetic]>].parsed_key[display_data.display_name]>
@@ -34,7 +34,7 @@ cosmetic_selection_inventory_open:
       equip_task: mask_wear
       remove_task: mask_remove
     titles:
-      inventory_title: <&f><&chr[6912].font[adriftus:guis]>
+      inventory_title: <&chr[F808]><&chr[6912]><&f><&chr[6912].font[adriftus:guis]>
       players_list: <yaml[global.player.<player.uuid>].list_keys[titles.unlocked]>
       material: name_tag
       display_name: <[cosmetic]>
@@ -44,7 +44,7 @@ cosmetic_selection_inventory_open:
       equip_task: titles_equip
       remove_task: titles_remove
     bowtrails:
-      inventory_title: <&f><&chr[6912].font[adriftus:guis]>
+      inventory_title: <&chr[F808]><&chr[6912]><&f><&chr[6912].font[adriftus:guis]>
       players_list: <yaml[global.player.<player.uuid>].list_keys[bowtrails.unlocked]>
       material: <yaml[bowtrails].read[bowtrails.<[cosmetic]>.icon]>
       display_name: <yaml[bowtrails].parsed_key[bowtrails.<[cosmetic]>.name].parse_color>
@@ -87,7 +87,7 @@ cosmetic_selection_inventory_open:
     - if <[cosmetic]> != default:
       - define material <script.parsed_key[data.<[type]>.material]>
       - define display "<&e>Unequip Cosmetic"
-      - define lore "<&e>Left Click to Unequip|<&e>Current<&co> <script.parsed_key[data.<[type]>.display_name]>"
+      - define lore "<&b>Left Click to Unequip|<&e>Current<&co> <&a><script.parsed_key[data.<[type]>.display_name]>"
       - define remove_script <script.parsed_key[data.<[type]>.remove_task]>
       - define item <item[<[material]>[display=<[display]>;lore=<[lore]>;flag=run_script:<[remove_script]>;flag=page:<[page]>;flag=type:<[type]>]]>
     - else:
