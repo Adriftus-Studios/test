@@ -12,7 +12,7 @@ anvil_gui_test:
   type: task
   debug: false
   script:
-    - narrate <context.inventory.slot[1].flag[text_input]>
+    - narrate <context.item.flag[text_input]>
 
 anvil_gui_text_events:
   type: world
