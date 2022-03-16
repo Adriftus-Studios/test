@@ -8,6 +8,12 @@ anvil_gui_text_input:
     - inventory set d:<player.open_inventory> slot:1 o:<[item]>
     - inventory set d:<player.open_inventory> slot:3 o:<[item]>
 
+anvil_gui_test:
+  type: task
+  debug: false
+  script:
+    - narrate <context.inventory.slot[1].flag[text_input]>
+
 anvil_gui_text_events:
   type: world
   debug: false
