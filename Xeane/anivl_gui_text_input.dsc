@@ -40,5 +40,7 @@ anvil_gui_text_events:
 
 anvil_gui_item:
   type: item
-  material: stone
+  material: feather
   display name: <&c>DEBUG
+  mechanisms:
+    custom_model_data: 3
