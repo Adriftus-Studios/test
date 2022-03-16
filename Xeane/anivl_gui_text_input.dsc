@@ -5,7 +5,7 @@ anvil_gui_text_input:
   script:
     - define item <item[anvil_gui_item].with[display=<[display]>;lore=<[lore]>;flag=run_script:<[callback]>]>
     - openanvil title:<[title]>
-    - inventory set d:<player.open_inventory> slot:2 o:<[item]>
+    - inventory set d:<player.open_inventory> slot:1 o:<[item]>
     - inventory set d:<player.open_inventory> slot:3 o:<[item]>
 
 anvil_gui_test:
@@ -19,11 +19,11 @@ anvil_gui_text_events:
   debug: false
   events:
     on player prepares anvil craft anvil_gui_item:
-      - inventory flag slot:1 d:<context.inventory> text_input:<context.new_name>
-      - determine air
+      - stop if:<context.inventory.slot[1].script.name.equals[anvil_gui_item].if_null[false]>
+      - determine passively 0
+      - determine <item[anvil_gui_item].with_flag[text_input:<context.new_name>]>
     on player clicks in inventory priority:1:
-      - stop if:<context.inventory.id_holder.equals[anvil].not>
-      - determine cancelled if:<context.inventory.slot[1].script.name.equals[anvil_gui_item].if_null[false]>
+      - determine cancelled if:<context.inventory.slot[3].script.name.equals[anvil_gui_item].if_null[false]>
 
 anvil_gui_item:
   type: item
