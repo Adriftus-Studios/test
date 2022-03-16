@@ -20,7 +20,7 @@ anvil_gui_text_events:
   events:
     on player prepares anvil craft anvil_gui_item:
       - determine air
-      - inventory set slot:1 d:<context.inventory> o:<context.inventory.slot[1].with[flag=text_input:<context.new_name>]>
+      - inventory flag slot:1 d:<context.inventory> text_input:<context.new_name>
     on player clicks in inventory priority:1:
       - stop if:<context.inventory.id_holder.equals[anvil].not>
       - determine cancelled if:<context.inventory.slot[1].script.name.equals[anvil_gui_item].if_null[false]>
