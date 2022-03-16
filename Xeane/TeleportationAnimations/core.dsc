@@ -3,6 +3,8 @@ teleportation_animation_run:
   debug: false
   definitions: destination
   script:
+    - if !<yaml[global.player.<player.uuid>].contains[animations.teleportation.current]>:
+      - run global_player_data_modify def:<player.uuid>|animations.teleportation.current|default
     - if <yaml[global.player.<player.uuid>].read[animations.teleportation.current.colorable]>:
       - define color <yaml[global.player.<player.uuid>].read[animations.teleportation.current.color]||white>
     - if <yaml[global.player.<player.uuid>].contains[animations.teleportation.current]>:
@@ -19,9 +21,9 @@ teleportation_animation_aggregator:
       - flag server animations.teleportation.<[value].data_key[name]>:<[value]>
   events:
     on server start:
-      - inject passively path:create_flag
+      - inject locally path:create_flag
     on script reload:
-      - inject passively path:create_flag
+      - inject locally path:create_flag
 
 teleportation_animation_set:
   type: task

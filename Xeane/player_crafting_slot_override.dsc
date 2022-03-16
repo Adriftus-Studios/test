@@ -12,6 +12,7 @@ player_crafting_slots_override_events:
       - repeat 5:
         - inventory set slot:<[value]> o:air d:<[inv]>
       - wait 1t
+      - stop if:<player.is_online.not>
       - foreach <script.data_key[data.items]>:
         - inventory set slot:<[loop_index].add[1]> o:<[value].parsed> d:<[inv]>
       - inventory set slot:1 o:air d:<[inv]>
@@ -28,8 +29,7 @@ player_crafting_slots_open_button:
   type: task
   debug: false
   script:
-    - determine passively <item[air]>
-    - adjust <player> item_on_cursor:<context.item>
+    - determine passively cancelled
     - define script <context.item.flag[script]>
     - wait 2t
     - inject <[script]>

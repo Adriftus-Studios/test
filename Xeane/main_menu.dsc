@@ -8,7 +8,7 @@ main_menu_cosmetics:
   mechanisms:
     custom_model_data: 1
   flags:
-    run_script: cancel
+    run_script: cosmetic_main_menu_open
 
 main_menu_help:
   type: item

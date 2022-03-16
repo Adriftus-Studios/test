@@ -28,23 +28,27 @@ teleportation_animation_wisp_away_run:
     - define gamemode <player.gamemode>
     - define targets <player.location.find_players_within[100]>
     - define starting_location <player.location>
-    - define vector <player.location.add[<[destination].sub[<player.location>]>].normalize>
+    - define vector <[destination].sub[<player.location>].with_y[<player.location.y.add[31].max[<[destination].y.add[31]>]>].normalize.mul[30.1]>
+    - define points <proc[define_curve1].context[<player.location>|<player.location.add[<[vector]>]>|5|90|1]>
     - define original_y <player.location.y>
     - repeat 10:
       - playeffect at:<player.location> offset:0.4 effect:redstone special_data:5|<[color]> quantity:30 targets:<[targets]>
       - wait 2t
     - adjust <player> gamemode:spectator
+    - adjust <player> gravity:false
+    - adjust <player> can_fly:false
     - repeat 30:
       - playeffect at:<player.location> offset:0.4 effect:redstone special_data:5|<[color]> quantity:30 targets:<[targets]>
-      - teleport <player> <[starting_location].add[<[vector].mul[<[value]>]>].with_y[<[original_y].add[<[value]>]>]>
+      - adjust <player> velocity:<[points].get[<[value].add[1]>].sub[<[points].get[<[value]>]>]>
       - wait 2t
     - teleport <player> <[destination].with_y[<[destination].y.add[31]>]>
     - define targets <player.location.find_players_within[100]>
     - repeat 30:
       - playeffect at:<player.location> offset:0.4 effect:redstone special_data:5|<[color]> quantity:30 targets:<[targets]>
-      - teleport <player> <[destination].with_y[<[destination].y.add[<element[31].sub[<[value]>]>]>]>
+      - adjust <player> velocity:0,-0.51,0
       - wait 2t
     - adjust <player> gamemode:<[gamemode]>
+    - adjust <player> gravity:true
     - repeat 3:
       - playeffect at:<[destination]> offset:<element[1].mul[<[value]>]> effect:redstone special_data:5|<[color]> quantity:<element[30].mul[<[value]>]> targets:<[targets]>
       - wait 1t
