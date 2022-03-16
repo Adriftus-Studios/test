@@ -20,8 +20,8 @@ tpa_command:
               - clickable confirmScriptText_callback def:true save:Confirm usages:1
               - clickable confirmScriptText_callback def:false save:Cancel usages:1
               - narrate "Are you sure about this?"
-              - narrate <&hover[Confirm].type[show_text]><element[<green><bold><underline>[Yes]].on_click[<entry[Confirm].command>]><&end_hover><reset>
-              - narrate <&hover[Cancel].type[show_text]><element[<red><bold><underline>[No]].on_click[<entry[Cancel].command>]><&end_hover><reset>
+              - narrate <&hover[Confirm].type[show_text]><element[<green><bold><underline>[Yes]].on_click[<entry[Confirm].command>]><&end_hover><reset> targets: <[player]>
+              - narrate <&hover[Cancel].type[show_text]><element[<red><bold><underline>[No]].on_click[<entry[Cancel].command>]><&end_hover><reset> targets: <[player]>
 
 confirmScriptText_callback:
   type: task
