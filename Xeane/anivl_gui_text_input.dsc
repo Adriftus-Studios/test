@@ -7,13 +7,13 @@ anvil_gui_text_input:
     - define item <item[anvil_gui_item].with[display=<&a>;lore=<[lore]>;flag=run_script:<[callback]>]>
     - openanvil title:<[title]>
     - inventory set d:<player.open_inventory> slot:1 o:<[item]>
-    - inventory set d:<player.open_inventory> slot:3 o:<[item]>
+    - inventory set d:<player.open_inventory> slot:3 o:air
 
 anvil_gui_test:
   type: task
   debug: false
   script:
-    - narrate <context.item>
+    - narrate <context.item.flag[text_input]>
 
 anvil_gui_text_events:
   type: world
