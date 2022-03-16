@@ -5,4 +5,4 @@ anvil_gui_text_input:
   script:
     - define item <item[anvil_gui_item].with[display=<[display]>;lore=<[lore]>;flag=callback:<[callback]>]>
     - openanvil title:<[title]>
-    - inventory set o:<player.open_inventory> slot:1 o:<[item]>
+    - inventory set d:<player.open_inventory> slot:1 o:<[item]>
