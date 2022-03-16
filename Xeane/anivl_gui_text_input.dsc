@@ -19,7 +19,7 @@ anvil_gui_text_events:
   debug: false
   events:
     on player prepares anvil craft anvil_gui_item:
-      - stop if:<context.inventory.slot[1].script.name.equals[anvil_gui_item].if_null[false]>
+      - stop if:<context.inventory.slot[1].script.name.equals[anvil_gui_item].not.if_null[false]>
       - determine passively 0
       - determine <item[anvil_gui_item].with_flag[text_input:<context.new_name>]>
     on player clicks in inventory priority:1:
