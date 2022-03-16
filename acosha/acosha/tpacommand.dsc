@@ -16,13 +16,24 @@ tpa_command:
                - narrate "You Can Not Tpaccept Yourself"
                - stop
        - else:
-            - flag <[player]> tpaccept
-            - narrate "<yellow><[player].name> Has 10 Second To Accept"
-            - narrate "<yellow>You Have 10 Seconds To Teleport <player.name> To You" targets:<[player]>
-            - wait 10s
-            - narrate "<red>Teleportation Cancelled" targets:<[player]>|<player>
-            - flag <[player]> tpaccept:!
-            
+              - flag player callback:<[callback]>
+              - clickable confirmScriptText_callback def:true save:Confirm usages:1
+              - clickable confirmScriptText_callback def:false save:Cancel usages:1
+              - narrate "Are you sure about this?"
+              - narrate <&hover[Confirm].type[show_text]><element[<green><bold><underline>[Yes]].on_click[<entry[Confirm].command>]><&end_hover><reset> targets: <[player]>
+              - narrate <&hover[Cancel].type[show_text]><element[<red><bold><underline>[No]].on_click[<entry[Cancel].command>]><&end_hover><reset> targets: <[player]>
+
+confirmScriptText_callback:
+  type: task
+  debug: false
+  definitions: bool
+  script:
+    - if <[bool]> && <player.has_flag[callback]>:
+      - inject <player.flag[callback]>
+    - else if <[bool].equals[false]>:
+        - narrate <red><bold>Cancelled.<reset>
+    - flag player callback:!
+
 
 tpaccept_command:
     type: command
