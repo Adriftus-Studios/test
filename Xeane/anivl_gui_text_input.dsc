@@ -14,6 +14,9 @@ anvil_gui_text_events:
   events:
     on player prepares anvil craft anvil_gui_item:
       - narrate TEST!
+    on player clicks in inventory:
+      - stop if:<context.inventory.id_holder.equals[anvil].not>
+      - determine cancelled if:<context.inventory.slot[1].script.name.equals[anvil_gui_item].if_null[false]>
 
 anvil_gui_item:
   type: item
