@@ -35,7 +35,7 @@ anvil_gui_text_events:
     on player clicks in inventory priority:1:
       - determine cancelled if:<context.inventory.slot[3].script.name.equals[anvil_gui_item].if_null[false]>
     on player closes inventory:
-      - stop if:<context.inventory.slot[3].script.name.equals[anvil_gui_item].not.if_null[true]>
+      - stop if:<context.inventory.slot[1].script.name.equals[anvil_gui_item].not.if_null[true]>
       - inventory set slot:1 d:<context.inventory> o:air
 
 anvil_gui_item:
