@@ -22,8 +22,7 @@ anvil_gui_handle:
   script:
     - inventory set slot:1 o:air d:<context.inventory>
     - inventory close
-    - define input <context.item.flag[text_input]>
-    - inject <context.item.flag[callback]>
+    - run <context.item.flag[callback]> def:<context.item.flag[text_input]>
 
 anvil_gui_text_events:
   type: world
