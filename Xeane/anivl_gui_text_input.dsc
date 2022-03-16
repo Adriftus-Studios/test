@@ -1,3 +1,10 @@
+anvil_gui_callback_example:
+  type: task
+  debug: false
+  definitions: text_input
+  script:
+    - narrate <[text_input]>
+
 anvil_gui_text_input:
   type: task
   debug: false
