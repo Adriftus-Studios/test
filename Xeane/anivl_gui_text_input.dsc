@@ -1,7 +1,7 @@
 anvil_gui_text_input:
   type: task
   debug: false
-  definitions: title|display|lore|callback
+  definitions: title|default_text|lore|callback
   script:
     - define item <item[anvil_gui_item].with[display=<[display]>;lore=<[lore]>;flag=run_script:<[callback]>]>
     - openanvil title:<[title]>
@@ -14,7 +14,8 @@ anvil_gui_text_events:
   events:
     on player prepares anvil craft anvil_gui_item:
       - determine passively 0
-      - determine <context.item.with[display=<context.inventory.slot[1].display>;lore=<context.inventory.slot[1].display>;material=stone_brick;flag=text_input:<context.new_name>]>
+      - inventory adjust slot:1 d:<context.inventory> o:<context.inventory.slot[1].with[flag=text_input:<context.new_name>]>
+      - determine air
     on player clicks in inventory priority:1:
       - stop if:<context.inventory.id_holder.equals[anvil].not>
       - determine cancelled if:<context.inventory.slot[1].script.name.equals[anvil_gui_item].if_null[false]>
