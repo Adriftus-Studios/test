@@ -86,6 +86,7 @@ fishing_minigame_reset_whirlpools:
     type: task
     script:
         - ~run fishing_minigame_destroy_whirlpools
+        - flag server fishing_minigame_reset_whirlpools
         - flag server fishing_minigame_active_whirlpool_locations:<list[]>
 
 # % ██ [ Task used to generate random whirlpools on the water inside given cuboid ] ██
@@ -136,6 +137,9 @@ fishing_minigame_whirlpool_animation:
     script:
         - define circles <server.flag[fishing_minigame_active_whirlpool_locations].keys.parse[up.with_pitch[90].proc[define_circle].context[1|0.1]].combine>
         - while <server.flag[fishing_minigame_active_whirlpool_locations].keys.size> > 0:
+            - if <server.has_flag[fishing_minigame_reset_whirlpools]>:
+                - flag server fishing_minigame_reset_whirlpools:!
+                - while stop
             - playeffect at:<[circles]> dolphin offset:0.05,0.05,0.05 targets:<server.online_players>
             - wait 1t
 
