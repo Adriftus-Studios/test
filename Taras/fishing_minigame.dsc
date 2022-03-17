@@ -37,6 +37,10 @@ fishing_minigame_stop:
         - run fishing_minigame_reset_inventory def:<[player]>
         - title 'title:<&c>Fishing Exited' "subtitle:<&c>Your fishing session is over!" targets:<[player]>
         - narrate "<&e>Your fishing session is over. If you would like to resume, just speak to the fish merchant again"
+        - if <player.has_flag[fishing_minigame_playing_music]>:
+            - queue <player.flag[fishing_minigame_music_queue]> stop
+            - midi cancel
+            - flag <player> fishing_minigame_playing_music:!
 
 # % ██ [ Task called when bucket is bucket is clicked ] ██
 fishing_minigame_open_bucket:
@@ -314,9 +318,31 @@ fishing_minigame_stats_book_open:
         - adjust def:book book_pages:<[pages]>
         - adjust <[player]> show_book:<[book]>
 
+# % ██ [ Plays the given song to the given player ] ██
+fishing_minigame_play_song:
+    debug: false
+    type: task
+    definitions: player|song
+    script:
+        - ~midi <[song]> <[player]>
+        - flag <[player]> fishing_minigame_playing_music:!
+
 #- % █████████████████████████████████
 #- %          [ Procedures ]
 #- % █████████████████████████████████
+
+# % ██ [ Returns the available midi tracks ] ██
+fishing_minigame_get_all_music_tracks:
+    debug: false
+    type: procedure
+    script:
+        - define tracks <server.list_files[midi/mp3_player]>
+        - define music <map[]>
+        - foreach <[tracks]> as:track:
+            - define track <[track].replace[.mid].with[]>
+            - define split <[track].split[-]>
+            - define music <[music].include[<[split].get[1]>=<map[author=<[split].get[2]>;filename=mp3_player/<[track]>]>]>
+        - determine <[music]>
 
 # % ██ [ Returns the token item with the balance ] ██
 fishing_minigame_get_fishtoken_item:
@@ -600,7 +626,7 @@ fishing_minigame_timed_event_handler:
 
 # % ██ [ Minigame Event Handling ] ██
 fishing_minigame_event_handler:
-    debug: false
+    debug: true
     type: world
     events:
         # % ██ [ Player Catch Fish ] ██
@@ -648,38 +674,79 @@ fishing_minigame_event_handler:
 
         # % ██ [ Player Interact with Merchant ] ██
         on player clicks in fishing_minigame_merchant_gui:
-            - choose <context.item.script.name>:
-                - case fishing_minigame_start_button:
-                    - inventory close
-                    - run fishing_minigame_start def:<player>
-                - case fishing_minigame_fishtokens_button:
-                    - inventory close
-                    - run fishing_minigame_shop_open_gui def:<player>
-                - case fishing_minigame_leaderboards_button:
-                    - inventory close
-                    - run fishing_minigame_leaderboards_open_gui def:<player>
-                - case fishing_minigame_fish_button:
-                    - inventory close
-                    - run fishing_minigame_open_bucket def:<player>|true
-                - case fishing_minigame_end_game:
-                    - inventory close
-                    - run fishing_minigame_stop def:<player>
+            - if !<context.item.material.name.equals[air]> && <context.item.script.name.exists>:
+                - choose <context.item.script.name>:
+                    - case fishing_minigame_start_button:
+                        - inventory close
+                        - run fishing_minigame_start def:<player>
+                    - case fishing_minigame_fishtokens_button:
+                        - inventory close
+                        - run fishing_minigame_shop_open_gui def:<player>
+                    - case fishing_minigame_leaderboards_button:
+                        - inventory close
+                        - run fishing_minigame_leaderboards_open_gui def:<player>
+                    - case fishing_minigame_fish_button:
+                        - inventory close
+                        - run fishing_minigame_open_bucket def:<player>|true
+                    - case fishing_minigame_end_game:
+                        - inventory close
+                        - run fishing_minigame_stop def:<player>
 
         # % ██ [ Player Interact with Shop ] ██
         on player clicks in fishing_minigame_shop_gui:
-            - choose <context.item.script.name>:
-                - case fishing_minigame_shop_exchange_item:
+            - if !<context.item.material.name.equals[air]> && <context.item.script.name.exists>:
+                - choose <context.item.script.name>:
+                    - case fishing_minigame_shop_exchange_item:
+                        - inventory close
+                        - narrate "<&c>Unavailable during the beta"
+                    - case fishing_minigame_shop_skins_item:
+                        - inventory close
+                        - narrate "<&c>Unavailable during the beta"
+                    - case fishing_minigame_shop_music_item:
+                        - inventory close
+                        - run fishing_minigame_music_shop_open_gui def:<player>
+                    - case fishing_minigame_shop_bucket_item:
+                        - inventory close
+                        - narrate "<&c>Unavailable during the beta"
+
+        # % ██ [ Player Interact with MP3 Player ] ██
+        on player clicks in fishing_minigame_mp3_gui:
+            - if <player.has_flag[fishingminigame.active]> && <player.flag[fishingminigame.active]>:
+                - define song <context.item>
+                - if <[song].material.name.equals[music_disc_pigstep]>:
+                    - if <player.has_flag[fishing_minigame_playing_music]>:
+                        - queue <player.flag[fishing_minigame_music_queue]> stop
+                        - midi cancel
+                        - flag <player> fishing_minigame_playing_music:!
+                    - actionbar "<&b>Now playing <[song].display.strip_color>" targets:<player>
                     - inventory close
-                    - narrate "<&c>Unavailable during the beta"
-                - case fishing_minigame_shop_skins_item:
-                    - inventory close
-                    - narrate "<&c>Unavailable during the beta"
-                - case fishing_minigame_shop_music_item:
-                    - inventory close
-                    - narrate "<&c>Unavailable during the beta"
-                - case fishing_minigame_shop_bucket_item:
-                    - inventory close
-                    - narrate "<&c>Unavailable during the beta"
+                    - flag <player> fishing_minigame_playing_music
+                    - flag <player> fishing_minigame_last_song:<[song].display.strip_color>
+                    - wait 10t
+                    - run fishing_minigame_play_song def:<player>|<[song].flag[fileName]> save:queue
+                    - flag <player> fishing_minigame_music_queue:<entry[queue].created_queue>
+                - else if <[song].material.name.equals[note_block]>:
+                    - if <player.has_flag[fishing_minigame_playing_music]>:
+                        - queue <player.flag[fishing_minigame_music_queue]> stop
+                        - midi cancel
+                        - flag <player> fishing_minigame_playing_music:!
+                        - inventory close
+                        - run fishing_minigame_mp3_open_gui def:<player>
+
+        # % ██ [ Player Interact with Music Shop ] ██
+        on player clicks in fishing_minigame_music_shop_gui:
+            - define song <context.item>
+            - if <[song].material.name.equals[music_disc_pigstep]>:
+                - if !<[song].is_enchanted>:
+                    - run fish_tokens_remove def:<player>|1000 save:removed
+                    - if <entry[removed].created_queue.determination.first>:
+                        - define songName <[song].flag[songName]>
+                        - flag <player> fishingminigame.music:<player.flag[fishingminigame.music].include[<[songName]>]>
+                        - narrate "<&a><[songName]> has been added to your MP3 Player!"
+                        - inventory close
+                        - run fishing_minigame_music_shop_open_gui def:<player>
+                    - else:
+                        - narrate "<&c>You can not afford that!"
 
         # % ██ [ Player Interact with Bucket ] ██
         on player clicks in fishing_minigame_bucket_gui:
@@ -710,7 +777,7 @@ fishing_minigame_event_handler:
                     - run fishing_minigame_stats_book_open def:<player>
                     - determine cancelled
                 - if <context.item.script.data_key[data.flag].exists> && <context.item.script.data_key[data.flag].equals[mp3]>:
-                    - narrate "<&c>Unavailable during the beta. (Future feature)"
+                    - run fishing_minigame_mp3_open_gui def:<player>
                     - determine cancelled
 
         # % ██ [ Bunch of events to prevent unwanted actions ] ██
@@ -724,16 +791,20 @@ fishing_minigame_event_handler:
                     - determine cancelled
         on player clicks item in inventory:
             - if <player.has_flag[fishingminigame.active]> && <player.flag[fishingminigame.active]>:
-                - if <context.item.script.name.equals[fishing_minigame_fish_bucket]> || <context.item.script.name.equals[fishing_minigame_fish_bucket_empty]> || <context.item.script.name.equals[fishing_minigame_fish_bucket_full]>:
-                    - determine cancelled passively
-                    - run fishing_minigame_open_bucket def:<player>|false
-                - else if <context.item.script.name.equals[fishing_minigame_statistics_book_inv]>:
-                    - run fishing_minigame_stats_book_open def:<player>
+                - if !<context.item.material.name.equals[air]> && <context.item.script.name.exists>:
+                    - if <context.item.script.name.equals[fishing_minigame_fish_bucket]> || <context.item.script.name.equals[fishing_minigame_fish_bucket_empty]> || <context.item.script.name.equals[fishing_minigame_fish_bucket_full]>:
+                        - determine cancelled passively
+                        - run fishing_minigame_open_bucket def:<player>|false
+                    - else if <context.item.script.name.equals[fishing_minigame_statistics_book_inv]>:
+                        - run fishing_minigame_stats_book_open def:<player>
+                        - determine cancelled
+                    - else if <context.item.script.name.equals[fishing_minigame_end_game]>:
+                        - inventory close
+                        - run fishing_minigame_stop def:<player>
+                    - else if <context.item.script.data_key[data.flag].exists> && <context.item.script.data_key[data.flag].equals[mp3]>:
+                        - inventory close
+                        - run fishing_minigame_mp3_open_gui def:<player>
                     - determine cancelled
-                - else if <context.item.script.name.equals[fishing_minigame_end_game]>:
-                    - inventory close
-                    - run fishing_minigame_stop def:<player>
-                - determine cancelled
         on player opens inventory:
             - if <player.has_flag[fishingminigame.active]> && <player.flag[fishingminigame.active]>:
                 - adjust <player> item_on_cursor:<item[air]>
@@ -758,6 +829,14 @@ fishing_minigame_event_handler:
                 - if <context.entity.is_npc>:
                     - if !<context.entity.scripts.parse[name].contains[fishing_minigame_merchant_npc]>:
                         - run fishing_minigame_stop def:<player>
+        on player joins:
+            - if !<player.has_flag[fishingminigame.music]>:
+                - flag <player> fishingminigame.music:<list[]>
+        on player quits:
+            - if <player.has_flag[fishing_minigame_playing_music]>:
+                - queue <player.flag[fishing_minigame_music_queue]> stop
+                - midi cancel
+                - flag <player> fishing_minigame_playing_music:!
 
 # % ██ [ Minigame Merchant Handling ] ██
 fishing_minigame_merchant_npc:
@@ -947,6 +1026,90 @@ fishing_minigame_leaderboards_gui:
     - [] [gold] [] [] [] [] [] [gold] []
     - [] [gold] [silver] [] [] [] [silver] [gold] []
     - [] [gold] [silver] [bronze] [] [bronze] [silver] [gold] []
+
+fishing_minigame_mp3_open_gui:
+    type: task
+    definitions: player
+    debug: false
+    build_inventory:
+        - define inventory <inventory[fishing_minigame_mp3_gui]>
+        - define music <proc[fishing_minigame_get_all_music_tracks]>
+        - define ownedTracks <[player].flag[fishingminigame.music]>
+
+        - if <[player].has_flag[fishing_minigame_playing_music]>:
+            - define noteblock <item[fishing_minigame_mp3_stop_button]>
+            - adjust def:noteblock "lore:<&7>Currently Playing:<n><&a><[player].flag[fishing_minigame_last_song]><n><&r><n><&r><element[➤ Press to Interrupt].color_gradient[from=#FF2929;to=#FF9292]>"
+            - inventory set o:<[noteblock]> slot:50 d:<[inventory]>
+        - else:
+            - define noteblock <item[fishing_minigame_mp3_no_button]>
+            - inventory set o:<[noteblock]> slot:50 d:<[inventory]>
+
+        - foreach <[ownedTracks]> as:track:
+            - define trackName <[track].replace[_].with[<&sp>]>
+            - define item <item[music_disc_pigstep[hides=all]]>
+            - adjust def:item display:<&6><&l><[trackName]>
+            - adjust def:item "lore:<&7>By: <[music].get[<[track]>].get[author].replace[_].with[<&sp>]>"
+            - adjust def:item flag:fileName:<[music].get[<[track]>].get[filename]>
+            - inventory set o:<[item]> slot:<[inventory].first_empty> d:<[inventory]>
+    script:
+        - inject locally path:build_inventory
+        - inventory open d:<[inventory]>
+
+fishing_minigame_mp3_gui:
+    type: inventory
+    inventory: chest
+    size: 54
+    debug: false
+    title: <&6>MP3 Player
+    gui: true
+    definitions:
+        gold: <item[orange_stained_glass_pane[display=<&r> ]]>
+    slots:
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
+    - [gold] [gold] [gold] [gold] [] [gold] [gold] [gold] [gold]
+
+fishing_minigame_music_shop_open_gui:
+    type: task
+    definitions: player
+    debug: false
+    build_inventory:
+        - define inventory <inventory[fishing_minigame_music_shop_gui]>
+        - define music <proc[fishing_minigame_get_all_music_tracks]>
+        - define ownedTracks <[player].flag[fishingminigame.music]>
+
+        - foreach <[music]> key:track as:map:
+            - define trackName <[track].replace[_].with[<&sp>]>
+            - define item <item[music_disc_pigstep[hides=all]]>
+            - adjust def:item display:<&6><&l><[trackName]>
+            - if <[ownedTracks].contains[<[track]>]>:
+                - adjust def:item enchantments:empty=1
+                - adjust def:item "lore:<&7>By: <[map].get[author].replace[_].with[<&sp>]><n><&r><n><&r><element[You own this song].color_gradient[from=#FF8400;to=#FFC481]>"
+            - else:
+                - adjust def:item "lore:<&7>By: <[map].get[author].replace[_].with[<&sp>]><n><&7>Price: <&b>1000<&r><&font[adriftus:chat]><&chr[0045]><&r><n><&r><n><&r><element[➤ Press to Purchase].color_gradient[from=#FF8400;to=#FFC481]>"
+            - adjust def:item flag:fileName:<[map].get[filename]>
+            - adjust def:item flag:songName:<[track]>
+            - inventory set o:<[item]> slot:<[inventory].first_empty> d:<[inventory]>
+    script:
+        - inject locally path:build_inventory
+        - inventory open d:<[inventory]>
+
+fishing_minigame_music_shop_gui:
+    type: inventory
+    inventory: chest
+    size: 45
+    debug: false
+    title: <&6>Music Shop
+    gui: true
+    slots:
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
 
 #- % █████████████████████████████████
 #- %             [ Items ]
@@ -1304,6 +1467,8 @@ fishing_minigame_mp3_player:
         flag: mp3
     lore:
     - <&7>Play your music!
+    - <&7>Purchase more songs at the
+    - <&7>fishing merchant
     - <&r>
     - <&r><element[➤ Click to Open].color_gradient[from=#FF8400;to=#FFC481]>
 
@@ -1323,7 +1488,7 @@ fishing_minigame_fishtokens_button:
     debug: false
     type: item
     material: iron_nugget
-    display name: <&a><&l>Fishtokens
+    display name: <&a><&l>Fishtoken Shop
     mechanisms:
         custom_model_data: 40
     lore:
@@ -1354,6 +1519,33 @@ fishing_minigame_fish_button:
     - <&7>Get your catch valued by the merchant.
     - <&r>
     - <&r><element[➤ View Your Value].color_gradient[from=#FFF95B;to=#FFFCB0]>
+
+# % ██ [ MP3 No Song ] ██
+fishing_minigame_mp3_no_button:
+    debug: false
+    type: item
+    material: note_block
+    display name: <&c><&l>Nothing Playing
+    data:
+        flag: mp3_no
+    lore:
+    - <&7>Currently nothing is playing
+    - <&7>Select a track to listen to
+
+# % ██ [ MP3 Stop Song ] ██
+fishing_minigame_mp3_stop_button:
+    debug: false
+    type: item
+    material: note_block
+    display name: <&c><&l>Stop
+    data:
+        flag: mp3_stop
+    enchantments:
+    - empty:1
+    lore:
+    - <&7>Currently Playing <&a>Song
+    - <&r>
+    - <&r><element[➤ Press to Interrupt].color_gradient[from=#FF2929;to=#FF9292]>
 
 # % ██ [ Statistics Book ] ██
 fishing_minigame_stats_book:
