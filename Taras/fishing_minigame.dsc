@@ -619,6 +619,10 @@ fishing_minigame_event_handler:
                     - remove <context.hook>
                     - determine cancelled
 
+        on player fishes while caught_entity:
+            - if <player.has_flag[fishingminigame.active]> && <player.flag[fishingminigame.active]>:
+                - remove <context.hook>
+
         after player fishes while fishing:
             - if <player.has_flag[fishingminigame.active]> && <player.flag[fishingminigame.active]>:
                 - while !<context.hook.fish_hook_state.equals[bobbing]>:
