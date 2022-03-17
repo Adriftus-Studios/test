@@ -78,7 +78,7 @@ fishing_minigame_reset_whirlpool_locations:
     script:
         - flag server fishing_minigame_whirlpool_locations:<proc[fishing_minigame_generate_possible_whirlpool_locations].context[<cuboid[fishing_minigame_pond]>]>
         - foreach <server.flag[fishing_minigame_whirlpool_locations]> as:loc:
-            - playeffect at:<[loc].up> flame offset:0 targets:<server.online_players> visibility:500
+            - playeffect at:<[loc].up> flame offset:0 targets:<server.online_players>
 
 # % ██ [ Task used to reset the whirlpools generated ] ██
 fishing_minigame_reset_whirlpools:
@@ -137,7 +137,7 @@ fishing_minigame_whirlpool_animation:
     script:
         - flag <[location]> whirlpool
         - while <[location].has_flag[whirlpool]>:
-            - playeffect at:<proc[define_circle].context[<[location].up.with_pitch[90]>|1|0.1]> dolphin offset:0.05,0.05,0.05 targets:<server.online_players> visibility:500
+            - playeffect at:<proc[define_circle].context[<[location].up.with_pitch[90]>|1|0.1]> dolphin offset:0.05,0.05,0.05 targets:<server.online_players>
             - wait 1t
 
 # % ██ [ Adds a fish to a bucket (returns false if failed) ] ██
@@ -778,7 +778,10 @@ fishing_minigame_merchant_open_gui:
             - inventory set o:fishing_minigame_start_button slot:14 d:<[inventory]>
         - define tokensButton <item[fishing_minigame_fishtokens_button]>
         - define tokensLore <[tokensButton].lore>
-        - define newLoreLine "<&a>Fishtokens Amount: <[player].flag[fishingminigame.fishtokens].round_to[2].format_number> <&r><&font[adriftus:chat]><&chr[0045]>"
+        - if <[player].has_flag[fishingminigame.fishtokens]>:
+            - define newLoreLine "<&a>Fishtokens Amount: <[player].flag[fishingminigame.fishtokens].round_to[2].format_number> <&r><&font[adriftus:chat]><&chr[0045]>"
+        - else:
+            - define newLoreLine "<&a>Fishtokens Amount: 0 <&r><&font[adriftus:chat]><&chr[0045]>"
         - define tokensLore <[tokensLore].set_single[<[newLoreLine]>].at[3]>
         - adjust def:tokensButton lore:<[tokensLore]>
         - inventory set o:<[tokensButton]> slot:30 d:<[inventory]>
