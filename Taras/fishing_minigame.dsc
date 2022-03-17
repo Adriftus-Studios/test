@@ -104,6 +104,7 @@ fishing_minigame_generate_whirlpools:
                     - while next
             - define list:->:<[whirlpoolLoc]>
         - flag server fishing_minigame_active_whirlpool_locations:<[list]>
+        - flag server fishing_minigame_reset_whirlpools:!
         - run fishing_minigame_build_whirlpools
 
 # % ██ [ Task used to destroy the actual whirlpool entities ] ██
