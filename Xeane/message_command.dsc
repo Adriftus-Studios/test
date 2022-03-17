@@ -12,6 +12,9 @@ message_command:
     - if <context.args.size> <= 1:
        - narrate "<&c>You need to include a player and a message!"
        - stop
+    - if <server.flag[player_map.names.<context.args.get[1]>.uuid]> == <player.uuid>:
+      - narrate "<&c>You can't message yourself..."
+      - stop
     # definitions
     - define sender <player.uuid>
     - define uuid <util.random_uuid>
