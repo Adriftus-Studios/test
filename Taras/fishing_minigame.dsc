@@ -96,6 +96,7 @@ fishing_minigame_generate_whirlpools:
     definitions: amount
     script:
         - ~run fishing_minigame_reset_whirlpools
+        - wait 5t
         - flag server fishing_minigame_reset_whirlpools:!
         - define list <list[]>
         - while <[list].size> < <[amount]>:
