@@ -1,19 +1,20 @@
 Generic_Freeze_Task:
   type: task
-  debug: true
+  debug: false
   definitions: player|mode|location
   ## Usage: "- run Generic_Freeze_Task instantly def:<PlayerTag>|(freeze/unfreeze)(|<LocationTag>)"
   ## Location is required for freeze mode only-- omit for unfreeze mode.
   script:
     - choose <[mode]>:
       - case unfreeze:
-        - flag <[player]> frozen:!
-        - adjust <[player]> fly_speed:<[player].flag[freeze_task_flight_speed]>
-        - adjust <[player]> flying:false
-        - adjust <[player]> fov_multiplier:0.0
-        - adjust <[player]> can_fly:<[player].flag[freeze_task_flight_permissions]>
+        - if <[player].is_online>:
+          - adjust <[player]> flying:false
+          - adjust <[player]> fov_multiplier:0.0
+        - adjust <[player]> fly_speed:<[player].flag[freeze_task_flight_speed]||0.2>
+        - adjust <[player]> can_fly:<[player].flag[freeze_task_flight_permissions]||false>
         - flag <[player]> freeze_task_flight_permissions:!
         - flag <[player]> freeze_task_flight_speed:!
+        - flag <[player]> frozen:!
       - case freeze:
         - teleport <[player]> <[location]>
         - flag <[player]> frozen:<[location]>
