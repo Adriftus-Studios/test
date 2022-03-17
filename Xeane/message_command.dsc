@@ -16,8 +16,6 @@ message_command:
       - narrate "<&c>You can't message yourself..."
       - stop
     # definitions
-    - define sender <player.uuid>
-    - define uuid <util.random_uuid>
     - define msg <context.args.get[2].to[last].separated_by[<&sp>]>
     - define self_name <proc[get_player_display_name]>
     - define other_name <proc[get_player_display_name].context[<player[<server.flag[player_map.names.<context.args.get[1]>.uuid]>]>]>
@@ -39,5 +37,8 @@ message_command:
     #- define WhisperTextMods "<&7><&lb>MSG<&rb><&r><proc[get_player_display_name]><&b>-<&gt><context.args.get[1].to_titlecase> "
 
     - define message "<element[<[WhisperTextOther]><&f><[msg]>].on_click[/msg <[self_name].strip_color.replace_text[<&sp>].with[_]> ].type[SUGGEST_COMMAND].on_hover[<&e>Click to Reply]>"
-    - run bungee_send_message def:<server.flag[player_map.names.<context.args.get[1]>.uuid]>|<[message]>
-    - narrate <[WhisperTextSelf]><&f><[msg]>
+    - run bungee_send_message def:<server.flag[player_map.names.<context.args.get[1]>.uuid]>|<[message]>|true
+    - define message <[WhisperTextSelf]><&f><[msg]>
+    - narrate <[message]>
+    - define map <map[time=<server.current_time_millis>;message=<[message]>]>
+    - run - run global_player_data_message_history def:<player.uuid>|<[map]>
