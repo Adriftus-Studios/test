@@ -96,6 +96,7 @@ fishing_minigame_generate_whirlpools:
     definitions: amount
     script:
         - ~run fishing_minigame_reset_whirlpools
+        - flag server fishing_minigame_reset_whirlpools:!
         - define list <list[]>
         - while <[list].size> < <[amount]>:
             - define whirlpoolLoc <server.flag[fishing_minigame_whirlpool_locations].random>
@@ -104,7 +105,6 @@ fishing_minigame_generate_whirlpools:
                     - while next
             - define list:->:<[whirlpoolLoc]>
         - flag server fishing_minigame_active_whirlpool_locations:<[list]>
-        - flag server fishing_minigame_reset_whirlpools:!
         - run fishing_minigame_build_whirlpools
 
 # % ██ [ Task used to destroy the actual whirlpool entities ] ██
@@ -137,12 +137,10 @@ fishing_minigame_whirlpool_animation:
     debug: false
     script:
         - define circles <server.flag[fishing_minigame_active_whirlpool_locations].keys.parse[up.with_pitch[90].proc[define_circle].context[1|0.1]].combine>
-        - while <server.flag[fishing_minigame_active_whirlpool_locations].keys.size> > 0:
-            - if <server.has_flag[fishing_minigame_reset_whirlpools]>:
-                - flag server fishing_minigame_reset_whirlpools:!
-                - while stop
+        - while !<server.has_flag[fishing_minigame_reset_whirlpools]>:
             - playeffect at:<[circles]> dolphin offset:0.05,0.05,0.05 targets:<server.online_players>
             - wait 1t
+        - flag server fishing_minigame_reset_whirlpools:!
 
 # % ██ [ Adds a fish to a bucket (returns false if failed) ] ██
 fishing_minigame_bucket_add:
