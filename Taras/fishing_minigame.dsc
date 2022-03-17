@@ -348,8 +348,8 @@ fishing_minigame_show_off:
     type: task
     definitions: player|fish
     script:
-        - ratelimit <[player]> 30s
-        - narrate "<&7>Check out this fish <[player].name> caught: <[fish].display.on_hover[<[fish]>].type[SHOW_ITEM]>"
+        - ratelimit <[player]> 10s
+        - narrate "<&7><&l><&lt>!<&gt><&r> <&7>Check out this fish <[player].name> caught: <[fish].display.on_hover[<[fish]>].type[SHOW_ITEM]>"
 
 #- % █████████████████████████████████
 #- %          [ Procedures ]
