@@ -399,10 +399,9 @@ fishing_minigame_location_in_whirlpool:
     type: procedure
     definitions: location
     script:
-        - foreach <server.flag[fishing_minigame_active_whirlpool_locations]> key:loc as:entity:
-            - define blockList <list[<[loc]>|<[loc].right>|<[loc].backward>|<[loc].right.backward>|<[loc].down>|<[loc].right.down>|<[loc].backward.down>|<[loc].right.backward.down>]>
-            - if <[blockList].contains[<[location].block>]>:
-                - determine true
+        - define closest <server.flag[fishing_minigame_active_whirlpool_locations].keys.sort_by_number[distance[<[location]>]].first>
+        - if <[closest].distance[<[location].with_y[<[closest].y>]>]> <= 1.1:
+            - determine true
         - determine false
 
 # % ██ [ Returns a random quality ] ██
