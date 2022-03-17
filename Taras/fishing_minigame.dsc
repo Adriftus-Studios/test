@@ -518,7 +518,7 @@ fishing_minigame_get_random_fish:
         - if !<[rarity].equals[legendary]>:
             - define "lore:|:<&r><&e>Rarity: <&f><[rarityColor]><[rarity].to_sentence_case>"
         - else:
-            - define "lore:|:<&r><&e>Rarity: <&f><element[<bold><[rarity]>].to_sentence_case.color_gradient[from=#FF930F;to=#FFE15C]>"
+            - define "lore:|:<&r><&e>Rarity: <&f><element[<bold><[rarity].to_sentence_case>].color_gradient[from=#FF930F;to=#FFE15C]>"
 
         - if <[quality].equals[amazing]>:
             - define "lore:|:<&r><&e>Quality: <&f><&color[<[qualityColor]>]><&l><[quality].to_sentence_case>"
