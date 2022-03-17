@@ -894,7 +894,8 @@ fishing_minigame_leaderboards_open_gui:
             - inventory set o:<item[player_head[display=<&7><&l>Nobody]]> slot:5 d:<[inventory]>
             - inventory set o:<[barrier]> slot:14 d:<[inventory]>
         - else:
-            - define playerHead <player[<[bestCatchPlayer]>].skull_item>
+            - define playerName <player[<[bestCatchPlayer]>].name>
+            - define playerHead <item[player_head[skull_skin=<[playerName]>]]>
             - adjust def:playerHead "display:<&d><&l>Best Catch"
             - adjust def:playerHead "lore:<&7>Best catch of the day by:<n><&d><player[<[bestCatchPlayer]>].name.color_gradient[from=#FF62FA;to=#FFA8EF]>"
             - inventory set o:<[playerHead]> slot:5 d:<[inventory]>
@@ -902,9 +903,9 @@ fishing_minigame_leaderboards_open_gui:
 
         - repeat 3:
             - if <[mostCatchedPlayers].get[<[value]>].exists>:
-                - define playerHead <[mostCatchedPlayers].get[<[value]>].skull_item>
-                - adjust def:playerHead display:<element[<&ns><[value]>].color[<[colors].get[<[value]>]>]>
                 - define playerName <[mostCatchedPlayers].get[<[value]>].name>
+                - define playerHead <item[player_head[skull_skin=<[playerName]>]]>
+                - adjust def:playerHead display:<element[<&ns><[value]>].color[<[colors].get[<[value]>]>]>
                 - adjust def:playerHead "lore:<&l><element[<bold><[playerName]>].color_gradient[<[gradients].get[<[value]>]>]><n><&8>+---------------+<n><&7>Fish caught: <&a><[mostCatchedPlayers].get[<[value]>].flag[fishingminigame.stats.daily.catch]><n><&8>+---------------+"
                 - inventory set o:<[playerHead]> slot:<[slots].first> d:<[inventory]>
                 - define slots <[slots].remove[first]>
@@ -914,9 +915,9 @@ fishing_minigame_leaderboards_open_gui:
 
         - repeat 3:
             - if <[mostValuePlayers].get[<[value]>].exists>:
-                - define playerHead <[mostValuePlayers].get[<[value]>].skull_item>
-                - adjust def:playerHead display:<element[<&ns><[value]>].color[<[colors].get[<[value]>]>]>
                 - define playerName <[mostValuePlayers].get[<[value]>].name>
+                - define playerHead <item[player_head[skull_skin=<[playerName]>]]>
+                - adjust def:playerHead display:<element[<&ns><[value]>].color[<[colors].get[<[value]>]>]>
                 - adjust def:playerHead "lore:<&l><element[<bold><[playerName]>].color_gradient[<[gradients].get[<[value]>]>]><n><&8>+---------------+<n><&7>Value caught: <&a><[mostValuePlayers].get[<[value]>].flag[fishingminigame.stats.daily.value].round_to[2].format_number> <&r><&font[adriftus:chat]><&chr[0045]><n><&8>+---------------+"
                 - inventory set o:<[playerHead]> slot:<[slots].first> d:<[inventory]>
                 - define slots <[slots].remove[first]>
