@@ -506,8 +506,11 @@ fishing_minigame_get_random_fish:
         - define qualityColor <script[fishing_minigame_fish_table].parsed_key[quality.<[quality]>.color]>
         - define weightColor <[weightAndSize].get[color]>
         - define perfect false
-        - if <[weightAndSize].get[weight].equals[<[perfectWeight]>]> && <[quality].equals[amazing]>:
-            - define perfect true
+        - define bestWeight false
+        - if <[weightAndSize].get[weight].equals[<[perfectWeight]>]>:
+            - define bestWeight true
+            - if <[quality].equals[amazing]>:
+                - define perfect true
 
         - define fish <item[tropical_fish]>
 
@@ -522,7 +525,7 @@ fishing_minigame_get_random_fish:
         - else:
             - define "lore:|:<&r><&e>Quality: <&f><&color[<[qualityColor]>]><[quality].to_sentence_case>"
 
-        - if <[perfect]>:
+        - if <[bestWeight]>:
             - define "lore:|:<&r><&e>Weight: <&f><&color[<[weightColor]>]><&l><[weightAndSize].get[weight]> lbs"
             - define "lore:|:<&r><&e>Size: <&f><&color[<[weightColor]>]><&l><[weightAndSize].get[size]> in."
         - else:
