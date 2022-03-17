@@ -41,4 +41,4 @@ message_command:
     - define message <[WhisperTextSelf]><&f><[msg]>
     - narrate <[message]>
     - define map <map[time=<server.current_time_millis>;message=<[message]>]>
-    - run - run global_player_data_message_history def:<player.uuid>|<[map]>
+    - run global_player_data_message_history def:<player.uuid>|<[map]>
