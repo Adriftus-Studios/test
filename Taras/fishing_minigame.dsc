@@ -134,7 +134,7 @@ fishing_minigame_whirlpool_animation:
     type: task
     debug: false
     script:
-        - define circles <server.flag[fishing_minigame_active_whirlpool_locations].keys.parse[up.with_pitch[90].proc[define_circle].context[1|0.1]]>
+        - define circles <server.flag[fishing_minigame_active_whirlpool_locations].keys.parse[up.with_pitch[90].proc[define_circle].context[1|0.1]].combine>
         - while <server.flag[fishing_minigame_active_whirlpool_locations].keys.size> > 0:
             - playeffect at:<[circles]> dolphin offset:0.05,0.05,0.05 targets:<server.online_players>
             - wait 1t
