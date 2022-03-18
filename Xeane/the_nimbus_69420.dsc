@@ -5,7 +5,7 @@ shitty_nimbus_flight:
     after player toggles flying:
       # if they're holding the nimbus, they may ride into the sunset
       - if <context.state> && <player.item_in_hand.script.name.if_null[invalid]> == nimbus_69420_item:
-        - spawn nimbus_69420_entity <player.location.with_y[400]> save:broom
+        - spawn nimbus_69420_entity <player.location.with_y[<player.location.y.add[60]>]> save:broom
         - cast invisibility duration:24h hide_particles no_ambient no_icon <entry[broom].spawned_entity>
         - wait 1t
         - teleport <entry[broom].spawned_entity> <player.location>
