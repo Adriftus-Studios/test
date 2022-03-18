@@ -80,14 +80,14 @@ nimbus_69420_entity:
   entity_type: pig
   mechanisms:
     gravity: false
-    age: baby|locked
-    invulnerable: true
-    potion_effects: INVISIBILITY,0,2147483646,false,false,false
     equipment:
     - air
     - air
     - air
     - nimbus_69420_item
+    age: baby|locked
+    invulnerable: true
+    potion_effects: INVISIBILITY,0,2147483646,false,false,false
   flags:
     no_suffocate: true
 
