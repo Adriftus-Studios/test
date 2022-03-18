@@ -29,8 +29,10 @@ shitty_nimbus_flight:
     on player steers nimbus_69420_entity:
       - look <context.entity> <player.location.forward[10]>
       - ratelimit <player> 5t
-      - adjust <context.entity> velocity:0,0.5,0 if:<context.jump>
-      - adjust <context.entity> velocity:<player.location.direction.vector.normalize.mul[2]> if:<context.forward.is_more_than[0]>
+      - define velocity <location[0,0,0]>
+      - define velocity <[velocity].add[<player.location.direction.vector.normalize.mul[2]>]> if:<context.forward.is_more_than[0]>
+      - define velocity <[velocity].with_y[0.5]> if:<context.jump>
+      - adjust <player> velocity:<[velocity]>
 
 nimbus_i_call_forth_thee:
   type: command
