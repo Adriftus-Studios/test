@@ -78,10 +78,9 @@ nimbus_i_call_forth_thee:
 nimbus_69420_entity:
   type: entity
   debug: false
-  entity_type: armor_stand
+  entity_type: zombie
   mechanisms:
-    visible: false
-    marker: true
+    hide_from_players: true
     gravity: false
     invulnerable: true
     equipment:
