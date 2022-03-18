@@ -28,7 +28,7 @@ shitty_nimbus_flight:
       - remove <player.flag[nimbus]>
       - flag player nimbus:!
 
-    on player steers nimbus_69420_entity:
+    on player steers nimbus_69420_entity flagged:nimbus:
       - look <context.entity> <player.location.forward[10]>
       - ratelimit <player> 5t
       - define velocity <player.flag[nimbus.velocity]>
