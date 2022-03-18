@@ -1,6 +1,6 @@
 shitty_nimbus_flight:
   type: world
-  debug: false
+  debug: true
   events:
     on player right clicks block with:nimbus_69420_item:
       # if they're holding the nimbus, they may ride into the sunset
