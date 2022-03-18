@@ -44,8 +44,8 @@ shitty_nimbus_flight:
       - remove <player.flag[nimbus]>
 
     on player steers nimbus_69420_entity:
-      - look <context.entity> <player.location.forward[10]>
-      - ratelimit <player> 5t
+      - look <context.entity> <player.location.with_yaw[<player.body_yaw>].forward[10]>
+      - ratelimit <player> 10t
       - adjust <context.entity> velocity:<player.location.direction.vector.normalize.mul[2]> if:<context.forward.is_more_than[0]>
 
 nimbus_i_call_forth_thee:
