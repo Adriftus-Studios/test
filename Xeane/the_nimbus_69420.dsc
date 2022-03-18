@@ -34,8 +34,9 @@ shitty_nimbus_flight:
       - define velocity <player.flag[nimbus.velocity]>
       - narrate <context.sideways>
       - narrate CURRENT-<player.location.direction.vector.normalize.round_to_precision[0.01]><&nl>OLD-<[velocity].normalize.round_to_precision[0.01]>
-      - if <context.forward> > 0:
-        - if <[velocity].vector_length> < 5 && ( <player.location.direction.vector.normalize.round_to_precision[0.01]> == <[velocity].normalize.round_to_precision[0.01]> || <[velocity].vector_length> < 1 ):
+      - narrate <[velocity]>
+      - narrate <[velocity].vector_length>- if <context.forward> > 0:
+        - if <[velocity].vector_length> < 5 && ( <player.location.direction.vector.normalize.round_to_precision[0.01]> == <[velocity].normalize.round_to_precision[0.01]> || <[velocity].vector_length> < 2 ):
           - define velocity <[velocity].add[<player.location.direction.vector.normalize>]>
         - else:
           - define velocity <player.location.direction.vector.normalize>
@@ -46,8 +47,6 @@ shitty_nimbus_flight:
       - define velocity <[velocity].with_y[0.1]> if:<context.jump>
       - flag player nimbus.velocity:<[velocity]>
       - adjust <player.vehicle> velocity:<[velocity]> if:<[velocity].vector_length.is_more_than[0.1]>
-      - narrate <[velocity]>
-      - narrate <[velocity].vector_length>
 
 nimbus_i_call_forth_thee:
   type: command
