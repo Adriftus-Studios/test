@@ -83,6 +83,7 @@ nimbus_69420_entity:
   entity_type: zombie
   mechanisms:
     gravity: false
+    is_aware: false
     equipment:
     - air
     - air
