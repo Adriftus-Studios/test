@@ -6,7 +6,8 @@ shitty_nimbus_flight:
       # if they're holding the nimbus, they may ride into the sunset
       - if <context.state> && <player.item_in_hand.script.name.if_null[invalid]> == nimbus_69420_item:
         - mount <player>|nimbus_69420_entity
-        - flag player nimbus:<player.passenger>
+        - cast invisibility amplifier:1 duration:24h hide_particles no_ambient no_icon <player.vehicle>
+        - flag player nimbus:<player.vehicle>
         - take iteminhand
 
       # if they're riding the nimbus, all perfect things must come to an end eventually
@@ -45,6 +46,7 @@ shitty_nimbus_flight:
     on player steers nimbus_69420_entity:
       - ratelimit <player> 5t
       - adjust <player.vehicle> velocity:<player.location.direction.vector.normalize.mul[2]>
+      - look <player.vehicle> <player.location.forward[10]>
 
 nimbus_i_call_forth_thee:
   type: command
@@ -80,7 +82,6 @@ nimbus_69420_entity:
   debug: false
   entity_type: zombie
   mechanisms:
-    potion_effects: invisibility,2,10h,false,false,false
     gravity: false
     invulnerable: true
     equipment:
