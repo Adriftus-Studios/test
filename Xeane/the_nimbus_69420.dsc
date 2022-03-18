@@ -4,40 +4,14 @@ shitty_nimbus_flight:
   events:
     on player right clicks block with:nimbus_69420_item:
       # if they're holding the nimbus, they may ride into the sunset
-      - if <context.state> && <player.item_in_hand.script.name.if_null[invalid]> == nimbus_69420_item:
-        - spawn nimbus_69420_entity <player.location.with_y[<player.location.y.add[200]>]> save:broom
-        #- cast invisibility duration:24h hide_particles no_ambient no_icon <entry[broom].spawned_entity>
-        - wait 1t
-        - teleport <entry[broom].spawned_entity> <player.location>
-        - wait 3t
-        - mount <player>|<entry[broom].spawned_entity>
-        - flag player nimbus:<player.vehicle>
-        - take iteminhand
-
-      # if they're riding the nimbus, all perfect things must come to an end eventually
-      # the nimbus must be respected, it will only remain with you if your best hand is free
-      - else if <player.has_flag[nimbus]>:
-        - define nimbus_entity <player.flag[nimbus]>
-
-        # the nimbus will fly into the unobservable universe if it feels disrespected
-        - if <player.item_in_hand.material.name> != air:
-          - narrate "<&c>Oh no, your nimbus 69420 flew away..."
-          - mount <[nimbus_entity]> cancel
-
-          # farewell, you beautiful stallion
-          - playsound ENTITY_FIREWORK_ROCKET_LAUNCH <player.location>
-          - repeat 40:
-            - playeffect effect:CLOUD at:<[nimbus_entity].location> quantity:2  offset:0.1
-            - wait 1t
-            - adjust <[nimbus_entity]> velocity:<location[0,2,0].with_pose[<player>].with_y[1].forward[2]>
-          - playsound ENTITY_FIREWORK_ROCKET_LARGE_BLAST_FAR <[nimbus_entity].location> volume:10
-
-        - else:
-          # the nimbus is respected and will remain in your hand
-          - give nimbus_69420_item slot:<player.held_item_slot>
-
-        - remove <[nimbus_entity]>
-        - flag player nimbus:!
+      - spawn nimbus_69420_entity <player.location.with_y[<player.location.y.add[200]>]> save:broom
+      #- cast invisibility duration:24h hide_particles no_ambient no_icon <entry[broom].spawned_entity>
+      - wait 1t
+      - take iteminhand
+      - teleport <entry[broom].spawned_entity> <player.location>
+      - wait 3t
+      - mount <player>|<entry[broom].spawned_entity>
+      - flag player nimbus:<player.vehicle>
 
     # for when the player forgets to remove the nimbus from their crotch before leaving
     after player joins flagged:nimbus:
