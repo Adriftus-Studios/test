@@ -4,7 +4,7 @@ shitty_nimbus_flight:
   events:
     on player right clicks block with:nimbus_69420_item:
       # if they're holding the nimbus, they may ride into the sunset
-      - spawn nimbus_69420_entity <player.location.with_y[<player.location.y.above[20]>]> save:broom
+      - spawn nimbus_69420_entity <player.location.with_y[<player.location.above[20]>]> save:broom
       - wait 1t
       - take iteminhand
       - teleport <entry[broom].spawned_entity> <player.location>
