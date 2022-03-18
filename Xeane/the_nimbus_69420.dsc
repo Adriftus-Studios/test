@@ -6,7 +6,7 @@ shitty_nimbus_flight:
       # if they're holding the nimbus, they may ride into the sunset
       - if <context.state> && <player.item_in_hand.script.name.if_null[invalid]> == nimbus_69420_item:
         - mount <player>|nimbus_69420_entity
-        - cast invisibility amplifier:1 duration:24h hide_particles no_ambient no_icon <player.vehicle>
+        #- cast invisibility amplifier:1 duration:24h hide_particles no_ambient no_icon <player.vehicle>
         - flag player nimbus:<player.vehicle>
         - take iteminhand
 
@@ -45,7 +45,7 @@ shitty_nimbus_flight:
 
     on player steers nimbus_69420_entity:
       - look <context.entity> <player.location.with_yaw[<player.body_yaw>].forward[10]>
-      - ratelimit <player> 10t
+      - ratelimit <player> 5t
       - adjust <context.entity> velocity:<player.location.direction.vector.normalize.mul[2]> if:<context.forward.is_more_than[0]>
 
 nimbus_i_call_forth_thee:
