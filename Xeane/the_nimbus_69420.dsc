@@ -1,6 +1,6 @@
 shitty_nimbus_flight:
   type: world
-  debug: true
+  debug: false
   events:
     on player right clicks block with:nimbus_69420_item:
       # if they're holding the nimbus, they may ride into the sunset
@@ -33,6 +33,7 @@ shitty_nimbus_flight:
       - define velocity <[velocity].add[<player.location.direction.vector.normalize.mul[2]>]> if:<context.forward.is_more_than[0]>
       - define velocity <[velocity].with_y[0.5]> if:<context.jump>
       - adjust <player> velocity:<[velocity]> if:<[velocity].vector_length.is_more_than[0.1]>
+      - narrate <[velocity]>
 
 nimbus_i_call_forth_thee:
   type: command
