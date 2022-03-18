@@ -43,7 +43,7 @@ shitty_nimbus_flight:
       - else if <[velocity].vector_length> < 1:
         - define velocity <location[0,0,0]>
       - else if <context.jump>:
-        - define velocity <[velocity].with_y[0.1]>
+        - define velocity <[velocity].with_y[0.5]>
       - else:
         - define velocity <[velocity].div[2]>
       - flag player nimbus.velocity:<[velocity]>
