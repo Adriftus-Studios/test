@@ -2,7 +2,7 @@ shitty_nimbus_flight:
   type: world
   debug: false
   events:
-    after player toggles flying:
+    on player right clicks block with:nimbus_69420_item:
       # if they're holding the nimbus, they may ride into the sunset
       - if <context.state> && <player.item_in_hand.script.name.if_null[invalid]> == nimbus_69420_item:
         - spawn nimbus_69420_entity <player.location.with_y[<player.location.y.add[200]>]> save:broom
@@ -46,6 +46,11 @@ shitty_nimbus_flight:
 
     after player quits flagged:nimbus:
       - remove <player.flag[nimbus]>
+
+    on player exits nimbus_69420_entity:
+      - give nimbus_69420_item slot:<player.held_item_slot>
+      - remove <player.flag[nimbus]>
+      - flag player nimbus:!
 
     on player steers nimbus_69420_entity:
       - look <context.entity> <player.location.forward[10]>
