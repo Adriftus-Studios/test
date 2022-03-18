@@ -9,7 +9,7 @@ shitty_nimbus_flight:
         - cast invisibility duration:24h hide_particles no_ambient no_icon <entry[broom].spawned_entity>
         - wait 1t
         - teleport <entry[broom].spawned_entity> <player.location>
-        - wait 1t
+        - wait 2t
         - mount <player>|<entry[broom].spawned_entity>
         - flag player nimbus:<player.vehicle>
         - take iteminhand
