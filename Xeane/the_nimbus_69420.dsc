@@ -9,10 +9,7 @@ shitty_nimbus_flight:
       - wait 1t
       - take iteminhand
       - teleport <entry[broom].spawned_entity> <player.location>
-      - teleport <entry[broom].spawned_entity> <player.location>
-      - teleport <entry[broom].spawned_entity> <player.location>
-      - teleport <entry[broom].spawned_entity> <player.location>
-      - wait 3t
+      - wait 1s
       - mount <player>|<entry[broom].spawned_entity> <player.location>
       - flag player nimbus.entity:<player.vehicle>
       - flag player nimbus.velocity:<location[0,0,0]>
@@ -35,8 +32,6 @@ shitty_nimbus_flight:
       - look <context.entity> <player.location.forward[10]>
       - ratelimit <player> 5t
       - define velocity <player.flag[nimbus.velocity]>
-      - narrate <context.sideways>
-      - narrate CURRENT-<player.location.direction.vector.normalize.round_to_precision[0.01]><&nl>OLD-<[velocity].normalize.round_to_precision[0.01]>
       - if <context.forward> > 0:
         - define same_direction <player.location.direction.vector.normalize.round_to_precision[0.2].equals[<[velocity].normalize.round_to_precision[0.2]>]>
         - if <[velocity].vector_length> < 4 && ( <[same_direction]> || <[velocity].vector_length> < 0.1 ):
