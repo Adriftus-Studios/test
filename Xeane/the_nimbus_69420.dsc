@@ -32,7 +32,7 @@ shitty_nimbus_flight:
       - define velocity <location[0,0,0]>
       - define velocity <[velocity].add[<player.location.direction.vector.normalize.mul[2]>]> if:<context.forward.is_more_than[0]>
       - define velocity <[velocity].with_y[0.5]> if:<context.jump>
-      - adjust <player> velocity:<[velocity]>
+      - adjust <player> velocity:<[velocity]> if:<[velocity].vector_length.is_less_than[0.1]>
 
 nimbus_i_call_forth_thee:
   type: command
