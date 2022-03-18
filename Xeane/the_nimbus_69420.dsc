@@ -90,7 +90,7 @@ nimbus_69420_entity:
     gravity: false
     age: baby|locked
     invulnerable: true
-    potion_effects: INVISIBILITY,0,100,false,false,false
+    potion_effects: INVISIBILITY,0,2147483646,false,false,false
     equipment:
     - air
     - air
