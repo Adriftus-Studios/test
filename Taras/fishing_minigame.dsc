@@ -327,6 +327,30 @@ fishing_minigame_play_song:
         - ~midi <[song]> <[player]>
         - flag <[player]> fishing_minigame_playing_music:!
 
+# % ██ [ Sells all players fish ] ██
+fishing_minigame_sell_all_fish:
+    debug: false
+    type: task
+    definitions: player
+    script:
+        - define value <[player].flag[fishingminigame.bucket.fish].parse[proc[fishing_minigame_fish_value]].sum>
+        - flag <[player]> fishingminigame.bucket.fish:<list[]>
+        - if <player.has_flag[fishingminigame.active]> && <player.flag[fishingminigame.active]>:
+            - run fishing_minigame_update_bucket def:<[player]>
+        - if <[value]> > 0:
+            - run fish_tokens_add def:<player>|<[value]>
+        - else:
+            - narrate "<&c>Theres nothing to sell!"
+
+# % ██ [ Plays the given song to the given player ] ██
+fishing_minigame_show_off:
+    debug: false
+    type: task
+    definitions: player|fish
+    script:
+        - ratelimit <[player]> 10s
+        - narrate "<&7><&l><&lt>!<&gt><&r> <&7>Check out this fish <[player].name> caught: <[fish].display.on_hover[<[fish]>].type[SHOW_ITEM]>"
+
 #- % █████████████████████████████████
 #- %          [ Procedures ]
 #- % █████████████████████████████████
@@ -518,7 +542,7 @@ fishing_minigame_get_random_fish:
         - if !<[rarity].equals[legendary]>:
             - define "lore:|:<&r><&e>Rarity: <&f><[rarityColor]><[rarity].to_sentence_case>"
         - else:
-            - define "lore:|:<&r><&e>Rarity: <&f><element[<bold><[rarity]>].to_sentence_case.color_gradient[from=#FF930F;to=#FFE15C]>"
+            - define "lore:|:<&r><&e>Rarity: <&f><element[<bold><[rarity].to_sentence_case>].color_gradient[from=#FF930F;to=#FFE15C]>"
 
         - if <[quality].equals[amazing]>:
             - define "lore:|:<&r><&e>Quality: <&f><&color[<[qualityColor]>]><&l><[quality].to_sentence_case>"
@@ -753,15 +777,25 @@ fishing_minigame_event_handler:
         # % ██ [ Player Interact with Bucket ] ██
         on player clicks in fishing_minigame_bucket_gui:
             - if <context.item.has_flag[type]>:
-                - define fish <context.item>
-                - while <[fish].lore.size> > 6:
-                    - adjust def:fish lore:<[fish].lore.remove[last]>
-                - run fishing_minigame_bucket_remove def:<player>|<[fish]>
-                - if "<context.inventory.title.strip_color.equals[Sell Fish]>":
-                    - run fishing_minigame_open_bucket def:<player>|true
-                    - run fish_tokens_add def:<player>|<proc[fishing_minigame_fish_value].context[<[fish]>]>
-                - else:
-                    - run fishing_minigame_open_bucket def:<player>|false
+                - if <context.click.equals[LEFT]>:
+                    - define fish <context.item>
+                    - while <[fish].lore.size> > 6:
+                        - adjust def:fish lore:<[fish].lore.remove[last]>
+                    - run fishing_minigame_bucket_remove def:<player>|<[fish]>
+                    - if "<context.inventory.title.strip_color.equals[Sell Fish]>":
+                        - run fishing_minigame_open_bucket def:<player>|true
+                        - run fish_tokens_add def:<player>|<proc[fishing_minigame_fish_value].context[<[fish]>]>
+                    - else:
+                        - run fishing_minigame_open_bucket def:<player>|false
+                - else if <context.click.equals[RIGHT]>:
+                    - define fish <context.item>
+                    - while <[fish].lore.size> > 6:
+                        - adjust def:fish lore:<[fish].lore.remove[last]>
+                    - inventory close
+                    - run fishing_minigame_show_off def:<player>|<[fish]>
+            - if <context.item.script.name.equals[fishing_minigame_sell_all]>:
+                - run fishing_minigame_sell_all_fish def:<player>
+                - run fishing_minigame_open_bucket def:<player>|true
 
         # % ██ [ Right click end fishing ] ██
         on player right clicks block with:fishing_minigame_end_game:
@@ -923,12 +957,14 @@ fishing_minigame_bucket_open_gui:
                 - define fishLore <[fishLore].include[<&r>]>
                 - define fishLore "<[fishLore].include[<&r><element[➤ Click to Sell].color_gradient[from=#62FF00;to=#CBFFB9]>]>"
             - else:
-                - define fishLore "<[fish].lore.include[<&r><element[➤ Click to Trash].color_gradient[from=#FF2929;to=#FF9292]>]>"
+                - define fishLore "<[fish].lore.include[<&r><element[➤ Left Click to Trash].color_gradient[from=#FF2929;to=#FF9292]>]>"
+                - define fishLore "<[fishLore].include[<&r><element[➤ Right Click to Show Off in Chat].color_gradient[from=#FF8400;to=#FFC481]>]>"
             - adjust def:fishCopy lore:<[fishLore]>
             - inventory set o:<[fishCopy]> slot:<[bucketSlots].first> d:<[inventory]>
             - define bucketSlots <[bucketSlots].remove[first]>
         - if <[merchant]>:
             - adjust def:inventory "title:<&e>Sell Fish"
+            - inventory set o:fishing_minigame_sell_all slot:50 d:<[inventory]>
     script:
         - inject locally path:build_inventory
         - inventory open d:<[inventory]>
@@ -1445,6 +1481,17 @@ fishing_minigame_fish_bucket_full:
     - <&7>The bucket is full! Sell your fish at the merchant
     - <&r>
     - <&r><element[➤ Click to View].color_gradient[from=#FFF95B;to=#FFFCB0]>
+
+# % ██ [ Fish bucket sell all ] ██
+fishing_minigame_sell_all:
+    debug: false
+    type: item
+    material: barrier
+    display name: <&c><&l>Sell All
+    lore:
+    - <&7>This will sell all the fish in your bucket.
+    - <&r>
+    - <&r><element[➤ Click to Sell All].color_gradient[from=#FF2929;to=#FF9292]>
 
 # % ██ [ Fish Bucket ] ██
 fishing_minigame_statistics_book_inv:

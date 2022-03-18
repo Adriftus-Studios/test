@@ -57,6 +57,11 @@ Banner_Designer_Config:
   #                   while using the banner machine will upload its contents,      #
   #                   replacing the current design.                                 #
   Banner_Item_Load: true
+  # Compress_Empty_Layers: If true, empty layers on machine-created banners will    #
+  #                        be removed when the design is saved, storing the banner  #
+  #                        in the most efficient way. If false, blank layers will   #
+  #                        be preserved, storing the banner exactly as designed.    #
+  Compress_Empty_Layers: true
 
 #=====================================================================#
 #   OPERATIONS                                                        #
@@ -65,8 +70,8 @@ Banner_Designer_Config:
 
 Banner_Designer_Version:
   type: data
-  version: 1.0.3
-  last_updated: 2022_03_09
+  version: 1.0.4
+  last_updated: 2022_03_17
 
 Banner_Designer_Data:
   type: data
@@ -300,6 +305,7 @@ Banner_Designer_Create:
             - spawn <entity[item_frame].with[framed=<item[Banner_Designer_Reset_Button]>|none;hide_from_players=true;invulnerable=true]> <[resetbutton]> save:reset
             - spawn <entity[item_frame].with[framed=<item[Banner_Designer_Exit_Button]>|none;hide_from_players=true;invulnerable=true]> <[exitbutton]> save:exit
             - foreach complete|colordown|colorup|patterndown|patternup|reset|exit:
+              - flag <entry[<[value]>].spawned_entity> on_entity_added:Banner_Designer_Hide_Buttons
               - flag <entry[<[value]>].spawned_entity> banner_designer.<[uuid]>:<[value]>
               - flag server banner_designer.<[uuid]>.<[value]>:<entry[<[value]>].spawned_entity>
             - wait 1t
@@ -431,106 +437,104 @@ Banner_Designer_Function:
         - take iteminhand
         - inject Banner_Designer_Start instantly
       - stop
-    on player right clicks birch_button:
-      - if <context.location.cuboids.contains_any_text[banner_designer_]||false>:
-        - determine passively cancelled
-        - ratelimit <player> 2t
-        - if <player.has_flag[banner_machine_in_use]>:
-          - define uuid <context.location.note_name.after[banner_designer_].before_last[_]>
-          - choose <context.location.after_last[_]>:
-            - case layerdown:
-              - if <player.flag[banner_designer.<[uuid]>.layer]||0> == 0:
-                - stop
-              - else:
-                - flag player banner_designer.<[uuid]>.layer:--
-              - wait 1t
-              - inject banner_designer_Update instantly
-            - case layerup:
-              - if <player.flag[banner_designer.<[uuid]>.layer]||0> == <script[Banner_Designer_Data].data_key[Max_Layers]>:
-                - stop
-              - else:
-                - flag player banner_designer.<[uuid]>.layer:++
-              - wait 1t
-              - inject Banner_Designer_Update instantly
-            - default:
-              - stop
-    on player right clicks *item_frame:
-      - if <context.entity.location.cuboids.contains_any_text[banner_designer_]||false>:
-        - determine passively cancelled
-        - ratelimit <player> 2t
-        - define uuid <context.entity.flag[banner_designer].keys.get[1]>
-        - define layer <player.flag[banner_designer.<[uuid]>.layer]||0>
-        - choose <context.entity.flag[banner_designer.<[uuid]>]>:
-          - case colorup:
-            - if <player.flag[banner_designer.<[uuid]>.color.<[layer]>]||0> == 15:
-              - flag <player> banner_designer.<[uuid]>.color.<[layer]>:0
-            - else:
-              - flag <player> banner_designer.<[uuid]>.color.<[layer]>:++
-          - case colordown:
-            - if <player.flag[banner_designer.<[uuid]>.color.<[layer]>]||0> == 0:
-              - flag <player> banner_designer.<[uuid]>.color.<[layer]>:15
-            - else:
-              - flag <player> banner_designer.<[uuid]>.color.<[layer]>:--
-          - case patternup:
+    on player right clicks birch_button in:banner_designer_*:
+      - determine passively cancelled
+      - ratelimit <player> 2t
+      - if <player.has_flag[banner_machine_in_use]>:
+        - define uuid <context.location.note_name.after[banner_designer_].before_last[_]>
+        - choose <context.location.after_last[_]>:
+          - case layerdown:
             - if <player.flag[banner_designer.<[uuid]>.layer]||0> == 0:
               - stop
-            - if <player.flag[banner_designer.<[uuid]>.pattern.<[layer]>]||0> == 40:
-              - flag <player> banner_designer.<[uuid]>.pattern.<[layer]>:0
             - else:
-              - flag <player> banner_designer.<[uuid]>.pattern.<[layer]>:++
-          - case patterndown:
-            - if <player.flag[banner_designer.<[uuid]>.layer]||0> == 0:
-              - stop
-            - if <player.flag[banner_designer.<[uuid]>.pattern.<[layer]>]||0> == 0:
-              - flag <player> banner_designer.<[uuid]>.pattern.<[layer]>:40
-            - else:
-              - flag <player> banner_designer.<[uuid]>.pattern.<[layer]>:--
-          - case exit:
-            - if <player.has_flag[banner_designer_saveready]>:
-              - stop
-            - if <player.has_flag[banner_designer_exitready]>:
-              - flag <player> banner_designer_exitready:!
-              - title "title:<dark_red>Exiting <bold>Banner Designer" "subtitle:<red>Your token has been refunded." targets:<player>
-              - give banner_token_<player.flag[banner_designer.<[uuid]>.mode]>
-              - inject Banner_Designer_Update.stop instantly
+              - flag player banner_designer.<[uuid]>.layer:--
+            - wait 1t
+            - inject banner_designer_Update instantly
+          - case layerup:
+            - if <player.flag[banner_designer.<[uuid]>.layer]||0> == <script[Banner_Designer_Data].data_key[Max_Layers]>:
               - stop
             - else:
-              - narrate "<red><bold>Do you want to exit and lose all progress?"
-              - narrate "<red>(Your token will be refunded.)"
-              - narrate "<gray><italic>Click again to confirm."
-              - title "title:<dark_red>Exit and lose all progress?" "subtitle:<gray><italic>Click again to confirm." targets:<player> fade_in:5t stay:1s fade_out:5t
-              - flag <player> banner_designer_exitready
-              - wait <script[Banner_Designer_Config].data_key[Cooldown]>
-              - if <player.has_flag[banner_designer_exitready]>:
-                - narrate <green>Resuming.
-                - title subtitle:<green>Resuming. fade_in:5t stay:15t fade_out:2t
-                - flag <player> banner_designer_exitready:!
-              - stop
-          - case reset:
-            - if <player.flag[banner_designer.<[uuid]>.layer]||0> > 0 || <player.flag[banner_designer.<[uuid]>.color.0]||0> > 0:
-              - inject Banner_Designer_Reset instantly
-            - else:
-              - title "subtitle:<gray>Nothing to reset!" targets:<player> fade_in:5t stay:15t fade_out:2t
-              - stop
-          - case complete:
-            - if <player.has_flag[banner_designer_exitready]>:
-              - stop
-            - if <player.has_flag[banner_designer_blankready]>:
-              - inject Banner_Designer_Save.blank instantly
-              - stop
-            - else:
-              - inject Banner_Designer_Save.presave instantly
-              - stop
+              - flag player banner_designer.<[uuid]>.layer:++
+            - wait 1t
+            - inject Banner_Designer_Update instantly
           - default:
             - stop
-        - inject Banner_Designer_Update instantly
-    on *item_frame damaged:
+    on player right clicks *item_frame in:banner_designer_*:
+      - determine passively cancelled
+      - ratelimit <player> 2t
+      - define uuid <context.entity.flag[banner_designer].keys.get[1]>
+      - define layer <player.flag[banner_designer.<[uuid]>.layer]||0>
+      - choose <context.entity.flag[banner_designer.<[uuid]>]>:
+        - case colorup:
+          - if <player.flag[banner_designer.<[uuid]>.color.<[layer]>]||0> == 15:
+            - flag <player> banner_designer.<[uuid]>.color.<[layer]>:0
+          - else:
+            - flag <player> banner_designer.<[uuid]>.color.<[layer]>:++
+        - case colordown:
+          - if <player.flag[banner_designer.<[uuid]>.color.<[layer]>]||0> == 0:
+            - flag <player> banner_designer.<[uuid]>.color.<[layer]>:15
+          - else:
+            - flag <player> banner_designer.<[uuid]>.color.<[layer]>:--
+        - case patternup:
+          - if <player.flag[banner_designer.<[uuid]>.layer]||0> == 0:
+            - stop
+          - if <player.flag[banner_designer.<[uuid]>.pattern.<[layer]>]||0> == 40:
+            - flag <player> banner_designer.<[uuid]>.pattern.<[layer]>:0
+          - else:
+            - flag <player> banner_designer.<[uuid]>.pattern.<[layer]>:++
+        - case patterndown:
+          - if <player.flag[banner_designer.<[uuid]>.layer]||0> == 0:
+            - stop
+          - if <player.flag[banner_designer.<[uuid]>.pattern.<[layer]>]||0> == 0:
+            - flag <player> banner_designer.<[uuid]>.pattern.<[layer]>:40
+          - else:
+            - flag <player> banner_designer.<[uuid]>.pattern.<[layer]>:--
+        - case exit:
+          - if <player.has_flag[banner_designer_saveready]>:
+            - stop
+          - if <player.has_flag[banner_designer_exitready]>:
+            - flag <player> banner_designer_exitready:!
+            - title "title:<dark_red>Exiting <bold>Banner Designer" "subtitle:<red>Your token has been refunded." targets:<player>
+            - give banner_token_<player.flag[banner_designer.<[uuid]>.mode]>
+            - inject Banner_Designer_Update.stop instantly
+            - stop
+          - else:
+            - narrate "<red><bold>Do you want to exit and lose all progress?"
+            - narrate "<red>(Your token will be refunded.)"
+            - narrate "<gray><italic>Click again to confirm."
+            - title "title:<dark_red>Exit and lose all progress?" "subtitle:<gray><italic>Click again to confirm." targets:<player> fade_in:5t stay:1s fade_out:5t
+            - flag <player> banner_designer_exitready
+            - wait <script[Banner_Designer_Config].data_key[Cooldown]>
+            - if <player.has_flag[banner_designer_exitready]>:
+              - narrate <green>Resuming.
+              - title subtitle:<green>Resuming. fade_in:5t stay:15t fade_out:2t
+              - flag <player> banner_designer_exitready:!
+            - stop
+        - case reset:
+          - if <player.flag[banner_designer.<[uuid]>.layer]||0> > 0 || <player.flag[banner_designer.<[uuid]>.color.0]||0> > 0:
+            - inject Banner_Designer_Reset instantly
+          - else:
+            - title "subtitle:<gray>Nothing to reset!" targets:<player> fade_in:5t stay:15t fade_out:2t
+            - stop
+        - case complete:
+          - if <player.has_flag[banner_designer_exitready]>:
+            - stop
+          - if <player.has_flag[banner_designer_blankready]>:
+            - inject Banner_Designer_Save.blank instantly
+            - stop
+          - else:
+            - inject Banner_Designer_Save.presave instantly
+            - stop
+        - default:
+          - stop
+      - inject Banner_Designer_Update instantly
+    on *item_frame damaged in:banner_designer_*:
       - if <context.entity.location.cuboids.contains_any_text[banner_designer_]>:
         - determine cancelled
-    on player breaks block in:banner_designer_*:
+    on player breaks block:
       - if <context.location.cuboids.contains_any_text[banner_designer_]>:
         - determine cancelled
-    on hanging breaks:
+    on hanging breaks in:banner_designer_*:
       - if <context.hanging.location.cuboids.contains_any_text[banner_designer_]>:
         - determine cancelled
     on player places block:
@@ -581,11 +585,12 @@ Banner_Designer_Update:
     - title "title:<blue>Launched <bold>Banner Designer" subtitle:<script[Banner_Designer_Data].parsed_key[Modes.<player.flag[banner_designer.<[uuid]>.mode]>.subtitle]> targets:<player> fade_in:15t stay:1s fade_out:15t
     - inject Banner_Designer_Update.preload instantly
   stop:
-    - adjust <player> sign_update:banner_designer_<[uuid]>_layersign|<location[banner_designer_<[uuid]>_layersign].sign_contents>
-    - adjust <player> sign_update:banner_designer_<[uuid]>_colorsign|<location[banner_designer_<[uuid]>_colorsign].sign_contents>
-    - adjust <player> sign_update:banner_designer_<[uuid]>_patternsign|<location[banner_designer_<[uuid]>_patternsign].sign_contents>
-    - foreach colorup|colordown|patternup|patterndown|reset|exit|complete:
-      - adjust <player> hide_entity:<server.flag[banner_designer.<[uuid]>.<[value]>].as_entity>
+    - if <player.is_online>:
+      - adjust <player> sign_update:banner_designer_<[uuid]>_layersign|<location[banner_designer_<[uuid]>_layersign].sign_contents>
+      - adjust <player> sign_update:banner_designer_<[uuid]>_colorsign|<location[banner_designer_<[uuid]>_colorsign].sign_contents>
+      - adjust <player> sign_update:banner_designer_<[uuid]>_patternsign|<location[banner_designer_<[uuid]>_patternsign].sign_contents>
+      - foreach colorup|colordown|patternup|patterndown|reset|exit|complete:
+        - adjust <player> hide_entity:<server.flag[banner_designer.<[uuid]>.<[value]>].as_entity>
     - remove <player.flag[banner_designer.<[uuid]>.armor_stand].as_entity>
     - flag <player> banner_designer:!
     - flag <player> banner_machine_in_use:!
@@ -876,6 +881,13 @@ Banner_Designer_Crash_Handler:
       - wait 10s
       - foreach <server.offline_players.filter[has_flag[banner_machine_in_use]]> as:__player:
         - announce "<player.name> is stuck in Banner Machine mode. Tell Berufeng to fix this."
+
+Banner_Designer_Hide_Buttons:
+  type: task
+  debug: false
+  script:
+    - wait 1t
+    - adjust <context.entity> hide_from_players:true
 
 #=====================================================================#
 #   ITEMS                                                             #
