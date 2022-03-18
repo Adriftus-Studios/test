@@ -6,7 +6,7 @@ shitty_nimbus_flight:
       # if they're holding the nimbus, they may ride into the sunset
       - if <context.state> && <player.item_in_hand.script.name.if_null[invalid]> == nimbus_69420_item:
         - spawn nimbus_69420_entity <player.location.with_y[<player.location.y.add[200]>]> save:broom
-        - cast invisibility duration:24h hide_particles no_ambient no_icon <entry[broom].spawned_entity>
+        #- cast invisibility duration:24h hide_particles no_ambient no_icon <entry[broom].spawned_entity>
         - wait 1t
         - teleport <entry[broom].spawned_entity> <player.location>
         - wait 3t
@@ -90,6 +90,7 @@ nimbus_69420_entity:
     gravity: false
     age: baby|locked
     invulnerable: true
+    potion_effects: INVISIBILITY,0,100,false,false,false
     equipment:
     - air
     - air
