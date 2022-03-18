@@ -11,12 +11,14 @@ shitty_nimbus_flight:
       - teleport <entry[broom].spawned_entity> <player.location>
       - wait 3t
       - mount <player>|<entry[broom].spawned_entity>
-      - flag player nimbus:<player.vehicle>
+      - flag player nimbus.entity:<player.vehicle>
+      - flag player nimbus.velocity:<location[0,0,0]>
 
     # for when the player forgets to remove the nimbus from their crotch before leaving
     after player joins flagged:nimbus:
       - mount nimbus_69420_entity|<player>
-      - flag player nimbus:<player.passenger>
+      - flag player nimbus.entity:<player.passenger>
+      - flag player nimbus.velocity:<location[0,0,0]>
 
     after player quits flagged:nimbus:
       - remove <player.flag[nimbus]>
@@ -29,9 +31,16 @@ shitty_nimbus_flight:
     on player steers nimbus_69420_entity:
       - look <context.entity> <player.location.forward[10]>
       - ratelimit <player> 5t
-      - define velocity <location[0,0,0]>
-      - define velocity <[velocity].add[<player.location.direction.vector.normalize.mul[2]>]> if:<context.forward.is_more_than[0]>
-      - define velocity <[velocity].with_y[0.5]> if:<context.jump>
+      - define velocity <player.flag[nimbus.velocity]>
+      - if <context.forward> > 0:
+        - if <[velocity].vector_length> < 5:
+          - define velocity <[velocity].add[<player.location.direction.vector.normalize>]>
+      - else if <[velocity].vector_length> < 1:
+        - define velocity <location[0,0,0]>
+      - else:
+        - define velocity <[velocity].div[2]>
+      - define velocity <[velocity].with_y[0.1]> if:<context.jump>
+      - flag player nimbus.velocity:<[velocity]>
       - adjust <player.vehicle> velocity:<[velocity]> if:<[velocity].vector_length.is_more_than[0.1]>
 
 nimbus_i_call_forth_thee:
@@ -66,7 +75,7 @@ nimbus_i_call_forth_thee:
 nimbus_69420_entity:
   type: entity
   debug: false
-  entity_type: zombie
+  entity_type: pig
   mechanisms:
     gravity: false
     age: baby|locked
