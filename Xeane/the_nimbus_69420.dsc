@@ -45,6 +45,8 @@ shitty_nimbus_flight:
       - define velocity <[velocity].with_y[0.1]> if:<context.jump>
       - flag player nimbus.velocity:<[velocity]>
       - adjust <player.vehicle> velocity:<[velocity]> if:<[velocity].vector_length.is_more_than[0.1]>
+      - narrate <[velocity]>
+      - narrate <[velocity].vector_length>
 
 nimbus_i_call_forth_thee:
   type: command
