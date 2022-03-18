@@ -9,6 +9,9 @@ shitty_nimbus_flight:
       - wait 1t
       - take iteminhand
       - teleport <entry[broom].spawned_entity> <player.location>
+      - teleport <entry[broom].spawned_entity> <player.location>
+      - teleport <entry[broom].spawned_entity> <player.location>
+      - teleport <entry[broom].spawned_entity> <player.location>
       - wait 3t
       - mount <player>|<entry[broom].spawned_entity> <player.location>
       - flag player nimbus.entity:<player.vehicle>
