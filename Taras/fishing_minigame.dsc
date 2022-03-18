@@ -143,7 +143,7 @@ fishing_minigame_whirlpool_animation:
     script:
         - define circles <server.flag[fishing_minigame_active_whirlpool_locations].keys.parse[up.with_pitch[90].proc[define_circle].context[1|0.1]].combine>
         - while !<server.has_flag[fishing_minigame_reset_whirlpools]>:
-            - playeffect at:<[circles]> dolphin offset:0.05,0.05,0.05 targets:<server.online_players>
+            - playeffect at:<[circles]> dolphin offset:0.05,0.05,0.05 targets:<server.online_players_flagged[fishingminigame.active]>
             - wait 1t
         - flag server fishing_minigame_reset_whirlpools:!
 
@@ -1377,7 +1377,7 @@ fishing_minigame_shop_exchange_item:
     debug: false
     type: item
     material: iron_nugget
-    display name: <&b><&l>100,000<&r><&font[adriftus:chat]><&chr[0045]><&r> <&b><&l>-<&gt> $10
+    display name: <&b><&l>5,000<&r><&font[adriftus:chat]><&chr[0045]><&r> <&b><&l>-<&gt> $10
     mechanisms:
         custom_model_data: 40
     lore:
