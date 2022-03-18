@@ -7,6 +7,7 @@ shitty_nimbus_flight:
       - if <context.state> && <player.item_in_hand.script.name.if_null[invalid]> == nimbus_69420_item:
         - spawn nimbus_69420_entity <player.location.with_y[400]> save:broom
         - cast invisibility amplifier:1 duration:24h hide_particles no_ambient no_icon <entry[broom].spawned_entity>
+        - teleport <entry[broom].spawned_entity> <player.location>
         - mount <player>|<entry[broom].spawned_entity> <player.location>
         - flag player nimbus:<player.vehicle>
         - take iteminhand
@@ -47,6 +48,7 @@ shitty_nimbus_flight:
     on player steers nimbus_69420_entity:
       - look <context.entity> <player.location.forward[10]>
       - ratelimit <player> 5t
+      - adjust <context.entity> velocity:0,0.5,0 if:<context.jump>
       - adjust <context.entity> velocity:<player.location.direction.vector.normalize.mul[2]> if:<context.forward.is_more_than[0]>
 
 nimbus_i_call_forth_thee:
