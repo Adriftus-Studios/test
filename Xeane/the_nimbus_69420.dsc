@@ -7,8 +7,8 @@ shitty_nimbus_flight:
       - if <context.state> && <player.item_in_hand.script.name.if_null[invalid]> == nimbus_69420_item:
         - spawn nimbus_69420_entity <player.location.with_y[400]> save:broom
         - cast invisibility amplifier:1 duration:24h hide_particles no_ambient no_icon <entry[broom].spawned_entity>
-        - teleport <entry[broom].spawned_entity> <player.location>
         - wait 1t
+        - teleport <entry[broom].spawned_entity> <player.location>
         - mount <player>|<entry[broom].spawned_entity>
         - flag player nimbus:<player.vehicle>
         - take iteminhand
