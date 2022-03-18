@@ -80,7 +80,7 @@ nimbus_69420_entity:
   debug: false
   entity_type: zombie
   mechanisms:
-    hide_from_players: true
+    potion_effects: invisibility,2,10h,false,false,false
     gravity: false
     invulnerable: true
     equipment:
