@@ -80,7 +80,7 @@ nimbus_i_call_forth_thee:
 nimbus_69420_entity:
   type: entity
   debug: false
-  entity_type: pig
+  entity_type: creeper
   mechanisms:
     gravity: false
     equipment:
