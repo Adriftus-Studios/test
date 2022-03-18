@@ -42,9 +42,10 @@ shitty_nimbus_flight:
           - define velocity <player.location.direction.vector.normalize.mul[<[velocity].vector_length.mul[0.9]>]>
       - else if <[velocity].vector_length> < 1:
         - define velocity <location[0,0,0]>
+      - else if <context.jump>:
+        - define velocity <[velocity].with_y[0.1]>
       - else:
         - define velocity <[velocity].div[2]>
-      - define velocity <[velocity].with_y[0.1]> if:<context.jump>
       - flag player nimbus.velocity:<[velocity]>
       - adjust <player.vehicle> velocity:<[velocity]> if:<[velocity].vector_length.is_more_than[0.1]>
 
