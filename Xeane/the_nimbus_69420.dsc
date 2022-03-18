@@ -44,7 +44,7 @@ shitty_nimbus_flight:
 
     on player steers nimbus_69420_entity:
       - ratelimit <player> 5t
-      - adjust <context.vehicle> velocity:<player.location.direction.vector.normalize.mul[2]>
+      - adjust <player.vehicle> velocity:<player.location.direction.vector.normalize.mul[2]>
 
 nimbus_i_call_forth_thee:
   type: command
