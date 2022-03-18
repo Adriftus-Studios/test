@@ -32,8 +32,10 @@ shitty_nimbus_flight:
       - look <context.entity> <player.location.forward[10]>
       - ratelimit <player> 5t
       - define velocity <player.flag[nimbus.velocity]>
-      - if <context.forward> > 0:
-        - if <[velocity].vector_length> < 5:
+      - if <context.sideways.abs> > 0.1:
+        - define velocity <player.location.direction.vector.normalize>
+      - else if <context.forward> > 0:
+        - if <[velocity].vector_length> < 2:
           - define velocity <[velocity].add[<player.location.direction.vector.normalize>]>
       - else if <[velocity].vector_length> < 1:
         - define velocity <location[0,0,0]>
