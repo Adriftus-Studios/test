@@ -5,12 +5,15 @@ shitty_nimbus_flight:
     on player right clicks block with:nimbus_69420_item:
       # if they're holding the nimbus, they may ride into the sunset
       - spawn nimbus_69420_entity <player.location.with_y[<player.location.y.above[20]>]> save:broom
-      #- cast invisibility duration:24h hide_particles no_ambient no_icon <entry[broom].spawned_entity>
       - wait 1t
       - take iteminhand
       - teleport <entry[broom].spawned_entity> <player.location>
-      - wait 1s
+      - wait 1t
+      - cast invisibility duration:24h hide_particles no_ambient no_icon <entry[broom].spawned_entity>
+      - wait 1t
       - mount <player>|<entry[broom].spawned_entity> <player.location>
+      - wait 1t
+      - teleport <entry[broom].spawned_entity> <player.location>
       - flag player nimbus.entity:<player.vehicle>
       - flag player nimbus.velocity:<location[0,0,0]>
 
@@ -87,7 +90,7 @@ nimbus_69420_entity:
     - nimbus_69420_item
     age: baby|locked
     invulnerable: true
-    potion_effects: INVISIBILITY,0,2147483646,false,false,false
+    #potion_effects: INVISIBILITY,0,2147483646,false,false,false
   flags:
     no_suffocate: true
 
