@@ -43,10 +43,10 @@ shitty_nimbus_flight:
     after player quits flagged:nimbus:
       - remove <player.flag[nimbus]>
 
-    on player starts sprinting flagged:nimbus:
+    on player steers nimbus_69420_entity:
       - ratelimit <player> 5t
-      - adjust <player.vehicle> velocity:<player.location.direction.vector.normalize.mul[2]>
-      - look <player.vehicle> <player.location.forward[10]>
+      - adjust <context.entity> velocity:<player.location.direction.vector.normalize.mul[2]> if:<context.forward.is_more_than[0]>
+      - look <context.entity> <player.location.forward[10]>
 
 nimbus_i_call_forth_thee:
   type: command
