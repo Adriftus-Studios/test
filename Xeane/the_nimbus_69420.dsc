@@ -44,9 +44,9 @@ shitty_nimbus_flight:
       - remove <player.flag[nimbus]>
 
     on player steers nimbus_69420_entity:
+      - look <context.entity> <player.location.forward[10]>
       - ratelimit <player> 5t
       - adjust <context.entity> velocity:<player.location.direction.vector.normalize.mul[2]> if:<context.forward.is_more_than[0]>
-      - look <context.entity> <player.location.forward[10]>
 
 nimbus_i_call_forth_thee:
   type: command
@@ -83,6 +83,7 @@ nimbus_69420_entity:
   entity_type: zombie
   mechanisms:
     gravity: false
+    baby: true
     invulnerable: true
     equipment:
     - air
