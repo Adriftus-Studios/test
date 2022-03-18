@@ -81,6 +81,8 @@ nimbus_69420_entity:
   entity_type: armor_stand
   mechanisms:
     visible: false
+    marker: true
+    gravity: false
     invulnerable: true
     equipment:
     - air
