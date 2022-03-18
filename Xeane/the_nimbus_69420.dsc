@@ -34,7 +34,7 @@ shitty_nimbus_flight:
       - define velocity <player.flag[nimbus.velocity]>
       - narrate <context.sideways>
       - if <context.forward> > 0:
-        - if <[velocity].vector_length> < 5 && ( <player.location.direction.vector.normalize> == <[velocity].normalize> || <[velocity].vector_length> < 1 ):
+        - if <[velocity].vector_length> < 5 && ( <player.location.direction.vector.normalize.round_to_precision[0.01]> == <[velocity].normalize.round_to_precision[0.01]>> || <[velocity].vector_length> < 1 ):
           - define velocity <[velocity].add[<player.location.direction.vector.normalize>]>
         - else:
           - define velocity <player.location.direction.vector.normalize>
