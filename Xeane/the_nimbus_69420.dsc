@@ -30,11 +30,11 @@ shitty_nimbus_flight:
 
     on player steers nimbus_69420_entity:
       - look <context.entity> <player.location.forward[10]>
-      - ratelimit <player> 2t
+      - ratelimit <player> 4t
       - define velocity <player.flag[nimbus.velocity]>
       - narrate <context.sideways>
       - if <context.forward> > 0:
-        - if <[velocity].vector_length> < 2 && ( <player.location.direction.vector.normalize> == <[velocity].normalize> || <[velocity].vector_length> < 1 ):
+        - if <[velocity].vector_length> < 4 && ( <player.location.direction.vector.normalize> == <[velocity].normalize> || <[velocity].vector_length> < 1 ):
           - define velocity <[velocity].add[<player.location.direction.vector.normalize>]>
         - else:
           - define velocity <player.location.direction.vector.normalize>
