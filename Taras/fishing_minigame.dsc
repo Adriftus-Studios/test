@@ -143,7 +143,7 @@ fishing_minigame_whirlpool_animation:
     script:
         - define circles <server.flag[fishing_minigame_active_whirlpool_locations].keys.parse[up.with_pitch[90].proc[define_circle].context[1|0.1]].combine>
         - while !<server.has_flag[fishing_minigame_reset_whirlpools]>:
-            - playeffect at:<[circles]> dolphin offset:0.05,0.05,0.05 targets:<server.online_players_flagged[fishingminigame.active]>
+            - playeffect at:<[circles]> dolphin offset:0.05,0.05,0.05 targets:<proc[fishing_minigame_player_list]>
             - wait 1t
         - flag server fishing_minigame_reset_whirlpools:!
 
@@ -620,6 +620,17 @@ fishing_minigame_top_value_daily:
             - if <[pl].flag[fishingminigame.stats.daily.value]> == 0:
                 - define players <[players].exclude[<[pl]>]>
         - determine <[players].sort_by_number[flag[fishingminigame.stats.daily.value]].reverse>
+
+# % ██ [ Returns a list of players ] ██
+fishing_minigame_player_list:
+    debug: false
+    type: procedure
+    script:
+        - define players <list[]>
+        - foreach <server.online_players_flagged[fishingminigame.active]> as:player:
+            - if <[player].flag[fishingminigame.active]>:
+                - define players:->:<[player]>
+        - determine <[players]>
 
 #- % █████████████████████████████████
 #- %           [ Enchants ]
