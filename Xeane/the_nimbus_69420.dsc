@@ -33,11 +33,11 @@ shitty_nimbus_flight:
       - ratelimit <player> 2t
       - define velocity <player.flag[nimbus.velocity]>
       - narrate <context.sideways>
-      - if <context.sideways.abs> > 0.1:
-        - define velocity <player.location.direction.vector.normalize>
       - else if <context.forward> > 0:
-        - if <[velocity].vector_length> < 2:
+        - if <[velocity].vector_length> < 2 && <player.location.direction.vector.normalize> == <[velocity].normalize>:
           - define velocity <[velocity].add[<player.location.direction.vector.normalize>]>
+        - else:
+          - define velocity <player.location.direction.vector.normalize>
       - else if <[velocity].vector_length> < 1:
         - define velocity <location[0,0,0]>
       - else:
