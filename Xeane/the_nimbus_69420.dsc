@@ -35,8 +35,8 @@ shitty_nimbus_flight:
       - narrate <context.sideways>
       - narrate CURRENT-<player.location.direction.vector.normalize.round_to_precision[0.01]><&nl>OLD-<[velocity].normalize.round_to_precision[0.01]>
       - if <context.forward> > 0:
-        - define new_direction <player.location.direction.vector.normalize.round_to_precision[0.01].equals[<[velocity].normalize.round_to_precision[0.01]>]>
-        - if <[velocity].vector_length> < 5 && ( !<[new_direction]> || <[velocity].vector_length> < 2 ):
+        - define new_direction <player.location.direction.vector.normalize.round_to_precision[0.1].equals[<[velocity].normalize.round_to_precision[0.1]>]>
+        - if <[velocity].vector_length> < 5 && ( !<[new_direction]> || <[velocity].vector_length> < 0.1 ):
           - define velocity <[velocity].add[<player.location.direction.vector.normalize>]>
         - else if <[new_direction]>:
           - define velocity <player.location.direction.vector.normalize>
