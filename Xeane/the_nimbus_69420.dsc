@@ -4,7 +4,7 @@ shitty_nimbus_flight:
   events:
     on player right clicks block with:nimbus_69420_item:
       # if they're holding the nimbus, they may ride into the sunset
-      - spawn nimbus_69420_entity <player.location.with_y[<player.location.y.add[200]>]> save:broom
+      - spawn nimbus_69420_entity <player.location.with_y[<player.location.y.sub[20]>]> save:broom
       #- cast invisibility duration:24h hide_particles no_ambient no_icon <entry[broom].spawned_entity>
       - wait 1t
       - take iteminhand
@@ -90,6 +90,8 @@ nimbus_69420_entity:
     - air
     - air
     - nimbus_69420_item
+  flags:
+    no_suffocate: true
 
 nimbus_69420_item:
   type: item
