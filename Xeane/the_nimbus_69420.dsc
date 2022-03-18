@@ -25,11 +25,11 @@ shitty_nimbus_flight:
       - flag player nimbus.velocity:<location[0,0,0]>
 
     after player quits flagged:nimbus:
-      - remove <player.flag[nimbus]>
+      - remove <player.flag[nimbus.entity]>
 
     on player exits nimbus_69420_entity:
       - give nimbus_69420_item slot:<player.held_item_slot>
-      - remove <player.flag[nimbus]>
+      - remove <player.flag[nimbus.entity]>
       - flag player nimbus:!
 
     on player steers nimbus_69420_entity flagged:nimbus:
