@@ -24,6 +24,9 @@ fishing_minigame_start:
             - foreach <proc[fishing_minigame_get_all_types]> as:type:
                 - flag <[player]> fishingminigame.stats.bestcatch.<[type]>:none
         - run fishing_minigame_set_inventory def:<[player]>
+        - if !<server.has_flag[fishingminingame.activeplayers]>:
+            - flag server fishingminingame.activeplayers:<list[]>
+        - flag server fishingminingame.activeplayers:->:<[player]>
         - title title:<&a>Fishing "subtitle:<&a>Find a whirlpool in a lake, and begin catching!" targets:<[player]>
         - narrate "<&7>You are now in fishing mode. If you at any point would like to return to normal, look for a barrier in your inventory. Typing any command will revert you back to normal."
 
@@ -41,6 +44,7 @@ fishing_minigame_stop:
             - queue <player.flag[fishing_minigame_music_queue]> stop
             - midi cancel
             - flag <player> fishing_minigame_playing_music:!
+        - flag server fishingminingame.activeplayers:<-:<[player]>
 
 # % ██ [ Task called when bucket is bucket is clicked ] ██
 fishing_minigame_open_bucket:
@@ -143,7 +147,7 @@ fishing_minigame_whirlpool_animation:
     script:
         - define circles <server.flag[fishing_minigame_active_whirlpool_locations].keys.parse[up.with_pitch[90].proc[define_circle].context[1|0.1]].combine>
         - while !<server.has_flag[fishing_minigame_reset_whirlpools]>:
-            - playeffect at:<[circles]> dolphin offset:0.05,0.05,0.05 targets:<proc[fishing_minigame_player_list]>
+            - playeffect at:<[circles]> dolphin offset:0.05,0.05,0.05 targets:<server.flag[fishingminingame.activeplayers]>
             - wait 1t
         - flag server fishing_minigame_reset_whirlpools:!
 
@@ -620,17 +624,6 @@ fishing_minigame_top_value_daily:
             - if <[pl].flag[fishingminigame.stats.daily.value]> == 0:
                 - define players <[players].exclude[<[pl]>]>
         - determine <[players].sort_by_number[flag[fishingminigame.stats.daily.value]].reverse>
-
-# % ██ [ Returns a list of players ] ██
-fishing_minigame_player_list:
-    debug: false
-    type: procedure
-    script:
-        - define players <list[]>
-        - foreach <server.online_players_flagged[fishingminigame.active]> as:player:
-            - if <[player].flag[fishingminigame.active]>:
-                - define players:->:<[player]>
-        - determine <[players]>
 
 #- % █████████████████████████████████
 #- %           [ Enchants ]
