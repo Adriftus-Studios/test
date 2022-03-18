@@ -83,7 +83,7 @@ nimbus_69420_entity:
   entity_type: zombie
   mechanisms:
     gravity: false
-    baby: true
+    age: baby|locked
     invulnerable: true
     equipment:
     - air
