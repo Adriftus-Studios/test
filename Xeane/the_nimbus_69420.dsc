@@ -43,7 +43,7 @@ shitty_nimbus_flight:
     after player quits flagged:nimbus:
       - remove <player.flag[nimbus]>
 
-    on player walks flagged:nimbus:
+    on player starts sprinting flagged:nimbus:
       - ratelimit <player> 5t
       - adjust <player.vehicle> velocity:<player.location.direction.vector.normalize.mul[2]>
       - look <player.vehicle> <player.location.forward[10]>
