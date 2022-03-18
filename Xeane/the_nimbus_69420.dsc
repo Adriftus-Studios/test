@@ -32,6 +32,7 @@ shitty_nimbus_flight:
       - look <context.entity> <player.location.forward[10]>
       - ratelimit <player> 2t
       - define velocity <player.flag[nimbus.velocity]>
+      - narrate <context.sideways>
       - if <context.sideways.abs> > 0.1:
         - define velocity <player.location.direction.vector.normalize>
       - else if <context.forward> > 0:
