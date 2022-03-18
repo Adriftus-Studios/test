@@ -192,7 +192,7 @@ fishing_minigame_bucket_add:
 
         # % ██ [ Print rare fish to the server ] ██
         - if <[rarity].equals[legendary]>:
-            - narrate "<&7><&l><&lt>!<&gt><&r> <&b><&l><player.name> <&r><&7>has just caught a <element[<bold>Legendary].color_gradient[from=#FF930F;to=#FFE15C]><&r> <[fish].display.on_hover[<[fish]>].type[SHOW_ITEM]>"
+            - narrate "<&7><&l><&lt>!<&gt><&r> <&b><&l><player.name> <&r><&7>has just caught a <element[<bold>Legendary].color_gradient[from=#FF930F;to=#FFE15C]><&r> <[fish].display.on_hover[<[fish]>].type[SHOW_ITEM]>" targets:<server.online_players>
 
         - run fishing_minigame_narrate_fish def:<[player]>|<[fish]>
         - if <player.has_flag[fishingminigame.active]> && <player.flag[fishingminigame.active]>:
