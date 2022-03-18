@@ -5,7 +5,7 @@ shitty_nimbus_flight:
     after player toggles flying:
       # if they're holding the nimbus, they may ride into the sunset
       - if <context.state> && <player.item_in_hand.script.name.if_null[invalid]> == nimbus_69420_item:
-        - mount nimbus_69420_entity|<player>
+        - mount <player>|nimbus_69420_entity
         - flag player nimbus:<player.passenger>
         - take iteminhand
 
@@ -41,6 +41,10 @@ shitty_nimbus_flight:
 
     after player quits flagged:nimbus:
       - remove <player.flag[nimbus]>
+
+    on player steers nimbus_69420_entity:
+      - ratelimit <player> 5t
+      - adjust <context.vehicle> velocity:<player.location.direction.vector.normalize.mul[2]>
 
 nimbus_i_call_forth_thee:
   type: command
