@@ -70,8 +70,8 @@ Banner_Designer_Config:
 
 Banner_Designer_Version:
   type: data
-  version: 1.0.4
-  last_updated: 2022_03_17
+  version: 1.0.5
+  last_updated: 2022_03_18
 
 Banner_Designer_Data:
   type: data
@@ -282,7 +282,7 @@ Banner_Designer_Create:
                 - define completebutton <context.location.add[0,3,1]>
                 - define resetbutton <context.location.add[-1,0,2]>
                 - define exitbutton <context.location.add[1,0,2]>
-                - define cuboidorigin <context.location.add[-1,0,4]>
+                - define cuboidorigin <context.location.add[-1,0,3]>
                 - define away NORTH
                 - define viewpoint <context.location.center.add[0,-0.5,4].with_pose[-6,-180]>
               - case west:
@@ -383,11 +383,12 @@ Banner_Designer_Start:
       - define yaw 90
   - spawn armor_stand[equipment=air|air|air|white_banner;gravity=false;visible=false;invulnerable=true;hide_from_players=true] <location[banner_designer_<[uuid]>_layersign].center.sub[<[sub]>].with_yaw[<[yaw]>]> save:armor_stand
   - flag <player> banner_designer.<[uuid]>.armor_stand:<entry[armor_stand].spawned_entity>
-  - wait 1t
+  - wait 15t
+  - showfake barrier <cuboid[banner_designer_<[uuid]>].expand[1].shell.filter[material.name.equals[air]]> players:<player> duration:999999
   - adjust <player> show_entity:<player.flag[banner_designer.<[uuid]>.armor_stand]>
   - adjust <player> show_entity:<server.flag[banner_designer.<[uuid]>.complete]>
   - wait 1t
-  - inject Banner_Designer_Update.start instantly
+  - inject Banner_Designer_Update.start
 
 Banner_Designer_Function:
   type: world
@@ -435,7 +436,8 @@ Banner_Designer_Function:
         - flag <player> banner_designer.<[uuid]>.mode:<context.item.script.name.after[banner_token_]>
         - wait 1t
         - take iteminhand
-        - inject Banner_Designer_Start instantly
+        - title title:<&color[#000000]><&font[adriftus:overlay]><&chr[0004]><&chr[f801]><&chr[0004]> "subtitle:<blue>Launching <bold>Banner Designer" targets:<player> fade_in:1s stay:1s
+        - inject Banner_Designer_Start
       - stop
     on player right clicks birch_button in:banner_designer_*:
       - determine passively cancelled
@@ -581,8 +583,9 @@ Banner_Designer_Update:
     - adjust <player> sign_update:<location[banner_designer_<[uuid]>_patternsign]>|<list[]>
     - foreach colorup|colordown|reset|exit:
       - adjust <player> show_entity:<server.flag[banner_designer.<[uuid]>.<[value]>].as_entity>
-    - run Generic_Freeze_Task instantly def:<player>|freeze|banner_designer_<[uuid]>_viewpoint
-    - title "title:<blue>Launched <bold>Banner Designer" subtitle:<script[Banner_Designer_Data].parsed_key[Modes.<player.flag[banner_designer.<[uuid]>.mode]>.subtitle]> targets:<player> fade_in:15t stay:1s fade_out:15t
+    - title title:<&color[#000000]><&font[adriftus:overlay]><&chr[0004]><&chr[f801]><&chr[0004]> subtitle:<script[Banner_Designer_Data].parsed_key[Modes.<player.flag[banner_designer.<[uuid]>.mode]>.subtitle]> targets:<player> fade_in:0t stay:1s fade_out:1s
+    - teleport <player> banner_designer_<[uuid]>_viewpoint
+    - wait 1s
     - inject Banner_Designer_Update.preload instantly
   stop:
     - if <player.is_online>:
@@ -594,7 +597,7 @@ Banner_Designer_Update:
     - remove <player.flag[banner_designer.<[uuid]>.armor_stand].as_entity>
     - flag <player> banner_designer:!
     - flag <player> banner_machine_in_use:!
-    - run Generic_Freeze_Task instantly def:<player>|unfreeze
+    - showfake cancel <cuboid[banner_designer_<[uuid]>].expand[1].shell> players:<player>
     - stop
   preload:
     - choose <player.flag[banner_designer.<[uuid]>.mode]>:
