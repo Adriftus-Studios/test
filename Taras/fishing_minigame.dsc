@@ -24,6 +24,9 @@ fishing_minigame_start:
             - foreach <proc[fishing_minigame_get_all_types]> as:type:
                 - flag <[player]> fishingminigame.stats.bestcatch.<[type]>:none
         - run fishing_minigame_set_inventory def:<[player]>
+        - if !<server.has_flag[fishingminingame.activeplayers]>:
+            - flag server fishingminingame.activeplayers:<list[]>
+        - flag server fishingminingame.activeplayers:->:<[player]>
         - title title:<&a>Fishing "subtitle:<&a>Find a whirlpool in a lake, and begin catching!" targets:<[player]>
         - narrate "<&7>You are now in fishing mode. If you at any point would like to return to normal, look for a barrier in your inventory. Typing any command will revert you back to normal."
 
@@ -41,6 +44,7 @@ fishing_minigame_stop:
             - queue <player.flag[fishing_minigame_music_queue]> stop
             - midi cancel
             - flag <player> fishing_minigame_playing_music:!
+        - flag server fishingminingame.activeplayers:<-:<[player]>
 
 # % ██ [ Task called when bucket is bucket is clicked ] ██
 fishing_minigame_open_bucket:
@@ -143,7 +147,7 @@ fishing_minigame_whirlpool_animation:
     script:
         - define circles <server.flag[fishing_minigame_active_whirlpool_locations].keys.parse[up.with_pitch[90].proc[define_circle].context[1|0.1]].combine>
         - while !<server.has_flag[fishing_minigame_reset_whirlpools]>:
-            - playeffect at:<[circles]> dolphin offset:0.05,0.05,0.05 targets:<server.online_players>
+            - playeffect at:<[circles]> dolphin offset:0.05,0.05,0.05 targets:<server.flag[fishingminingame.activeplayers]>
             - wait 1t
         - flag server fishing_minigame_reset_whirlpools:!
 
@@ -192,7 +196,7 @@ fishing_minigame_bucket_add:
 
         # % ██ [ Print rare fish to the server ] ██
         - if <[rarity].equals[legendary]>:
-            - narrate "<&7><&l><&lt>!<&gt><&r> <&b><&l><player.name> <&r><&7>has just caught a <element[<bold>Legendary].color_gradient[from=#FF930F;to=#FFE15C]><&r> <[fish].display.on_hover[<[fish]>].type[SHOW_ITEM]>"
+            - narrate "<&7><&l><&lt>!<&gt><&r> <&b><&l><player.name> <&r><&7>has just caught a <element[<bold>Legendary].color_gradient[from=#FF930F;to=#FFE15C]><&r> <[fish].display.on_hover[<[fish]>].type[SHOW_ITEM]>" targets:<server.online_players>
 
         - run fishing_minigame_narrate_fish def:<[player]>|<[fish]>
         - if <player.has_flag[fishingminigame.active]> && <player.flag[fishingminigame.active]>:
@@ -349,7 +353,7 @@ fishing_minigame_show_off:
     definitions: player|fish
     script:
         - ratelimit <[player]> 10s
-        - narrate "<&7><&l><&lt>!<&gt><&r> <&7>Check out this fish <[player].name> caught: <[fish].display.on_hover[<[fish]>].type[SHOW_ITEM]>"
+        - narrate "<&7><&l><&lt>!<&gt><&r> <&7>Check out this fish <[player].name> caught: <[fish].display.on_hover[<[fish]>].type[SHOW_ITEM]>" targets:<server.online_players>
 
 #- % █████████████████████████████████
 #- %          [ Procedures ]
@@ -1377,7 +1381,7 @@ fishing_minigame_shop_exchange_item:
     debug: false
     type: item
     material: iron_nugget
-    display name: <&b><&l>100,000<&r><&font[adriftus:chat]><&chr[0045]><&r> <&b><&l>-<&gt> $10
+    display name: <&b><&l>5,000<&r><&font[adriftus:chat]><&chr[0045]><&r> <&b><&l>-<&gt> $10
     mechanisms:
         custom_model_data: 40
     lore:
