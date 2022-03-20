@@ -62,6 +62,13 @@ Banner_Designer_Config:
   #                        in the most efficient way. If false, blank layers will   #
   #                        be preserved, storing the banner exactly as designed.    #
   Compress_Empty_Layers: true
+  # Enemies_Break_(Type): If false, only players who have ownership rights to a     #
+  #                       placed banner can break it. If true, anyone who has       #
+  #                       build/break permissions in the location can break these   #
+  #                       banners and retrieve the associated item.                 #
+  Enemies_Break_Personal: false
+  Enemies_Break_Town: false
+  Enemies_Break_Nation: false
 
 #=====================================================================#
 #   OPERATIONS                                                        #
@@ -70,8 +77,8 @@ Banner_Designer_Config:
 
 Banner_Designer_Version:
   type: data
-  version: 1.0.5
-  last_updated: 2022_03_18
+  version: 1.0.6
+  last_updated: 2022_03_19
 
 Banner_Designer_Data:
   type: data
@@ -799,25 +806,40 @@ Banner_Designer_Placement:
       - choose <context.location.flag[custom_banner].keys.get[1]>:
         - case personal:
           - if <context.location.flag[custom_banner].get[personal]> != <player.uuid>:
-            - determine passively cancelled
-            - narrate "<dark_red>You can't destroy <server.flag[personal_banners].get[<context.location.simple>].as_player.name>'s banner!"
+            - if <script[Banner_Designer_Config].data_key[Enemies_Break_Personal]>:
+              - determine passively banner_item_personal
+              - narrate "<gray>You destroyed <server.flag[personal_banners].get[<context.location.simple>].as_player.name>'s personal banner!"
+            - else:
+              - determine passively cancelled
+              - narrate "<dark_red>You can't destroy <server.flag[personal_banners].get[<context.location.simple>].as_player.name>'s banner!"
           - else:
+            - determine passively banner_item_personal
             - flag <context.location> custom_banner:!
             - flag <player> placed_banners_personal_emblem:<-:<context.location.simple>
         - case town:
           - define town <context.location.flag[custom_banner].get[town]>
           - if <[town]> != <player.town>:
-            - determine passively cancelled
-            - narrate "<dark_red>You can't destroy <[town].name>'s flag!"
+            - if <script[Banner_Designer_Config].data_key[Enemies_Break_Town]>:
+              - determine passively banner_item_town
+              - narrate "<gray>You destroyed <[town].name>'s town flag!"
+            - else:
+              - determine passively cancelled
+              - narrate "<dark_red>You can't destroy <[town].name>'s flag!"
           - else:
+            - determine passively banner_item_town
             - flag <context.location> custom_banner:!
             - flag <[town]> placed_banners:<-:<context.location.simple>
         - case nation:
           - define nation <context.location.flag[custom_banner].get[nation]>
           - if <[nation]> != <player.nation>:
-            - determine passively cancelled
-            - narrate "<dark_red>You can't destroy <[nation].name>'s flag!"
+            - if <script[Banner_Designer_Config].data_key[Enemies_Break_Nation]>:
+              - determine passively banner_item_nation
+              - narrate "<gray>You destroyed <[nation].name>'s national flag!"
+            - else:
+              - determine passively cancelled
+              - narrate "<dark_red>You can't destroy <[nation].name>'s flag!"
           - else:
+            - determine passively banner_item_nation
             - flag <context.location> custom_banner:!
             - flag <[nation]> placed_banners:<-:<context.location.simple>
 
