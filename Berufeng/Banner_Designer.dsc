@@ -77,7 +77,7 @@ Banner_Designer_Config:
 
 Banner_Designer_Version:
   type: data
-  version: 1.0.7
+  version: 1.0.6
   last_updated: 2022_03_19
 
 Banner_Designer_Data:
@@ -467,7 +467,7 @@ Banner_Designer_Function:
             - wait 1t
             - inject Banner_Designer_Update instantly
           - default:
-          - narrate "<red>ERROR_CODE: 003 <gray>- please report!"
+            - narrate "<red>ERROR_CODE: 003 <gray>- please report!"
     on player right clicks *item_frame in:banner_designer_*:
       - determine passively cancelled
       - ratelimit <player> 2t
