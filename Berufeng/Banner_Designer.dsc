@@ -77,7 +77,7 @@ Banner_Designer_Config:
 
 Banner_Designer_Version:
   type: data
-  version: 1.0.6
+  version: 1.0.7
   last_updated: 2022_03_19
 
 Banner_Designer_Data:
@@ -467,7 +467,7 @@ Banner_Designer_Function:
             - wait 1t
             - inject Banner_Designer_Update instantly
           - default:
-            - stop
+          - narrate "<red>ERROR_CODE: 003 <gray>- please report!"
     on player right clicks *item_frame in:banner_designer_*:
       - determine passively cancelled
       - ratelimit <player> 2t
@@ -535,7 +535,7 @@ Banner_Designer_Function:
             - inject Banner_Designer_Save.presave instantly
             - stop
         - default:
-          - stop
+          - narrate "<red>ERROR_CODE: 002 <gray>- please report!"
       - inject Banner_Designer_Update instantly
     on *item_frame damaged in:banner_designer_*:
       - if <context.entity.location.cuboids.contains_any_text[banner_designer_]>:
@@ -594,6 +594,9 @@ Banner_Designer_Update:
     - teleport <player> banner_designer_<[uuid]>_viewpoint
     - wait 1s
     - inject Banner_Designer_Update.preload instantly
+    - wait 1s
+    - if !<player.location.is_in[banner_designer_<[uuid]>]>:
+      - teleport <player> banner_designer_<[uuid]>_viewpoint
   stop:
     - if <player.is_online>:
       - adjust <player> sign_update:banner_designer_<[uuid]>_layersign|<location[banner_designer_<[uuid]>_layersign].sign_contents>
@@ -608,8 +611,13 @@ Banner_Designer_Update:
     - stop
   preload:
     - choose <player.flag[banner_designer.<[uuid]>.mode]>:
-      - case test:
-        - narrate "<gray>This script will not load a banner design."
+      - case personal:
+        - if <player.has_flag[banner_designer_personal_emblem]>:
+          - narrate "<red>Loaded your stored Personal Emblem design."
+          - define preload <player.flag[banner_designer_personal_emblem]>
+          - inject Banner_Designer_Update.load instantly
+        - else:
+          - narrate "<red>No personal emblem found. Setting machine to default."
       - case town:
         - if <player.town.has_flag[banner_design]||false>:
           - narrate "<blue>Loaded the Town Flag design for <player.town.name>."
@@ -624,13 +632,8 @@ Banner_Designer_Update:
           - inject Banner_Designer_Update.load instantly
         - else:
           - narrate "<gold>This nation does not have a flag yet. Setting machine to default."
-      - case personal:
-        - if <player.has_flag[banner_designer_personal_emblem]>:
-          - narrate "<red>Loaded your stored Personal Emblem design."
-          - define preload <player.flag[banner_designer_personal_emblem]>
-          - inject Banner_Designer_Update.load instantly
-        - else:
-          - narrate "<red>No personal emblem found. Setting machine to default."
+      - default:
+        - narrate "<red>ERROR_CODE: 004 <gray>- please report!"
   load:
     - flag <player> banner_designer.<[uuid]>.color.0:<player.flag[banner_designer_personal_emblem].as_list.get[1]||0>
     - narrate "Base Color: <script[Banner_Designer_Data].data_key[Color.<player.flag[banner_designer.<[uuid]>.color.0]>]>"
@@ -688,7 +691,7 @@ Banner_Designer_Save:
           - wait 1t
           - give <[converter_result].as_item.with[hides=ALL;display=<white>Banner]>
         - default:
-          - narrate "<dark_red>You cannot save your design in this mode."
+          - narrate "<red>ERROR_CODE: 005 <gray>- please report!"
           - stop
       - title title:<dark_green>Saved! "subtitle:<green>Your token was consumed." targets:<player> fade_in:5t stay:1s fade_out:5t
       - inject Banner_Designer_Update.stop
@@ -733,7 +736,7 @@ Banner_Designer_Save:
           - narrate "<dark_gray>Overwriting and creating a white banner."
           - give white_banner
         - default:
-          - narrate "How did you get here?!"
+          - narrate "<red>ERROR_CODE: 001 <gray>- please report!"
       - title title:<dark_green>Overwritten! "subtitle:<green>Your token was consumed." targets:<player> fade_in:5t stay:1s fade_out:5t
       - define save_banner:0
       - inject Banner_Designer_Converter instantly
@@ -808,7 +811,7 @@ Banner_Designer_Placement:
           - if <context.location.flag[custom_banner].get[personal]> != <player.uuid>:
             - if <script[Banner_Designer_Config].data_key[Enemies_Break_Personal]>:
               - determine passively banner_item_personal
-              - narrate "<gray>You destroyed <server.flag[personal_banners].get[<context.location.simple>].as_player.name>'s personal banner!"
+              - narrate "<dark_gray>You destroyed <server.flag[personal_banners].get[<context.location.simple>].as_player.name>'s personal banner!"
             - else:
               - determine passively cancelled
               - narrate "<dark_red>You can't destroy <server.flag[personal_banners].get[<context.location.simple>].as_player.name>'s banner!"
@@ -821,7 +824,7 @@ Banner_Designer_Placement:
           - if <[town]> != <player.town>:
             - if <script[Banner_Designer_Config].data_key[Enemies_Break_Town]>:
               - determine passively banner_item_town
-              - narrate "<gray>You destroyed <[town].name>'s town flag!"
+              - narrate "<dark_gray>You destroyed <[town].name>'s town flag!"
             - else:
               - determine passively cancelled
               - narrate "<dark_red>You can't destroy <[town].name>'s flag!"
@@ -834,7 +837,7 @@ Banner_Designer_Placement:
           - if <[nation]> != <player.nation>:
             - if <script[Banner_Designer_Config].data_key[Enemies_Break_Nation]>:
               - determine passively banner_item_nation
-              - narrate "<gray>You destroyed <[nation].name>'s national flag!"
+              - narrate "<dark_gray>You destroyed <[nation].name>'s national flag!"
             - else:
               - determine passively cancelled
               - narrate "<dark_red>You can't destroy <[nation].name>'s flag!"
