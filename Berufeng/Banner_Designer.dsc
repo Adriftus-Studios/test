@@ -269,7 +269,7 @@ Banner_Designer_Create:
                 - define exitbutton <context.location.add[-1,0,-2]>
                 - define cuboidorigin <context.location.add[1,0,-4]>
                 - define away SOUTH
-                - define viewpoint <context.location.center.add[0,-0.5,-4].with_pose[-6,0]>
+                - define viewpoint <context.location.center.add[0,-0.5,-3].with_pose[-6,0]>
               - case east:
                 - define low <context.location.add[0,0,1]>
                 - define high <context.location.add[0,3,-1]>
@@ -280,7 +280,7 @@ Banner_Designer_Create:
                 - define exitbutton <context.location.add[2,0,-1]>
                 - define cuboidorigin <context.location.add[4,0,1]>
                 - define away WEST
-                - define viewpoint <context.location.center.add[4,-0.5,0].with_pose[-6,90]>
+                - define viewpoint <context.location.center.add[3,-0.5,0].with_pose[-6,90]>
               - case south:
                 - define low <context.location.add[-1,0,0]>
                 - define high <context.location.add[1,3,0]>
@@ -291,7 +291,7 @@ Banner_Designer_Create:
                 - define exitbutton <context.location.add[1,0,2]>
                 - define cuboidorigin <context.location.add[-1,0,3]>
                 - define away NORTH
-                - define viewpoint <context.location.center.add[0,-0.5,4].with_pose[-6,-180]>
+                - define viewpoint <context.location.center.add[0,-0.5,3].with_pose[-6,-180]>
               - case west:
                 - define low <context.location.add[0,0,-1]>
                 - define high <context.location.add[0,3,1]>
@@ -302,7 +302,7 @@ Banner_Designer_Create:
                 - define exitbutton <context.location.add[-2,0,1]>
                 - define cuboidorigin <context.location.add[-4,0,-1]>
                 - define away EAST
-                - define viewpoint <context.location.center.add[-4,-0.5,0].with_pose[-6,-90]>
+                - define viewpoint <context.location.center.add[-3,-0.5,0].with_pose[-6,-90]>
             - modifyblock <[low].to_cuboid[<[high]>]> netherite_block
             - spawn <entity[glow_item_frame].with[invulnerable=true;hide_from_players=true;framed=Banner_Designer_Complete_Button]> <[completebutton]> save:complete
             - spawn <entity[item_frame].with[framed=<item[Banner_Designer_Arrow_Blue].with_single[display_name=<aqua>Color<&sp>Down]>|flipped;hide_from_players=true;invulnerable=true]> <[layerdownbutton].above> save:colordown
