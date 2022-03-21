@@ -34,6 +34,11 @@ bigger_on_the_inside_events:
   debug: false
   events:
     on player places block flagged:boti.current:
-      - narrate <context.material>
+      - determine cancelled
+      - showfake <context.material> player:<player> <context.location>
+      - flag <player> boti.saved.<player.flag[boti.current.id]>.<context.location>:<context.material>
+      - wait 1t
+      - take iteminhand
     on player breaks block flagged:boti.current:
       - narrate <context.material>
+      #- flag <player> boti.saved.<player.flag[boti.current.id]>.<context.location>:!
