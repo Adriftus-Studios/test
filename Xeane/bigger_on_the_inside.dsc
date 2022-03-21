@@ -9,6 +9,7 @@ bigger_on_the_inside_start:
       - define blocks <schematic[<[schematic_name]>].cuboid[<[paste_origin]>].blocks>
       - schematic paste name:<[schematic_name]> fake_to:<player> fake_duration:999h <[paste_origin]>
       - flag <player> boti_blocks:<[blocks]>
+      - adjust <player> noclip:true
 
 bigger_on_the_inside_stop:
   type: task
@@ -17,3 +18,4 @@ bigger_on_the_inside_stop:
     - if <player.has_flag[boti_blocks]>:
       - showfake <player.flag[boti_blocks]> cancel players:<player>
       - flag <player> boti_blocks:!
+      - adjust <player> noclip:false
