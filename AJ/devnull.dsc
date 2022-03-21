@@ -9,7 +9,9 @@ dev_null_item:
       input: material:apple|material:cobblestone
   display name: <&r>/dev/null
   lore:
-  - <&e><&l>Left click<&r><&e> to set item.
+  - <&e>Prevents selected item from being picked up.<&nl>
+  - <&e><&l>Left click with an item<&r><&e> to set item.
+  - <&e><&l>Left click with no item<&r><&e> to move.
   - <&e><&l>Right click<&r><&e> to reset.
 
 dev_null_handler:
