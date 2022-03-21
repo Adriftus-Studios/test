@@ -35,7 +35,7 @@ bigger_on_the_inside_events:
   events:
     on player places block flagged:boti.current:
       - determine passively cancelled
-      - flag <player> boti.saved.<player.flag[boti.current.<player.flag[boti.current.id]>]>.<context.location>:<context.material>
+      - flag <player> boti.saved.<player.flag[boti.current.id]>.<context.location>:<context.material>
       - wait 1t
       - showfake <context.material> player:<player> <context.location> duration:99h
       - take iteminhand
