@@ -3,10 +3,10 @@ player_crafting_slots_override_events:
   debug: true
   data:
     items:
-      - "crafting_table[display=<&e>Crafting Table;flag=run_script:player_crafting_slots_open_button;flag=script:open_crafting_grid]"
-      - "stone[display=<&6>Adriftus Chest;flag=run_script:player_crafting_slots_open_button;flag=script:adriftus_chest_inventory_open]"
-      - "piston[display=<&b>Menu;flag=run_script:player_crafting_slots_open_button;flag=script:main_menu_inventory_open]"
-      - "feather[display=<&a>Travel;flag=run_script:player_crafting_slots_open_button;flag=script:travel_menu_open]"
+      - "crafting_table[display=<&e>Crafting Table;flag=run_script:player_crafting_slots_open_button;flag=script:open_crafting_grid;flag=no_drop_on_death:true]"
+      - "stone[display=<&6>Adriftus Chest;flag=run_script:player_crafting_slots_open_button;flag=script:adriftus_chest_inventory_open;flag=no_drop_on_death:true]"
+      - "piston[display=<&b>Menu;flag=run_script:player_crafting_slots_open_button;flag=script:main_menu_inventory_open;flag=no_drop_on_death:true]"
+      - "feather[display=<&a>Travel;flag=run_script:player_crafting_slots_open_button;flag=script:travel_menu_open;flag=no_drop_on_death:true]"
   set_inv:
       - define inv <player.open_inventory>
       - repeat 5:
