@@ -25,7 +25,7 @@ bigger_on_the_inside_stop:
   script:
     - if <player.has_flag[boti.current]>:
       - showfake <player.flag[boti.current.blocks]> cancel players:<player>
-      - flag <player> boti:!
+      - flag <player> boti.current:!
       - adjust <player> noclip:false
       - adjust <player> show_to_players
 
