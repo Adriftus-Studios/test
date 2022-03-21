@@ -14,7 +14,7 @@ bigger_on_the_inside_start:
       - adjust <player> noclip:true
       - adjust <player> hide_from_players
       - if <player.has_flag[boti.saved.<[id]>]>:
-        - foreach <player.flag[boti.saved.<[id]>]> key:loc value:block:
+        - foreach <player.flag[boti.saved.<[id]>]> key:loc as:block:
           - showfake <[loc]> <[block]> duration:999h
           - if <[loop_index].mod[10]> == 0:
             - wait 1t
