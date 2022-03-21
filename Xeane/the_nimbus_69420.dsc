@@ -20,7 +20,7 @@ shitty_nimbus_flight:
 
     # for when the player forgets to remove the nimbus from their crotch before leaving
     after player joins flagged:nimbus:
-      - mount nimbus_69420_entity|<player>
+      - mount <player>|nimbus_69420_entity
       - flag player nimbus.entity:<player.passenger>
       - flag player nimbus.velocity:<location[0,0,0]>
 
