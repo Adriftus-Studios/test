@@ -2,7 +2,7 @@ bigger_on_the_inside_start:
   type: task
   debug: false
   script:
-    - if !<player.has_flag[boti_blocks]>:
+    - if !<player.has_flag[boti.current]>:
       - define info <context.location.flag[show_fake_info]>
       - define schematic_name <[info].get[schematic]>
       - define ID <[info].get[ID]>
