@@ -9,6 +9,7 @@ scythe_test:
     - while <player.passenger> == <entry[as].spawned_entity>:
       - look <entry[as].spawned_entity> <player.location.forward[30]>
       - wait 1t
+    - remove <entry[as].spawned_entity>
 
 scythe_test_stop:
   type: task
