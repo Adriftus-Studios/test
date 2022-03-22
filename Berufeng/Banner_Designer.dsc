@@ -632,6 +632,8 @@ Banner_Designer_Update:
           - inject Banner_Designer_Update.load instantly
         - else:
           - narrate "<gold>This nation does not have a flag yet. Setting machine to default."
+      - case single:
+        - stop
       - default:
         - narrate "<red>ERROR_CODE: 003 <gray>- please report!"
   load:
