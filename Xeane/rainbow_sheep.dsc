@@ -4,5 +4,5 @@ rainbow_sheep:
     on spawn:
       - while <npc.is_spawned>:
         - foreach <list[red|orange|yellow|green|blue|purple]>:
-          - adjust <npc> color:<[value]>
+          - execute as_server "npc sheep --color <[value]> --id <npc.id>"
           - wait 1s
