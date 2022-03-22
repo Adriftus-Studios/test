@@ -5,4 +5,4 @@ rainbow_sheep:
       - while <npc.is_spawned>:
         - foreach <list[red|orange|yellow|green|blue|purple]>:
           - adjust <npc> color:<[value]>
-          - wait 5t
+          - wait 1s
