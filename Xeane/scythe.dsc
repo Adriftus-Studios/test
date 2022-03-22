@@ -2,7 +2,7 @@ scythe_test:
   type: task
   debug: false
   script:
-    - mount armor_stand[marker=true;visible=false;equipment=air|air|air|stick[custom_model_data=666]] save:as
+    - mount armor_stand[marker=true;visible=false;equipment=air|air|air|stick[custom_model_data=666]]|<player> save:as
     - flag <player> test.scythe:<entry[as].spawned_entity>
     - flag <entry[as].spawned_entity> on_dismount:cancel
     - while <player.passenger> == <entry[as].spawned_entity>:
