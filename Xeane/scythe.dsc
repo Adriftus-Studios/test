@@ -2,14 +2,14 @@ scythe_test:
   type: task
   debug: false
   script:
-    - spawn armor_stand[marker=true;visible=false;equipment=air|air|air|stick[custom_model_data=666]] <player.location> save:as
-    - mount <entry[as].spawned_entity>|<player>
-    - flag <player> test.scythe:<entry[as].spawned_entity>
-    - flag <entry[as].spawned_entity> on_dismount:cancel
-    - while <player.passenger> == <entry[as].spawned_entity>:
-      - look <entry[as].spawned_entity> yaw:<player.location.yaw>
+    - create armor_stand[marker=true;visible=false;equipment=air|air|air|stick[custom_model_data=666]] <player.location> registry:attachments save:as
+    - mount <entry[as].created_npc>|<player>
+    - flag <player> test.scythe:<entry[as].created_npc>
+    - flag <entry[as].created_npc> on_dismount:cancel_if_spawned
+    - while <player.passenger> == <entry[as].created_npc>:
+      - look <entry[as].created_npc> yaw:<player.location.yaw>
       - wait 1t
-    - remove <entry[as].spawned_entity>
+    - despawn <entry[as].created_npc>
 
 scythe_test_stop:
   type: task
