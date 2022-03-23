@@ -21,6 +21,8 @@ process_enchantment_data_task:
   script:
     - flag server custom_enchant_data:!
     - foreach <server.scripts.filter[container_type.equals[enchantment]].parse[name]> as:denizen_enchant:
+      - if <[denizen_enchant].rarity||null> == null:
+        - foreach next
       - flag server custom_enchant_data.<[denizen_enchant]>.rarity:<script[<[denizen_enchant]>].data_key[rarity]>
       - flag server custom_enchant_data.<[denizen_enchant]>.max:<script[<[denizen_enchant]>].data_key[max_level]>
       - flag server custom_enchant_data.<[denizen_enchant]>.data.item_slots:<script[<[denizen_enchant]>].data_key[data.item_slots]>
