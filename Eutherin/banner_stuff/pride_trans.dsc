@@ -11,3 +11,8 @@ Custom_Banner_Pride_Trans:
       - light_blue/BORDER
    lore:
    - Show your pride, your way.
+   flags:
+      category:
+      - pride
+      - gender
+      - seasonal
