@@ -3,7 +3,7 @@
 #=====================================================================#
 Banner_Designer_Version:
   type: data
-  version: 1.0.9
+  version: 1.0.10
   last_updated: 2022_03_22
 
 Banner_Designer_Data:
@@ -344,7 +344,7 @@ Banner_Designer_Function:
               - flag <player.town> editing_banner:<player.uuid>
           - else:
             - narrate "<dark_red>You don't have permission to edit your <blue>Town Flag<dark_red>."
-            - title "title:<red>ACCESS DENIED" targets:<player>
+            - title "subtitle:<red>ACCESS DENIED" targets:<player>
             - narrate "<gray>Only <white><player.town.mayor.name> <gray>has the ability to set these permissions."
             - stop
         - case nation:
@@ -360,7 +360,7 @@ Banner_Designer_Function:
               - flag <player.nation> editing_banner:<player.uuid>
           - else:
             - narrate "<dark_red>You don't have permission to edit your <gold>National Flag<dark_red>."
-            - title "title:<red>ACCESS DENIED" targets:<player>
+            - title "subtitle:<red>ACCESS DENIED" targets:<player>
             - narrate "<gray>Only <white><player.nation.king.name> <gray>has the ability to set these permissions."
             - stop
       - if !<player.has_flag[banner_machine_in_use]>:
@@ -429,7 +429,7 @@ Banner_Designer_Function:
             - stop
           - if <player.has_flag[banner_designer_exitready]>:
             - flag <player> banner_designer_exitready:!
-            - title "title:<dark_red>Exiting <bold>Banner Designer" "subtitle:<red>Your token has been refunded." targets:<player>
+            - title title:<dark_red>Exiting "subtitle:<red>Your token has been refunded." targets:<player>
             - give banner_token_<player.flag[banner_designer.<[uuid]>.mode]>
             - inject Banner_Designer_Update.stop instantly
             - stop
@@ -437,7 +437,7 @@ Banner_Designer_Function:
             - narrate "<red><bold>Do you want to exit and lose all progress?"
             - narrate "<red>(Your token will be refunded.)"
             - narrate "<gray><italic>Click again to confirm."
-            - title "title:<dark_red>Exit and lose all progress?" "subtitle:<gray><italic>Click again to confirm." targets:<player> fade_in:5t stay:1s fade_out:5t
+            - title title:<dark_red>Exit? "subtitle:<gray><italic>Click again to confirm." targets:<player> fade_in:5t stay:1s fade_out:5t
             - flag <player> banner_designer_exitready
             - wait <script[Banner_Designer_Config].data_key[Cooldown]>
             - if <player.has_flag[banner_designer_exitready]>:
@@ -627,7 +627,7 @@ Banner_Designer_Save:
       - narrate "<dark_green>Do you want to save and exit?"
       - narrate "<green>Your token will be consumed."
       - narrate "<gray><italic>Click again to confirm."
-      - title "title:<dark_green>Save and exit?" "subtitle:<gray>Click again to confirm." targets:<player> fade_in:5t stay:1s fade_out:5t
+      - title title:<dark_green>Save? "subtitle:<gray>Click again to confirm." targets:<player> fade_in:5t stay:1s fade_out:5t
       - flag <player> banner_designer_saveready
       - wait <script[Banner_Designer_Config].data_key[Cooldown]>
       - if <player.has_flag[banner_designer_saveready]>:
@@ -699,7 +699,7 @@ Banner_Designer_Placement:
           - else:
             - flag <context.location> custom_banner.personal:<player.uuid>
             - flag <player> placed_banners_personal_emblem:->:<context.location.simple>
-            - flag server personal_banners:->:<context.location.simple>.<player.uuid>
+            - flag server personal_banners.<context.location.simple>:<player.uuid>
             - define save_banner:<player.flag[banner_designer_personal_emblem]>
             - inject Banner_Designer_Converter instantly
             - run Banner_Designer_World_Update instantly def.new_banner:<[converter_result]> def.mode:personal def.player:<player>
@@ -794,7 +794,7 @@ Banner_Designer_Placement:
                 - take iteminhand
               - flag <context.entity> custom_banner.personal:<player.uuid>
               - flag <player> placed_banner_entities_personal_emblem:->:<context.entity.uuid>
-              - flag server personal_banner_entities:->:<context.entity.uuid>.<player.uuid>
+              - flag server personal_banner_entities.<context.entity.uuid>:<player.uuid>
               - define save_banner:<player.flag[banner_designer_personal_emblem]>
               - inject Banner_Designer_Converter instantly
               - run Banner_Designer_World_Update instantly def.new_banner:<[converter_result]> def.mode:personal def.player:<player>
