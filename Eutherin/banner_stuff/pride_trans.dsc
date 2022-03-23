@@ -8,6 +8,6 @@ Custom_Banner_Pride_Trans:
       - pink/STRIPE_LEFT
       - pink/STRIPE_RIGHT
       - light_blue/BORDER
-   hides: ALL
+      hides: ALL
    lore:
    - Show your pride, your way.
