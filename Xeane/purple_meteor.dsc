@@ -3,7 +3,7 @@ purple_meteor_shit:
   debug: false
   script:
     - define end <player.cursor_on>
-    - define start <player.location.above[50].forward_flat[30].left[50]>
+    - define start <player.location.above[100].forward_flat[30].left[70]>
     - define points <[start].points_between[<[end]>].distance[1]>
     - foreach <[points]>:
       - if <[loop_index].mod[4]> == 0:
