@@ -3,7 +3,7 @@
 #=====================================================================#
 Banner_Designer_Version:
   type: data
-  version: 1.0.10
+  version: 1.0.11
   last_updated: 2022_03_22
 
 Banner_Designer_Data:
@@ -884,7 +884,7 @@ Banner_Designer_World_Update:
   script:
   - choose <[mode]>:
     - case personal:
-      - foreach <[player].flag[placed_banners_personal_emblem]>:
+      - foreach <[player].flag[placed_banners_personal_emblem].if_null[<list>]>:
         - define facing_direction:<[value].as_location.material.direction>
         - if <[value].as_location.material.contains_any_text[_wall_]>:
           - adjust <[value].as_location> block_type:<[new_banner].before[_banner]>_wall_banner
@@ -892,10 +892,10 @@ Banner_Designer_World_Update:
           - adjust <[value].as_location> block_type:<[new_banner].before[_banner]>_banner
         - adjustblock <[value].as_location> direction:<[facing_direction]>
         - adjust <[value].as_location> patterns:<[new_banner].as_item.patterns>
-      - foreach <[player].flag[placed_banner_entities_personal_emblem]>:
+      - foreach <[player].flag[placed_banner_entities_personal_emblem].if_null[<list>]>:
         - equip <[value].as_entity> head:<[new_banner].as_item>
     - case town:
-      - foreach <[player].town.flag[placed_banners]>:
+      - foreach <[player].town.flag[placed_banners].if_null[<list>]>:
         - define facing_direction:<[value].as_location.material.direction>
         - if <[value].as_location.material.contains_any_text[_wall_]>:
           - adjust <[value].as_location> block_type:<[new_banner].before[_banner]>_wall_banner
@@ -903,10 +903,10 @@ Banner_Designer_World_Update:
           - adjust <[value].as_location> block_type:<[new_banner].before[_banner]>_banner
         - adjustblock <[value].as_location> direction:<[facing_direction]>
         - adjust <[value].as_location> patterns:<[new_banner].as_item.patterns>
-      - foreach <[player].town.flag[placed_banner_entities]>:
+      - foreach <[player].town.flag[placed_banner_entities].if_null[<list>]>:
         - equip <[value].as_entity> head:<[new_banner].as_item>
     - case nation:
-      - foreach <[player].nation.flag[placed_banners]>:
+      - foreach <[player].nation.flag[placed_banners].if_null[<list>]>:
         - define facing_direction:<[value].as_location.material.direction>
         - if <[value].as_location.material.contains_any_text[_wall_]>:
           - adjust <[value].as_location> block_type:<[new_banner].before[_banner]>_wall_banner
@@ -914,7 +914,7 @@ Banner_Designer_World_Update:
           - adjust <[value].as_location> block_type:<[new_banner].before[_banner]>_banner
         - adjustblock <[value].as_location> direction:<[facing_direction]>
         - adjust <[value].as_location> patterns:<[new_banner].as_item.patterns>
-      - foreach <[player].nation.flag[placed_banner_entities]>:
+      - foreach <[player].nation.flag[placed_banner_entities].if_null[<list>]>:
         - equip <[value].as_entity> head:<[new_banner].as_item>
 
 Banner_Designer_Reset:
