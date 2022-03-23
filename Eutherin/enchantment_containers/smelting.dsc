@@ -26,7 +26,7 @@ smelting_enchant_handler:
   type: world
   debug: false
   events:
-    on player breaks *iron_ore|*copper_ore|*gold_ore|iron_ore|copper_ore|gold_ore with:item_enchanted:smelting:
+    on player breaks *_iron_ore|*_copper_ore|*_gold_ore|iron_ore|copper_ore|gold_ore with:item_enchanted:smelting:
     - if <player.item_in_hand.material.name.after[_]> == pickaxe:
       - if <util.random.int[1].to[10].add[<player.item_in_hand.enchantment_map.get[smelting].mul[1.5]>]> > 10:
         - define material <context.location.material.name.after[deepslate_].if_null[<context.location.material.name>].before[_ore]>
