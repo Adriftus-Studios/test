@@ -7,7 +7,7 @@ scythe_test:
     - flag <player> test.scythe:<entry[as].spawned_entity>
     - flag <entry[as].spawned_entity> on_dismount:cancel
     - while <player.passenger> == <entry[as].spawned_entity>:
-      - look <entry[as].spawned_entity> <player.location.forward[30]>
+      - look <entry[as].spawned_entity> yaw:<player.location.yaw>
       - wait 1t
     - remove <entry[as].spawned_entity>
 
