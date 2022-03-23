@@ -11,7 +11,7 @@ Custom_Banner_@@:
      patterns:
      - COLOR/SHAPE
   lore:
-  - 
+  - description_of_the_flag_or_thing
   flags:
      category:
      - DEFAULT_SEARCH_TAG
