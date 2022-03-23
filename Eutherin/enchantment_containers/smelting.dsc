@@ -30,3 +30,7 @@ smelting_enchant_handler:
       - if <util.random.int[1].to[10].add[<player.item_in_hand.enchantment_map.get[smelting].mul[1.5]>]> > 10:
         - define material <context.location.material.name.after[deepslate_].if_null[<context.location.material.name>].before[_ore]>
         - determine <[material]>_ingot
+    on player breaks sand|red_sand with:item_enchanted:smelting:
+      - if <context.item.material.name.after[_]> == shovel:
+        - if <util.random.int[1].to[10].add[<player.item_in_hand.enchantment_map.get[smelting].mul[1.5]>]> > 10:
+          - determine glass
