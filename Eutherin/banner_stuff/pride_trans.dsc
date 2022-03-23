@@ -15,4 +15,3 @@ Custom_Banner_Pride_Trans:
       category:
       - pride
       - gender
-      - seasonal
