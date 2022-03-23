@@ -4,10 +4,10 @@ Custom_Banner_Pride_Trans:
    material: white_banner
    display name: Trans Pride Flag
    mechanisms:
+      hides: ALL
       patterns:
       - pink/STRIPE_LEFT
       - pink/STRIPE_RIGHT
       - light_blue/BORDER
-      hides: ALL
    lore:
    - Show your pride, your way.
