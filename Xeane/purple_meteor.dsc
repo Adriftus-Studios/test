@@ -1,11 +1,12 @@
 purple_meteor_shit:
   type: task
   debug: false
+  definitions: targets
   script:
     - define end <player.cursor_on>
     - define start <player.location.above[100].forward_flat[30].left[70]>
     - define points <[start].points_between[<[end]>].distance[1]>
-    - define targets <player>
+    - define targets <player> if:<[targets].exists.not>
     - foreach <[points]>:
       - if <[loop_index].mod[3]> == 0:
         - wait 1t
