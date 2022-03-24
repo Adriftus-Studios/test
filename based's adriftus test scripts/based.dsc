@@ -168,7 +168,7 @@ confirmScriptText_callback:
 # | script:
 # | - run confirmScriptText def:relevantTaskScript
 
-switchGamemode:
+switchGamemodeSurvivalCreative:
     type: command
     name: switchGamemode
     description: Switches the player between Creative and Survival.
