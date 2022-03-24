@@ -7,14 +7,14 @@ Custom_Banner_@@:
   material: COLOR_banner
   display name: DISPLAY_NAME
   mechanisms:
-     hides: ALL
-     patterns:
-     - COLOR/SHAPE
+    hides: ALL
+    patterns:
+    - COLOR/SHAPE
   lore:
   - description_of_the_flag_or_thing
   flags:
-     category:
-     - DEFAULT_SEARCH_TAG
+    category:
+    - DEFAULT_SEARCH_TAG
 
 ## colors: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/DyeColor.html
 ## shapes: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/block/banner/PatternType.html
