@@ -1,0 +1,22 @@
+## Keep the custom_banner_, replace @@
+
+
+Custom_Banner_@@:
+  type: item
+  debug: false
+  material: COLOR_banner
+  display name: DISPLAY_NAME
+  mechanisms:
+    hides: ALL
+    patterns:
+    - COLOR/SHAPE
+  lore:
+  - description_of_the_flag_or_thing
+  flags:
+    category:
+    - DEFAULT_SEARCH_TAG
+
+## colors: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/DyeColor.html
+## shapes: https://hub.spigotmc.org/javadocs/spigot/org/bukkit/block/banner/PatternType.html
+## TODO implement search tags
+#@ NOTE, 16 LAYER MAX LIMIT.
