@@ -24,6 +24,8 @@ player_crafting_slots_override_events:
       - inject locally path:set_inv
     on player closes PLAYER:
       - inject locally path:set_inv
+    on player dies:
+      - inventory clear d:<player.open_inventory>
 
 player_crafting_slots_open_button:
   type: task
