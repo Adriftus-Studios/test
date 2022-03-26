@@ -270,13 +270,15 @@ combatTag:
     type: world
     events:
         on player damaged by player:
-            - flag <player> combatTag expire:30s
+            - flag <context.player> combatTag expire:30s
+            - flag <context.damager> combatTag expire:30s
             - narrate "<red>You are now combat-tagged for being attacked by a player.<reset>"
-        on player dies:
-            - flag <player> combatTag:!
+        on player killed by player:
+            - flag <context.player> combatTag:!
             - narrate "<green>You are no longer in combat.<reset>"
         on player damages player:
-            - flag <player> combatTag expire:30s
+            - flag <context.player> combatTag expire:30s
+            - flag <context.damager> combatTag expire:30s
             - narrate "<red>You are now combat-tagged for attacking a player.<reset>"
 
 hubCommand:
