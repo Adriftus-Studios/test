@@ -266,20 +266,19 @@ unknownCommand:
             - narrate "<red><bold><underline>Okay just sayin, you're typing an unknown command."
 #
 
-combatTag:
-    type: world
-    events:
-        on player damaged by entity:
-            - flag <context.player> combatTag expire:30s
-            - flag <context.damager> combatTag expire:30s
-            - narrate "<red>You are now combat-tagged for being attacked by a player.<reset>"
-        on player killed by entity:
-            - flag <context.player> combatTag:!
-            - narrate "<green>You are no longer in combat.<reset>"
-        on player damages entity:
-            - flag <context.player> combatTag expire:30s
-            - flag <context.damager> combatTag expire:30s
-            - narrate "<red>You are now combat-tagged for attacking a player.<reset>"
+combat_tag:
+  type: world
+  debug: false
+  events:
+    on player damaged by player:
+      - flag <context.damager> combatTag expire:30s if:<context.damager.is_player>
+      - flag <context.entity> combatTag expire:30s if:<context.entity.is_player>
+      - narrate "You have been combat-tagged. Do not log out!"
+    on player dies flagged:combatTag:
+      - flag <player> combatTag:!
+    on player quit flagged:combatTag:
+        - kill <player>
+        - flag <player> combatTag:!
 
 hubCommand:
     type: command
