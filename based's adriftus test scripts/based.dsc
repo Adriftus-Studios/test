@@ -268,8 +268,10 @@ unknownCommand:
 combatTag:
     type: world
     events:
-        on player damaged by entity:
-        - flag <player> combatTag
+        on player damaged:
+        - flag <player> combatTag expire:30s
+        on player dies:
+        - flag <player> combatTag:!
 
 hubCommand:
     type: command
