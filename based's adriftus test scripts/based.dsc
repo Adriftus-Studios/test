@@ -1,3 +1,4 @@
+# Hi! You're looking at a file that has every single script I've made with the help of my co-workers at Adriftus Studios!
 bobTheNPC:
     type: assignment
     actions:
@@ -268,10 +269,12 @@ unknownCommand:
 combatTag:
     type: world
     events:
-        on player damaged:
-        - flag <player> combatTag expire:30s
+        on player damaged by player:
+            - flag <player> combatTag expire:30s
         on player dies:
-        - flag <player> combatTag:!
+            - flag <player> combatTag:!
+        on player damages player:
+            - flag 
 
 hubCommand:
     type: command
@@ -282,6 +285,7 @@ hubCommand:
         - if <player.has_flag[combatTag]>:
             - determine cancelled
             - narrate "<red>You cannot do that when you're in combat!<reset>"
+        - adjust <player> send_to:<bungee.server[hub]>
         - teleport <player> <location[0,73,0,4_buildings]>
 # Drew approves.
 
