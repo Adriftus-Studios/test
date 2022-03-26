@@ -269,14 +269,14 @@ unknownCommand:
 combatTag:
     type: world
     events:
-        on player damaged by player:
+        on player damaged by entity:
             - flag <context.player> combatTag expire:30s
             - flag <context.damager> combatTag expire:30s
             - narrate "<red>You are now combat-tagged for being attacked by a player.<reset>"
-        on player killed by player:
+        on player killed by entity:
             - flag <context.player> combatTag:!
             - narrate "<green>You are no longer in combat.<reset>"
-        on player damages player:
+        on player damages entity:
             - flag <context.player> combatTag expire:30s
             - flag <context.damager> combatTag expire:30s
             - narrate "<red>You are now combat-tagged for attacking a player.<reset>"
