@@ -262,5 +262,27 @@ unknownCommand:
     type: world
     events:
         on unknown command:
-            - narrate "<red><bold><underline>Imagine typing an unknown command."
+            - narrate "<red><bold><underline>Okay just sayin, you're typing an unknown command."
 #
+
+combatTag:
+    type: world
+    events:
+        on player damaged by entity:
+        - flag <player> combatTag
+
+hubCommand:
+    type: command
+    name: hub
+    description: Teleports player to the hub.
+    usage: /hub
+    script:
+        - if <player.has_flag[combatTag]>:
+            - determine cancelled
+            - narrate "<red>You cannot do that when you're in combat!<reset>"
+        - teleport <player> <location[0,73,0,4_buildings]>
+# Drew approves.
+
+# Stuff to make
+# - Combat tag
+# - Hub command (shouldn't work if the player is combat-tagged)
