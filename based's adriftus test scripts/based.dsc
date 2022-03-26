@@ -271,10 +271,13 @@ combatTag:
     events:
         on player damaged by player:
             - flag <player> combatTag expire:30s
+            - narrate "<red>You are now combat-tagged for being attacked by a player.<reset>"
         on player dies:
             - flag <player> combatTag:!
+            - narrate "<green>You are no longer in combat.<reset>"
         on player damages player:
-            - flag 
+            - flag <player> combatTag expire:30s
+            - narrate "<red>You are now combat-tagged for attacking a player.<reset>"
 
 hubCommand:
     type: command
@@ -285,7 +288,7 @@ hubCommand:
         - if <player.has_flag[combatTag]>:
             - determine cancelled
             - narrate "<red>You cannot do that when you're in combat!<reset>"
-        - adjust <player> send_to:<bungee.server[hub]>
+        - adjust <player> send_to:hub
         - teleport <player> <location[0,73,0,4_buildings]>
 # Drew approves.
 
