@@ -210,6 +210,7 @@ selectGamemode_callback:
             - adjust <player> gamemode:spectator
             - narrate "<green>You have switched to <bold><underline>Spectator<reset><green> mode."
             - flag player callback:!
+#Not working; for testing only
 
 resetWorldborder:
     type: command
@@ -224,28 +225,43 @@ resetWorldborder:
     script:
         - worldborder <player> reset
         - narrate "<bold><yellow>The world border has been reset.<reset>"
-#
+#Works
 
 seeInventory:
     type: command
     name: seeInventory
     definitions: name
-    debug: false
     description: Displays the inventory of a player.
     usage: /seeinventory <&lt>name<&gt>
     aliases:
         - inventory
+        - si
     permissions: adriftus.inventory.view
     script:
         - inventory open destination:<server.match_player[<context.raw_args>]>
-#
+#Currently being worked on
+
+seeInventoryWorld:
+    type: world
+    events:
+        after /seeinventory command:
+            after player left clicks shulker in inventory:
+                - inventory open d:<context.shulker>
+            after player left|right clicks item in inventory:
+                - determine passively cancelled
+
+# Idea -
+#   - Displays inventory of any player, offline and online.
+#   - Inventory should only be for view.
+#   - Shulkers, upon click, should be displayed
+
 
 unknownCommand:
     type: world
     events:
         after unknown command:
             - narrate "<red><bold><underline>Okay just sayin, you're typing an unknown command."
-#
+#Not working
 
 combatTag:
     type: world
@@ -279,6 +295,7 @@ hubCommand:
             - determine cancelled
         - adjust <player> send_to:hub
         - teleport <player> <location[0,73,0,4_buildings]>
+#Works
 
 sitCommand:
     type: command
@@ -286,7 +303,9 @@ sitCommand:
     description: Makes the player sit down on a block.
     usage: /sit
     script:
+        - teleport <player> <player.location>
         - animate <player> animation:sit
         - flag <player> sitting
         - if <player.has_flag[sitting]>:
             - animate <player> animation:stand
+#Glitchy as fuck
