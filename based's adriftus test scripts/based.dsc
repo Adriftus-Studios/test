@@ -1,8 +1,10 @@
 # Hi! You're looking at a file that has every single script I've made with the help of my co-workers at Adriftus Studios!
-# Scripts to make
-# - Gamemode selector in a text menu
-# - Chest lock system
-# - Sit command
+# Incomplete scripts I'm working on - 
+#   - Gamemode selector in a text menu
+#   - Chest lock system
+#   - Sit command
+#   - My NPC
+#   - noHunger
 
 bobTheNPC:
     type: assignment
@@ -304,10 +306,12 @@ hubCommand:
         - teleport <player> <location[0,73,0,4_buildings]>
 # Drew approves.
 
-notchJoinsOMG:
-    type: world
-    events:
-        on player joins:
-            - if <player.name.equals[ItsBased]>:
-                - announce "<yellow>Notch has joined the game.<reset>"
-                - announce "<gray>[<green>Staff<gray>]<white> Notch: <green>Hello there!<reset>"
+sitCommand:
+    type: command
+    name: Sit
+    debug: false
+    description: Makes the player sit down on a block.
+    usage: /sit
+    script:
+        - animate <player> animation:sit
+        - if <player>
