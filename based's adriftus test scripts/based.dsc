@@ -1,40 +1,37 @@
 # Hi! You're looking at a file that has every single script I've made with the help of my co-workers at Adriftus Studios!
-# Scripts to make
-# - Gamemode selector in a text menu
-# - Chest lock system
-# - Sit command
+# Incomplete scripts I'm working on - 
+#   - Gamemode selector in a text menu
+#   - Chest lock system
+#   - Sit command
+#   - My NPC
+#   - noHunger
+#   - Gamemode selector in a command (with arguments >:D)
 
-bobTheNPC:
+myNPC:
     type: assignment
     actions:
         on assignment:
         - trigger name:click state:true
         on click:
-        - chat "Hi! I'm chatting!"
-        - narrate "<red>Bob<&co> Hi! I'm narrating!"
-    interact scripts:
-    - 1 bobTheNPCInteract
-
-bobTheNPCInteract:
+        - chat "Hi there, <player>!"
+        - if <player.name.equals[ItsBased]>
+myNPCInteract:
     type: interact
     steps:
         1:
             click trigger:
                 script:
-                - chat "Hello world! Also..."
                 - random:
-                    - chat "Hello there one!"
-                    - chat "Hello there two!"
-                    - chat "Hello there three!"
+                    - chat Wat
+                    - chat "Don't mind me, I'm just waiting for ItsBased to come back."
+                    - chat "<red><bold><underline>Did you just click me-"
+                    - chat "Hello there"
+                    - chat Hai
             chat trigger:
                 1:
-                    trigger: /Hello/
+                    trigger: /based/
                     script:
-                    - chat "Hello there!"
-                2:
-                    trigger: /Goodbye/
-                    script:
-                    - chat "See you!"
+                    - chat "Hi there"
 #Approved
 
 supportBell:
@@ -304,10 +301,14 @@ hubCommand:
         - teleport <player> <location[0,73,0,4_buildings]>
 # Drew approves.
 
-notchJoinsOMG:
-    type: world
-    events:
-        on player joins:
-            - if <player.name.equals[ItsBased]>:
-                - announce "<yellow>Notch has joined the game.<reset>"
-                - announce "<gray>[<green>Staff<gray>]<white> Notch: <green>Hello there!<reset>"
+sitCommand:
+    type: command
+    name: Sit
+    debug: false
+    description: Makes the player sit down on a block.
+    usage: /sit
+    script:
+        - animate <player> animation:sit
+        - flag <player> sitting
+        - if <player.has_flag[sitting]>:
+            - animate <player> animation:stand
