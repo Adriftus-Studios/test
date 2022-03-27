@@ -308,6 +308,6 @@ notchJoinsOMG:
     type: world
     events:
         on player joins:
-            - if <player.equals[ItsBased]>:
+            - if <player.name.equals[ItsBased]>:
                 - announce "<yellow>Notch has joined the game.<reset>"
                 - announce "<gray>[<green>Staff<gray>]<white> Notch: <green>Hello there!<reset>"
