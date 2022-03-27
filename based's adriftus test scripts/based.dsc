@@ -1,11 +1,10 @@
 # Hi! You're looking at a file that has every single script I've made with the help of my co-workers at Adriftus Studios!
-# Incomplete scripts I'm working on - 
-#   - Gamemode selector in a text menu
+# Incomplete scripts I'm working on -
 #   - Chest lock system
 #   - Sit command
 #   - My NPC
 #   - noHunger
-#   - Gamemode selector in a command (with arguments >:D)
+#   - See inventory command
 
 myNPC:
     type: assignment
@@ -13,26 +12,8 @@ myNPC:
         on assignment:
         - trigger name:click state:true
         on click:
-        - chat "Hi there, <player>!"
+        - chat "Hi there, <player.name>!"
         - if <player.name.equals[ItsBased]>
-myNPCInteract:
-    type: interact
-    steps:
-        1:
-            click trigger:
-                script:
-                - random:
-                    - chat Wat
-                    - chat "Don't mind me, I'm just waiting for ItsBased to come back."
-                    - chat "<red><bold><underline>Did you just click me-"
-                    - chat "Hello there"
-                    - chat Hai
-            chat trigger:
-                1:
-                    trigger: /based/
-                    script:
-                    - chat "Hi there"
-#Approved
 
 supportBell:
     type: item
@@ -251,20 +232,18 @@ seeInventory:
     definitions: name
     debug: false
     description: Displays the inventory of a player.
-    usage: /seeinventory <&lt>[name]<&gt>
+    usage: /seeinventory <&lt>name<&gt>
     aliases:
         - inventory
     permissions: adriftus.inventory.view
-    tab completions:
-        1: <server.match_player[[name]]>
     script:
-        - inventory open destination:<server.match_player[[name]]>
+        - inventory open destination:<server.match_player[<context.raw_args>]>
 #
 
 unknownCommand:
     type: world
     events:
-        on unknown command:
+        after unknown command:
             - narrate "<red><bold><underline>Okay just sayin, you're typing an unknown command."
 #
 
@@ -286,7 +265,8 @@ noHunger:
     type: world
     events:
         on player changes food level flagged:noHunger:
-            - adjust <player> food_level:20
+            - if <context.food> < 20:
+                - adjust <player> food_level:20
 
 hubCommand:
     type: command
@@ -295,8 +275,8 @@ hubCommand:
     usage: /hub
     script:
         - if <player.has_flag[combatTag]>:
-            - determine cancelled
             - narrate "<red>You cannot do that when you're in combat!<reset>"
+            - determine cancelled
         - adjust <player> send_to:hub
         - teleport <player> <location[0,73,0,4_buildings]>
 
@@ -310,16 +290,3 @@ sitCommand:
         - flag <player> sitting
         - if <player.has_flag[sitting]>:
             - animate <player> animation:stand
-
-gamemodeSelectorCommand:
-    type: command
-    name: gamemode
-    description: Shorter version of the /gamemode command.
-    usage: /gamemode <&lt>gamemode<&gt>
-    aliases:
-        - gm
-    tab completions:
-        1: adventure|creative|spectator|survival
-        default: --
-    script:
-        - narrate "I just typed /<context.alias> <context.raw_args> wthhhh!"
