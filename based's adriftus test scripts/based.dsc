@@ -300,5 +300,5 @@ hubCommand:
 # Drew approves.
 
 # Stuff to make
-# - Combat tag
-# - Hub command (shouldn't work if the player is combat-tagged)
+# - Gamemode selector in a text menu
+# - Chest lock system
