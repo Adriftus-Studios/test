@@ -299,12 +299,10 @@ hubCommand:
             - narrate "<red>You cannot do that when you're in combat!<reset>"
         - adjust <player> send_to:hub
         - teleport <player> <location[0,73,0,4_buildings]>
-# Drew approves.
 
 sitCommand:
     type: command
     name: Sit
-    debug: false
     description: Makes the player sit down on a block.
     usage: /sit
     script:
@@ -312,3 +310,16 @@ sitCommand:
         - flag <player> sitting
         - if <player.has_flag[sitting]>:
             - animate <player> animation:stand
+
+gamemodeSelectorCommand:
+    type: command
+    name: gamemode
+    description: Shorter version of the /gamemode command.
+    usage: /gamemode <&lt>gamemode<&gt>
+    aliases:
+        - gm
+    tab completions:
+        1: adventure|creative|spectator|survival
+        default: --
+    script:
+        - narrate "I just typed /<context.alias> <context.raw_args> wthhhh!"
