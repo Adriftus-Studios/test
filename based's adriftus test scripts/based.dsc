@@ -1,3 +1,9 @@
+# Hi! You're looking at a file that has every single script I've made with the help of my co-workers at Adriftus Studios!
+# Scripts to make
+# - Gamemode selector in a text menu
+# - Chest lock system
+# - Sit command
+
 bobTheNPC:
     type: assignment
     actions:
@@ -262,5 +268,46 @@ unknownCommand:
     type: world
     events:
         on unknown command:
-            - narrate "<red><bold><underline>Imagine typing an unknown command."
+            - narrate "<red><bold><underline>Okay just sayin, you're typing an unknown command."
 #
+
+combatTag:
+    type: world
+    debug: false
+    events:
+        on player damaged by player:
+            - flag <context.damager> combatTag expire:30s if:<context.damager.is_player>
+            - flag <context.entity> combatTag expire:30s if:<context.entity.is_player>
+            - narrate "You have been combat-tagged. Do not log out!"
+        on player dies flagged:combatTag:
+            - flag <player> combatTag:!
+        on player quit flagged:combatTag:
+            - kill <player>
+            - flag <player> combatTag:!
+
+noHunger:
+    type: world
+    events:
+        on player changes food level flagged:noHunger:
+            - adjust <player> food_level:20
+
+hubCommand:
+    type: command
+    name: hub
+    description: Teleports player to the hub.
+    usage: /hub
+    script:
+        - if <player.has_flag[combatTag]>:
+            - determine cancelled
+            - narrate "<red>You cannot do that when you're in combat!<reset>"
+        - adjust <player> send_to:hub
+        - teleport <player> <location[0,73,0,4_buildings]>
+# Drew approves.
+
+notchJoinsOMG:
+    type: world
+    events:
+        on player joins:
+            - if <player.name.equals[ItsBased]>:
+                - announce "<yellow>Notch has joined the game.<reset>"
+                - announce "<gray>[<green>Staff<gray>]<white> Notch: <green>Hello there!<reset>"
