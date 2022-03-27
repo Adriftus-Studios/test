@@ -6,37 +6,30 @@
 #   - My NPC
 #   - noHunger
 
-bobTheNPC:
+myNPC:
     type: assignment
     actions:
         on assignment:
         - trigger name:click state:true
         on click:
-        - chat "Hi! I'm chatting!"
-        - narrate "<red>Bob<&co> Hi! I'm narrating!"
-    interact scripts:
-    - 1 bobTheNPCInteract
-
-bobTheNPCInteract:
+        - chat "Don't mind me, I'm just waiting for ItsBased to come back."
+myNPCInteract:
     type: interact
     steps:
         1:
             click trigger:
                 script:
-                - chat "Hello world! Also..."
                 - random:
-                    - chat "Hello there one!"
-                    - chat "Hello there two!"
-                    - chat "Hello there three!"
+                    - chat Wat
+                    - chat "Don't mind me, I'm just waiting for ItsBased to come back."
+                    - chat "<red><bold><underline>Did you just click me-"
+                    - chat "Hello there"
+                    - chat Hai
             chat trigger:
                 1:
-                    trigger: /Hello/
+                    trigger: /based/
                     script:
-                    - chat "Hello there!"
-                2:
-                    trigger: /Goodbye/
-                    script:
-                    - chat "See you!"
+                    - chat "Hi there"
 #Approved
 
 supportBell:
@@ -314,4 +307,6 @@ sitCommand:
     usage: /sit
     script:
         - animate <player> animation:sit
-        - if <player>
+        - flag <player> sitting
+        - if <player.has_flag[sitting]>:
+            - animate <player> animation:stand
