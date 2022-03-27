@@ -1,4 +1,9 @@
 # Hi! You're looking at a file that has every single script I've made with the help of my co-workers at Adriftus Studios!
+# Scripts to make
+# - Gamemode selector in a text menu
+# - Chest lock system
+# - Sit command
+
 bobTheNPC:
     type: assignment
     actions:
@@ -299,6 +304,10 @@ hubCommand:
         - teleport <player> <location[0,73,0,4_buildings]>
 # Drew approves.
 
-# Stuff to make
-# - Gamemode selector in a text menu
-# - Chest lock system
+notchJoinsOMG:
+    type: world
+    events:
+        on player joins:
+            - if <player.equals[ItsBased]>:
+                - announce "<yellow>Notch has joined the game.<reset>"
+                - announce "<gray>[<green>Staff<gray>]<white> Notch: <green>Hello there!<reset>"
