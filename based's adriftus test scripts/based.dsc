@@ -5,6 +5,7 @@
 #   - Sit command
 #   - My NPC
 #   - noHunger
+#   - Gamemode selector in a command (with arguments >:D)
 
 myNPC:
     type: assignment
@@ -12,7 +13,8 @@ myNPC:
         on assignment:
         - trigger name:click state:true
         on click:
-        - chat "Don't mind me, I'm just waiting for ItsBased to come back."
+        - chat "Hi there, <player>!"
+        - if <player.name.equals[ItsBased]>
 myNPCInteract:
     type: interact
     steps:
