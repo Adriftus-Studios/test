@@ -23,7 +23,7 @@ return_scroll_events:
           - define item <[value].substring[9]>
         - else:
           - define item <[value]>
-        - take item:<[item]> from:<context.open_inventory>
+        - take item:<[item]> from:<context.clicked_inventory>
       - determine <item[return_scroll].with[quantity=<context.amount>;flag=destination:<player.location>;flag=right_click_script:return_scroll_task;lore=<[lore]>]>
 
 return_scroll_task:
