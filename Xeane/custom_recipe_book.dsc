@@ -44,5 +44,5 @@ crafting_book_open:
   script:
     - define inv <inventory[crafting_book_inventory]>
     - foreach <server.flag[recipe_book].keys> as:item:
-      - give <item[<[item]>].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:denizen<&co><server.flag[recipe_book.<[item]>].get[1]>]> to:<[inv]>
+      - give <item[<[item]>].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:denizen<&co><server.flag[recipe_book.<[item]>].keys.get[1]>]> to:<[inv]>
     - inventory open d:<[inv]>
