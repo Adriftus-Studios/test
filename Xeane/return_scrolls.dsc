@@ -18,14 +18,7 @@ return_scroll_events:
   events:
     on return_scroll recipe formed:
       - define lore "<context.item.lore.include[<&b>Location<&co> <player.location.simple>]>"
-      - if <context.amount> == 1:
-        - determine passively <item[return_scroll].with[flag=destination:<player.location>;flag=right_click_script:return_scroll_task;lore=<[lore]>]>
-      - else:
-        - determine passively cancelled
-        - wait 1t
-        - foreach <server.recipe_items[<context.recipe_id>]>:
-          - take item:<[value]> from:<player.open_inventory> quantity:<context.amount.mul[2]>
-        - give <item[return_scroll].with[quantity=<context.amount>;flag=destination:<player.location>;flag=right_click_script:return_scroll_task;lore=<[lore]>]>
+      - determine passively <item[return_scroll].with[flag=destination:<player.location>;flag=right_click_script:return_scroll_task;lore=<[lore]>]>
 
 return_scroll_task:
   type: task
