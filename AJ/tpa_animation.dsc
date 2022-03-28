@@ -1,5 +1,5 @@
 
-teleportation_animation_purple aura:
+teleportation_animation_purple_aura:
   type: data
   name: aura_purple
   display: <&5>Purple Aura
