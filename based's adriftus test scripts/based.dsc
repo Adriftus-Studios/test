@@ -230,7 +230,6 @@ seeInventory:
     aliases:
         - inventory
         - si
-    permissions: adriftus.inventory.view
     tab completion:
         1: <server.online_players>
     script:
