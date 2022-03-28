@@ -8,12 +8,12 @@ chat_confirm:
   script:
     - run chat_pause
     - define uuid <util.random_uuid>
-    - clickable chat_text_response_handler def:true save:accept
-    - clickable chat_text_response_handler def:false save:deny
+    - clickable chat_confirm_handler def:true save:accept
+    - clickable chat_confirm_handler def:false save:deny
     - narrate <element[------------------].color_gradient[from=<color[aqua]>;to=<color[white]>]>
     - narrate <[prompt]><&nl><&nl>
-    - define list:!|:<element[<script[chat_text_response].parsed_key[data.agree_text]>].on_click[<entry[accept].command>]>
-    - define list:|:<element[<script[chat_text_response].parsed_key[data.Deny_text]>].on_click[<entry[DENY].command>]>
+    - define list:!|:<element[<script[chat_confirm].parsed_key[data.agree_text]>].on_click[<entry[accept].command>]>
+    - define list:|:<element[<script[chat_confirm].parsed_key[data.deny_text]>].on_click[<entry[deny].command>]>
     - narrate "   <[list].separated_by[          ]>"
     - narrate <element[------------------].color_gradient[from=<color[aqua]>;to=<color[white]>]>
 
@@ -22,7 +22,7 @@ chat_confirm_handler:
   debug: false
   definitions: result|UUID|callback
   script:
-    - if !<player.has_flag[tmp.chat_text_response.<[uuid]>]>:
-      - flag player tmp.chat_text_response.<[uuid]> duration:30s
+    - if !<player.has_flag[tmp.chat_confirm.<[uuid]>]>:
+      - flag player tmp.chat_confirm.<[uuid]> duration:30s
       - run chat_unpause
       - run <[callback]> def:<[result]>
