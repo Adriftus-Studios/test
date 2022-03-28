@@ -24,11 +24,7 @@ return_scroll_events:
         - determine passively cancelled
         - wait 1t
         - foreach <server.recipe_items[<context.recipe_id>]>:
-          - if <[value].starts_with[material<&co>]>:
-            - define item <[value].substring[9]>
-          - else:
-            - define item <[value]>
-          - take item:<[item]> from:<context.inventory>
+          - take item:<[value]> from:<context.inventory> quantity:<context.amount>
         - give <item[return_scroll].with[quantity=<context.amount>;flag=destination:<player.location>;flag=right_click_script:return_scroll_task;lore=<[lore]>]>
 
 return_scroll_task:
