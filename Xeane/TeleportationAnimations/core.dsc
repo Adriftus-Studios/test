@@ -5,8 +5,10 @@ teleportation_animation_run:
   script:
     - if !<yaml[global.player.<player.uuid>].contains[animations.teleportation.current]>:
       - run global_player_data_modify def:<player.uuid>|animations.teleportation.current|default
-    - if <yaml[global.player.<player.uuid>].read[animations.teleportation.current.colorable]>:
-      - define color <yaml[global.player.<player.uuid>].read[animations.teleportation.current.color]||white>
+    - if <yaml[global.player.<player.uuid>].contains[animations.teleportation.current.colorable]>:
+      - define color <yaml[global.player.<player.uuid>].read[animations.teleportation.current.color]>
+    - else:
+      - define color white
     - if <yaml[global.player.<player.uuid>].contains[animations.teleportation.current]>:
       - inject <yaml[global.player.<player.uuid>].contains[animations.teleportation.current.task]>
     - else:
