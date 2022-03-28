@@ -234,10 +234,11 @@ seeInventory:
         - if <context.args.size> < 1:
             - narrate "<red>Use a player name.<reset>"
             - stop
-        - define player <server.match_player[<context.args.get[1]>].if_null[null]>
-        - if <[player]> = null:
-            - narrate "<red>Use an online player's name.<reset>"
-            - stop
+        - define player <server.match_player[<context.args.get[1]>]>
+        #.if_null[null]>
+        #- if <[player]> = null:
+        #    - narrate "<red>Use an online player's name.<reset>"
+        #    - stop
         - if <player.has_permission[adriftus.admin]>:
             - inventory display destination:<[player]>
         - else if <player.has_permission[adriftus.admin].equals[false]>:
