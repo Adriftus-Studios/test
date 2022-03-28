@@ -10,7 +10,7 @@ return_scroll:
   recipes:
     1:
       type: shapeless
-      recipe: ink_sac|ink_sac|paper
+      input: ink_sac|ink_sac|paper
 
 return_scroll_events:
   type: world
