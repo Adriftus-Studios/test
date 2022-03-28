@@ -6,7 +6,7 @@ custom_recipe_data_initializer:
     - foreach <server.scripts.filter[container_type.equals[item]].parse[name]> as:item_script:
       - if !<[item_script].as_item.recipe_ids.is_empty>:
         - foreach <[item_script].as_item.recipe_ids> as:recipe_id:
-          - flag server recipe_book.<[item_script]>.<[recipe_id]>:!|:<list[<server.recipe_result[<[recipe_id]>]>].include[<server.recipe_items[<[recipe_id]>].replace_text[material<&co>].with[]>]>
+          - flag server recipe_book.<[item_script]>.<[recipe_id].after[<&co>]>:!|:<list[<server.recipe_result[<[recipe_id]>]>].include[<server.recipe_items[<[recipe_id]>].replace_text[material<&co>].with[]>]>
   events:
     on server start:
       - inject locally path:build_item_list
@@ -44,5 +44,5 @@ crafting_book_open:
   script:
     - define inv <inventory[crafting_book_inventory]>
     - foreach <server.flag[recipe_book].keys> as:item:
-      - give <item[<[item]>].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:<server.flag[recipe_book.<[item]>].get[1]>]> to:<[inv]>
+      - give <item[<[item]>].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:denizen<&co><server.flag[recipe_book.<[item]>].get[1]>]> to:<[inv]>
     - inventory open d:<[inv]>
