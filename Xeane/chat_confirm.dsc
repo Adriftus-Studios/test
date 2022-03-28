@@ -8,8 +8,8 @@ chat_confirm:
   script:
     - run chat_pause
     - define uuid <util.random_uuid>
-    - clickable chat_confirm_handler def:true save:accept
-    - clickable chat_confirm_handler def:false save:deny
+    - clickable chat_confirm_handler def:true|<[uuid]>|<[callback]> save:accept
+    - clickable chat_confirm_handler def:false|<[uuid]>|<[callback]> save:deny
     - narrate <element[------------------].color_gradient[from=<color[aqua]>;to=<color[white]>]>
     - narrate <[prompt]><&nl><&nl>
     - define list:!|:<element[<script[chat_confirm].parsed_key[data.agree_text]>].on_click[<entry[accept].command>]>
