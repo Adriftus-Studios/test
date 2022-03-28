@@ -4,7 +4,7 @@ custom_recipe_data_initializer:
   build_item_list:
     - flag server recipe_book:!
     - foreach <server.scripts.filter[container_type.equals[item]].parse[name]> as:item_script:
-      - if !<[item_script].as_item.recipe_ids.is_empty>:
+      - if !<[item_script].as_item.recipe_ids.is_empty.if_null[true]>:
         - foreach <[item_script].as_item.recipe_ids> as:recipe_id:
           - flag server recipe_book.<[item_script]>.<[recipe_id].after[<&co>]>:!|:<list[<server.recipe_result[<[recipe_id]>]>].include[<server.recipe_items[<[recipe_id]>].replace_text[material<&co>].with[]>]>
   events:
