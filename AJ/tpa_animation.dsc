@@ -6,7 +6,7 @@ test_effects_command:
   script:
   - define points <list[]>
   - repeat 10:
-    - define points:|:<proc[define_circle].context[<player.location.with_pitch[90].up[<[value].sub[1].mul[0.2]>]>|0.7|0.1]>
+    - define points:|:<proc[define_circle].context[<player.location.with_pitch[90].above[<[value].sub[1].mul[0.2]>]>|0.7|0.1]>
   - playeffect at:<[points]> effect:WITCH_MAGIC offset:0 velocity:0
 
 # teleportation_animation_sky_portal:
