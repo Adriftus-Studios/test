@@ -8,18 +8,33 @@ tpa_command:
     - if <context.args.size> < 1:
       - narrate "<red><bold>Please Use A Name That's Online"
       - stop
-    - define player <server.match_player[<context.args.get[1]>].if_null[null]>
-    - if <[player]> = null:
+    - define target <server.match_player[<context.args.get[1]>].if_null[null]>
+    - if <[target]> = null:
       - narrate "<red><bold>This Is Not A Player"
       - stop
-    - if <[player]> = <player.name>:
+    - if <[target]> = <player.name>:
       - narrate "You Can Not Tpaccept Yourself"
       - stop
     - else:
-      - define prompt "<proc[get_player_display_name]><&r><&e> wants to teleport to you"
-      - narrate "<&a>TPA Request sent!"
-      - flag <[player]> tmp.tpa_accept:<player> expire:30s
-      - run chat_confirm def:<[prompt]>|tpa_command_callback player:<[player]>
+      - inject tpa_execute
+
+tpa_item:
+  type: item
+  material: feather
+  display name: <&a>TPA ITEM!
+  flags:
+    right_click_script: target_players_open
+    callback: tpa_execute
+
+tpa_execute:
+  type: task
+  debug: false
+  definitions: target
+  script:
+    - define prompt "<proc[get_player_display_name]><&r><&e> wants to teleport to you"
+    - narrate "<&a>TPA Request sent!"
+    - flag <[target]> tmp.tpa_accept:<player> expire:30s
+    - run chat_confirm def:<[prompt]>|tpa_command_callback player:<[target]>
 
 tpa_command_callback:
     type: task
