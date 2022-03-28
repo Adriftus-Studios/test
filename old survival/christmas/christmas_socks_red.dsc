@@ -37,7 +37,7 @@ christmas_socks_red_threadbare:
 
 leaping_socks_handler:
   type: world
-  debug: true
+  debug: false
   events:
     on player jumps:
       - ratelimit <player> 2s

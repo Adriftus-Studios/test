@@ -22,7 +22,7 @@ teleportation_animation_default:
 
 teleportation_animation_default_run:
   type: task
-  debug: false
+  debug: true
   definitions: destination|color
   script:
     - repeat 5:
