@@ -18,7 +18,7 @@ return_scroll_events:
   events:
     on player crafts return_scroll:
       - define lore "<context.item.lore.include[<&b>Location<&co> <player.location.simple>]>"
-      - determine <item[return_scroll].with[flag=destination:<player.location>;flag=right_click_script=return_scroll_task;lore=<[lore]>]>
+      - determine <item[return_scroll].with[flag=destination:<player.location>;flag=right_click_script:return_scroll_task;lore=<[lore]>]>
 
 return_scroll_task:
   type: task
