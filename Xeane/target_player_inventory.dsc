@@ -24,4 +24,4 @@ target_players_open_callback:
   debug: false
   script:
     - determine passively cancelled
-    - run <context.item.flag[callback]> def:<context.item.flag[player]>
+    - run <context.item.flag[script]> def:<context.item.flag[player]>
