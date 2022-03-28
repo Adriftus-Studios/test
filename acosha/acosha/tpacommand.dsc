@@ -23,7 +23,7 @@ tpa_command:
 
 tpa_command_callback:
     type: task
-    debug: false
+    debug: true
     definitions: bool
     script:
     - if !<player.has_flag[tmp.tpa_accept]>:
@@ -32,8 +32,12 @@ tpa_command_callback:
     - if !<player.flag[tmp.tpa_accept].is_online>:
       - narrate "<&c>Player is offline."
       - stop
+    - if !<[bool]>:
+      - narrate "<&c>TPA was Denied" targets:<player.flag[tmp.tpa_accept]>|<player>
+      - stop
     - narrate "<&a>TPA Accepted!" targets:<player.flag[tmp.tpa_accept]>|<player>
-    - run teleportation_animation_run def:<player.location> player:<player.flag[tmp.tpa_accept]>
+    - define location <player.location>
+    - run teleportation_animation_run def:<[location]> player:<player.flag[tmp.tpa_accept]>
 
 
 
