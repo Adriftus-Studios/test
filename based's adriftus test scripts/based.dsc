@@ -7,7 +7,8 @@ myNPC:
         - trigger name:click state:true
         on click:
         - chat "Hi there, <player.name>!"
-        - if <player.name.equals[ItsBased]>
+        - if <player.name.equals[ItsBased]>:
+            - chat "Welcome back, <player.name>!"
 
 supportBell:
     type: item
@@ -229,7 +230,8 @@ seeInventory:
     aliases:
         - inventory
         - si
-    permissions: adriftus.inventory.view
+    tab completion:
+        1: <server.online_players>
     script:
         - if <context.args.size> < 1:
             - narrate "<red>Use a player name.<reset>"
@@ -249,6 +251,8 @@ seeInventoryWorld:
     events:
         on player left|right clicks item in inventory flagged:seeingInventory:
             - determine cancelled
+        on player closes inventory flagged:seeingInventory:
+            - flag <player> seeingInventory:!
 
 # Idea -
 #   - Displays inventory of any player, offline and online.
@@ -294,7 +298,8 @@ hubCommand:
             - narrate "<red>You cannot do that when you're in combat!<reset>"
             - determine cancelled
         - adjust <player> send_to:hub
-        - if <player.>
+        - if <server.flag[player_map.uuids.uuid.server].equals[hub]>:
+            - narrate "<bold><red>You are already in hub!"
         - teleport <player> <location[0,73,0,4_buildings]>
 #Works
 testCommand:
@@ -307,6 +312,8 @@ testCommand:
             - narrate "<red>You cannot do that when you're in combat!<reset>"
             - determine cancelled
         - adjust <player> send_to:test
+        - if <server.flag[player_map.uuids.uuid.server].equals[test]>:
+            - narrate "<bold><red>You are already in test!"
         - teleport <player> <location[-2932,66,4048,world]>
 sitCommand:
     type: command
