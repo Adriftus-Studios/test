@@ -1,8 +1,9 @@
 target_players_inventory:
   type: inventory
   inventory: chest
+  title: <&b>Choose a Player
   gui: true
-  slots: 54
+  size: 54
 
 target_players_open:
   type: task
@@ -18,5 +19,5 @@ target_players_open_callback:
   type: task
   debug: false
   script:
-    - determine passively canceled
+    - determine passively cancelled
     - run <context.item.flag[callback]> def:<context.item.flag[uuid]>
