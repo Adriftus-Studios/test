@@ -1,11 +1,4 @@
 # Hi! You're looking at a file that has every single script I've made with the help of my co-workers at Adriftus Studios!
-# Incomplete scripts I'm working on - 
-#   - Gamemode selector in a text menu
-#   - Chest lock system
-#   - Sit command
-#   - My NPC
-#   - noHunger
-#   - Gamemode selector in a command (with arguments >:D)
 
 myNPC:
     type: assignment
@@ -13,26 +6,8 @@ myNPC:
         on assignment:
         - trigger name:click state:true
         on click:
-        - chat "Hi there, <player>!"
+        - chat "Hi there, <player.name>!"
         - if <player.name.equals[ItsBased]>
-myNPCInteract:
-    type: interact
-    steps:
-        1:
-            click trigger:
-                script:
-                - random:
-                    - chat Wat
-                    - chat "Don't mind me, I'm just waiting for ItsBased to come back."
-                    - chat "<red><bold><underline>Did you just click me-"
-                    - chat "Hello there"
-                    - chat Hai
-            chat trigger:
-                1:
-                    trigger: /based/
-                    script:
-                    - chat "Hi there"
-#Approved
 
 supportBell:
     type: item
@@ -229,6 +204,7 @@ selectGamemode_callback:
             - adjust <player> gamemode:spectator
             - narrate "<green>You have switched to <bold><underline>Spectator<reset><green> mode."
             - flag player callback:!
+#Not working; for testing only
 
 resetWorldborder:
     type: command
@@ -243,34 +219,53 @@ resetWorldborder:
     script:
         - worldborder <player> reset
         - narrate "<bold><yellow>The world border has been reset.<reset>"
-#
+#Works
 
 seeInventory:
     type: command
     name: seeInventory
-    definitions: name
-    debug: false
     description: Displays the inventory of a player.
-    usage: /seeinventory <&lt>[name]<&gt>
+    usage: /seeinventory <&lt>name<&gt>
     aliases:
         - inventory
+        - si
     permissions: adriftus.inventory.view
-    tab completions:
-        1: <server.match_player[[name]]>
     script:
-        - inventory open destination:<server.match_player[[name]]>
-#
+        - if <context.args.size> < 1:
+            - narrate "<red>Use a player name.<reset>"
+            - stop
+        - define player <server.match_player[<context.args.get[1]>]>
+        #.if_null[null]>
+        #- if <[player]> = null:
+        #    - narrate "<red>Use an online player's name.<reset>"
+        #    - stop
+        - flag <player> seeingInventory
+        - inventory display destination:<[player]>
+        # This flag here is to prevent any interactions with the top inventory.
+#Currently being worked on
+
+seeInventoryWorld:
+    type: world
+    events:
+        on player left|right clicks item in inventory flagged:seeingInventory:
+            - determine cancelled
+
+# Idea -
+#   - Displays inventory of any player, offline and online.
+#   - Inventory should only be for view.
+#   - Shulkers, upon click, should be displayed
+#   - Ender chest button to see the player's inventory
+
 
 unknownCommand:
     type: world
     events:
-        on unknown command:
+        after unknown command:
             - narrate "<red><bold><underline>Okay just sayin, you're typing an unknown command."
-#
+#Not working
 
 combatTag:
     type: world
-    debug: false
     events:
         on player damaged by player:
             - flag <context.damager> combatTag expire:30s if:<context.damager.is_player>
@@ -286,7 +281,8 @@ noHunger:
     type: world
     events:
         on player changes food level flagged:noHunger:
-            - adjust <player> food_level:20
+            - if <context.food> < 20:
+                - adjust <player> food_level:20
 
 hubCommand:
     type: command
@@ -295,20 +291,32 @@ hubCommand:
     usage: /hub
     script:
         - if <player.has_flag[combatTag]>:
-            - determine cancelled
             - narrate "<red>You cannot do that when you're in combat!<reset>"
+            - determine cancelled
         - adjust <player> send_to:hub
+        - if <player.>
         - teleport <player> <location[0,73,0,4_buildings]>
-# Drew approves.
-
+#Works
+testCommand:
+    type: command
+    name: test
+    description: Teleports player to the test server.
+    usage: /test
+    script:
+        - if <player.has_flag[combatTag]>:
+            - narrate "<red>You cannot do that when you're in combat!<reset>"
+            - determine cancelled
+        - adjust <player> send_to:test
+        - teleport <player> <location[-2932,66,4048,world]>
 sitCommand:
     type: command
     name: Sit
-    debug: false
     description: Makes the player sit down on a block.
     usage: /sit
     script:
+        - teleport <player> <player.location>
         - animate <player> animation:sit
         - flag <player> sitting
         - if <player.has_flag[sitting]>:
             - animate <player> animation:stand
+#Glitchy as fuck
