@@ -24,7 +24,7 @@ tpa_item:
   display name: <&a>TPA ITEM!
   flags:
     right_click_script: target_players_open
-    callback: tpa_command_callback
+    callback: tpa_execute
 
 tpa_execute:
   type: task
