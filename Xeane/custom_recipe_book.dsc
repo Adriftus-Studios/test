@@ -23,7 +23,7 @@ custom_recipe_inventory_open:
   debug: true
   definitions: recipe_id
   script:
-    - define recipe_id <[recipe_id].unescaped>
+    - define recipe_id <context.item.flag[recipe_id]> if:<[recipe_id].exists.not>
     - define inventory <inventory[custom_recipe_inventory]>
     - foreach <list[<server.recipe_result[<[recipe_id]>]>].include[<server.recipe_items[<[recipe_id]>].replace_text[material<&co>].with[]>]>:
       - foreach next if:<[value].material.name.equals[air].if_null[false]>
@@ -44,5 +44,5 @@ crafting_book_open:
   script:
     - define inv <inventory[crafting_book_inventory]>
     - foreach <server.flag[recipe_book].keys> as:item:
-      - give <item[<[item]>].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:<server.flag[recipe_book.<[item]>].get[1].escaped>]> to:<[inv]>
+      - give <item[<[item]>].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:<server.flag[recipe_book.<[item]>].get[1]>]> to:<[inv]>
     - inventory open d:<[inv]>
