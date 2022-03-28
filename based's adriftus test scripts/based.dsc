@@ -239,11 +239,8 @@ seeInventory:
         #- if <[player]> = null:
         #    - narrate "<red>Use an online player's name.<reset>"
         #    - stop
-        - if <player.has_permission[adriftus.admin]>:
-            - inventory display destination:<[player]>
-        - else if <player.has_permission[adriftus.admin].equals[false]>:
-            - flag <player> seeingInventory
-            - inventory display destination:<[player]>
+        - flag <player> seeingInventory
+        - inventory display destination:<[player]>
         # This flag here is to prevent any interactions with the top inventory.
 #Currently being worked on
 
@@ -269,7 +266,6 @@ unknownCommand:
 
 combatTag:
     type: world
-    debug: false
     events:
         on player damaged by player:
             - flag <context.damager> combatTag expire:30s if:<context.damager.is_player>
@@ -298,9 +294,20 @@ hubCommand:
             - narrate "<red>You cannot do that when you're in combat!<reset>"
             - determine cancelled
         - adjust <player> send_to:hub
+        - if <player.>
         - teleport <player> <location[0,73,0,4_buildings]>
 #Works
-
+testCommand:
+    type: command
+    name: test
+    description: Teleports player to the test server.
+    usage: /test
+    script:
+        - if <player.has_flag[combatTag]>:
+            - narrate "<red>You cannot do that when you're in combat!<reset>"
+            - determine cancelled
+        - adjust <player> send_to:test
+        - teleport <player> <location[-2932,66,4048,world]>
 sitCommand:
     type: command
     name: Sit
