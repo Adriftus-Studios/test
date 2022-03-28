@@ -16,7 +16,7 @@ return_scroll_events:
   type: world
   debug: false
   events:
-    on player crafts return_scroll:
+    on return_scroll recipe formed:
       - define lore "<context.item.lore.include[<&b>Location<&co> <player.location.simple>]>"
       - if <context.amount> == 1:
         - determine passively <item[return_scroll].with[flag=destination:<player.location>;flag=right_click_script:return_scroll_task;lore=<[lore]>]>
