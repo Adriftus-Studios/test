@@ -250,7 +250,7 @@ seeInventoryWorld:
     type: world
     events:
         on player left|right clicks item in inventory flagged:seeingInventory:
-            - determine cancelled
+            - determine passively cancelled
         on player closes inventory flagged:seeingInventory:
             - flag <player> seeingInventory:!
 
