@@ -18,9 +18,9 @@ tpa_command:
     - else:
       - define prompt "<proc[get_player_display_name]><&r><&e> wants to teleport to you"
       - flag <[player]> tmp.tpa_accept:<player> expire:30s
-      - run chat_confirm def:<[prompt]>|confirmScriptText_callback
+      - run chat_confirm def:<[prompt]>|tpa_command_callback
 
-tpaccept_command:
+tpa_command_callback:
     type: task
     debug: false
     definitions: bool
