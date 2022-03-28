@@ -29,3 +29,19 @@ custom_recipe_inventory_open:
       - inventory set slot:<[loop_index]> d:<[inventory]> o:<[value]>
     - adjust <[inventory]> title:<server.recipe_result[<[recipe_id]>].display>
     - inventory open d:<[inventory]>
+
+crafting_book_inventory:
+  type: inventory
+  title: <&6>Custom Recipes!
+  size: 54
+  gui: true
+  inventory: chest
+
+crafting_book_open:
+  type: task
+  debug: false
+  script:
+    - define inv <inventory[crafting_book_inventory]>
+    - foreach <server.flag[recipe_book].keys> as:item:
+      - give <[item].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:<server.flag[recipe_book.<[item]>].get[1]>]> to:<[inv]>
+    - inventory open d:<[inv]>
