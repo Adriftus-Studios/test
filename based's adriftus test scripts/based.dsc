@@ -1,10 +1,4 @@
 # Hi! You're looking at a file that has every single script I've made with the help of my co-workers at Adriftus Studios!
-# Incomplete scripts I'm working on -
-#   - Chest lock system
-#   - Sit command
-#   - My NPC
-#   - noHunger
-#   - See inventory command
 
 myNPC:
     type: assignment
@@ -230,7 +224,6 @@ resetWorldborder:
 seeInventory:
     type: command
     name: seeInventory
-    definitions: name
     description: Displays the inventory of a player.
     usage: /seeinventory <&lt>name<&gt>
     aliases:
@@ -238,22 +231,32 @@ seeInventory:
         - si
     permissions: adriftus.inventory.view
     script:
-        - inventory open destination:<server.match_player[<context.raw_args>]>
+        - if <context.args.size> < 1:
+            - narrate "<red>Use a player name.<reset>"
+            - stop
+        - define player <server.match_player[<context.args.get[1]>].if_null[null]>
+        - if <[player]> = null:
+            - narrate "<red>Use an online player's name.<reset>"
+            - stop
+        - if <player.has_permission[adriftus.admin]>:
+            - inventory display destination:<[player]>
+        - else if <player.has_permission[adriftus.admin].equals[false]>:
+            - flag <player> seeingInventory
+            - inventory display destination:<[player]>
+        # This flag here is to prevent any interactions with the top inventory.
 #Currently being worked on
 
 seeInventoryWorld:
     type: world
     events:
-        after /seeinventory command:
-            after player left clicks shulker in inventory:
-                - inventory open d:<context.shulker>
-            after player left|right clicks item in inventory:
-                - determine passively cancelled
+        on player left|right clicks item in inventory flagged:seeingInventory:
+            - determine cancelled
 
 # Idea -
 #   - Displays inventory of any player, offline and online.
 #   - Inventory should only be for view.
 #   - Shulkers, upon click, should be displayed
+#   - Ender chest button to see the player's inventory
 
 
 unknownCommand:
