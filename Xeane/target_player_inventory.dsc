@@ -10,6 +10,7 @@ target_players_open:
   debug: false
   definitions: callback|filter
   script:
+    - define callback <context.item.flag[callback]> if:<[callback].exists.not>
     - define inv <inventory[target_players_inventory]>
     - if !<[filter].exists>:
       - foreach <server.online_players>:

@@ -18,6 +18,14 @@ tpa_command:
     - else:
       - inject tpa_execute
 
+tpa_item:
+  type: item
+  material: feather
+  display name: <&a>TPA ITEM!
+  flags:
+    right_click_script: target_players_open
+    callback: tpa_command_callback
+
 tpa_execute:
   type: task
   debug: false
