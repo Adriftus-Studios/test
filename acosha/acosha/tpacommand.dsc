@@ -40,6 +40,7 @@ tpa_execute:
   debug: false
   definitions: target
   script:
+    - inventory close
     - define prompt "<proc[get_player_display_name]><&r><&e> wants to teleport to you"
     - narrate "<&a>TPA Request sent!"
     - flag <[target]> tmp.tpa_accept:<player> expire:30s
@@ -50,8 +51,6 @@ tpa_remove_item:
   debug: false
   script:
     - take iteminhand
-    - wait 2t
-    - inventory close
     - run totem_test def:102
     - wait 2s
 
