@@ -28,6 +28,9 @@ back_execute:
   debug: false
   definitions: target
   script:
+    - if !<player.has_flag[last_location]>:
+      - narrate "<&c>You have no location to return to"
+      - stop
     - take iteminhand
     - run totem_test def:101
     - wait 2s
