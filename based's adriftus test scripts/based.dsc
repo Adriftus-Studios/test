@@ -233,17 +233,16 @@ seeInventory:
     tab completion:
         1: <server.online_players>
     script:
+        - flag <player> seeingInventory
         - if <context.args.size> < 1:
-            - narrate "<red>Use a player name.<reset>"
-            - stop
-        - narrate "Opening inventory"
+            - inventory open destination:<player>
         - define player <server.match_player[<context.args.get[1]>]>
         #.if_null[null]>
         #- if <[player]> = null:
         #    - narrate "<red>Use an online player's name.<reset>"
         #    - stop
-        - flag <player> seeingInventory
         - inventory open destination:<[player].inventory>
+        - narrate "<yellow>Opening inventory<reset>"
         # This flag here is to prevent any interactions with the top inventory.
 #Currently being worked on
 
@@ -267,7 +266,7 @@ seeInventoryWorld:
 unknownCommand:
     type: world
     events:
-        after unknown command:
+        after command unknown:
             - narrate "<red><bold><underline>Okay just sayin, you're typing an unknown command."
 #Not working
 
@@ -283,6 +282,7 @@ combatTag:
         on player quit flagged:combatTag:
             - kill <player>
             - flag <player> combatTag:!
+#Still in the works
 
 noHunger:
     type: world
@@ -290,6 +290,7 @@ noHunger:
         on player changes food level flagged:noHunger:
             - if <context.food> < 20:
                 - adjust <player> food_level:20
+#Still in the works
 
 hubCommand:
     type: command
@@ -324,9 +325,10 @@ sitCommand:
     description: Makes the player sit down on a block.
     usage: /sit
     script:
-        - teleport <player> <player.location>
-        - animate <player> animation:sit
         - flag <player> sitting
+        - teleport <player> <location[<player.location.x.round>,<player.location.y.round>,<player.location.z.round>]>
+        - animate <player> animation:sit
         - if <player.has_flag[sitting]>:
             - animate <player> animation:stand
+            - flag <player> sitting:!
 #Glitchy as fuck
