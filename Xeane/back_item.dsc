@@ -8,8 +8,7 @@ back_item:
     - "<&e>--------------------"
   flags:
     right_click_script:
-      - back_remove_item
-      - target_players_open
+      - back_execute
     callback: back_execute
   mechanisms:
     custom_model_data: 101
