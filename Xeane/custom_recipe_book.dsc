@@ -14,6 +14,7 @@ custom_recipe_data_initializer:
       - if !<[item_script].as_item.recipe_ids.is_empty.if_null[true]>:
         - foreach <[item_script].as_item.recipe_ids> as:recipe_id:
           - define result <item[<[item_script]>]>
+          - define items <list>
           - foreach <server.recipe_items[<[recipe_id]>]> as:recipe_item:
             - if <[recipe_item].starts_with[material]>:
               - define recipe_item <[recipe_item].substring[9].as_item>
