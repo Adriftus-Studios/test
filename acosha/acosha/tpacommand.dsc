@@ -21,14 +21,19 @@ tpa_command:
 tpa_item:
   type: item
   material: feather
-  display name: <&a>TPA ITEM!
+  display name: <&2>Friendly Crystal
+  lore:
+    - "<&e>--------------------"
+    - "<&e>Use to request a teleport"
+    - "<&e>You can target anyone awake"
+    - "<&e>--------------------"
   flags:
     right_click_script:
       - tpa_remove_item
       - target_players_open
     callback: tpa_execute
   mechanisms:
-    custom_model_data: 100
+    custom_model_data: 102
 
 tpa_execute:
   type: task
@@ -45,7 +50,7 @@ tpa_remove_item:
   debug: false
   script:
     - take iteminhand
-    - run totem_test def:100
+    - run totem_test def:102
     - wait 2s
 
 tpa_command_callback:
