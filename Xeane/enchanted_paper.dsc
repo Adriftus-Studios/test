@@ -2,8 +2,8 @@ enchanted_paper:
   type: item
   material: paper
   display name: <&6>Enchanted Paper
-  #data:
-    #recipe_book_category: travel
+  data:
+    recipe_book_category: travel
   lore:
   - "<&a>-------------"
   - "<&7>Crafting Material"
