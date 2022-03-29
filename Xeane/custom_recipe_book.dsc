@@ -65,7 +65,16 @@ crafting_book_open:
   type: task
   debug: false
   script:
+    - define inventory <inventory[crafting_book_inventory]>
+    - foreach <script[custom_recipe_data_initializer].data_key[data.categories]> key:category:
+      - narrate "CAT-<[category]> / VAL-<[value]>"
+
+crafting_book_open_category:
+  type: task
+  debug: false
+  definitions: category
+  script:
     - define inv <inventory[crafting_book_inventory]>
-    - foreach <server.flag[recipe_book].keys> as:item:
+    - foreach <server.flag[recipe_book.categories.<[category]>].keys> as:item:
       - give <item[<[item]>].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:<server.flag[recipe_book.recipes.<[item]>].keys.get[1]>]> to:<[inv]>
     - inventory open d:<[inv]>
