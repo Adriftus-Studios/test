@@ -46,6 +46,7 @@ tpa_remove_item:
     - repeat 5:
       - playeffect at:<player.eye_location.forward> quantity:5 offset:0.1 effect:ITEM_CRACK special_data:end_crystal
       - wait 1t
+    - wait 5t
 
 tpa_command_callback:
     type: task
