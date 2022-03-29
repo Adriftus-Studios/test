@@ -17,7 +17,7 @@ return_scroll:
   recipes:
     1:
       type: shapeless
-      input: ink_sac|paper
+      input: ink_sac|enchanted_paper
 
 return_crystal:
   type: item
@@ -53,7 +53,7 @@ return_task:
   debug: false
   script:
     - define type <context.item.flag[type]>
-    - if <[type]> == scroll && <context.item.flag[destination]> != <player.location.world>:
+    - if <[type]> == scroll && <context.item.flag[destination].world> != <player.location.world>:
       - narrate "<&c>This item lacks the power for cross dimensional travel"
       - stop
     - take iteminhand
