@@ -23,7 +23,9 @@ tpa_item:
   material: feather
   display name: <&a>TPA ITEM!
   flags:
-    right_click_script: tpa_remove_item|target_players_open
+    right_click_script: 
+      - tpa_remove_item
+      - target_players_open
     callback: tpa_execute
 
 tpa_execute:
