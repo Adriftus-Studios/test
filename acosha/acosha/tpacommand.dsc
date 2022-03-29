@@ -23,10 +23,12 @@ tpa_item:
   material: feather
   display name: <&a>TPA ITEM!
   flags:
-    right_click_script: 
+    right_click_script:
       - tpa_remove_item
       - target_players_open
     callback: tpa_execute
+  mechanisms:
+    custom_model_data: 100
 
 tpa_execute:
   type: task
@@ -43,8 +45,10 @@ tpa_remove_item:
   debug: false
   script:
     - take iteminhand
+    - run totem_test def:100
+    - wait 5t
     - repeat 5:
-      - playeffect at:<player.eye_location.forward> quantity:5 offset:0.1 effect:ITEM_CRACK special_data:end_crystal
+      - playeffect at:<player.eye_location.forward> quantity:5 offset:0.1 effect:ITEM_CRACK special_data:tpa_item
       - wait 1t
     - wait 5t
 
