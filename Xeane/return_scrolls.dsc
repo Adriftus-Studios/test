@@ -1,6 +1,6 @@
 return_scroll:
   type: item
-  material: paper
+  material: feather
   display name: <&6>Scroll of Returning
   lore:
   - "<&a>-------------"
