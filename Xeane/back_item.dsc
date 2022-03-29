@@ -33,6 +33,6 @@ back_execute:
     - take iteminhand
     - run totem_test def:101
     - wait 2s
-    - ~run teleportation_animation_run def:<player.flag[last_location]> player:<player.flag[tmp.tpa_accept]>
+    - ~run teleportation_animation_run def:<player.flag[last_location]>
     - wait 1t
     - flag <player> last_location:!
