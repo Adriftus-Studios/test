@@ -26,7 +26,7 @@ custom_recipe_data_initializer:
           - if !<script.data_key[data.categories].keys.contains[<[category]>]>:
             - debug ERROR "ITEM HAS UNKNOWN CATEGORY<&co> <[category]>"
             - foreach next
-          - flag server recipe_book.categories.<[category]>.<[recipe_id]>:<[recipe_id]>
+          - flag server recipe_book.categories.<[category]>.<[recipe_id].after[<&co>]>:<[recipe_id]>
           - flag server recipe_book.recipes.<[recipe_id].after[<&co>]>.items:!|:<[items]>
           - flag server recipe_book.recipes.<[recipe_id].after[<&co>]>.result:!|:<[result]>
   events:
