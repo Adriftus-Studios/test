@@ -9,3 +9,7 @@ enchanted_paper:
   - "<&7>Crafting Material"
   - "<&e>Magical Paper for scrolls"
   - "<&a>-------------"
+  recipes:
+    1:
+      type: shapeless
+      input: golden_apple|paper
