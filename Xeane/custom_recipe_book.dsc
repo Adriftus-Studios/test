@@ -26,7 +26,7 @@ custom_recipe_data_initializer:
           - if !<script.data_key[data.categories].keys.contains[<[category]>]>:
             - debug ERROR "ITEM HAS UNKNOWN CATEGORY<&co> <[category]>"
             - foreach next
-          - flag server recipe_book.categories.<[category]>.<[recipe_id].after[<&co>]>:<[recipe_id]>
+          - flag server recipe_book.categories.<[category]>.<[item_script]>:<[recipe_id]>
           - flag server recipe_book.recipes.<[recipe_id].after[<&co>]>.items:!|:<[items]>
           - flag server recipe_book.recipes.<[recipe_id].after[<&co>]>.result:!|:<[result]>
   events:
@@ -80,5 +80,5 @@ crafting_book_open_category:
     - define category <context.item.flag[category]> if:<[category].exists.not>
     - define inv <inventory[crafting_book_inventory]>
     - foreach <server.flag[recipe_book.categories.<[category]>].keys> as:item:
-      - give <item[<[item]>].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:<server.flag[recipe_book.recipes.<[item]>].keys.get[1]>]> to:<[inv]>
+      - give <item[<[item]>].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:<server.flag[recipe_book.categories.<[category]>.<[item]>]>]> to:<[inv]>
     - inventory open d:<[inv]>
