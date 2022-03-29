@@ -17,8 +17,9 @@ back_item_tracker:
   type: world
   debug: false
   events:
-    on player teleports bukkit_priority:MONITOR:
-      - flag <player> last_location:<context.origin>
+    # Disabled due to teleportation animations
+    #on player teleports bukkit_priority:MONITOR:
+      #- flag <player> last_location:<context.origin>
     on player dies bukkit_priority:MONITOR:
       - flag <player> last_location:<player.location>
 
