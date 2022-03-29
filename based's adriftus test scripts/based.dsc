@@ -245,6 +245,7 @@ seeInventory:
         - flag <player> seeingInventory
         - if <context.args.size> < 1:
             - inventory open destination:<player>
+            - stop
         - define player <server.match_player[<context.args.get[1]>]>
         #.if_null[null]>
         #- if <[player]> = null:
