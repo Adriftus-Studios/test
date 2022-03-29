@@ -252,6 +252,8 @@ seeInventoryWorld:
     events:
         on player left|right clicks item in inventory flagged:seeingInventory:
             - determine passively cancelled
+            - if <context.item.formatted.equals[*SHULKER_BOX]>:
+                - inventory open destination:<context.item.inventory>
         on player closes inventory flagged:seeingInventory:
             - flag <player> seeingInventory:!
 
