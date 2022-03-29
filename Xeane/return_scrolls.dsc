@@ -17,7 +17,7 @@ return_scroll:
   recipes:
     1:
       type: shapeless
-      input: ink_sac|paper
+      input: ink_sac|enchanted_paper
 
 return_crystal:
   type: item
