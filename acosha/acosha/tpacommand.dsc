@@ -46,11 +46,7 @@ tpa_remove_item:
   script:
     - take iteminhand
     - run totem_test def:100
-    - wait 5t
-    - repeat 5:
-      - playeffect at:<player.eye_location.forward> quantity:5 offset:0.1 effect:ITEM_CRACK special_data:stone
-      - wait 1t
-    - wait 1s
+    - wait 2s
 
 tpa_command_callback:
     type: task
