@@ -50,7 +50,7 @@ tpa_remove_item:
   debug: false
   script:
     - take iteminhand
-    - wait 1t
+    - wait 2t
     - inventory close
     - run totem_test def:102
     - wait 2s
