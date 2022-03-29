@@ -15,6 +15,8 @@ myNPC:
 protectTheOwner:
     type: assignment
     actions:
+        on assignment:
+        - trigger state:true
         on entity attacks player:
             - if <context.entity> == <npc.owner>:
                 - look <context.attacker>
@@ -347,15 +349,20 @@ tpCommand:
     aliases:
         - tp
     tab completion:
-        1: <server.online_players>
-        2: <server.online_players>
+        1: <server.online_players>|coordinates
+        2: <server.online_players>|x
+        3: y
+        4: z
     script:
         - if <context.args.size> == 0:
             - narrate "<red><bold>Please enter a player's name."
         - if <context.args.size> == 1:
             - define player <server.match_player[<context.args.get[1]>]>
             - teleport <player> location:<[player].location>
-            - narrate "Teleported <player.name> to <[player].name>"
+            - narrate "Teleported <player.name> to <[player].name>" targets:<player>|<[player]>
+        - if <context.args.get[1]> == <element[coordinates]>:
+            - teleport <player> location:<location[<context.args.get[2]>,<context.args.get[3]>,<context.args.get[4]>,<player.world.name>]>
+
         - if <context.args.size> == 2:
             - define player1 <server.match_player[<context.args.get[1]>]>
             - define player2 <server.match_player[<context.args.get[2]>]>
