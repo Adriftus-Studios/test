@@ -7,6 +7,8 @@ return_scroll:
   - "<&e>Right Click while Holding"
   - "<&e>Saves location when crafted"
   - "<&a>-------------"
+  mechanisms:
+    custom_model_data: 200
   recipes:
     1:
       type: shapeless
