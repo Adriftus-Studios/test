@@ -7,7 +7,7 @@ myNPC:
         - trigger name:click state:true
         on click:
         - chat "Hi there, <player.name>!"
-        - if <player.name.equals[ItsBased]>:
+        - if <player.uuid> == ef2ed164-08b5-45d2-b000-c9ba6cf412a4:
             - chat "Welcome back, <player.name>!"
 
 supportBell:
@@ -243,9 +243,6 @@ seeInventory:
         #    - stop
         - inventory open destination:<[player].inventory>
         - narrate "<yellow>Opening inventory<reset>"
-        # This flag here is to prevent any interactions with the top inventory.
-#Currently being worked on
-
 seeInventoryWorld:
     type: world
     events:
@@ -261,6 +258,8 @@ seeInventoryWorld:
 #   - Inventory should only be for view.
 #   - Shulkers, upon click, should be displayed
 #   - Ender chest button to see the player's inventory
+# Issues -
+#   - Item on hand disappears if interacted with (should be adjusted manually)
 
 
 unknownCommand:
@@ -332,3 +331,20 @@ sitCommand:
             - animate <player> animation:stand
             - flag <player> sitting:!
 #Glitchy as fuck
+
+exCommand:
+    type: command
+    name: Ex
+    description: Alias of /exs
+    usage: /ex
+    script:
+        - narrate test
+
+tpCommand:
+    type: command
+    name: Ex
+    description: Alias of /exs
+    usage: /ex
+    script:
+        - narrate test
+
