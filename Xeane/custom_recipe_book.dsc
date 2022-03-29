@@ -13,7 +13,7 @@ custom_recipe_data_initializer:
     - foreach <server.scripts.filter[data_key[data.recipe_book_category].exists].parse[name]> as:item_script:
       - if !<[item_script].as_item.recipe_ids.is_empty.if_null[true]>:
         - foreach <[item_script].as_item.recipe_ids> as:recipe_id:
-          - define result <server.recipe_result[<[recipe_id]>]>
+          - define result <item[<[item_script]>]>
           - foreach <server.recipe_items[<[recipe_id]>]> as:recipe_item:
             - if <[recipe_item].starts_with[material]>:
               - define recipe_item <[recipe_item].substring[9].as_item>
