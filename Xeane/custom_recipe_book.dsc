@@ -13,20 +13,21 @@ custom_recipe_data_initializer:
       - if !<[item_script].as_item.recipe_ids.is_empty.if_null[true]>:
         - foreach <[item_script].as_item.recipe_ids> as:recipe_id:
           - define result <server.recipe_result[<[recipe_id]>]>
-          - foreach <server.recipe_items[<[recipe_id]>]>:
-            - if <[value].starts_with[material]>:
-              - define value <[value].substring[9].as_item>
-            - else if <[value].script.exists>:
-              - define value "<item[<[value]>].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:<[value].as_item.recipe_ids.get[1].after[<&co>]>;lore=<&e>Click to see Recipe]>"
+          - foreach <server.recipe_items[<[recipe_id]>]> as:recipe_item:
+            - if <[recipe_item].starts_with[material]>:
+              - define recipe_item <[recipe_item].substring[9].as_item>
+            - else if <[recipe_item].script.exists>:
+              - define recipe_item "<item[<[recipe_item]>].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:<[recipe_item].as_item.recipe_ids.get[1].after[<&co>]>;lore=<&e>Click to see Recipe]>"
             - else:
-              - define value <[value].as_item>
-            - define items:|:<[value]>
+              - define value <[recipe_item].as_item>
+            - define items:|:<[recipe_item]>
           - define category <[result].script.data_key[data.recipe_book_category]>
           - if !<script.data_key[data.categories].keys.contains[<[category]>]>:
             - debug ERROR "ITEM HAS UNKNOWN CATEGORY<&co> <[category]>"
-          - flag server recipe_book.<[category]>.<[item_script]>:<[recipe_id]>
-          - flag server recipe_book.<[recipe_id].after[<&co>]>.items:!|:<[items]>
-          - flag server recipe_book.<[recipe_id].after[<&co>]>.result:!|:<[result]>
+            - foreach next
+          - flag server recipe_book.categories.<[category]>.<[item_script]>:<[recipe_id]>
+          - flag server recipe_book.recipes.<[recipe_id].after[<&co>]>.items:!|:<[items]>
+          - flag server recipe_book.recipes.<[recipe_id].after[<&co>]>.result:!|:<[result]>
   events:
     on server start:
       - inject locally path:build_item_list
@@ -46,11 +47,11 @@ custom_recipe_inventory_open:
     - define recipe_id <context.item.flag[recipe_id]> if:<[recipe_id].exists.not>
     - define recipe_id <[recipe_id]>
     - define inventory <inventory[custom_recipe_inventory]>
-    - inventory set slot:1 d:<[inventory]> o:<server.flag[recipe_book.<[recipe_id]>.result]>
-    - foreach <server.flag[recipe_book.<[recipe_id]>.items]>:
+    - inventory set slot:1 d:<[inventory]> o:<server.flag[recipe_book.recipes.<[recipe_id]>.result]>
+    - foreach <server.flag[recipe_book.recipes.<[recipe_id]>.items]>:
       - foreach next if:<[value].material.name.equals[air].if_null[false]>
       - inventory set slot:<[loop_index].add[1]> d:<[inventory]> o:<[value]>
-    - adjust <[inventory]> title:<server.flag[recipe_book.<[recipe_id]>.result].display>
+    - adjust <[inventory]> title:<server.flag[recipe_book.recipes.<[recipe_id]>.result].display>
     - inventory open d:<[inventory]>
 
 crafting_book_inventory:
@@ -66,5 +67,5 @@ crafting_book_open:
   script:
     - define inv <inventory[crafting_book_inventory]>
     - foreach <server.flag[recipe_book].keys> as:item:
-      - give <item[<[item]>].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:<server.flag[recipe_book.<[item]>].keys.get[1]>]> to:<[inv]>
+      - give <item[<[item]>].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:<server.flag[recipe_book.recipes.<[item]>].keys.get[1]>]> to:<[inv]>
     - inventory open d:<[inv]>
