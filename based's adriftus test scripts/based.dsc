@@ -339,16 +339,6 @@ sitCommand:
             - flag <player> sitting:!
 #Glitchy as fuck
 
-exCommand:
-    type: command
-    name: Ex
-    description: Alias of /exs
-    usage: /ex
-    tab completion:
-        0: /exs
-    script:
-        - narrate test
-
 tpCommand:
     type: command
     name: Teleport

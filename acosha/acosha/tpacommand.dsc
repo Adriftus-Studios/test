@@ -4,6 +4,7 @@ tpa_command:
     name: tpa
     description: Used To Request A Teleport
     usage: /tpa (name)
+    permission: adriftus.staff
     script:
     - if <context.args.size> < 1:
       - narrate "<red><bold>Please Use A Name That's Online"
@@ -18,23 +19,45 @@ tpa_command:
     - else:
       - inject tpa_execute
 
-tpa_item:
+tpa_crystal:
   type: item
   material: feather
-  display name: <&a>TPA ITEM!
+  display name: <&2>Friendly Crystal
+  data:
+    recipe_book_category: travel
+  lore:
+    - "<&e>--------------------"
+    - "<&e>Use to request a teleport"
+    - "<&e>You can target anyone awake"
+    - "<&e>--------------------"
   flags:
-    right_click_script: target_players_open
+    right_click_script:
+      - tpa_remove_item
+      - target_players_open
     callback: tpa_execute
+    type: crystal
+  mechanisms:
+    custom_model_data: 102
 
 tpa_execute:
   type: task
   debug: false
   definitions: target
   script:
+    - inventory close
     - define prompt "<proc[get_player_display_name]><&r><&e> wants to teleport to you"
     - narrate "<&a>TPA Request sent!"
     - flag <[target]> tmp.tpa_accept:<player> expire:30s
     - run chat_confirm def:<[prompt]>|tpa_command_callback player:<[target]>
+
+tpa_remove_item:
+  type: task
+  debug: false
+  script:
+    - take iteminhand
+    - wait 1t
+    - run totem_test def:102
+    - wait 2s
 
 tpa_command_callback:
     type: task
