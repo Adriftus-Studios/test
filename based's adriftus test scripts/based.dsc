@@ -6,10 +6,19 @@ myNPC:
         on assignment:
         - trigger name:click state:true
         on click:
-        - chat "Hi there, <player.name>!"
-        - if <player.name.equals[ItsBased]>:
-            - chat "Welcome back, <player.name>!"
+        - if <player.uuid> == ef2ed164-08b5-45d2-b000-c9ba6cf412a4:
+            - chat "Welcome back, <player.name>! You have scripts to work on - "
+            # | Learning list tags
+        - else:
+            - chat "Hi there, <player.name>!"
 
+protectTheOwner:
+    type: assignment
+    actions:
+        on entity attacks player:
+            - if <context.entity> == <npc.owner>:
+                - look <context.attacker>
+                - attack <context.attacker>
 supportBell:
     type: item
     material: bell
@@ -233,24 +242,25 @@ seeInventory:
     tab completion:
         1: <server.online_players>
     script:
+        - flag <player> seeingInventory
         - if <context.args.size> < 1:
-            - narrate "<red>Use a player name.<reset>"
-            - stop
+            - inventory open destination:<player>
         - define player <server.match_player[<context.args.get[1]>]>
         #.if_null[null]>
         #- if <[player]> = null:
         #    - narrate "<red>Use an online player's name.<reset>"
         #    - stop
-        - flag <player> seeingInventory
-        - inventory display destination:<[player]>
-        # This flag here is to prevent any interactions with the top inventory.
-#Currently being worked on
-
+        - inventory open destination:<[player].inventory>
+        - narrate "<yellow>Opening inventory<reset>"
 seeInventoryWorld:
     type: world
     events:
         on player left|right clicks item in inventory flagged:seeingInventory:
-            - determine cancelled
+            - determine passively cancelled
+            - if <context.inventory.location.material.name.equals[shulker_box]>:
+                - inventory open destination:<context.item.inventory>
+            - if <context.item> == <context.item_in_hand>:
+                - inventory adjust <context.item> slot:<player.held_item_slot>
         on player closes inventory flagged:seeingInventory:
             - flag <player> seeingInventory:!
 
@@ -259,14 +269,8 @@ seeInventoryWorld:
 #   - Inventory should only be for view.
 #   - Shulkers, upon click, should be displayed
 #   - Ender chest button to see the player's inventory
-
-
-unknownCommand:
-    type: world
-    events:
-        after unknown command:
-            - narrate "<red><bold><underline>Okay just sayin, you're typing an unknown command."
-#Not working
+# Issues -
+#   - Item on hand disappears if interacted with (should be adjusted manually)
 
 combatTag:
     type: world
@@ -280,6 +284,7 @@ combatTag:
         on player quit flagged:combatTag:
             - kill <player>
             - flag <player> combatTag:!
+#Still in the works
 
 noHunger:
     type: world
@@ -287,6 +292,7 @@ noHunger:
         on player changes food level flagged:noHunger:
             - if <context.food> < 20:
                 - adjust <player> food_level:20
+#Still in the works
 
 hubCommand:
     type: command
@@ -302,6 +308,7 @@ hubCommand:
             - narrate "<bold><red>You are already in hub!"
         - teleport <player> <location[0,73,0,4_buildings]>
 #Works
+
 testCommand:
     type: command
     name: test
@@ -315,15 +322,81 @@ testCommand:
         - if <server.flag[player_map.uuids.uuid.server].equals[test]>:
             - narrate "<bold><red>You are already in test!"
         - teleport <player> <location[-2932,66,4048,world]>
+#
+
 sitCommand:
     type: command
     name: Sit
     description: Makes the player sit down on a block.
     usage: /sit
     script:
-        - teleport <player> <player.location>
-        - animate <player> animation:sit
         - flag <player> sitting
+        - teleport <player> <location[<player.location.x.round>,<player.location.y.round>,<player.location.z.round>]>
+        - animate <player> animation:sit
         - if <player.has_flag[sitting]>:
             - animate <player> animation:stand
+            - flag <player> sitting:!
 #Glitchy as fuck
+
+exCommand:
+    type: command
+    name: Ex
+    description: Alias of /exs
+    usage: /ex
+    tab completion:
+        0: /exs
+    script:
+        - narrate test
+
+tpCommand:
+    type: command
+    name: Teleport
+    description: Teleport.
+    usage: /teleport
+    aliases:
+        - tp
+    tab completion:
+        1: <server.online_players>
+        2: <server.online_players>
+    script:
+        - if <context.args.size> == 0:
+            - narrate "<red><bold>Please enter a player's name."
+        - if <context.args.size> == 1:
+            - define player <server.match_player[<context.args.get[1]>]>
+            - teleport <player> location:<[player].location>
+            - narrate "Teleported <player.name> to <[player].name>"
+        - if <context.args.size> == 2:
+            - define player1 <server.match_player[<context.args.get[1]>]>
+            - define player2 <server.match_player[<context.args.get[2]>]>
+            - teleport <[player1]> location:<[player2].location>
+            - narrate "Teleported <[player1].name> to <[player2].name>"
+        - if <context.args.size> > 2:
+            - narrate "<red><bold>Too many arguments!<reset>"
+
+flyCommand:
+    type: command
+    name: Fly
+    description: Toggles fly mode.
+    usage: /fly
+    script:
+        - narrate test
+
+#
+
+moveAsNPC:
+    type: world
+    events:
+        on player spectates entity:
+            - flag <player> spectatingEntity
+        on player stops spectating entity:
+            - flag <player> spectatingEntity:!
+
+fireballLauncher:
+    type: item
+    material: bow
+fireballLauncherScript:
+    type: world
+    events:
+        on player shoots fireballLauncher:
+            - kill <context.projectile>
+            - shoot <entity[FIRE_CHARGE]>
