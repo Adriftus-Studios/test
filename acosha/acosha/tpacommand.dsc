@@ -43,8 +43,9 @@ tpa_remove_item:
   debug: false
   script:
     - take iteminhand
-    - playeffect at:<player.eye_location.forward> effect:totem quantity:5 offset:0.1
-    - wait 5t
+    - repeat 5:
+      - playeffect at:<player.eye_location.forward> quantity:5 offset:0.1 effect:ITEM_CRACK special_data:end_crystal
+      - wait 1t
 
 tpa_command_callback:
     type: task
