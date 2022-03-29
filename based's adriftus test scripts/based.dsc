@@ -12,6 +12,13 @@ myNPC:
         - else:
             - chat "Hi there, <player.name>!"
 
+protectTheOwner:
+    type: assignment
+    actions:
+        on entity attacks player:
+            - if <context.entity> == <npc.owner>:
+                - look <context.attacker>
+                - attack <context.attacker>
 supportBell:
     type: item
     material: bell
@@ -358,12 +365,12 @@ tpCommand:
         - if <context.args.size> == 1:
             - define player <server.match_player[<context.args.get[1]>]>
             - teleport <player> location:<[player].location>
-            - narrate "Teleported <player> to <[player]>"
+            - narrate "Teleported <player.name> to <[player].name>"
         - if <context.args.size> == 2:
             - define player1 <server.match_player[<context.args.get[1]>]>
             - define player2 <server.match_player[<context.args.get[2]>]>
             - teleport <[player1]> location:<[player2].location>
-            - narrate "Teleported <[player1]> to <[player2]>"
+            - narrate "Teleported <[player1].name> to <[player2].name>"
         - if <context.args.size> > 2:
             - narrate "<red><bold>Too many arguments!<reset>"
 
@@ -376,3 +383,18 @@ flyCommand:
         - narrate test
 
 #
+
+moveAsNPC:
+    type: world
+    events:
+        on player spectates entity:
+            - flag <player> spectatingEntity
+
+fireballLauncher:
+    type: item
+    material: bow
+fireballLauncherScript:
+    type: world
+    events:
+        on player right clicks block with:fireballLauncher:
+            - shoot <entity[FIREBALL]>
