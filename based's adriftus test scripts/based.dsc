@@ -257,8 +257,10 @@ seeInventoryWorld:
     events:
         on player left|right clicks item in inventory flagged:seeingInventory:
             - determine passively cancelled
-            - if <context.item.formatted.equals[*SHULKER_BOX]>:
+            - if <context.inventory.location.material.name.equals[shulker_box]>:
                 - inventory open destination:<context.item.inventory>
+            - if <context.item> == <context.item_in_hand>:
+                - inventory adjust <context.item> slot:<player.held_item_slot>
         on player closes inventory flagged:seeingInventory:
             - flag <player> seeingInventory:!
 
@@ -269,14 +271,6 @@ seeInventoryWorld:
 #   - Ender chest button to see the player's inventory
 # Issues -
 #   - Item on hand disappears if interacted with (should be adjusted manually)
-
-
-unknownCommand:
-    type: world
-    events:
-        after command unknown:
-            - narrate "<red><bold><underline>Okay just sayin, you're typing an unknown command."
-#Not working
 
 combatTag:
     type: world
@@ -314,6 +308,7 @@ hubCommand:
             - narrate "<bold><red>You are already in hub!"
         - teleport <player> <location[0,73,0,4_buildings]>
 #Works
+
 testCommand:
     type: command
     name: test
@@ -327,6 +322,8 @@ testCommand:
         - if <server.flag[player_map.uuids.uuid.server].equals[test]>:
             - narrate "<bold><red>You are already in test!"
         - teleport <player> <location[-2932,66,4048,world]>
+#
+
 sitCommand:
     type: command
     name: Sit
@@ -346,6 +343,8 @@ exCommand:
     name: Ex
     description: Alias of /exs
     usage: /ex
+    tab completion:
+        0: /exs
     script:
         - narrate test
 
@@ -389,6 +388,8 @@ moveAsNPC:
     events:
         on player spectates entity:
             - flag <player> spectatingEntity
+        on player stops spectating entity:
+            - flag <player> spectatingEntity:!
 
 fireballLauncher:
     type: item
@@ -396,5 +397,6 @@ fireballLauncher:
 fireballLauncherScript:
     type: world
     events:
-        on player right clicks block with:fireballLauncher:
-            - shoot <entity[FIREBALL]>
+        on player shoots fireballLauncher:
+            - kill <context.projectile>
+            - shoot <entity[FIRE_CHARGE]>
