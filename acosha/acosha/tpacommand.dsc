@@ -49,8 +49,9 @@ tpa_remove_item:
   type: task
   debug: false
   script:
-    - inventory close
     - take iteminhand
+    - wait 1t
+    - inventory close
     - run totem_test def:102
     - wait 2s
 
