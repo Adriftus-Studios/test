@@ -243,7 +243,7 @@ seeInventory:
         #    - narrate "<red>Use an online player's name.<reset>"
         #    - stop
         - flag <player> seeingInventory
-        - inventory display destination:<[player]>
+        - inventory open destination:<[player].inventory>
         # This flag here is to prevent any interactions with the top inventory.
 #Currently being worked on
 
