@@ -23,7 +23,7 @@ tpa_item:
   material: feather
   display name: <&a>TPA ITEM!
   flags:
-    right_click_script: target_players_open
+    right_click_script: tpa_remove_item|target_players_open
     callback: tpa_execute
 
 tpa_execute:
@@ -35,6 +35,14 @@ tpa_execute:
     - narrate "<&a>TPA Request sent!"
     - flag <[target]> tmp.tpa_accept:<player> expire:30s
     - run chat_confirm def:<[prompt]>|tpa_command_callback player:<[target]>
+
+tpa_remove_item:
+  type: task
+  debug: false
+  script:
+    - take iteminhand
+    - playeffect at:<player.eye_location.forward> effect:totem quantity:5 offset:0.1
+    - wait 5t
 
 tpa_command_callback:
     type: task
