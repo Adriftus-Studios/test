@@ -6,7 +6,8 @@ custom_recipe_data_initializer:
       travel:
         material: feather
         display: <&a>Travel Items
-        lore: <&e>Items related to getting around
+        lore:
+          - "<&e>Items related to getting around"
   build_item_list:
     - flag server recipe_book:!
     - foreach <server.scripts.filter[data_key[data.recipe_book_category].exists].parse[name]> as:item_script:
@@ -66,14 +67,15 @@ crafting_book_open:
   debug: false
   script:
     - define inventory <inventory[crafting_book_inventory]>
-    - foreach <script[custom_recipe_data_initializer].data_key[data.categories]> key:category:
-      - narrate "CAT-<[category]> / VAL-<[value]>"
+    - foreach <script[custom_recipe_data_initializer].data_key[data.categories]> key:category as:values:
+      - define item <item[<[values].get[material]>].with[lore=<[values].get[lore]>;display=<[values].get[display]>;flag=run_script:crafting_book_open_category;flag=category:<[category]>]>
 
 crafting_book_open_category:
   type: task
   debug: false
   definitions: category
   script:
+    - define category <context.item.flag[category]> if:<[category].exists.not>
     - define inv <inventory[crafting_book_inventory]>
     - foreach <server.flag[recipe_book.categories.<[category]>].keys> as:item:
       - give <item[<[item]>].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:<server.flag[recipe_book.recipes.<[item]>].keys.get[1]>]> to:<[inv]>
