@@ -236,6 +236,7 @@ seeInventory:
         - if <context.args.size> < 1:
             - narrate "<red>Use a player name.<reset>"
             - stop
+        - narrate "Opening inventory"
         - define player <server.match_player[<context.args.get[1]>]>
         #.if_null[null]>
         #- if <[player]> = null:
