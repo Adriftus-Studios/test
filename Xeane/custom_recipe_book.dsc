@@ -28,7 +28,7 @@ custom_recipe_data_initializer:
             - foreach next
           - flag server recipe_book.categories.<[category]>.<[item_script]>:<[recipe_id].after[<&co>]>
           - flag server recipe_book.recipes.<[recipe_id].after[<&co>]>.items:!|:<[items]>
-          - flag server recipe_book.recipes.<[recipe_id].after[<&co>]>.result:!|:<[result]>
+          - flag server recipe_book.recipes.<[recipe_id].after[<&co>]>.result:<[result]>
   events:
     on server start:
       - inject locally path:build_item_list
