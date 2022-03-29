@@ -3,10 +3,21 @@ custom_recipe_data_initializer:
   debug: false
   build_item_list:
     - flag server recipe_book:!
-    - foreach <server.scripts.filter[container_type.equals[item]].parse[name]> as:item_script:
+    - foreach <server.scripts.filter[data_key[data.recipe_book_category].exists].parse[name]> as:item_script:
       - if !<[item_script].as_item.recipe_ids.is_empty.if_null[true]>:
         - foreach <[item_script].as_item.recipe_ids> as:recipe_id:
-          - flag server recipe_book.<[item_script]>.<[recipe_id].after[<&co>]>:!|:<list[<server.recipe_result[<[recipe_id]>]>].include[<server.recipe_items[<[recipe_id]>].replace_text[material<&co>].with[]>]>
+          - define result <server.recipe_result[<[recipe_id]>]>
+          - define items:|:<[result]>
+          - foreach <server.recipe_items[<[recipe_id]>]>:
+            - if <[value].starts_with[material]>:
+              - define value <[value].substring[9].as_item>
+            - else if <[value].script.exists>:
+              - define value "<item[<[value]>].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:<[value].as_item.recipe_ids.get[1]>;lore=<&e>Click to see Recipe]>"
+            - else:
+              - define value <[value].as_item>
+            - define items:|:<[value]>
+          - define category <[result].script.data_key[data.recipe_book_category]>
+          - flag server recipe_book.<[category]>.<[item_script]>:!|:<[items]>
   events:
     on server start:
       - inject locally path:build_item_list

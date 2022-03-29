@@ -4,6 +4,7 @@ tpa_command:
     name: tpa
     description: Used To Request A Teleport
     usage: /tpa (name)
+    permission: adriftus.staff
     script:
     - if <context.args.size> < 1:
       - narrate "<red><bold>Please Use A Name That's Online"
@@ -18,10 +19,12 @@ tpa_command:
     - else:
       - inject tpa_execute
 
-tpa_item:
+tpa_crystal:
   type: item
   material: feather
   display name: <&2>Friendly Crystal
+  data:
+    recipe_book_category: travel
   lore:
     - "<&e>--------------------"
     - "<&e>Use to request a teleport"
@@ -32,6 +35,7 @@ tpa_item:
       - tpa_remove_item
       - target_players_open
     callback: tpa_execute
+    type: crystal
   mechanisms:
     custom_model_data: 102
 
