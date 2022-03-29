@@ -6,9 +6,11 @@ myNPC:
         on assignment:
         - trigger name:click state:true
         on click:
-        - chat "Hi there, <player.name>!"
         - if <player.uuid> == ef2ed164-08b5-45d2-b000-c9ba6cf412a4:
-            - chat "Welcome back, <player.name>!"
+            - chat "Welcome back, <player.name>! You have scripts to work on - "
+            # | Learning list tags
+        - else:
+            - chat "Hi there, <player.name>!"
 
 supportBell:
     type: item
@@ -342,9 +344,35 @@ exCommand:
 
 tpCommand:
     type: command
-    name: Ex
-    description: Alias of /exs
-    usage: /ex
+    name: Teleport
+    description: Teleport.
+    usage: /teleport
+    aliases:
+        - tp
+    tab completion:
+        1: <server.online_players>
+        2: <server.online_players>
+    script:
+        - if <context.args.size> == 0:
+            - narrate "<red><bold>Please enter a player's name."
+        - if <context.args.size> == 1:
+            - define player <server.match_player[<context.args.get[1]>]>
+            - teleport <player> location:<[player].location>
+            - narrate "Teleported <player> to <[player]>"
+        - if <context.args.size> == 2:
+            - define player1 <server.match_player[<context.args.get[1]>]>
+            - define player2 <server.match_player[<context.args.get[2]>]>
+            - teleport <[player1]> location:<[player2].location>
+            - narrate "Teleported <[player1]> to <[player2]>"
+        - if <context.args.size> > 2:
+            - narrate "<red><bold>Too many arguments!<reset>"
+
+flyCommand:
+    type: command
+    name: Fly
+    description: Toggles fly mode.
+    usage: /fly
     script:
         - narrate test
 
+#
