@@ -69,6 +69,8 @@ crafting_book_open:
     - define inventory <inventory[crafting_book_inventory]>
     - foreach <script[custom_recipe_data_initializer].data_key[data.categories]> key:category as:values:
       - define item <item[<[values].get[material]>].with[lore=<[values].get[lore]>;display=<[values].get[display]>;flag=run_script:crafting_book_open_category;flag=category:<[category]>]>
+      - give <[item]> to:<[inventory]>
+    - inventory open d:<[inventory]>
 
 crafting_book_open_category:
   type: task
