@@ -35,10 +35,10 @@ return_crystal:
     type: crystal
   mechanisms:
     custom_model_data: 200
-  recipes:
-    1:
-      type: shapeless
-      input: ink_sac|paper
+  #recipes:
+    #1:
+      #type: shapeless
+      #input: ink_sac|paper
 
 return_events:
   type: world
