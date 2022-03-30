@@ -16,6 +16,7 @@ chair_sit_events:
     on player right clicks block:
     - stop if:<context.location.material.name.ends_with[stairs].not.if_null[true]>
     - stop if:<context.location.material.half.equals[BOTTOM].not>
+    - stop if:<player.is_sneaking>
     - determine passively cancelled
     - if <player.is_inside_vehicle>:
       - adjust <player.vehicle> passengers:<list[]>
@@ -32,3 +33,5 @@ chair_sit_events:
     - stop if:<context.vehicle.has_flag[sit.offset].not>
     - teleport <player> <context.vehicle.location.sub[<context.vehicle.flag[sit.offset]>].with_yaw[<player.location.yaw>].with_pitch[<player.location.pitch>]>
     - remove <context.vehicle>
+    on player kicked for flying:
+    - determine cancelled if:<player.vehicle.has_flag[sit.offset].if_null[false]>
