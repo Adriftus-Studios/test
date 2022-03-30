@@ -411,12 +411,17 @@ Killspawn:
     tab completion:
         1: <server.online_players>
     script:
-        - define player <context.args.get[1]>
+        - if <context.args.size> < 1:
+            - flag <player> kill:<player>
+        - else if <context.args.size>
+        - define player <server.match_player[<context.args.get[1]>]>
         - flag <[player]> killspawn:<[player].location>
         - kill <[player]>
         - adjust <[player]> respawn:true
         - teleport <[player]> <[player].flag[killspawn]>
         - flag <[player]> killspawn:!
+# Be able to affect multiple people
+# Formalities to be added
 
 vanishCommand:
     type: command
@@ -429,13 +434,18 @@ vanishCommand:
         - if <player.has_flag[poof]>:
             - flag <player> poof:false
         - invisible <player> state:<player.flag[poof]>
-#returnDeathCommand:
-#    type: command
-#    name: Back
-#    description: Go back to where you last died.
-#    usage: /back
-#    script:
-
+returnDeathCommand:
+    type: command
+    name: Back
+    description: Go back to where you last died.
+    usage: /back
+    script:
+        - teleport <player> <player.flag[lastDied]>
+lastDied:
+    type: world
+    events:
+        on player dies:
+            - flag <player> lastDied:<player.location>
 
 #difficultyCommand:
 
