@@ -309,7 +309,7 @@ hubCommand:
         - adjust <player> send_to:hub
         - if <server.flag[player_map.uuids.uuid.server].equals[hub]>:
             - narrate "<bold><red>You are already in hub!"
-        - teleport <player> <location[0,73,0,4_buildings]>
+        - teleport <player> <location[0,78,0,4_buildings]>
 #Works
 
 testCommand:
