@@ -377,8 +377,8 @@ flyCommand:
     description: Toggles fly mode.
     usage: /fly
     script:
-        - narrate test
-
+        - adjust <player> velocity:<location[0,1,0]>
+        - adjust <player> flying:true
 #
 
 moveAsNPC:
