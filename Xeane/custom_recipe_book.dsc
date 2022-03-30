@@ -22,7 +22,7 @@ custom_recipe_data_initializer:
           - define items <list>
           - foreach <server.recipe_items[<[recipe_id]>]> as:recipe_item:
             - if <[recipe_item].starts_with[material]>:
-              - define recipe_item <[recipe_item].substring[9].as_item>
+              - define recipe_item <[recipe_item].substring[10].as_item>
             - else if <[recipe_item].script.data_key[recipes].exists>:
               - define recipe_item "<item[<[recipe_item]>].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:<[recipe_item].as_item.recipe_ids.get[1].after[<&co>]>;lore=<[recipe_item].lore.include[<&b>Click to see Recipe]>]>"
             - else:
