@@ -18,6 +18,40 @@ custom_recipe_data_initializer:
         display: <&a>Blocks
         lore:
           - "<&e>Various custom blocks!"
+      combat:
+        material: netherite_sword
+        display: <&c>Combat
+        lore:
+          - "<&e>Stuff to beat your friends!"
+          - "<&e>Yea, probably your enemies too"
+      gadgets:
+        material: piston
+        display: <&d>Gadgets
+        lore:
+          - "<&e>Cool things!"
+          - "<&e>Other stuff, too..."
+      food:
+        material: cake
+        display: <&2>Food
+        lore:
+          - "<&e>FEWD!!!!"
+          - "<&e>Nom nom nom"
+      brewing:
+        material: potion
+        display: <&b>Brewing
+        lore:
+          - "<&e>DRINKS!!!"
+          - "<&e>You must be 21+ to click"
+      decor:
+        material: azalea
+        display: <&5>Decor
+        lore:
+          - "<&e>Stuff for the pretty pretty!"
+      misc:
+        material: paper
+        display: <&e>Misc stuff
+        lore:
+          - "<&e>Lotta random, ngl"
   build_item_list:
     - flag server recipe_book:!
     - foreach <server.scripts.filter[data_key[data.recipe_book_category].exists].parse[name]> as:item_script:
