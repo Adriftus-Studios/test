@@ -200,11 +200,11 @@ selectGamemode_callback:
     definitions: gamemode
     script:
         - flag player callback:<[callback]>
-        - if <definition[gamemode].equals[element[creative]]> && <player.has_flag[callback]>:
+        - else if <[gamemode]> == <element[creative]> && <player.has_flag[callback]>:
             - adjust <player> gamemode:creative
             - narrate "<green>You have switched to <bold><underline>Creative<reset><green> mode."
             - flag player callback:!
-        - else if <definition[gamemode].equals[element[survival]]> && <player.has_flag[callback]>:
+        - else if <[gamemode]> == <element[survival]> && <player.has_flag[callback]>:
             - adjust <player> gamemode:survival
             - narrate "<green>You have switched to <bold><underline>Survival<reset><green> mode."
             - flag player callback:!
@@ -281,7 +281,7 @@ combatTag:
         on player damaged by player:
             - flag <context.damager> combatTag expire:30s if:<context.damager.is_player>
             - flag <context.entity> combatTag expire:30s if:<context.entity.is_player>
-            - narrate "You have been combat-tagged. Do not log out!"
+            - narrate "You have been combat-tagged. Do not log out!" targets:<context.damager>|<context.entity>
         on player dies flagged:combatTag:
             - flag <player> combatTag:!
         on player quit flagged:combatTag:
@@ -294,7 +294,7 @@ noHunger:
     events:
         on player changes food level flagged:noHunger:
             - if <context.food> < 20:
-                - adjust <player> food_level:20
+                - feed <player>
 #Still in the works
 
 hubCommand:
@@ -333,13 +333,14 @@ sitCommand:
     description: Makes the player sit down on a block.
     usage: /sit
     script:
-        - flag <player> sitting
-        - teleport <player> <location[<player.location.x.round>,<player.location.y.round>,<player.location.z.round>]>
-        - animate <player> animation:sit
+        - if !<player.has_flag[sitting]>:
+            - flag <player> sitting
+            - teleport <player> <location[<player.location.x.round>,<player.location.y.round>,<player.location.z.round>]>
+            - animate <player> animation:sit
         - if <player.has_flag[sitting]>:
             - animate <player> animation:stand
             - flag <player> sitting:!
-#Glitchy as fuck
+#In case of a glitch (likely on the second attempt), kick yourself.
 
 tpCommand:
     type: command
@@ -348,11 +349,14 @@ tpCommand:
     usage: /teleport
     aliases:
         - tp
-    tab completion:
+    tab completions:
         1: <server.online_players>|coordinates
         2: <server.online_players>|x
         3: y
         4: z
+    tab complete:
+        - determine <server.online_players.parse[name]>|<server.online_players.parse[name]>
+        - determine coordinates|x|y|z
     script:
         - if <context.args.size> == 0:
             - narrate "<red><bold>Please enter a player's name."
@@ -395,6 +399,42 @@ fireballLauncher:
 fireballLauncherScript:
     type: world
     events:
-        on player shoots fireballLauncher:
+        after player shoots fireballLauncher:
             - kill <context.projectile>
             - shoot <entity[FIRE_CHARGE]>
+
+Killspawn:
+    type: command
+    name: Killspawn
+    description: Instantly kills a player and respawns them back to the same location.
+    usage: /killspawn <&lt>player<&gt>
+    tab completion:
+        1: <server.online_players>
+    script:
+        - define player <context.args.get[1]>
+        - flag <[player]> killspawn:<[player].location>
+        - kill <[player]>
+        - adjust <[player]> respawn:true
+        - teleport <[player]> <[player].flag[killspawn]>
+        - flag <[player]> killspawn:!
+
+vanishCommand:
+    type: command
+    name: Vanish
+    description: Poof
+    usage: /vanish
+    script:
+        - if !<player.has_flag[poof]>:
+            - flag <player> poof:true
+        - if <player.has_flag[poof]>:
+            - flag <player> poof:false
+        - invisible <player> state:<player.flag[poof]>
+#returnDeathCommand:
+#    type: command
+#    name: Back
+#    description: Go back to where you last died.
+#    usage: /back
+#    script:
+
+
+#difficultyCommand:
