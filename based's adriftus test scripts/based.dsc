@@ -6,9 +6,21 @@ myNPC:
         on assignment:
         - trigger name:click state:true
         on click:
-        - chat "Hi there, <player.name>!"
-        - if <player.name.equals[ItsBased]>
+        - if <player.uuid> == ef2ed164-08b5-45d2-b000-c9ba6cf412a4:
+            - chat "Welcome back, <player.name>! You have scripts to work on - "
+            # | Learning list tags
+        - else:
+            - chat "Hi there, <player.name>!"
 
+protectTheOwner:
+    type: assignment
+    actions:
+        on assignment:
+        - trigger state:true
+        on entity attacks player:
+            - if <context.entity> == <npc.owner>:
+                - look <context.attacker>
+                - attack <context.attacker>
 supportBell:
     type: item
     material: bell
@@ -188,11 +200,11 @@ selectGamemode_callback:
     definitions: gamemode
     script:
         - flag player callback:<[callback]>
-        - if <definition[gamemode].equals[element[creative]]> && <player.has_flag[callback]>:
+        - else if <[gamemode]> == <element[creative]> && <player.has_flag[callback]>:
             - adjust <player> gamemode:creative
             - narrate "<green>You have switched to <bold><underline>Creative<reset><green> mode."
             - flag player callback:!
-        - else if <definition[gamemode].equals[element[survival]]> && <player.has_flag[callback]>:
+        - else if <[gamemode]> == <element[survival]> && <player.has_flag[callback]>:
             - adjust <player> gamemode:survival
             - narrate "<green>You have switched to <bold><underline>Survival<reset><green> mode."
             - flag player callback:!
@@ -229,40 +241,39 @@ seeInventory:
     aliases:
         - inventory
         - si
-    permissions: adriftus.inventory.view
+    tab completion:
+        1: <server.online_players>
     script:
+        - flag <player> seeingInventory
         - if <context.args.size> < 1:
-            - narrate "<red>Use a player name.<reset>"
+            - inventory open destination:<player>
             - stop
         - define player <server.match_player[<context.args.get[1]>]>
         #.if_null[null]>
         #- if <[player]> = null:
         #    - narrate "<red>Use an online player's name.<reset>"
         #    - stop
-        - flag <player> seeingInventory
-        - inventory display destination:<[player]>
-        # This flag here is to prevent any interactions with the top inventory.
-#Currently being worked on
-
+        - inventory open destination:<[player].inventory>
+        - narrate "<yellow>Opening inventory<reset>"
 seeInventoryWorld:
     type: world
     events:
         on player left|right clicks item in inventory flagged:seeingInventory:
-            - determine cancelled
+            - determine passively cancelled
+            - if <context.inventory.location.material.name.equals[shulker_box]>:
+                - inventory open destination:<context.item.inventory>
+            - if <context.item> == <context.item_in_hand>:
+                - inventory adjust <context.item> slot:<player.held_item_slot>
+        on player closes inventory flagged:seeingInventory:
+            - flag <player> seeingInventory:!
 
 # Idea -
 #   - Displays inventory of any player, offline and online.
 #   - Inventory should only be for view.
 #   - Shulkers, upon click, should be displayed
 #   - Ender chest button to see the player's inventory
-
-
-unknownCommand:
-    type: world
-    events:
-        after unknown command:
-            - narrate "<red><bold><underline>Okay just sayin, you're typing an unknown command."
-#Not working
+# Issues -
+#   - Item on hand disappears if interacted with (should be adjusted manually)
 
 combatTag:
     type: world
@@ -270,19 +281,21 @@ combatTag:
         on player damaged by player:
             - flag <context.damager> combatTag expire:30s if:<context.damager.is_player>
             - flag <context.entity> combatTag expire:30s if:<context.entity.is_player>
-            - narrate "You have been combat-tagged. Do not log out!"
+            - narrate "You have been combat-tagged. Do not log out!" targets:<context.damager>|<context.entity>
         on player dies flagged:combatTag:
             - flag <player> combatTag:!
         on player quit flagged:combatTag:
             - kill <player>
             - flag <player> combatTag:!
+#Still in the works
 
 noHunger:
     type: world
     events:
         on player changes food level flagged:noHunger:
             - if <context.food> < 20:
-                - adjust <player> food_level:20
+                - feed <player>
+#Still in the works
 
 hubCommand:
     type: command
@@ -294,9 +307,11 @@ hubCommand:
             - narrate "<red>You cannot do that when you're in combat!<reset>"
             - determine cancelled
         - adjust <player> send_to:hub
-        - if <player.>
-        - teleport <player> <location[0,73,0,4_buildings]>
+        - if <server.flag[player_map.uuids.uuid.server].equals[hub]>:
+            - narrate "<bold><red>You are already in hub!"
+        - teleport <player> <location[0,78,0,4_buildings]>
 #Works
+
 testCommand:
     type: command
     name: test
@@ -307,16 +322,131 @@ testCommand:
             - narrate "<red>You cannot do that when you're in combat!<reset>"
             - determine cancelled
         - adjust <player> send_to:test
+        - if <server.flag[player_map.uuids.uuid.server].equals[test]>:
+            - narrate "<bold><red>You are already in test!"
         - teleport <player> <location[-2932,66,4048,world]>
+#
+
 sitCommand:
     type: command
     name: Sit
     description: Makes the player sit down on a block.
     usage: /sit
     script:
-        - teleport <player> <player.location>
-        - animate <player> animation:sit
-        - flag <player> sitting
+        - if !<player.has_flag[sitting]>:
+            - flag <player> sitting
+            - teleport <player> <location[<player.location.x.round>,<player.location.y.round>,<player.location.z.round>]>
+            - animate <player> animation:sit
         - if <player.has_flag[sitting]>:
             - animate <player> animation:stand
-#Glitchy as fuck
+            - flag <player> sitting:!
+#In case of a glitch (likely on the second attempt), kick yourself.
+
+tpCommand:
+    type: command
+    name: Teleport
+    description: Teleport.
+    usage: /teleport
+    aliases:
+        - tp
+    tab completions:
+        1: <server.online_players>|coordinates
+        2: <server.online_players>|x
+        3: y
+        4: z
+    tab complete:
+        - determine <server.online_players.parse[name]>|<server.online_players.parse[name]>
+        - determine coordinates|x|y|z
+    script:
+        - if <context.args.size> == 0:
+            - narrate "<red><bold>Please enter a player's name."
+        - if <context.args.size> == 1:
+            - define player <server.match_player[<context.args.get[1]>]>
+            - teleport <player> location:<[player].location>
+            - narrate "Teleported <player.name> to <[player].name>" targets:<player>|<[player]>
+        - if <context.args.get[1]> == <element[coordinates]>:
+            - teleport <player> location:<location[<context.args.get[2]>,<context.args.get[3]>,<context.args.get[4]>,<player.world.name>]>
+
+        - if <context.args.size> == 2:
+            - define player1 <server.match_player[<context.args.get[1]>]>
+            - define player2 <server.match_player[<context.args.get[2]>]>
+            - teleport <[player1]> location:<[player2].location>
+            - narrate "Teleported <[player1].name> to <[player2].name>"
+        - if <context.args.size> > 2:
+            - narrate "<red><bold>Too many arguments!<reset>"
+
+flyCommand:
+    type: command
+    name: Fly
+    description: Toggles fly mode.
+    usage: /fly
+    script:
+        - adjust <player> velocity:<location[0,1,0]>
+        - adjust <player> flying:true
+#
+
+moveAsNPC:
+    type: world
+    events:
+        on player spectates entity:
+            - flag <player> spectatingEntity
+        on player stops spectating entity:
+            - flag <player> spectatingEntity:!
+
+fireballLauncher:
+    type: item
+    material: bow
+fireballLauncherScript:
+    type: world
+    events:
+        after player shoots fireballLauncher:
+            - kill <context.projectile>
+            - shoot <entity[FIRE_CHARGE]>
+
+Killspawn:
+    type: command
+    name: Killspawn
+    description: Instantly kills a player and respawns them back to the same location.
+    usage: /killspawn <&lt>player<&gt>
+    tab completion:
+        1: <server.online_players>
+    script:
+        - if <context.args.size> < 1:
+            - flag <player> kill:<player>
+        - else if <context.args.size>
+        - define player <server.match_player[<context.args.get[1]>]>
+        - flag <[player]> killspawn:<[player].location>
+        - kill <[player]>
+        - adjust <[player]> respawn:true
+        - teleport <[player]> <[player].flag[killspawn]>
+        - flag <[player]> killspawn:!
+# Be able to affect multiple people
+# Formalities to be added
+
+vanishCommand:
+    type: command
+    name: Vanish
+    description: Poof
+    usage: /vanish
+    script:
+        - if !<player.has_flag[poof]>:
+            - flag <player> poof:true
+        - if <player.has_flag[poof]>:
+            - flag <player> poof:false
+        - invisible <player> state:<player.flag[poof]>
+returnDeathCommand:
+    type: command
+    name: Back
+    description: Go back to where you last died.
+    usage: /back
+    script:
+        - teleport <player> <player.flag[lastDied]>
+lastDied:
+    type: world
+    events:
+        on player dies:
+            - flag <player> lastDied:<player.location>
+
+#difficultyCommand:
+
+#clearInventory:
