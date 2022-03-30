@@ -13,6 +13,11 @@ custom_recipe_data_initializer:
         display: <&a>Tools
         lore:
           - "<&e>Items for getting work DONE!"
+      blocks:
+        material: shulker_box
+        display: <&a>Blocks
+        lore:
+          - "<&e>Various custom blocks!"
   build_item_list:
     - flag server recipe_book:!
     - foreach <server.scripts.filter[data_key[data.recipe_book_category].exists].parse[name]> as:item_script:

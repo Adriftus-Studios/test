@@ -2,6 +2,8 @@
 big_shulker_item:
   type: item
   material: shulker_box
+  data:
+    recipe_book_category: blocks
   recipes:
     1:
       type: shapeless
