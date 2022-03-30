@@ -2,6 +2,8 @@
 dev_null_item:
   type: item
   material: barrier
+  data:
+    recipe_book_category: gadgets
   recipes:
     1:
       type: shapeless
