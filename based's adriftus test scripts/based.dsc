@@ -438,3 +438,5 @@ vanishCommand:
 
 
 #difficultyCommand:
+
+#clearInventory:
