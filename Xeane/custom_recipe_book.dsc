@@ -8,6 +8,11 @@ custom_recipe_data_initializer:
         display: <&a>Travel Items
         lore:
           - "<&e>Items related to getting around"
+      tools:
+        material: iron_pickaxe
+        display: <&a>Tools
+        lore:
+          - "<&e>Items for getting work DONE!"
   build_item_list:
     - flag server recipe_book:!
     - foreach <server.scripts.filter[data_key[data.recipe_book_category].exists].parse[name]> as:item_script:
