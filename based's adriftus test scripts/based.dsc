@@ -451,10 +451,12 @@ vanishCommand:
             - flag <player> poof:!
         - else if <player.has_flag[poof].not>:
             - flag <player> poof
-        - invisible <player> state:true if:<player.has_flag[poof]>
-        - invisible <player> state:false if:<player.has_flag[poof].not>
-        #- playeffect
-        - narrate <gray><bold>POOF! if:<player.has_flag[poof]>
+        - if <player.has_flag[poof]>:
+            - playeffect effect:campfire_signal_smoke at:<player.location> visibility:20
+            - invisible <player> state:true
+            - narrate <gray><bold>POOF!
+        - else if !<player.has_flag[poof]>:
+            - invisible <player> state:false
 #
 
 returnDeathCommand:
@@ -506,9 +508,13 @@ clearInventory:
         1: <server.online_players.parse[name]>
     script:
         - define player <context.args.get[1]>
-        - inventory clear if:<context.args.size> < 1
-        - inventory clear destination:<[player].inventory> if:<context.args.size.equals[1]>
-        - narrate "<red>Too many arguments!" if:<context.args.size.is_more_than[1]>
+        - if <context.args.size> < 1:
+            - inventory clear destination:<player.inventory>
+            - narrate "<yellow><bold>Your inventory has been cleared."
+        - if <context.args.size.equals[1]>:
+            - inventory clear destination:<[player].inventory>
+        - if <context.args.size.is_more_than[1]>:
+            - narrate "<red>Too many arguments!"
 #
 
 gameruleCommand:
