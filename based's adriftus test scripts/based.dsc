@@ -457,7 +457,7 @@ vanishCommand:
         - else if <player.has_flag[poof].not>:
             - flag <player> poof
         - if <player.has_flag[poof]>:
-            - playeffect effect:smoke_large at:<player.location> visibility:200
+            - playeffect effect:explosion_normal at:<player.location> visibility:200
             - invisible <player> state:true
             - narrate <gray><bold>POOF!
         - else if !<player.has_flag[poof]>:
@@ -485,22 +485,23 @@ difficultyCommand:
     usage: /setdifficulty
     aliases:
         - sd
+    data:
+        difficulty:
+            - peaceful
+            - easy
+            - normal
+            - hard
     tab completions:
         1: peaceful|easy|normal|hard
     script:
-        - narrate "<bold>Set the difficulty of the world (peaceful, easy, normal, hard)." if:<context.args.size.is_less_than[1]>
-        - adjust <world[<player.world.name>]> difficulty:<context.args.get[1]> if:<context.args.size.equals[1]>
-        - narrate "<red>Too many arguments!" if:<context.args.size.is_more_than[1]>
+        - if <context.args.size.is_less_than[1]>:
+            - narrate "<red>Set the difficulty of the world (peaceful, easy, normal, hard)."
+        - else if <context.args.size.equals[1]> && <script.data_key[difficulty].contains_any[<context.args.get[1]>]>:
+            - adjust <world[<player.world.name>]> difficulty:<context.args.get[1]>
+            - narrate "<yellow><bold>Difficulty set to <context.args.get[1]>."
+        - else if <context.args.size.is_more_than[1]>:
+            - narrate "<red>Too many arguments!"
 #
-
-testcontextargs0:
-    type: command
-    name: Testcontextargs0
-    description: h
-    usage: /testcontextargs0
-    script:
-        - narrate "Context args 0 is <context.args.get[0]>"
-# Testing
 
 clearInventory:
     type: command
@@ -512,12 +513,12 @@ clearInventory:
     tab completions:
         1: <server.online_players.parse[name]>
     script:
-        - define player <context.args.get[1]>
         - if <context.args.size> < 1:
             - inventory clear destination:<player.inventory>
             - narrate "<yellow><bold>Your inventory has been cleared."
         - if <context.args.size.equals[1]>:
-            - inventory clear destination:<[player].inventory>
+            - inventory clear destination:<context.args.get[1].inventory>
+            - narrate "<yellow><bold><context.args.get[1]>'s inventory has been cleared."
         - if <context.args.size.is_more_than[1]>:
             - narrate "<red>Too many arguments!"
 #
