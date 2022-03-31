@@ -1,4 +1,4 @@
-# Hi! You're looking at a file that has every single script I've made with the help of my co-workers at Adriftus Studios!
+# Hi! You're looking at a file that has every single script of mine, some completed with the help of my co-workers at Adriftus Studios!
 
 myNPC:
     type: assignment
@@ -11,6 +11,7 @@ myNPC:
             # | Learning list tags
         - else:
             - chat "Hi there, <player.name>!"
+#
 
 protectTheOwner:
     type: assignment
@@ -21,6 +22,8 @@ protectTheOwner:
             - if <context.entity> == <npc.owner>:
                 - look <context.attacker>
                 - attack <context.attacker>
+#
+
 supportBell:
     type: item
     material: bell
@@ -371,6 +374,7 @@ tpCommand:
             - narrate "Teleported <[player1].name> to <[player2].name>"
         - if <context.args.size> > 2:
             - narrate "<red><bold>Too many arguments!<reset>"
+#
 
 flyCommand:
     type: command
@@ -389,6 +393,7 @@ moveAsNPC:
             - flag <player> spectatingEntity
         on player stops spectating entity:
             - flag <player> spectatingEntity:!
+#
 
 fireballLauncher:
     type: item
@@ -399,6 +404,7 @@ fireballLauncherScript:
         after player shoots fireballLauncher:
             - kill <context.projectile>
             - shoot <entity[FIRE_CHARGE]>
+#
 
 Killspawn:
     type: command
@@ -420,17 +426,36 @@ Killspawn:
 # Be able to affect multiple people
 # Formalities to be added
 
+chair_sit_events:
+  type: world
+  debug: false
+  events:
+    on player right clicks block:
+    - stop if:<context.location.material.name.ends_with[stairs].not.if_null[true]>
+    - stop if:<context.location.material.half.equals[BOTTOM].not>
+    - determine passively cancelled
+    - spawn arrow <context.location.center.below[0.5]> save:mount_point
+    - define point <entry[mount_point].spawned_entity>
+    - invisible <[point]>
+    - flag <[point]> sit.offset:<[point].location.sub[<player.location>]>
+    - adjust <[point]> passenger:<player>
+# - Made by AJ
+
 vanishCommand:
     type: command
     name: Vanish
     description: Poof
     usage: /vanish
     script:
-        - if !<player.has_flag[poof]>:
-            - flag <player> poof:true
         - if <player.has_flag[poof]>:
-            - flag <player> poof:false
-        - invisible <player> state:<player.flag[poof]>
+            - flag <player> poof:!
+        - else if <player.has_flag[poof].not>:
+            - flag <player> poof
+        - invisible <player> state:true if:<player.has_flag[poof]>
+        - invisible <player> state:false if:<player.has_flag[poof].not>
+        - narrate <gray><bold>POOF! if:<player.has_flag[poof]>
+#
+
 returnDeathCommand:
     type: command
     name: Back
@@ -443,9 +468,59 @@ lastDied:
     events:
         on player dies:
             - flag <player> lastDied:<player.location>
+# It works
 
-#difficultyCommand:
+difficultyCommand:
+    type: command
+    name: Setdifficulty
+    description: Sets difficulty of the world.
+    usage: /setdifficulty
+    aliases:
+        - sd
+    tab completions:
+        1: peaceful|easy|normal|hard
+    script:
+        - narrate "<bold>Set the difficulty of the world (peaceful, easy, normal, hard)." if:<context.args.size.is_less_than[1]>
+        - adjust <world[<player.world.name>]> difficulty:<context.args.get[1]> if:<context.args.size.equals[1]>
+        - narrate "<red>Too many arguments!" if:<context.args.size.is_more_than[1]>
+#
 
-#clearInventory:
+testcontextargs0:
+    type: command
+    name: Testcontextargs0
+    description: h
+    usage: /testcontextargs0
+    script:
+        - narrate "Context args 0 is <context.args.get[0]>"
+# Testing
 
-#game
+clearInventory:
+    type: command
+    name: Clearinventory
+    description: Clears inventory.
+    usage: /clearinventory <&lt>player<&gt>
+    aliases:
+        - ci
+    tab completions:
+        1: <server.online_players>
+    script:
+        - define player <context.args.get[1]>
+        - inventory clear if:<context.args.size> < 1
+        - inventory clear destination:<[player].inventory> if:<context.args.size.equals[1]>
+        - narrate "<red>Too many arguments!" if:<context.args.size.is_more_than[1]>
+#
+
+gameruleCommand:
+    type: command
+    name: Gamerule
+    description: Set the gamerule.
+    usage: /gamerule <&lt>gamerule<&gt> <&lt>true/false/toggle<&gt>
+    tab completions:
+        1: <server.gamerules>
+        2: true|false|toggle
+    script:
+        - narrate "<red>Too little arguments!<reset>" if:<context.args.size.is_less_than[1]>
+        - gamerule <player.world.name> <context.args.get[1]> <world[<player.world.name>].gamerule[<context.args.get[1]>].not> if:<context.args.get[2].equals[toggle]>
+        - gamerule <player.world.name> <context.args.get[1]> <context.args.get[2]>
+        - narrate "<red>Too many arguments!<reset>" if:<context.args.size.is_more_than[1]>
+#
