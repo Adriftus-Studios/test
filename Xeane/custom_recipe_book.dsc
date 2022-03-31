@@ -92,6 +92,7 @@ custom_recipe_inventory_open:
     - define recipe_id <context.item.flag[recipe_id]> if:<[recipe_id].exists.not>
     - define recipe_id <[recipe_id]>
     - define inventory <inventory[custom_recipe_inventory]>
+    - inventory set slot:<script.data_key[data.back]> d:<[inventory]> "o:feather[custom_model_data=3;display=<&c>Back to Categories;flag=run_script:crafting_book_open]"
     - inventory set slot:<script.data_key[data.result]> d:<[inventory]> o:<server.flag[recipe_book.recipes.<[recipe_id]>.result]>
     - define slots <script.data_key[data.slots].as_list>
     - foreach <server.flag[recipe_book.recipes.<[recipe_id]>.items]>:
