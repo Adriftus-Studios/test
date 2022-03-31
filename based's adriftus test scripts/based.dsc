@@ -531,8 +531,8 @@ gameruleCommand:
             - narrate "<red>Invalid input! [NOTE: Gamerules are case-sensitive! Refer to the tab completions.]<reset>"
         # Toggle
         - if <context.args.get[3].equals[toggle]>:
-            - gamerule <player.world.name> <context.args.get[2]> <context.args.get[3].not>
-            - narrate "<context.args.get[2]> set to <world[<player.world.name>].gamerule[<context.args.get[2]>]>"
+            - gamerule <player.world.name> <context.args.get[2]> <world[<player.world.name>].gamerule[<context.args.get[2]>].not>
+            - narrate "Gamerule <context.args.get[2]> set to <world[<player.world.name>].gamerule[<context.args.get[2]>]>"
         # True or false
         - else if <context.args.get[3].equals[true]> || <context.args.get[2].equals[false]>:
             - gamerule <player.world.name> <context.args.get[2]> <context.args.get[3]>
