@@ -84,14 +84,19 @@ custom_recipe_inventory_open:
   type: task
   debug: true
   definitions: recipe_id
+  data:
+    slots: 13|14|15|22|23|24|31|32|33
+    result: 26
+    back: 20
   script:
     - define recipe_id <context.item.flag[recipe_id]> if:<[recipe_id].exists.not>
     - define recipe_id <[recipe_id]>
     - define inventory <inventory[custom_recipe_inventory]>
-    - inventory set slot:1 d:<[inventory]> o:<server.flag[recipe_book.recipes.<[recipe_id]>.result]>
+    - inventory set slot:<script.data_key[data.result]> d:<[inventory]> o:<server.flag[recipe_book.recipes.<[recipe_id]>.result]>
+    - define slots <script.data_key[data.slots].as_list>
     - foreach <server.flag[recipe_book.recipes.<[recipe_id]>.items]>:
       - foreach next if:<[value].material.name.equals[air].if_null[false]>
-      - inventory set slot:<[loop_index].add[1]> d:<[inventory]> o:<[value]>
+      - inventory set slot:<[slots].get[<[loop_index]>]> d:<[inventory]> o:<[value]>
     - adjust <[inventory]> title:<server.flag[recipe_book.recipes.<[recipe_id]>.result].display>
     - inventory open d:<[inventory]>
 
