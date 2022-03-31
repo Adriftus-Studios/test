@@ -353,8 +353,8 @@ tpCommand:
     aliases:
         - tp
     tab completions:
-        1: <server.online_players> | coordinates
-        2: <server.online_players> | x
+        1: <server.online_players.parse[name]>|coordinates
+        2: <server.online_players.parse[name]>|x
         3: y
         4: z
     script:
@@ -412,7 +412,7 @@ Killspawn:
     description: Instantly kills a player and respawns them back to the same location.
     usage: /killspawn <&lt>player<&gt>
     tab completion:
-        1: <server.online_players>
+        1: <server.online_players.parse[name]>
     script:
         - if <context.args.size> < 1:
             - flag <player> kill:<player>
@@ -502,7 +502,7 @@ clearInventory:
     aliases:
         - ci
     tab completions:
-        1: <server.online_players>
+        1: <server.online_players.parse[name]>
     script:
         - define player <context.args.get[1]>
         - inventory clear if:<context.args.size> < 1
@@ -522,5 +522,7 @@ gameruleCommand:
         - narrate "<red>Too little arguments!<reset>" if:<context.args.size.is_less_than[1]>
         - gamerule <player.world.name> <context.args.get[1]> <world[<player.world.name>].gamerule[<context.args.get[1]>].not> if:<context.args.get[2].equals[toggle]>
         - gamerule <player.world.name> <context.args.get[1]> <context.args.get[2]>
-        - narrate "<red>Too many arguments!<reset>" if:<context.args.size.is_more_than[1]>
+        - narrate "<red>Too many arguments!<reset>" if:<context.args.size.is_more_than[2]>
 #
+
+#ghost:
