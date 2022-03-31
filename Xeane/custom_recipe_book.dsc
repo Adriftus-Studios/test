@@ -5,7 +5,7 @@ custom_recipe_data_initializer:
     categories:
       travel:
         material: feather
-        display: <&a>Travel Items
+        display: <element[Travel Items].color_gradient[from=#2596be;to=#AAAAAA]
         lore:
           - "<&e>Items related to getting around"
       tools:
