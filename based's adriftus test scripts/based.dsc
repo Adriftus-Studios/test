@@ -496,7 +496,7 @@ difficultyCommand:
     script:
         - if <context.args.size.is_less_than[1]>:
             - narrate "<red>Set the difficulty of the world (peaceful, easy, normal, hard)."
-        - else if <context.args.size.equals[1]> && <script.data_key[difficulty].contains_any[<context.args.get[1]>]>:
+        - else if <context.args.size.equals[1]>:
             - adjust <world[<player.world.name>]> difficulty:<context.args.get[1]>
             - narrate "<yellow><bold>Difficulty set to <context.args.get[1]>."
         - else if <context.args.size.is_more_than[1]>:
