@@ -284,18 +284,23 @@ combatTag:
         on player damaged by player:
             - flag <context.damager> combatTag expire:30s if:<context.damager.is_player>
             - flag <context.entity> combatTag expire:30s if:<context.entity.is_player>
-            - narrate "You have been combat-tagged. Do not log out!" targets:<context.damager>|<context.entity>
+            - narrate "<yellow><bold>You have been combat-tagged. Do not log out!" targets:<context.damager>|<context.entity>
+            - waituntil 30s
+            - if <player.flag_expiration[combatTag].equals[0]>:
+                - narrate "<yellow><bold>You are no longer in combat."
         on player dies flagged:combatTag:
             - flag <player> combatTag:!
         on player quit flagged:combatTag:
             - kill <player>
             - flag <player> combatTag:!
+
 #Still in the works
 
 noHunger:
     type: world
     events:
         on player changes food level flagged:noHunger:
+            - ratelimit <player> 2s
             - if <context.food> < 20:
                 - feed <player>
 #Still in the works
@@ -452,7 +457,7 @@ vanishCommand:
         - else if <player.has_flag[poof].not>:
             - flag <player> poof
         - if <player.has_flag[poof]>:
-            - playeffect effect:campfire_signal_smoke at:<player.location> visibility:20
+            - playeffect effect:smoke_large at:<player.location> visibility:20
             - invisible <player> state:true
             - narrate <gray><bold>POOF!
         - else if !<player.has_flag[poof]>:
