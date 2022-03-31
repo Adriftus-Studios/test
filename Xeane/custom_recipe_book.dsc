@@ -102,7 +102,7 @@ custom_recipe_inventory_open:
 
 crafting_book_inventory:
   type: inventory
-  title: <&6>Custom Recipes!
+  title: <&font[adriftus:guis]><&chr[F808]><&chr[6915]>
   size: 54
   gui: true
   inventory: chest
