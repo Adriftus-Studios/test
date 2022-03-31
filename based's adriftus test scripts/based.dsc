@@ -350,13 +350,10 @@ tpCommand:
     aliases:
         - tp
     tab completions:
-        1: <server.online_players>|coordinates
-        2: <server.online_players>|x
+        1: <server.online_players> | coordinates
+        2: <server.online_players> | x
         3: y
         4: z
-    tab complete:
-        - determine <server.online_players.parse[name]>|<server.online_players.parse[name]>
-        - determine coordinates|x|y|z
     script:
         - if <context.args.size> == 0:
             - narrate "<red><bold>Please enter a player's name."
@@ -450,3 +447,21 @@ lastDied:
 #difficultyCommand:
 
 #clearInventory:
+
+redorblueegg:
+    type: world
+    events:
+        on player right clicks block flagged:easter_egg:
+        # flagged:(Flag for the easter eggs btw)
+            - if <player.cursor_on.skull_skin.equals[ed0ef4f1-528a-40c9-97d3-8c127b8e45d5]>:
+                - flag <player> blue_egg:<player.flag[blue_egg].add[1]>
+                - announce "<player.name> has found <player.flag[blue_egg]> blue eggs!"
+            - else if <player.cursor_on.skull_skin.equals[80e0e687-1ff4-423f-8fe8-130687f7ff1f]>:
+                - flag <player> red_egg:<player.flag[red_egg].add[1]>
+                - announce "<player.name> has found <player.flag[red_egg]> red eggs!"
+
+easteregg:
+    type: world
+    events:
+        on player places block:
+                - flag <context.material> easter_egg if:<context.material.skull_skin.equals[ed0ef4f1-528a-40c9-97d3-8c127b8e45d5]>|<player.cursor_on.skull_skin.equals[80e0e687-1ff4-423f-8fe8-130687f7ff1f]>
