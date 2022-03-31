@@ -416,6 +416,8 @@ Killspawn:
     name: Killspawn
     description: Instantly kills a player and respawns them back to the same location.
     usage: /killspawn <&lt>player<&gt>
+    aliases:
+        - ks
     tab completion:
         1: <server.online_players.parse[name]>
     script:
@@ -505,7 +507,7 @@ difficultyCommand:
             - stop
         # Already set difficulty value
         - else if <context.args.get[2].equals[<world[<context.args.get[1]>].difficulty>]>:
-            - narrate "<yellow><bold>Difficulty already set to <context.args.get[2]>!"
+            - narrate "<yellow><bold>Difficulty already set to <context.args.get[2]> in world [<context.args.get[1]>]!"
             - stop
         #Doesn't match either world name or difficulty name
         - else if !<server.worlds.parse[name].contains[<context.args.get[1]>]> || !<script.data_key[difficulty].contains[<context.args.get[2]>]>:
@@ -516,9 +518,8 @@ difficultyCommand:
             - narrate "<red>Too many arguments!"
             - stop
         # Execution
-        # - if <server.worlds.parse[name].contains[<context.args.get[1]>]> && <script.data_key[difficulty].contains[<context.args.get[2]>]>:
         - adjust <world[<context.args.get[1]>]> difficulty:<context.args.get[2]>
-        - narrate "<yellow><bold>Difficulty set to <context.args.get[2]>."
+        - narrate "<yellow><bold>Difficulty set to <context.args.get[2]> in world [<context.args.get[1]>]."
 #
 
 clearInventory:
