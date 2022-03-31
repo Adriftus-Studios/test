@@ -152,7 +152,7 @@ crafting_book_open_category:
   script:
     - define category <context.item.flag[category]> if:<[category].exists.not>
     - define inv <inventory[crafting_book_category_inventory]>
-    - define slots <script.data_key[data.back_slot].as_list>
+    - define slots <script.data_key[data.slots].as_list>
     - define items <server.flag[recipe_book.categories.<[category]>].keys>
     - inventory set slot:<script.data_key[data.back_slot]> d:<[inv]> o:feather[custom_model_data=3;display=<&c>Back to Categories;flag=run_script:crafting_book_open]
     - foreach <[items]> as:item:
