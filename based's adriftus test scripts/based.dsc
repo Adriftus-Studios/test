@@ -419,17 +419,17 @@ Killspawn:
     tab completion:
         1: <server.online_players.parse[name]>
     script:
-        - if <context.args.size> < 1:
-            - flag <player> kill:<player>
-        - else if <context.args.size>
+        - if <context.args.size> > 1:
+            - narrate "<red>Too many arguments!"
+            - stop
         - define player <server.match_player[<context.args.get[1]>]>
+        - define player <player> if:<context.args.size.is_less_than[1]>
         - flag <[player]> killspawn:<[player].location>
         - kill <[player]>
         - adjust <[player]> respawn:true
         - teleport <[player]> <[player].flag[killspawn]>
         - flag <[player]> killspawn:!
 # Be able to affect multiple people
-# Formalities to be added
 
 chair_sit_events:
   type: world
@@ -445,6 +445,7 @@ chair_sit_events:
     - flag <[point]> sit.offset:<[point].location.sub[<player.location>]>
     - adjust <[point]> passenger:<player>
 # - Made by AJ
+# - To be tweaked into a sit command for a block below me
 
 vanishCommand:
     type: command
@@ -462,6 +463,7 @@ vanishCommand:
             - narrate <gray><bold>POOF!
         - else if !<player.has_flag[poof]>:
             - invisible <player> state:false
+            - narrate <gray><bold>Unpoofed.
 #
 
 returnDeathCommand:
@@ -471,6 +473,7 @@ returnDeathCommand:
     usage: /back
     script:
         - teleport <player> <player.flag[lastDied]>
+        - narrate "<yellow><bold>You have been teleported to where you last died."
 lastDied:
     type: world
     events:
@@ -492,14 +495,17 @@ difficultyCommand:
             - normal
             - hard
     tab completions:
-        1: peaceful|easy|normal|hard
+        1: <server.worlds.parse[name]>
+        2: peaceful|easy|normal|hard
     script:
         - if <context.args.size.is_less_than[1]>:
             - narrate "<red>Set the difficulty of the world (peaceful, easy, normal, hard)."
-        - else if <context.args.size.equals[1]>:
-            - adjust <world[<player.world.name>]> difficulty:<context.args.get[1]>
-            - narrate "<yellow><bold>Difficulty set to <context.args.get[1]>."
-        - else if <context.args.size.is_more_than[1]>:
+        - if <server.worlds.parse[name].contains_any[<context.args.get[1]>]> && <script.data_key[difficulty].contains_any[<context.args.get[2]>]>:
+            - adjust <world[<context.args.get[1]>]> difficulty:<context.args.get[2]>
+            - narrate "<yellow><bold>Difficulty set to <context.args.get[2]>."
+        - else if <context.args.get[2].equals[<world[<context.args.get[1]>].difficulty>]>:
+            - narrate "<yellow><bold>Difficulty already set to <context.args.get[2]>!"
+        - else if <context.args.size.is_more_than[2]>:
             - narrate "<red>Too many arguments!"
 #
 
