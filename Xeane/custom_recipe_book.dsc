@@ -126,9 +126,9 @@ crafting_book_open:
     combat_slots: 20|21
     brewing_slots: 23|24
     decor_slots: 26|27
-    tools_slots: 30|31
-    gadgets_slots: 33|34
-    misc_slots: 36|37
+    tools_slots: 29|30
+    gadgets_slots: 32|33
+    misc_slots: 35|36
   script:
     - define inventory <inventory[crafting_book_inventory]>
     - foreach <script[custom_recipe_data_initializer].parsed_key[data.categories]> key:category as:values:
@@ -140,10 +140,13 @@ crafting_book_open:
 crafting_book_open_category:
   type: task
   debug: false
+  data:
+    slots: 11|12|13|14|15|16|17|20|21|22|23|24|25|26|29|30|31|32|33|34|35
   definitions: category
   script:
     - define category <context.item.flag[category]> if:<[category].exists.not>
     - define inv <inventory[crafting_book_category_inventory]>
-    - foreach <server.flag[recipe_book.categories.<[category]>].keys> as:item:
-      - give <item[<[item]>].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:<server.flag[recipe_book.categories.<[category]>.<[item]>]>]> to:<[inv]>
+    - define items <server.flag[recipe_book.categories.<[category]>].keys>
+    - foreach <script.data_key[data.slots]> as:slot:
+      - inventory set slot:<[slot]> o:<item[<[items].get[<[loop_index]>]>].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:<server.flag[recipe_book.categories.<[category]>.<[items].get[<[loop_index]>]>]>]> d:<[inv]>
     - inventory open d:<[inv]>
