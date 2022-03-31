@@ -391,14 +391,43 @@ flyCommand:
         - adjust <player> flying:true
 #
 
+npcController:
+    type: command
+    name: NPCControl
+    description: Controls an NPC
+    usage: /npccontrol <&lt>NPC-ID<&gt>
+    data:
+        player_safety_tags:
+            - NPCController
+            - no_damage
+            - no_fall_damage
+            - noDrowning
+            - noHunger
+    script:
+        # Player safety tags + Toggle
+        - if <player.has_flag[NPCController]>:
+            - repeat <script.data_key[player_safety_tags].size>:
+                - define Flags:++
+                - flag <player> <script.data_key[player_safety_tags].get[<[Flags]>]>
+        - else if !<player.has_flag[NPCController]>:
+            - flag <player> NPCController:<npc[<context.args.get[1]>]>
+            - flag <player> no_damage
+            - flag <player> no_fall_damage
+            - flag <player> noDrowning
+            - flag <player> noHunger
 moveAsNPC:
     type: world
     events:
-        on player spectates entity:
-            - flag <player> spectatingEntity
-        on player stops spectating entity:
-            - flag <player> spectatingEntity:!
-#
+        on player walks flagged:NPCController:
+            - walk <player.flag[NPCController]> <context.new_location>
+# Teleport, turn off collision, Invisibility for PST
+# Test if player movement registers on the NPC without actually moving the player
+# Saving location before teleporting to NPC
+# Use title, animations and particles
+
+# | Key sections of the project
+# - Bot controller mode (player is safe, location before controller mode is saved and player can exit the controller mode safely)
+# - Bot movement (basic player movements); registering
 
 fireballLauncher:
     type: item
@@ -540,7 +569,7 @@ clearInventory:
             - narrate "<yellow><bold><context.args.get[1]>'s inventory has been cleared."
         - if <context.args.size.is_more_than[1]>:
             - narrate "<red>Too many arguments!"
-#
+#Username case to be fixed
 
 gameruleCommand:
     type: command
@@ -575,3 +604,17 @@ gameruleCommand:
 # Search improvements - input to be checked within statements
 
 #ghostScript:
+
+#noDrowning:
+
+#welcomeAndQuitMessage:
+
+#scrambleWordMinigame:
+
+#TagParser Replication:
+
+#Scripts I need to work on (data script for npc)
+
+#scriptName should be script_name
+#bukkitpriority
+#Organize script files
