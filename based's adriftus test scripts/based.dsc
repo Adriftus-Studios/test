@@ -498,21 +498,27 @@ difficultyCommand:
         1: <server.worlds.parse[name]>
         2: peaceful|easy|normal|hard
     script:
+        # Exclusions
+        # Too little arguments
         - if <context.args.size.is_less_than[1]>:
             - narrate "<red>Set the difficulty of the world (peaceful, easy, normal, hard)."
             - stop
-        - if <server.worlds.parse[name].contains[<context.args.get[1]>]> && <script.data_key[difficulty].contains[<context.args.get[2]>]>:
-            - adjust <world[<context.args.get[1]>]> difficulty:<context.args.get[2]>
-            - narrate "<yellow><bold>Difficulty set to <context.args.get[2]>."
+        # Already set difficulty value
         - else if <context.args.get[2].equals[<world[<context.args.get[1]>].difficulty>]>:
             - narrate "<yellow><bold>Difficulty already set to <context.args.get[2]>!"
             - stop
+        #Doesn't match either world name or difficulty name
         - else if !<server.worlds.parse[name].contains[<context.args.get[1]>]> || !<script.data_key[difficulty].contains[<context.args.get[2]>]>:
             - narrate "<red>Invalid input!"
             - stop
+        # Too many arguments
         - else if <context.args.size.is_more_than[2]>:
             - narrate "<red>Too many arguments!"
             - stop
+        # Execution
+        # - if <server.worlds.parse[name].contains[<context.args.get[1]>]> && <script.data_key[difficulty].contains[<context.args.get[2]>]>:
+        - adjust <world[<context.args.get[1]>]> difficulty:<context.args.get[2]>
+        - narrate "<yellow><bold>Difficulty set to <context.args.get[2]>."
 #
 
 clearInventory:
