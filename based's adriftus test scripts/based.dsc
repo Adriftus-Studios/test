@@ -527,7 +527,7 @@ gameruleCommand:
         - if <context.args.size.is_less_than[1]>:
             - narrate "<red>Too little arguments!<reset>"
         # Gamerule input
-        - if <context.args.size.is_more_than_or_equal_to[1]> && <server.gamerules.contains_any[<context.args.get[2]>].not>:
+        - if <server.gamerules.contains_any[<context.args.get[2]>].not>:
             - narrate "<red>Invalid input! [NOTE: Gamerules are case-sensitive! Refer to the tab completions.]<reset>"
         # Toggle
         - if <context.args.get[3].equals[toggle]>:
