@@ -284,18 +284,23 @@ combatTag:
         on player damaged by player:
             - flag <context.damager> combatTag expire:30s if:<context.damager.is_player>
             - flag <context.entity> combatTag expire:30s if:<context.entity.is_player>
-            - narrate "You have been combat-tagged. Do not log out!" targets:<context.damager>|<context.entity>
+            - narrate "<yellow><bold>You have been combat-tagged. Do not log out!" targets:<context.damager>|<context.entity>
+            - waituntil 30s
+            - if <player.flag_expiration[combatTag].equals[0]>:
+                - narrate "<yellow><bold>You are no longer in combat."
         on player dies flagged:combatTag:
             - flag <player> combatTag:!
         on player quit flagged:combatTag:
             - kill <player>
             - flag <player> combatTag:!
+
 #Still in the works
 
 noHunger:
     type: world
     events:
         on player changes food level flagged:noHunger:
+            - ratelimit <player> 2s
             - if <context.food> < 20:
                 - feed <player>
 #Still in the works
@@ -451,10 +456,12 @@ vanishCommand:
             - flag <player> poof:!
         - else if <player.has_flag[poof].not>:
             - flag <player> poof
-        - invisible <player> state:true if:<player.has_flag[poof]>
-        - invisible <player> state:false if:<player.has_flag[poof].not>
-        #- playeffect
-        - narrate <gray><bold>POOF! if:<player.has_flag[poof]>
+        - if <player.has_flag[poof]>:
+            - playeffect effect:smoke_large at:<player.location> visibility:20
+            - invisible <player> state:true
+            - narrate <gray><bold>POOF!
+        - else if !<player.has_flag[poof]>:
+            - invisible <player> state:false
 #
 
 returnDeathCommand:
@@ -506,9 +513,13 @@ clearInventory:
         1: <server.online_players.parse[name]>
     script:
         - define player <context.args.get[1]>
-        - inventory clear if:<context.args.size> < 1
-        - inventory clear destination:<[player].inventory> if:<context.args.size.equals[1]>
-        - narrate "<red>Too many arguments!" if:<context.args.size.is_more_than[1]>
+        - if <context.args.size> < 1:
+            - inventory clear destination:<player.inventory>
+            - narrate "<yellow><bold>Your inventory has been cleared."
+        - if <context.args.size.equals[1]>:
+            - inventory clear destination:<[player].inventory>
+        - if <context.args.size.is_more_than[1]>:
+            - narrate "<red>Too many arguments!"
 #
 
 gameruleCommand:
