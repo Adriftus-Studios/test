@@ -457,7 +457,7 @@ vanishCommand:
         - else if <player.has_flag[poof].not>:
             - flag <player> poof
         - if <player.has_flag[poof]>:
-            - playeffect effect:smoke_large at:<player.location> visibility:20
+            - playeffect effect:smoke_large at:<player.location> visibility:200
             - invisible <player> state:true
             - narrate <gray><bold>POOF!
         - else if !<player.has_flag[poof]>:
