@@ -80,11 +80,6 @@ custom_recipe_data_initializer:
     on script reload:
       - inject locally path:build_item_list
 
-custom_recipe_inventory:
-  type: inventory
-  inventory: workbench
-  gui: true
-
 custom_recipe_inventory_open:
   type: task
   debug: true
@@ -102,8 +97,22 @@ custom_recipe_inventory_open:
 
 crafting_book_inventory:
   type: inventory
-  title: <&font[adriftus:guis]><&chr[F808]><&chr[6915]>
-  size: 54
+  title: <&f><&font[adriftus:guis]><&chr[F808]><&chr[6915]>
+  size: 36
+  gui: true
+  inventory: chest
+
+crafting_book_category_inventory:
+  type: inventory
+  title: <&f><&font[adriftus:guis]><&chr[F808]><&chr[6916]>
+  size: 36
+  gui: true
+  inventory: chest
+
+custom_recipe_inventory:
+  type: inventory
+  title: <&f><&font[adriftus:guis]><&chr[F808]><&chr[6917]>
+  size: 36
   gui: true
   inventory: chest
 
@@ -123,7 +132,7 @@ crafting_book_open_category:
   definitions: category
   script:
     - define category <context.item.flag[category]> if:<[category].exists.not>
-    - define inv <inventory[crafting_book_inventory]>
+    - define inv <inventory[crafting_book_category_inventory]>
     - foreach <server.flag[recipe_book.categories.<[category]>].keys> as:item:
       - give <item[<[item]>].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:<server.flag[recipe_book.categories.<[category]>.<[item]>]>]> to:<[inv]>
     - inventory open d:<[inv]>
