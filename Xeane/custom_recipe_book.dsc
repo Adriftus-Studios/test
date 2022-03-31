@@ -8,6 +8,50 @@ custom_recipe_data_initializer:
         display: <&a>Travel Items
         lore:
           - "<&e>Items related to getting around"
+      tools:
+        material: iron_pickaxe
+        display: <&a>Tools
+        lore:
+          - "<&e>Items for getting work DONE!"
+      blocks:
+        material: shulker_box
+        display: <&a>Blocks
+        lore:
+          - "<&e>Various custom blocks!"
+      combat:
+        material: netherite_sword
+        display: <&c>Combat
+        lore:
+          - "<&e>Stuff to beat your friends!"
+          - "<&e>Yea, probably your enemies too"
+      gadgets:
+        material: piston
+        display: <&d>Gadgets
+        lore:
+          - "<&e>Cool things!"
+          - "<&e>Other stuff, too..."
+      food:
+        material: cake
+        display: <&2>Food
+        lore:
+          - "<&e>FEWD!!!!"
+          - "<&e>Nom nom nom"
+      brewing:
+        material: potion
+        display: <&b>Brewing
+        lore:
+          - "<&e>DRINKS!!!"
+          - "<&e>You must be 21+ to click"
+      decor:
+        material: azalea
+        display: <&5>Decor
+        lore:
+          - "<&e>Stuff for the pretty pretty!"
+      misc:
+        material: paper
+        display: <&e>Misc stuff
+        lore:
+          - "<&e>Lotta random, ngl"
   build_item_list:
     - flag server recipe_book:!
     - foreach <server.scripts.filter[data_key[data.recipe_book_category].exists].parse[name]> as:item_script:
@@ -17,7 +61,7 @@ custom_recipe_data_initializer:
           - define items <list>
           - foreach <server.recipe_items[<[recipe_id]>]> as:recipe_item:
             - if <[recipe_item].starts_with[material]>:
-              - define recipe_item <[recipe_item].substring[9].as_item>
+              - define recipe_item <[recipe_item].substring[10].as_item>
             - else if <[recipe_item].script.data_key[recipes].exists>:
               - define recipe_item "<item[<[recipe_item]>].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:<[recipe_item].as_item.recipe_ids.get[1].after[<&co>]>;lore=<[recipe_item].lore.include[<&b>Click to see Recipe]>]>"
             - else:
