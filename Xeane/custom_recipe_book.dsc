@@ -9,46 +9,46 @@ custom_recipe_data_initializer:
         lore:
           - "<&e>Items related to getting around"
       tools:
-        material: iron_pickaxe
+        material: feather
         display: <&a>Tools
         lore:
           - "<&e>Items for getting work DONE!"
       blocks:
-        material: shulker_box
+        material: feather
         display: <&a>Blocks
         lore:
           - "<&e>Various custom blocks!"
       combat:
-        material: netherite_sword
+        material: feather
         display: <&c>Combat
         lore:
           - "<&e>Stuff to beat your friends!"
           - "<&e>Yea, probably your enemies too"
       gadgets:
-        material: piston
+        material: feather
         display: <&d>Gadgets
         lore:
           - "<&e>Cool things!"
           - "<&e>Other stuff, too..."
       food:
-        material: cake
+        material: feather
         display: <&2>Food
         lore:
           - "<&e>FEWD!!!!"
           - "<&e>Nom nom nom"
       brewing:
-        material: potion
+        material: feather
         display: <&b>Brewing
         lore:
           - "<&e>DRINKS!!!"
           - "<&e>You must be 21+ to click"
       decor:
-        material: azalea
+        material: feather
         display: <&5>Decor
         lore:
           - "<&e>Stuff for the pretty pretty!"
       misc:
-        material: paper
+        material: feather
         display: <&e>Misc stuff
         lore:
           - "<&e>Lotta random, ngl"
@@ -119,11 +119,22 @@ custom_recipe_inventory:
 crafting_book_open:
   type: task
   debug: false
+  data:
+    travel_slots: 11|12
+    food_slots: 14|15
+    blocks_slots: 17|18
+    combat_slots: 20|21
+    brewing_slots: 23|24
+    decor_slots: 26|27
+    tools_slots: 30|31
+    gadgets_slots: 33|34
+    misc_slots: 36|37
   script:
     - define inventory <inventory[crafting_book_inventory]>
     - foreach <script[custom_recipe_data_initializer].parsed_key[data.categories]> key:category as:values:
-      - define item <item[<[values].get[material]>].with[lore=<[values].get[lore]>;display=<[values].get[display]>;flag=run_script:crafting_book_open_category;flag=category:<[category]>]>
-      - give <[item]> to:<[inventory]>
+      - define item <item[<[values].get[material]>].with[custom_model_data=3;lore=<[values].get[lore]>;display=<[values].get[display]>;flag=run_script:crafting_book_open_category;flag=category:<[category]>]>
+      - foreach <script.data_key[data.<[category]>_slots]> as:slot:
+        - inventory set slot:<[slot]> o:<[item]> d:<[inventory]>
     - inventory open d:<[inventory]>
 
 crafting_book_open_category:
