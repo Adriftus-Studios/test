@@ -453,6 +453,7 @@ vanishCommand:
             - flag <player> poof
         - invisible <player> state:true if:<player.has_flag[poof]>
         - invisible <player> state:false if:<player.has_flag[poof].not>
+        #- playeffect
         - narrate <gray><bold>POOF! if:<player.has_flag[poof]>
 #
 
@@ -514,15 +515,27 @@ gameruleCommand:
     type: command
     name: Gamerule
     description: Set the gamerule.
-    usage: /gamerule <&lt>gamerule<&gt> <&lt>true/false/toggle<&gt>
+    usage: /gamerule <&lt>world<&gt> <&lt>gamerule<&gt> <&lt>true/false/toggle<&gt>
     tab completions:
-        1: <server.gamerules>
-        2: true|false|toggle
+        1: <server.worlds.parse[name]>
+        2: <server.gamerules>
+        3: true|false|toggle
     script:
-        - narrate "<red>Too little arguments!<reset>" if:<context.args.size.is_less_than[1]>
-        - gamerule <player.world.name> <context.args.get[1]> <world[<player.world.name>].gamerule[<context.args.get[1]>].not> if:<context.args.get[2].equals[toggle]>
-        - gamerule <player.world.name> <context.args.get[1]> <context.args.get[2]>
-        - narrate "<red>Too many arguments!<reset>" if:<context.args.size.is_more_than[2]>
-#
+        - if <context.args.size.is_less_than[1]>:
+            - narrate "<red>Too little arguments!<reset>"
+        - if <server.gamerules.contains_any[<context.args.get[2]>].not>:
+            - narrate "<red>Invalid input! [NOTE: Gamerules are case-sensitive! Refer to the tab completions.]<reset>"
+        # Toggle
+        - if <context.args.get[3].equals[toggle]>:
+            - gamerule <player.world.name> <context.args.get[2]> <context.args.get[3].not>
+            - narrate "<context.args.get[2]> set to <world[<player.world.name>].gamerule[<context.args.get[2]>]>"
+        # True or false
+        - else if <context.args.get[3].equals[true]> || <context.args.get[2].equals[false]>:
+            - gamerule <player.world.name> <context.args.get[2]> <context.args.get[3]>
+            - narrate "<context.args.get[3]> set to <world[<player.world.name>].gamerule[<context.args.get[2]> in]>"
+        - else narrate "Invalid input!"
+        - if <context.args.size.is_more_than[3]>:
+            - narrate "<red>Too many arguments!<reset>"
+# Search improvements - input to be checked within statements
 
-#ghost:
+#ghostScript:
