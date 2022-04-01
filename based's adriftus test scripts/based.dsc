@@ -1,5 +1,3 @@
-# Hi! You're looking at a file that has every single script of mine, some completed with the help of my co-workers at Adriftus Studios!
-
 myNPC:
     type: assignment
     actions:
@@ -391,14 +389,43 @@ flyCommand:
         - adjust <player> flying:true
 #
 
+npcController:
+    type: command
+    name: NPCControl
+    description: Controls an NPC
+    usage: /npccontrol <&lt>NPC-ID<&gt>
+    data:
+        player_safety_tags:
+            - NPCController
+            - no_damage
+            - no_fall_damage
+            - noDrowning
+            - noHunger
+    script:
+        # Player safety tags + Toggle
+        - if <player.has_flag[NPCController]>:
+            - repeat <script.data_key[player_safety_tags].size>:
+                - define Flags:++
+                - flag <player> <script.data_key[player_safety_tags].get[<[Flags]>]>
+        - else if !<player.has_flag[NPCController]>:
+            - flag <player> NPCController:<npc[<context.args.get[1]>]>
+            - flag <player> no_damage
+            - flag <player> no_fall_damage
+            - flag <player> noDrowning
+            - flag <player> noHunger
 moveAsNPC:
     type: world
     events:
-        on player spectates entity:
-            - flag <player> spectatingEntity
-        on player stops spectating entity:
-            - flag <player> spectatingEntity:!
-#
+        on player walks flagged:NPCController:
+            - walk <player.flag[NPCController]> <context.new_location>
+# Teleport, turn off collision, Invisibility for PST
+# Test if player movement registers on the NPC without actually moving the player
+# Saving location before teleporting to NPC
+# Use title, animations and particles
+
+# | Key sections of the project
+# - Bot controller mode (player is safe, location before controller mode is saved and player can exit the controller mode safely)
+# - Bot movement (basic player movements); registering
 
 fireballLauncher:
     type: item
@@ -416,20 +443,22 @@ Killspawn:
     name: Killspawn
     description: Instantly kills a player and respawns them back to the same location.
     usage: /killspawn <&lt>player<&gt>
+    aliases:
+        - ks
     tab completion:
         1: <server.online_players.parse[name]>
     script:
-        - if <context.args.size> < 1:
-            - flag <player> kill:<player>
-        - else if <context.args.size>
+        - if <context.args.size> > 1:
+            - narrate "<red>Too many arguments!"
+            - stop
         - define player <server.match_player[<context.args.get[1]>]>
+        - define player <player> if:<context.args.size.is_less_than[1]>
         - flag <[player]> killspawn:<[player].location>
         - kill <[player]>
         - adjust <[player]> respawn:true
         - teleport <[player]> <[player].flag[killspawn]>
         - flag <[player]> killspawn:!
 # Be able to affect multiple people
-# Formalities to be added
 
 chair_sit_events:
   type: world
@@ -445,6 +474,7 @@ chair_sit_events:
     - flag <[point]> sit.offset:<[point].location.sub[<player.location>]>
     - adjust <[point]> passenger:<player>
 # - Made by AJ
+# - To be tweaked into a sit command for a block below me
 
 vanishCommand:
     type: command
@@ -457,11 +487,12 @@ vanishCommand:
         - else if <player.has_flag[poof].not>:
             - flag <player> poof
         - if <player.has_flag[poof]>:
-            - playeffect effect:smoke_large at:<player.location> visibility:200
+            - playeffect effect:explosion_normal at:<player.location> visibility:200
             - invisible <player> state:true
             - narrate <gray><bold>POOF!
         - else if !<player.has_flag[poof]>:
             - invisible <player> state:false
+            - narrate <gray><bold>Unpoofed.
 #
 
 returnDeathCommand:
@@ -471,6 +502,7 @@ returnDeathCommand:
     usage: /back
     script:
         - teleport <player> <player.flag[lastDied]>
+        - narrate "<yellow><bold>You have been teleported to where you last died."
 lastDied:
     type: world
     events:
@@ -485,22 +517,37 @@ difficultyCommand:
     usage: /setdifficulty
     aliases:
         - sd
+    data:
+        difficulty:
+            - peaceful
+            - easy
+            - normal
+            - hard
     tab completions:
-        1: peaceful|easy|normal|hard
+        1: <server.worlds.parse[name]>
+        2: peaceful|easy|normal|hard
     script:
-        - narrate "<bold>Set the difficulty of the world (peaceful, easy, normal, hard)." if:<context.args.size.is_less_than[1]>
-        - adjust <world[<player.world.name>]> difficulty:<context.args.get[1]> if:<context.args.size.equals[1]>
-        - narrate "<red>Too many arguments!" if:<context.args.size.is_more_than[1]>
+        # Exclusions
+        # Too little arguments
+        - if <context.args.size.is_less_than[1]>:
+            - narrate "<red>Set the difficulty of the world (peaceful, easy, normal, hard)."
+            - stop
+        # Already set difficulty value
+        - else if <context.args.get[2].equals[<world[<context.args.get[1]>].difficulty>]>:
+            - narrate "<yellow><bold>Difficulty already set to <context.args.get[2]> in world [<context.args.get[1]>]!"
+            - stop
+        #Doesn't match either world name or difficulty name
+        - else if !<server.worlds.parse[name].contains[<context.args.get[1]>]> || !<script.data_key[difficulty].contains[<context.args.get[2]>]>:
+            - narrate "<red>Invalid input!"
+            - stop
+        # Too many arguments
+        - else if <context.args.size.is_more_than[2]>:
+            - narrate "<red>Too many arguments!"
+            - stop
+        # Execution
+        - adjust <world[<context.args.get[1]>]> difficulty:<context.args.get[2]>
+        - narrate "<yellow><bold>Difficulty set to <context.args.get[2]> in world [<context.args.get[1]>]."
 #
-
-testcontextargs0:
-    type: command
-    name: Testcontextargs0
-    description: h
-    usage: /testcontextargs0
-    script:
-        - narrate "Context args 0 is <context.args.get[0]>"
-# Testing
 
 clearInventory:
     type: command
@@ -512,15 +559,15 @@ clearInventory:
     tab completions:
         1: <server.online_players.parse[name]>
     script:
-        - define player <context.args.get[1]>
         - if <context.args.size> < 1:
             - inventory clear destination:<player.inventory>
             - narrate "<yellow><bold>Your inventory has been cleared."
         - if <context.args.size.equals[1]>:
-            - inventory clear destination:<[player].inventory>
+            - inventory clear destination:<context.args.get[1].inventory>
+            - narrate "<yellow><bold><context.args.get[1]>'s inventory has been cleared."
         - if <context.args.size.is_more_than[1]>:
             - narrate "<red>Too many arguments!"
-#
+#Username case to be fixed
 
 gameruleCommand:
     type: command
@@ -555,3 +602,18 @@ gameruleCommand:
 # Search improvements - input to be checked within statements
 
 #ghostScript:
+
+#noDrowning:
+
+#welcomeAndQuitMessage:
+
+#scrambleWordMinigame:
+
+#TagParser Replication:
+
+#Scripts I need to work on (data script for npc)
+
+#scriptName should be script_name
+#bukkitpriority
+#Organize script files
+#Permissions
