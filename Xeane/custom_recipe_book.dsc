@@ -10,7 +10,7 @@ custom_recipe_data_initializer:
           - "<&e>Items related to getting around"
       tools:
         material: feather
-        display: <&a>Tools
+        display: <element[Tools].color_gradient[from=#A303D4;to=#AAAAAA]>
         lore:
           - "<&e>Items for getting work DONE!"
       blocks:
@@ -20,7 +20,7 @@ custom_recipe_data_initializer:
           - "<&e>Various custom blocks!"
       combat:
         material: feather
-        display: <&c>Combat
+        display: <element[Combat].color_gradient[from=#A303D4;to=#AAAAAA]>
         lore:
           - "<&e>Stuff to beat your friends!"
           - "<&e>Yea, probably your enemies too"
