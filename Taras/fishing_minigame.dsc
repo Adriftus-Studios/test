@@ -144,9 +144,9 @@ fishing_minigame_whirlpool_animation:
     type: task
     debug: false
     script:
-        - define circles <server.flag[fishing_minigame_active_whirlpool_locations].keys.parse[up.with_pitch[90].proc[define_circle].context[1|0.2]].combine>
+        - define circles <server.flag[fishing_minigame_active_whirlpool_locations].keys.parse[up.with_pitch[90].proc[define_circle].context[1|0.1]].combine>
         - while !<server.has_flag[fishing_minigame_reset_whirlpools]>:
-            - playeffect at:<[circles]> dolphin offset:0.05 targets:<server.flag[fishingminingame.activeplayers]>
+            - playeffect at:<[circles]> dolphin offset:0.05,0.05,0.05 targets:<server.flag[fishingminingame.activeplayers]>
             - wait 1t
         - flag server fishing_minigame_reset_whirlpools:!
 
@@ -600,6 +600,7 @@ fishing_minigame_get_bucket_level:
                 - determine 3
             - case 20:
                 - determine MAX
+        - determine 1
 
 # % ██ [ Returns the slots for the given bucket level ] ██
 fishing_minigame_get_slots_by_level:
@@ -978,7 +979,7 @@ fishing_minigame_timed_event_handler:
 
 # % ██ [ Minigame Event Handling ] ██
 fishing_minigame_event_handler:
-    debug: false
+    debug: true
     type: world
     events:
         # % ██ [ Player Catch Fish ] ██
@@ -1131,7 +1132,7 @@ fishing_minigame_event_handler:
                             - adjust def:fish lore:<[fish].lore.remove[last]>
                         - inventory close
                         - run fishing_minigame_show_off def:<player>|<[fish]>
-                - if <context.item.script.name.equals[fishing_minigame_sell_all]>:
+                - if <context.item.script.exists> and <context.item.script.name.equals[fishing_minigame_sell_all]>:
                     - run fishing_minigame_sell_all_fish def:<player>
                     - run fishing_minigame_open_bucket def:<player>|true
 
