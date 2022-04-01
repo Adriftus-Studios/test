@@ -15,7 +15,7 @@ custom_recipe_data_initializer:
           - "<&e>Items for getting work DONE!"
       blocks:
         material: feather
-        display: <&a>Blocks
+        display: <element[Blocks].color_gradient[from=#17840b;to=#AAAAAA]>
         lore:
           - "<&e>Various custom blocks!"
       combat:
@@ -26,30 +26,30 @@ custom_recipe_data_initializer:
           - "<&e>Yea, probably your enemies too"
       gadgets:
         material: feather
-        display: <&d>Gadgets
+        display: <element[Gadgets].color_gradient[from=#bd770f;to=#AAAAAA]>
         lore:
           - "<&e>Cool things!"
           - "<&e>Other stuff, too..."
       food:
         material: feather
-        display: <&2>Food
+        display: <element[Food].color_gradient[from=#bd770f;to=#AAAAAA]>
         lore:
           - "<&e>FEWD!!!!"
           - "<&e>Nom nom nom"
       brewing:
         material: feather
-        display: <&b>Brewing
+        display: <element[Brewing].color_gradient[from=#bd770f;to=#AAAAAA]>
         lore:
           - "<&e>DRINKS!!!"
           - "<&e>You must be 21+ to click"
       decor:
         material: feather
-        display: <&5>Decor
+        display: <element[Decor].color_gradient[from=#17840b;to=#AAAAAA]>
         lore:
           - "<&e>Stuff for the pretty pretty!"
       misc:
         material: feather
-        display: <&e>Misc stuff
+        display: "<element[Misc Items].color_gradient[from=#17840b;to=#AAAAAA]>"
         lore:
           - "<&e>Lotta random, ngl"
   build_item_list:
