@@ -39,6 +39,7 @@ chair_sit_events:
     after player exits vehicle:
     - stop if:<context.vehicle.has_flag[sit.offset].not>
     - teleport <player> <context.vehicle.location.sub[<context.vehicle.flag[sit.offset]>].with_yaw[<player.location.yaw>].with_pitch[<player.location.pitch>]>
+    - adjust <context.vehicle> passengers:<list[]>
     - remove <context.vehicle>
     on player kicked for flying:
     - determine cancelled if:<player.vehicle.has_flag[sit.offset].if_null[false]>
