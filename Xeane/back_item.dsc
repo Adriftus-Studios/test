@@ -14,7 +14,7 @@ back_crystal:
     callback: back_execute
     type: crystal
   mechanisms:
-    custom_model_data: 101
+    custom_model_data: 100
   recipes:
     1:
       type: shaped
@@ -40,6 +40,7 @@ back_scroll:
     type: scroll
   mechanisms:
     custom_model_data: 101
+  recipes:
     1:
       type: shapeless
       input: ink_sac|papyrus|redstone_block
