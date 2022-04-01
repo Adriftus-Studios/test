@@ -591,6 +591,8 @@ fishing_minigame_get_bucket_level:
     type: procedure
     definitions: player
     script:
+        - if !<[player].has_flag[fishingminigame.bucket.size]>:
+            - determine 1
         - choose <[player].flag[fishingminigame.bucket.size]>:
             - case 6:
                 - determine 1
@@ -600,7 +602,6 @@ fishing_minigame_get_bucket_level:
                 - determine 3
             - case 20:
                 - determine MAX
-        - determine 1
 
 # % ██ [ Returns the slots for the given bucket level ] ██
 fishing_minigame_get_slots_by_level:
@@ -1044,7 +1045,11 @@ fishing_minigame_event_handler:
                         - inventory close
                         - run fishing_minigame_start def:<player>
                     - case fishing_minigame_fishtokens_button:
-                        - run fishing_minigame_shop_open_gui def:<player>
+                        - if <player.has_flag[fishingminigame.fishtokens]>:
+                            - run fishing_minigame_shop_open_gui def:<player>
+                        - else:
+                            - inventory close
+                            - narrate "<&c>You cannot access the shop, until you have made some tokens!"
                     - case fishing_minigame_leaderboards_button:
                         - run fishing_minigame_leaderboards_open_gui def:<player>
                     - case fishing_minigame_fish_button:
