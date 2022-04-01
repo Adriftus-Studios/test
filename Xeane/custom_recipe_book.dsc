@@ -88,10 +88,9 @@ custom_recipe_inventory_open:
     slots: 13|14|15|22|23|24|31|32|33
     result: 26
     back: 20
-    next: 36
-    previous: 31
+    next: 34
+    previous: 30
   script:
-    - define page <context.inventory.slot[<script.data_key[data.result]>].flag[page].add[1]> if:<context.inventory.slot[<script.data_key[data.result]>].has_flag[page]>
     - define page 1 if:<[page].exists.not>
     - define recipe_id <context.item.flag[recipe_id]> if:<[recipe_id].exists.not>
     - define recipe_id <[recipe_id]>
@@ -106,11 +105,27 @@ custom_recipe_inventory_open:
     # Next Page
     - define recipes <server.flag[recipe_book.recipes.<[recipe_id]>.result].recipe_ids.parse[after[<&co>]]>
     - if <[recipes].size> > <[page]>:
-      - inventory set slot:<script.data_key[data.next]> o:<server.flag[recipe_book.recipes.<[recipe_id]>.result].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:<[recipes].get[<[page].add[1]>]>]> d:<[inventory]>
+      - inventory set slot:<script.data_key[data.next]> o:<server.flag[recipe_book.recipes.<[recipe_id]>.result].with[flag=run_script:custom_recipe_inventory_nextpage;flag=recipe_id:<[recipes].get[<[page].add[1]>]>]> d:<[inventory]>
 
     - if <[page]> > 1:
-      - inventory set slot:<script.data_key[data.previous]> o:<server.flag[recipe_book.recipes.<[recipe_id]>.result].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:<[recipes].get[<[page].sub[1]>]>]> d:<[inventory]>
+      - inventory set slot:<script.data_key[data.previous]> o:<server.flag[recipe_book.recipes.<[recipe_id]>.result].with[flag=run_script:custom_recipe_inventory_previouspage;flag=recipe_id:<[recipes].get[<[page].sub[1]>]>]> d:<[inventory]>
     - inventory open d:<[inventory]>
+
+custom_recipe_inventory_nextpage:
+  type: task
+  debug: false
+  script:
+    - define page <context.inventory.slot[<script.data_key[data.result]>].flag[page].add[1]>
+    - define recipe_id <context.item.flag[recipe_id]>
+    - run custom_recipe_inventory_open def:<[recipe_id]>|<[page]>
+
+custom_recipe_inventory_previouspage:
+  type: task
+  debug: false
+  script:
+    - define page <context.inventory.slot[<script.data_key[data.result]>].flag[page].sub[1]>
+    - define recipe_id <context.item.flag[recipe_id]>
+    - run custom_recipe_inventory_open def:<[recipe_id]>|<[page]>
 
 crafting_book_inventory:
   type: inventory
