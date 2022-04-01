@@ -39,7 +39,7 @@ back_scroll:
     callback: back_execute
     type: scroll
   mechanisms:
-    custom_model_data: 101
+    custom_model_data: 201
   recipes:
     1:
       type: shapeless
