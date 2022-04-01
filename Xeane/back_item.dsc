@@ -14,7 +14,14 @@ back_crystal:
     callback: back_execute
     type: crystal
   mechanisms:
-    custom_model_data: 101
+    custom_model_data: 100
+  recipes:
+    1:
+      type: shaped
+      input:
+      - magical_pylon|air|magical_pylon
+      - air|redstone_block|air
+      - magical_pylon|air|magical_pylon
 
 back_scroll:
   type: item
@@ -32,7 +39,11 @@ back_scroll:
     callback: back_execute
     type: scroll
   mechanisms:
-    custom_model_data: 101
+    custom_model_data: 201
+  recipes:
+    1:
+      type: shapeless
+      input: ink_sac|papyrus|redstone_block
 
 back_item_tracker:
   type: world

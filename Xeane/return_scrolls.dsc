@@ -17,7 +17,7 @@ return_scroll:
   recipes:
     1:
       type: shapeless
-      input: ink_sac|enchanted_paper
+      input: ink_sac|papyrus|lapis_lazuli
 
 return_crystal:
   type: item
@@ -34,11 +34,15 @@ return_crystal:
     right_click_script: return_task
     type: crystal
   mechanisms:
-    custom_model_data: 200
-  #recipes:
-    #1:
-      #type: shapeless
-      #input: ink_sac|paper
+    custom_model_data: 101
+  recipes:
+    1:
+      type: shaped
+      input:
+      - magical_pylon|air|magical_pylon
+      - air|lapis_block|air
+      - magical_pylon|air|magical_pylon
+
 
 return_events:
   type: world

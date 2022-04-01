@@ -618,6 +618,10 @@ noDrowning:
 #scriptName should be script_name
 #bukkitpriority
 #Organize script files
+<<<<<<< HEAD
 #Chat channel scripts
 #Title scripts
 #Remove lastdied flag
+=======
+#Permissions
+>>>>>>> 65a20f03ab6d061f84754f210f2c2f721789e2bf
