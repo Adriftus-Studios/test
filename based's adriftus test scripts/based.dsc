@@ -1,5 +1,3 @@
-# Hi! You're looking at a file that has every single script of mine, some completed with the help of my co-workers at Adriftus Studios!
-
 myNPC:
     type: assignment
     actions:
