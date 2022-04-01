@@ -52,6 +52,7 @@ fishing_minigame_stop:
             - queue <player.flag[fishing_minigame_music_queue]> stop
             - midi cancel
             - flag <player> fishing_minigame_playing_music:!
+        - flag server fishingminingame.activeplayers:<server.flag[fishingminingame.activeplayers].deduplicate>
         - flag server fishingminingame.activeplayers:<-:<[player]>
 
 # % ██ [ Task called when bucket is bucket is clicked ] ██
