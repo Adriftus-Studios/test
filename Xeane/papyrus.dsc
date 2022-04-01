@@ -16,3 +16,9 @@ papyrus:
       - air|charcoal|air
       - sugarcane|sugarcane|sugarcane
       - air|air|air
+    2:
+      type: shaped
+      input:
+      - air|coal|air
+      - sugarcane|sugarcane|sugarcane
+      - air|air|air
