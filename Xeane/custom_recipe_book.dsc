@@ -105,10 +105,10 @@ custom_recipe_inventory_open:
     # Next Page
     - define recipes <server.flag[recipe_book.recipes.<[recipe_id]>.result].recipe_ids.parse[after[<&co>]]>
     - if <[recipes].size> > <[page]>:
-      - inventory set slot:<script.data_key[data.next]> o:<item[leather_horse_armor].with[custom_model_data=1000007;flag=run_script:custom_recipe_inventory_nextpage;flag=recipe_id:<[recipes].get[<[page].add[1]>]>]> d:<[inventory]>
+      - inventory set slot:<script.data_key[data.next]> o:<item[leather_horse_armor].with[color=green;custom_model_data=6;flag=run_script:custom_recipe_inventory_nextpage;flag=recipe_id:<[recipes].get[<[page].add[1]>]>]> d:<[inventory]>
 
     - if <[page]> > 1:
-      - inventory set slot:<script.data_key[data.previous]> o:<item[leather_horse_armor].with[custom_model_data=1000006;flag=run_script:custom_recipe_inventory_previouspage;flag=recipe_id:<[recipes].get[<[page].sub[1]>]>]> d:<[inventory]>
+      - inventory set slot:<script.data_key[data.previous]> o:<item[leather_horse_armor].with[color=green;custom_model_data=7;flag=run_script:custom_recipe_inventory_previouspage;flag=recipe_id:<[recipes].get[<[page].sub[1]>]>]> d:<[inventory]>
     - inventory open d:<[inventory]>
 
 custom_recipe_inventory_nextpage:
