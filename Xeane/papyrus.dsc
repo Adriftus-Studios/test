@@ -7,7 +7,7 @@ papyrus:
   lore:
   - "<&a>-------------"
   - "<&7>Crafting Material"
-  - "<&e>Magical Paper for scrolls"
+  - "<&e>Magical Paper for Crafting"
   - "<&a>-------------"
   recipes:
     1:

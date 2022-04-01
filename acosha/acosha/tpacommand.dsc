@@ -38,6 +38,13 @@ tpa_crystal:
     type: crystal
   mechanisms:
     custom_model_data: 102
+  recipes:
+    1:
+      type: shaped
+      input:
+      - magical_pylon|air|magical_pylon
+      - air|emerald_block|air
+      - magical_pylon||magical_pylon
 
 tpa_execute:
   type: task
