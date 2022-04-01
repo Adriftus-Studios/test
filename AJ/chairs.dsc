@@ -7,6 +7,7 @@ chair_sit_events:
       INNER_LEFT: -45
       OUTER_RIGHT: 45
       OUTER_LEFT: -45
+      STRAIGHT: 0
     sides:
       NORTH: 360
       SOUTH: 180
