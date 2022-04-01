@@ -184,7 +184,7 @@ crafting_book_open_category:
     - define category <context.item.flag[category]> if:<[category].exists.not>
     - define inv <inventory[crafting_book_category_inventory]>
     - define slots <script.data_key[data.slots].as_list>
-    - inventory set slot:<script.data_key[data.back_slot]> d:<[inv]> "o:feather[custom_model_data=3;display=<&c>Back to Categories;flag=run_script:crafting_book_open;flag=page:<[page]>"
+    - inventory set slot:<script.data_key[data.back_slot]> d:<[inv]> "o:feather[custom_model_data=3;display=<&c>Back to Categories;flag=run_script:crafting_book_open;flag=page:<[page]>]"
     - if <server.has_flag[recipe_book.categories.<[category]>]>:
       - define items <server.flag[recipe_book.categories.<[category]>].keys>
       - foreach <[items].get[<[page].sub[1].mul[<[slots].size>].add[1]>].to[<[page].mul[<[slots].size>]>]> as:item:
