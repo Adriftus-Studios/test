@@ -1,6 +1,6 @@
 chair_sit_events:
   type: world
-  debug: false
+  debug: true
   data:
     modifiers:
       INNER_RIGHT: 45
