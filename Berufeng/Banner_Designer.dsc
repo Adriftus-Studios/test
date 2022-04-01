@@ -1,77 +1,10 @@
 #=====================================================================#
-#   CONFIG                                                            #
-#=====================================================================#
-# You may configure these options as indicated.
-Banner_Designer_Config:
-  type: data
-  # Cooldown: Adjusts how long the machine will wait for confirmation before         #
-  #           cancelling the save/exit sequence.                                     #
-  Cooldown: 50t
-  # Max_Placed: Configure how many of each banner type may be placed in the world.
-  #     Base = Default amount (per plot, or per player for Personal).                #
-  #     Per_Upgrade = Added to Base value per plot when an upgrade is purchased.     #
-  #     Max_Upgrades = How many upgrades a Town/Nation is allowed to purchase.       #
-  Max_Placed:
-    Personal:
-      Base: 3
-    Town:
-      Base: 10
-      Per_Upgrade: 2
-      Max_Upgrades: 10
-    Nation:
-      Base: 5
-      Per_Upgrade: 1
-      Max_Upgrades: 20
-  # Token_Cost: Sets the prices of Banner_Token items at the vendor.
-  #     Single = Single Use token, which produces one custom banner when saved.      #
-  #     Personal = Personal Emblem token, which changes the player's custom emblem   #
-  #                and updates existing personal flags around the world.             #
-  #     Town = Town Flag token, which changes the player's town flag and updates     #
-  #            existing town flags around the world.                                 #
-  #     Nation = National Flag token, which changes the player's national flag and   #
-  #              updates existing national flags around the world.                   #
-  Token_Cost:
-    Single: 0
-    Personal: 0
-    Town: 0
-    Nation: 0
-  # Token_Produces_Banner: If false, saving will only update existing and future     #
-  #                        placed flags. If true, saving a Personal/Town/Nation      #
-  #                        banner will also give the player the corresponding        #
-  #                        banner item, as if purchased from the vendor.             #
-  Token_Produces_Banner: false
-  # Item_Cost: Sets the prices of Banner items at the vendor.                        #
-  #     Blank = A blank banner of a given color.                                     #
-  #     Premade = A custom, dev-made banner, for single-use.                         #
-  #     Personal = A banner displaying the player's custom personal emblem.          #
-  #                A limited amount can be placed in the world (see Config option).  #
-  #     Town = A banner displaying the player's town's flag. Limited by Config.      #
-  #     Nation = A banner displaying the player's national flag. Limited by Config.  #
-  Item_Cost:
-    Blank: 0
-    Premade: 0
-    Personal: 0
-    Town: 0
-    Nation: 0
-  # Banner_Item_Load: If true, right clicking the display with a held banner        #
-  #                   while using the banner machine will upload its contents,      #
-  #                   replacing the current design.                                 #
-  Banner_Item_Load: true
-  # Compress_Empty_Layers: If true, empty layers on machine-created banners will    #
-  #                        be removed when the design is saved, storing the banner  #
-  #                        in the most efficient way. If false, blank layers will   #
-  #                        be preserved, storing the banner exactly as designed.    #
-  Compress_Empty_Layers: true
-
-#=====================================================================#
 #   OPERATIONS                                                        #
 #=====================================================================#
-## -- DO NOT EDIT ANYTHING BELOW THIS LINE -- ##
-
 Banner_Designer_Version:
   type: data
-  version: 1.0.4
-  last_updated: 2022_03_17
+  version: 1.0.11
+  last_updated: 2022_03_22
 
 Banner_Designer_Data:
   type: data
@@ -262,7 +195,7 @@ Banner_Designer_Create:
                 - define exitbutton <context.location.add[-1,0,-2]>
                 - define cuboidorigin <context.location.add[1,0,-4]>
                 - define away SOUTH
-                - define viewpoint <context.location.center.add[0,-0.5,-4].with_pose[-6,0]>
+                - define viewpoint <context.location.center.add[0,-0.5,-3].with_pose[-6,0]>
               - case east:
                 - define low <context.location.add[0,0,1]>
                 - define high <context.location.add[0,3,-1]>
@@ -273,7 +206,7 @@ Banner_Designer_Create:
                 - define exitbutton <context.location.add[2,0,-1]>
                 - define cuboidorigin <context.location.add[4,0,1]>
                 - define away WEST
-                - define viewpoint <context.location.center.add[4,-0.5,0].with_pose[-6,90]>
+                - define viewpoint <context.location.center.add[3,-0.5,0].with_pose[-6,90]>
               - case south:
                 - define low <context.location.add[-1,0,0]>
                 - define high <context.location.add[1,3,0]>
@@ -282,9 +215,9 @@ Banner_Designer_Create:
                 - define completebutton <context.location.add[0,3,1]>
                 - define resetbutton <context.location.add[-1,0,2]>
                 - define exitbutton <context.location.add[1,0,2]>
-                - define cuboidorigin <context.location.add[-1,0,4]>
+                - define cuboidorigin <context.location.add[-1,0,3]>
                 - define away NORTH
-                - define viewpoint <context.location.center.add[0,-0.5,4].with_pose[-6,-180]>
+                - define viewpoint <context.location.center.add[0,-0.5,3].with_pose[-6,-180]>
               - case west:
                 - define low <context.location.add[0,0,-1]>
                 - define high <context.location.add[0,3,1]>
@@ -295,7 +228,7 @@ Banner_Designer_Create:
                 - define exitbutton <context.location.add[-2,0,1]>
                 - define cuboidorigin <context.location.add[-4,0,-1]>
                 - define away EAST
-                - define viewpoint <context.location.center.add[-4,-0.5,0].with_pose[-6,-90]>
+                - define viewpoint <context.location.center.add[-3,-0.5,0].with_pose[-6,-90]>
             - modifyblock <[low].to_cuboid[<[high]>]> netherite_block
             - spawn <entity[glow_item_frame].with[invulnerable=true;hide_from_players=true;framed=Banner_Designer_Complete_Button]> <[completebutton]> save:complete
             - spawn <entity[item_frame].with[framed=<item[Banner_Designer_Arrow_Blue].with_single[display_name=<aqua>Color<&sp>Down]>|flipped;hide_from_players=true;invulnerable=true]> <[layerdownbutton].above> save:colordown
@@ -383,11 +316,12 @@ Banner_Designer_Start:
       - define yaw 90
   - spawn armor_stand[equipment=air|air|air|white_banner;gravity=false;visible=false;invulnerable=true;hide_from_players=true] <location[banner_designer_<[uuid]>_layersign].center.sub[<[sub]>].with_yaw[<[yaw]>]> save:armor_stand
   - flag <player> banner_designer.<[uuid]>.armor_stand:<entry[armor_stand].spawned_entity>
-  - wait 1t
+  - wait 15t
+  - showfake barrier <cuboid[banner_designer_<[uuid]>].expand[1].shell.filter[material.name.equals[air]]> players:<player> duration:999999
   - adjust <player> show_entity:<player.flag[banner_designer.<[uuid]>.armor_stand]>
   - adjust <player> show_entity:<server.flag[banner_designer.<[uuid]>.complete]>
   - wait 1t
-  - inject Banner_Designer_Update.start instantly
+  - inject Banner_Designer_Update.start
 
 Banner_Designer_Function:
   type: world
@@ -410,7 +344,7 @@ Banner_Designer_Function:
               - flag <player.town> editing_banner:<player.uuid>
           - else:
             - narrate "<dark_red>You don't have permission to edit your <blue>Town Flag<dark_red>."
-            - title "title:<red>ACCESS DENIED" targets:<player>
+            - title "subtitle:<red>ACCESS DENIED" targets:<player>
             - narrate "<gray>Only <white><player.town.mayor.name> <gray>has the ability to set these permissions."
             - stop
         - case nation:
@@ -426,7 +360,7 @@ Banner_Designer_Function:
               - flag <player.nation> editing_banner:<player.uuid>
           - else:
             - narrate "<dark_red>You don't have permission to edit your <gold>National Flag<dark_red>."
-            - title "title:<red>ACCESS DENIED" targets:<player>
+            - title "subtitle:<red>ACCESS DENIED" targets:<player>
             - narrate "<gray>Only <white><player.nation.king.name> <gray>has the ability to set these permissions."
             - stop
       - if !<player.has_flag[banner_machine_in_use]>:
@@ -435,7 +369,8 @@ Banner_Designer_Function:
         - flag <player> banner_designer.<[uuid]>.mode:<context.item.script.name.after[banner_token_]>
         - wait 1t
         - take iteminhand
-        - inject Banner_Designer_Start instantly
+        - title title:<&color[#000000]><&font[adriftus:overlay]><&chr[0004]><&chr[f801]><&chr[0004]> "subtitle:<blue>Launching <bold>Banner Designer" targets:<player> fade_in:1s stay:1s
+        - inject Banner_Designer_Start
       - stop
     on player right clicks birch_button in:banner_designer_*:
       - determine passively cancelled
@@ -458,7 +393,7 @@ Banner_Designer_Function:
             - wait 1t
             - inject Banner_Designer_Update instantly
           - default:
-            - stop
+            - narrate "<red>ERROR_CODE: 001 <gray>- please report!"
     on player right clicks *item_frame in:banner_designer_*:
       - determine passively cancelled
       - ratelimit <player> 2t
@@ -494,7 +429,7 @@ Banner_Designer_Function:
             - stop
           - if <player.has_flag[banner_designer_exitready]>:
             - flag <player> banner_designer_exitready:!
-            - title "title:<dark_red>Exiting <bold>Banner Designer" "subtitle:<red>Your token has been refunded." targets:<player>
+            - title title:<dark_red>Exiting "subtitle:<red>Your token has been refunded." targets:<player>
             - give banner_token_<player.flag[banner_designer.<[uuid]>.mode]>
             - inject Banner_Designer_Update.stop instantly
             - stop
@@ -502,7 +437,7 @@ Banner_Designer_Function:
             - narrate "<red><bold>Do you want to exit and lose all progress?"
             - narrate "<red>(Your token will be refunded.)"
             - narrate "<gray><italic>Click again to confirm."
-            - title "title:<dark_red>Exit and lose all progress?" "subtitle:<gray><italic>Click again to confirm." targets:<player> fade_in:5t stay:1s fade_out:5t
+            - title title:<dark_red>Exit? "subtitle:<gray><italic>Click again to confirm." targets:<player> fade_in:5t stay:1s fade_out:5t
             - flag <player> banner_designer_exitready
             - wait <script[Banner_Designer_Config].data_key[Cooldown]>
             - if <player.has_flag[banner_designer_exitready]>:
@@ -526,7 +461,7 @@ Banner_Designer_Function:
             - inject Banner_Designer_Save.presave instantly
             - stop
         - default:
-          - stop
+          - narrate "<red>ERROR_CODE: 002 <gray>- please report!"
       - inject Banner_Designer_Update instantly
     on *item_frame damaged in:banner_designer_*:
       - if <context.entity.location.cuboids.contains_any_text[banner_designer_]>:
@@ -581,9 +516,13 @@ Banner_Designer_Update:
     - adjust <player> sign_update:<location[banner_designer_<[uuid]>_patternsign]>|<list[]>
     - foreach colorup|colordown|reset|exit:
       - adjust <player> show_entity:<server.flag[banner_designer.<[uuid]>.<[value]>].as_entity>
-    - run Generic_Freeze_Task instantly def:<player>|freeze|banner_designer_<[uuid]>_viewpoint
-    - title "title:<blue>Launched <bold>Banner Designer" subtitle:<script[Banner_Designer_Data].parsed_key[Modes.<player.flag[banner_designer.<[uuid]>.mode]>.subtitle]> targets:<player> fade_in:15t stay:1s fade_out:15t
+    - title title:<&color[#000000]><&font[adriftus:overlay]><&chr[0004]><&chr[f801]><&chr[0004]> subtitle:<script[Banner_Designer_Data].parsed_key[Modes.<player.flag[banner_designer.<[uuid]>.mode]>.subtitle]> targets:<player> fade_in:0t stay:1s fade_out:1s
+    - teleport <player> banner_designer_<[uuid]>_viewpoint
+    - wait 1s
     - inject Banner_Designer_Update.preload instantly
+    - wait 1s
+    - if !<player.location.is_in[banner_designer_<[uuid]>]>:
+      - teleport <player> banner_designer_<[uuid]>_viewpoint
   stop:
     - if <player.is_online>:
       - adjust <player> sign_update:banner_designer_<[uuid]>_layersign|<location[banner_designer_<[uuid]>_layersign].sign_contents>
@@ -594,12 +533,17 @@ Banner_Designer_Update:
     - remove <player.flag[banner_designer.<[uuid]>.armor_stand].as_entity>
     - flag <player> banner_designer:!
     - flag <player> banner_machine_in_use:!
-    - run Generic_Freeze_Task instantly def:<player>|unfreeze
+    - showfake cancel <cuboid[banner_designer_<[uuid]>].expand[1].shell> players:<player>
     - stop
   preload:
     - choose <player.flag[banner_designer.<[uuid]>.mode]>:
-      - case test:
-        - narrate "<gray>This script will not load a banner design."
+      - case personal:
+        - if <player.has_flag[banner_designer_personal_emblem]>:
+          - narrate "<red>Loaded your stored Personal Emblem design."
+          - define preload <player.flag[banner_designer_personal_emblem]>
+          - inject Banner_Designer_Update.load instantly
+        - else:
+          - narrate "<red>No personal emblem found. Setting machine to default."
       - case town:
         - if <player.town.has_flag[banner_design]||false>:
           - narrate "<blue>Loaded the Town Flag design for <player.town.name>."
@@ -614,13 +558,10 @@ Banner_Designer_Update:
           - inject Banner_Designer_Update.load instantly
         - else:
           - narrate "<gold>This nation does not have a flag yet. Setting machine to default."
-      - case personal:
-        - if <player.has_flag[banner_designer_personal_emblem]>:
-          - narrate "<red>Loaded your stored Personal Emblem design."
-          - define preload <player.flag[banner_designer_personal_emblem]>
-          - inject Banner_Designer_Update.load instantly
-        - else:
-          - narrate "<red>No personal emblem found. Setting machine to default."
+      - case single:
+        - stop
+      - default:
+        - narrate "<red>ERROR_CODE: 003 <gray>- please report!"
   load:
     - flag <player> banner_designer.<[uuid]>.color.0:<player.flag[banner_designer_personal_emblem].as_list.get[1]||0>
     - narrate "Base Color: <script[Banner_Designer_Data].data_key[Color.<player.flag[banner_designer.<[uuid]>.color.0]>]>"
@@ -678,7 +619,7 @@ Banner_Designer_Save:
           - wait 1t
           - give <[converter_result].as_item.with[hides=ALL;display=<white>Banner]>
         - default:
-          - narrate "<dark_red>You cannot save your design in this mode."
+          - narrate "<red>ERROR_CODE: 004 <gray>- please report!"
           - stop
       - title title:<dark_green>Saved! "subtitle:<green>Your token was consumed." targets:<player> fade_in:5t stay:1s fade_out:5t
       - inject Banner_Designer_Update.stop
@@ -686,7 +627,7 @@ Banner_Designer_Save:
       - narrate "<dark_green>Do you want to save and exit?"
       - narrate "<green>Your token will be consumed."
       - narrate "<gray><italic>Click again to confirm."
-      - title "title:<dark_green>Save and exit?" "subtitle:<gray>Click again to confirm." targets:<player> fade_in:5t stay:1s fade_out:5t
+      - title title:<dark_green>Save? "subtitle:<gray>Click again to confirm." targets:<player> fade_in:5t stay:1s fade_out:5t
       - flag <player> banner_designer_saveready
       - wait <script[Banner_Designer_Config].data_key[Cooldown]>
       - if <player.has_flag[banner_designer_saveready]>:
@@ -723,7 +664,7 @@ Banner_Designer_Save:
           - narrate "<dark_gray>Overwriting and creating a white banner."
           - give white_banner
         - default:
-          - narrate "How did you get here?!"
+          - narrate "<red>ERROR_CODE: 005 <gray>- please report!"
       - title title:<dark_green>Overwritten! "subtitle:<green>Your token was consumed." targets:<player> fade_in:5t stay:1s fade_out:5t
       - define save_banner:0
       - inject Banner_Designer_Converter instantly
@@ -748,15 +689,17 @@ Banner_Designer_Placement:
   debug: false
   events:
     on player places banner_item_*:
-      - choose <context.item_in_hand.script.name.after[item_]>:
+      - define item <context.item_in_hand>
+      - choose <[item].script.name.after[banner_item_]>:
         - case personal:
           - define max:<script[Banner_Designer_Config].data_key[Max_Placed.Personal.Base]>
-          - if <player.flag[placed_banners_personal_emblem].size> >= <[max]>:
+          - if <player.flag[placed_banners_personal_emblem].size.if_null[0].add[<player.flag[placed_banner_entities_personal_emblem].size.if_null[0]>]> >= <[max]>:
             - determine passively cancelled
             - narrate "<dark_red>You can only place <[max]> personal <tern[<[max].is[more].than[1]>].pass[banners].fail[banner]> in the world!"
           - else:
             - flag <context.location> custom_banner.personal:<player.uuid>
             - flag <player> placed_banners_personal_emblem:->:<context.location.simple>
+            - flag server personal_banners.<context.location.simple>:<player.uuid>
             - define save_banner:<player.flag[banner_designer_personal_emblem]>
             - inject Banner_Designer_Converter instantly
             - run Banner_Designer_World_Update instantly def.new_banner:<[converter_result]> def.mode:personal def.player:<player>
@@ -766,7 +709,7 @@ Banner_Designer_Placement:
             - narrate "<dark_red>You can only place your Town Flag within the borders of your own town!"
             - stop
           - define max:<script[Banner_Designer_Config].data_key[Max_Placed.Town.Base].mul[<player.town.plots.size>||1].add[<script[Banner_Designer_Config].data_key[Max_Placed.Town.Per_Upgrade].mul[<player.town.flag[max_banners_upgrade]>]||0>]>
-          - if <player.flag[placed_banners_town].size> >= <[max]>:
+          - if <player.town.flag[placed_banners].size.if_null[0].add[<player.town.flag[placed_banner_entities].size.if_null[0]>]> >= <[max]>:
             - determine passively cancelled
             - narrate "<dark_red>You can only place <[max]> Town <tern[<[max].is[more].than[1]>].pass[Flags].fail[Flag]> in the world!"
             - stop
@@ -782,7 +725,7 @@ Banner_Designer_Placement:
             - narrate "<dark_red>You can only place your National Flag within the borders of your own nation!"
             - stop
           - define max:<script[Banner_Designer_Config].data_key[Max_Placed.Nation.Base].mul[<player.town.plots.size||1>].add[<script[Banner_Designer_Config].data_key[Max_Placed.Nation.Per_Upgrade].mul[<player.nation.flag[max_banners_upgrade]||0>]>]>
-          - if <player.flag[placed_banners_town].size> >= <[max]>:
+          - if <player.nation.flag[placed_banners].size.if_null[0].add[<player.nation.flag[placed_banner_entities].size.if_null[0]>]> >= <[max]>:
             - determine passively cancelled
             - narrate "<dark_red>You can only place <[max]> Town <tern[<[max].is[more].than[1]>].pass[Flags].fail[Flag]> in the world!"
             - stop
@@ -796,27 +739,143 @@ Banner_Designer_Placement:
       - choose <context.location.flag[custom_banner].keys.get[1]>:
         - case personal:
           - if <context.location.flag[custom_banner].get[personal]> != <player.uuid>:
-            - determine passively cancelled
-            - narrate "<dark_red>You can't destroy <server.flag[personal_banners].get[<context.location.simple>].as_player.name>'s banner!"
-          - else:
-            - flag <context.location> custom_banner:!
-            - flag <player> placed_banners_personal_emblem:<-:<context.location.simple>
+            - if <script[Banner_Designer_Config].data_key[Enemies_Break_Personal]>:
+              - narrate "<dark_gray>You destroyed <server.flag[personal_banners].get[<context.location.simple>].as_player.name>'s personal banner!"
+            - else:
+              - determine passively cancelled
+              - narrate "<dark_red>You can't destroy <server.flag[personal_banners].get[<context.location.simple>].as_player.name>'s banner!"
+              - stop
+          - determine passively <tern[<player.gamemode.equals[creative]>].pass[NOTHING].fail[banner_item_personal]>
+          - flag <context.location> custom_banner:!
+          - flag <player> placed_banners_personal_emblem:<-:<context.location.simple>
+          - flag server personal_banners:<-:<context.location.simple>
         - case town:
           - define town <context.location.flag[custom_banner].get[town]>
           - if <[town]> != <player.town>:
-            - determine passively cancelled
-            - narrate "<dark_red>You can't destroy <[town].name>'s flag!"
-          - else:
-            - flag <context.location> custom_banner:!
-            - flag <[town]> placed_banners:<-:<context.location.simple>
+            - if <script[Banner_Designer_Config].data_key[Enemies_Break_Town]>:
+              - narrate "<dark_gray>You destroyed <[town].name>'s town flag!"
+            - else:
+              - determine passively cancelled
+              - narrate "<dark_red>You can't destroy <[town].name>'s flag!"
+              - stop
+          - determine passively <tern[<player.gamemode.equals[creative]>].pass[NOTHING].fail[banner_item_town]>
+          - flag <context.location> custom_banner:!
+          - flag <[town]> placed_banners:<-:<context.location.simple>
         - case nation:
           - define nation <context.location.flag[custom_banner].get[nation]>
           - if <[nation]> != <player.nation>:
-            - determine passively cancelled
-            - narrate "<dark_red>You can't destroy <[nation].name>'s flag!"
-          - else:
-            - flag <context.location> custom_banner:!
-            - flag <[nation]> placed_banners:<-:<context.location.simple>
+            - if <script[Banner_Designer_Config].data_key[Enemies_Break_Nation]>:
+              - narrate "<dark_gray>You destroyed <[nation].name>'s national flag!"
+            - else:
+              - determine passively cancelled
+              - narrate "<dark_red>You can't destroy <[nation].name>'s flag!"
+              - stop
+          - determine passively <tern[<player.gamemode.equals[creative]>].pass[NOTHING].fail[banner_item_nation]>
+          - flag <context.location> custom_banner:!
+          - flag <[nation]> placed_banners:<-:<context.location.simple>
+        - default:
+            - narrate "<red>ERROR_CODE: 006 <gray>- please report!"
+    on player right clicks armor_stand with:banner_item_*:
+      - determine passively cancelled
+      - if <context.entity.equipment_map.get[helmet].exists>:
+        - stop
+      - else:
+        - define item <context.item>
+        - choose <[item].script.name.after[banner_item_]>:
+          - case personal:
+            - define max:<script[Banner_Designer_Config].data_key[Max_Placed.Personal.Base]>
+            - if <player.flag[placed_banners_personal_emblem].size.if_null[0].add[<player.flag[placed_banner_entities_personal_emblem].size.if_null[0]>]> >= <[max]>:
+              - determine passively cancelled
+              - narrate "<dark_red>You can only place <[max]> personal <tern[<[max].is[more].than[1]>].pass[banners].fail[banner]> in the world!"
+              - stop
+            - else:
+              - equip <context.entity> head:<[item]>
+              - if !<player.gamemode.equals[creative]>:
+                - take iteminhand
+              - flag <context.entity> custom_banner.personal:<player.uuid>
+              - flag <player> placed_banner_entities_personal_emblem:->:<context.entity.uuid>
+              - flag server personal_banner_entities.<context.entity.uuid>:<player.uuid>
+              - define save_banner:<player.flag[banner_designer_personal_emblem]>
+              - inject Banner_Designer_Converter instantly
+              - run Banner_Designer_World_Update instantly def.new_banner:<[converter_result]> def.mode:personal def.player:<player>
+          - case town:
+            - if <player.town> != <context.entity.location.town||null>:
+              - determine passively cancelled
+              - narrate "<dark_red>You can only place your Town Flag within the borders of your own town!"
+              - stop
+            - define max:<script[Banner_Designer_Config].data_key[Max_Placed.Town.Base].mul[<player.town.plots.size>||1].add[<script[Banner_Designer_Config].data_key[Max_Placed.Town.Per_Upgrade].mul[<player.town.flag[max_banners_upgrade]>]||0>]>
+            - if <player.town.flag[placed_banners].size.if_null[0].add[<player.town.flag[placed_banner_entities].size.if_null[0]>]> >= <[max]>:
+              - determine passively cancelled
+              - narrate "<dark_red>You can only place <[max]> Town <tern[<[max].is[more].than[1]>].pass[Flags].fail[Flag]> in the world!"
+              - stop
+            - else:
+              - equip <context.entity> head:<[item]>
+              - if !<player.gamemode.equals[creative]>:
+                - take iteminhand
+              - flag <context.entity> custom_banner.town:<player.town>
+              - flag <player.town> placed_banner_entities:->:<context.entity.uuid>
+              - define save_banner:<player.town.flag[banner_design]>
+              - inject Banner_Designer_Converter instantly
+              - run Banner_Designer_World_Update instantly def.new_banner:<[converter_result]> def.mode:town def.player:<player>
+          - case nation:
+            - if <player.nation> != <context.entity.location.town.nation||null>:
+              - determine passively cancelled
+              - narrate "<dark_red>You can only place your National Flag within the borders of your own nation!"
+              - stop
+            - define max:<script[Banner_Designer_Config].data_key[Max_Placed.Nation.Base].mul[<player.town.plots.size||1>].add[<script[Banner_Designer_Config].data_key[Max_Placed.Nation.Per_Upgrade].mul[<player.nation.flag[max_banners_upgrade]||0>]>]>
+            - if <player.nation.flag[placed_banners].size.if_null[0].add[<player.nation.flag[placed_banner_entities].size.if_null[0]>]> >= <[max]>:
+              - determine passively cancelled
+              - narrate "<dark_red>You can only place <[max]> Town <tern[<[max].is[more].than[1]>].pass[Flags].fail[Flag]> in the world!"
+              - stop
+            - else:
+              - equip <context.entity> head:<[item]>
+              - if !<player.gamemode.equals[creative]>:
+                - take iteminhand
+              - flag <context.entity> custom_banner.nation:<player.nation>
+              - flag <player.nation> placed_banner_entities:->:<context.entity.uuid>
+              - define save_banner:<player.nation.flag[banner_design]>
+              - inject Banner_Designer_Converter instantly
+              - run Banner_Designer_World_Update instantly def.new_banner:<[converter_result]> def.mode:nation def.player:<player>
+          - default:
+            - narrate "<red>ERROR_CODE: 007 <gray>- please report!"
+    on entity_flagged:custom_banner dies:
+      - choose <context.entity.flag[custom_banner].keys.get[1]>:
+        - case personal:
+          - if <context.entity.flag[custom_banner].get[personal]> != <context.damager.uuid>:
+            - if <script[Banner_Designer_Config].data_key[Enemies_Break_Personal]>:
+              - narrate "<dark_gray>You destroyed <server.flag[personal_banner_entities].get[<context.entity.uuid>].as_player.name>'s personal banner!" targets:<context.damager>
+            - else:
+              - determine passively cancelled
+              - narrate "<dark_red>You can't destroy <server.flag[personal_banner_entities].get[<context.entity.uuid>].as_player.name>'s banner!" targets:<context.damager>
+              - stop
+          - determine passively <tern[<context.damager.as_player.gamemode.equals[creative]>].pass[NO_DROPS].fail[banner_item_personal]>
+          - flag <context.entity> custom_banner:!
+          - flag <context.damager.as_player> placed_banner_entities_personal_emblem:<-:<context.entity.uuid>
+          - flag server personal_banner_entities:<-:<context.entity.uuid>
+        - case town:
+          - define town <context.entity.flag[custom_banner].get[town]>
+          - if <[town]> != <context.damager.town>:
+            - if <script[Banner_Designer_Config].data_key[Enemies_Break_Town]>:
+              - narrate "<dark_gray>You destroyed <[town].name>'s town flag!" targets:<context.damager>
+            - else:
+              - determine passively cancelled
+              - narrate "<dark_red>You can't destroy <[town].name>'s flag!" targets:<context.damager>
+              - stop
+          - determine passively <tern[<context.damager.as_player.gamemode.equals[creative]>].pass[NO_DROPS].fail[banner_item_town]>
+          - flag <context.entity> custom_banner:!
+          - flag <[town]> placed_banner_entities:<-:<context.entity.uuid>
+        - case nation:
+          - define nation <context.entity.flag[custom_banner].get[nation]>
+          - if <[nation]> != <context.damager.nation>:
+            - if <script[Banner_Designer_Config].data_key[Enemies_Break_Nation]>:
+              - narrate "<dark_gray>You destroyed <[nation].name>'s national flag!" targets:<context.damager>
+            - else:
+              - determine passively cancelled
+              - narrate "<dark_red>You can't destroy <[nation].name>'s flag!" targets:<context.damager>
+              - stop
+          - determine passively <tern[<context.damager.as_player.gamemode.equals[creative]>].pass[NO_DROPS].fail[banner_item_nation]>
+          - flag <context.entity> custom_banner:!
+          - flag <[nation]> placed_banner_entities:<-:<context.entity.uuid>
 
 Banner_Designer_World_Update:
   type: task
@@ -825,7 +884,7 @@ Banner_Designer_World_Update:
   script:
   - choose <[mode]>:
     - case personal:
-      - foreach <[player].flag[placed_banners_personal_emblem]>:
+      - foreach <[player].flag[placed_banners_personal_emblem].if_null[<list>]>:
         - define facing_direction:<[value].as_location.material.direction>
         - if <[value].as_location.material.contains_any_text[_wall_]>:
           - adjust <[value].as_location> block_type:<[new_banner].before[_banner]>_wall_banner
@@ -833,8 +892,10 @@ Banner_Designer_World_Update:
           - adjust <[value].as_location> block_type:<[new_banner].before[_banner]>_banner
         - adjustblock <[value].as_location> direction:<[facing_direction]>
         - adjust <[value].as_location> patterns:<[new_banner].as_item.patterns>
+      - foreach <[player].flag[placed_banner_entities_personal_emblem].if_null[<list>]>:
+        - equip <[value].as_entity> head:<[new_banner].as_item>
     - case town:
-      - foreach <[player].town.flag[placed_banners]>:
+      - foreach <[player].town.flag[placed_banners].if_null[<list>]>:
         - define facing_direction:<[value].as_location.material.direction>
         - if <[value].as_location.material.contains_any_text[_wall_]>:
           - adjust <[value].as_location> block_type:<[new_banner].before[_banner]>_wall_banner
@@ -842,8 +903,10 @@ Banner_Designer_World_Update:
           - adjust <[value].as_location> block_type:<[new_banner].before[_banner]>_banner
         - adjustblock <[value].as_location> direction:<[facing_direction]>
         - adjust <[value].as_location> patterns:<[new_banner].as_item.patterns>
+      - foreach <[player].town.flag[placed_banner_entities].if_null[<list>]>:
+        - equip <[value].as_entity> head:<[new_banner].as_item>
     - case nation:
-      - foreach <[player].nation.flag[placed_banners]>:
+      - foreach <[player].nation.flag[placed_banners].if_null[<list>]>:
         - define facing_direction:<[value].as_location.material.direction>
         - if <[value].as_location.material.contains_any_text[_wall_]>:
           - adjust <[value].as_location> block_type:<[new_banner].before[_banner]>_wall_banner
@@ -851,6 +914,8 @@ Banner_Designer_World_Update:
           - adjust <[value].as_location> block_type:<[new_banner].before[_banner]>_banner
         - adjustblock <[value].as_location> direction:<[facing_direction]>
         - adjust <[value].as_location> patterns:<[new_banner].as_item.patterns>
+      - foreach <[player].nation.flag[placed_banner_entities].if_null[<list>]>:
+        - equip <[value].as_entity> head:<[new_banner].as_item>
 
 Banner_Designer_Reset:
   type: task
@@ -888,126 +953,3 @@ Banner_Designer_Hide_Buttons:
   script:
     - wait 1t
     - adjust <context.entity> hide_from_players:true
-
-#=====================================================================#
-#   ITEMS                                                             #
-#=====================================================================#
-Banner_Token_Test:
-  type: item
-  debug: false
-  material: gold_nugget
-  display name: <dark_gray><bold>[Banner Token: Test]
-  lore:
-  - Insert in a Banner Designer to enable Testing Mode.
-
-Banner_Token_Town:
-  type: item
-  debug: false
-  material: iron_nugget
-  mechanisms:
-    custom_model_data: 32
-  display name: <blue><bold>[Banner Token: Town]
-  lore:
-  - Insert in a Banner Designer to edit your town's flag.
-
-Banner_Token_Nation:
-  type: item
-  debug: false
-  material: iron_nugget
-  mechanisms:
-    custom_model_data: 33
-  display name: <gold><bold>[Banner Token: Nation]
-  lore:
-  - Insert in a Banner Designer to edit your nation's flag.
-
-Banner_Token_Personal:
-  type: item
-  debug: false
-  material: iron_nugget
-  mechanisms:
-    custom_model_data: 31
-  display name: <red><bold>[Banner Token: Personal]
-  lore:
-  - Insert in a Banner Designer to design your Personal Emblem.
-
-Banner_Token_Single:
-  type: item
-  debug: false
-  material: iron_nugget
-  mechanisms:
-    custom_model_data: 30
-  display name: <dark_gray><bold>[Banner Token: Single Use]
-  lore:
-  - Insert in a Banner Designer to create a single custom banner.
-
-Banner_Item_Town:
-  type: item
-  debug: false
-  material: light_blue_banner
-  display name: <blue><bold>[Town Flag Banner]
-  mechanisms:
-    hides: ALL
-    patterns: blue/STRIPE_TOP|blue/STRIPE_CENTER|light_blue/TRIANGLES_BOTTOM|light_blue/BORDER|light_blue/GRADIENT|blue/GRADIENT_UP
-  lore:
-  - Use: Place a Town Flag anywhere in your town!
-
-Banner_Item_Nation:
-  type: item
-  debug: false
-  material: orange_banner
-  display name: <gold><bold>[National Flag Banner]
-  mechanisms:
-    hides: ALL
-    patterns: yellow/STRIPE_LEFT|yellow/STRIPE_RIGHT|yellow/STRIPE_DOWNRIGHT|orange/TRIANGLES_TOP|orange/TRIANGLES_BOTTOM|orange/BORDER|yellow/GRADIENT_UP
-  lore:
-  - Use: Place a National Flag anywhere in your nation!
-
-Banner_Item_Personal:
-  type: item
-  debug: false
-  material: red_banner
-  display name: <red><bold>[Personal Emblem Banner]
-  mechanisms:
-    hides: ALL
-    patterns: orange/STRIPE_TOP|orange/STRIPE_MIDDLE|orange/STRIPE_RIGHT|red/HALF_HORIZONTAL_MIRROR|orange/STRIPE_LEFT|red/TRIANGLES_TOP|red/TRIANGLES_BOTTOM|red/BORDER|red/GRADIENT_UP
-  lore:
-  - Use: Place on the ground to display your Personal Emblem!
-
-#=====================================================================#
-#    UI ELEMENTS                                                      #
-#=====================================================================#
-Banner_Designer_Complete_Button:
-  type: item
-  debug: false
-  material: paper
-  mechanisms:
-    custom_model_data: 1
-  display name: <green>Complete
-
-Banner_Designer_Reset_Button:
-  type: item
-  debug: false
-  material: paper
-  mechanisms:
-    custom_model_data: 5
-  display name: <yellow>Reset
-
-Banner_Designer_Exit_Button:
-  type: item
-  debug: false
-  material: barrier
-  display name: <dark_red>Exit
-
-Banner_Designer_Arrow_Green:
-  type: item
-  debug: false
-  material: paper
-  mechanisms:
-    custom_model_data: 6
-
-Banner_Designer_Arrow_Blue:
-  type: item
-  debug: false
-  material: paper
-  mechanisms:
-    custom_model_data: 7

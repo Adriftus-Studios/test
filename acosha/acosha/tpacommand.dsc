@@ -4,68 +4,85 @@ tpa_command:
     name: tpa
     description: Used To Request A Teleport
     usage: /tpa (name)
+    permission: adriftus.staff
     script:
-       - if <context.args.size> < 1:
-            - narrate "<red><bold>Please Use A Name That's Online"
-            - stop
-       - define player <server.match_player[<context.args.get[1]>].if_null[null]>
-       - if <[player]> = null:
-            - narrate "<red><bold>This Is Not A Player"
-            - stop
-       - if <[player]> = <player.name>:
-               - narrate "You Can Not Tpaccept Yourself"
-               - stop
-       - else:
-              - flag player callback:<[callback]>
-              - clickable confirmScriptText_callback def:true save:Confirm usages:1
-              - clickable confirmScriptText_callback def:false save:Cancel usages:1
-              - narrate "Are you sure about this?"
-              - narrate <&hover[Confirm].type[show_text]><element[<green><bold><underline>[Yes]].on_click[<entry[Confirm].command>]><&end_hover><reset> targets: <[player]>
-              - narrate <&hover[Cancel].type[show_text]><element[<red><bold><underline>[No]].on_click[<entry[Cancel].command>]><&end_hover><reset> targets: <[player]>
+    - if <context.args.size> < 1:
+      - narrate "<red><bold>Please Use A Name That's Online"
+      - stop
+    - define target <server.match_player[<context.args.get[1]>].if_null[null]>
+    - if <[target]> = null:
+      - narrate "<red><bold>This Is Not A Player"
+      - stop
+    - if <[target]> = <player.name>:
+      - narrate "You Can Not Tpaccept Yourself"
+      - stop
+    - else:
+      - inject tpa_execute
 
-confirmScriptText_callback:
+tpa_crystal:
+  type: item
+  material: feather
+  display name: <&2>Friendly Crystal
+  data:
+    recipe_book_category: travel
+  lore:
+    - "<&e>--------------------"
+    - "<&e>Use to request a teleport"
+    - "<&e>You can target anyone awake"
+    - "<&e>--------------------"
+  flags:
+    right_click_script:
+      - tpa_remove_item
+      - target_players_open
+    callback: tpa_execute
+    type: crystal
+  mechanisms:
+    custom_model_data: 102
+  recipes:
+    1:
+      type: shaped
+      input:
+      - magical_pylon|air|magical_pylon
+      - air|emerald_block|air
+      - magical_pylon|air|magical_pylon
+
+tpa_execute:
   type: task
   debug: false
-  definitions: bool
+  definitions: target
   script:
-    - if <[bool]> && <player.has_flag[callback]>:
-      - inject <player.flag[callback]>
-    - else if <[bool].equals[false]>:
-        - narrate <red><bold>Cancelled.<reset>
-    - flag player callback:!
+    - inventory close
+    - define prompt "<proc[get_player_display_name]><&r><&e> wants to teleport to you"
+    - narrate "<&a>TPA Request sent!"
+    - flag <[target]> tmp.tpa_accept:<player> expire:30s
+    - run chat_confirm def:<[prompt]>|tpa_command_callback player:<[target]>
 
+tpa_remove_item:
+  type: task
+  debug: false
+  script:
+    - take iteminhand
+    - wait 1t
+    - run totem_test def:102
+    - wait 2s
 
-tpaccept_command:
-    type: command
-    name: tpaccept
-    description: Used To Request A Teleport
-    usage: /tpaccept (name)
+tpa_command_callback:
+    type: task
+    debug: true
+    definitions: bool
     script:
-           - if <context.args.size> < 1:
-               - narrate "<red><bold>Please Use A Name That's Online"
-               - stop
-           - define name <server.match_player[<context.args.get[1]>].if_null[null]>
-           - if <[name]> = null:
-               - narrate "<red><bold>This Is Not A Player"
-               - stop
-           - if <[name]> = <player.name>:
-               - narrate "You Can Not Tpaccept Yourself"
-               - stop
-           - else:
-               - if <player.has_flag[tpaccept]> :
-                    - narrate "<yellow>Teleporting In 3" targets:<[name]>|<player>
-                    - wait 1s
-                    - narrate "<yellow>Teleporting In 2" targets:<[name]>|<player>
-                    - wait 1s
-                    - narrate "<yellow>Teleporting In 1" targets:<[name]>|<player>
-                    - wait 1s
-                    - teleport <[name]> <player.location>
-                    - narrate "<green>Player Teleported"
-                    - flag <player> tpaccept:!
-                    - stop
-               - else:
-                    - narrate "No Pending Teleportations"
-                    - stop
+    - if !<player.has_flag[tmp.tpa_accept]>:
+      - narrate "<&c>TPA Request has expired."
+      - stop
+    - if !<player.flag[tmp.tpa_accept].is_online>:
+      - narrate "<&c>Player is offline."
+      - stop
+    - if !<[bool]>:
+      - narrate "<&c>TPA was Denied" targets:<player.flag[tmp.tpa_accept]>|<player>
+      - stop
+    - narrate "<&a>TPA Accepted!" targets:<player.flag[tmp.tpa_accept]>|<player>
+    - define location <player.location>
+    - run teleportation_animation_run def:<[location]> player:<player.flag[tmp.tpa_accept]>
 
 
 

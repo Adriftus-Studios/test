@@ -16,6 +16,8 @@ lumber_axe_events:
         - acacia_log
         - dark_oak_wood
         - dark_oak_log
+        - warped_stem
+        - crimson_stem
     events:
         on player breaks block:
         - define item <player.item_in_hand>
@@ -60,23 +62,16 @@ lumber_axe_iron:
             tree_feller: 1
             unbreaking: 5
     display name: <&e>Iron Lumber Axe
+    data:
+      recipe_book_category: tools
     recipes:
         1:
             type: shaped
-            recipe_id: iron_lumber_axe_1
             output_quantity: 1
             input:
-            - material:iron_block|material:iron_block
-            - material:iron_block|material:stick
-            - air|material:stick
-        2:
-            type: shaped
-            recipe_id: iron_lumber_axe_2
-            output_quantity: 1
-            input:
-            - material:iron_block|material:iron_block
-            - material:stick|material:iron_block
-            - material:stick|air
+            - material:iron_block|material:iron_block|air
+            - material:iron_block|material:stick|air
+            - air|material:stick|air
 
 lumber_axe_diamond:
     type: item
@@ -86,23 +81,15 @@ lumber_axe_diamond:
             tree_feller: 1
             unbreaking: 5
     display name: <&e>Diamond Lumber Axe
+    data:
+      recipe_book_category: tools
     recipes:
         1:
             type: shaped
-            recipe_id: diamond_lumber_axe_1
-            output_quantity: 1
             input:
-            - material:diamond_block|material:diamond_block
-            - material:diamond_block|material:stick
-            - air|material:stick
-        2:
-            type: shaped
-            recipe_id: diamond_lumber_axe_2
-            output_quantity: 1
-            input:
-            - material:diamond_block|material:diamond_block
-            - material:stick|material:diamond_block
-            - material:stick|air
+            - material:diamond_block|material:diamond_block|air
+            - material:diamond_block|material:stick|air
+            - air|material:stick|air
 
 lumber_axe_netherite:
     type: item
@@ -112,23 +99,15 @@ lumber_axe_netherite:
             tree_feller: 1
             unbreaking: 5
     display name: <&e>Netherite Lumber Axe
+    data:
+      recipe_book_category: tools
     recipes:
         1:
             type: shaped
-            recipe_id: netherite_lumber_axe_1
-            output_quantity: 1
             input:
-            - material:netherite_block|material:netherite_block
-            - material:netherite_block|material:stick
-            - air|material:stick
-        2:
-            type: shaped
-            recipe_id: netherite_lumber_axe_2
-            output_quantity: 1
-            input:
-            - material:netherite_block|material:netherite_block
-            - material:stick|material:netherite_block
-            - material:stick|air
+            - material:netherite_block|material:netherite_block|air
+            - material:netherite_block|material:stick|air
+            - air|material:stick|air
 
 enchantment_tree_feller:
     type: enchantment
