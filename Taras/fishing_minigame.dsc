@@ -1170,7 +1170,7 @@ fishing_minigame_event_handler:
         # % ██ [ On closes inventory ] ██
         on player closes inventory:
             - define sub_inv <list[fishing_minigame_bucket_gui|fishing_minigame_music_shop_gui|fishing_minigame_shop_gui|fishing_minigame_leaderboards_gui]>
-            - if <[sub_inv].contains_any[<context.inventory.title>]>:
+            - if <[sub_inv].contains_any[<context.inventory.script>]>:
                 - run fishing_minigame_merchant_open_gui def:<player>
 
         # % ██ [ Bunch of events to prevent unwanted actions ] ██
