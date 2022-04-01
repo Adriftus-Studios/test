@@ -32,8 +32,8 @@ fishing_minigame_start:
         - narrate <&8>----------------------------------------------------
         - define event <proc[fishing_minigame_get_current_event]>
         - narrate "<&7><&l><&lt>!<&gt><&r> <&7>Currently running event: <&a><[event]>"
-        - narrate "<&7><&l><&lt>!<&gt><&r> <&7>Instructions:"
         - if !<[event].equals[None]>:
+            - narrate "<&7><&l><&lt>!<&gt><&r> <&7>Instructions:"
             - narrate <proc[fishing_minigame_get_current_event_instructions]>
 
 # % ██ [ Task called to stop minigame ] ██
@@ -1430,14 +1430,14 @@ fishing_minigame_mp3_open_gui:
         - else:
             - define noteblock <item[fishing_minigame_mp3_no_button]>
             - inventory set o:<[noteblock]> slot:50 d:<[inventory]>
-
-        - foreach <[ownedTracks]> as:track:
-            - define trackName <[track].replace[_].with[<&sp>]>
-            - define item <item[music_disc_pigstep[hides=all]]>
-            - adjust def:item display:<&6><&l><[trackName]>
-            - adjust def:item "lore:<&7>By: <[music].get[<[track]>].get[author].replace[_].with[<&sp>]>"
-            - adjust def:item flag:fileName:<[music].get[<[track]>].get[filename]>
-            - inventory set o:<[item]> slot:<[inventory].first_empty> d:<[inventory]>
+        - if <[ownedTracks].size> > 0:
+            - foreach <[ownedTracks]> as:track:
+                - define trackName <[track].replace[_].with[<&sp>]>
+                - define item <item[music_disc_pigstep[hides=all]]>
+                - adjust def:item display:<&6><&l><[trackName]>
+                - adjust def:item "lore:<&7>By: <[music].get[<[track]>].get[author].replace[_].with[<&sp>]>"
+                - adjust def:item flag:fileName:<[music].get[<[track]>].get[filename]>
+                - inventory set o:<[item]> slot:<[inventory].first_empty> d:<[inventory]>
     script:
         - inject locally path:build_inventory
         - inventory open d:<[inventory]>
