@@ -1,3 +1,13 @@
+uncompressed_cobblestone:
+  type: item
+  material: cobblestone
+  no_id: true
+  recipes:
+    1:
+      type: shapeless
+      input: compressed_cobblestone
+      quantity: 9
+
 compressed_cobblestone:
   type: item
   material: cobblestone
