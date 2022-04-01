@@ -275,10 +275,10 @@ combat_tag:
         on player damaged by player:
             - flag <context.damager> combat_tag expire:30s if:<context.damager.is_player>
             - flag <context.entity> combat_tag expire:30s if:<context.entity.is_player>
-            - if <player.flag_expiration[combat_tag].equals[0]>:
-                - narrate "<yellow><bold>You are no longer in combat."
             - ratelimit <player> 30s
             - narrate "<yellow><bold>You have been combat-tagged. Do not log out!" targets:<context.damager>|<context.entity>
+            - if <player.flag_expiration[combat_tag].equals[0]>:
+                - narrate "<yellow><bold>You are no longer in combat."
         on player dies flagged:combat_tag:
             - flag <player> combat_tag:!
             - narrate "<yellow><bold>You are no longer in combat."
@@ -290,7 +290,6 @@ combat_tag:
             - teleport <player> <player.flag[killspawn]>
             - flag <player> killspawn:!
             - flag <player> combat_tag:!
-
 #Still in the works
 
 no_hunger:
@@ -651,6 +650,8 @@ tag_parser:
 #
 
 #Scripts I need to work on (data script for npc)
+
+#Replicating /ex
 
 #scriptName should be script_name
 #bukkitpriority
