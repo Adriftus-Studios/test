@@ -14,7 +14,7 @@ back_crystal:
     callback: back_execute
     type: crystal
   mechanisms:
-    custom_model_data: 101
+    custom_model_data: 100
   recipes:
     1:
       type: shaped
@@ -32,6 +32,7 @@ back_scroll:
   lore:
     - "<&e>--------------------"
     - "<&e>Return to your last location"
+    - "<&c>Incapable of long distances"
     - "<&e>--------------------"
   flags:
     right_click_script:
@@ -39,7 +40,8 @@ back_scroll:
     callback: back_execute
     type: scroll
   mechanisms:
-    custom_model_data: 101
+    custom_model_data: 201
+  recipes:
     1:
       type: shapeless
       input: ink_sac|papyrus|redstone_block
@@ -62,9 +64,13 @@ back_execute:
       - narrate "<&c>You have no location to return to"
       - stop
     - define type <context.item.flag[type]>
-    - if <[type]> == scroll && <player.flag[last_location].world> != <player.location.world>:
-      - narrate "<&c>This item lacks the power for cross dimensional travel"
-      - stop
+    - if <[type]> == scroll:
+      - if <player.flag[last_location].world> != <player.location.world>:
+        - narrate "<&c>This item lacks the power for cross dimensional travel"
+        - stop
+      - if <player.flag[last_location].distance[<player.location>]> > 2000:
+        - narrate "<&c>This item lacks the power for distances grater than 2000 blocks"
+        - stop
     - take iteminhand
     - run totem_test def:101
     - wait 2s
