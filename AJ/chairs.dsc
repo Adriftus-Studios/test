@@ -30,13 +30,6 @@ chair_sit_events:
     - invisible <[point]>
     - flag <[point]> sit.offset:<[point].location.sub[<player.location>]>
     - adjust <[point]> passenger:<player>
-    # after player toggles sneaking:
-    # - stop if:<player.vehicle.exists.not>
-    # - define chair <player.vehicle>
-    # - stop if:<[chair].has_flag[sit.offset].not.if_null[true]>
-    # - adjust <[chair]> passengers:<list[]>
-    # - teleport <player> <[chair].location.sub[<[chair].flag[sit.offset]>].with_yaw[<player.location.yaw>].with_pitch[<player.location.pitch>]>
-    # - remove <[chair]>
     after player exits vehicle:
     - stop if:<context.vehicle.has_flag[sit.offset].not>
     - teleport <player> <context.vehicle.location.sub[<context.vehicle.flag[sit.offset]>].with_yaw[<player.location.yaw>].with_pitch[<player.location.pitch>]>
