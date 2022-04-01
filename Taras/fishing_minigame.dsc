@@ -1048,7 +1048,11 @@ fishing_minigame_event_handler:
                     - case fishing_minigame_leaderboards_button:
                         - run fishing_minigame_leaderboards_open_gui def:<player>
                     - case fishing_minigame_fish_button:
-                        - run fishing_minigame_open_bucket def:<player>|true
+                        - if <player.has_flag[fishingminigame.bucket.size]>:
+                            - run fishing_minigame_open_bucket def:<player>|true
+                        - else:
+                            - inventory close
+                            - narrate "<&c>You dont have a bucket yet! Start playing to get your first for free!"
                     - case fishing_minigame_end_game:
                         - inventory close
                         - run fishing_minigame_stop def:<player>
