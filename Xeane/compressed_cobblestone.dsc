@@ -6,7 +6,7 @@ uncompressed_cobblestone:
     1:
       type: shapeless
       input: compressed_cobblestone
-      quantity: 9
+      output_quantity: 9
 
 compressed_cobblestone:
   type: item
@@ -22,7 +22,7 @@ compressed_cobblestone:
     1:
       type: shapeless
       input: double_compressed_cobblestone
-      quantity: 9
+      output_quantity: 9
     2:
       type: shaped
       input:
@@ -44,7 +44,7 @@ double_compressed_cobblestone:
     1:
       type: shapeless
       input: triple_compressed_cobblestone
-      quantity: 9
+      output_quantity: 9
     2:
       type: shaped
       input:
@@ -66,7 +66,7 @@ triple_compressed_cobblestone:
     1:
       type: shapeless
       input: quadruple_compressed_cobblestone
-      quantity: 9
+      output_quantity: 9
     2:
       type: shaped
       input:

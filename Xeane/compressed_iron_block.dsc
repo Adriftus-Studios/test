@@ -12,7 +12,7 @@ compressed_iron_block:
     1:
       type: shapeless
       input: double_compressed_iron_block
-      quantity: 9
+      output_quantity: 9
     2:
       type: shaped
       input:
@@ -34,7 +34,7 @@ double_compressed_iron_block:
     1:
       type: shapeless
       input: triple_compressed_iron_block
-      quantity: 9
+      output_quantity: 9
     2:
       type: shaped
       input:
@@ -56,7 +56,7 @@ triple_compressed_iron_block:
     1:
       type: shapeless
       input: quadruple_compressed_iron_block
-      quantity: 9
+      output_quantity: 9
     2:
       type: shaped
       input:
