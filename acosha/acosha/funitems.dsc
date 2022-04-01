@@ -33,4 +33,11 @@ firework_launcher_script:
             - wait 1.5s
             - firework <player.cursor_on> random trail primary:blue fade:white
 
+quadruple_compressed_iron_block:
+    type: item
+    material: netherite_block
+    display name: quadruple_compressed_netherite_block
+    lore:
+    - 6561 Netherite Block
+
 
