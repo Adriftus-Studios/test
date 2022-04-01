@@ -44,7 +44,7 @@ tpa_crystal:
       input:
       - magical_pylon|air|magical_pylon
       - air|emerald_block|air
-      - magical_pylon||magical_pylon
+      - magical_pylon|air|magical_pylon
 
 tpa_execute:
   type: task

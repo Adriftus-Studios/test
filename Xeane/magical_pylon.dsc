@@ -2,7 +2,7 @@ magical_pylon:
   type: item
   material: feather
   debug: false
-  display name: <&7>Crystal Pylon
+  display name: <&e>Crystal Pylon
   data:
     recipe_book_category: travel
   lore:
