@@ -71,7 +71,7 @@ custom_recipe_data_initializer:
           - if !<script.data_key[data.categories].keys.contains[<[category]>]>:
             - debug ERROR "ITEM HAS UNKNOWN CATEGORY<&co> <[category]>"
             - foreach next
-          - flag server recipe_book.categories.<[category]>.<[item_script]>:<[recipe_id].after[<&co>]>
+          - flag server recipe_book.categories.<[category]>.<[item_script]>:|:<[recipe_id].after[<&co>]>
           - flag server recipe_book.recipes.<[recipe_id].after[<&co>]>.items:!|:<[items]>
           - flag server recipe_book.recipes.<[recipe_id].after[<&co>]>.result:<[result]>
   events:
@@ -83,22 +83,49 @@ custom_recipe_data_initializer:
 custom_recipe_inventory_open:
   type: task
   debug: true
-  definitions: recipe_id
+  definitions: recipe_id|page
   data:
     slots: 13|14|15|22|23|24|31|32|33
     result: 26
     back: 20
+    next: 34
+    previous: 30
   script:
+    - define page 1 if:<[page].exists.not>
     - define recipe_id <context.item.flag[recipe_id]> if:<[recipe_id].exists.not>
     - define recipe_id <[recipe_id]>
     - define inventory <inventory[custom_recipe_inventory]>
     - inventory set slot:<script.data_key[data.back]> d:<[inventory]> "o:feather[custom_model_data=3;display=<&c>Back to Categories;flag=run_script:crafting_book_open]"
-    - inventory set slot:<script.data_key[data.result]> d:<[inventory]> o:<server.flag[recipe_book.recipes.<[recipe_id]>.result]>
+    - inventory set slot:<script.data_key[data.result]> d:<[inventory]> o:<server.flag[recipe_book.recipes.<[recipe_id]>.result].with[flag=page:<[page]>]>
     - define slots <script.data_key[data.slots].as_list>
     - foreach <server.flag[recipe_book.recipes.<[recipe_id]>.items]>:
       - foreach next if:<[value].material.name.equals[air].if_null[false]>
       - inventory set slot:<[slots].get[<[loop_index]>]> d:<[inventory]> o:<[value]>
+
+    # Next Page
+    - define recipes <server.flag[recipe_book.recipes.<[recipe_id]>.result].recipe_ids.parse[after[<&co>]]>
+    - if <[recipes].size> > <[page]>:
+      - inventory set slot:<script.data_key[data.next]> o:<item[leather_horse_armor].with[hides=all;display=<&6>Next<&sp>Recipe;color=green;custom_model_data=7;flag=run_script:custom_recipe_inventory_nextpage;flag=recipe_id:<[recipes].get[<[page].add[1]>]>]> d:<[inventory]>
+
+    - if <[page]> > 1:
+      - inventory set slot:<script.data_key[data.previous]> o:<item[leather_horse_armor].with[hides=all;display=<&6>Previous<&sp>Recipe;color=green;custom_model_data=6;flag=run_script:custom_recipe_inventory_previouspage;flag=recipe_id:<[recipes].get[<[page].sub[1]>]>]> d:<[inventory]>
     - inventory open d:<[inventory]>
+
+custom_recipe_inventory_nextpage:
+  type: task
+  debug: false
+  script:
+    - define page <context.inventory.slot[<script[custom_recipe_inventory_open].data_key[data.result]>].flag[page].add[1]>
+    - define recipe_id <context.item.flag[recipe_id]>
+    - run custom_recipe_inventory_open def:<[recipe_id]>|<[page]>
+
+custom_recipe_inventory_previouspage:
+  type: task
+  debug: false
+  script:
+    - define page <context.inventory.slot[<script[custom_recipe_inventory_open].data_key[data.result]>].flag[page].sub[1]>
+    - define recipe_id <context.item.flag[recipe_id]>
+    - run custom_recipe_inventory_open def:<[recipe_id]>|<[page]>
 
 crafting_book_inventory:
   type: inventory
@@ -157,5 +184,5 @@ crafting_book_open_category:
     - if <server.has_flag[recipe_book.categories.<[category]>]>:
       - define items <server.flag[recipe_book.categories.<[category]>].keys>
       - foreach <[items]> as:item:
-        - inventory set slot:<[slots].get[<[loop_index]>]> o:<item[<[item]>].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:<server.flag[recipe_book.categories.<[category]>.<[item]>]>]> d:<[inv]>
+        - inventory set slot:<[slots].get[<[loop_index]>]> o:<item[<[item]>].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:<server.flag[recipe_book.categories.<[category]>.<[item]>].get[1]>]> d:<[inv]>
     - inventory open d:<[inv]>

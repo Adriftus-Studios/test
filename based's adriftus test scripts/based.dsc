@@ -275,16 +275,22 @@ combat_tag:
         on player damaged by player:
             - flag <context.damager> combat_tag expire:30s if:<context.damager.is_player>
             - flag <context.entity> combat_tag expire:30s if:<context.entity.is_player>
+            - ratelimit <player> 30s
             - narrate "<yellow><bold>You have been combat-tagged. Do not log out!" targets:<context.damager>|<context.entity>
-            - waituntil 30s
+            - wait 30s
             - if <player.flag_expiration[combat_tag].equals[0]>:
                 - narrate "<yellow><bold>You are no longer in combat."
         on player dies flagged:combat_tag:
             - flag <player> combat_tag:!
+            - narrate "<yellow><bold>You are no longer in combat."
         on player quit flagged:combat_tag:
+            #instant kill then forced respawn
+            - flag <player> killspawn:<player.location>
             - kill <player>
+            - adjust <player> respawn:true
+            - teleport <player> <player.flag[killspawn]>
+            - flag <player> killspawn:!
             - flag <player> combat_tag:!
-
 #Still in the works
 
 no_hunger:
@@ -302,7 +308,7 @@ hub_server:
     description: Teleports player to the hub.
     usage: /hub
     script:
-        - if <player.has_flag[combatTag]>:
+        - if <player.has_flag[combat_tag]>:
             - narrate "<red>You cannot do that when you're in combat!<reset>"
             - determine cancelled
         - adjust <player> send_to:hub
@@ -317,7 +323,7 @@ test_server:
     description: Teleports player to the test server.
     usage: /test
     script:
-        - if <player.has_flag[combatTag]>:
+        - if <player.has_flag[combat_tag]>:
             - narrate "<red>You cannot do that when you're in combat!<reset>"
             - determine cancelled
         - adjust <player> send_to:test
@@ -448,6 +454,7 @@ Killspawn:
         - if <context.args.size> > 1:
             - narrate "<red>Too many arguments!"
             - stop
+        #instant kill then forced respawn
         - define player <server.match_player[<context.args.get[1]>]>
         - define player <player> if:<context.args.size.is_less_than[1]>
         - flag <[player]> killspawn:<[player].location>
@@ -455,7 +462,7 @@ Killspawn:
         - adjust <[player]> respawn:true
         - teleport <[player]> <[player].flag[killspawn]>
         - flag <[player]> killspawn:!
-# Be able to affect multiple people
+# Should be able to affect multiple people
 
 chair_sit_events:
   type: world
@@ -644,6 +651,8 @@ tag_parser:
 #
 
 #Scripts I need to work on (data script for npc)
+
+#Replicating /ex
 
 #scriptName should be script_name
 #bukkitpriority
