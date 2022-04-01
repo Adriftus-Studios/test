@@ -115,7 +115,7 @@ custom_recipe_inventory_nextpage:
   type: task
   debug: false
   script:
-    - define page <context.inventory.slot[<script.data_key[data.result]>].flag[page].add[1]>
+    - define page <context.inventory.slot[<script[custom_recipe_inventory_open].data_key[data.result]>].flag[page].add[1]>
     - define recipe_id <context.item.flag[recipe_id]>
     - run custom_recipe_inventory_open def:<[recipe_id]>|<[page]>
 
@@ -123,7 +123,7 @@ custom_recipe_inventory_previouspage:
   type: task
   debug: false
   script:
-    - define page <context.inventory.slot[<script.data_key[data.result]>].flag[page].sub[1]>
+    - define page <context.inventory.slot[<script[custom_recipe_inventory_open].data_key[data.result]>].flag[page].sub[1]>
     - define recipe_id <context.item.flag[recipe_id]>
     - run custom_recipe_inventory_open def:<[recipe_id]>|<[page]>
 
