@@ -1,3 +1,13 @@
+uncompressed_iron_block:
+  type: item
+  material: iron_block
+  no_id: true
+  recipes:
+    1:
+      type: shapeless
+      input: compressed_iron_block
+      output_quantity: 9
+
 compressed_iron_block:
   type: item
   material: iron_block

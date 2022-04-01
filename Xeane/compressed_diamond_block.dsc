@@ -1,3 +1,13 @@
+uncompressed_diamond_block:
+  type: item
+  material: diamond_block
+  no_id: true
+  recipes:
+    1:
+      type: shapeless
+      input: compressed_diamond_block
+      output_quantity: 9
+
 compressed_diamond_block:
   type: item
   material: diamond_block

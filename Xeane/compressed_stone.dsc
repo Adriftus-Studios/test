@@ -1,3 +1,13 @@
+uncompressed_stone:
+  type: item
+  material: stone
+  no_id: true
+  recipes:
+    1:
+      type: shapeless
+      input: compressed_stone
+      output_quantity: 9
+
 compressed_stone:
   type: item
   material: stone
