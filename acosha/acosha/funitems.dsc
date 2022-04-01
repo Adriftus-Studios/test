@@ -36,7 +36,7 @@ firework_launcher_script:
 quadruple_compressed_netheriteblock:
     type: item
     material: netherite_block
-    display name: Quadruple Compressed Netherite Block
+    display name: <&f>Quadruple Compressed Netherite Block
     lore:
     - "<&7>6561 Netherite Block"
 
