@@ -88,8 +88,8 @@ custom_recipe_inventory_open:
     slots: 13|14|15|22|23|24|31|32|33
     result: 26
     back: 20
-    next: 26
-    previous: 21
+    next: 36
+    previous: 31
   script:
     - define page 1 if:<[page].exists.not>
     - define recipe_id <context.item.flag[recipe_id]> if:<[recipe_id].exists.not>
