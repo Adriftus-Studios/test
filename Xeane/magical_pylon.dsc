@@ -10,6 +10,8 @@ magical_pylon:
   - "<&7>Crafting Material"
   - "<&e>Magical Paper for Crafting"
   - "<&a>-------------"
+  mechanisms:
+    custom_model_data: 104
   recipes:
     1:
       type: shaped
