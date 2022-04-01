@@ -23,6 +23,8 @@ fishing_minigame_start:
         - if !<[player].has_flag[fishingminigame.stats.bestcatch]>:
             - foreach <proc[fishing_minigame_get_all_types]> as:type:
                 - flag <[player]> fishingminigame.stats.bestcatch.<[type]>:none
+        - if !<[player].has_flag[fishingminigame.music]>:
+            - flag <player> fishingminigame.music:<list[]>
         - run fishing_minigame_set_inventory def:<[player]>
         - if !<server.has_flag[fishingminingame.activeplayers]>:
             - flag server fishingminingame.activeplayers:<list[]>
