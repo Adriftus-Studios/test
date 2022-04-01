@@ -11,5 +11,8 @@ papyrus:
   - "<&a>-------------"
   recipes:
     1:
-      type: shapeless
-      input: honey_bottle|paper
+      type: shaped
+      input:
+      - air|charcoal|air
+      - sugarcane|sugarcane|sugarcane
+      - air|air|air
