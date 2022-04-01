@@ -33,6 +33,7 @@ chair_sit_events:
     - stop if:<player.vehicle.exists.not>
     - define chair <player.vehicle>
     - stop if:<[chair].has_flag[sit.offset].not.if_null[true]>
+    - adjust <[chair]> passengers:<list[]>
     - teleport <player> <[chair].location.sub[<[chair].flag[sit.offset]>].with_yaw[<player.location.yaw>].with_pitch[<player.location.pitch>]>
     - remove <[chair]>
     # after player exits vehicle:
