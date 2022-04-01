@@ -105,10 +105,10 @@ custom_recipe_inventory_open:
     # Next Page
     - define recipes <server.flag[recipe_book.recipes.<[recipe_id]>.result].recipe_ids>
     - if <[recipes].size> > <[page]>:
-      - inventory set slot:<script.data_key[data.next]> o:<server.flag[recipe_book.recipes.<[recipe_id]>.result].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:<[recipes].get[<[page].add[1]>]>]>
+      - inventory set slot:<script.data_key[data.next]> o:<server.flag[recipe_book.recipes.<[recipe_id]>.result].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:<[recipes].get[<[page].add[1]>]>]> d:<[inventory]>
 
     - if <[page]> > 1:
-      - inventory set slot:<script.data_key[data.previous]> o:<server.flag[recipe_book.recipes.<[recipe_id]>.result].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:<[value].get[<[page].sub[1]>]>]>
+      - inventory set slot:<script.data_key[data.previous]> o:<server.flag[recipe_book.recipes.<[recipe_id]>.result].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:<[value].get[<[page].sub[1]>]>]> d:<[inventory]>
     - inventory open d:<[inventory]>
 
 crafting_book_inventory:
