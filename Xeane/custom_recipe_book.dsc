@@ -107,6 +107,7 @@ custom_recipe_inventory_open:
     - if <[recipes].size> > <[page]>:
       - inventory set slot:<script.data_key[data.next]> o:<item[leather_horse_armor].with[hides=all;display=<&6>Next<&sp>Recipe;color=green;custom_model_data=7;flag=run_script:custom_recipe_inventory_nextpage;flag=recipe_id:<[recipes].get[<[page].add[1]>]>]> d:<[inventory]>
 
+    # Previous Page
     - if <[page]> > 1:
       - inventory set slot:<script.data_key[data.previous]> o:<item[leather_horse_armor].with[hides=all;display=<&6>Previous<&sp>Recipe;color=green;custom_model_data=6;flag=run_script:custom_recipe_inventory_previouspage;flag=recipe_id:<[recipes].get[<[page].sub[1]>]>]> d:<[inventory]>
     - inventory open d:<[inventory]>
@@ -175,14 +176,42 @@ crafting_book_open_category:
   data:
     slots: 11|12|13|14|15|16|17|20|21|22|23|24|25|26|29|30|31|32|33|34|35
     back_slot: 2
-  definitions: category
+    next: 9
+    previous: 6
+  definitions: category|page
   script:
+    - define page 1 if:<[page].exists.not>
     - define category <context.item.flag[category]> if:<[category].exists.not>
     - define inv <inventory[crafting_book_category_inventory]>
     - define slots <script.data_key[data.slots].as_list>
-    - inventory set slot:<script.data_key[data.back_slot]> d:<[inv]> "o:feather[custom_model_data=3;display=<&c>Back to Categories;flag=run_script:crafting_book_open]"
+    - inventory set slot:<script.data_key[data.back_slot]> d:<[inv]> "o:feather[custom_model_data=3;display=<&c>Back to Categories;flag=run_script:crafting_book_open;flag=page:<[page]>;flag=category:<[category]>"
     - if <server.has_flag[recipe_book.categories.<[category]>]>:
       - define items <server.flag[recipe_book.categories.<[category]>].keys>
-      - foreach <[items]> as:item:
+      - foreach <[items].get[<[page].sub[1].mul[<[slots].size>].add[1]>].to[<[page].mul[<[slots].size>]>]> as:item:
         - inventory set slot:<[slots].get[<[loop_index]>]> o:<item[<[item]>].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:<server.flag[recipe_book.categories.<[category]>.<[item]>].get[1]>]> d:<[inv]>
+
+      # Next Page
+      - if <[items].size> > <[page].mul[<[slots].size>]>:
+        - inventory set slot:<script.data_key[data.next]> o:<item[leather_horse_armor].with[hides=all;display=<&6>Next<&sp>Recipe;color=green;custom_model_data=7;flag=run_script:custom_recipe_inventory_nextpage;flag=recipe_id:<[recipes].get[<[page].add[1]>]>]> d:<[inventory]>
+
+      # Previous Page
+      - if <[page]> > 1:
+        - inventory set slot:<script.data_key[data.previous]> o:<item[leather_horse_armor].with[hides=all;display=<&6>Previous<&sp>Recipe;color=green;custom_model_data=6;flag=run_script:custom_recipe_inventory_previouspage;flag=recipe_id:<[recipes].get[<[page].sub[1]>]>]> d:<[inventory]>
+
     - inventory open d:<[inv]>
+
+custom_recipe_inventory_category_nextpage:
+  type: task
+  debug: false
+  script:
+    - define page <context.inventory.slot[<script[crafting_book_open_category].data_key[data.back_slot]>].flag[page].add[1]>
+    - define category <context.inventory.slot[<script[crafting_book_open_category].data_key[data.back_slot]>].flag[category]>
+    - run crafting_book_open_category def:<[category]>|<[page]>
+
+custom_recipe_inventory_category_previouspage:
+  type: task
+  debug: false
+  script:
+    - define page <context.inventory.slot[<script[crafting_book_open_category].data_key[data.back_slot]>].flag[page].sub[1]>
+    - define category <context.inventory.slot[<script[crafting_book_open_category].data_key[data.back_slot]>].flag[category]>
+    - run crafting_book_open_category def:<[category]>|<[page]>
