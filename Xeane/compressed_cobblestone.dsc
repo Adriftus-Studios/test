@@ -6,6 +6,8 @@ compressed_cobblestone:
     - "<&7>9 Cobblestone"
   data:
     recipe_book_category: blocks
+  flags:
+    right_click_script: cancel
   recipes:
     1:
       type: shapeless
@@ -26,6 +28,8 @@ double_compressed_cobblestone:
     - "<&7>81 Cobblestone"
   data:
     recipe_book_category: blocks
+  flags:
+    right_click_script: cancel
   recipes:
     1:
       type: shapeless
@@ -46,6 +50,8 @@ triple_compressed_cobblestone:
     - "<&7>729 Cobblestone"
   data:
     recipe_book_category: blocks
+  flags:
+    right_click_script: cancel
   recipes:
     1:
       type: shapeless
@@ -66,6 +72,8 @@ quadruple_compressed_cobblestone:
     - "<&7>6561 Cobblestone"
   data:
     recipe_book_category: blocks
+  flags:
+    right_click_script: cancel
   recipes:
     1:
       type: shaped
