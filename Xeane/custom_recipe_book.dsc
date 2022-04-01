@@ -82,7 +82,7 @@ custom_recipe_data_initializer:
 
 custom_recipe_inventory_open:
   type: task
-  debug: true
+  debug: false
   definitions: recipe_id|page
   data:
     slots: 13|14|15|22|23|24|31|32|33
@@ -130,6 +130,7 @@ custom_recipe_inventory_previouspage:
 
 crafting_book_inventory:
   type: inventory
+  debug: false
   title: <&f><&font[adriftus:guis]><&chr[F808]><&chr[6915]>
   size: 36
   gui: true
@@ -137,6 +138,7 @@ crafting_book_inventory:
 
 crafting_book_category_inventory:
   type: inventory
+  debug: false
   title: <&f><&font[adriftus:guis]><&chr[F808]><&chr[6916]>
   size: 36
   gui: true
@@ -144,6 +146,7 @@ crafting_book_category_inventory:
 
 custom_recipe_inventory:
   type: inventory
+  debug: false
   title: <&f><&font[adriftus:guis]><&chr[F808]><&chr[6917]>
   size: 36
   gui: true
@@ -176,7 +179,7 @@ crafting_book_open_category:
   data:
     slots: 11|12|13|14|15|16|17|20|21|22|23|24|25|26|29|30|31|32|33|34|35
     back_slot: 2
-    next: 9
+    next: 8
     previous: 6
   definitions: category|page
   script:
