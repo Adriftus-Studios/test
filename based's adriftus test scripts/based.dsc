@@ -616,3 +616,4 @@ gameruleCommand:
 #scriptName should be script_name
 #bukkitpriority
 #Organize script files
+#Permissions
