@@ -32,6 +32,7 @@ back_scroll:
   lore:
     - "<&e>--------------------"
     - "<&e>Return to your last location"
+    - "<&c>Incapable of long distances"
     - "<&e>--------------------"
   flags:
     right_click_script:
@@ -63,9 +64,13 @@ back_execute:
       - narrate "<&c>You have no location to return to"
       - stop
     - define type <context.item.flag[type]>
-    - if <[type]> == scroll && <player.flag[last_location].world> != <player.location.world>:
-      - narrate "<&c>This item lacks the power for cross dimensional travel"
-      - stop
+    - if <[type]> == scroll:
+      - if <player.flag[last_location].world> != <player.location.world>:
+        - narrate "<&c>This item lacks the power for cross dimensional travel"
+        - stop
+      - if <player.flag[last_location].distance[<player.location>]> > 2000:
+        - narrate "<&c>This item lacks the power for distances grater than 2000 blocks"
+        - stop
     - take iteminhand
     - run totem_test def:101
     - wait 2s

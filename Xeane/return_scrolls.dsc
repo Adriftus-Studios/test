@@ -8,6 +8,7 @@ return_scroll:
   - "<&a>-------------"
   - "<&e>Right Click while Holding"
   - "<&e>Saves location when crafted"
+  - "<&c>Incapable of long distances"
   - "<&a>-------------"
   flags:
     right_click_script: return_task
@@ -57,8 +58,12 @@ return_task:
   debug: false
   script:
     - define type <context.item.flag[type]>
-    - if <[type]> == scroll && <context.item.flag[destination].world> != <player.location.world>:
-      - narrate "<&c>This item lacks the power for cross dimensional travel"
-      - stop
+    - if <[type]> == scroll:
+      - if <context.item.flag[destination].world> != <player.location.world>:
+        - narrate "<&c>This item lacks the power for cross dimensional travel"
+        - stop
+      - if <context.item.flag[destination].distance[<player.location>]> > 2000:
+        - narrate "<&c>This item lacks the power for distances grater than 2000 blocks"
+        - stop
     - take iteminhand
     - run teleportation_animation_run def:<context.item.flag[destination]>
