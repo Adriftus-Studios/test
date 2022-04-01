@@ -600,28 +600,56 @@ set_gamerule:
 
 #ghostScript:
 
-noDrowning:
+no_drowning:
     type: world
     events:
         after player changes air level:
             - if <player.oxygen> < 20:
                 - adjust <player> oxygen:<player.max_oxygen>
+#
 
-#welcomeAndQuitMessage:
+welcome_message:
+    type: world
+    events:
+        on player first login:
+            - announce "<yellow><bold><underline><player> has joined for the first time. Welcome!"
+        on player login:
+            - announce "<yellow><bold><underline>Welcome back, <player>!"
+#
+
+quit_message:
+    type: world
+    events:
+        on player quits:
+            - announce "<yellow><bold><underline><player> has left the server. See you later!"
+#
 
 #scrambleWordMinigame:
 
-#TagParser Replication:
+tag_parser:
+    type: command
+    name: Parse
+    description: Parses a tag.
+    usage: /parse <&lt>announce/narrate<&gt> tag
+    aliases:
+        - tag
+    tab completions:
+        1: announce | narrate
+        2: <&lt>tag<&gt>
+    script:
+        - if <context.args.get[1].equals[announce]>:
+            - announce <context.args.get[2]>
+        - else if <context.args.get[1].equals[narrate]>:
+            - narrate <context.args.get[2]>
+#
 
 #Scripts I need to work on (data script for npc)
 
 #scriptName should be script_name
 #bukkitpriority
 #Organize script files
-<<<<<<< HEAD
 #Chat channel scripts
 #Title scripts
 #Remove lastdied flag
-=======
 #Permissions
->>>>>>> 65a20f03ab6d061f84754f210f2c2f721789e2bf
+# narrate <element[<&lt>tag<&gt>].parse[tag]>
