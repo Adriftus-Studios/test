@@ -91,7 +91,7 @@ custom_recipe_inventory_open:
     next: 36
     previous: 31
   script:
-    - define page <context.inventory.slot[<script.data_key[data.result]>]> if:<context.inventory.exists>
+    - define page <context.inventory.slot[<script.data_key[data.result]>].flag[page]> if:<context.inventory.slot[<script.data_key[data.result]>].has_flag[page]>
     - define page 1 if:<[page].exists.not>
     - define recipe_id <context.item.flag[recipe_id]> if:<[recipe_id].exists.not>
     - define recipe_id <[recipe_id]>
