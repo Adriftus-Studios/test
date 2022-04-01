@@ -21,7 +21,7 @@ back_crystal:
       input:
       - magical_pylon|air|magical_pylon
       - air|redstone_block|air
-      - magical_pylon||magical_pylon
+      - magical_pylon|air|magical_pylon
 
 back_scroll:
   type: item

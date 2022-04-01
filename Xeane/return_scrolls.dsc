@@ -41,7 +41,7 @@ return_crystal:
       input:
       - magical_pylon|air|magical_pylon
       - air|lapis_block|air
-      - magical_pylon||magical_pylon
+      - magical_pylon|air|magical_pylon
 
 
 return_events:
