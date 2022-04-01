@@ -1,55 +1,53 @@
-# Hi! You're looking at a file that has every single script of mine, some completed with the help of my co-workers at Adriftus Studios!
-
 myNPC:
     type: assignment
     actions:
         on assignment:
-        - trigger name:click state:true
+            - trigger name:click state:true
         on click:
-        - if <player.uuid> == ef2ed164-08b5-45d2-b000-c9ba6cf412a4:
-            - chat "Welcome back, <player.name>! You have scripts to work on - "
-            # | Learning list tags
-        - else:
-            - chat "Hi there, <player.name>!"
+            - if <player.uuid> == ef2ed164-08b5-45d2-b000-c9ba6cf412a4:
+                - chat "Welcome back, <player.name>! You have scripts to work on - "
+                # | Learning list tags
+            - else:
+                - chat "Hi there, <player.name>!"
 #
 
-protectTheOwner:
+protect_the_owner:
     type: assignment
     actions:
         on assignment:
-        - trigger state:true
+            - trigger state:true
         on entity attacks player:
             - if <context.entity> == <npc.owner>:
                 - look <context.attacker>
                 - attack <context.attacker>
 #
 
-supportBell:
+support_bell:
     type: item
     material: bell
     display name: <gold>Support Bell
     lore:
-    - Gives you food, fills your hunger bar and fully insta-heals you!
+        - Gives you food, fills your hunger bar and fully insta-heals you!
     enchantments:
-    - sharpness:5
-magicReplenishingBell:
+        - sharpness:5
+magic_replenishing_bell:
     type: world
     item: support_bell
     events:
         after player right clicks support_bell:
-        - if <player.health_percentage> < 100:
-            - heal
-            - actionbar "The bell has healed you, <player.name.target>!"
-            - hurt <player>
-        - else if <player.has_flag[no_more]>
-        - if <player.food_level> < 100 :
-            - feed
-            - give cooked_beef quantity:64
-            - actionbar "Since you're in full health, you get a stack of steak while being fully fed!"
-            - flag player no_more
+            - if <player.health_percentage> < 100:
+                - heal
+                - actionbar "The bell has healed you, <player.name.target>!"
+                - hurt <player>
+            - else if <player.has_flag[no_more]>
+            - if <player.food_level> < 100:
+                - feed
+                - give cooked_beef quantity:64
+                - actionbar "Since you're in full health, you get a stack of steak while being fully fed!"
+                - flag player no_more
 #Approved, being reworked
 
-stoneGivesDiamond:
+stone_gives_diamond:
     type: world
     events:
         after player breaks stone:
@@ -59,7 +57,7 @@ stoneGivesDiamond:
             - flag count 0
 #Appproved
 
-coolThing:
+cool_thing:
   type: world
   debug: false
   events:
@@ -67,14 +65,14 @@ coolThing:
       - shoot <context.item.data_key[data.shoots]> speed:4
 #Approved
 
-chestLockItem:
+chest_lock_item:
   type: item
   material: iron_nugget
   display name: <white><bold>Iron Padlock
   lore:
     - <yellow><bold>Right-click a chest to lock it.
 
-chestLock:
+chest_lock_system:
     type: world
     events:
         on player right clicks chest|trapped_chest|barrel with:chestLockItem:
@@ -93,7 +91,7 @@ chestLock:
 #Issue - flag isn't deleted when chest is destroyed
 #Issue - Idea isn't very clear
 
-spawnCommand:
+spawn_Command:
     type: command
     name: spawn
     description: Spawns.
@@ -102,19 +100,13 @@ spawnCommand:
         - teleport <context.player> spawn_location
 #Approved
 
-confirmScript_GUI:
+confirm_Script_GUI:
     type: task
     script:
         - inventory open
 #Incomplete
-interactableTextTesting:
-    type: task
-    script:
-        - narrate "You can <&hover[very epic].type[SHOW_TEXT]><element[click here].on_click[/spawn].type[RUN_COMMAND]><&end_hover> to /spawn!"
 
-#Approved
-
-spawnSheep_command:
+spawn_sheep_command:
     type: command
     name: spawnsheep
     description: Spawns a sheep at your location.
@@ -122,7 +114,7 @@ spawnSheep_command:
     script:
     - run confirmScriptText def:spawnSheep
 # It works
-spawnSheep:
+spawn_sheep:
     type: task
     script:
         - if <player.location.forward_flat[2].equals[air].not>:
@@ -134,18 +126,18 @@ spawnSheep:
             - determine passively cancelled
 # It works, no changes needed
 
-confirmScriptText:
+confirm_Script_Text:
     type: task
     definitions: callback
     script:
         - flag player callback:<[callback]>
-        - clickable confirmScriptText_callback def:true save:Confirm usages:1
-        - clickable confirmScriptText_callback def:false save:Cancel usages:1
+        - clickable confirm_Script_Text_callback def:true save:Confirm usages:1
+        - clickable confirm_Script_Text_callback def:false save:Cancel usages:1
         - narrate "Are you sure about this?"
         - narrate <&hover[Confirm].type[show_text]><element[<green><bold><underline>[Yes]].on_click[<entry[Confirm].command>]><&end_hover><reset>
         - narrate <&hover[Cancel].type[show_text]><element[<red><bold><underline>[No]].on_click[<entry[Cancel].command>]><&end_hover><reset>
 #Very approved
-confirmScriptText_callback:
+confirm_Script_Text_callback:
   type: task
   debug: false
   definitions: bool
@@ -161,11 +153,11 @@ confirmScriptText_callback:
 # | script:
 # | - run confirmScriptText def:relevantTaskScript
 
-switchGamemodeSurvivalCreative:
+switch_gamemode_survival_creative:
     type: command
-    name: switchGamemode
+    name: switch_gamemode
     description: Switches the player between Creative and Survival.
-    usage: /switchgamemode
+    usage: /switch_gamemode
     aliases:
         - swgm
     permissions: modelock.creative; modelock.survival;
@@ -179,18 +171,18 @@ switchGamemodeSurvivalCreative:
             - narrate "<yellow><bold><underline>Switched to Creative mode.<reset>"
 #Make a menu version for other gamemodes.
 
-selectGamemode_command:
+select_gamemode_command:
     type: command
-    name: selectGamemode
+    name: select_gamemode
     description: Opens a menu to select a particular gamemode.
-    usage: /selectgamemode
+    usage: /select_gamemode
     aliases:
         - segm
     script:
-        - clickable selectGamemode_callback def:<element[creative]> save:creative usages:1
-        - clickable selectGamemode_callback def:<element[survival]> save:survival usages:1
-        - clickable selectGamemode_callback def:<element[adventure]> save:adventure usages:1
-        - clickable selectGamemode_callback def:<element[spectator]> save:spectator usages:1
+        - clickable select_gamemode_callback def:<element[creative]> save:creative usages:1
+        - clickable select_gamemode_callback def:<element[survival]> save:survival usages:1
+        - clickable select_gamemode_callback def:<element[adventure]> save:adventure usages:1
+        - clickable select_gamemode_callback def:<element[spectator]> save:spectator usages:1
         - narrate "Select a gamemode:"
         - narrate "<&hover[Click here to switch to Creative mode.].type[show_text]><element[<yellow><bold><underline>[Creative]].on_click[<entry[creative].command>]><&end_hover><reset>"
         - narrate "<&hover[Click here to switch to Survival mode.].type[show_text]><element[<yellow><bold><underline>[Survival]].on_click[<entry[survival].command>]><&end_hover><reset>"
@@ -198,7 +190,7 @@ selectGamemode_command:
         - narrate "<&hover[Click here to switch to Spectator mode.].type[show_text]><element[<yellow><bold><underline>[Spectator]].on_click[<entry[spectator].command>]><&end_hover><reset>"
 #
 
-selectGamemode_callback:
+select_gamemode_callback:
     type: task
     definitions: gamemode
     script:
@@ -221,12 +213,12 @@ selectGamemode_callback:
             - flag player callback:!
 #Not working; for testing only
 
-resetWorldborder:
+reset_worldborder:
     type: command
-    name: resetworldborder
+    name: reset_world_border
     debug: false
     description: Resets the world border for the player.
-    usage: /resetworldborder
+    usage: /reset_world_border
     aliases:
         - rwb
     permissions: adriftus.worldborder.reset
@@ -236,18 +228,17 @@ resetWorldborder:
         - narrate "<bold><yellow>The world border has been reset.<reset>"
 #Works
 
-seeInventory:
+see_inventory:
     type: command
-    name: seeInventory
+    name: see_inventory
     description: Displays the inventory of a player.
-    usage: /seeinventory <&lt>name<&gt>
+    usage: /see_inventory <&lt>name<&gt>
     aliases:
-        - inventory
         - si
     tab completion:
-        1: <server.online_players>
+        1: <server.online_players.parse[name]>
     script:
-        - flag <player> seeingInventory
+        - flag <player> seeing_inventory
         - if <context.args.size> < 1:
             - inventory open destination:<player>
             - stop
@@ -258,16 +249,16 @@ seeInventory:
         #    - stop
         - inventory open destination:<[player].inventory>
         - narrate "<yellow>Opening inventory<reset>"
-seeInventoryWorld:
+see_inventory_world:
     type: world
     events:
-        on player left|right clicks item in inventory flagged:seeingInventory:
+        on player left|right clicks item in inventory flagged:seeing_inventory:
             - determine passively cancelled
             - if <context.inventory.location.material.name.equals[shulker_box]>:
                 - inventory open destination:<context.item.inventory>
             - if <context.item> == <context.item_in_hand>:
                 - inventory adjust <context.item> slot:<player.held_item_slot>
-        on player closes inventory flagged:seeingInventory:
+        on player closes inventory flagged:seeing_inventory:
             - flag <player> seeingInventory:!
 
 # Idea -
@@ -278,34 +269,34 @@ seeInventoryWorld:
 # Issues -
 #   - Item on hand disappears if interacted with (should be adjusted manually)
 
-combatTag:
+combat_tag:
     type: world
     events:
         on player damaged by player:
-            - flag <context.damager> combatTag expire:30s if:<context.damager.is_player>
-            - flag <context.entity> combatTag expire:30s if:<context.entity.is_player>
+            - flag <context.damager> combat_tag expire:30s if:<context.damager.is_player>
+            - flag <context.entity> combat_tag expire:30s if:<context.entity.is_player>
             - narrate "<yellow><bold>You have been combat-tagged. Do not log out!" targets:<context.damager>|<context.entity>
             - waituntil 30s
-            - if <player.flag_expiration[combatTag].equals[0]>:
+            - if <player.flag_expiration[combat_tag].equals[0]>:
                 - narrate "<yellow><bold>You are no longer in combat."
-        on player dies flagged:combatTag:
-            - flag <player> combatTag:!
-        on player quit flagged:combatTag:
+        on player dies flagged:combat_tag:
+            - flag <player> combat_tag:!
+        on player quit flagged:combat_tag:
             - kill <player>
-            - flag <player> combatTag:!
+            - flag <player> combat_tag:!
 
 #Still in the works
 
-noHunger:
+no_hunger:
     type: world
     events:
-        on player changes food level flagged:noHunger:
-            - ratelimit <player> 2s
+        on player changes food level flagged:no_hunger:
             - if <context.food> < 20:
                 - feed <player>
+            - ratelimit <player> 2s
 #Still in the works
 
-hubCommand:
+hub_server:
     type: command
     name: hub
     description: Teleports player to the hub.
@@ -320,7 +311,7 @@ hubCommand:
         - teleport <player> <location[0,78,0,4_buildings]>
 #Works
 
-testCommand:
+test_server:
     type: command
     name: test
     description: Teleports player to the test server.
@@ -335,7 +326,7 @@ testCommand:
         - teleport <player> <location[-2932,66,4048,world]>
 #
 
-sitCommand:
+sit_down:
     type: command
     name: Sit
     description: Makes the player sit down on a block.
@@ -350,7 +341,7 @@ sitCommand:
             - flag <player> sitting:!
 #In case of a glitch (likely on the second attempt), kick yourself.
 
-tpCommand:
+player_teleport:
     type: command
     name: Teleport
     description: Teleport.
@@ -359,9 +350,12 @@ tpCommand:
         - tp
     tab completions:
         1: <server.online_players.parse[name]>|coordinates
-        2: <server.online_players.parse[name]>|x
-        3: y
-        4: z
+        2: <server.online_players.parse[name]>
+    tab complete:
+        - if <server.online_players.parse[name].contains[<context.args.get[1]>]>:
+            - determine <list[<server.online_players.parse[name]>|<server.online_players.parse[name]>]>
+        - else if <context.args.get[1].contains[coordinates]>:
+            - determine <list[coordinates|x|y|z]>
     script:
         - if <context.args.size> == 0:
             - narrate "<red><bold>Please enter a player's name."
@@ -381,7 +375,7 @@ tpCommand:
             - narrate "<red><bold>Too many arguments!<reset>"
 #
 
-flyCommand:
+toggle_fly:
     type: command
     name: Fly
     description: Toggles fly mode.
@@ -391,11 +385,11 @@ flyCommand:
         - adjust <player> flying:true
 #
 
-npcController:
+npc_Controller:
     type: command
-    name: NPCControl
+    name: NPC_Control
     description: Controls an NPC
-    usage: /npccontrol <&lt>NPC-ID<&gt>
+    usage: /npc_control <&lt>NPC-ID<&gt>
     data:
         player_safety_tags:
             - NPCController
@@ -415,7 +409,7 @@ npcController:
             - flag <player> no_fall_damage
             - flag <player> noDrowning
             - flag <player> noHunger
-moveAsNPC:
+move_as_NPC:
     type: world
     events:
         on player walks flagged:NPCController:
@@ -428,11 +422,12 @@ moveAsNPC:
 # | Key sections of the project
 # - Bot controller mode (player is safe, location before controller mode is saved and player can exit the controller mode safely)
 # - Bot movement (basic player movements); registering
+# - Animations, title, particles
 
-fireballLauncher:
+fireball_launcher:
     type: item
     material: bow
-fireballLauncherScript:
+fireball_launcher_world:
     type: world
     events:
         after player shoots fireballLauncher:
@@ -478,7 +473,7 @@ chair_sit_events:
 # - Made by AJ
 # - To be tweaked into a sit command for a block below me
 
-vanishCommand:
+vanish:
     type: command
     name: Vanish
     description: Poof
@@ -497,22 +492,22 @@ vanishCommand:
             - narrate <gray><bold>Unpoofed.
 #
 
-returnDeathCommand:
+return_to_deathplace:
     type: command
     name: Back
     description: Go back to where you last died.
     usage: /back
     script:
-        - teleport <player> <player.flag[lastDied]>
+        - teleport <player> <player.flag[last_died]>
         - narrate "<yellow><bold>You have been teleported to where you last died."
-lastDied:
+last_died:
     type: world
     events:
         on player dies:
-            - flag <player> lastDied:<player.location>
+            - flag <player> last_died:<player.location>
 # It works
 
-difficultyCommand:
+set_difficulty:
     type: command
     name: Setdifficulty
     description: Sets difficulty of the world.
@@ -551,7 +546,7 @@ difficultyCommand:
         - narrate "<yellow><bold>Difficulty set to <context.args.get[2]> in world [<context.args.get[1]>]."
 #
 
-clearInventory:
+clear_inventory:
     type: command
     name: Clearinventory
     description: Clears inventory.
@@ -571,7 +566,7 @@ clearInventory:
             - narrate "<red>Too many arguments!"
 #Username case to be fixed
 
-gameruleCommand:
+set_gamerule:
     type: command
     name: Gamerule
     description: Set the gamerule.
@@ -605,7 +600,12 @@ gameruleCommand:
 
 #ghostScript:
 
-#noDrowning:
+noDrowning:
+    type: world
+    events:
+        after player changes air level:
+            - if <player.oxygen> < 20:
+                - adjust <player> oxygen:<player.max_oxygen>
 
 #welcomeAndQuitMessage:
 
@@ -618,3 +618,6 @@ gameruleCommand:
 #scriptName should be script_name
 #bukkitpriority
 #Organize script files
+#Chat channel scripts
+#Title scripts
+#Remove lastdied flag
