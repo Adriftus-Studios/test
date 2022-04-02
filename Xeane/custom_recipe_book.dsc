@@ -67,7 +67,7 @@ custom_recipe_data_initializer:
             - else:
               - define value <[recipe_item].as_item>
             - define items:|:<[recipe_item]>
-          - define category <[result].script.data_key[data.recipe_book_category]>
+          - define category <[result].script.data_key[data.recipe_book_category].before[.]>
           - if !<script.data_key[data.categories].keys.contains[<[category]>]>:
             - debug ERROR "ITEM HAS UNKNOWN CATEGORY<&co> <[category]>"
             - foreach next
@@ -168,7 +168,8 @@ crafting_book_open:
   script:
     - define inventory <inventory[crafting_book_inventory]>
     - foreach <script[custom_recipe_data_initializer].parsed_key[data.categories]> key:category as:values:
-      - define item <item[<[values].get[material]>].with[custom_model_data=3;lore=<[values].get[lore]>;display=<[values].get[display]>;flag=run_script:crafting_book_open_category;flag=category:<[category]>]>
+      # deleted from below ;lore=<[values].get[lore]>
+      - define item <item[<[values].get[material]>].with[custom_model_data=3;display=<[values].get[display]>;flag=run_script:crafting_book_open_category;flag=category:<[category]>]>
       - foreach <script.data_key[data.<[category]>_slots]> as:slot:
         - inventory set slot:<[slot]> o:<[item]> d:<[inventory]>
     - inventory open d:<[inventory]>
@@ -189,7 +190,7 @@ crafting_book_open_category:
     - define slots <script.data_key[data.slots].as_list>
     - inventory set slot:<script.data_key[data.back_slot]> d:<[inv]> "o:feather[custom_model_data=3;display=<&c>Back to Categories;flag=run_script:crafting_book_open;flag=page:<[page]>]"
     - if <server.has_flag[recipe_book.categories.<[category]>]>:
-      - define items <server.flag[recipe_book.categories.<[category]>].keys>
+      - define items <server.flag[recipe_book.categories.<[category]>].keys.sort_by_value[as_item.script.data_key[data.recipe_book_category]]>
       - foreach <[items].get[<[page].sub[1].mul[<[slots].size>].add[1]>].to[<[page].mul[<[slots].size>]>]> as:item:
         - inventory set slot:<[slots].get[<[loop_index]>]> o:<item[<[item]>].with[flag=run_script:custom_recipe_inventory_open;flag=recipe_id:<server.flag[recipe_book.categories.<[category]>.<[item]>].get[1]>]> d:<[inv]>
 

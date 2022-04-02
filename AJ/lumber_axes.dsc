@@ -63,7 +63,7 @@ lumber_axe_iron:
             unbreaking: 5
     display name: <&e>Iron Lumber Axe
     data:
-      recipe_book_category: tools
+      recipe_book_category: tools.lumber_axe1
     recipes:
         1:
             type: shaped
@@ -82,7 +82,7 @@ lumber_axe_diamond:
             unbreaking: 5
     display name: <&e>Diamond Lumber Axe
     data:
-      recipe_book_category: tools
+      recipe_book_category: tools.lumber_axe2
     recipes:
         1:
             type: shaped
@@ -100,7 +100,7 @@ lumber_axe_netherite:
             unbreaking: 5
     display name: <&e>Netherite Lumber Axe
     data:
-      recipe_book_category: tools
+      recipe_book_category: tools.lumber_axe3
     recipes:
         1:
             type: shaped

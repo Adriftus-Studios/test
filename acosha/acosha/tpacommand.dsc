@@ -24,7 +24,7 @@ tpa_crystal:
   material: feather
   display name: <&2>Friendly Crystal
   data:
-    recipe_book_category: travel
+    recipe_book_category: travel.crystal
   lore:
     - "<&e>--------------------"
     - "<&e>Use to request a teleport"

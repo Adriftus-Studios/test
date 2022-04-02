@@ -3,7 +3,7 @@ return_scroll:
   material: feather
   display name: <&6>Scroll of Returning
   data:
-    recipe_book_category: travel
+    recipe_book_category: travel.scroll
   lore:
   - "<&a>-------------"
   - "<&e>Right Click while Holding"
@@ -25,7 +25,7 @@ return_crystal:
   material: feather
   display name: <&6>Return Crystal
   data:
-    recipe_book_category: travel
+    recipe_book_category: travel.crystal
   lore:
   - "<&a>-------------"
   - "<&e>Right Click while Holding"

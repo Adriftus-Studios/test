@@ -4,7 +4,7 @@ magical_pylon:
   debug: false
   display name: <&e>Crystal Pylon
   data:
-    recipe_book_category: travel
+    recipe_book_category: misc
   lore:
   - "<&a>-------------"
   - "<&7>Crafting Material"

@@ -15,7 +15,7 @@ compressed_cobblestone:
   lore:
     - "<&7>9 Cobblestone"
   data:
-    recipe_book_category: blocks
+    recipe_book_category: blocks.cobblestone1
   flags:
     right_click_script: cancel
   recipes:
@@ -37,7 +37,7 @@ double_compressed_cobblestone:
   lore:
     - "<&7>81 Cobblestone"
   data:
-    recipe_book_category: blocks
+    recipe_book_category: blocks.cobblestone2
   flags:
     right_click_script: cancel
   recipes:
@@ -59,7 +59,7 @@ triple_compressed_cobblestone:
   lore:
     - "<&7>729 Cobblestone"
   data:
-    recipe_book_category: blocks
+    recipe_book_category: blocks.cobblestone3
   flags:
     right_click_script: cancel
   recipes:
@@ -81,7 +81,7 @@ quadruple_compressed_cobblestone:
   lore:
     - "<&7>6561 Cobblestone"
   data:
-    recipe_book_category: blocks
+    recipe_book_category: blocks.cobblestone4
   flags:
     right_click_script: cancel
   recipes:
