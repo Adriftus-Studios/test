@@ -71,6 +71,7 @@ easter_bunny_shop_sub_menu_open:
     - define icon <item[easter_bunny_shop_sub_menu_icon]>
     - define icon <[icon].with[display_name=<script[easter_bunny_shop_items].data_key[categories.<[category]>.items.<[item]>.icon.display<&sp>name].parsed.parse_color>]>
     - define icon <[icon].with[material=<script[easter_bunny_shop_items].data_key[categories.<[category]>.items.<[item]>.icon.material].parsed.parse_color>]>
+    - define icon <[icon].with[lore=<script[easter_bunny_shop_items].data_key[categories.<[category]>.items.<[item]>.icon.lore].parsed.parse_color>]> if:<script[easter_bunny_shop_items].data_key[categories.<[category]>.items.<[item]>.icon.lore].exists>
     - give <[icon]> to:<[inv]> quantity:1
   - inventory open d:<[inv]>
 
