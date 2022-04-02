@@ -15,6 +15,7 @@ easter_bunny_shop_main_menu:
   inventory: chest
   size: 54
   title: easter_bunny_shop_main_menu
+  gui: true
   definitions:
     f: <item[standard_filler]>
   slots:
@@ -24,32 +25,6 @@ easter_bunny_shop_main_menu:
   - [f] [] [] [] [] [] [] [] [f]
   - [f] [] [] [] [] [] [] [] [f]
   - [f] [f] [f] [f] [f] [f] [f] [f] [f]
-
-easter_bunny_shop_sub_menu_icon:
-  type: item
-  material: cobblestone
-
-easter_bunny_shop_sub_menu:
-  type: inventory
-  inventory: chest
-  size: 54
-  title: easter_bunny_shop_sub_menu
-  definitions:
-    f: <item[standard_filler]>
-  slots:
-  - [f] [f] [f] [f] [f] [f] [f] [f] [f]
-  - [f] [] [] [] [] [] [] [] [f]
-  - [f] [] [] [] [] [] [] [] [f]
-  - [f] [] [] [] [] [] [] [] [f]
-  - [f] [] [] [] [] [] [] [] [f]
-  - [f] [f] [f] [f] [f] [f] [f] [f] [f]
-
-easter_bunny_shop_events:
-  type: world
-  debug: false
-  events:
-    on player clicks in easter_bunny_shop_main_menu:
-    - narrate TODO
 
 easter_bunny_shop_main_menu_open:
   type: task
@@ -64,6 +39,33 @@ easter_bunny_shop_main_menu_open:
     - define icon <[icon].with[material=<script[easter_bunny_shop_items].data_key[categories.<[cat]>.icon.material].parsed.parse_color>]>
     - give <[icon]> to:<[inv]> quantity:1
   - inventory open d:<[inv]>
+
+easter_bunny_shop_sub_menu_icon:
+  type: item
+  material: cobblestone
+
+easter_bunny_shop_sub_menu:
+  type: inventory
+  inventory: chest
+  size: 54
+  title: easter_bunny_shop_sub_menu
+  gui: true
+  definitions:
+    f: <item[standard_filler]>
+  slots:
+  - [f] [f] [f] [f] [f] [f] [f] [f] [f]
+  - [f] [] [] [] [] [] [] [] [f]
+  - [f] [] [] [] [] [] [] [] [f]
+  - [f] [] [] [] [] [] [] [] [f]
+  - [f] [] [] [] [] [] [] [] [f]
+  - [f] [f] [f] [f] [f] [f] [f] [f] [f]
+
+easter_bunny_shop_events:
+  type: world
+  debug: false
+  events:
+    on player clicks easter_bunny_shop_main_menu_icon in easter_bunny_shop_main_menu:
+    - narrate TODO
 
 easter_bunny_shop_items:
   type: data
