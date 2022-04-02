@@ -83,11 +83,4 @@ easter_bunny_shop_items:
             - <yaml[titles].read[titles.EasterHunt.description].parsed.parse_color>
           price: 200
           task:
-            name: titles_unlock
-            definitions:
-              title_id: EasterHunt
-              player: <player>
-    # cosmetics:
-    #   icon:
-    #     material: end_crystal
-    #     display name: <&e>Cosmetics
+          - run titles_unlock def:EasterHunt|<player>
