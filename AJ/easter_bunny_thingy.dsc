@@ -14,7 +14,7 @@ easter_bunny_shop_main_menu:
   type: inventory
   inventory: chest
   size: 54
-  title: TODO
+  title: easter_bunny_shop_main_menu
   definitions:
     f: <item[standard_filler]>
   slots:
@@ -33,7 +33,7 @@ easter_bunny_shop_sub_menu:
   type: inventory
   inventory: chest
   size: 54
-  title: TODO
+  title: easter_bunny_shop_sub_menu
   definitions:
     f: <item[standard_filler]>
   slots:
@@ -60,8 +60,8 @@ easter_bunny_shop_main_menu_open:
   - define inv <inventory[easter_bunny_shop_main_menu]>
   - foreach <script[easter_bunny_shop_items].list_keys[categories]> as:cat:
     - define icon <item[easter_bunny_shop_sub_menu_icon]>
-    - define icon <[icon].with[display_name=<script[easter_bunny_shop_items].data_key[categories.<[cat]>.icon.display<&sp>name].parsed>]>
-    - define icon <[icon].with[material=<script[easter_bunny_shop_items].data_key[categories.<[cat]>.icon.material].parsed>]>
+    - define icon <[icon].with[display_name=<script[easter_bunny_shop_items].data_key[categories.<[cat]>.icon.display<&sp>name].parsed.parse_color>]>
+    - define icon <[icon].with[material=<script[easter_bunny_shop_items].data_key[categories.<[cat]>.icon.material].parsed.parse_color>]>
     - give <[icon]> to:<[inv]> quantity:1
   - inventory open d:<[inv]>
 
@@ -71,14 +71,14 @@ easter_bunny_shop_items:
     titles:
       icon:
         material: name_tag
-        display name: <&e>Titles
+        display name: &eTitles
       items:
         title_unlock_EasterHunt:
           icon:
             material: name_tag
             display name: <yaml[titles].read[titles.EasterHunt.tag]>
             lore:
-            - <yaml[titles].read[titles.EasterHunt.description]>
+            - <yaml[titles].read[titles.EasterHunt.description].parsed.parse_color>
           price: 200
           task:
             name: titles_unlock
