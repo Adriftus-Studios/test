@@ -15,7 +15,7 @@ compressed_dirt:
   lore:
     - "<&7>9 Dirt"
   data:
-    recipe_book_category: blocks.dirt
+    recipe_book_category: blocks.dirt1
   flags:
     right_click_script: cancel
   recipes:
@@ -37,7 +37,7 @@ double_compressed_dirt:
   lore:
     - "<&7>81 Dirt"
   data:
-    recipe_book_category: blocks.dirt
+    recipe_book_category: blocks.dirt2
   flags:
     right_click_script: cancel
   recipes:
@@ -59,7 +59,7 @@ triple_compressed_dirt:
   lore:
     - "<&7>729 Dirt"
   data:
-    recipe_book_category: blocks.dirt
+    recipe_book_category: blocks.dirt3
   flags:
     right_click_script: cancel
   recipes:
@@ -81,7 +81,7 @@ quadruple_compressed_dirt:
   lore:
     - "<&7>6561 Dirt"
   data:
-    recipe_book_category: blocks.dirt
+    recipe_book_category: blocks.dirt4
   flags:
     right_click_script: cancel
   recipes:
