@@ -7,4 +7,6 @@ locater_compass:
     usage: /track (player)
     script:
         - define player <server.match_player[<context.args.get[1]>].if_null[null]>
-        - compass <[player].location>
+        - while <player.has_flag[tracking]> && <player.is_online>:
+                - compass <[player].flag[tracking].location>
+                - wait 5s
