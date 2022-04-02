@@ -60,6 +60,20 @@ easter_bunny_shop_sub_menu:
   - [f] [] [] [] [] [] [] [] [f]
   - [f] [f] [f] [f] [f] [f] [f] [f] [f]
 
+easter_bunny_shop_sub_menu_open:
+  type: task
+  debug: false
+  definitions: category|player
+  script:
+  - adjust <queue> linked_player:<[player]> if:<[player].object_type.equals[Player].if_null[false]>
+  - define inv <inventory[easter_bunny_shop_sub_menu]>
+  - foreach <script[easter_bunny_shop_items].list_keys[categories.<[category]>.items]> as:item:
+    - define icon <item[easter_bunny_shop_sub_menu_icon]>
+    - define icon <[icon].with[display_name=<script[easter_bunny_shop_items].data_key[categories.<[category]>.item.<[item]>.icon.display<&sp>name].parsed.parse_color>]>
+    - define icon <[icon].with[material=<script[easter_bunny_shop_items].data_key[categories.<[category]>.item.<[item]>.icon.material].parsed.parse_color>]>
+    - give <[icon]> to:<[inv]> quantity:1
+  - inventory open d:<[inv]>
+
 easter_bunny_shop_events:
   type: world
   debug: false
