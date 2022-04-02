@@ -2,4 +2,5 @@ thisscriptisbork:
     type: world
     events:
         on player breaks block:
-            - narrate <player.somegoddamntagthatdoesnotexist>
+            - if <player.item_in_hand.script.name>:
+                - narrate <player.item_in_hand.script.name>
