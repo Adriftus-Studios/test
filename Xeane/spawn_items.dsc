@@ -1,7 +1,7 @@
 spawn_scroll:
   type: item
   material: feather
-  display name: <&6>Scroll of Bastion
+  display name: <&6>Scroll of Spawn
   data:
     recipe_book_category: travel
   lore:
