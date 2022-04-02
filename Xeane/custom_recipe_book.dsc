@@ -168,7 +168,8 @@ crafting_book_open:
   script:
     - define inventory <inventory[crafting_book_inventory]>
     - foreach <script[custom_recipe_data_initializer].parsed_key[data.categories]> key:category as:values:
-      - define item <item[<[values].get[material]>].with[custom_model_data=3;lore=<[values].get[lore]>;display=<[values].get[display]>;flag=run_script:crafting_book_open_category;flag=category:<[category]>]>
+      # deleted from below ;lore=<[values].get[lore]>
+      - define item <item[<[values].get[material]>].with[custom_model_data=3;display=<[values].get[display]>;flag=run_script:crafting_book_open_category;flag=category:<[category]>]>
       - foreach <script.data_key[data.<[category]>_slots]> as:slot:
         - inventory set slot:<[slot]> o:<[item]> d:<[inventory]>
     - inventory open d:<[inventory]>
