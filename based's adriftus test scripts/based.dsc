@@ -277,8 +277,8 @@ combat_tag:
             - flag <context.entity> combat_tag expire:30s if:<context.entity.is_player>
             - ratelimit <player> 30s
             - narrate "<yellow><bold>You have been combat-tagged. Do not log out!" targets:<context.damager>|<context.entity>
-            - if <player.flag_expiration[combat_tag].equals[0]>:
-                - narrate "<yellow><bold>You are no longer in combat."
+            - wait 30s
+            - narrate "<yellow><bold>You are no longer in combat."
         on player dies flagged:combat_tag:
             - flag <player> combat_tag:!
             - narrate "<yellow><bold>You are no longer in combat."
@@ -652,6 +652,8 @@ tag_parser:
 #Scripts I need to work on (data script for npc)
 
 #Replicating /ex
+
+# Moderation inventory GUI + help
 
 #scriptName should be script_name
 #bukkitpriority
