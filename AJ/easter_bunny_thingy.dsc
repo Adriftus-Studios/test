@@ -60,8 +60,8 @@ easter_bunny_shop_main_menu_open:
   - define inv <inventory[easter_bunny_shop_main_menu]>
   - foreach <script[easter_bunny_shop_items].list_keys[categories]> as:cat:
     - define icon <item[easter_bunny_shop_sub_menu_icon]>
-    - define icon <[icon].with[display_name=<script[easter_bunny_shop_items].data_key[categories.<[cat]>.icon.display<&sp>name]>]>
-    - define icon <[icon].with[material=<script[easter_bunny_shop_items].data_key[categories.<[cat]>.icon.material]>]>
+    - define icon <[icon].with[display_name=<script[easter_bunny_shop_items].data_key[categories.<[cat]>.icon.display<&sp>name].parsed>]>
+    - define icon <[icon].with[material=<script[easter_bunny_shop_items].data_key[categories.<[cat]>.icon.material].parsed>]>
     - give <[icon]> to:<[inv]> quantity:1
   - inventory open d:<[inv]>
 
