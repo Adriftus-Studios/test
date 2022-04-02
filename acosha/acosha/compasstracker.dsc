@@ -1,12 +1,6 @@
-compass_tracker:
-    type: item
-    material: compass
-    display name: <yellow>Compass Tracker
-    lore:
-    - "<green>Used To Track Player
-    - Use /track (player) To Find Player
 
-locater:
+
+locater_compass:
     type: command
     name: track
     description: Used To track player
