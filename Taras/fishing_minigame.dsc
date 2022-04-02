@@ -23,6 +23,8 @@ fishing_minigame_start:
         - if !<[player].has_flag[fishingminigame.stats.bestcatch]>:
             - foreach <proc[fishing_minigame_get_all_types]> as:type:
                 - flag <[player]> fishingminigame.stats.bestcatch.<[type]>:none
+        - if !<[player].has_flag[fishingminigame.music]>:
+            - flag <player> fishingminigame.music:<list[]>
         - run fishing_minigame_set_inventory def:<[player]>
         - if !<server.has_flag[fishingminingame.activeplayers]>:
             - flag server fishingminingame.activeplayers:<list[]>
@@ -32,8 +34,8 @@ fishing_minigame_start:
         - narrate <&8>----------------------------------------------------
         - define event <proc[fishing_minigame_get_current_event]>
         - narrate "<&7><&l><&lt>!<&gt><&r> <&7>Currently running event: <&a><[event]>"
-        - narrate "<&7><&l><&lt>!<&gt><&r> <&7>Instructions:"
         - if !<[event].equals[None]>:
+            - narrate "<&7><&l><&lt>!<&gt><&r> <&7>Instructions:"
             - narrate <proc[fishing_minigame_get_current_event_instructions]>
 
 # % ██ [ Task called to stop minigame ] ██
@@ -50,6 +52,7 @@ fishing_minigame_stop:
             - queue <player.flag[fishing_minigame_music_queue]> stop
             - midi cancel
             - flag <player> fishing_minigame_playing_music:!
+        - flag server fishingminingame.activeplayers:<server.flag[fishingminingame.activeplayers].deduplicate>
         - flag server fishingminingame.activeplayers:<-:<[player]>
 
 # % ██ [ Task called when bucket is bucket is clicked ] ██
@@ -1164,6 +1167,12 @@ fishing_minigame_event_handler:
                     - run fishing_minigame_mp3_open_gui def:<player>
                     - determine cancelled
 
+        # # % ██ [ On closes inventory ] ██
+        # on player closes inventory:
+        #     - define sub_inv <list[fishing_minigame_bucket_gui|fishing_minigame_music_shop_gui|fishing_minigame_shop_gui|fishing_minigame_leaderboards_gui]>
+        #     - if <context.inventory.script.name.exists> and <[sub_inv].contains_any[<context.inventory.script.name>]>:
+        #         - run fishing_minigame_merchant_open_gui def:<player>
+
         # % ██ [ Bunch of events to prevent unwanted actions ] ██
         on player picks up item:
             - if <player.has_flag[fishingminigame.active]> && <player.flag[fishingminigame.active]>:
@@ -1430,14 +1439,14 @@ fishing_minigame_mp3_open_gui:
         - else:
             - define noteblock <item[fishing_minigame_mp3_no_button]>
             - inventory set o:<[noteblock]> slot:50 d:<[inventory]>
-
-        - foreach <[ownedTracks]> as:track:
-            - define trackName <[track].replace[_].with[<&sp>]>
-            - define item <item[music_disc_pigstep[hides=all]]>
-            - adjust def:item display:<&6><&l><[trackName]>
-            - adjust def:item "lore:<&7>By: <[music].get[<[track]>].get[author].replace[_].with[<&sp>]>"
-            - adjust def:item flag:fileName:<[music].get[<[track]>].get[filename]>
-            - inventory set o:<[item]> slot:<[inventory].first_empty> d:<[inventory]>
+        - if <[ownedTracks].size> > 0:
+            - foreach <[ownedTracks]> as:track:
+                - define trackName <[track].replace[_].with[<&sp>]>
+                - define item <item[music_disc_pigstep[hides=all]]>
+                - adjust def:item display:<&6><&l><[trackName]>
+                - adjust def:item "lore:<&7>By: <[music].get[<[track]>].get[author].replace[_].with[<&sp>]>"
+                - adjust def:item flag:fileName:<[music].get[<[track]>].get[filename]>
+                - inventory set o:<[item]> slot:<[inventory].first_empty> d:<[inventory]>
     script:
         - inject locally path:build_inventory
         - inventory open d:<[inventory]>
