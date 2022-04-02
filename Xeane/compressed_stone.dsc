@@ -15,7 +15,7 @@ compressed_stone:
   lore:
     - "<&7>9 Stone"
   data:
-    recipe_book_category: blocks
+    recipe_book_category: blocks.stone
   flags:
     right_click_script: cancel
   recipes:
@@ -37,7 +37,7 @@ double_compressed_stone:
   lore:
     - "<&7>81 Stone"
   data:
-    recipe_book_category: blocks
+    recipe_book_category: blocks.stone
   flags:
     right_click_script: cancel
   recipes:
@@ -59,7 +59,7 @@ triple_compressed_stone:
   lore:
     - "<&7>729 Stone"
   data:
-    recipe_book_category: blocks
+    recipe_book_category: blocks.stone
   flags:
     right_click_script: cancel
   recipes:
@@ -81,7 +81,7 @@ quadruple_compressed_stone:
   lore:
     - "<&7>6561 Stone"
   data:
-    recipe_book_category: blocks
+    recipe_book_category: blocks.stone
   flags:
     right_click_script: cancel
   recipes:

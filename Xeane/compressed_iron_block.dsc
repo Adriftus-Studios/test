@@ -15,7 +15,7 @@ compressed_iron_block:
   lore:
     - "<&7>9 Iron Block"
   data:
-    recipe_book_category: blocks
+    recipe_book_category: blocks.iron_block
   flags:
     right_click_script: cancel
   recipes:
@@ -37,7 +37,7 @@ double_compressed_iron_block:
   lore:
     - "<&7>81 Iron Block"
   data:
-    recipe_book_category: blocks
+    recipe_book_category: blocks.iron_block
   flags:
     right_click_script: cancel
   recipes:
@@ -59,7 +59,7 @@ triple_compressed_iron_block:
   lore:
     - "<&7>729 Iron Block"
   data:
-    recipe_book_category: blocks
+    recipe_book_category: blocks.iron_block
   flags:
     right_click_script: cancel
   recipes:
@@ -81,7 +81,7 @@ quadruple_compressed_iron_block:
   lore:
     - "<&7>6561 Iron Block"
   data:
-    recipe_book_category: blocks
+    recipe_book_category: blocks.iron_block
   flags:
     right_click_script: cancel
   recipes:

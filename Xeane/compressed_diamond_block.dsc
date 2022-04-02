@@ -15,7 +15,7 @@ compressed_diamond_block:
   lore:
     - "<&7>9 Diamond Block"
   data:
-    recipe_book_category: blocks
+    recipe_book_category: blocks.diamond_block
   flags:
     right_click_script: cancel
   recipes:
@@ -37,7 +37,7 @@ double_compressed_diamond_block:
   lore:
     - "<&7>81 Diamond Block"
   data:
-    recipe_book_category: blocks
+    recipe_book_category: blocks.diamond_block
   flags:
     right_click_script: cancel
   recipes:
@@ -59,7 +59,7 @@ triple_compressed_diamond_block:
   lore:
     - "<&7>729 Diamond Block"
   data:
-    recipe_book_category: blocks
+    recipe_book_category: blocks.diamond_block
   flags:
     right_click_script: cancel
   recipes:
@@ -81,7 +81,7 @@ quadruple_compressed_diamond_block:
   lore:
     - "<&7>6561 Diamond Block"
   data:
-    recipe_book_category: blocks
+    recipe_book_category: blocks.diamond_block
   flags:
     right_click_script: cancel
   recipes:
