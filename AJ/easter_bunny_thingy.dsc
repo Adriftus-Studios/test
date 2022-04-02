@@ -34,7 +34,7 @@ easter_bunny_shop_main_menu_open:
   - adjust <queue> linked_player:<[player]> if:<[player].object_type.equals[Player].if_null[false]>
   - define inv <inventory[easter_bunny_shop_main_menu]>
   - foreach <script[easter_bunny_shop_items].list_keys[categories]> as:cat:
-    - define icon <item[easter_bunny_shop_sub_menu_icon]>
+    - define icon <item[easter_bunny_shop_main_menu_icon]>
     - define icon <[icon].with[display_name=<script[easter_bunny_shop_items].data_key[categories.<[cat]>.icon.display<&sp>name].parsed.parse_color>]>
     - define icon <[icon].with[material=<script[easter_bunny_shop_items].data_key[categories.<[cat]>.icon.material].parsed.parse_color>]>
     - give <[icon]> to:<[inv]> quantity:1
