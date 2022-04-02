@@ -9,5 +9,5 @@ locater_compass:
         - define player <server.match_player[<context.args.get[1]>].if_null[null]>
         - flag <[player]> tracking
         - while <player.has_flag[tracking]> && <player.is_online>:
-                - compass <[player].flag[tracking].location>
+                - compass <[player].location>
                 - wait 5s
