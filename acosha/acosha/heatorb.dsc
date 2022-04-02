@@ -1,6 +1,6 @@
 heart_orb:
     type: item
-    material: fire_charge
+    material: firework_star
     display name: <yellow>Heart Orb
     lore:
     - <BLUE>Gives A Heart
