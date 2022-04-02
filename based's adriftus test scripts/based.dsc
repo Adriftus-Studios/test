@@ -278,7 +278,12 @@ combat_tag:
             - ratelimit <player> 30s
             - narrate "<yellow><bold>You have been combat-tagged. Do not log out!" targets:<context.damager>|<context.entity>
             - wait 30s
+<<<<<<< HEAD
             - narrate "<yellow><bold>You are no longer in combat."
+=======
+            - if <player.flag_expiration[combat_tag].equals[0]>:
+                - narrate "<yellow><bold>You are no longer in combat."
+>>>>>>> dc9fcec52d0c02cf69d77736ebe206cd772da816
         on player dies flagged:combat_tag:
             - flag <player> combat_tag:!
             - narrate "<yellow><bold>You are no longer in combat."
@@ -463,19 +468,19 @@ Killspawn:
         - flag <[player]> killspawn:!
 # Should be able to affect multiple people
 
-chair_sit_events:
-  type: world
-  debug: false
-  events:
-    on player right clicks block:
-    - stop if:<context.location.material.name.ends_with[stairs].not.if_null[true]>
-    - stop if:<context.location.material.half.equals[BOTTOM].not>
-    - determine passively cancelled
-    - spawn arrow <context.location.center.below[0.5]> save:mount_point
-    - define point <entry[mount_point].spawned_entity>
-    - invisible <[point]>
-    - flag <[point]> sit.offset:<[point].location.sub[<player.location>]>
-    - adjust <[point]> passenger:<player>
+# chair_sit_events:
+#   type: world
+#   debug: false
+#   events:
+#     on player right clicks block:
+#     - stop if:<context.location.material.name.ends_with[stairs].not.if_null[true]>
+#     - stop if:<context.location.material.half.equals[BOTTOM].not>
+#     - determine passively cancelled
+#     - spawn arrow <context.location.center.below[0.5]> save:mount_point
+#     - define point <entry[mount_point].spawned_entity>
+#     - invisible <[point]>
+#     - flag <[point]> sit.offset:<[point].location.sub[<player.location>]>
+#     - adjust <[point]> passenger:<player>
 # - Made by AJ
 # - To be tweaked into a sit command for a block below me
 
