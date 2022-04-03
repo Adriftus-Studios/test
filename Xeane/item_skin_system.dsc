@@ -36,7 +36,7 @@ item_skin_system_events:
     on player clicks in item_skin_system_inventory slot:5 bukkit_priority:HIGHEST cancelled:true:
       - narrate uncancelled
       - determine passively cancelled:false
-      - if <context.cursor_item.material.name> != air && <script[item_skin_system_data].data_key[data.<context.cursor_item.material.name>].exists>:
+      - if <context.cursor_item.material.name> != air && <script[item_skin_system_data].data_key[<context.cursor_item.material.name>].exists>:
         - define item <context.cursor_item>
         - narrate "ITEM <context.cursor_item>"
         - inject item_skin_system_update
