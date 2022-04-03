@@ -2,6 +2,11 @@ item_skin_system_data:
   type: data
   diamond_axe:
     1000: <&b>Celestial
+    1001: <&2>Blue
+    1002: <&b>Bright
+    1003: <&6>Nordic
+    1004: <&c>Viking
+    1005: <&d>Wizard
 
 item_skin_system_inventory:
   type: inventory
@@ -17,7 +22,6 @@ item_skin_system_update:
     skin_slots: 20|21|22|23|24|25|26|29|30|31|32|33|34|35|38|39|40|41|42|43|44
   definitions: item
   script:
-    - narrate <[item]>
     - define inventory <context.inventory>
     - define material <[item].material>
     - define skin_map <script[item_skin_system_data].parsed_key[<[material].name>]>
