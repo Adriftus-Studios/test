@@ -180,8 +180,8 @@ crafting_book_open_category:
   data:
     slots: 11|12|13|14|15|16|17|20|21|22|23|24|25|26|29|30|31|32|33|34|35
     back_slot: 2
-    next: 8
-    previous: 6
+    next: 36
+    previous: 28
   definitions: category|page
   script:
     - define page 1 if:<[page].exists.not>
@@ -196,11 +196,11 @@ crafting_book_open_category:
 
       # Next Page
       - if <[items].size> > <[page].mul[<[slots].size>]>:
-        - inventory set slot:<script.data_key[data.next]> o:<item[leather_horse_armor].with[hides=all;display=<&6>Next<&sp>Recipe;color=green;custom_model_data=7;flag=run_script:custom_recipe_inventory_category_nextpage;flag=category:<[category]>]> d:<[inv]>
+        - inventory set slot:<script.data_key[data.next]> o:<item[leather_horse_armor].with[hides=all;display=<&6>Next<&sp>Page;color=#baa68e;custom_model_data=7;flag=run_script:custom_recipe_inventory_category_nextpage;flag=category:<[category]>]> d:<[inv]>
 
       # Previous Page
       - if <[page]> > 1:
-        - inventory set slot:<script.data_key[data.previous]> o:<item[leather_horse_armor].with[hides=all;display=<&6>Previous<&sp>Recipe;color=green;custom_model_data=6;flag=run_script:custom_recipe_inventory_category_previouspage;flag=category:<[category]>]> d:<[inv]>
+        - inventory set slot:<script.data_key[data.previous]> o:<item[leather_horse_armor].with[hides=all;display=<&6>Previous<&sp>Page;color=#baa68e;custom_model_data=6;flag=run_script:custom_recipe_inventory_category_previouspage;flag=category:<[category]>]> d:<[inv]>
 
     - inventory open d:<[inv]>
 
