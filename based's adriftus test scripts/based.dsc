@@ -370,7 +370,8 @@ player_teleport:
             - narrate "Teleported <player.name> to <[player].name>" targets:<player>|<[player]>
         - if <context.args.get[1]> == <element[coordinates]>:
             - teleport <player> location:<location[<context.args.get[2]>,<context.args.get[3]>,<context.args.get[4]>,<player.world.name>]>
-
+        - if <context.args.get[1].equals[<player.name>]> && <context.args.get[2].equals[<player.name>]>:
+            - narrate "Bro did you just try to teleport to yourself"
         - if <context.args.size> == 2:
             - define player1 <server.match_player[<context.args.get[1]>]>
             - define player2 <server.match_player[<context.args.get[2]>]>
@@ -617,17 +618,17 @@ no_drowning:
 welcome_message:
     type: world
     events:
-        on player first login:
-            - announce "<yellow><bold><underline><player> has joined for the first time. Welcome!"
-        on player login:
-            - announce "<yellow><bold><underline>Welcome back, <player>!"
+        after player first login:
+            - announce "<yellow><bold><underline><player.name> has joined for the first time. Welcome!"
+        after player login:
+            - announce "<yellow><bold><underline>Welcome back, <player.name>!"
 #
 
 quit_message:
     type: world
     events:
         on player quits:
-            - announce "<yellow><bold><underline><player> has left the server. See you later!"
+            - announce "<yellow><bold><underline><player.name> has left the server. See you later!"
 #
 
 #scrambleWordMinigame:
