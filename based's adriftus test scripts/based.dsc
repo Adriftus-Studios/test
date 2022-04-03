@@ -620,10 +620,10 @@ welcome_message:
     events:
         after player first login:
             - announce "<yellow><bold><underline><player.name> has joined for the first time. Welcome!"
-            - determine passively NONE
+            - determine bruh
         after player login:
             - announce "<yellow><bold><underline>Welcome back, <player.name>!"
-            - determine passively NONE
+            - determine bruh
 #
 
 quit_message:
