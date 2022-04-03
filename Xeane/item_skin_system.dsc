@@ -49,4 +49,4 @@ item_skin_system_skin_item:
   type: task
   debug: false
   script:
-    - inventory adjust slot:5 d:<context.inventory> o:<context.inventory.slot[5].with[custom_model_data=<context.item.custom_model_data>]>
+    - inventory adjust slot:5 d:<context.inventory> custom_model_data:<context.item.custom_model_data>
