@@ -20,7 +20,7 @@ item_skin_system_update:
     - narrate <[item]>
     - define inventory <context.inventory>
     - define material <[item].material>
-    - define skin_map <script[item_skin_system_data].parsed_key[<[material]>]>
+    - define skin_map <script[item_skin_system_data].parsed_key[<[material].name>]>
     - define keys <[skin_map].keys>
     - foreach <script.data_key[data.skin_slots]> as:slot:
       - define key <[keys].get[<[loop_index]>].if_null[air]>
