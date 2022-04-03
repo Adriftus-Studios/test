@@ -15,6 +15,7 @@ item_skin_system_data:
     1011: <&b>Shimmering
     1012: <&5>Fireman
     1013: <&c>Battle
+    1014: <element[Christmas].color_gradient[from=<&c>;to=<&1>]>
 
 item_skin_system_inventory:
   type: inventory
