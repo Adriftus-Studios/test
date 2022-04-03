@@ -196,7 +196,7 @@ crafting_book_open_category:
     - define page 1 if:<[page].exists.not>
     - define category <context.item.flag[category]> if:<[category].exists.not>
     - define inv <inventory[crafting_book_category_inventory]>
-    - adjust <[inv]> title:<[inv].title><&font[adriftus:recipe_book]><&chr[F801]><&chr[F809]><&chr[F80A]><&chr[F80C]><script[custom_recipe_data_initializer].parsed_key[data.data.categories.<[category]>.title]>
+    - adjust <[inv]> title:<[inv].title><&font[adriftus:recipe_book]><&chr[F801]><&chr[F809]><&chr[F80A]><&chr[F80C]><script[custom_recipe_data_initializer].parsed_key[data.categories.<[category]>.title]>
     - define slots <script.data_key[data.slots].as_list>
     - inventory set slot:<script.data_key[data.back_slot]> d:<[inv]> "o:feather[custom_model_data=3;display=<&c>Back to Categories;flag=run_script:crafting_book_open;flag=page:<[page]>]"
     - if <server.has_flag[recipe_book.categories.<[category]>]>:
