@@ -620,15 +620,18 @@ welcome_message:
     events:
         after player first login:
             - announce "<yellow><bold><underline><player.name> has joined for the first time. Welcome!"
+            - determine passively NONE
         after player login:
             - announce "<yellow><bold><underline>Welcome back, <player.name>!"
+            - determine passively NONE
 #
 
 quit_message:
     type: world
     events:
-        on player quits:
+        after player quits:
             - announce "<yellow><bold><underline><player.name> has left the server. See you later!"
+            - determine passively NONE
 #
 
 #scrambleWordMinigame:
