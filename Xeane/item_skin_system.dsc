@@ -37,11 +37,11 @@ item_skin_system_events:
       - determine passively cancelled:false
       - if <context.cursor_item.material.name> != air && <script[item_skin_system_data].data_key[data.<context.cursor_item.material.name>].exists>:
         - define item <context.cursor_item>
-        - narrate ITEM <context.cursor_item>
+        - narrate "ITEM <context.cursor_item>"
         - inject item_skin_system_update
       - else:
         - define item air
-        - narrate ITEM <context.cursor_item>
+        - narrate "ITEM <context.cursor_item>"
         - inject item_skin_system_update
 
 item_skin_system_skin_item:
