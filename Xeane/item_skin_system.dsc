@@ -17,6 +17,7 @@ item_skin_system_update:
     skin_slots: 20|21|22|23|24|25|26|29|30|31|32|33|34|35|38|39|40|41|42|43|44
   definitions: item
   script:
+    - narrate <[item]>
     - define inventory <context.inventory>
     - define material <[item].material>
     - define skin_map <script[item_skin_system_data].parsed_key[<[material]>]>
