@@ -32,7 +32,7 @@ item_skin_system_events:
   type: world
   debug: false
   events:
-    on player clicks in item_skin_system_inventory slot:5 bukkit_priority:HIGHEST:
+    on player clicks in item_skin_system_inventory slot:5 bukkit_priority:HIGHEST cancelled:true:
       - narrate uncancelled
       - determine passively cancelled:false
       - if <context.cursor_item.material.name> != air && <script[item_skin_system_data].data_key[data.<context.cursor_item.material.name>].exists>:
