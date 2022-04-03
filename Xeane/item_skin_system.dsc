@@ -7,6 +7,14 @@ item_skin_system_data:
     1003: <&6>Nordic
     1004: <&c>Viking
     1005: <&d>Wizard
+    1006: <&4>Bloody
+    1007: <&e>Double
+    1008: <&b>Glowing
+    1009: <&7>Black Handle
+    1010: <&1>Natural
+    1011: <&b>Shimmering
+    1012: <&5>Fireman
+    1013: <&c>Battle
 
 item_skin_system_inventory:
   type: inventory
