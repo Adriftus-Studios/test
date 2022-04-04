@@ -500,9 +500,10 @@ fishing_minigame_chicken_save:
         - define chicken <entity[chicken]>
         - adjust def:chicken gravity:false
         - adjust def:chicken has_ai:false
-        - while !<server.has_flag[fishing_minigame_active_whirlpool_locations]>:
-            - wait 3s
-        - define randomPool <server.flag[fishing_minigame_active_whirlpool_locations].keys.random>
+        - if <server.flag[fishing_minigame_active_whirlpool_locations].keys.exists>:
+            - define randomPool <server.flag[fishing_minigame_active_whirlpool_locations].keys.random>
+        - else:
+            - define randomPool <server.flag[fishing_minigame_active_whirlpool_locations].random>
         - spawn <[chicken]> <[randomPool].up[.6]> save:entity persistent
         - flag <entry[entity].spawned_entity> event
         - flag server fishingminigame.chickenentity:<entry[entity].spawned_entity.escaped>
