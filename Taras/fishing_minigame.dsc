@@ -673,6 +673,7 @@ fishing_minigame_get_bucket_name:
 
 # % ██ [ Returns avaialbe whirlpool locations ] ██
 fishing_minigame_get_avaiailable_whirlpool_location:
+    debug: false
     type: procedure
     definitions: amount
     script:
