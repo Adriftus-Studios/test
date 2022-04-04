@@ -1,7 +1,7 @@
 deflection_enchantment:
   type: enchantment
   id: Deflection
-  debug: true
+  debug: false
   slots:
   - legs
   - chest
