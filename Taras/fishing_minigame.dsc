@@ -987,7 +987,7 @@ fishing_minigame_timed_event_handler:
 
 # % ██ [ Minigame Event Handling ] ██
 fishing_minigame_event_handler:
-    debug: true
+    debug: false
     type: world
     events:
         # % ██ [ Player Catch Fish ] ██
