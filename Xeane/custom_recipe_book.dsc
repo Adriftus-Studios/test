@@ -8,50 +8,59 @@ custom_recipe_data_initializer:
         display: <element[Travel Items].color_gradient[from=#A303D4;to=#AAAAAA]>
         lore:
           - "<&e>Items related to getting around"
+        title: <&chr[0011]>
       tools:
         material: feather
         display: <element[Tools].color_gradient[from=#A303D4;to=#AAAAAA]>
         lore:
           - "<&e>Items for getting work DONE!"
+        title: <&chr[0012]>
       blocks:
         material: feather
         display: <element[Blocks].color_gradient[from=#17840b;to=#AAAAAA]>
         lore:
           - "<&e>Various custom blocks!"
+        title: <&chr[0004]>
       combat:
         material: feather
         display: <element[Combat].color_gradient[from=#A303D4;to=#AAAAAA]>
         lore:
           - "<&e>Stuff to beat your friends!"
           - "<&e>Yea, probably your enemies too"
+        title: <&chr[0006]>
       gadgets:
         material: feather
         display: <element[Gadgets].color_gradient[from=#bd770f;to=#AAAAAA]>
         lore:
           - "<&e>Cool things!"
           - "<&e>Other stuff, too..."
+        title: <&chr[0009]>
       food:
         material: feather
         display: <element[Food].color_gradient[from=#bd770f;to=#AAAAAA]>
         lore:
           - "<&e>FEWD!!!!"
           - "<&e>Nom nom nom"
+        title: <&chr[0008]>
       brewing:
         material: feather
         display: <element[Brewing].color_gradient[from=#bd770f;to=#AAAAAA]>
         lore:
           - "<&e>DRINKS!!!"
           - "<&e>You must be 21+ to click"
+        title: <&chr[0005]>
       decor:
         material: feather
         display: <element[Decor].color_gradient[from=#17840b;to=#AAAAAA]>
         lore:
           - "<&e>Stuff for the pretty pretty!"
+        title: <&chr[0007]>
       misc:
         material: feather
         display: "<element[Misc Items].color_gradient[from=#17840b;to=#AAAAAA]>"
         lore:
           - "<&e>Lotta random, ngl"
+        title: <&chr[0010]>
   build_item_list:
     - flag server recipe_book:!
     - foreach <server.scripts.filter[data_key[data.recipe_book_category].exists].parse[name]> as:item_script:
@@ -105,11 +114,11 @@ custom_recipe_inventory_open:
     # Next Page
     - define recipes <server.flag[recipe_book.recipes.<[recipe_id]>.result].recipe_ids.parse[after[<&co>]]>
     - if <[recipes].size> > <[page]>:
-      - inventory set slot:<script.data_key[data.next]> o:<item[leather_horse_armor].with[hides=all;display=<&6>Next<&sp>Recipe;color=green;custom_model_data=7;flag=run_script:custom_recipe_inventory_nextpage;flag=recipe_id:<[recipes].get[<[page].add[1]>]>]> d:<[inventory]>
+      - inventory set slot:<script.data_key[data.next]> o:<item[leather_horse_armor].with[hides=all;display=<&6>Next<&sp>Recipe;color=#baa68e;custom_model_data=7;flag=run_script:custom_recipe_inventory_nextpage;flag=recipe_id:<[recipes].get[<[page].add[1]>]>]> d:<[inventory]>
 
     # Previous Page
     - if <[page]> > 1:
-      - inventory set slot:<script.data_key[data.previous]> o:<item[leather_horse_armor].with[hides=all;display=<&6>Previous<&sp>Recipe;color=green;custom_model_data=6;flag=run_script:custom_recipe_inventory_previouspage;flag=recipe_id:<[recipes].get[<[page].sub[1]>]>]> d:<[inventory]>
+      - inventory set slot:<script.data_key[data.previous]> o:<item[leather_horse_armor].with[hides=all;display=<&6>Previous<&sp>Recipe;color=#baa68e;custom_model_data=6;flag=run_script:custom_recipe_inventory_previouspage;flag=recipe_id:<[recipes].get[<[page].sub[1]>]>]> d:<[inventory]>
     - inventory open d:<[inventory]>
 
 custom_recipe_inventory_nextpage:
@@ -131,7 +140,7 @@ custom_recipe_inventory_previouspage:
 crafting_book_inventory:
   type: inventory
   debug: false
-  title: <&f><&font[adriftus:guis]><&chr[F808]><&chr[6915]>
+  title: <&f><&font[adriftus:recipe_book]><&chr[F808]><&chr[0001]>
   size: 36
   gui: true
   inventory: chest
@@ -139,7 +148,7 @@ crafting_book_inventory:
 crafting_book_category_inventory:
   type: inventory
   debug: false
-  title: <&f><&font[adriftus:guis]><&chr[F808]><&chr[6916]>
+  title: <&f><&font[adriftus:recipe_book]><&chr[F808]><&chr[0002]>
   size: 36
   gui: true
   inventory: chest
@@ -147,7 +156,7 @@ crafting_book_category_inventory:
 custom_recipe_inventory:
   type: inventory
   debug: false
-  title: <&f><&font[adriftus:guis]><&chr[F808]><&chr[6917]>
+  title: <&f><&font[adriftus:recipe_book]><&chr[F808]><&chr[0003]>
   size: 36
   gui: true
   inventory: chest
@@ -180,13 +189,14 @@ crafting_book_open_category:
   data:
     slots: 11|12|13|14|15|16|17|20|21|22|23|24|25|26|29|30|31|32|33|34|35
     back_slot: 2
-    next: 8
-    previous: 6
+    next: 36
+    previous: 28
   definitions: category|page
   script:
     - define page 1 if:<[page].exists.not>
     - define category <context.item.flag[category]> if:<[category].exists.not>
     - define inv <inventory[crafting_book_category_inventory]>
+    - adjust <[inv]> title:<[inv].title><&font[adriftus:recipe_book]><&chr[F801]><&chr[F809]><&chr[F80A]><&chr[F80C]><script[custom_recipe_data_initializer].parsed_key[data.categories.<[category]>.title]>
     - define slots <script.data_key[data.slots].as_list>
     - inventory set slot:<script.data_key[data.back_slot]> d:<[inv]> "o:feather[custom_model_data=3;display=<&c>Back to Categories;flag=run_script:crafting_book_open;flag=page:<[page]>]"
     - if <server.has_flag[recipe_book.categories.<[category]>]>:
@@ -196,11 +206,11 @@ crafting_book_open_category:
 
       # Next Page
       - if <[items].size> > <[page].mul[<[slots].size>]>:
-        - inventory set slot:<script.data_key[data.next]> o:<item[leather_horse_armor].with[hides=all;display=<&6>Next<&sp>Recipe;color=green;custom_model_data=7;flag=run_script:custom_recipe_inventory_category_nextpage;flag=category:<[category]>]> d:<[inv]>
+        - inventory set slot:<script.data_key[data.next]> o:<item[leather_horse_armor].with[hides=all;display=<&6>Next<&sp>Page;color=#baa68e;custom_model_data=7;flag=run_script:custom_recipe_inventory_category_nextpage;flag=category:<[category]>]> d:<[inv]>
 
       # Previous Page
       - if <[page]> > 1:
-        - inventory set slot:<script.data_key[data.previous]> o:<item[leather_horse_armor].with[hides=all;display=<&6>Previous<&sp>Recipe;color=green;custom_model_data=6;flag=run_script:custom_recipe_inventory_category_previouspage;flag=category:<[category]>]> d:<[inv]>
+        - inventory set slot:<script.data_key[data.previous]> o:<item[leather_horse_armor].with[hides=all;display=<&6>Previous<&sp>Page;color=#baa68e;custom_model_data=6;flag=run_script:custom_recipe_inventory_category_previouspage;flag=category:<[category]>]> d:<[inv]>
 
     - inventory open d:<[inv]>
 
