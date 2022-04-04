@@ -981,6 +981,7 @@ fishing_minigame_timed_event_handler:
                 - if <[player].flag[fishingminigame.active]>:
                     - narrate "<&7>The whirlpools have moved, you might need to find a new spot to fish" targets:<[player]>
         on delta time minutely every:15:
+            - wait 15s
             - run fishing_minigame_start_random_event
         on system time 00:00:
             - run fishing_minigame_reset_leaderboards
