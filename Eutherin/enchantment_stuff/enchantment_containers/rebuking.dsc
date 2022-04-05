@@ -4,7 +4,7 @@ Rebuking_enchantment:
   debug: false
   slots:
   - mainhand
-  rarity: common
+  rarity: very_rare
   min_cost: <context.level.mul[1]>
   max_cost: <context.level.mul[1]>
   data:
