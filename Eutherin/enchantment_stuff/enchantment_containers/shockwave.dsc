@@ -44,6 +44,6 @@ shockwave_enchantment:
       - if <list[player|dropped_item|armor_stand|item_frame|arrow|trident|shulker_bullet|experience_orb].contains_any[<[entity].entity_type>]> || !<[entity].is_spawned> || <[entity].is_tamed||false>:
         - foreach next
       - hurt <[entity]> <context.level> cause:void
-      - define vector <[entity].location.sub[<player.location>].normalize.mul[<[level].mul[8]>]>
+      - define vector <[entity].location.sub[<player.location>].normalize.mul[<[level].mul[6]>]>
       - adjust <[entity]> velocity:<[vector].x>,0.4,<[vector].z>
       - playsound sound:entity_ghast_shoot <[entity].location> pitch:1.5
