@@ -29,4 +29,4 @@ kelpbulbprevent:
     type: world
     events:
         on player places kelp:
-            - flag <player> nobulb expire:20s
+            - flag <player> nobulb
