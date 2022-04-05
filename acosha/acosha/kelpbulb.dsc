@@ -2,7 +2,14 @@ kelpbulbobtain:
     type: world
     events:
         on player breaks kelp_plant:
-        - drop kelp_bulb
+          - ratelimit <player> 5s
+          - if !<player.has_flag[nobulb]>:
+            - drop kelp_bulb
+          - else:
+                - narrate "<red>You Must Wait 2 Hours Before Farming Again"
+                - stop
+
+
 
 kelp_bulb:
     type: item
@@ -13,7 +20,6 @@ kelpbulbevents:
     type: world
     events:
         on player right clicks block with:kelp_bulb:
-            - if !<player.has_flag[nobulb]>:
                 - if <player.oxygen.in_seconds> < 9:
                     - oxygen 120 mode:add
                     - narrate "<green>Oxygen Added"
@@ -21,12 +27,12 @@ kelpbulbevents:
                 - else:
                     - narrate "<red>Wait Longer"
                     - stop
-            - else:
-                - narrate "<red>Must Be Farmed From Non Player Placed Kelp"
-                - stop
 
 kelpbulbprevent:
     type: world
     events:
         on player places kelp:
             - flag <player> nobulb
+            - wait 2hr
+            - flag <player> nobulb:!
+
