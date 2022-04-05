@@ -1,7 +1,7 @@
 Soulbound_enchantment:
   type: enchantment
   id: Soulbound
-  debug: true
+  debug: false
   slots:
   - mainhand
   rarity: rare

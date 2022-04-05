@@ -500,9 +500,10 @@ fishing_minigame_chicken_save:
         - define chicken <entity[chicken]>
         - adjust def:chicken gravity:false
         - adjust def:chicken has_ai:false
-        - while !<server.has_flag[fishing_minigame_active_whirlpool_locations]>:
-            - wait 3s
-        - define randomPool <server.flag[fishing_minigame_active_whirlpool_locations].keys.random>
+        - if <server.flag[fishing_minigame_active_whirlpool_locations].keys.exists>:
+            - define randomPool <server.flag[fishing_minigame_active_whirlpool_locations].keys.random>
+        - else:
+            - define randomPool <server.flag[fishing_minigame_active_whirlpool_locations].random>
         - spawn <[chicken]> <[randomPool].up[.6]> save:entity persistent
         - flag <entry[entity].spawned_entity> event
         - flag server fishingminigame.chickenentity:<entry[entity].spawned_entity.escaped>
@@ -672,6 +673,7 @@ fishing_minigame_get_bucket_name:
 
 # % ██ [ Returns avaialbe whirlpool locations ] ██
 fishing_minigame_get_avaiailable_whirlpool_location:
+    debug: false
     type: procedure
     definitions: amount
     script:
@@ -979,13 +981,14 @@ fishing_minigame_timed_event_handler:
                 - if <[player].flag[fishingminigame.active]>:
                     - narrate "<&7>The whirlpools have moved, you might need to find a new spot to fish" targets:<[player]>
         on delta time minutely every:15:
+            - wait 15s
             - run fishing_minigame_start_random_event
         on system time 00:00:
             - run fishing_minigame_reset_leaderboards
 
 # % ██ [ Minigame Event Handling ] ██
 fishing_minigame_event_handler:
-    debug: true
+    debug: false
     type: world
     events:
         # % ██ [ Player Catch Fish ] ██

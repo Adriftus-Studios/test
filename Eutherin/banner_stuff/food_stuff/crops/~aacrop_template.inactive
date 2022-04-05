@@ -1,0 +1,11 @@
+custom_crop_NAMEHERE:
+  material: material
+  debug: false
+  display name: <&f>name
+  mechanisms:
+    custom_model_data: model_data_number
+  type: item
+
+##MUST HAVE THE CUSTOM_CROP_ indicator
+##Get with graphics to get a custom food icon going for each one
+
