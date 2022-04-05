@@ -2,7 +2,6 @@ kelpbulbobtain:
     type: world
     events:
         on player breaks kelp_plant:
-          - ratelimit <player> 5s
           - if !<player.has_flag[nobulb]>:
             - drop kelp_bulb
           - else:
