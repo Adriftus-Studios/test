@@ -48,3 +48,10 @@ shockwave_enchantment:
       - define vector <[entity].location.sub[<player.location>].normalize.mul[<[level].mul[4]>]>
       - adjust <[entity]> velocity:<[vector].x>,0.4,<[vector].z>
       - playsound sound:entity_ghast_shoot <[entity].location> pitch:1.5
+
+shockwave_test_debug:
+  type: world
+  debug: false
+  events:
+    on player damages entity with:item_enchanted:shockwave:
+      - narrate <player.attack_cooldown_percent>
