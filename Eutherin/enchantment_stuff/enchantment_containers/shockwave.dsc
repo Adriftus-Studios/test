@@ -27,6 +27,7 @@ shockwave_enchantment:
   is_compatible: <context.enchantment_key.advanced_matches_text[denizen:swirling|denizen:vortex].not>
   after attack:
   - ratelimit <player> 2t
+  - narrate <player.attack_cooldown_percent>
   - if !<player.has_flag[temp.custom_enchant_shockwave]>:
     - flag <player> temp.custom_enchant_shockwave:1 expire:5s
     - stop
