@@ -13,9 +13,10 @@ kelpbulbevents:
     type: world
     events:
         on player right clicks block with:kelp_bulb:
-        - if <player.oxygen> < 1000:
+        - if <player.oxygen> < 6:
             - oxygen 120 mode:add
             - narrate "<green>Oxygen Added"
+            - take item:kelp_bulb
         - else:
             - narrate "Wait Longer"
             - stop
