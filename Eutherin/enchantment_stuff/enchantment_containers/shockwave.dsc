@@ -25,33 +25,32 @@ shockwave_enchantment:
   is_discoverable: true
   can_enchant: <context.item.advanced_matches[*_sword|*_axe]>
   is_compatible: <context.enchantment_key.advanced_matches_text[denizen:swirling|denizen:vortex].not>
-  after attack:
-  - ratelimit <player> 2t
-  - narrate <player.attack_cooldown_percent>
-  - if !<player.has_flag[temp.custom_enchant_shockwave]>:
-    - flag <player> temp.custom_enchant_shockwave:1 expire:5s
-    - stop
-  - if <player.has_flag[temp.custom_enchant_shockwave]> && <player.flag[temp.custom_enchant_shockwave]> < 3:
-    - flag <player> temp.custom_enchant_shockwave:++ expire:5s
-    - playeffect <player.location> effect:sweep_attack quantity:<player.flag[temp.custom_enchant_shockwave]>
-    - stop
-  - if <player.flag[temp.custom_enchant_shockwave]> == 3:
-    - flag <player> temp.custom_enchant_shockwave:!
-    - mythicskill <player> ShockwaveSweep<context.level>
-    - define level <player.item_in_hand.enchantment_map.get[shockwave].div[10]>
-    - define location <context.victim.location||player.location>
-    - playsound <[location].above[1]>  sound:BLOCK_BEACON_DEACTIVATE
-    - foreach <player.location.find_entities.within[<element[2].mul[<context.level>]>]> as:entity:
-      - if <list[player|dropped_item|armor_stand|item_frame|arrow|trident|shulker_bullet|experience_orb].contains_any[<[entity].entity_type>]> || !<[entity].is_spawned> || <[entity].is_tamed||false>:
-        - foreach next
-      - hurt <[entity]> <context.level> cause:void
-      - define vector <[entity].location.sub[<player.location>].normalize.mul[<[level].mul[4]>]>
-      - adjust <[entity]> velocity:<[vector].x>,0.4,<[vector].z>
-      - playsound sound:entity_ghast_shoot <[entity].location> pitch:1.5
 
-shockwave_test_debug:
+shockwave_damage_handler:
   type: world
   debug: false
   events:
     on player damages entity with:item_enchanted:shockwave:
-      - narrate <player.attack_cooldown_percent>
+      - ratelimit <player> 2t
+      - if <player.attack_cooldown_percent> >= 98:
+        - if !<player.has_flag[temp.custom_enchant_shockwave]>:
+          - flag <player> temp.custom_enchant_shockwave:1 expire:5s
+          - stop
+        - if <player.has_flag[temp.custom_enchant_shockwave]> && <player.flag[temp.custom_enchant_shockwave]> < 3:
+          - flag <player> temp.custom_enchant_shockwave:++ expire:5s
+          - playeffect <player.location> effect:sweep_attack quantity:<player.flag[temp.custom_enchant_shockwave]>
+          - stop
+        - if <player.flag[temp.custom_enchant_shockwave]> == 3:
+          - flag <player> temp.custom_enchant_shockwave:!
+          - mythicskill <player> ShockwaveSweep<context.level>
+          - define level <player.item_in_hand.enchantment_map.get[shockwave].div[10]>
+          - define location <context.victim.location||player.location>
+          - playsound <[location].above[1]>  sound:BLOCK_BEACON_DEACTIVATE
+          - foreach <player.location.find_entities.within[<element[2].mul[<context.level>]>]> as:entity:
+            - if <list[player|dropped_item|armor_stand|item_frame|arrow|trident|shulker_bullet|experience_orb].contains_any[<[entity].entity_type>]> || !<[entity].is_spawned> || <[entity].is_tamed||false>:
+              - foreach next
+            - hurt <[entity]> <context.level> cause:void
+            - define vector <[entity].location.sub[<player.location>].normalize.mul[<[level].mul[4]>]>
+            - adjust <[entity]> velocity:<[vector].x>,0.4,<[vector].z>
+            - playsound sound:entity_ghast_shoot <[entity].location> pitch:1.5
+
