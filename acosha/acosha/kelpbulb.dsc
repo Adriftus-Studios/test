@@ -33,6 +33,3 @@ kelpbulbprevent:
     events:
         on player places kelp:
             - flag <player> nobulb
-            - wait 2hr
-            - flag <player> nobulb:!
-
