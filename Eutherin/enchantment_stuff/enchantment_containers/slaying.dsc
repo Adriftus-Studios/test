@@ -11,7 +11,7 @@ Slaying_enchantment:
     effect:
       - Deals 2.5 damage per level to rare monsters.
       - _
-      - Cannot be used with Bane of arthropods, Sharpness, Lifesbane, or Smite.
+      - Cannot be used with Banes, Slaying, Sharpness, or Smite.
     item_slots:
       - all_weapons
   category: weapon
@@ -23,7 +23,7 @@ Slaying_enchantment:
   is_tradable: false
   is_discoverable: true
   can_enchant: <context.item.advanced_matches[*_sword|*_axe|bow|crossbow|trident]>
-  is_compatible: <context.enchantment_key.advanced_matches[minecraft:bane_of_arthropods|denizen:lifesbane|minecraft:sharpness|minecraft:smite].not>
+  is_compatible: <context.enchantment_key.advanced_matches[minecraft:bane_of_arthropods|denizen:lifesbane|minecraft:sharpness|minecraft:smite|denizen:aqua_aspect].not>
   after attack:
   - ratelimit <player> 2t
   - if <context.victim.has_flag[rare]> && <context.victim.is_spawned>:

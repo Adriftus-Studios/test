@@ -11,7 +11,7 @@ Lifesbane_enchantment:
     effect:
       - Deals 2.5 damage per level to living humanoids.
       - _
-      - Cannot be used with Bane of Arthropods, Slaying, Sharpness, or Smite.
+      - Cannot be used with Banes, Slaying, Sharpness, or Smite.
     item_slots:
       - sword
       - axe
@@ -21,7 +21,7 @@ Lifesbane_enchantment:
   max_level: 3
   is_tradable: false
   can_enchant: <context.item.advanced_matches[*_sword|*_axe]>
-  is_compatible: <context.enchantment_key.advanced_matches_text[minecraft:bane_of_arthropods|denizen:slaying|minecraft:sharpness|minecraft:smite].not>
+  is_compatible: <context.enchantment_key.advanced_matches_text[minecraft:bane_of_arthropods|denizen:slaying|minecraft:sharpness|minecraft:smite|denizen:aqua_aspect].not>
   after attack:
     - if <context.victim.is_spawned> && <list[pillager|evoker|vindicator|player|villager|illusioner].contains_any[<context.victim.entity_type>]>:
       - hurt <context.victim> <context.level.mul[2.5]>
