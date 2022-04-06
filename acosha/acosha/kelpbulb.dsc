@@ -2,7 +2,7 @@ kelpbulbobtain:
     type: world
     events:
         on player breaks kelp_plant:
-            - define chance <util.random.int[1].to[10]>
+            - define chance <util.random.int[1].to[15]>
             - choose  <[chance]>:
                 - case 1:
                     - drop kelp_bulb
@@ -15,6 +15,15 @@ kelp_bulb:
     type: item
     material: sugar
     display name: <yellow>Kelp Bulb
+    recipes:
+        1:
+            type: shaped
+            output_quantity: 1
+            input:
+            - material:kelp|material:kelp||material:kelp|
+            - material:kelp|material:air|material:kelp|
+            - material:kelp|material:kelp|material:kelp|
+
 
 kelpbulbevents:
     type: world
