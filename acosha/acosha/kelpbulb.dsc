@@ -2,12 +2,12 @@ kelpbulbobtain:
     type: world
     events:
         on player breaks kelp_plant:
-          - if <player.has_flag[nobulb]>:
-            - narrate "<red>You Must Wait 2 Hours Before Farming Again"
-            - stop
-            - drop kelp_bulb
-          - else:
-               - drop kelp_bulb
+            - define chance <util.random.int[1].to[10]>
+            - choose  <[chance]>:
+                - case 1:
+                    - drop kelp_bulb\
+                - default:
+                    - stop
 
 
 
@@ -28,8 +28,3 @@ kelpbulbevents:
                     - narrate "<red>Wait Longer"
                     - stop
 
-kelpbulbprevent:
-    type: world
-    events:
-        on player places kelp:
-            - flag <player> nobulb
