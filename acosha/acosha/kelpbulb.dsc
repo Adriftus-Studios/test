@@ -5,7 +5,7 @@ kelpbulbobtain:
             - define chance <util.random.int[1].to[10]>
             - choose  <[chance]>:
                 - case 1:
-                    - drop kelp_bulb\
+                    - drop kelp_bulb
                 - default:
                     - stop
 
