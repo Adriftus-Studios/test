@@ -1280,15 +1280,13 @@ fishing_minigame_merchant_gui:
     size: 45
     debug: false
     title: <&b>Fishing Merchant
-    gui: true    
-    definitions:
-        f: <item[feather].with[custom_model_data=3;display=<&r><&sp>]>
+    gui: true
     slots:
-    - [f] [f] [f] [f] [f] [f] [f] [f] []
-    - [] [] [] [f] [f] [] [] [f] [f]
-    - [] [] [] [f] [f] [f] [f] [f] [f]
-    - [f] [f] [f] [f] [f] [f] [f] [f] [f]
-    - [f] [] [] [] [f] [] [] [f] [f]
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
 
 fishing_minigame_shop_open_gui:
     type: task
@@ -1433,11 +1431,11 @@ fishing_minigame_leaderboards_gui:
         bronze: <item[orange_stained_glass_pane[display=<&r> ]]>
         f: <item[feather].with[custom_model_data=3;display=<&r><&sp>]>
     slots:
-    - [] [f] [f] [f] [f] [f] [f] [f] [f]
-    - [f] [f] [f] [f] [] [] [] [f] [f]
-    - [f] [f] [f] [f] [] [] [] [f] [f]
-    - [f] [f] [f] [f] [f] [f] [f] [f] [f]
-    - [f] [f] [] [] [f] [f] [f] [f] [f]
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
 
 fishing_minigame_mp3_open_gui:
     type: task
