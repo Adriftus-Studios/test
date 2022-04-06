@@ -1361,18 +1361,16 @@ fishing_minigame_bucket_gui:
     type: inventory
     inventory: chest
     size: 54
-    title: <&f><&font[adriftus:fishing_minigame]><&chr[F808]><&chr[0024]>
+    title: <&f><&font[adriftus:fishing_minigame]><&chr[F808]><&chr[0021]>
     gui: true
-    definitions:
-        f: <item[feather].with[custom_model_data=3;display=<&r><&sp>]>
     debug: false
     slots:
-    - [f] [f] [f] [f] [f] [f] [f] [f] [f]
-    - [f] [f] [f] [f] [f] [f] [f] [f] [f]
-    - [f] [f] [] [] [] [] [] [f] [f]
-    - [f] [f] [] [] [] [] [] [f] [f]
-    - [f] [f] [] [] [] [] [] [f] [f]
-    - [f] [f] [] [] [] [] [] [f] [f]
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
 
 fishing_minigame_leaderboards_open_gui:
     type: task
