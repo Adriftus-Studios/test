@@ -20,7 +20,7 @@ kelp_bulb:
             type: shaped
             output_quantity: 1
             input:
-            - material:kelp|material:kelp||material:kelp
+            - material:kelp|material:kelp|material:kelp
             - material:kelp|material:air|material:kelp
             - material:kelp|material:kelp|material:kelp
 
