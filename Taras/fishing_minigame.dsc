@@ -1280,7 +1280,15 @@ fishing_minigame_merchant_gui:
     size: 45
     debug: false
     title: <&b>Fishing Merchant
-    gui: true
+    gui: true    
+    definitions:
+        f: <item[feather].with[custom_model_data=3;display=<&r><&sp>]>
+    slots:
+    - [f] [f] [f] [f] [f] [f] [f] [f] []
+    - [] [] [] [f] [f] [] [] [f] [f]
+    - [] [] [] [f] [f] [f] [f] [f] [f]
+    - [f] [f] [f] [f] [f] [f] [f] [f] [f]
+    - [f] [] [] [] [f] [] [] [f] [f]
 
 fishing_minigame_shop_open_gui:
     type: task
@@ -1342,15 +1350,18 @@ fishing_minigame_bucket_gui:
     type: inventory
     inventory: chest
     size: 54
+    title: <&f><&font[adriftus:fishing_minigame]><&chr[F808]><&chr[0024]>
     gui: true
+    definitions:
+        f: <item[feather].with[custom_model_data=3;display=<&r><&sp>]>
     debug: false
     slots:
-    - [] [] [] [] [] [] [] [] []
-    - [] [] [] [] [] [] [] [] []
-    - [] [] [] [] [] [] [] [] []
-    - [] [] [] [] [] [] [] [] []
-    - [] [] [] [] [] [] [] [] []
-    - [] [] [] [] [] [] [] [] []
+    - [f] [f] [f] [f] [f] [f] [f] [f] [f]
+    - [f] [f] [f] [f] [f] [f] [f] [f] [f]
+    - [f] [f] [] [] [] [] [] [f] [f]
+    - [f] [f] [] [] [] [] [] [f] [f]
+    - [f] [f] [] [] [] [] [] [f] [f]
+    - [f] [f] [] [] [] [] [] [f] [f]
 
 fishing_minigame_leaderboards_open_gui:
     type: task
@@ -1411,22 +1422,22 @@ fishing_minigame_leaderboards_open_gui:
 fishing_minigame_leaderboards_gui:
     type: inventory
     inventory: chest
-    size: 54
+    size: 45
     debug: false
-    title: <&d>Leaderboards
+    title: <&f><&font[adriftus:fishing_minigame]><&chr[F808]><&chr[0003]>
     gui: true
     definitions:
         green: <item[lime_stained_glass_pane[display=<&r> ]]>
         gold: <item[yellow_stained_glass_pane[display=<&r> ]]>
         silver: <item[gray_stained_glass_pane[display=<&r> ]]>
         bronze: <item[orange_stained_glass_pane[display=<&r> ]]>
+        f: <item[feather].with[custom_model_data=3;display=<&r><&sp>]>
     slots:
-    - [] [] [green] [green] [] [green] [green] [] []
-    - [] [] [] [green] [] [green] [] [] []
-    - [] [] [] [] [green] [] [] [] []
-    - [] [gold] [] [] [] [] [] [gold] []
-    - [] [gold] [silver] [] [] [] [silver] [gold] []
-    - [] [gold] [silver] [bronze] [] [bronze] [silver] [gold] []
+    - [] [f] [f] [f] [f] [f] [f] [f] [f]
+    - [f] [f] [f] [f] [] [] [] [f] [f]
+    - [f] [f] [f] [f] [] [] [] [f] [f]
+    - [f] [f] [f] [f] [f] [f] [f] [f] [f]
+    - [f] [f] [] [] [f] [f] [f] [f] [f]
 
 fishing_minigame_mp3_open_gui:
     type: task
