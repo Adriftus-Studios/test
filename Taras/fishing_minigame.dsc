@@ -663,13 +663,13 @@ fishing_minigame_get_bucket_name:
     script:
         - choose <[level]>:
             - case 1:
-                - determine <&f><&font[adriftus:guis]><&chr[F808]><&chr[6918]>
+                - determine <&f><&font[adriftus:fishing_minigame]><&chr[F808]><&chr[0021]>
             - case 2:
-                - determine <&f><&font[adriftus:guis]><&chr[F808]><&chr[6919]>
+                - determine <&f><&font[adriftus:fishing_minigame]><&chr[F808]><&chr[0022]>
             - case 3:
-                - determine <&f><&font[adriftus:guis]><&chr[F808]><&chr[6920]>
+                - determine <&f><&font[adriftus:fishing_minigame]><&chr[F808]><&chr[0023]>
             - case MAX:
-                - determine <&f><&font[adriftus:guis]><&chr[F808]><&chr[6921]>
+                - determine <&f><&font[adriftus:fishing_minigame]><&chr[F808]><&chr[0024]>
 
 # % ██ [ Returns avaialbe whirlpool locations ] ██
 fishing_minigame_get_avaiailable_whirlpool_location:
