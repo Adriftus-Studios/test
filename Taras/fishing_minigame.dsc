@@ -1369,7 +1369,7 @@ fishing_minigame_leaderboards_open_gui:
     debug: false
     build_inventory:
         - define inventory <inventory[fishing_minigame_leaderboards_gui]>
-        - define slots <list[20|30|40|26|34|42]>
+        - define slots <list[14|15|16|23|24|25]>
         - define colors <list[e|7|6]>
         - define gradients <list[from=#FFEA00;to=#FFF873|from=#A7A7A7;to=#E6E6E6|from=#F08800;to=#FFA057]>
         - define bestCatch <server.flag[fishingminigame.bestcatch.fish]>
@@ -1382,15 +1382,15 @@ fishing_minigame_leaderboards_open_gui:
         - adjust def:barrier "lore:<&7>This spot is open! Start fishing to claim it!"
 
         - if <[bestCatch].equals[none]>:
-            - inventory set o:<item[player_head[display=<&7><&l>Nobody]]> slot:5 d:<[inventory]>
-            - inventory set o:<[barrier]> slot:14 d:<[inventory]>
+            - inventory set o:<item[player_head[display=<&7><&l>Nobody]]> slot:39 d:<[inventory]>
+            - inventory set o:<[barrier]> slot:40 d:<[inventory]>
         - else:
             - define playerName <player[<[bestCatchPlayer]>].name>
             - define playerHead <item[player_head[skull_skin=<[playerName]>]]>
             - adjust def:playerHead "display:<&d><&l>Best Catch"
             - adjust def:playerHead "lore:<&7>Best catch of the day by:<n><&d><player[<[bestCatchPlayer]>].name.color_gradient[from=#FF62FA;to=#FFA8EF]>"
-            - inventory set o:<[playerHead]> slot:5 d:<[inventory]>
-            - inventory set o:<[bestCatch].unescaped> slot:14 d:<[inventory]>
+            - inventory set o:<[playerHead]> slot:39 d:<[inventory]>
+            - inventory set o:<[bestCatch].unescaped> slot:40 d:<[inventory]>
 
         - repeat 3:
             - if <[mostCatchedPlayers].get[<[value]>].exists>:
