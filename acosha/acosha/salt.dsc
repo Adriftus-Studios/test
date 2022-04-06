@@ -3,4 +3,4 @@ saltprevent:
     debug: false
     events:
         on block spreads:
-            - narrate "This block has spread"
+#            - narrate "This block has spread"
