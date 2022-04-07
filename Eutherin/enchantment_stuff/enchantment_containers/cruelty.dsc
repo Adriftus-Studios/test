@@ -9,7 +9,7 @@ Cruelty_enchantment:
   max_cost: <context.level.mul[1]>
   data:
     effect:
-      - Increases damage by 1 point per level to already damaged enemies.
+      - Increases damage by 1.5 points per level to already damaged enemies.
     item_slots:
       - all_weapons
   category: weapon

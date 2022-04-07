@@ -15,7 +15,7 @@ player_damage_enchant_handler:
       - ratelimit <player> 12t
       - if <context.entity.has_flag[temp.custom_enchant_cruelty]>:
         - define level <player.item_in_hand.enchantment_map.get[cruelty].if_null[0]>
-        - hurt <context.entity> <[level]>
+        - hurt <context.entity> <[level].mul[1.5]>
       - if !<context.entity.has_flag[temp.custom_enchant_cruelty]> && !<context.entity.has_flag[temp.custom_enchant_cruelty]>:
         - flag <context.entity> temp.custom_enchant_cruelty
       - if <player.health_percentage> > 90:
