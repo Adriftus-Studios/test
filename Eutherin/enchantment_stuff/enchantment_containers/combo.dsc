@@ -31,11 +31,11 @@ combo_enchantment:
     - stop
   - flag <player> temp.custom_enchant_combo:++ expire:5s
   - flag <player> combo_target:<context.victim> expire:5s
-  - hurt <context.victim> <player.flag[temp.custom_enchant_combo]>
   - if <player.has_flag[temp.custom_enchant_combo]> && <player.flag[temp.custom_enchant_combo]> <= <context.level.mul[2]>:
     - flag <player> temp.custom_enchant_combo:<player.flag[temp.custom_enchant_combo]> expire:5s
     - flag <player> combo_target:<context.victim> expire:5s
-    - hurt <context.victim> <player.flag[temp.custom_enchant_combo]>
+    - hurt <player.flag[temp.custom_enchant_combo]> <context.victim>
+    - narrate <player.flag[temp.custom_enchant_combo]>
 
 pillager_test:
   type: world
