@@ -36,5 +36,5 @@ combo_enchantment:
     - flag <player> custom_enchant_combo:<player.flag[custom_enchant_combo]> expire:5s
     - flag <player> combo_target:<context.victim> expire:50s
     - narrate <[victim].health>
-    - hurt <player.flag[custom_enchant_combo]> <[victim]>
+    - hurt <player.flag[custom_enchant_combo]> <[victim]> cause:VOID
     - narrate <[victim].health>
