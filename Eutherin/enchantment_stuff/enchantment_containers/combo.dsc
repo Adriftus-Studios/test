@@ -25,6 +25,7 @@ combo_enchantment:
   can_enchant: <context.item.advanced_matches[*_sword|*_axe|bow|crossbow]>
   after attack:
   - ratelimit <player> 12t
+  - define victim <context.victim>
   - if !<player.has_flag[temp.custom_enchant_combo]> || <context.victim> != <player.flag[combo_target].if_null[rip]>:
     - flag <player> temp.custom_enchant_combo:1 expire:5s
     - flag <player> combo_target:<context.victim> expire:5s
@@ -34,7 +35,7 @@ combo_enchantment:
   - if <player.has_flag[temp.custom_enchant_combo]> && <player.flag[temp.custom_enchant_combo]> <= <context.level.mul[2]>:
     - flag <player> temp.custom_enchant_combo:<player.flag[temp.custom_enchant_combo]> expire:5s
     - flag <player> combo_target:<context.victim> expire:5s
-    - hurt <player.flag[temp.custom_enchant_combo]> <context.victim> cause:void
+    - hurt <player.flag[temp.custom_enchant_combo]> <[victim]> cause:void
     - narrate <player.flag[temp.custom_enchant_combo]>
 
 pillager_test:
