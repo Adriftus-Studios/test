@@ -1,7 +1,7 @@
 combo_enchantment:
   type: enchantment
   id: combo
-  debug: false
+  debug: true
   slots:
   - mainhand
   rarity: common
