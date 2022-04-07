@@ -34,7 +34,7 @@ combo_enchantment:
   - if <player.has_flag[temp.custom_enchant_combo]> && <player.flag[temp.custom_enchant_combo]> <= <context.level.mul[2]>:
     - flag <player> temp.custom_enchant_combo:<player.flag[temp.custom_enchant_combo]> expire:5s
     - flag <player> combo_target:<context.victim> expire:5s
-    - hurt <player.flag[temp.custom_enchant_combo]> <context.victim>
+    - hurt <player.flag[temp.custom_enchant_combo]> <context.victim> cause:void
     - narrate <player.flag[temp.custom_enchant_combo]>
 
 pillager_test:
