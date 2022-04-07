@@ -38,6 +38,6 @@ combo_enchantment:
   - flag <player> combo_target:<context.victim> expire:50s
   - narrate <[victim].health>
   - narrate <player.flag[temp.custom_enchant_combo]>
-  - hurt <player.flag[temp.custom_enchant_combo]> <[victim]> cause:CUSTOM
+  - hurt <player.flag[temp.custom_enchant_combo].mul[<context.level.mul[2]>]> <[victim]>
   - narrate <[victim].health>
   - narrate .
