@@ -2,12 +2,12 @@ kelpbulbobtain:
     type: world
     events:
         on player breaks kelp_plant:
-          - if <player.has_flag[nobulb]>:
-            - narrate "<red>You Must Wait 2 Hours Before Farming Again"
-            - stop
-            - drop kelp_bulb
-          - else:
-               - drop kelp_bulb
+            - define chance <util.random.int[1].to[15]>
+            - choose  <[chance]>:
+                - case 1:
+                    - drop kelp_bulb
+                - default:
+                    - stop
 
 
 
@@ -15,6 +15,17 @@ kelp_bulb:
     type: item
     material: sugar
     display name: <yellow>Kelp Bulb
+    data:
+        recipe_book_category: 
+    recipes:
+        1:
+            type: shaped
+            output_quantity: 1
+            input:
+            - material:kelp|material:kelp|material:kelp
+            - material:kelp|material:air|material:kelp
+            - material:kelp|material:kelp|material:kelp
+
 
 kelpbulbevents:
     type: world
@@ -28,8 +39,3 @@ kelpbulbevents:
                     - narrate "<red>Wait Longer"
                     - stop
 
-kelpbulbprevent:
-    type: world
-    events:
-        on player places kelp:
-            - flag <player> nobulb

@@ -663,13 +663,13 @@ fishing_minigame_get_bucket_name:
     script:
         - choose <[level]>:
             - case 1:
-                - determine <&f><&font[adriftus:guis]><&chr[F808]><&chr[6918]>
+                - determine <&f><&font[adriftus:fishing_minigame]><&chr[F808]><&chr[0021]>
             - case 2:
-                - determine <&f><&font[adriftus:guis]><&chr[F808]><&chr[6919]>
+                - determine <&f><&font[adriftus:fishing_minigame]><&chr[F808]><&chr[0022]>
             - case 3:
-                - determine <&f><&font[adriftus:guis]><&chr[F808]><&chr[6920]>
+                - determine <&f><&font[adriftus:fishing_minigame]><&chr[F808]><&chr[0023]>
             - case MAX:
-                - determine <&f><&font[adriftus:guis]><&chr[F808]><&chr[6921]>
+                - determine <&f><&font[adriftus:fishing_minigame]><&chr[F808]><&chr[0024]>
 
 # % ██ [ Returns avaialbe whirlpool locations ] ██
 fishing_minigame_get_avaiailable_whirlpool_location:
@@ -1256,9 +1256,19 @@ fishing_minigame_merchant_open_gui:
     build_inventory:
         - define inventory <inventory[fishing_minigame_merchant_gui]>
         - if <[player].has_flag[fishingminigame.active]> && <[player].flag[fishingminigame.active]>:
-            - inventory set o:fishing_minigame_end_game slot:14 d:<[inventory]>
+            - inventory set o:fishing_minigame_end_game slot:10 d:<[inventory]>
+            - inventory set o:fishing_minigame_end_game slot:11 d:<[inventory]>
+            - inventory set o:fishing_minigame_end_game slot:12 d:<[inventory]>
+            - inventory set o:fishing_minigame_end_game slot:19 d:<[inventory]>
+            - inventory set o:fishing_minigame_end_game slot:20 d:<[inventory]>
+            - inventory set o:fishing_minigame_end_game slot:21 d:<[inventory]>
         - else:
-            - inventory set o:fishing_minigame_start_button slot:14 d:<[inventory]>
+            - inventory set o:fishing_minigame_start_button slot:10 d:<[inventory]>
+            - inventory set o:fishing_minigame_start_button slot:11 d:<[inventory]>
+            - inventory set o:fishing_minigame_start_button slot:12 d:<[inventory]>
+            - inventory set o:fishing_minigame_start_button slot:19 d:<[inventory]>
+            - inventory set o:fishing_minigame_start_button slot:20 d:<[inventory]>
+            - inventory set o:fishing_minigame_start_button slot:21 d:<[inventory]>
         - define tokensButton <item[fishing_minigame_fishtokens_button]>
         - define tokensLore <[tokensButton].lore>
         - if <[player].has_flag[fishingminigame.fishtokens]>:
@@ -1267,9 +1277,12 @@ fishing_minigame_merchant_open_gui:
             - define newLoreLine "<&a>Fishtokens Amount: 0 <&r><&font[adriftus:chat]><&chr[0045]>"
         - define tokensLore <[tokensLore].set_single[<[newLoreLine]>].at[3]>
         - adjust def:tokensButton lore:<[tokensLore]>
-        - inventory set o:<[tokensButton]> slot:30 d:<[inventory]>
-        - inventory set o:fishing_minigame_leaderboards_button slot:32 d:<[inventory]>
-        - inventory set o:fishing_minigame_fish_button slot:34 d:<[inventory]>
+        - inventory set o:<[tokensButton]> slot:38 d:<[inventory]>
+        - inventory set o:<[tokensButton]> slot:39 d:<[inventory]>
+        - inventory set o:<[tokensButton]> slot:40 d:<[inventory]>
+        - inventory set o:fishing_minigame_leaderboards_button slot:9 d:<[inventory]>
+        - inventory set o:fishing_minigame_fish_button slot:42 d:<[inventory]>
+        - inventory set o:fishing_minigame_fish_button slot:43 d:<[inventory]>
     script:
         - inject locally path:build_inventory
         - inventory open d:<[inventory]>
@@ -1279,8 +1292,14 @@ fishing_minigame_merchant_gui:
     inventory: chest
     size: 45
     debug: false
-    title: <&b>Fishing Merchant
+    title: <&f><&font[adriftus:fishing_minigame]><&chr[F808]><&chr[0001]>
     gui: true
+    slots:
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
 
 fishing_minigame_shop_open_gui:
     type: task
@@ -1342,6 +1361,7 @@ fishing_minigame_bucket_gui:
     type: inventory
     inventory: chest
     size: 54
+    title: <&f><&font[adriftus:fishing_minigame]><&chr[F808]><&chr[0021]>
     gui: true
     debug: false
     slots:
@@ -1358,7 +1378,7 @@ fishing_minigame_leaderboards_open_gui:
     debug: false
     build_inventory:
         - define inventory <inventory[fishing_minigame_leaderboards_gui]>
-        - define slots <list[20|30|40|26|34|42]>
+        - define slots <list[14|15|16|23|24|25]>
         - define colors <list[e|7|6]>
         - define gradients <list[from=#FFEA00;to=#FFF873|from=#A7A7A7;to=#E6E6E6|from=#F08800;to=#FFA057]>
         - define bestCatch <server.flag[fishingminigame.bestcatch.fish]>
@@ -1371,15 +1391,15 @@ fishing_minigame_leaderboards_open_gui:
         - adjust def:barrier "lore:<&7>This spot is open! Start fishing to claim it!"
 
         - if <[bestCatch].equals[none]>:
-            - inventory set o:<item[player_head[display=<&7><&l>Nobody]]> slot:5 d:<[inventory]>
-            - inventory set o:<[barrier]> slot:14 d:<[inventory]>
+            - inventory set o:<item[player_head[display=<&7><&l>Nobody]]> slot:39 d:<[inventory]>
+            - inventory set o:<[barrier]> slot:40 d:<[inventory]>
         - else:
             - define playerName <player[<[bestCatchPlayer]>].name>
             - define playerHead <item[player_head[skull_skin=<[playerName]>]]>
             - adjust def:playerHead "display:<&d><&l>Best Catch"
             - adjust def:playerHead "lore:<&7>Best catch of the day by:<n><&d><player[<[bestCatchPlayer]>].name.color_gradient[from=#FF62FA;to=#FFA8EF]>"
-            - inventory set o:<[playerHead]> slot:5 d:<[inventory]>
-            - inventory set o:<[bestCatch].unescaped> slot:14 d:<[inventory]>
+            - inventory set o:<[playerHead]> slot:39 d:<[inventory]>
+            - inventory set o:<[bestCatch].unescaped> slot:40 d:<[inventory]>
 
         - repeat 3:
             - if <[mostCatchedPlayers].get[<[value]>].exists>:
@@ -1411,22 +1431,22 @@ fishing_minigame_leaderboards_open_gui:
 fishing_minigame_leaderboards_gui:
     type: inventory
     inventory: chest
-    size: 54
+    size: 45
     debug: false
-    title: <&d>Leaderboards
+    title: <&f><&font[adriftus:fishing_minigame]><&chr[F808]><&chr[0003]>
     gui: true
     definitions:
         green: <item[lime_stained_glass_pane[display=<&r> ]]>
         gold: <item[yellow_stained_glass_pane[display=<&r> ]]>
         silver: <item[gray_stained_glass_pane[display=<&r> ]]>
         bronze: <item[orange_stained_glass_pane[display=<&r> ]]>
+        f: <item[feather].with[custom_model_data=3;display=<&r><&sp>]>
     slots:
-    - [] [] [green] [green] [] [green] [green] [] []
-    - [] [] [] [green] [] [green] [] [] []
-    - [] [] [] [] [green] [] [] [] []
-    - [] [gold] [] [] [] [] [] [gold] []
-    - [] [gold] [silver] [] [] [] [silver] [gold] []
-    - [] [gold] [silver] [bronze] [] [bronze] [silver] [gold] []
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
 
 fishing_minigame_mp3_open_gui:
     type: task
@@ -1801,8 +1821,10 @@ fishing_minigame_shop_bucket_item:
 fishing_minigame_end_game:
     debug: false
     type: item
-    material: barrier
+    material: feather
     display name: <&c><&l>Finish Fishing
+    mechanisms:
+        custom_model_data: 3
     lore:
     - <&7>This will stop the fishing minigame.
     - <&7>and return you back to normal.
@@ -1893,8 +1915,10 @@ fishing_minigame_mp3_player:
 fishing_minigame_start_button:
     debug: false
     type: item
-    material: fishing_rod
+    material: feather
     display name: <&b><&l>Start fishing!
+    mechanisms:
+        custom_model_data: 3
     lore:
     - <&7>You ready to begin your fishing journey?
     - <&r>
@@ -1904,10 +1928,10 @@ fishing_minigame_start_button:
 fishing_minigame_fishtokens_button:
     debug: false
     type: item
-    material: iron_nugget
-    display name: <&a><&l>Fishtoken Shop
+    material: feather
+    display name: <&a><&l>Pro Shop
     mechanisms:
-        custom_model_data: 40
+        custom_model_data: 3
     lore:
     - <&7>This is your fishing currency.
     - <&r>
@@ -1919,8 +1943,10 @@ fishing_minigame_fishtokens_button:
 fishing_minigame_leaderboards_button:
     debug: false
     type: item
-    material: writable_book
+    material: feather
     display name: <&d><&l>Leaderboards
+    mechanisms:
+        custom_model_data: 3
     lore:
     - <&7>View who is leading todays competition.
     - <&r>
@@ -1930,8 +1956,10 @@ fishing_minigame_leaderboards_button:
 fishing_minigame_fish_button:
     debug: false
     type: item
-    material: tropical_fish_bucket
+    material: feather
     display name: <&e><&l>Sell Fish
+    mechanisms:
+        custom_model_data: 3
     lore:
     - <&7>Get your catch valued by the merchant.
     - <&r>
