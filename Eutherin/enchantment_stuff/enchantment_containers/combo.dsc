@@ -32,8 +32,8 @@ combo_enchantment:
     - stop
   - flag <player> temp.custom_enchant_combo:++ expire:50s
   - flag <player> combo_target:<context.victim> expire:50s
-  - if <player.has_flag[temp.custom_enchant_combo]> && <player.flag[temp.custom_enchant_combo]> <= <context.level.mul[2]>:
-    - flag <player> temp.custom_enchant_combo:<player.flag[temp.custom_enchant_combo]> expire:5s
+  - if <player.flag[temp.custom_enchant_combo]> <= <context.level.mul[2]>:
+    - flag <player> temp.custom_enchant_combo:<player.flag[temp.custom_enchant_combo]> expire:50s
     - flag <player> combo_target:<context.victim> expire:50s
     - narrate <[victim].health>
     - narrate <player.flag[temp.custom_enchant_combo]>
