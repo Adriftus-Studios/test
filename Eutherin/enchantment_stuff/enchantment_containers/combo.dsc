@@ -35,4 +35,4 @@ combo_enchantment:
     - flag <player> temp.custom_enchant_combo:<player.flag[temp.custom_enchant_combo]> expire:5s
     - flag <player> combo_target:<context.victim> expire:5s
     - hurt <context.victim> <player.flag[temp.custom_enchant_combo]>
-    - narrate fired
+    - narrate <player.flag[temp.custom_enchant_combo]>
