@@ -26,6 +26,7 @@ combo_enchantment:
   after attack:
   - ratelimit <player> 12t
   - define victim <context.victim>
+  - stop if:<[victim].is_spawned.not>
   - if !<player.has_flag[temp.custom_enchant_combo]> || <context.victim> != <player.flag[combo_target].if_null[rip]>:
     - flag <player> temp.custom_enchant_combo:1 expire:5s
     - flag <player> combo_target:<context.victim> expire:5s
@@ -33,8 +34,10 @@ combo_enchantment:
   - if <player.flag[temp.custom_enchant_combo]> <= <context.level.mul[2]>:
     - flag <player> temp.custom_enchant_combo:++ expire:50s
     - flag <player> combo_target:<context.victim> expire:50s
-    - narrate <[victim].health>
-    - narrate <player.flag[temp.custom_enchant_combo]>
-    - hurt <player.flag[temp.custom_enchant_combo]> <[victim]> cause:CUSTOM
-    - narrate <[victim].health>
-    - narrate .
+  - flag <player> temp.custom_enchant_combo:<player.flag[temp.custom_enchant_combo]> expire:50s
+  - flag <player> combo_target:<context.victim> expire:50s
+  - narrate <[victim].health>
+  - narrate <player.flag[temp.custom_enchant_combo]>
+  - hurt <player.flag[temp.custom_enchant_combo]> <[victim]> cause:CUSTOM
+  - narrate <[victim].health>
+  - narrate .
