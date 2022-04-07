@@ -9,7 +9,7 @@ combo_enchantment:
   max_cost: <context.level.mul[1]>
   data:
     effect:
-      - Repeated attacks to a target do 2 damage per level per attack.
+      - Repeated attacks to a target do 1 damage per level per attack.
       - _
       - Stacks up to 2x your enchantment level.
     item_slots:
@@ -38,6 +38,6 @@ combo_enchantment:
   - flag <player> combo_target:<context.victim> expire:50s
   - narrate <[victim].health>
   - narrate <player.flag[temp.custom_enchant_combo]>
-  - hurt <player.flag[temp.custom_enchant_combo].mul[<context.level.mul[2]>]> <[victim]>
+  - hurt <player.flag[temp.custom_enchant_combo].mul[<context.level>]> <[victim]>
   - narrate <[victim].health>
   - narrate .
