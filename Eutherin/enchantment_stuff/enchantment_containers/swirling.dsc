@@ -27,6 +27,7 @@ Swirling_enchantment:
   - if !<player.has_flag[temp.custom_enchant_Swirling]>:
     - flag <player> temp.custom_enchant_Swirling:1 expire:5s
     - stop
+  - narrate <player.flag[temp.custom_enchant_Swirling]>
   - if <player.has_flag[temp.custom_enchant_Swirling]> && <player.flag[temp.custom_enchant_Swirling]> < 3:
     - flag <player> temp.custom_enchant_Swirling:++ expire:5s
     - playeffect <player.location> effect:sweep_attack quantity:<player.flag[temp.custom_enchant_Swirling]>
