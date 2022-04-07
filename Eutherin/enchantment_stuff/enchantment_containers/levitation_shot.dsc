@@ -24,6 +24,6 @@ Levitation_shot_enchantment:
   is_discoverable: true
   can_enchant: <context.item.advanced_matches[bow|crossbow|trident]>
   after attack:
-  - ratelimit <player> 2t
+  - ratelimit <player> 12t
   - if <util.random.int[1].to[10]> > 9 && <context.victim.is_spawned>:
     - cast LEVITATION <context.victim> amplifier:<context.level.sub[1]> duration:2s

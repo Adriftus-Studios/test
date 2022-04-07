@@ -24,7 +24,7 @@ Fuse_Shot_enchantment:
   is_discoverable: true
   can_enchant: <context.item.advanced_matches[bow|crossbow]>
   after attack:
-  - ratelimit <player> 2t
+  - ratelimit <player> 12t
   - if <context.victim.is_spawned> && <util.random.int[1].to[10]> > 9:
       - fakespawn primed_tnt <context.victim.location> duration:20t save:fake_n_t
       - define location <entry[fake_n_t].faked_entity.location>

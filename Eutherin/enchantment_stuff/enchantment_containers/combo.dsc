@@ -24,7 +24,7 @@ combo_enchantment:
   is_tradable: false
   can_enchant: <context.item.advanced_matches[*_sword|*_axe|bow|crossbow]>
   after attack:
-  - ratelimit <player> 2t
+  - ratelimit <player> 12t
   - if !<player.has_flag[temp.custom_enchant_combo]> || <context.victim> != <player.flag[combo_target].if_null[rip]>:
     - flag <player> temp.custom_enchant_combo:1 expire:5s
     - flag <player> combo_target:<context.victim> expire:5s

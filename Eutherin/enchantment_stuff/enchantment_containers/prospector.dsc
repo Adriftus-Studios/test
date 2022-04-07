@@ -24,7 +24,7 @@ prospector_enchantment:
   is_discoverable: true
   can_enchant: <context.item.advanced_matches[*_sword|*_axe|bow|crossbow|trident]>
   after attack:
-    - ratelimit <player> 2t
+    - ratelimit <player> 12t
     - if <list[pillager|evoker|vindicator|illusioner|zombie|piglin|piglin_brute|zombified_piglin].contains_any[<context.victim.entity_type>]> && <context.victim.is_spawned>:
       - if <context.victim.flag[temp.custom_enchant_prospector]||0> < <context.level>:
         - flag <context.victim> temp.custom_enchant_prospector:++ expire:20s

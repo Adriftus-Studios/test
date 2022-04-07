@@ -15,7 +15,7 @@ Temporal_theft_enchantment:
     item_slots:
       - ranged
   category: bow
-  full_name: <&7>Temporal_Theft <context.level.proc[arabic_to_roman]>
+  full_name: <&7>Temporal Theft <context.level.proc[arabic_to_roman]>
   min_level: 1
   max_level: 3
   treasure_only: true
@@ -24,7 +24,7 @@ Temporal_theft_enchantment:
   is_discoverable: true
   can_enchant: <context.item.advanced_matches[bow|crossbow]>
   after attack:
-  - ratelimit <player> 2t
+  - ratelimit <player> 12t
   - if <util.random.int[1].to[10]> < 7:
     - stop
   - if <player.has_flag[temp.custom_enchantment_tempo]> || <context.victim.has_flag[temp.custom_enchantment_tempo]> || !<context.victim.is_spawned>:

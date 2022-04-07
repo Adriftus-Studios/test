@@ -20,7 +20,7 @@ weakening_enchantment:
   is_tradable: false
   can_enchant: <context.item.advanced_matches[*_sword|*_axe]>
   after attack:
-  - ratelimit <player> 2t
+  - ratelimit <player> 12t
   - if <util.random.int[1].to[10]> > 9:
     - foreach <player.location.find_entities.within[<context.level.mul[2]>]> as:entity:
       - if <list[player|dropped_item|armor_stand|item_frame|arrow|trident|shulker_bullet|experience_orb].contains_any[<[entity].entity_type>]> || <[entity].is_tamed||false> || !<context.victim.is_spawned>:

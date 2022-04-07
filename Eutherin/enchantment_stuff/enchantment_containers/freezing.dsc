@@ -23,6 +23,6 @@ freezing_enchantment:
   is_discoverable: true
   can_enchant: <context.item.advanced_matches[*_sword|*_axe]>
   after attack:
-    - ratelimit <player> 2t
+    - ratelimit <player> 12t
     - if <context.victim.is_spawned>:
       - cast SLOW <context.victim> amplifier:<context.level.sub[1]> duration:3s

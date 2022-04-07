@@ -23,7 +23,7 @@ Swirling_enchantment:
   is_discoverable: true
   can_enchant: <context.item.advanced_matches[*_sword|*_axe]>
   after attack:
-  - ratelimit <player> 2t
+  - ratelimit <player> 12t
   - if !<player.has_flag[temp.custom_enchant_Swirling]>:
     - flag <player> temp.custom_enchant_Swirling:1 expire:5s
     - stop

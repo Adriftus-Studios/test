@@ -10,7 +10,7 @@ Soulbound_enchantment:
   data:
     effect:
       - Prevents this item from dropping when you die.
-      - §
+      - _
       - Will lose one level each time it takes effect.
     item_slots:
       - anything

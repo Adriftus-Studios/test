@@ -26,7 +26,7 @@ Ricochet_enchantment:
   can_enchant: <context.item.advanced_matches[bow|crossbow]>
   is_compatible: <context.enchantment_key.advanced_matches[denizen:chain_reaction].not>
   after attack:
-  - ratelimit <player> 2t
+  - ratelimit <player> 12t
   - if <util.random.int[1].to[10]> < 9 || !<context.victim.is_spawned>:
     - stop
   - if <context.victim.is_spawned>:
