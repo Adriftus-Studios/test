@@ -37,7 +37,7 @@ Temporal_theft_enchantment:
   - adjust <context.victim> speed:<[mob_speed].sub[<context.victim.speed.div[7].mul[<context.level>]>]>
   - playsound sound:ENTITY_ENDERMAN_TELEPORT <context.victim.location> pitch:0.5
   - adjust <player> walk_speed:<[player_speed].add[<context.victim.speed.div[7].mul[<context.level>]>]>
-  - wait 30t
+  - wait <context.level.mul[15]>t
   - adjust <player> walk_speed:<[player_speed]>
   - playsound sound:ENTITY_ENDERMAN_TELEPORT <player.location> pitch:0.5
   - if <context.victim.is_spawned>:
