@@ -32,8 +32,9 @@ combo_enchantment:
     - stop
   - flag <player> custom_enchant_combo:++ expire:50s
   - flag <player> combo_target:<context.victim> expire:50s
+  - hurt <player.flag[custom_enchant_combo]> <[victim]> cause:void
   - if <player.has_flag[custom_enchant_combo]> && <player.flag[custom_enchant_combo]> <= <context.level.mul[2]>:
     - flag <player> custom_enchant_combo:<player.flag[custom_enchant_combo]> expire:5s
     - flag <player> combo_target:<context.victim> expire:50s
-    - hurt <player.flag[custom_enchant_combo]> <[victim]> cause:void
+
     - narrate <player.flag[custom_enchant_combo]>
