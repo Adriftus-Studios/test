@@ -37,3 +37,4 @@ combo_enchantment:
     - narrate <player.flag[temp.custom_enchant_combo]>
     - hurt <player.flag[temp.custom_enchant_combo]> <[victim]> cause:CUSTOM
     - narrate <[victim].health>
+    - narrate .
