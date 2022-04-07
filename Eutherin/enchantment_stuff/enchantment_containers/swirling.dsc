@@ -28,15 +28,16 @@ Swirling_enchantment:
   - if !<player.has_flag[temp.custom_enchant_Swirling]>:
     - flag <player> temp.custom_enchant_Swirling:1 expire:5s
     - stop
-  - if <player.has_flag[temp.custom_enchant_Swirling]> && <player.flag[temp.custom_enchant_Swirling]> == 2:
+  - if <player.has_flag[temp.custom_enchant_Swirling]> && <player.flag[temp.custom_enchant_Swirling]> < 2:
     - flag <player> temp.custom_enchant_Swirling:++ expire:5s
     - playeffect <player.location> effect:sweep_attack quantity:<player.flag[temp.custom_enchant_Swirling]>
     - stop
-  - flag <player> temp.custom_enchant_Swirling:!
-  - narrate fire
-  - mythicskill SwirlingSweep<context.level> casters:<player> <player>
-  - foreach <player.location.find_entities.within[<element[2].mul[<context.level>]>]> as:entity:
-    - if <list[player|dropped_item|armor_stand|item_frame|arrow|trident|shulker_bullet|experience_orb].contains_any[<[entity].entity_type>]> || !<[entity].is_spawned> || <[entity].is_tamed||false>:
-      - foreach next
-    - playsound sound:entity_ghast_shoot <[entity].location> pitch:1.5
-    - hurt <context.victim> <context.level>
+    - flag <player> temp.custom_enchant_Swirling:!
+  - if <player.flag[temp.custom_enchant_Swirling]> == 2:
+    - narrate fire
+    - mythicskill SwirlingSweep<context.level> casters:<player> <player>
+    - foreach <player.location.find_entities.within[<element[2].mul[<context.level>]>]> as:entity:
+      - if <list[player|dropped_item|armor_stand|item_frame|arrow|trident|shulker_bullet|experience_orb].contains_any[<[entity].entity_type>]> || !<[entity].is_spawned> || <[entity].is_tamed||false>:
+        - foreach next
+      - playsound sound:entity_ghast_shoot <[entity].location> pitch:1.5
+      - hurt <context.victim> <context.level>
