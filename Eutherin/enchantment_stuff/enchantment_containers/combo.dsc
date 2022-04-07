@@ -36,3 +36,10 @@ combo_enchantment:
     - flag <player> combo_target:<context.victim> expire:5s
     - hurt <context.victim> <player.flag[temp.custom_enchant_combo]>
     - narrate <player.flag[temp.custom_enchant_combo]>
+
+pillager_test:
+  type: world
+  debug: false
+  events:
+    on pillager damaged:
+      - narrate <context.damage>
