@@ -32,6 +32,7 @@ Swirling_enchantment:
     - playeffect <player.location> effect:sweep_attack quantity:<player.flag[temp.custom_enchant_Swirling]>
     - stop
   - if <player.flag[temp.custom_enchant_Swirling]> == 3:
+    - narrate fire
     - flag <player> temp.custom_enchant_Swirling:!
     - mythicskill SwirlingSweep<context.level> casters:<player> <player>
     - foreach <player.location.find_entities.within[<element[2].mul[<context.level>]>]> as:entity:
