@@ -83,7 +83,7 @@ level_design_effect_teleport_config:
     - define uuid <context.inventory.slot[5].flag[uuid]> if:<[uuid].exists.not>
     - define inv <inventory[level_design_effect_teleport_config_inventory]>
     - inventory set slot:5 d:<[inv]> o:<item[<[location].material.name>].with[display=<[location].simple>;flag=location:<[location]>;flag=uuid:<[uuid]>]>
-    - inventory set slot:24 d:<[inv]> o:<item[green_wool].with[display=<[location].flag[level_design.<[uuid]>.teleport.targets]>;flag=run_script:level_design_effect_teleport_get_input]>
+    - inventory set slot:25 d:<[inv]> "o:<item[green_wool].with[display=<&6>Playres in Range;lore=<&6>Current<&co> <&r><[location].flag[level_design.<[uuid]>.teleport.targets]>;flag=run_script:level_design_effect_teleport_get_input]>"
     - inventory open d:<[inv]>
 
 level_design_effect_teleport_get_input:
@@ -92,7 +92,7 @@ level_design_effect_teleport_get_input:
   script:
     - flag player level_design.set_teleport.uuid:<context.inventory.slot[5].flag[uuid]>
     - flag player level_design.set_teleport.location:<context.inventory.slot[5].flag[location]>
-    - run anvil_gui_text_input "def:<&6>Set Mob Spawn|Sets the Mob to be spawned|level_design_effect_spawn_set_range"
+    - run anvil_gui_text_input "def:<&6>Set Mob Spawn|Sets the Mob to be spawned|level_design_effect_teleport_set_targets"
 
 level_design_effect_teleport_set_targets:
   type: task
