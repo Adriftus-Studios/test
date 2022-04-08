@@ -42,6 +42,7 @@ level_design_open_main_menu:
     - define settings <context.location.flag[level_design.settings].if_null[<list>]>
     - if <[settings].size> < 9:
       - inventory set slot:5 d:<[inv]> o:<item[<context.material>].with[flag=run_script:level_design_add_setting]>
+    - inventory open d:<[inv]>
 
 level_design_add_setting:
   type: task
