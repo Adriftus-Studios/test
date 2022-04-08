@@ -75,6 +75,7 @@ level_design_trigger_onstep_config:
     - define inv <inventory[level_design_trigger_onstep_config_inventory]>
     - inventory set slot:5 d:<[inv]> o:<item[<[location].material.name>].with[display=<[location].simple>;flag=location:<[location]>;flag=uuid:<[uuid]>]>
     - inventory set slot:19 d:<[inv]> o:<item[green_wool].with[display=<[location].flag[level_design.on_step_data.<[uuid]>.setting.uses]>;flag=run_script:level_design_effect_spawn_get_mob_input]>
+    - inventory open d:<[inv]>
 
 level_design_effect_spawn_get_mob_input:
   type: task
