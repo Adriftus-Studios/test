@@ -171,7 +171,7 @@ level_design_add_trigger:
     - define uuid <context.inventory.slot[5].flag[uuid]>
     - run <context.item.flag[script].data_key[initializer_task]> def:<[location]>|<[uuid]>
     - flag <[location]> level_design.settings.<[uuid]>.triggers:<-:<context.item.flag[script]>
-    - run level_design_open_setting_menu
+    - inject level_design_open_setting_menu
 
 level_design_add_effect_open:
   type: task
@@ -202,7 +202,7 @@ level_design_add_effect:
     - define uuid <context.inventory.slot[5].flag[uuid]>
     - run <context.item.flag[script].data_key[initializer_task]> def:<[location]>|<[uuid]>
     - flag <[location]> level_design.settings.<[uuid]>.effects:<-:<context.item.flag[script]>
-    - run level_design_open_setting_menu
+    - inject level_design_open_setting_menu
 
 level_design_trigger_location:
   type: task
