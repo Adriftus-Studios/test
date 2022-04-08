@@ -214,5 +214,5 @@ level_design_trigger_location:
   debug: false
   definitions: location|uuid
   script:
-    - foreach <[location].flag[level_design.settings.<[uuid]>.effects]> as:effect_script:
+    - foreach <[location].flag[level_design.settings.<[uuid]>.effects].keys> as:effect_script:
       - run <[effect_script].data_key[task]> def:<[location]>|<[uuid]>
