@@ -30,34 +30,66 @@ level_design_trigger_onstep_initialize:
   definitions: loc|UUID
   script:
     - flag <[loc]> on_step:|:level_design_onstep_trigger
-    - flag <[loc]> on_step_UUID.<[uuid]>
+    - flag <[loc]> level_design.on_step_data.<[uuid]>.setting.uses:1
+    - flag <[loc]> level_design.on_step_data.<[uuid]>.setting.per_player:false
+    - flag <[loc]> level_design.on_step_data.<[uuid]>.setting.reset_timer:false
+    - flag <[loc]> level_design.on_step_data.<[uuid]>.active.uses:1
+
 level_design_trigger_onstep_cleanup:
   type: task
   debug: false
   definitions: loc|UUID
   script:
     - flag <[loc]> on_step:->:level_design_onstep_trigger
-    - flag <[loc]> on_step_UUID.<[uuid]>:!
+    - flag <[loc]> level_design.on_step_data.<[uuid]>:!
 
 level_design_onstep_trigger:
   type: task
   debug: false
   script:
     - ratelimit <player.uuid>_<context.location.simple> 1s
-    - foreach <context.location.flag[on_step_UUID].keys>:
-      - run level_design_trigger_location def:<context.location>|<[value]>
+    - foreach <context.location.flag[level_design.on_step_data].keys>:
+      - if <context.location.flag[level_design.on_step_data.<[value]>.active.uses]> == -1:
+        - run level_design_trigger_location def:<context.location>|<[value]>
+      - else if <context.location.flag[level_design.on_step_data.<[value]>.active.uses]> > 0:
+        - flag <context.location> level_design.on_step_data.<[value]>.active.uses:-:1
+        - run level_design_trigger_location def:<context.location>|<[value]>
 
 level_design_trigger_onstep_config_inventory:
   type: inventory
   debug: false
   inventory: chest
   gui: true
-  size: 9
+  slots:
+    - [level_design_back_to_setting_button] [standard_filler] [standard_filler] [standard_filler] [] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
+    - [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
+    - [] [] [] [] [] [] [] [] []
 
 level_design_trigger_onstep_config:
   type: task
   debug: false
-  definitions: loc
+  definitions: loc|uuid
   script:
-    - define inv <inventory[level_design_effect_spawn_config_inventory]>
-    - inventory set slot:1 d:<[inv]> o:<item[leather_horse_armor]>
+    - define location <context.inventory.slot[5].flag[location]> if:<[location].exists.not>
+    - define uuid <context.inventory.slot[5].flag[uuid]> if:<[uuid].exists.not>
+    - define inv <inventory[level_design_trigger_onstep_config_inventory]>
+    - inventory set slot:5 d:<[inv]> o:<item[<[location].material.name>].with[display=<[location].simple>;flag=location:<[location]>;flag=uuid:<[uuid]>]>
+    - inventory set slot:19 d:<[inv]> o:<item[green_wool].with[display=<[location].flag[level_design.on_step_data.<[uuid]>.setting.uses]>;flag=run_script:level_design_effect_spawn_get_mob_input]>
+
+level_design_effect_spawn_get_mob_input:
+  type: task
+  debug: false
+  script:
+    - flag player level_design.set_onstep.uuid:<context.inventory.slot[5].flag[uuid]>
+    - flag player level_design.set_onstep.location:<context.inventory.slot[5].flag[location]>
+    - run anvil_gui_text_input "def:<&6>Set Mob Spawn|Sets the Mob to be spawned|level_design_effect_spawn_set_onstep"
+
+level_design_effect_spawn_set_onstep:
+  type: task
+  debug: false
+  definitions: text_input
+  script:
+    - flag <player.flag[level_design.set_onstep.location]> level_design.<player.flag[level_design.set_onstep.uuid]>.setting.uses:<[text_input]>
+    - flag <player.flag[level_design.set_onstep.location]> level_design.<player.flag[level_design.set_onstep.uuid]>.active.uses:<[text_input]>
+    - run level_design_trigger_onstep_config def:<player.flag[level_design.set_onstep.location]>|<player.flag[level_design.set_onstep.uuid]>
+    - flag <player> level_design:!
