@@ -42,23 +42,26 @@ level_design_open_main_menu:
   data:
     slots: 10|11|12|13|14|15|16|17|18
     delete_slots: 28|29|30|31|32|33|34|35|36
+  definitions: location
   script:
+    - define location <context.location> if:<[location].exists.not>
     - define inv <inventory[level_design_main_menu]>
-    - inventory set slot:5 d:<[inv]> o:<item[<context.location.material.name>].with[flag=location:<context.location>]>
-    - define settings <context.location.flag[level_design.settings].keys.if_null[<list>]>
+    - inventory set slot:5 d:<[inv]> o:<item[<[location].material.name>].with[flag=location:<[location]>]>
+    - define settings <[location].flag[level_design.settings].keys.if_null[<list>]>
     - foreach <[settings]>:
        - give <item[green_wool].with[display=<[value]>;flag=run_script:level_design_open_setting_handle;flag=uuid:<[value]>]> to:<[inv]>
     - if <[settings].size> < 9:
-      - give to:<[inv]> <item[<context.location.material.name>].with[display=<&a>Add<&sp>Setting;flag=run_script:level_design_add_setting]>
+      - give to:<[inv]> <item[<[location].material.name>].with[display=<&a>Add<&sp>Setting;flag=run_script:level_design_add_setting]>
     - inventory open d:<[inv]>
 
 level_design_open_setting_handle:
   type: task
   debug: false
   script:
+    - define location <context.inventory.slot[5].flag[location]>
     - if <context.click> == right:
-      - run level_designer_remove_setting def:<context.inventory.slot[5].flag[location]>|<context.item.flag[uuid]>
-      - run level_design_open_main_menu
+      - run level_designer_remove_setting def:<[location]>|<context.item.flag[uuid]>
+      - run level_design_open_main_menu def:<[location]>
     - else:
       - inject level_design_open_setting_menu
 
