@@ -70,7 +70,7 @@ level_design_effect_spawn_config:
     - define inv <inventory[level_design_effect_spawn_config_inventory]>
     - inventory set slot:5 d:<[inv]> o:<item[<[location].material.name>].with[display=<[location].simple>;flag=location:<[location]>;flag=uuid:<[uuid]>]>
     - define item <item[green_wool].with[display=<[location].flag[level_design.<[uuid]>.spawn.mob]>;flag=run_script:level_design_effect_spawn_get_mob_input]>
-
+    - inventory open d:<[inv]>
 level_design_effect_spawn_get_mob_input:
   type: task
   debug: false
