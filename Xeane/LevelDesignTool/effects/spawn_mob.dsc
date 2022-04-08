@@ -65,8 +65,8 @@ level_design_effect_spawn_config:
   debug: false
   definitions: location|uuid
   script:
-    - define location <context.inventory.slot[5].flag[location]>
-    - define uuid <context.inventory.slot[5].flag[uuid]>
+    - define location <context.inventory.slot[5].flag[location]> if:<[location].exists.not>
+    - define uuid <context.inventory.slot[5].flag[uuid]> if:<[uuid].exists.not>
     - define inv <inventory[level_design_effect_spawn_config_inventory]>
     - inventory set slot:5 d:<[inv]> o:<item[<[location].material.name>].with[display=<[location].simple>;flag=location:<[location]>;flag=uuid:<[uuid]>]>
     - inventory set slot:19 d:<[inv]> o:<item[green_wool].with[display=<[location].flag[level_design.<[uuid]>.spawn.mob]>;flag=run_script:level_design_effect_spawn_get_mob_input]>
