@@ -113,7 +113,7 @@ level_design_config_or_remove_trigger:
     - define uuid <context.inventory.slot[5].flag[uuid]>
     - if <context.click> == right:
       - run <context.item.flag[script].data_key[cleanup_script]> def:<[location]>|<[uuid]>
-      - flag <[location]> level_design.settings.<[uuid]>.triggers:->:<context.item.flag[script]>
+      - flag <[location]> level_design.settings.<[uuid]>.triggers:<-:<context.item.flag[script]>
     - else:
       - run <context.item.flag[script].data_key[config_script]> def:<[location]>|<[uuid]>
 
@@ -125,7 +125,7 @@ level_design_config_or_remove_effect:
     - define uuid <context.inventory.slot[5].flag[uuid]>
     - if <context.click> == right:
       - run <context.item.flag[script].data_key[cleanup_script]> def:<[location]>|<[uuid]>
-      - flag <[location]> level_design.settings.<[uuid]>.effects:->:<context.item.flag[script]>
+      - flag <[location]> level_design.settings.<[uuid]>.effects:<-:<context.item.flag[script]>
     - else:
       - run <context.item.flag[script].data_key[config_script]> def:<[location]>|<[uuid]>
 
@@ -170,7 +170,7 @@ level_design_add_trigger:
     - define location <context.inventory.slot[5].flag[location]>
     - define uuid <context.inventory.slot[5].flag[uuid]>
     - run <context.item.flag[script].data_key[initializer_task]> def:<[location]>|<[uuid]>
-    - flag <[location]> level_design.settings.<[uuid]>.triggers:<-:<context.item.flag[script]>
+    - flag <[location]> level_design.settings.<[uuid]>.triggers:->:<context.item.flag[script]>
     - inject level_design_open_setting_menu
 
 level_design_add_effect_open:
@@ -201,7 +201,7 @@ level_design_add_effect:
     - define location <context.inventory.slot[5].flag[location]>
     - define uuid <context.inventory.slot[5].flag[uuid]>
     - run <context.item.flag[script].data_key[initializer_task]> def:<[location]>|<[uuid]>
-    - flag <[location]> level_design.settings.<[uuid]>.effects:<-:<context.item.flag[script]>
+    - flag <[location]> level_design.settings.<[uuid]>.effects:->:<context.item.flag[script]>
     - inject level_design_open_setting_menu
 
 level_design_trigger_location:
