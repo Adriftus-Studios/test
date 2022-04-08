@@ -84,8 +84,8 @@ level_design_open_setting_menu:
   definitions: loc|uuid
   script:
     - define loc <context.inventory.slot[5].flag[location]> if:<[loc].exists.not>
-    - define loc <context.inventory.slot[5].flag[uuid].if_null[null]> if:<[uuid].exists.not>
-    - define loc <context.item.flag[uuid]> if:<[uuid].equals[null]>
+    - define uuid <context.inventory.slot[5].flag[uuid].if_null[null]> if:<[uuid].exists.not>
+    - define uuid <context.item.flag[uuid]> if:<[uuid].equals[null]>
     - define inv <inventory[level_design_setting_menu]>
     - inventory set slot:5 d:<[inv]> o:<item[<[loc].material.name>].with[flag=location:<[loc]>;flag=uuid:<[uuid]>]>
     - define triggers <context.location.flag[level_design.settings.<[uuid]>.triggers].if_null[<list>]>
