@@ -149,7 +149,7 @@ level_design_config_or_remove_trigger:
       - flag <[location]> level_design.settings.<[uuid]>.triggers.<context.item.flag[script]>:!
       - inject level_design_open_setting_menu
     - else:
-      - run <context.item.flag[script].parsed_key[config_task]> def:<[location]>|<[uuid]>
+      - inject <context.item.flag[script].parsed_key[config_task]>
 
 level_design_config_or_remove_effect:
   type: task
@@ -162,7 +162,7 @@ level_design_config_or_remove_effect:
       - flag <[location]> level_design.settings.<[uuid]>.effects.<context.item.flag[script]>:!
       - inject level_design_open_setting_menu
     - else:
-      - run <context.item.flag[script].parsed_key[config_task]> def:<[location]>|<[uuid]>
+      - inject <context.item.flag[script].parsed_key[config_task]>
 
 level_design_add_inventory:
   type: inventory

@@ -63,7 +63,7 @@ level_design_effect_spawn_config_inventory:
 level_design_effect_spawn_config:
   type: task
   debug: false
-  definitions: loc|uuid
+  definitions: location|uuid
   script:
     - define location <context.inventory.slot[5].flag[location]>
     - define uuid <context.inventory.slot[5].flag[uuid]>
