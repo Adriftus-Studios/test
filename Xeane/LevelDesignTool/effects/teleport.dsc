@@ -44,7 +44,7 @@ level_design_effect_teleport_initialize:
   debug: false
   definitions: loc|uuid
   script:
-    - flag <[loc]> level_design.<[uuid]>.teleport.targets:<&gt>player<&lt>
+    - flag <[loc]> level_design.<[uuid]>.teleport.targets:<&lt>player<&gt>
 
 level_design_effect_teleport_cleanup:
   type: task
@@ -72,7 +72,7 @@ level_design_effect_teleport_player_only:
     - define location <context.inventory.slot[5].flag[location]> if:<[location].exists.not>
     - define uuid <context.inventory.slot[5].flag[uuid]> if:<[uuid].exists.not>
     - define inv <inventory[level_design_effect_teleport_config_inventory]>
-    - flag <[location]> level_design.<[uuid]>.teleport.targets:<&gt>player<&lt>
+    - flag <[location]> level_design.<[uuid]>.teleport.targets:<&lt>player<&gt>
 
 level_design_effect_teleport_config:
   type: task
@@ -99,6 +99,6 @@ level_design_effect_teleport_set_targets:
   debug: false
   definitions: text_input
   script:
-    - flag <player.flag[level_design.set_teleport.location]> level_design.<player.flag[level_design.set_teleport.uuid]>.teleport.targets:<&gt>player.location.find_players_within<&lb><[text_input]><&rb><&lt>
+    - flag <player.flag[level_design.set_teleport.location]> level_design.<player.flag[level_design.set_teleport.uuid]>.teleport.targets:<&lt>player.location.find_players_within<&lb><[text_input]><&rb><&gt>
     - run level_design_effect_spawn_config def:<player.flag[level_design.set_teleport.location]>|<player.flag[level_design.set_teleport.uuid]>
     - flag <player> level_design:!
