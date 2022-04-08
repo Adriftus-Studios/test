@@ -68,7 +68,7 @@ level_design_trigger_onstep_config_inventory:
 level_design_trigger_onstep_config:
   type: task
   debug: false
-  definitions: loc|uuid
+  definitions: location|uuid
   script:
     - define location <context.inventory.slot[5].flag[location]> if:<[location].exists.not>
     - define uuid <context.inventory.slot[5].flag[uuid]> if:<[uuid].exists.not>
