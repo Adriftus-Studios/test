@@ -10,6 +10,11 @@ level_design_trigger_onstep:
   # Display Name to show in GUIs
   display: <&6>Player Steps On
 
+  # Parsed Key for lore in GUIs
+  lore:
+    - "<&6>Max Uses<&co> <&e><[location].flag[level_design.on_step_data.<[uuid]>.setting.uses]>"
+    - "<&6>Current Uses<&co> <&e><[location].flag[level_design.on_step_data.<[uuid]>.active.uses]>"
+
   # Task to run to configure effect
   # Receives a LocationTag as a definition
   config_task: level_design_trigger_onstep_config

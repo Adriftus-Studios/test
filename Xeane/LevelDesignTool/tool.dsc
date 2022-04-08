@@ -111,22 +111,22 @@ level_design_open_setting_menu:
     location: 5
     trigger_slots: 10|11|12|13|14|15|16|17|18
     effect_slots: 28|29|30|31|32|33|34|35|36
-  definitions: loc|uuid
+  definitions: location|uuid
   script:
-    - define loc <context.inventory.slot[5].flag[location]> if:<[loc].exists.not>
+    - define location <context.inventory.slot[5].flag[location]> if:<[location].exists.not>
     - define uuid <context.inventory.slot[5].flag[uuid].if_null[null]> if:<[uuid].exists.not>
     - define uuid <context.item.flag[uuid]> if:<[uuid].equals[null]>
     - define inv <inventory[level_design_setting_menu]>
-    - inventory set slot:5 d:<[inv]> o:<item[<[loc].material.name>].with[display=<[location].simple>;flag=location:<[loc]>;flag=uuid:<[uuid]>]>
-    - define triggers <[loc].flag[level_design.settings.<[uuid]>.triggers].keys.if_null[<list>]>
-    - define effects <[loc].flag[level_design.settings.<[uuid]>.effects].keys.if_null[<list>]>
+    - inventory set slot:5 d:<[inv]> o:<item[<[location].material.name>].with[display=<[location].simple>;flag=location:<[location]>;flag=uuid:<[uuid]>]>
+    - define triggers <[location].flag[level_design.settings.<[uuid]>.triggers].keys.if_null[<list>]>
+    - define effects <[location].flag[level_design.settings.<[uuid]>.effects].keys.if_null[<list>]>
     - foreach <script.parsed_key[data.trigger_slots]>:
       - if <[triggers].size> < <[loop_index]>:
         - inventory set slot:<[value]> d:<[inv]> o:level_design_add_trigger_button
         - foreach stop
       - else:
         - define script <[triggers].get[<[loop_index]>]>
-        - define item <item[<[script].parsed_key[material]>].with[display=<[script].parsed_key[display]>;flag=run_script:level_design_config_or_remove_trigger;flag=script:<[script]>]>
+        - define item <item[<[script].parsed_key[material]>].with[display=<[script].parsed_key[display]>;lore=<[script].parsed_key[lore]>;flag=run_script:level_design_config_or_remove_trigger;flag=script:<[script]>]>
         - inventory set slot:<[value]> d:<[inv]> o:<[item]>
     - foreach <script.parsed_key[data.effect_slots]>:
       - if <[effects].size> < <[loop_index]>:
@@ -134,7 +134,7 @@ level_design_open_setting_menu:
         - foreach stop
       - else:
         - define script <[effects].get[<[loop_index]>]>
-        - define item <item[<[script].parsed_key[material]>].with[display=<[script].parsed_key[display]>;flag=run_script:level_design_config_or_remove_effect;flag=script:<[script]>]>
+        - define item <item[<[script].parsed_key[material]>].with[display=<[script].parsed_key[display]>;lore=<[script].parsed_key[lore]>;flag=run_script:level_design_config_or_remove_effect;flag=script:<[script]>]>
         - inventory set slot:<[value]> d:<[inv]> o:<[item]>
     - inventory open d:<[inv]>
 

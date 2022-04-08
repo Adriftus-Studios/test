@@ -10,6 +10,10 @@ level_design_effect_spawn:
   # Display Name to show in GUIs
   display: <&6>Spawn Mob
 
+  # Parsed Key for lore in GUIs
+  lore:
+    - "<&6>Mob<&co> <&e><[location].flag[level_design.<[uuid]>.spawn.mob]>"
+
   # Task to be run when this effect is triggered
   # Can use <[location]> to get the trigger location
   task: level_design_effect_spawn_task
