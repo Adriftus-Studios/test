@@ -47,10 +47,19 @@ level_design_open_main_menu:
     - inventory set slot:5 d:<[inv]> o:<item[<context.location.material.name>].with[flag=location:<context.location>]>
     - define settings <context.location.flag[level_design.settings].keys.if_null[<list>]>
     - foreach <[settings]>:
-       - give <item[green_wool].with[display=<[value]>;flag=run_script:level_design_open_setting_menu;flag=uuid:<[value]>]> to:<[inv]>
+       - give <item[green_wool].with[display=<[value]>;flag=run_script:level_design_open_setting_handle;flag=uuid:<[value]>]> to:<[inv]>
     - if <[settings].size> < 9:
       - give to:<[inv]> <item[<context.location.material.name>].with[display=<&a>Add<&sp>Setting;flag=run_script:level_design_add_setting]>
     - inventory open d:<[inv]>
+
+level_design_open_setting_handle:
+  type: task
+  debug: false
+  script:
+    - if <context.click> == right:
+      - run level_designer_remove_setting def:<context.inventory.slot[5].flag[location]>|<context.item.flag[uuid]>
+    - else:
+      - inject level_design_open_setting_menu
 
 level_design_add_setting:
   type: task
@@ -60,6 +69,21 @@ level_design_add_setting:
     - define loc <context.inventory.slot[5].flag[location]> if:<[loc].exists.not>
     - define uuid <util.random_uuid>
     - run level_design_open_setting_menu def:<[loc]>|<[uuid]>
+
+level_designer_remove_setting:
+  type: task
+  debug: false
+  definitions: location|uuid
+  script:
+    - define triggers <[location].flag[level_design.settings.<[uuid]>.triggers].keys.if_null[<list>]>
+    - define effects <[location].flag[level_design.settings.<[uuid]>.effects].keys.if_null[<list>]>
+    - foreach <[triggers]>:
+      - run <[value].data_key[cleanup_task]> def:<[location]>|<[uuid]>
+    - foreach <[effects]>:
+      - run <[value].data_key[cleanup_task]> def:<[location]>|<[uuid]>
+    - flag <[location]> level_design.settings.<[uuid]>:!
+    - if <[location].flag[level_design.settings].keys.is_empty.if_null[true]>:
+      - flag <[location]> level_design:!
 
 level_design_setting_menu:
   type: inventory

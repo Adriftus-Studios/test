@@ -1,6 +1,6 @@
 level_design_effect_spawn:
   type: data
-  
+
   # Internal Name for this effect, MUST be Unique
   id: spawn_mob
 
