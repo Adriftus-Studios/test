@@ -37,7 +37,7 @@ level_design_open_main_menu:
     slots: 10|11|12|13|14|15|16|17|18
     delete_slots: 28|29|30|31|32|33|34|35|36
   script:
-    - define inv <inventory[level_design_open_menu]>
+    - define inv <inventory[level_design_main_menu]>
     - inventory set slot:5 d:<[inv]> o:<item[<context.material>].with[flag=location:<context.location>]>
     - define settings <context.location.flag[level_design.settings].if_null[<list>]>
     - if <[settings].size> < 9:
@@ -77,7 +77,7 @@ level_design_open_setting_menu:
   script:
     - define loc <context.inventory.slot[5].flag[location]> if:<[loc].exists.not>
     - define loc <context.inventory.slot[5].flag[uuid]> if:<[uuid].exists.not>
-    - define inv <inventory[level_design_open_menu]>
+    - define inv <inventory[level_design_setting_menu]>
     - inventory set slot:5 d:<[inv]> o:<item[<[loc].material>].with[flag=location:<[loc]>;flag=uuid:<[uuid]>]>
     - define triggers <context.location.flag[level_design.settings.<[uuid]>.triggers].if_null[<list>]>
     - define effects <context.location.flag[level_design.settings.<[uuid]>.effects].if_null[<list>]>
