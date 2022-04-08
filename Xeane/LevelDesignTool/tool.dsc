@@ -246,3 +246,22 @@ level_design_trigger_location:
   script:
     - foreach <[location].flag[level_design.settings.<[uuid]>.effects].keys> as:effect_script:
       - run <[effect_script].parsed_key[task]> def:<[location]>|<[uuid]>
+
+level_design_back_to_setting_button:
+  type: item
+  debug: false
+  display name: <&c>Back to Setting
+  material: leather_horse_armor
+  mechanisms:
+    color: red
+    custom_model_data: 6
+  flags:
+    run_script: level_design_back_to_setting
+
+level_design_back_to_setting:
+  type: task
+  debug: false
+  script:
+    - define location <context.inventory.slot[5].flag[location]>
+    - define uuid <context.inventory.slot[5].flag[uuid]>
+    - inject level_design_open_setting_menu

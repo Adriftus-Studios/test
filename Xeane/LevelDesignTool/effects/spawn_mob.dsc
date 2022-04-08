@@ -55,12 +55,35 @@ level_design_effect_spawn_config_inventory:
   debug: false
   inventory: chest
   gui: true
-  size: 9
+  slots:
+    - [level_design_back_to_setting_button] [standard_filler] [standard_filler] [standard_filler] [] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
+    - [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
+    - [] [] [] [] [] [] [] [] []
 
 level_design_effect_spawn_config:
   type: task
   debug: false
   definitions: loc|uuid
   script:
+    - define location <context.inventory.slot[5].flag[location]>
+    - define uuid <context.inventory.slot[5].flag[uuid]>
     - define inv <inventory[level_design_effect_spawn_config_inventory]>
-    - inventory set slot:1 d:<[inv]> o:<item[leather_horse_armor]>
+    - inventory set slot:5 d:<[inv]> o:<item[<[location].material.name>].with[display=<[location].simple>;flag=location:<[location]>;flag=uuid:<[uuid]>]>
+    - define item <item[green_wool].with[display=<[location].flag[level_design.<[uuid]>.spawn.mob]>;flag=run_script:level_design_effect_spawn_get_mob_input]>
+
+level_design_effect_spawn_get_mob_input:
+  type: task
+  debug: false
+  script:
+    - flag player level_design.set_mob.uuid:<context.inventory.slot[5].flag[uuid]>
+    - flag player level_design.set_mob.location:<context.inventory.slot[5].flag[location]>
+    - run anvil_gui_text_input "def:<&6>Set Mob Spawn|Sets the Mob to be spawned|level_design_effect_spawn_set_mob"
+
+level_design_effect_spawn_set_mob:
+  type: task
+  debug: false
+  definitions: text_input
+  script:
+    - flag <player.flag[level_design.set_mob.location]> level_design.<player.flag[level_design.set_mob.uuid]>.spawn.mob:<[text_input]>
+    - run level_design_effect_spawn_config def:<player.flag[level_design.set_mob.location]>|<player.flag[level_design.set_mob.uuid]>
+    - flag <player> level_design:!
