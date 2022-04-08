@@ -100,5 +100,5 @@ level_design_effect_teleport_set_targets:
   definitions: text_input
   script:
     - flag <player.flag[level_design.set_teleport.location]> level_design.<player.flag[level_design.set_teleport.uuid]>.teleport.targets:<&lt>player.location.find_players_within<&lb><[text_input]><&rb><&gt>
-    - run level_design_effect_spawn_config def:<player.flag[level_design.set_teleport.location]>|<player.flag[level_design.set_teleport.uuid]>
+    - run level_design_effect_teleport_config def:<player.flag[level_design.set_teleport.location]>|<player.flag[level_design.set_teleport.uuid]>
     - flag <player> level_design:!
