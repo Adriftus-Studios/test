@@ -79,7 +79,7 @@ level_design_trigger_onstep_config:
     - define uuid <context.inventory.slot[5].flag[uuid]> if:<[uuid].exists.not>
     - define inv <inventory[level_design_trigger_onstep_config_inventory]>
     - inventory set slot:5 d:<[inv]> o:<item[<[location].material.name>].with[display=<[location].simple>;flag=location:<[location]>;flag=uuid:<[uuid]>]>
-    - inventory set slot:19 d:<[inv]> o:<item[green_wool].with[display=<[location].flag[level_design.on_step_data.<[uuid]>.setting.uses]>;flag=run_script:level_design_effect_spawn_onstep_count_input]>
+    - inventory set slot:19 d:<[inv]> o:<item[green_wool].with[display=<[location].flag[level_design.on_step_data.<[uuid]>.setting.uses]>lore=<&e>Trigger<&sp>Usages;flag=run_script:level_design_effect_spawn_onstep_count_input]>
     - inventory open d:<[inv]>
 
 level_design_effect_spawn_onstep_count_input:
@@ -88,7 +88,7 @@ level_design_effect_spawn_onstep_count_input:
   script:
     - flag player level_design.set_onstep.uuid:<context.inventory.slot[5].flag[uuid]>
     - flag player level_design.set_onstep.location:<context.inventory.slot[5].flag[location]>
-    - run anvil_gui_text_input "def:<&6>Set Mob Spawn|Sets the Mob to be spawned|level_design_effect_spawn_set_onstep"
+    - run anvil_gui_text_input "def:<&6>Set trigger count|Sets the trigger usages|level_design_effect_spawn_set_onstep"
 
 level_design_effect_spawn_set_onstep:
   type: task
