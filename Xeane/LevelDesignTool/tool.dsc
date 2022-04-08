@@ -58,6 +58,7 @@ level_design_open_setting_handle:
   script:
     - if <context.click> == right:
       - run level_designer_remove_setting def:<context.inventory.slot[5].flag[location]>|<context.item.flag[uuid]>
+      - run level_design_open_main_menu
     - else:
       - inject level_design_open_setting_menu
 
