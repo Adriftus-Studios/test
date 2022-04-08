@@ -49,6 +49,8 @@ level_design_open_main_menu:
     - inventory set slot:5 d:<[inv]> o:<item[<[location].material.name>].with[flag=location:<[location]>]>
     - define settings <[location].flag[level_design.settings].keys.if_null[<list>]>
     - foreach <[settings]>:
+       - define lore:|:<list[<&b><&l>Triggers<&co>].include[<context.location.flag[level_design.settings.<[value]>.triggers].parse[data_key[display]]>].include[<&a>|<&a>]>
+       - define lore:|:<list[<&b><&l>Effects<&co>].include[<context.location.flag[level_design.settings.<[value]>.effects].parse[data_key[display]]>].include[<&a>|<&a>]>
        - give <item[green_wool].with[display=<[value]>;flag=run_script:level_design_open_setting_handle;flag=uuid:<[value]>]> to:<[inv]>
     - if <[settings].size> < 9:
       - give to:<[inv]> <item[<[location].material.name>].with[display=<&a>Add<&sp>Setting;flag=run_script:level_design_add_setting]>
