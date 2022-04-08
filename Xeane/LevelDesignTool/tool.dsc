@@ -2,10 +2,10 @@ level_design_tool:
   type: item
   debug: false
   material: stick
-  display name: <&k>... <&r><&6>Level Design Tool <&k>...
+  display name: <&6><&k>... <&r><&6>Level Design Tool <&k>...
   lore:
-  - "<&e>Right Click<&co><&a> Open Menu"
-  - "<&e>Left Click<&co><&a> Place Feature"
+  - "<&e>Left Click<&co><&a> Set Trigger/Effect"
+  - "<&e>Right Click<&co><&a> Set Placeable"
   flags:
     left_click_script:
     - level_design_open_main_menu
@@ -46,7 +46,7 @@ level_design_open_main_menu:
   script:
     - define location <context.location> if:<[location].exists.not>
     - define inv <inventory[level_design_main_menu]>
-    - inventory set slot:5 d:<[inv]> o:<item[<[location].material.name>].with[flag=location:<[location]>]>
+    - inventory set slot:5 d:<[inv]> o:<item[<[location].material.name>].with[display=<[location].simple>;flag=location:<[location]>]>
     - define settings <[location].flag[level_design.settings].keys.if_null[<list>]>
     - foreach <[settings]>:
        - define lore:|:<list[<&b><&l>Triggers<&co>].include[<[location].flag[level_design.settings.<[value]>.triggers].keys.parse[parsed_key[display]]>].include[<&a>|<&a>]>
@@ -117,7 +117,7 @@ level_design_open_setting_menu:
     - define uuid <context.inventory.slot[5].flag[uuid].if_null[null]> if:<[uuid].exists.not>
     - define uuid <context.item.flag[uuid]> if:<[uuid].equals[null]>
     - define inv <inventory[level_design_setting_menu]>
-    - inventory set slot:5 d:<[inv]> o:<item[<[loc].material.name>].with[flag=location:<[loc]>;flag=uuid:<[uuid]>]>
+    - inventory set slot:5 d:<[inv]> o:<item[<[loc].material.name>].with[display=<[location].simple>;flag=location:<[loc]>;flag=uuid:<[uuid]>]>
     - define triggers <[loc].flag[level_design.settings.<[uuid]>.triggers].keys.if_null[<list>]>
     - define effects <[loc].flag[level_design.settings.<[uuid]>.effects].keys.if_null[<list>]>
     - foreach <script.parsed_key[data.trigger_slots]>:
@@ -184,7 +184,7 @@ level_design_add_trigger_open:
     - define location <context.inventory.slot[5].flag[location]>
     - define uuid <context.inventory.slot[5].flag[uuid]>
     - define inv <inventory[level_design_add_inventory]>
-    - inventory set slot:5 d:<[inv]> o:<item[<[location].material.name>].with[flag=location:<[location]>;flag=uuid:<[uuid]>]>
+    - inventory set slot:5 d:<[inv]> o:<item[<[location].material.name>].with[display=<[location].simple>;flag=location:<[location]>;flag=uuid:<[uuid]>]>
     - foreach <server.flag[level_design.triggers]> as:script:
       - define item <item[<[script].parsed_key[material]>].with[display=<[script].parsed_key[display]>;flag=run_script:level_design_add_trigger;flag=script:<[script]>]>
       - give to:<[inv]> <[item]>
@@ -215,7 +215,7 @@ level_design_add_effect_open:
     - define location <context.inventory.slot[5].flag[location]>
     - define uuid <context.inventory.slot[5].flag[uuid]>
     - define inv <inventory[level_design_add_inventory]>
-    - inventory set slot:5 d:<[inv]> o:<item[<[location].material.name>].with[flag=location:<[location]>;flag=uuid:<[uuid]>]>
+    - inventory set slot:5 d:<[inv]> o:<item[<[location].material.name>].with[display=<[location].simple>;flag=location:<[location]>;flag=uuid:<[uuid]>]>
     - foreach <server.flag[level_design.effects]> as:script:
       - define item <item[<[script].parsed_key[material]>].with[display=<[script].parsed_key[display]>;flag=run_script:level_design_add_effect;flag=script:<[script]>]>
       - give to:<[inv]> <[item]>
