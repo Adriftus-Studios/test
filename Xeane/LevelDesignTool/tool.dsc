@@ -88,8 +88,8 @@ level_design_open_setting_menu:
     - define uuid <context.item.flag[uuid]> if:<[uuid].equals[null]>
     - define inv <inventory[level_design_setting_menu]>
     - inventory set slot:5 d:<[inv]> o:<item[<[loc].material.name>].with[flag=location:<[loc]>;flag=uuid:<[uuid]>]>
-    - define triggers <[loc].flag[level_design.settings.<[uuid]>.triggers].if_null[<list>]>
-    - define effects <[loc].flag[level_design.settings.<[uuid]>.effects].if_null[<list>]>
+    - define triggers <[loc].flag[level_design.settings.<[uuid]>.triggers].keys.if_null[<list>]>
+    - define effects <[loc].flag[level_design.settings.<[uuid]>.effects].keys.if_null[<list>]>
     - foreach <script.data_key[data.trigger_slots]>:
       - if <[triggers].size> < <[loop_index]>:
         - inventory set slot:<[value]> d:<[inv]> o:level_design_add_trigger_button
@@ -116,7 +116,8 @@ level_design_config_or_remove_trigger:
     - define uuid <context.inventory.slot[5].flag[uuid]>
     - if <context.click> == right:
       - run <context.item.flag[script].data_key[cleanup_task]> def:<[location]>|<[uuid]>
-      - flag <[location]> level_design.settings.<[uuid]>.triggers:<-:<context.item.flag[script]>
+      - flag <[location]> level_design.settings.<[uuid]>.triggers.<context.item.flag[script]>:!
+      - inject level_design_open_setting_menu
     - else:
       - run <context.item.flag[script].data_key[config_script]> def:<[location]>|<[uuid]>
 
@@ -128,7 +129,8 @@ level_design_config_or_remove_effect:
     - define uuid <context.inventory.slot[5].flag[uuid]>
     - if <context.click> == right:
       - run <context.item.flag[script].data_key[cleanup_task]> def:<[location]>|<[uuid]>
-      - flag <[location]> level_design.settings.<[uuid]>.effects:<-:<context.item.flag[script]>
+      - flag <[location]> level_design.settings.<[uuid]>.effects.<context.item.flag[script]>:!
+      - inject level_design_open_setting_menu
     - else:
       - run <context.item.flag[script].data_key[config_script]> def:<[location]>|<[uuid]>
 
