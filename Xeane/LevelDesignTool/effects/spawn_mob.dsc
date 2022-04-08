@@ -32,7 +32,7 @@ level_design_effect_spawn_task:
   debug: false
   definitions: location|uuid
   script:
-    - spawn <[location].flag[level_design.spawn.mob].repeat_as_list[<[location].flag[level_design.spawn.count]>]> <[location].above.center>
+    - spawn <[location].flag[level_design.<[uuid]>.spawn.mob].repeat_as_list[<[location].flag[level_design.spawn.count]>]> <[location].above.center>
 
 level_design_effect_spawn_initialize:
   type: task
