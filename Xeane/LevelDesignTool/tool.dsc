@@ -44,10 +44,10 @@ level_design_open_main_menu:
     delete_slots: 28|29|30|31|32|33|34|35|36
   script:
     - define inv <inventory[level_design_main_menu]>
-    - inventory set slot:5 d:<[inv]> o:<item[<context.material>].with[flag=location:<context.location>]>
+    - inventory set slot:5 d:<[inv]> o:<item[<context.location.material>].with[flag=location:<context.location>]>
     - define settings <context.location.flag[level_design.settings].if_null[<list>]>
     - if <[settings].size> < 9:
-      - give to:<[inv]> <item[<context.material>].with[flag=run_script:level_design_add_setting]>
+      - give to:<[inv]> <item[<context.location.material>].with[flag=run_script:level_design_add_setting]>
     - inventory open d:<[inv]>
 
 level_design_add_setting:
