@@ -28,7 +28,13 @@ level_design_main_menu:
   debug: false
   inventory: chest
   gui: true
-  size: 36
+  slots:
+    - [standard_filler] [standard_filler] [standard_filler] [standard_filler] [] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
+    - [] [] [] [] [] [] [] [] []
+    - [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
+    - [] [] [] [] [] [] [] [] []
+    - [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
+    - [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
 
 level_design_open_main_menu:
   type: task
@@ -41,7 +47,7 @@ level_design_open_main_menu:
     - inventory set slot:5 d:<[inv]> o:<item[<context.material>].with[flag=location:<context.location>]>
     - define settings <context.location.flag[level_design.settings].if_null[<list>]>
     - if <[settings].size> < 9:
-      - inventory set slot:5 d:<[inv]> o:<item[<context.material>].with[flag=run_script:level_design_add_setting]>
+      - give to:<[inv]> <item[<context.material>].with[flag=run_script:level_design_add_setting]>
     - inventory open d:<[inv]>
 
 level_design_add_setting:
