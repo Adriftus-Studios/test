@@ -90,7 +90,7 @@ level_design_effect_spawn_set_onstep:
   debug: false
   definitions: text_input
   script:
-    - flag <player.flag[level_design.set_onstep.location]> level_design.<player.flag[level_design.set_onstep.uuid]>.setting.uses:<[text_input]>
-    - flag <player.flag[level_design.set_onstep.location]> level_design.<player.flag[level_design.set_onstep.uuid]>.active.uses:<[text_input]>
+    - flag <player.flag[level_design.set_onstep.location]> level_design.on_step_data.<player.flag[level_design.set_onstep.uuid]>.setting.uses:<[text_input]>
+    - flag <player.flag[level_design.set_onstep.location]> level_design.on_step_data.<player.flag[level_design.set_onstep.uuid]>.active.uses:<[text_input]>
     - run level_design_trigger_onstep_config def:<player.flag[level_design.set_onstep.location]>|<player.flag[level_design.set_onstep.uuid]>
     - flag <player> level_design:!
