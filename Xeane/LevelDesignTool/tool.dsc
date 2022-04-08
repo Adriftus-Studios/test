@@ -45,7 +45,7 @@ level_design_open_main_menu:
   script:
     - define inv <inventory[level_design_main_menu]>
     - inventory set slot:5 d:<[inv]> o:<item[<context.location.material.name>].with[flag=location:<context.location>]>
-    - define settings <context.location.flag[level_design.settings].if_null[<list>]>
+    - define settings <context.location.flag[level_design.settings].keys.if_null[<list>]>
     - foreach <[settings]>:
        - give <item[green_wool].with[display=<[value]>;flag=run_script:level_design_open_setting_menu;flag=uuid:<[value]>]> to:<[inv]>
     - if <[settings].size> < 9:
