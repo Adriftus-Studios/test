@@ -43,6 +43,7 @@ level_design_onstep_trigger:
   type: task
   debug: false
   script:
+    - ratelimit <player.uuid>_<context.location.simple> 1s
     - foreach <context.location.flag[on_step_UUID].keys>:
       - run level_design_trigger_location def:<context.location>|<[value]>
 
