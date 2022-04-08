@@ -161,7 +161,7 @@ level_design_add_trigger_button:
   material: feather
   display name: <&a>Add Trigger
   flags:
-    run_script: level_design_add_trigger
+    run_script: level_design_add_trigger_open
 
 level_design_add_trigger:
   type: task
@@ -192,7 +192,7 @@ level_design_add_effect_button:
   material: feather
   display name: <&a>Add Effect
   flags:
-    run_script: level_design_add_effect
+    run_script: level_design_add_effect_open
 
 level_design_add_effect:
   type: task
