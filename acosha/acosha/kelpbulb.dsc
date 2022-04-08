@@ -16,7 +16,7 @@ kelp_bulb:
     material: sugar
     display name: <yellow>Kelp Bulb
     data:
-        recipe_book_category: 
+        recipe_book_category: misc.kelp_bulb
     recipes:
         1:
             type: shaped
