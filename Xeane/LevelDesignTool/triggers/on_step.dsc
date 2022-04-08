@@ -40,7 +40,7 @@ level_design_trigger_onstep_cleanup:
   debug: false
   definitions: loc|UUID
   script:
-    - flag <[loc]> on_step:->:level_design_onstep_trigger
+    - flag <[loc]> on_step:<-:level_design_onstep_trigger
     - flag <[loc]> level_design.on_step_data.<[uuid]>:!
 
 level_design_onstep_trigger:
