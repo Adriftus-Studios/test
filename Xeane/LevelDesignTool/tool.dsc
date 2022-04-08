@@ -7,7 +7,9 @@ level_design_tool:
   - "<&e>Right Click<&co><&a> Open Menu"
   - "<&e>Left Click<&co><&a> Place Feature"
   flags:
-    left_click_script: level_design_open_main_menu|cancel
+    left_click_script:
+    - level_design_open_main_menu
+    - cancel
 
 level_design_initializer:
   type: world
