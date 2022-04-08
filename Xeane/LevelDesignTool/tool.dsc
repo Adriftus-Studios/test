@@ -88,8 +88,8 @@ level_design_open_setting_menu:
     - define uuid <context.item.flag[uuid]> if:<[uuid].equals[null]>
     - define inv <inventory[level_design_setting_menu]>
     - inventory set slot:5 d:<[inv]> o:<item[<[loc].material.name>].with[flag=location:<[loc]>;flag=uuid:<[uuid]>]>
-    - define triggers <context.location.flag[level_design.settings.<[uuid]>.triggers].if_null[<list>]>
-    - define effects <context.location.flag[level_design.settings.<[uuid]>.effects].if_null[<list>]>
+    - define triggers <[location].flag[level_design.settings.<[uuid]>.triggers].if_null[<list>]>
+    - define effects <[location].flag[level_design.settings.<[uuid]>.effects].if_null[<list>]>
     - foreach <script.data_key[data.trigger_slots]>:
       - if <[triggers].size> < <[loop_index]>:
         - inventory set slot:<[value]> d:<[inv]> o:level_design_add_trigger_button
