@@ -1153,6 +1153,15 @@ fishing_minigame_event_handler:
                 - if <context.item.script.exists> and <context.item.script.name.equals[fishing_minigame_sell_all]>:
                     - run fishing_minigame_sell_all_fish def:<player>
                     - run fishing_minigame_open_bucket def:<player>|true
+                - if <context.item.script.exists> and <context.item.script.name.equals[fishing_minigame_back_button]>:
+                    - inventory close
+                    - run fishing_minigame_merchant_open_gui def:<player>
+
+        # % ██ [ Player Interact with Leaderboards ] ██
+        on player clicks in fishing_minigame_leaderboards_gui:
+            - if !<context.item.material.name.equals[air]> and <context.item.script.exists> and <context.item.script.name.equals[fishing_minigame_back_button]>:
+                - inventory close
+                - run fishing_minigame_merchant_open_gui def:<player>
 
         # % ██ [ Right click end fishing ] ██
         on player right clicks block with:fishing_minigame_end_game_item:
@@ -1373,6 +1382,7 @@ fishing_minigame_bucket_open_gui:
             - define bucketSlots <[bucketSlots].remove[first]>
         - if <[merchant]>:
             - adjust <[inventory]> title:<[inventory].title><&chr[F801]><&chr[F809]><&chr[F80A]><&chr[F80C]><&chr[0031]>
+            - inventory set o:fishing_minigame_back_button slot:1 d:<[inventory]>
             - inventory set o:fishing_minigame_sell_all slot:26 d:<[player].inventory>
             - inventory set o:fishing_minigame_sell_all slot:27 d:<[player].inventory>
             - inventory set o:fishing_minigame_sell_all slot:35 d:<[player].inventory>
@@ -1450,6 +1460,7 @@ fishing_minigame_leaderboards_open_gui:
                 - define slots <[slots].remove[first]>
     script:
         - inject locally path:build_inventory
+        - inventory set o:fishing_minigame_back_button d:<[inventory]>
         - inventory open d:<[inventory]>
 
 fishing_minigame_leaderboards_gui:
@@ -1988,6 +1999,17 @@ fishing_minigame_leaderboards_button:
     - <&7>View who is leading todays competition.
     - <&r>
     - <&r><element[➤ View Leaderboards].color_gradient[from=#FF34EE;to=#FFC4F4]>
+
+# % ██ [ Back Button ] ██
+fishing_minigame_back_button:
+    debug: false
+    type: item
+    material: feather
+    display name: <&d><&l>Back
+    mechanisms:
+        custom_model_data: 3
+    lore:
+    - <&7>Return to the previous menu.
 
 # % ██ [ Sell Fish Button ] ██
 fishing_minigame_fish_button:
