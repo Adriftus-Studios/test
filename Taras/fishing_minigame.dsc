@@ -1358,8 +1358,8 @@ fishing_minigame_shop_gui:
     slots:
     - [] [] [] [] [] [] [] [] []
     - [] [] [] [] [] [] [] [] []
-    - [fishing_minigame_shop_skins_item] [fishing_minigame_shop_skins_item] [fishing_minigame_shop_skins_item] [] [] [] [] [] []
-    - [] [] [] [] [] [] [fishing_minigame_shop_music_item] [fishing_minigame_shop_music_item] [fishing_minigame_shop_music_item]
+    - [fishing_minigame_shop_skins_item] [fishing_minigame_shop_skins_item] [fishing_minigame_shop_skins_item] [] [] [] [fishing_minigame_shop_music_item] [fishing_minigame_shop_music_item] [fishing_minigame_shop_music_item]
+    - [] [] [] [] [] [] [] [] []
     - [] [] [fishing_minigame_shop_exchange_item] [fishing_minigame_shop_exchange_item] [fishing_minigame_shop_exchange_item] [] [] [] [] 
 
 fishing_minigame_bucket_open_gui:
