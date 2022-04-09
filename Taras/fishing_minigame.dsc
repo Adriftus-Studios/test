@@ -1154,13 +1154,11 @@ fishing_minigame_event_handler:
                     - run fishing_minigame_sell_all_fish def:<player>
                     - run fishing_minigame_open_bucket def:<player>|true
                 - if <context.item.script.exists> and <context.item.script.name.equals[fishing_minigame_back_button]>:
-                    - inventory close
                     - run fishing_minigame_merchant_open_gui def:<player>
 
         # % ██ [ Player Interact with Leaderboards ] ██
         on player clicks in fishing_minigame_leaderboards_gui:
             - if !<context.item.material.name.equals[air]> and <context.item.script.exists> and <context.item.script.name.equals[fishing_minigame_back_button]>:
-                - inventory close
                 - run fishing_minigame_merchant_open_gui def:<player>
 
         # % ██ [ Right click end fishing ] ██
