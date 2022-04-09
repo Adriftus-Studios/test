@@ -14,6 +14,13 @@ chair_sit_events:
       EAST: 90
       WEST: 270
   events:
+    on player breaks block:
+    - stop if:<context.location.has_flag[sit.point].not.if_null[true]>
+    - define point <context.location.flag[sit.point]>
+    - adjust <[point]> passengers:<list[]>
+    - define before <[point].location.sub[<[point].flag[sit.offset]>].with_yaw[<player.location.yaw>].with_pitch[<player.location.pitch>]>
+    - teleport <player> <[before]>
+    - remove <[point]>
     on player right clicks block:
     - stop if:<context.location.material.name.ends_with[stairs].not.if_null[true]>
     - stop if:<context.location.material.half.equals[BOTTOM].not>
@@ -29,6 +36,8 @@ chair_sit_events:
     - adjust <[point]> gravity:false
     - invisible <[point]>
     - flag <[point]> sit.offset:<[point].location.sub[<player.location>]>
+    - flag <[point]> sit.location:<context.location>
+    - flag <context.location> sit.point:<[point]> expire:24h
     - adjust <[point]> passenger:<player>
     after player exits vehicle:
     - stop if:<context.vehicle.has_flag[sit.offset].not>
