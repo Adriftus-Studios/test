@@ -1256,6 +1256,23 @@ fishing_minigame_merchant_open_gui:
     debug: false
     build_inventory:
         - define inventory <inventory[fishing_minigame_merchant_gui]>
+        - define bestCatch <server.flag[fishingminigame.bestcatch.fish]>
+        - define bestCatchPlayer <server.flag[fishingminigame.bestcatch.player]>
+        - define barrier <item[barrier]>
+        - adjust def:barrier display:<&c><&l>Empty
+        - adjust def:barrier "lore:<&7>This spot is open! Start fishing to claim it!"
+
+        - if <[bestCatch].equals[none]>:
+            - inventory set o:<item[player_head[display=<&7><&l>Nobody]]> slot:15 d:<[inventory]>
+            - inventory set o:<[barrier]> slot:16 d:<[inventory]>
+        - else:
+            - define playerName <player[<[bestCatchPlayer]>].name>
+            - define playerHead <item[player_head[skull_skin=<[playerName]>]]>
+            - adjust def:playerHead "display:<&d><&l>Best Catch"
+            - adjust def:playerHead "lore:<&7>Best catch of the day by:<n><&d><player[<[bestCatchPlayer]>].name.color_gradient[from=#FF62FA;to=#FFA8EF]>"
+            - inventory set o:<[playerHead]> slot:15 d:<[inventory]>
+            - inventory set o:<[bestCatch].unescaped> slot:16 d:<[inventory]>
+      
         - if <[player].has_flag[fishingminigame.active]> && <[player].flag[fishingminigame.active]>:
             - adjust <[inventory]> title:<&f><&font[adriftus:fishing_minigame]><&chr[F808]><&chr[0001]><&chr[F801]><&chr[F809]><&chr[F80A]><&chr[F80C]><&chr[0002]>
             - inventory set o:fishing_minigame_end_game slot:10 d:<[inventory]>
@@ -1356,10 +1373,10 @@ fishing_minigame_bucket_open_gui:
             - define bucketSlots <[bucketSlots].remove[first]>
         - if <[merchant]>:
             - adjust <[inventory]> title:<[inventory].title><&chr[F801]><&chr[F809]><&chr[F80A]><&chr[F80C]><&chr[0031]>
-            - inventory set o:fishing_minigame_sell_all slot:17 d:<[player].inventory>
-            - inventory set o:fishing_minigame_sell_all slot:18 d:<[player].inventory>
             - inventory set o:fishing_minigame_sell_all slot:26 d:<[player].inventory>
             - inventory set o:fishing_minigame_sell_all slot:27 d:<[player].inventory>
+            - inventory set o:fishing_minigame_sell_all slot:35 d:<[player].inventory>
+            - inventory set o:fishing_minigame_sell_all slot:36 d:<[player].inventory>
     script:
         - inject locally path:build_inventory
         - inventory open d:<[inventory]>
