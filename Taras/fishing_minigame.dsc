@@ -1353,7 +1353,7 @@ fishing_minigame_shop_gui:
     inventory: chest
     size: 45
     debug: false
-    title: <&b>Shop
+    title: <&f><&font[adriftus:fishing_minigame]><&chr[F808]><&chr[0040]>
     gui: true
     slots:
     - [] [] [] [] [] [] [] [] []
