@@ -1849,12 +1849,14 @@ fishing_minigame_shop_music_item:
     - <&r>
     - <&r><element[➤ Click to View Options].color_gradient[from=#00DDFF;to=#A6F8FF]>
 
-# % ██ [ Shop music item ] ██
+# % ██ [ Shop bucket item ] ██
 fishing_minigame_shop_bucket_item:
     debug: false
     type: item
-    material: water_bucket
+    material: feather
     display name: <&b><&l>Bucket Upgrades
+    mechanisms:
+        custom_model_data: 3
     lore:
     - <&7>Purchase bucket upgrades here!
     - <&7>These will allow you to carry
