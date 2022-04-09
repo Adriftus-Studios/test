@@ -1341,7 +1341,9 @@ fishing_minigame_shop_open_gui:
         - if <proc[fishing_minigame_get_bucket_level].context[<[player]>].equals[MAX]>:
             - define bucketLore <[bucketLore].remove[10|9|8|7]>
         - adjust def:bucketUpgrade lore:<[bucketLore]>
-        - inventory set o:<[bucketUpgrade]> slot:17 d:<[inventory]>
+        - inventory set o:<[bucketUpgrade]> slot:5 d:<[inventory]>
+        - inventory set o:<[bucketUpgrade]> slot:6 d:<[inventory]>
+        - inventory set o:<[bucketUpgrade]> slot:7 d:<[inventory]>
     script:
         - inject locally path:build_inventory
         - inventory open d:<[inventory]>
@@ -1349,14 +1351,16 @@ fishing_minigame_shop_open_gui:
 fishing_minigame_shop_gui:
     type: inventory
     inventory: chest
-    size: 27
+    size: 45
     debug: false
     title: <&b>Shop
     gui: true
     slots:
     - [] [] [] [] [] [] [] [] []
-    - [] [fishing_minigame_shop_exchange_item] [] [fishing_minigame_shop_skins_item] [] [fishing_minigame_shop_music_item] [] [] []
     - [] [] [] [] [] [] [] [] []
+    - [fishing_minigame_shop_skins_item] [fishing_minigame_shop_skins_item] [fishing_minigame_shop_skins_item] [] [] [] [] [] []
+    - [] [] [] [] [] [] [fishing_minigame_shop_music_item] [fishing_minigame_shop_music_item] [fishing_minigame_shop_music_item]
+    - [] [] [fishing_minigame_shop_exchange_item] [fishing_minigame_shop_exchange_item] [fishing_minigame_shop_exchange_item] [] [] [] [] 
 
 fishing_minigame_bucket_open_gui:
     type: task
@@ -1798,14 +1802,14 @@ fishing_minigame_fishtoken_item:
     - <&7>Your fishtoken wallet.
     - <&7>This will display your fishtoken balance.
 
-# % ██ [ Shop Excahnge item ] ██
+# % ██ [ Shop Exchange item ] ██
 fishing_minigame_shop_exchange_item:
     debug: false
     type: item
-    material: iron_nugget
+    material: feather
     display name: <&b><&l>5,000<&r><&font[adriftus:chat]><&chr[0045]><&r> <&b><&l>-<&gt> $10
     mechanisms:
-        custom_model_data: 40
+        custom_model_data: 3
     lore:
     - <&7>Exchange your fish tokens
     - <&7>to gain some currency
@@ -1817,8 +1821,10 @@ fishing_minigame_shop_exchange_item:
 fishing_minigame_shop_skins_item:
     debug: false
     type: item
-    material: fishing_rod
+    material: feather
     display name: <&b><&l>Fishing Rod Skins
+    mechanisms:
+        custom_model_data: 3
     lore:
     - <&7>Purchase fishing rod skins here!
     - <&7>This is how you can show off
@@ -1831,8 +1837,10 @@ fishing_minigame_shop_skins_item:
 fishing_minigame_shop_music_item:
     debug: false
     type: item
-    material: jukebox
+    material: feather
     display name: <&b><&l>Music
+    mechanisms:
+        custom_model_data: 3
     lore:
     - <&7>Purchase music here!
     - <&7>After purchase, slap the disc
