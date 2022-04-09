@@ -76,6 +76,7 @@ fishing_minigame_set_inventory:
         - inventory set o:fishing_minigame_end_game_item slot:9
         - inventory set o:fishing_minigame_statistics_book_inv slot:8
         - inventory set o:fishing_minigame_mp3_player slot:7
+        - adjust <[player]> item_slot:1
 
 # % ██ [ Task used to reset player inventory ] ██
 fishing_minigame_reset_inventory:
@@ -1256,6 +1257,7 @@ fishing_minigame_merchant_open_gui:
     build_inventory:
         - define inventory <inventory[fishing_minigame_merchant_gui]>
         - if <[player].has_flag[fishingminigame.active]> && <[player].flag[fishingminigame.active]>:
+            - adjust <[inventory]> title:<&f><&font[adriftus:fishing_minigame]><&chr[F808]><&chr[0001]><&chr[F801]><&chr[F809]><&chr[F80A]><&chr[F80C]><&chr[0002]>
             - inventory set o:fishing_minigame_end_game slot:10 d:<[inventory]>
             - inventory set o:fishing_minigame_end_game slot:11 d:<[inventory]>
             - inventory set o:fishing_minigame_end_game slot:12 d:<[inventory]>
@@ -1263,6 +1265,7 @@ fishing_minigame_merchant_open_gui:
             - inventory set o:fishing_minigame_end_game slot:20 d:<[inventory]>
             - inventory set o:fishing_minigame_end_game slot:21 d:<[inventory]>
         - else:
+            - adjust <[inventory]> title:<&f><&font[adriftus:fishing_minigame]><&chr[F808]><&chr[0001]>
             - inventory set o:fishing_minigame_start_button slot:10 d:<[inventory]>
             - inventory set o:fishing_minigame_start_button slot:11 d:<[inventory]>
             - inventory set o:fishing_minigame_start_button slot:12 d:<[inventory]>
