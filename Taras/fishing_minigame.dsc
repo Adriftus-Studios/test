@@ -1355,7 +1355,11 @@ fishing_minigame_bucket_open_gui:
             - inventory set o:<[fishCopy]> slot:<[bucketSlots].first> d:<[inventory]>
             - define bucketSlots <[bucketSlots].remove[first]>
         - if <[merchant]>:
-            - inventory set o:fishing_minigame_sell_all slot:1 d:<[inventory]>
+            - adjust <[inventory]> title:<[inventory].title><&chr[F801]><&chr[F809]><&chr[F80A]><&chr[F80C]><&chr[0031]>
+            - inventory set o:fishing_minigame_sell_all slot:17 d:<[player].inventory>
+            - inventory set o:fishing_minigame_sell_all slot:18 d:<[player].inventory>
+            - inventory set o:fishing_minigame_sell_all slot:26 d:<[player].inventory>
+            - inventory set o:fishing_minigame_sell_all slot:27 d:<[player].inventory>
     script:
         - inject locally path:build_inventory
         - inventory open d:<[inventory]>
@@ -1890,8 +1894,10 @@ fishing_minigame_fish_bucket_full:
 fishing_minigame_sell_all:
     debug: false
     type: item
-    material: barrier
+    material: feather
     display name: <&c><&l>Sell All
+    mechanisms:
+        custom_model_data: 3
     lore:
     - <&7>This will sell all the fish in your bucket.
     - <&r>
