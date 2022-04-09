@@ -116,7 +116,7 @@ fishing_minigame_generate_whirlpools:
         - ~run fishing_minigame_reset_whirlpools
         - wait 5t
         - flag server fishing_minigame_reset_whirlpools:!
-        - flag server fishing_minigame_active_whirlpool_locations:<proc[fishing_minigame_get_avaiailable_whirlpool_location].context[<[amount]>]>
+        - flag server fishing_minigame_active_whirlpool_locations:<proc[fishing_minigame_get_available_whirlpool_location].context[<[amount]>]>
         - run fishing_minigame_build_whirlpools
 
 # % ██ [ Task used to destroy the actual whirlpool entities ] ██
@@ -268,7 +268,7 @@ fish_tokens_add:
         - if <[player].has_flag[fishingminigame.active]> && <[player].flag[fishingminigame.active]>:
             - inventory set o:<proc[fishing_minigame_get_fishtoken_item].context[<[player]>]> slot:3 destination:<[player].inventory>
 
-# % ██ [ Removes given amount of tokens to given player ] ██
+# % ██ [ Removes given amount of tokens from given player ] ██
 fish_tokens_remove:
     debug: false
     type: task
@@ -480,7 +480,7 @@ fishing_minigame_mega_whirlpool:
     script:
         - title "title:<&a>Mega Whirlpool!" "subtitle:<&a>Find the mega whirlpool, and catch a fish!" targets:<server.flag[fishingminingame.activeplayers]>
         - narrate "<&7>There's a mega whirlpool that has spawned somewhere in the pond. Go be the first to find it, and catch a fish from it! The reward is 2500 fishtokens." targets:<server.flag[fishingminingame.activeplayers]>
-        - flag server fishingminigame.megawhirlpool:<proc[fishing_minigame_get_avaiailable_whirlpool_location].context[1]>
+        - flag server fishingminigame.megawhirlpool:<proc[fishing_minigame_get_available_whirlpool_location].context[1]>
         - run fishing_minigame_mega_whirlpool_animation
         - while !<server.has_flag[fishingminigame.eventcatch]>:
             - wait 10t
@@ -672,8 +672,8 @@ fishing_minigame_get_bucket_name:
             - case MAX:
                 - determine <&f><&font[adriftus:fishing_minigame]><&chr[F808]><&chr[0024]>
 
-# % ██ [ Returns avaialbe whirlpool locations ] ██
-fishing_minigame_get_avaiailable_whirlpool_location:
+# % ██ [ Returns available whirlpool locations ] ██
+fishing_minigame_get_available_whirlpool_location:
     debug: false
     type: procedure
     definitions: amount
@@ -1088,7 +1088,7 @@ fishing_minigame_event_handler:
                             - run fish_tokens_remove def:<player>|2500 save:removed
                             - if <entry[removed].created_queue.determination.first>:
                                 - flag <player> fishingminigame.bucket.size:<player.flag[fishingminigame.bucket.size].add[<proc[fishing_minigame_get_slots_to_add].context[<player>]>]>
-                                - narrate "<&a>You're backpack just upgraded to level <proc[fishing_minigame_get_bucket_level].context[<player>]>"
+                                - narrate "<&a>Your bucket was upgraded to level <proc[fishing_minigame_get_bucket_level].context[<player>]>"
                                 - run fishing_minigame_shop_open_gui def:<player>
                             - else:
                                 - narrate "<&c>You can not afford that!"
@@ -1387,6 +1387,13 @@ fishing_minigame_bucket_open_gui:
             - inventory set o:fishing_minigame_sell_all slot:27 d:<[player].inventory>
             - inventory set o:fishing_minigame_sell_all slot:35 d:<[player].inventory>
             - inventory set o:fishing_minigame_sell_all slot:36 d:<[player].inventory>
+            - if !<proc[fishing_minigame_get_bucket_level].context[<player>].equals[MAX]>:
+                - if <player.flag[fishingminigame.fishtokens]> >= 2500:
+                    - inventory set o:fishing_minigame_upgrade_available slot:19 d:<[player].inventory>
+                    - inventory set o:fishing_minigame_upgrade_available slot:20 d:<[player].inventory>
+                    - inventory set o:fishing_minigame_upgrade_available slot:21 d:<[player].inventory>
+                    - inventory set o:fishing_minigame_upgrade_available slot:22 d:<[player].inventory>
+                    - adjust <[inventory]> title:<[inventory].title><&chr[F806]><&chr[F808]><&chr[F80A]><&chr[F80C]><&chr[0032]>
     script:
         - inject locally path:build_inventory
         - inventory open d:<[inventory]>
@@ -2081,3 +2088,14 @@ fishing_minigame_bucket_upgrade:
     lore:
     - <&7>Upgrade your bucket at the
     - <&7>Fishing Merchant
+
+fishing_minigame_upgrade_available:
+    debug: false
+    type: item
+    material: feather
+    display name: <green><&l>Upgrade Available!
+    mechanisms:
+        custom_model_data: 3
+    lore:
+    - <&7>Upgrade your bucket
+    - <&7>in the Pro Shop!
