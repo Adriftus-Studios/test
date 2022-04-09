@@ -1981,11 +1981,11 @@ fishing_minigame_fishtokens_button:
     mechanisms:
         custom_model_data: 3
     lore:
-    - <&7>This is your fishing currency.
+    - <&7>Spend your fishtokens!
     - <&r>
     - <&a>Fishtokens Amount: 0
     - <&r>
-    - <&r><element[➤ Fishtoken Shop].color_gradient[from=#62FF00;to=#CBFFB9]>
+    - <&r><element[➤ Shop!].color_gradient[from=#62FF00;to=#CBFFB9]>
 
 # % ██ [ Leaderboards Button ] ██
 fishing_minigame_leaderboards_button:
