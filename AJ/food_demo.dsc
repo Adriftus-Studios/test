@@ -5,7 +5,7 @@ flour_item:
   display name: <&7>Flour
   recipes:
     1:
-      type: shapeless
+      type: stonecutting
       output_quantity: 1
       recipe_id: flour_recipe_1
       input: wheat
