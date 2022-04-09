@@ -24,6 +24,7 @@ chair_sit_events:
     on player right clicks block:
     - stop if:<context.location.material.name.ends_with[stairs].not.if_null[true]>
     - stop if:<context.location.material.half.equals[BOTTOM].not>
+    - stop if:<context.location.has_flag[sit.point]>
     - stop if:<player.is_sneaking>
     - determine passively cancelled
     - if <player.is_inside_vehicle>:
