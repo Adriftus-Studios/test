@@ -29,7 +29,7 @@ chair_sit_events:
     - if <player.is_inside_vehicle>:
       - adjust <player.vehicle> passengers:<list[]>
       - wait 1t
-    - spawn armor_stand <context.location.center.below[1.5]> save:mount_point
+    - spawn armor_stand <context.location.center.below[1.7]> save:mount_point
     - define point <entry[mount_point].spawned_entity>
     - define yaw <script.data_key[data.sides.<context.location.material.direction>].add[<script.data_key[data.modifiers.<context.location.material.shape>]>]>
     - rotate <[point]> yaw:<[yaw]> duration:1t frequency:1t
