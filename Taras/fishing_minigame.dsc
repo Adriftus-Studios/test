@@ -1312,8 +1312,6 @@ fishing_minigame_merchant_open_gui:
         - inventory set o:<[tokensButton]> slot:39 d:<[inventory]>
         - inventory set o:<[tokensButton]> slot:40 d:<[inventory]>
         - inventory set o:fishing_minigame_leaderboards_button slot:9 d:<[inventory]>
-        - inventory set o:fishing_minigame_fish_button slot:42 d:<[inventory]>
-        - inventory set o:fishing_minigame_fish_button slot:43 d:<[inventory]>
     script:
         - inject locally path:build_inventory
         - inventory open d:<[inventory]>
