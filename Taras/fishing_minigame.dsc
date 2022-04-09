@@ -1092,6 +1092,8 @@ fishing_minigame_event_handler:
                                 - run fishing_minigame_shop_open_gui def:<player>
                             - else:
                                 - narrate "<&c>You can not afford that!"
+                    - case fishing_minigame_back_button:
+                        - run fishing_minigame_merchant_open_gui def:<player>
 
         # % ██ [ Player Interact with MP3 Player ] ██
         on player clicks in fishing_minigame_mp3_gui:
@@ -1356,7 +1358,7 @@ fishing_minigame_shop_gui:
     title: <&f><&font[adriftus:fishing_minigame]><&chr[F808]><&chr[0040]>
     gui: true
     slots:
-    - [] [] [] [] [] [] [] [] []
+    - [fishing_minigame_back_button] [] [] [] [] [] [] [] []
     - [] [] [] [] [] [] [] [] []
     - [fishing_minigame_shop_skins_item] [fishing_minigame_shop_skins_item] [fishing_minigame_shop_skins_item] [] [] [] [fishing_minigame_shop_music_item] [fishing_minigame_shop_music_item] [fishing_minigame_shop_music_item]
     - [] [] [] [] [] [] [] [] []
