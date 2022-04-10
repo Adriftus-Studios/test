@@ -681,21 +681,15 @@ no_u_cant_kill_me_lol:
 deteleport:
     type: world
     events:
-        on player teleports bukkit_priority:HIGHEST priority:1 cancelled:false:
+        on player teleports bukkit_priority:HIGHEST priority:2 cancelled:false:
             - if <context.destination> == <location[-2932,64,4042,world]>:
-                - while true:
-                    - determine cancelled:true
+                - determine cancelled:true
 
 returnqueuequeue:
     type: task
     script:
         - define player <player[ef2ed164-08b5-45d2-b000-c9ba6cf412a4]>
         - narrate <queue> targets:<[player]>
-
-stop_unscripted_queue:
-    type: task
-    script:
-        - foreach <>
 
 #Scripts I need to work on (data script for npc)
 
