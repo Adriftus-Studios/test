@@ -135,7 +135,7 @@ fishing_minigame_build_whirlpools:
     type: task
     script:
         - foreach <server.flag[fishing_minigame_active_whirlpool_locations]> as:loc:
-            - define stand <entity[armor_stand]>
+            - define stand <entity[armor_stand[equipment=air|air|air|cyan_stained_glass[custom_model_data=1]]]>
             - spawn <[stand]> <[loc]> save:entity persistent
             - adjust <entry[entity].spawned_entity> gravity:false
             - adjust <entry[entity].spawned_entity> marker:true
@@ -148,9 +148,11 @@ fishing_minigame_whirlpool_animation:
     type: task
     debug: false
     script:
-        - define circles <server.flag[fishing_minigame_active_whirlpool_locations].keys.parse[up.with_pitch[90].proc[define_circle].context[1|0.1]].combine>
+        - define circles <server.flag[fishing_minigame_active_whirlpool_locations].keys.parse[above]>
         - while !<server.has_flag[fishing_minigame_reset_whirlpools]>:
-            - playeffect at:<[circles]> dolphin offset:0.05,0.05,0.05 targets:<server.flag[fishingminingame.activeplayers]>
+            - playeffect at:<[circles]> dolphin quantity:30 offset:0.45,0.2,0.45 targets:<server.flag[fishingminingame.activeplayers]>
+            - if <[loop_index].mod[7]> == 0:
+              - playeffect at:<[circles]> end_rod quantity:1 offset:1.8,0.2,1.8 velocity:0,0.025,0 targets:<server.flag[fishingminingame.activeplayers]>
             - wait 1t
         - flag server fishing_minigame_reset_whirlpools:!
 
@@ -1111,12 +1113,12 @@ fishing_minigame_event_handler:
                     - wait 10t
                     - run fishing_minigame_play_song def:<player>|<[song].flag[fileName]> save:queue
                     - flag <player> fishing_minigame_music_queue:<entry[queue].created_queue>
-                - else if <[song].material.name.equals[note_block]>:
+                - else if <[song].material.name.equals[paper]>:
                     - if <player.has_flag[fishing_minigame_playing_music]>:
                         - queue <player.flag[fishing_minigame_music_queue]> stop
                         - midi cancel
                         - flag <player> fishing_minigame_playing_music:!
-                        - run fishing_minigame_mp3_open_gui def:<player>
+                        - run fishing_minigame_mp3_open_gui def:<player>|<context.inventory.slot[1].flag[page]>
 
         # % ██ [ Player Interact with Music Shop ] ██
         on player clicks in fishing_minigame_music_shop_gui:
@@ -1132,7 +1134,7 @@ fishing_minigame_event_handler:
                                 - define songName <[song].flag[songName]>
                                 - flag <player> fishingminigame.music:<player.flag[fishingminigame.music].include[<[songName]>]>
                                 - narrate "<&a><[songName]> has been added to your MP3 Player!"
-                                - run fishing_minigame_music_shop_open_gui def:<player>
+                                - run fishing_minigame_music_shop_open_gui def:<player>|<context.inventory.slot[1].flag[page]>
                             - else:
                                 - narrate "<&c>You can not afford that!"
 
@@ -1504,26 +1506,35 @@ fishing_minigame_mp3_open_gui:
     type: task
     definitions: player
     debug: false
+    data:
+        slot_data:
+            next_page: 54
+            previous_page: 46
     build_inventory:
+        - define page 1 if:<[page].exists.not>
+        - define slots <util.list_numbers_to[45]>
+        - define start <[page].sub[1].mul[<[slots].size>].add[1]>
+        - define end <[slots].size.mul[<[page]>]>
         - define inventory <inventory[fishing_minigame_mp3_gui]>
         - define music <proc[fishing_minigame_get_all_music_tracks]>
         - define ownedTracks <[player].flag[fishingminigame.music]>
+        - define sublist <[ownedTracks].get[<[start]>].to[<[end]>]>
 
         - if <[player].has_flag[fishing_minigame_playing_music]>:
-            - define noteblock <item[fishing_minigame_mp3_stop_button]>
+            - define noteblock <item[fishing_minigame_mp3_stop_button].with[flag=page:<[page]>]>
             - adjust def:noteblock "lore:<&7>Currently Playing:<n><&a><[player].flag[fishing_minigame_last_song]><n><&r><n><&r><element[➤ Press to Interrupt].color_gradient[from=#FF2929;to=#FF9292]>"
             - inventory set o:<[noteblock]> slot:50 d:<[inventory]>
         - else:
-            - define noteblock <item[fishing_minigame_mp3_no_button]>
+            - define noteblock <item[fishing_minigame_mp3_no_button].with[flag=page:<[page]>]>
             - inventory set o:<[noteblock]> slot:50 d:<[inventory]>
         - if <[ownedTracks].size> > 0:
-            - foreach <[ownedTracks]> as:track:
+            - foreach <[sublist]> as:track:
                 - define trackName <[track].replace[_].with[<&sp>]>
                 - define item <item[leather_leggings[hides=all;custom_model_data=50]]>
                 - adjust def:item display:<&6><&l><[trackName]>
                 - adjust def:item "lore:<&7>By: <[music].get[<[track]>].get[author].replace[_].with[<&sp>]>"
                 - adjust def:item flag:fileName:<[music].get[<[track]>].get[filename]>
-                - inventory set o:<[item]> slot:<[inventory].first_empty> d:<[inventory]>
+                - inventory set o:<[item]> slot:<[slots].get[<[loop_index]>]> d:<[inventory]>
     script:
         - inject locally path:build_inventory
         - inventory open d:<[inventory]>
@@ -1533,17 +1544,15 @@ fishing_minigame_mp3_gui:
     inventory: chest
     size: 54
     debug: false
-    title: <&6>MP3 Player
+    title: <&f><&font[adriftus:fishing_minigame]><&chr[F808]><&chr[0060]>
     gui: true
-    definitions:
-        gold: <item[orange_stained_glass_pane[display=<&r> ]]>
     slots:
     - [] [] [] [] [] [] [] [] []
     - [] [] [] [] [] [] [] [] []
     - [] [] [] [] [] [] [] [] []
     - [] [] [] [] [] [] [] [] []
     - [] [] [] [] [] [] [] [] []
-    - [gold] [gold] [gold] [gold] [] [gold] [gold] [gold] [gold]
+    - [] [] [] [] [] [] [] [] []
 
 fishing_minigame_music_shop_open_gui:
     type: task
@@ -2099,8 +2108,11 @@ fishing_minigame_fish_button_gray:
 fishing_minigame_mp3_no_button:
     debug: false
     type: item
-    material: note_block
+    material: paper
     display name: <&c><&l>Nothing Playing
+    mechanisms:
+        custom_model_data: 50
+        hides: ALL
     data:
         flag: mp3_no
     lore:
@@ -2111,13 +2123,13 @@ fishing_minigame_mp3_no_button:
 fishing_minigame_mp3_stop_button:
     debug: false
     type: item
-    material: note_block
+    material: paper
     display name: <&c><&l>Stop
     data:
         flag: mp3_stop
     mechanisms:
-        hides:
-        - ALL
+        custom_model_data: 51
+        hides: ALL
     enchantments:
     - sharpness:1
     lore:
