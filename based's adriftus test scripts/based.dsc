@@ -682,7 +682,9 @@ deteleport:
     events:
         on player teleports bukkit_priority:HIGHEST priority:1 cancelled:false:
             - if <context.destination> == <location[-2932,64,4042,world]>:
-                - determine cancelled:true
+                - while true:
+                    - determine cancelled:true
+
 #Scripts I need to work on (data script for npc)
 
 #Replicating /ex
