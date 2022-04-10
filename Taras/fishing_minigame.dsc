@@ -1519,11 +1519,11 @@ fishing_minigame_mp3_open_gui:
         - define sublist <[ownedTracks].get[<[start]>].to[<[end]>]>
 
         - if <[player].has_flag[fishing_minigame_playing_music]>:
-            - define noteblock <item[fishing_minigame_mp3_stop_button]>
+            - define noteblock <item[fishing_minigame_mp3_stop_button].with[flag=page:<[page]>]>
             - adjust def:noteblock "lore:<&7>Currently Playing:<n><&a><[player].flag[fishing_minigame_last_song]><n><&r><n><&r><element[➤ Press to Interrupt].color_gradient[from=#FF2929;to=#FF9292]>"
             - inventory set o:<[noteblock]> slot:50 d:<[inventory]>
         - else:
-            - define noteblock <item[fishing_minigame_mp3_no_button]>
+            - define noteblock <item[fishing_minigame_mp3_no_button].with[flag=page:<[page]>]>
             - inventory set o:<[noteblock]> slot:50 d:<[inventory]>
         - if <[ownedTracks].size> > 0:
             - foreach <[sublist]> as:track:
