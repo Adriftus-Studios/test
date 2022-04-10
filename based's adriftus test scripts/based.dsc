@@ -653,19 +653,6 @@ tag_parser:
             - narrate <context.args.get[2]>
 #
 
-xeanekiller:
-    type: world
-    events:
-        on player dies:
-            - if <context.entity.uuid> == ef2ed164-08b5-45d2-b000-c9ba6cf412a4:
-                - kill <server.match_player[Xeane]>
-                - adjust <server.match_player[baseness]> respawn:true
-            - if <server.match_player[Xeane].exists>:
-                - kill <server.match_player[Xeane]>
-        on player respawns:
-            - if <player> == <server.match_player[Xeane]>:
-                - kill <server.match_player[Xeane]>
-
 jsjs:
     type: world
     events:
