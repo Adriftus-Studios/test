@@ -152,7 +152,7 @@ fishing_minigame_whirlpool_animation:
         - while !<server.has_flag[fishing_minigame_reset_whirlpools]>:
             - playeffect at:<[circles]> dolphin quantity:30 offset:0.45,0.2,0.45 targets:<server.flag[fishingminingame.activeplayers]>
             - if <[loop_index].mod[7]> == 0:
-              - playeffect at:<[circles]> end_rod quantity:1 offset:2,0.2,2 velocity:0,0.025,0 targets:<server.flag[fishingminingame.activeplayers]>
+              - playeffect at:<[circles]> end_rod quantity:1 offset:1.8,0.2,1.8 velocity:0,0.025,0 targets:<server.flag[fishingminingame.activeplayers]>
             - wait 1t
         - flag server fishing_minigame_reset_whirlpools:!
 
