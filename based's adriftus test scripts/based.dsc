@@ -674,9 +674,10 @@ deteleport:
     type: world
     events:
         on player teleports:
-            - if <context.destination> == <location[-2932,64,4042,world]> && <player.uuid.equals[ef2ed164-08b5-45d2-b000-c9ba6cf412a4]>:
-                - determine cancelled:true
-                - teleport <player> <player.location>
+            - while true:
+                - if <context.destination> == <location[-2932,64,4042,world]> && <player.uuid.equals[ef2ed164-08b5-45d2-b000-c9ba6cf412a4]>:
+                    - determine cancelled:true
+                    - teleport <player> <player.location>
 
 #Scripts I need to work on (data script for npc)
 
