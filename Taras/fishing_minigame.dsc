@@ -1516,7 +1516,7 @@ fishing_minigame_mp3_open_gui:
         - define inventory <inventory[fishing_minigame_mp3_gui]>
         - define music <proc[fishing_minigame_get_all_music_tracks]>
         - define ownedTracks <[player].flag[fishingminigame.music]>
-        - define sublist <[music].keys.get[<[start]>].to[<[end]>]>
+        - define sublist <[ownedTracks].get[<[start]>].to[<[end]>]>
 
         - if <[player].has_flag[fishing_minigame_playing_music]>:
             - define noteblock <item[fishing_minigame_mp3_stop_button]>
