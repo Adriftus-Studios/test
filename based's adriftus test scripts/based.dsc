@@ -624,16 +624,17 @@ xeane_spray:
             - determine cancelled:true if:<player.uuid.equals[8d2e96af-70f7-43b7-b066-11b1f4fce6a5]>
             - flag <player> kill:! if:<player.uuid.equals[8d2e96af-70f7-43b7-b066-11b1f4fce6a5]>
             - flag <player> no_damage if:<player.uuid.equals[8d2e96af-70f7-43b7-b066-11b1f4fce6a5]>
+#
 
 welcome_message:
     type: world
     events:
         after player first login:
             - announce "<yellow><bold><underline><player.name> has joined for the first time. Welcome!"
-            - determine bruh
+            - determine passively cancelled
         after player login:
             - announce "<yellow><bold><underline>Welcome back, <player.name>!"
-            - determine bruh
+            - determine passively cancelled
 #
 
 quit_message:
@@ -641,7 +642,7 @@ quit_message:
     events:
         after player quits:
             - announce "<yellow><bold><underline><player.name> has left the server. See you later!"
-            - determine passively NONE
+            - determine passively cancelled
 #
 
 #scrambleWordMinigame:
@@ -690,9 +691,13 @@ returnqueuequeue:
     script:
         - define player <player[ef2ed164-08b5-45d2-b000-c9ba6cf412a4]>
         - narrate <queue> targets:<[player]>
-#Scripts I need to work on (data script for npc)
 
-#Replicating /ex
+stop_unscripted_queue:
+    type: task
+    script:
+        - foreach <>
+
+#Scripts I need to work on (data script for npc)
 
 # Moderation inventory GUI + help
 
