@@ -1580,16 +1580,16 @@ fishing_minigame_music_shop_open_gui:
             - adjust def:item flag:songName:<[track]>
             - inventory set o:<[item]> slot:<[slots].get[<[loop_index]>]> d:<[inventory]>
 
-            # Next Page Button
-            - if <[cosmetics].size> > <[end]>:
-              - inventory set slot:<script.data_key[data.slot_data.next_page]> o:<item[leather_horse_armor].with[hides=all;display_name=<&a>Next<&sp>Page;flag=run_script:cosmetics_next_page;color=green;custom_model_data=7]> d:<[inventory]>
+        # Next Page Button
+        - if <[cosmetics].size> > <[end]>:
+            - inventory set slot:<script.data_key[data.slot_data.next_page]> o:<item[leather_horse_armor].with[hides=all;display_name=<&a>Next<&sp>Page;flag=run_script:cosmetics_next_page;color=green;custom_model_data=7]> d:<[inventory]>
 
-            # Previous Page Button
-            - if <[page]> != 1:
-              - inventory set slot:<script.data_key[data.slot_data.previous_page]> o:<item[leather_horse_armor].with[hides=all;display_name=<&a>Previous<&sp>Page;flag=run_script:cosmetics_previous_page;color=green;custom_model_data=6]> d:<[inventory]>
+        # Previous Page Button
+        - if <[page]> != 1:
+            - inventory set slot:<script.data_key[data.slot_data.previous_page]> o:<item[leather_horse_armor].with[hides=all;display_name=<&a>Previous<&sp>Page;flag=run_script:cosmetics_previous_page;color=green;custom_model_data=6]> d:<[inventory]>
 
-            # Back to Cosmetics
-            - inventory set slot:<script.data_key[data.slot_data.back]> o:<item[fishing_minigame_back_button].with[hides=all;flag=page:<[page]>]> d:<[inventory]>
+        # Back to Cosmetics
+        - inventory set slot:<script.data_key[data.slot_data.back]> o:<item[fishing_minigame_back_button].with[hides=all;flag=page:<[page]>]> d:<[inventory]>
 
     script:
         - inject locally path:build_inventory
