@@ -1111,7 +1111,7 @@ fishing_minigame_event_handler:
                     - wait 10t
                     - run fishing_minigame_play_song def:<player>|<[song].flag[fileName]> save:queue
                     - flag <player> fishing_minigame_music_queue:<entry[queue].created_queue>
-                - else if <[song].material.name.equals[note_block]>:
+                - else if <[song].material.name.equals[paper]>:
                     - if <player.has_flag[fishing_minigame_playing_music]>:
                         - queue <player.flag[fishing_minigame_music_queue]> stop
                         - midi cancel
