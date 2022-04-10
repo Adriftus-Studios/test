@@ -135,7 +135,7 @@ fishing_minigame_build_whirlpools:
     type: task
     script:
         - foreach <server.flag[fishing_minigame_active_whirlpool_locations]> as:loc:
-            - define stand <entity[armor_stand]>
+            - define stand <entity[armor_stand[equipment=air|air|air|cyan_stained_glass[custom_model_data=1]]]>
             - spawn <[stand]> <[loc]> save:entity persistent
             - adjust <entry[entity].spawned_entity> gravity:false
             - adjust <entry[entity].spawned_entity> marker:true
