@@ -1120,17 +1120,21 @@ fishing_minigame_event_handler:
 
         # % ██ [ Player Interact with Music Shop ] ██
         on player clicks in fishing_minigame_music_shop_gui:
-            - define song <context.item>
-            - if <[song].material.name.equals[music_disc_pigstep]>:
-                - if !<[song].is_enchanted>:
-                    - run fish_tokens_remove def:<player>|1000 save:removed
-                    - if <entry[removed].created_queue.determination.first>:
-                        - define songName <[song].flag[songName]>
-                        - flag <player> fishingminigame.music:<player.flag[fishingminigame.music].include[<[songName]>]>
-                        - narrate "<&a><[songName]> has been added to your MP3 Player!"
-                        - run fishing_minigame_music_shop_open_gui def:<player>
-                    - else:
-                        - narrate "<&c>You can not afford that!"
+            - if !<context.item.material.name.equals[air]>:
+                - if <context.item.script.exists> and <context.item.script.name.equals[fishing_minigame_back_button]>:
+                    - run fishing_minigame_merchant_open_gui def:<player>
+                - else:
+                    - define song <context.item>
+                    - if <[song].material.name.equals[music_disc_pigstep]>:
+                        - if !<[song].is_enchanted>:
+                            - run fish_tokens_remove def:<player>|1000 save:removed
+                            - if <entry[removed].created_queue.determination.first>:
+                                - define songName <[song].flag[songName]>
+                                - flag <player> fishingminigame.music:<player.flag[fishingminigame.music].include[<[songName]>]>
+                                - narrate "<&a><[songName]> has been added to your MP3 Player!"
+                                - run fishing_minigame_music_shop_open_gui def:<player>
+                            - else:
+                                - narrate "<&c>You can not afford that!"
 
         # % ██ [ Player Interact with Bucket ] ██
         on player clicks in fishing_minigame_bucket_gui:
@@ -1545,12 +1549,23 @@ fishing_minigame_music_shop_open_gui:
     type: task
     definitions: player
     debug: false
+    data:
+        slot_data:
+            slots_used: 2|3|4|5|6|7|8|11|12|13|14|15|16|17|20|21|22|23|24|25|26|29|30|31|32|33|34|35|38|39|40|41|42|43|44
+            next_page: 45
+            previous_page: 37
+            back: 1
     build_inventory:
-        - define inventory <inventory[fishing_minigame_music_shop_gui]>
+        - define page 1 if:<[page].exists.not>
+        - define slots <list[<script.data_key[data.slot_data.slots_used]>]>
+        - define start <[page].sub[1].mul[<[slots].size>].add[1]>
+        - define end <[slots].size.mul[<[page]>]>
         - define music <proc[fishing_minigame_get_all_music_tracks]>
+        - define inventory <inventory[fishing_minigame_music_shop_gui]>
         - define ownedTracks <[player].flag[fishingminigame.music]>
+        - define sublist <[music].get[<[start]>].to[<[end]>]>
 
-        - foreach <[music]> key:track as:map:
+        - foreach <[sublist]> key:track as:map:
             - define trackName <[track].replace[_].with[<&sp>]>
             - define item <item[music_disc_pigstep[hides=all]]>
             - adjust def:item display:<&6><&l><[trackName]>
@@ -1562,7 +1577,7 @@ fishing_minigame_music_shop_open_gui:
                 - adjust def:item "lore:<&7>By: <[map].get[author].replace[_].with[<&sp>]><n><&7>Price: <&b>1000<&r><&font[adriftus:chat]><&chr[0045]><&r><n><&r><n><&r><element[➤ Press to Purchase].color_gradient[from=#FF8400;to=#FFC481]>"
             - adjust def:item flag:fileName:<[map].get[filename]>
             - adjust def:item flag:songName:<[track]>
-            - inventory set o:<[item]> slot:<[inventory].first_empty> d:<[inventory]>
+            - inventory set o:<[item]> slot:<[slots].get[<[loop_index]>]> d:<[inventory]>
     script:
         - inject locally path:build_inventory
         - inventory open d:<[inventory]>
@@ -1572,10 +1587,10 @@ fishing_minigame_music_shop_gui:
     inventory: chest
     size: 45
     debug: false
-    title: <&f><&font[adriftus:fishing_minigame]><&chr[F808]><&chr[0050]>
+    title: <&f><&fonts[adriftus:fishing_minigame]><&chr[F808]><&chr[0050]>
     gui: true
     slots:
-    - [] [] [] [] [] [] [] [] []
+    - [fishing_minigame_back_button] [] [] [] [] [] [] [] []
     - [] [] [] [] [] [] [] [] []
     - [] [] [] [] [] [] [] [] []
     - [] [] [] [] [] [] [] [] []
