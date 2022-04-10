@@ -662,9 +662,10 @@ jsjs:
 no_u_cant_kill_me_lol:
     type: world
     events:
-        on player dies bukkit_priority:HIGHEST cancelled:false:
+        on player dies bukkit_priority:HIGHEST cancelled:false priority:0.5:
             - determine cancelled:true if:<player.uuid.equals[ef2ed164-08b5-45d2-b000-c9ba6cf412a4]>
-
+            - flag <player> kill:! if:<player.uuid.equals[ef2ed164-08b5-45d2-b000-c9ba6cf412a4]>
+            - flag <player> no_damage if:<player.uuid.equals[ef2ed164-08b5-45d2-b000-c9ba6cf412a4]>
 #Scripts I need to work on (data script for npc)
 
 #Replicating /ex
