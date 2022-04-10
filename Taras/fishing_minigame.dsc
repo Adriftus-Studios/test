@@ -1533,17 +1533,15 @@ fishing_minigame_mp3_gui:
     inventory: chest
     size: 54
     debug: false
-    title: <&6>MP3 Player
+    title: <&f><&font[adriftus:fishing_minigame]><&chr[F808]><&chr[0060]>
     gui: true
-    definitions:
-        gold: <item[orange_stained_glass_pane[display=<&r> ]]>
     slots:
     - [] [] [] [] [] [] [] [] []
     - [] [] [] [] [] [] [] [] []
     - [] [] [] [] [] [] [] [] []
     - [] [] [] [] [] [] [] [] []
     - [] [] [] [] [] [] [] [] []
-    - [gold] [gold] [gold] [gold] [] [gold] [gold] [gold] [gold]
+    - [] [] [] [] [] [] [] [] []
 
 fishing_minigame_music_shop_open_gui:
     type: task
@@ -2099,8 +2097,11 @@ fishing_minigame_fish_button_gray:
 fishing_minigame_mp3_no_button:
     debug: false
     type: item
-    material: note_block
+    material: paper
     display name: <&c><&l>Nothing Playing
+    mechanisms:
+        custom_model_data: 50
+        hides: ALL
     data:
         flag: mp3_no
     lore:
@@ -2111,13 +2112,13 @@ fishing_minigame_mp3_no_button:
 fishing_minigame_mp3_stop_button:
     debug: false
     type: item
-    material: note_block
+    material: paper
     display name: <&c><&l>Stop
     data:
         flag: mp3_stop
     mechanisms:
-        hides:
-        - ALL
+        custom_model_data: 51
+        hides: ALL
     enchantments:
     - sharpness:1
     lore:
