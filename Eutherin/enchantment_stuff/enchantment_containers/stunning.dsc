@@ -23,6 +23,7 @@ stunning_enchantment:
   is_discoverable: true
   can_enchant: <context.item.advanced_matches[*_sword|*_axe]>
   after attack:
+    - ratelimit <player> 12t
     - if <util.random.int[1].to[10]> > 9 && !<context.victim.has_flag[temp.enchantment_nostun]> && <context.victim.is_spawned>:
       - if <context.victim.entity_type> == player:
         - if !<context.victim.is_npc>:

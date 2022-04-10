@@ -26,7 +26,7 @@ Wild_Rage_enchantment:
   is_discoverable: true
   can_enchant: <context.item.advanced_matches[bow|crossbow|trident]>
   after attack:
-  - ratelimit <player> 2t
+  - ratelimit <player> 12t
   - if <context.victim.has_flag[temp.custom_enchantment_wild_rage]> || <util.random.int[1].to[10]> < 8 || !<context.victim.is_spawned> || <context.victim.is_player>:
     - stop
   - flag <context.victim> temp.custom_enchantment_wild_rage duration:<context.level.add[2].mul[20]>t

@@ -27,5 +27,6 @@ Chilling_enchantment:
   is_discoverable: true
   can_enchant: <context.item.advanced_matches[*_helmet|*_chestplate|*_leggings|*_boots]>
   after hurt:
+    - ratelimit <player> 10t
     - if <util.random.int[1].to[10]> > 9:
         - mythicspawn ChillBlaster_<context.attacker.is_player.if_true[player].if_false[mob]> <player.location> level:<context.level>

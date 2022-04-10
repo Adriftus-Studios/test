@@ -9,7 +9,7 @@ combo_enchantment:
   max_cost: <context.level.mul[1]>
   data:
     effect:
-      - Repeated attacks to a target do 2 damage per level per attack.
+      - Repeated attacks to a target do 1 damage per level per attack.
       - _
       - Stacks up to 2x your enchantment level.
     item_slots:
@@ -24,14 +24,16 @@ combo_enchantment:
   is_tradable: false
   can_enchant: <context.item.advanced_matches[*_sword|*_axe|bow|crossbow]>
   after attack:
-  - ratelimit <player> 2t
+  - ratelimit <player> 12t
+  - define victim <context.victim>
+  - stop if:<[victim].is_spawned.not>
   - if !<player.has_flag[temp.custom_enchant_combo]> || <context.victim> != <player.flag[combo_target].if_null[rip]>:
     - flag <player> temp.custom_enchant_combo:1 expire:5s
     - flag <player> combo_target:<context.victim> expire:5s
     - stop
-  - flag <player> temp.custom_enchant_combo:++ expire:5s
-  - flag <player> combo_target:<context.victim> expire:5s
-  - if <player.has_flag[temp.custom_enchant_combo]> && <player.flag[temp.custom_enchant_combo]> <= <context.level.mul[2]>:
-    - flag <player> temp.custom_enchant_combo:<player.flag[temp.custom_enchant_combo]> expire:5s
+  - if <player.flag[temp.custom_enchant_combo]> < <context.level.mul[2]>:
+    - flag <player> temp.custom_enchant_combo:++ expire:5s
     - flag <player> combo_target:<context.victim> expire:5s
-    - hurt <context.victim> <player.flag[temp.custom_enchant_combo]>
+  - flag <player> temp.custom_enchant_combo:<player.flag[temp.custom_enchant_combo]> expire:5s
+  - flag <player> combo_target:<context.victim> expire:5s
+  - hurt <player.flag[temp.custom_enchant_combo].mul[<context.level>]> <[victim]>

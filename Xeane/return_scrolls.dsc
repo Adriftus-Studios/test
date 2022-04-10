@@ -1,7 +1,7 @@
 return_scroll:
   type: item
   material: feather
-  display name: <&6>Scroll of Returning
+  display name: <&6>Return Scroll
   data:
     recipe_book_category: travel.scroll
   lore:
@@ -51,7 +51,7 @@ return_events:
   events:
     on return_scroll|return_crystal recipe formed:
       - define lore "<context.item.lore.include[<&b>Location<&co> <player.location.simple>]>"
-      - determine passively <item[return_scroll].with[flag=destination:<player.location>;lore=<[lore]>]>
+      - determine passively <context.item.with[flag=destination:<player.location>;lore=<[lore]>]>
 
 return_task:
   type: task

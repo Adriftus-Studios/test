@@ -27,6 +27,7 @@ crystallizing_enchant_handler:
   debug: false
   events:
     on player breaks sandstone|stone|red_sandstone|andesite|granite|diorite|deepslate|endstone|tuff|dripstone_block with:item_enchanted:crystallizing:
+      - ratelimit <player> 2t
       - if <util.random.int[0].to[100].add[<player.item_in_hand.enchantment_map.get[crystallizing]>]> < 100 || <player.has_flag[custom_enchantment.crystallized_recently]>:
         - stop
       - define item <list[diamond|emerald|redstone_dust|lapis_lazuli|glass|glowstone_dust].random>

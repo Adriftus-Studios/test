@@ -25,7 +25,8 @@ thundering_enchantment:
   is_discoverable: true
   can_enchant: <context.item.advanced_matches[*_sword|*_axe]>
   after attack:
-  - if <util.random.int[1].to[10]> > 6 && <context.victim.is_spawned>:
+  - ratelimit <player> 12t
+  - if <util.random.int[1].to[10]> > 9 && <context.victim.is_spawned>:
     - flag <player> temp.damage_immune_thunder expire:10t
     - define location <context.victim.location>
     - strike <[location]>

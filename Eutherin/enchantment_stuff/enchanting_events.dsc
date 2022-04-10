@@ -12,9 +12,10 @@ player_damage_enchant_handler:
   debug: false
   events:
     on player damages entity:
+      - ratelimit <player> 12t
       - if <context.entity.has_flag[temp.custom_enchant_cruelty]>:
-        - define level <player.item_in_hand.enchantment_map.get[cruelty]>
-        - hurt <context.entity> <[level]>
+        - define level <player.item_in_hand.enchantment_map.get[cruelty].if_null[0]>
+        - hurt <context.entity> <[level].mul[1.5]>
       - if !<context.entity.has_flag[temp.custom_enchant_cruelty]> && !<context.entity.has_flag[temp.custom_enchant_cruelty]>:
         - flag <context.entity> temp.custom_enchant_cruelty
       - if <player.health_percentage> > 90:
@@ -48,6 +49,7 @@ echo_enchant_handler:
   debug: false
   events:
     on entity damaged by player with:item_enchanted:echo:
+      - ratelimit <player> 12t
       - if <player.has_flag[temp.custom_enchant_echo_cooldown]>:
         - stop
       - define cooldown <element[6].sub[<player.item_in_hand.enchantment_map.get[echo]>]>

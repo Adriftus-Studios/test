@@ -25,6 +25,7 @@ Vortex_enchantment:
   can_enchant: <context.item.advanced_matches[*_sword|*_axe]>
   is_compatible: <context.enchantment_key.advanced_matches_text[denizen:shockwave].not>
   after attack:
+    - ratelimit <player> 12t
     - if <util.random.int[1].to[10]> > 8:
       - define level <context.level.div[5]>
       - define location <context.victim.location||player.location>

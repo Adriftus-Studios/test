@@ -1,7 +1,7 @@
 Swirling_enchantment:
   type: enchantment
   id: Swirling
-  debug: false
+  debug: true
   slots:
   - mainhand
   rarity: rare
@@ -23,15 +23,15 @@ Swirling_enchantment:
   is_discoverable: true
   can_enchant: <context.item.advanced_matches[*_sword|*_axe]>
   after attack:
-  - ratelimit <player> 2t
+  - ratelimit <player> 12t
   - if !<player.has_flag[temp.custom_enchant_Swirling]>:
     - flag <player> temp.custom_enchant_Swirling:1 expire:5s
     - stop
-  - if <player.has_flag[temp.custom_enchant_Swirling]> && <player.flag[temp.custom_enchant_Swirling]> < 3:
+  - if <player.has_flag[temp.custom_enchant_Swirling]> && <player.flag[temp.custom_enchant_Swirling]> < 2:
     - flag <player> temp.custom_enchant_Swirling:++ expire:5s
     - playeffect <player.location> effect:sweep_attack quantity:<player.flag[temp.custom_enchant_Swirling]>
     - stop
-  - if <player.flag[temp.custom_enchant_Swirling]> == 3:
+  - if <player.flag[temp.custom_enchant_Swirling]> == 2:
     - flag <player> temp.custom_enchant_Swirling:!
     - mythicskill SwirlingSweep<context.level> casters:<player> <player>
     - foreach <player.location.find_entities.within[<element[2].mul[<context.level>]>]> as:entity:

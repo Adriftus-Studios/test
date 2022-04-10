@@ -25,7 +25,7 @@ masochism_enchantment:
   is_discoverable: true
   can_enchant: <context.item.advanced_matches[*_sword|*_axe]>
   after attack:
-  - ratelimit <player> 2t
+  - ratelimit <player> 12t
   - if !<context.victim.is_spawned>:
     - stop
   - if !<player.has_flag[temp.custom_enchant_masochism]>:

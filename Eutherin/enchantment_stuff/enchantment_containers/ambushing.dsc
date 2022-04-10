@@ -21,6 +21,6 @@ ambushing_enchantment:
   is_tradable: false
   can_enchant: <context.item.advanced_matches[*_sword|*_axe]>
   after attack:
-    - ratelimit <player> 2t
+    - ratelimit <player> 12t
     - if <context.victim.target||null> != <player> && <context.victim.is_spawned>:
       - hurt <context.victim> <context.level.mul[2]>

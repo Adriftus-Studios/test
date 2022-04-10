@@ -24,6 +24,14 @@ Levitation_shot_enchantment:
   is_discoverable: true
   can_enchant: <context.item.advanced_matches[bow|crossbow|trident]>
   after attack:
-  - ratelimit <player> 2t
+  - ratelimit <player> 12t
+  - flag <context.victim> no_transform expire:40t
   - if <util.random.int[1].to[10]> > 9 && <context.victim.is_spawned>:
     - cast LEVITATION <context.victim> amplifier:<context.level.sub[1]> duration:2s
+
+Levitation_shot_enchantment_transform_protection:
+  type: world
+  debug: false
+  events:
+    on entity_flagged:no_transform transforms:
+      - determine passively cancelled
