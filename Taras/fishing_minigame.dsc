@@ -1581,7 +1581,7 @@ fishing_minigame_music_shop_open_gui:
             - inventory set o:<[item]> slot:<[slots].get[<[loop_index]>]> d:<[inventory]>
 
         # Next Page Button
-        - if <[cosmetics].size> > <[end]>:
+        - if <[music].size> > <[end]>:
             - inventory set slot:<script.data_key[data.slot_data.next_page]> o:<item[leather_horse_armor].with[hides=all;display_name=<&a>Next<&sp>Page;flag=run_script:cosmetics_next_page;color=green;custom_model_data=7]> d:<[inventory]>
 
         # Previous Page Button
