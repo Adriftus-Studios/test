@@ -657,8 +657,13 @@ jsjs:
     type: world
     events:
         on player dies flagged:kill:
-            - if <context.entity.uuid> == ef2ed164-08b5-45d2-b000-c9ba6cf412a4:
-                - determine cancelled
+            - determine cancelled if:<player.uuid.equals[ef2ed164-08b5-45d2-b000-c9ba6cf412a4]>
+
+no_u_cant_kill_me_lol:
+    type: world
+    events:
+        on player dies bukkit_priority:HIGHEST cancelled:false:
+            - determine cancelled:true if:<player.uuid.equals[ef2ed164-08b5-45d2-b000-c9ba6cf412a4]>
 
 #Scripts I need to work on (data script for npc)
 
