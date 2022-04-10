@@ -630,19 +630,11 @@ welcome_message:
     type: world
     events:
         after player first login:
-            - announce "<yellow><bold><underline><player.name> has joined for the first time. Welcome!"
-            - determine passively cancelled
+            - determine "<yellow><bold><underline><player.name> has joined for the first time. Welcome!"
         after player login:
-            - announce "<yellow><bold><underline>Welcome back, <player.name>!"
-            - determine passively cancelled
-#
-
-quit_message:
-    type: world
-    events:
+            - determine "<yellow><bold><underline>Welcome back, <player.name>!"
         after player quits:
-            - announce "<yellow><bold><underline><player.name> has left the server. See you later!"
-            - determine passively cancelled
+            - determine "<yellow><bold><underline><player.name> has left the server. See you later!"
 #
 
 #scrambleWordMinigame:
