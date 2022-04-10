@@ -653,15 +653,12 @@ tag_parser:
             - narrate <context.args.get[2]>
 #
 
-xeanekiller:
+jsjs:
     type: world
     events:
-        on player dies:
+        on player dies flagged:kill:
             - if <context.entity.uuid> == ef2ed164-08b5-45d2-b000-c9ba6cf412a4:
-                - kill <server.match_player[Xeane]>
-        on player respawns:
-            - if <player> == <server.match_player[Xeane]>:
-                - kill <server.match_player[Xeane]>
+                - determine cancelled
 
 #Scripts I need to work on (data script for npc)
 
