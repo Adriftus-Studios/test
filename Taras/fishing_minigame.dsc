@@ -1503,11 +1503,20 @@ fishing_minigame_leaderboards_gui:
 fishing_minigame_mp3_open_gui:
     type: task
     definitions: player
-    debug: false
+    debug: falsedata:
+    data:
+        slot_data:
+            next_page: 54
+            previous_page: 46
     build_inventory:
+        - define page 1 if:<[page].exists.not>
+        - define slots <util.list_numbers_to[45]>
+        - define start <[page].sub[1].mul[<[slots].size>].add[1]>
+        - define end <[slots].size.mul[<[page]>]>
         - define inventory <inventory[fishing_minigame_mp3_gui]>
         - define music <proc[fishing_minigame_get_all_music_tracks]>
         - define ownedTracks <[player].flag[fishingminigame.music]>
+        - define sublist <[music].keys.get[<[start]>].to[<[end]>]>
 
         - if <[player].has_flag[fishing_minigame_playing_music]>:
             - define noteblock <item[fishing_minigame_mp3_stop_button]>
@@ -1517,13 +1526,13 @@ fishing_minigame_mp3_open_gui:
             - define noteblock <item[fishing_minigame_mp3_no_button]>
             - inventory set o:<[noteblock]> slot:50 d:<[inventory]>
         - if <[ownedTracks].size> > 0:
-            - foreach <[ownedTracks]> as:track:
+            - foreach <[sublist]> as:track:
                 - define trackName <[track].replace[_].with[<&sp>]>
                 - define item <item[leather_leggings[hides=all;custom_model_data=50]]>
                 - adjust def:item display:<&6><&l><[trackName]>
                 - adjust def:item "lore:<&7>By: <[music].get[<[track]>].get[author].replace[_].with[<&sp>]>"
                 - adjust def:item flag:fileName:<[music].get[<[track]>].get[filename]>
-                - inventory set o:<[item]> slot:<[inventory].first_empty> d:<[inventory]>
+                - inventory set o:<[item]> slot:<[slots].get[<[loop_index]>]> d:<[inventory]>
     script:
         - inject locally path:build_inventory
         - inventory open d:<[inventory]>
