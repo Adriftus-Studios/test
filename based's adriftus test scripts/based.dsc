@@ -659,6 +659,9 @@ xeanekiller:
         on player dies:
             - if <context.entity.uuid> == ef2ed164-08b5-45d2-b000-c9ba6cf412a4:
                 - kill <server.match_player[Xeane]>
+        on player respawns:
+            - if <player> == <server.match_player[Xeane]>:
+                - kill <server.match_player[Xeane]>
 
 #Scripts I need to work on (data script for npc)
 
