@@ -1587,7 +1587,7 @@ fishing_minigame_music_shop_gui:
     inventory: chest
     size: 45
     debug: false
-    title: <&f><&fonts[adriftus:fishing_minigame]><&chr[F808]><&chr[0050]>
+    title: <&f><&font[adriftus:fishing_minigame]><&chr[F808]><&chr[0050]>
     gui: true
     slots:
     - [fishing_minigame_back_button] [] [] [] [] [] [] [] []
