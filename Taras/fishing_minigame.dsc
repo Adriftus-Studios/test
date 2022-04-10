@@ -1551,7 +1551,7 @@ fishing_minigame_music_shop_open_gui:
     debug: false
     data:
         slot_data:
-            slots_used: 2|3|4|5|6|7|8|11|12|13|14|15|16|17|20|21|22|23|24|25|26|29|30|31|32|33|34|35|38|39|40|41|42|43|44
+            slots_used: 11|12|13|14|15|16|17|20|21|22|23|24|25|26|29|30|31|32|33|34|35
             next_page: 45
             previous_page: 37
             back: 1
@@ -1563,9 +1563,10 @@ fishing_minigame_music_shop_open_gui:
         - define music <proc[fishing_minigame_get_all_music_tracks]>
         - define inventory <inventory[fishing_minigame_music_shop_gui]>
         - define ownedTracks <[player].flag[fishingminigame.music]>
-        - define sublist <[music].get[<[start]>].to[<[end]>]>
+        - define sublist <[music].keys.get[<[start]>].to[<[end]>]>
 
-        - foreach <[sublist]> key:track as:map:
+        - foreach <[sublist]> as:track:
+            - define map <[music].get[<[track]>]>
             - define trackName <[track].replace[_].with[<&sp>]>
             - define item <item[music_disc_pigstep[hides=all]]>
             - adjust def:item display:<&6><&l><[trackName]>
