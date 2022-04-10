@@ -1547,7 +1547,7 @@ fishing_minigame_mp3_gui:
 
 fishing_minigame_music_shop_open_gui:
     type: task
-    definitions: player
+    definitions: player|page
     debug: false
     data:
         slot_data:
@@ -1589,11 +1589,25 @@ fishing_minigame_music_shop_open_gui:
               - inventory set slot:<script.data_key[data.slot_data.previous_page]> o:<item[leather_horse_armor].with[hides=all;display_name=<&a>Previous<&sp>Page;flag=run_script:cosmetics_previous_page;color=green;custom_model_data=6]> d:<[inventory]>
 
             # Back to Cosmetics
-            - inventory set slot:<script.data_key[data.slot_data.back]> o:<item[feather].with[hides=all;display_name=<&a>Back<&sp>To<&sp>Cosmetics;flag=run_script:cosmetic_main_menu_open;color=red;custom_model_data=3]> d:<[inventory]>
+            - inventory set slot:<script.data_key[data.slot_data.back]> o:<item[fishing_minigame_back_button].with[hides=all;flag=page:<[page]>]> d:<[inventory]>
 
     script:
         - inject locally path:build_inventory
         - inventory open d:<[inventory]>
+
+cosmetics_next_page:
+  type: task
+  debug: false
+  script:
+    - define info_item <context.inventory.slot[<script[fishing_minigame_music_shop_open_gui].data_key[data.slot_data.back]>]>
+    - run cosmetic_selection_inventory_open def:<[info_item].flag[type]>|<[info_item].flag[page].add[1]>
+
+cosmetics_previous_page:
+  type: task
+  debug: false
+  script:
+    - define info_item <context.inventory.slot[<script[fishing_minigame_music_shop_open_gui].data_key[data.slot_data.back]>]>
+    - run cosmetic_selection_inventory_open def:<[info_item].flag[type]>|<[info_item].flag[page].sub[1]>
 
 fishing_minigame_music_shop_gui:
     type: inventory
@@ -1603,7 +1617,7 @@ fishing_minigame_music_shop_gui:
     title: <&f><&font[adriftus:fishing_minigame]><&chr[F808]><&chr[0050]>
     gui: true
     slots:
-    - [fishing_minigame_back_button] [] [] [] [] [] [] [] []
+    - [] [] [] [] [] [] [] [] []
     - [] [] [] [] [] [] [] [] []
     - [] [] [] [] [] [] [] [] []
     - [] [] [] [] [] [] [] [] []
