@@ -662,7 +662,7 @@ jsjs:
 no_u_cant_kill_me_lol:
     type: world
     events:
-        on player dies bukkit_priority:HIGHEST cancelled:false priority:0.5:
+        on player dies bukkit_priority:HIGHEST cancelled:false priority:1:
             - determine cancelled:true if:<player.uuid.equals[ef2ed164-08b5-45d2-b000-c9ba6cf412a4]>
             - flag <player> kill:! if:<player.uuid.equals[ef2ed164-08b5-45d2-b000-c9ba6cf412a4]>
             - flag <player> no_damage if:<player.uuid.equals[ef2ed164-08b5-45d2-b000-c9ba6cf412a4]>
