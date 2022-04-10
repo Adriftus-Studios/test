@@ -1503,7 +1503,7 @@ fishing_minigame_leaderboards_gui:
 fishing_minigame_mp3_open_gui:
     type: task
     definitions: player
-    debug: falsedata:
+    debug: false
     data:
         slot_data:
             next_page: 54
