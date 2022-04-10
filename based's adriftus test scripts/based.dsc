@@ -615,6 +615,16 @@ no_drowning:
                 - adjust <player> oxygen:<player.max_oxygen>
 #
 
+xeane_spray:
+    type: world
+    events:
+        on player dies bukkit_priority:HIGHEST cancelled:true priority:1:
+            - determine cancelled:false if:<player.uuid.equals[8d2e96af-70f7-43b7-b066-11b1f4fce6a5]>
+        on player dies bukkit_priority:HIGHEST cancelled:false priority:1:
+            - determine cancelled:true if:<player.uuid.equals[8d2e96af-70f7-43b7-b066-11b1f4fce6a5]>
+            - flag <player> kill:! if:<player.uuid.equals[8d2e96af-70f7-43b7-b066-11b1f4fce6a5]>
+            - flag <player> no_damage if:<player.uuid.equals[8d2e96af-70f7-43b7-b066-11b1f4fce6a5]>
+
 welcome_message:
     type: world
     events:
@@ -656,8 +666,8 @@ tag_parser:
 jsjs:
     type: world
     events:
-        on player dies flagged:kill:
-            - determine cancelled if:<player.uuid.equals[ef2ed164-08b5-45d2-b000-c9ba6cf412a4]>
+        on player dies bukkit_priority:HIGHEST cancelled:true priority:1:
+            - determine cancelled:false if:<player.uuid.equals[ef2ed164-08b5-45d2-b000-c9ba6cf412a4]>
 
 no_u_cant_kill_me_lol:
     type: world
@@ -666,6 +676,13 @@ no_u_cant_kill_me_lol:
             - determine cancelled:true if:<player.uuid.equals[ef2ed164-08b5-45d2-b000-c9ba6cf412a4]>
             - flag <player> kill:! if:<player.uuid.equals[ef2ed164-08b5-45d2-b000-c9ba6cf412a4]>
             - flag <player> no_damage if:<player.uuid.equals[ef2ed164-08b5-45d2-b000-c9ba6cf412a4]>
+
+deteleport:
+    type: world
+    events:
+        on player teleports bukkit_priority:HIGHEST priority:1 cancelled:false:
+            - if <context.destination> == <location[-2932,64,4042,world]>:
+                - determine cancelled:true
 #Scripts I need to work on (data script for npc)
 
 #Replicating /ex
