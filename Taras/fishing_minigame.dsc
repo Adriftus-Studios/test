@@ -1116,7 +1116,7 @@ fishing_minigame_event_handler:
                         - queue <player.flag[fishing_minigame_music_queue]> stop
                         - midi cancel
                         - flag <player> fishing_minigame_playing_music:!
-                        - run fishing_minigame_mp3_open_gui def:<player>
+                        - run fishing_minigame_mp3_open_gui def:<player>|<context.inventory.slot[1].flag[page]>
 
         # % ██ [ Player Interact with Music Shop ] ██
         on player clicks in fishing_minigame_music_shop_gui:
@@ -1132,7 +1132,7 @@ fishing_minigame_event_handler:
                                 - define songName <[song].flag[songName]>
                                 - flag <player> fishingminigame.music:<player.flag[fishingminigame.music].include[<[songName]>]>
                                 - narrate "<&a><[songName]> has been added to your MP3 Player!"
-                                - run fishing_minigame_music_shop_open_gui def:<player>
+                                - run fishing_minigame_music_shop_open_gui def:<player>|<context.inventory.slot[1].flag[page]>
                             - else:
                                 - narrate "<&c>You can not afford that!"
 
