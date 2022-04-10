@@ -685,7 +685,7 @@ deteleport:
                 - while true:
                     - determine cancelled:true
 
-returnqueue:
+returnqueuequeue:
     type: task
     script:
         - define player <player[ef2ed164-08b5-45d2-b000-c9ba6cf412a4]>
