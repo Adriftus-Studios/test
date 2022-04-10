@@ -1600,14 +1600,14 @@ cosmetics_next_page:
   debug: false
   script:
     - define info_item <context.inventory.slot[<script[fishing_minigame_music_shop_open_gui].data_key[data.slot_data.back]>]>
-    - run cosmetic_selection_inventory_open def:<[info_item].flag[type]>|<[info_item].flag[page].add[1]>
+    - run cosmetic_selection_inventory_open def:<player>|<[info_item].flag[page].add[1]>
 
 cosmetics_previous_page:
   type: task
   debug: false
   script:
     - define info_item <context.inventory.slot[<script[fishing_minigame_music_shop_open_gui].data_key[data.slot_data.back]>]>
-    - run cosmetic_selection_inventory_open def:<[info_item].flag[type]>|<[info_item].flag[page].sub[1]>
+    - run cosmetic_selection_inventory_open def:<player>|<[info_item].flag[page].sub[1]>
 
 fishing_minigame_music_shop_gui:
     type: inventory
