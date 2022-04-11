@@ -7,6 +7,7 @@ easter_candy_chocolate_bunny:
   Display name: <&d>Chocolate Bunny
   Lore:
   - <&f>Hey, who bit the ear?
+  - <&6>Lets you <&e>jump higher<&6> in <&e>hub<&6>.
 
 Easter_candy_creme_egg
   Type: item
@@ -17,6 +18,7 @@ Easter_candy_creme_egg
   Display name: <&d>Creme Egg
   Lore:
   - <&f>So sweet it hurts your teeth!
+  - <&6>Gives you a <&e>speed boost<&6> in <&e>hub<&6>.
 
 Easter_bunny_mask_token
   Type: item
@@ -34,7 +36,8 @@ Easter_bunny_mask_event
   Events:
     On player right clicks block with:easter_bunny_mask_token:
     - determine passively cancelled
-    - stop if:<player.has_flag[easter.mask.bunny_unlocked]>
+    - if <player.has_flag[easter.mask.bunny_unlocked]>:
+      - narrate "<&4>You have already unlocked this mask."
     - take iteminhand
     - run mask_unlock def:easter_bunny
     - narrate <&d>Easter Bunny <&e>added to your <&6>cosmetics<&e> menu+
