@@ -63,8 +63,8 @@ impl_skill_pull_items_task:
     - define targets <[targets].as_list> if:<[targets].object_type.equals[LIST].not>
     - while <[targets].filter[is_spawned].size> > 0 && <player.is_online> && <player.is_spawned>:
       - foreach <[targets]> as:target:
-        - define vector <player.eye_location.sub[<[target].location>].normalize>
-        - adjust <[target]> velocity:<[vector].normalize>
+        - define vector <player.eye_location.sub[<[target].location>].normalize.mul[0.5]>
+        - adjust <[target]> velocity:<[vector]>
         - wait 5t
     - adjust <[targets].filter[is_spawned]> gravity:true
     - inventory update
