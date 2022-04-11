@@ -55,7 +55,7 @@ skill_core_use:
 
     # get our definitions from the data script
     - define skill_script <server.flag[skills.abilities.<[skill]>]>
-    - define targets <[skill_script].parsed_key[targetting_tags].if_null[null].combine.exclude[null]>
+    - define targets <[skill_script].data_key[targetting_tags].parsed.if_null[null].combine.exclude[null]>
 
     # Make sure there are valid targets
     - if <[targets].is_empty>:
