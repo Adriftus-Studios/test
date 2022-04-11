@@ -3,24 +3,24 @@ easter_candy_chocolate_bunny:
   Debug: false
   Material: cookie
   Mechanisms:
-    Custom_model_data: 69420
+    Custom_model_data: 11
   Display name: <&d>Chocolate Bunny
   Lore:
   - <&f>Hey, who bit the ear?
   - <&6>Lets you <&e>jump higher<&6> in <&e>hub<&6>.
 
-Easter_candy_creme_egg
+Easter_candy_creme_egg:
   Type: item
   Debug: false
   Material: cookie
   Mechanisms:
-    Custom_model_data: 69420
+    Custom_model_data: 10
   Display name: <&d>Creme Egg
   Lore:
   - <&f>So sweet it hurts your teeth!
   - <&6>Gives you a <&e>speed boost<&6> in <&e>hub<&6>.
 
-Easter_bunny_mask_token
+Easter_bunny_mask_token:
   Type: item
   Debug: false
   Material: player_head
@@ -30,7 +30,7 @@ Easter_bunny_mask_token
   Lore:
   - The Visage of the bunny himself.
 
-Easter_bunny_mask_event
+Easter_bunny_mask_event:
   Type: world
   Debug: false
   Events:
@@ -40,7 +40,7 @@ Easter_bunny_mask_event
       - narrate "<&4>You have already unlocked this mask."
     - take iteminhand
     - run mask_unlock def:easter_bunny
-    - narrate "<&d>Easter Bunny <&6>added to your <&e>cosmetics<&6> menu."
+    - narrate "<&d>Easter Bunny <&6>added to your <&e>Cosmetics<&6> menu."
     - flag <player> easter.mask.bunny_unlocked
 
 Easter_candy_chocolate_bunny_event:
