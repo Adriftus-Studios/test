@@ -58,6 +58,7 @@ impl_skill_pull_items_task:
   debug: false
   definitions: targets
   script:
+    - determine passively true
     - adjust <[targets]> gravity:false
     - define targets <[targets].as_list> if:<[targets].object_type.equals[LIST].not>
     - while <[targets].filter[is_spawned].size> > 0 && <player.is_online> && <player.is_spawned>:
@@ -66,4 +67,4 @@ impl_skill_pull_items_task:
         - adjust <[target]> velocity:<[vector].normalize>
         - wait 5t
     - adjust <[targets].filter[is_spawned]> gravity:true
-    - determine true
+    - inventory update
