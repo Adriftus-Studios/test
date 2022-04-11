@@ -213,6 +213,8 @@ class_weapon_use_event:
   type: world
   debug: false
   events:
+    on player right clicks item_flagged:class_weapon in inventory:
+      - run class_weapon_ability_selection_open
     on player left clicks block with:item_flagged:class_weapon flagged:hotkeys bukkit_priority:LOW:
       - ratelimit <player> 2t
       - if <player.is_sprinting> && <player.has_flag[hotkeys.sprint_left]>:
