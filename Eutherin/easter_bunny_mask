@@ -1,7 +1,7 @@
 mask_easter_bunny:
   type: data
   display_data:
-    category: Adriftus
+    category: Holiday
     material: egg
     display_name: <&d>Easter Bunny
     description: "<&d>The carrot thief himself!"
