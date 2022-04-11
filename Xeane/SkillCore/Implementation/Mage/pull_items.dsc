@@ -64,5 +64,6 @@ impl_skill_pull_items_task:
       - foreach <[targets]> as:target:
         - define vector <player.location.sub[<[target].eye_location>].normalize>
         - adjust <[target]> velocity:<[vector].normalize>
+        - wait 5t
     - adjust <[targets].filter[is_spawned]> gravity:true
     - determine true
