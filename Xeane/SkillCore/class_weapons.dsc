@@ -3,15 +3,9 @@ class_weapon_inventory:
   type: inventory
   debug: false
   inventory: chest
+  title: <&f><&font[adriftus:guis]><&chr[F808]><&chr[6908]>
   size: 54
   gui: true
-  slots:
-    - [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
-    - [standard_filler] [standard_filler] [standard_filler] [] [] [] [standard_filler] [standard_filler] [standard_filler]
-    - [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
-    - [standard_filler] [standard_filler] [] [] [] [] [standard_filler] [standard_filler] [standard_filler]
-    - [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
-    - [standard_filler] [standard_filler] [] [] [] [] [standard_filler] [standard_filler] [standard_filler]
 
 #/# Test for script meta parser
 class_weapon_hotkey_button:
@@ -29,36 +23,36 @@ class_weapon_open:
   debug: false
   data:
     hotkeys:
-      - "Right"
-      - "Drop"
-      - "Swap"
-      - "Sneak_Left"
-      - "Sneak_Right"
-      - "Sneak_Drop"
-      - "Sneak_Swap"
-      - "Sprint_Left"
-      - "Sprint_Right"
-      - "Sprint_Drop"
-      - "Sprint_Swap"
+      Right: 48
+      Drop: 51
+      Swap: 54
+      Sneak_Left: 12
+      Sneak_Right: 3
+      Sneak_Drop: 21
+      Sneak_Swap: 30
+      Sprint_Left: 16
+      Sprint_Right: 7
+      Sprint_Drop: 25
+      Sprint_Swap: 34
     item_format:
       display: <&a><[hotkey_button]>
       lore:
         - "<&a>Lore For <[hotkey_button]> Goes Here"
   script:
     - define inventory <inventory[class_weapon_inventory]>
-    - foreach <script.data_key[data.hotkeys]> as:hotkey_button:
+    - foreach <script.data_key[data.hotkeys].keys> as:hotkey_button:
       - define map <script.parsed_key[data.item_format]>
       - define mechanisms <[map].keys.parse_tag[<[parse_value]>=<[map].get[<[parse_value]>]>].separated_by[;]>
       - if !<player.has_flag[hotkeys.<[hotkey_button]>]> || !<server.has_flag[skills.abilities.<player.flag[hotkeys.<[hotkey_button]>]>]>:
-        - define items:->:<item[class_weapon_hotkey_button].with[<[mechanisms]>].with_flag[hotkey:<[hotkey_button]>]>
+        - define items <item[class_weapon_hotkey_button].with[<[mechanisms]>].with_flag[hotkey:<[hotkey_button]>]>
       - else:
         - define skill_script <server.flag[skills.abilities.<player.flag[hotkeys.<[hotkey_button]>]>]>
         - define item <item[<[skill_script].data_key[display_item_script]>]>
         - flag <[item]> hotkey:<[hotkey_button]>
         - flag <[item]> run_script:class_weapon_click_handler
         - adjust def:item "lore:<[item].lore.include[<&c>--------------|<&a>Hotkey<&co><&sp><[hotkey_button]>|<&b>Right Click to Unbind]>"
-        - define items:->:<[item]>
-    - give <[items]> to:<[inventory]>
+        - define item <[item]>
+      - inventory set slot:<script.data_key[data.hotkeys.<[hotkey_button]>]> o:<[item]> d:<[inventory]>
     - inventory open d:<[inventory]>
 
 class_weapon_click_handler:
@@ -87,7 +81,7 @@ class_weapon_ability_selection:
   gui: true
   slots:
     - [] [standard_filler] [] [standard_filler] [] [standard_filler] [] [standard_filler] []
-    - [] [standard_filler] [standard_filler] [standard_filler] [] [standard_filler] [standard_filler] [standard_filler] []
+    - [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
     - [standard_filler] [] [] [] [] [] [] [] [standard_filler]
     - [standard_filler] [] [] [] [] [] [] [] [standard_filler]
     - [standard_filler] [] [] [] [] [] [] [] [standard_filler]
@@ -105,16 +99,8 @@ class_weapon_ability_selection_open:
     - define inventory <inventory[class_weapon_ability_selection]>
     - inventory set slot:46 destination:<[inventory]> origin:<item[standard_filler].with_flag[hotkey:<[hotkey]>]>
     - define items:!|:<player.flag[skills.trees].keys.pad_right[5].with[filler].parse[proc[class_weapon_skilltree_item]]>
-    - foreach <list[staff|moderator|admin]> as:rank:
-      # TODO Fix later
-      - define items:->:<item[standard_filler].with_flag[unique:<util.random_uuid>]>
-      - foreach next
-      - if <player.has_permission[adriftus.<[rank]>]>:
-        - define items:->:<element[<[rank]>].proc[class_weapon_skilltree_item]>
-      - else:
-        - define items:->:<item[standard_filler]>
     - if <player.has_flag[skills.trees]> && <player.flag[skills.trees].size> > 0:
-      - define tree <[skillTree]||<player.flag[skills.trees].keys.first>>
+      - define tree <[skillTree].if_null[<player.flag[skills.trees].keys.first>]>
       - if !<player.flag[skills.trees.<[tree]>].keys.is_empty>:
         - define items:|:<player.flag[skills.trees.<[tree]>].keys.parse[proc[class_weapon_ability_item]]>
     - give <[items]> to:<[inventory]>
