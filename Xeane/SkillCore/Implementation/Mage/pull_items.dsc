@@ -30,7 +30,7 @@ impl_skill_pull_items:
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "<player.cursor_on[30].find_entities[dropped_item].within[5].if_null[null]>"
+  - "<player.cursor_on[50].find_entities[dropped_item].within[5].if_null[null]>"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
