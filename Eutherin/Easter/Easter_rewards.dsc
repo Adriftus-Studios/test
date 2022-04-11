@@ -2,6 +2,7 @@ easter_currency_item:
   Type: item
   Debug: false
   Material: prismarine_shard
+  Display Name: <&d>Easter Egg
   Mechanisms:
     Custom_model_data: 10
   Lore:
