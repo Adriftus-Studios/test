@@ -1,3 +1,12 @@
+easter_currency_item:
+  Type: item
+  Debug: false
+  Material: prismarine_shard
+  Mechanisms:
+    Custom_model_data: 10
+  Lore:
+  - <&6>Bring this to the <&d>Easter Bunny<&6> for <&e>special rewards<&6>!
+
 easter_candy_chocolate_bunny:
   Type: item
   Debug: false
