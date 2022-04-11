@@ -40,7 +40,7 @@ Easter_bunny_mask_event
       - narrate "<&4>You have already unlocked this mask."
     - take iteminhand
     - run mask_unlock def:easter_bunny
-    - narrate <&d>Easter Bunny <&e>added to your <&6>cosmetics<&e> menu+
+    - narrate "<&d>Easter Bunny <&6>added to your <&e>cosmetics<&6> menu."
     - flag <player> easter.mask.bunny_unlocked
 
 Easter_candy_chocolate_bunny_event:
