@@ -59,6 +59,7 @@ impl_skill_pull_items_task:
   definitions: targets
   script:
     - adjust <[targets]> gravity:false
+    - define targets <[targets].as_list> if:<[targets].object_type.equals[LIST].not>
     - while <[targets].filter[is_spawned].size> > 0 && <player.is_online> && <player.is_spawned>:
       - foreach <[targets]> as:target:
         - define vector <player.location.sub[<[target].location>].normalize>
