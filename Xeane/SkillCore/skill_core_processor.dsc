@@ -59,7 +59,6 @@ skill_core_use:
 
     # Make sure there are valid targets
     - if <[targets].is_empty>:
-      - debug error "Skill <[skill]> had errors in targetting tags."
       - actionbar <[skill_script].parsed_key[messages.no_target]>
       - stop
     - define targets <[targets].get[1]> if:<[targets].size.equals[1]>
