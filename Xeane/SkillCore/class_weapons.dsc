@@ -50,7 +50,7 @@ class_weapon_open:
         - define item <item[<[skill_script].data_key[display_item_script]>]>
         - flag <[item]> hotkey:<[hotkey_button]>
         - flag <[item]> run_script:class_weapon_click_handler
-        - adjust def:item "lore:<[item].lore.include[<&c>--------------|<&a>Hotkey<&co><&sp><[hotkey_button]>|<&b>Right Click to Unbind]>"
+        - adjust def:item "lore:<[item].lore.include[<&c>--------------|<&a>Hotkey<&co><&sp><[hotkey_button]>|<&e>Right Click to Unbind]>"
       - inventory set slot:<script.data_key[data.hotkeys.<[hotkey_button]>]> o:<[item]> d:<[inventory]>
     - inventory open d:<[inventory]>
 
@@ -199,6 +199,7 @@ class_weapon_use_event:
   debug: false
   events:
     on player right clicks item_flagged:class_weapon in inventory:
+      - determine passively cancelled
       - run class_weapon_open
     on player left clicks block with:item_flagged:class_weapon flagged:hotkeys bukkit_priority:LOW:
       - ratelimit <player> 2t
