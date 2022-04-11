@@ -17,7 +17,7 @@ easter_candy_chocolate_bunny:
   Display name: <&d>Chocolate Bunny
   Lore:
   - <&f>Hey, who bit the ear?
-  - <&6>Lets you <&e>jump higher<&6> in <&e>hub<&6>.
+  - <&6>Lets you <&e>jump higher<&6> in the <&e>Hub<&6>.
 
 Easter_candy_creme_egg:
   Type: item
@@ -28,7 +28,7 @@ Easter_candy_creme_egg:
   Display name: <&d>Creme Egg
   Lore:
   - <&f>So sweet it hurts your teeth!
-  - <&6>Gives you a <&e>speed boost<&6> in <&e>hub<&6>.
+  - <&6>Gives you a <&e>speed boost<&6> in the <&e>Hub<&6>.
 
 Easter_bunny_mask_token:
   Type: item
