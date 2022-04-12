@@ -33,7 +33,7 @@ impl_skill_slip_through:
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "<player.cursor_on[5]>"
+  - "<player.cursor_on[2]>"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
@@ -53,7 +53,7 @@ impl_skill_slip_through_icon:
   display name: "<&a>Slip Through"
   lore:
   - "<&b>Slip through iron bars"
-  - "<&e>must be within 5 blocks"
+  - "<&e>must be within 2 blocks"
   mechanisms:
     custom_model_data: 7
 
@@ -75,7 +75,7 @@ impl_skill_slip_through_task:
       - determine false
     - flag player no_suffocate expire:1s
     - if <[destination].below.material.name> == air:
-      - teleport <[destination].below.with_pose[<player>]>
+      - teleport <[destination].backward_flat[0.25].below.with_pose[<player>]>
     - else:
-      - teleport <[destination].with_pose[<player>]>
+      - teleport <[destination].backward_flat[0.25].with_pose[<player>]>
     - determine true
