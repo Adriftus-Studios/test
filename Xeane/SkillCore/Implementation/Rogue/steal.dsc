@@ -90,3 +90,4 @@ impl_skill_steal_task:
             - define item <[inventory].slot[<[slot]>]>
         - inventory set slot:<[slot]> d:<[inventory]> o:air
         - give <[item]>
+        - narrate "&<a>You stole<&co> <[item].formatted>"
