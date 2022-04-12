@@ -14,7 +14,7 @@ impl_skill_slip_through:
   - "true"
 
   # Cooldown
-  cooldown: 30s
+  cooldown: 10s
 
   # Task Script to bee run when the ability is used successfully
   # This Task Script MUST be within this file, as with any code associated with this skill
