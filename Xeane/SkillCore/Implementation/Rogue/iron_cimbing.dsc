@@ -7,7 +7,7 @@ impl_skill_iron_climbing:
   display_item_script: impl_skill_iron_climbing_icon
 
   # Skill Tree (uses internal name)
-  skill_tree: warrior
+  skill_tree: rogue
 
   # Unlock Requirements are checked when unlocking the ability
   unlock_requirements:
