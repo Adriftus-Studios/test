@@ -69,9 +69,9 @@ impl_skill_slip_through_task:
     - if <[target].material.name> != iron_bars:
       - narrate "<&c>Invalid Target."
       - determine false
-    - define destination <[target].with_pose[0,<player.location.yaw.round_to_precision[90]>].forward.center.below[0.4]>
+    - define destination <[target].with_pose[0,<player.location.yaw.round_to_precision[90]>].forward.center.below[0.49]>
     - else if <[destination].material.is_solid>:
       - narrate "<&c>No room on the other side."
       - determine false
-    - teleport <[destination]>
+    - teleport <[destination].with_pose[<player>]>
     - determine true
