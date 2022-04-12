@@ -70,6 +70,6 @@ impl_skill_teleport_task:
       - narrate "<&c>Invalid Target."
       - determine false
     - else if !<[target].above.material.is_solid>:
-      - run teleportation_animation_run def:<[target].above.with_pose[<player.location.yaw>,0]>
+      - run teleportation_animation_run def:<[target].above.with_pose[0,<player.location.yaw>]>
       - determine true
     - determine false
