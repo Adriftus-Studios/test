@@ -33,7 +33,7 @@ impl_skill_teleport:
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "<player.cursor_on[32]>"
+  - "<player.cursor_on[32].if_null[null]>"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
@@ -70,7 +70,6 @@ impl_skill_teleport_task:
       - narrate "<&c>Invalid Target."
       - determine false
     - else if !<[target].above.material.is_solid>:
-      - run teleportation_animation_run def:<[target].above>
-      - playsound <player.location> sound:ENTITY_ENDERMAN_TELEPORT volume:5.0 sound_category:players
+      - run teleportation_animation_run def:<[target].above.with_pose[<player.location.yaw>,0]>
       - determine true
     - determine false
