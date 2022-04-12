@@ -59,9 +59,6 @@ impl_skill_treetop_leap_task:
   definitions: targets
   script:
     - if <player.location.below.material.name.ends_with[leaves]>:
-      - if <[targets].above.material.name> != air:
-        - narrate "Target needs air above it."
-        - determine false
       - adjust <player> velocity:<player.location.direction.vector>
       - flag player no_fall_damage_once expire:10s
       - determine true
