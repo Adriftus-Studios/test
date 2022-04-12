@@ -26,11 +26,14 @@ impl_skill_treetop_leap:
   # Does using this ability flag you for PvP if it succeeds (even if not damaging)
   pvp_flags: false
 
+  # Can you use this in combat
+  pvp_usable: false
+
   # Skill Targetting
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "<player"
+  - "<player>"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context

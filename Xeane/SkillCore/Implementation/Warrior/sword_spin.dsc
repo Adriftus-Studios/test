@@ -26,6 +26,9 @@ impl_skill_sword_spin:
   # Does using this ability flag you for PvP if it succeeds (even if not damaging)
   pvp_flags: true
 
+  # Can you use this in combat
+  pvp_usable: true
+
   # Skill Targetting
   # these tags will be parsed to determine targets
   # Only available context is <player>

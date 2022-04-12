@@ -26,6 +26,9 @@ impl_skill_pull_items:
   # Does using this ability flag you for PvP if it succeeds (even if not damaging)
   pvp_flags: false
 
+  # Can you use this in combat
+  pvp_usable: false
+
   # Skill Targetting
   # these tags will be parsed to determine targets
   # Only available context is <player>
