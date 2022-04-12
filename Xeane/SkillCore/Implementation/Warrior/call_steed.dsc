@@ -67,5 +67,6 @@ impl_skill_call_steed_task:
   debug: false
   definitions: target
   script:
-    - spawn horse[persistent=false] <player.location.forward>
+    - spawn horse[persistent=false;owner=<player>] <player.location.forward> save:horse
+    - equip <entry[horse].spawned_entity> saddle:saddle
     - determine true
