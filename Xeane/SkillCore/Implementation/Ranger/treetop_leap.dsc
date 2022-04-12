@@ -62,4 +62,4 @@ impl_skill_treetop_leap_task:
       - if <[targets].above.material.name> != air:
         - narrate "Target needs air above it."
         - determine false
-      - shoot origin:<player> destination:<[targets].above>
+      - shoot origin:<player> destination:<[targets].above> <player>
