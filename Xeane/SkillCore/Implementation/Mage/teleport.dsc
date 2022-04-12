@@ -53,7 +53,7 @@ impl_skill_teleport_icon:
   display name: "<&a>Teleport"
   lore:
   - "<&b>Teleport to target block"
-  - "<&e>Range is limited to 32 blocks away"
+  - "<&e>Range is limited to 48 blocks away"
   - "<&a>Can teleport through blocks"
   mechanisms:
     custom_model_data: 7
