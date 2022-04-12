@@ -14,7 +14,7 @@ impl_skill_forest_sense:
   - "true"
 
   # Cooldown
-  cooldown: 1s
+  cooldown: 30s
 
   # Task Script to bee run when the ability is used successfully
   # This Task Script MUST be within this file, as with any code associated with this skill
@@ -53,6 +53,7 @@ impl_skill_forest_sense_icon:
   display name: "<&a>Forest Sense"
   lore:
   - "<&b>Sense nearby monsters"
+  - "<&e>Does Not Actively Track"
   - "<&c>Only works in Forests/Jungles"
   mechanisms:
     custom_model_data: 7
@@ -69,7 +70,7 @@ impl_skill_forest_sense_task:
     - if <player.location.biome.contains_text[forest]> || <player.location.biome.contains_text[jungle]>:
       - determine passively true
       - foreach <player.location.find_entities[monster].within[50].sort_by_number[distance[<player.location>]]>:
-        - fakespawn <[value].entity_type>[glowing=true] <[value].location> duration:5s
+        - fakespawn <[value].entity_type>[glowing=true] <[value].location> duration:7s
         - wait 1t
     - else:
       - narrate "<&c>Must use this in a Forest or Jungle biome."
