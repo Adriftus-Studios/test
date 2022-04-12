@@ -161,6 +161,8 @@ class_weapon_add_skill:
     - define skill_script <server.flag[skills.trees.<[skillTree]>.<[skill]>]>
     - flag player skills.trees.<[skillTree]>.<[skill]>:<[skill_script]>
     - flag player skills.abilities.<[skill]>:<[skill_script]>
+    - if <[skill_script].data_key[on_learn].exists>:
+      - run <[skill_script].data_key[on_learn]>
 
 class_weapon_remove_skill:
   type: task
@@ -168,6 +170,9 @@ class_weapon_remove_skill:
   definitions: skillTree|skill
   script:
     - if <player.has_flag[skills.trees.<[skillTree]>]>:
+      - define skill_script <player.flag[skills.trees.<[skillTree]>.<[skill]>]>
+      - if <[skill_script].data_key[on_unlearn].exists>:
+        - run <[skill_script].data_key[on_unlearn]>
       - flag player skills.trees.<[skillTree]>.<[skill]>:!
       - if <player.flag[skills.trees.<[skillTree]>].is_empty>:
         - flag player skills.trees.<[skillTree]>:!

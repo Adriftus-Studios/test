@@ -33,20 +33,6 @@ skill_core_use:
   debug: false
   definitions: skill
   script:
-    # Check for the Global Cooldown
-    - if <player.has_flag[skills.cooldowns.global]>:
-      - narrate "<&c>You have <player.flag_expiration[skills.cooldowns.global].from_now.formatted> before you can use an ability again."
-
-    # Check that the entity has the ability
-    - if !<player.has_flag[skills.abilities.<[skill]>]>:
-      - narrate "<&c>You do not have this skill."
-      - stop
-
-    # Cooldown Check
-    - if <player.has_flag[skills.cooldowns.<[skill]>]>:
-      - actionbar "<&c><[skill].replace[_].with[<&sp>].to_titlecase> is on cooldown<&co> <player.flag_expiration[skills.cooldowns.<[skill]>].from_now.formatted>"
-      - stop
-
     # Make sure the skill is currently loaded
     - if !<server.has_flag[skills.abilities.<[skill]>]>:
       - debug error "<&c>Unknown skill used: <[skill]>"
@@ -56,6 +42,25 @@ skill_core_use:
     # get our definitions from the data script
     - define skill_script <server.flag[skills.abilities.<[skill]>]>
     - define targets <[skill_script].parsed_key[targetting_tags].combine.if_null[null].exclude[null]>
+
+    # Check for the Global Cooldown
+    - if <player.has_flag[skills.cooldowns.global]>:
+      - narrate "<&c>You have <player.flag_expiration[skills.cooldowns.global].from_now.formatted> before you can use an ability again."
+
+    # Check that the entity has the ability
+    - if !<player.has_flag[skills.abilities.<[skill]>]>:
+      - narrate "<&c>You do not have this skill."
+      - stop
+
+    # PVP Check
+    - if !<[skill_script].data_key[pvp_usable]> && <player.has_flag[PvP_Combat]>:
+      - actionbar "<&c>You cannot use this skill in PvP."
+      - stop
+
+    # Cooldown Check
+    - if <player.has_flag[skills.cooldowns.<[skill]>]>:
+      - actionbar "<&c><[skill].replace[_].with[<&sp>].to_titlecase> is on cooldown<&co> <player.flag_expiration[skills.cooldowns.<[skill]>].from_now.formatted>"
+      - stop
 
     # Make sure there are valid targets
     - if <[targets].is_empty>:
