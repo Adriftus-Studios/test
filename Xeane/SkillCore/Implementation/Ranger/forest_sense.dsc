@@ -69,7 +69,7 @@ impl_skill_forest_sense_task:
     - if <player.location.biome.contains_text[forest]> || <player.location.biome.contains_text[jungle]>:
       - determine passively true
       - foreach <player.location.find_entities[monster].within[50].sort_by_number[distance[<player.location>]]>:
-        - fakespawn <[value].entity_type> <[value].location> duration:5s
+        - fakespawn <[value].entity_type>[glowing=true] <[value].location> duration:5s
         - wait 1t
     - else:
       - narrate "<&c>Must use this in a Forest or Jungle biome."
