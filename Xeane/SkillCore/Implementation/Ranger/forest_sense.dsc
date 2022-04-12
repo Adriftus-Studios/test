@@ -1,13 +1,13 @@
-impl_skill_call_steed:
+impl_skill_forest_sense:
   type: data
   # Internal Name MUST BE UNIQUE
-  name: call_steed
+  name: forest_sense
 
   # Display data used in commands, and GUIs
-  display_item_script: impl_skill_call_steed_icon
+  display_item_script: impl_skill_forest_sense_icon
 
   # Skill Tree (uses internal name)
-  skill_tree: warrior
+  skill_tree: ranger
 
   # Unlock Requirements are checked when unlocking the ability
   unlock_requirements:
@@ -18,7 +18,7 @@ impl_skill_call_steed:
 
   # Task Script to bee run when the ability is used successfully
   # This Task Script MUST be within this file, as with any code associated with this skill
-  on_cast: impl_skill_call_steed_task
+  on_cast: impl_skill_forest_sense_task
 
   # Is the ability harmful? (PvP Action)
   harmful: false
@@ -47,14 +47,13 @@ impl_skill_call_steed:
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
-impl_skill_call_steed_icon:
+impl_skill_forest_sense_icon:
   type: item
   material: iron_nugget
-  display name: "<&a>Call Steed"
+  display name: "<&a>Forest Sense"
   lore:
-  - "<&b>Call a Horse to your side"
-  - "<&e>Horse will disappear on despawn"
-  - "<&c>Must be in Overworld"
+  - "<&b>Sense nearby monsters"
+  - "<&c>Only works in Forests/Jungles"
   mechanisms:
     custom_model_data: 7
 
@@ -62,15 +61,16 @@ impl_skill_call_steed_icon:
 # The On Cast Task script has specific requirements, and limits
 # The only reliable context tags in this task will be `<player>`
 # The task must `determine` true or false if the ability was successful or not.
-impl_skill_call_steed_task:
+impl_skill_forest_sense_task:
   type: task
   debug: false
   definitions: target
   script:
-    - if <player.has_flag[warrior.horse]> && <player.flag[warrior.horse].is_spawned>:
-      - remove <player.flag[warrior.horse]>
-    - spawn horse[persistent=false;owner=<player>] <player.location.forward> save:horse
-    - equip <entry[horse].spawned_entity> saddle:saddle
-    - flag <player> warrior.horse:<entry[horse].spawned_entity>
-    - flag <entry[horse].spawned_entity> on_breed:cancel
-    - determine true
+    - if <player.location.biome.contains_text[forest]> || <player.location.biome.contains_text[jungle]>:
+      - determine passively true
+      - foreach <player.location.find_entities[monster].within[50].sort_by_number[distance[<player.location>]]>:
+        - fakespawn <[value].entity_type> <[value].location> duration:5s
+        - wait 1t
+    - else:
+      - narrate "<&c>Must use this in a Forest or Jungle biome."
+      - determine false
