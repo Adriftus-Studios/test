@@ -59,7 +59,7 @@ impl_skill_treetop_leap_task:
   definitions: targets
   script:
     - if <player.location.below.material.name.ends_with[leaves]>:
-      - adjust <player> velocity:<player.location.direction.vector>
+      - adjust <player> velocity:<player.location.direction.vector.mul[1.5]>
       - flag player no_fall_damage_once expire:10s
       - determine true
     - narrate "<&e>You must be standing on leaves to use this skill."
