@@ -45,7 +45,7 @@ impl_skill_treetop_leap_icon:
   material: iron_nugget
   display name: "<&a>Treetop Leap"
   lore:
-  - "<&b>Jump to target leaves"
+  - "<&b>Leap far when standing on leaves"
   mechanisms:
     custom_model_data: 9
 
@@ -58,8 +58,12 @@ impl_skill_treetop_leap_task:
   debug: false
   definitions: targets
   script:
-    - if <[targets].material.name.ends_with[leaves]>:
+    - if <player.location.below.material.name.ends_with[leaves]>:
       - if <[targets].above.material.name> != air:
         - narrate "Target needs air above it."
         - determine false
-      - shoot origin:<player> destination:<[targets].above> <player>
+      - adjust <player> velocity:<player.location.direction.vector>
+      - flag player no_fall_damage_once expire:10s
+      - determine true
+    - narrate "<&e>You must be standing on leaves to use this skill."
+    - determine false
