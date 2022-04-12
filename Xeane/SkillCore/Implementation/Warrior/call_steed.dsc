@@ -67,6 +67,9 @@ impl_skill_call_steed_task:
   debug: false
   definitions: target
   script:
+    - if <player.has_flag[warrior.horse]> && <player.flag[warrior.horse].is_spawned>:
+      - remove <player.flag[warrior.horse]>
     - spawn horse[persistent=false;owner=<player>] <player.location.forward> save:horse
     - equip <entry[horse].spawned_entity> saddle:saddle
+    - flag <player> warrior.horse:<entry[horse].spawned_entity>
     - determine true
