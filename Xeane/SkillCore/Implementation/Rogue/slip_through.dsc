@@ -74,5 +74,8 @@ impl_skill_slip_through_task:
       - narrate "<&c>No room on the other side."
       - determine false
     - flag player no_suffocate expire:1s
-    - teleport <[destination].with_pose[<player>]>
+    - if <[destination].below.material.name> == air:
+      - teleport <[destination].below.with_pose[<player>]>
+    - else:
+      - teleport <[destination].with_pose[<player>]>
     - determine true
