@@ -14,7 +14,7 @@ impl_skill_teleport:
   - "true"
 
   # Cooldown
-  cooldown: 8s
+  cooldown: 30s
 
   # Task Script to bee run when the ability is used successfully
   # This Task Script MUST be within this file, as with any code associated with this skill
@@ -33,7 +33,7 @@ impl_skill_teleport:
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "<player.cursor_on[32].if_null[null]>"
+  - "<player.cursor_on[48].if_null[null]>"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
@@ -54,6 +54,7 @@ impl_skill_teleport_icon:
   lore:
   - "<&b>Teleport to target block"
   - "<&e>Range is limited to 32 blocks away"
+  - "<&a>Can teleport through blocks"
   mechanisms:
     custom_model_data: 7
 
