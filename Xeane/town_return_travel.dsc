@@ -25,7 +25,7 @@ town_return_crystal:
 town_return_scroll:
   type: item
   material: feather
-  display name: <&c>town_return Scroll
+  display name: <&c>Town Scroll
   data:
     recipe_book_category: travel.scroll
   lore:
