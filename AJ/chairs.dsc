@@ -25,7 +25,7 @@ chair_sit_events:
     - stop if:<context.location.material.name.ends_with[stairs].not.if_null[true]>
     - stop if:<context.location.material.half.equals[BOTTOM].not>
     - stop if:<player.is_sneaking>
-    - ratelimit <player> 1s if:<player.is_inside_vehicle>
+    - ratelimit <player> 10t if:<player.is_inside_vehicle>
     - determine passively cancelled
     - if <player.is_inside_vehicle>:
       - adjust <player.vehicle> passengers:<list[]>
@@ -42,7 +42,7 @@ chair_sit_events:
     - adjust <[point]> passenger:<player>
     after player exits vehicle:
     - stop if:<context.vehicle.has_flag[sit.offset].not>
-    - teleport <player> <context.vehicle.location.sub[<context.vehicle.flag[sit.offset]>].with_yaw[<player.location.yaw>].with_pitch[<player.location.pitch>]>
+    # - teleport <player> <context.vehicle.location.sub[<context.vehicle.flag[sit.offset]>].with_yaw[<player.location.yaw>].with_pitch[<player.location.pitch>]>
     - adjust <context.vehicle> passengers:<list[]>
     - flag <context.vehicle.flag[sit.location]> sit:!
     - remove <context.vehicle>
