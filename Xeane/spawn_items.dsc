@@ -54,4 +54,6 @@ return_task:
         - narrate "<&c>This item lacks the power for cross dimensional travel"
         - stop
     - take iteminhand
+    - run totem_test def:103
+    - wait 2s
     - run teleportation_animation_run def:<player.location.world.spawn_location>
