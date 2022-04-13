@@ -68,4 +68,5 @@ town_return_execute:
       - if <context.item.flag[town].spawn.distance[<player.location>]> > 2000:
         - narrate "<&c>This item lacks the power for distances grater than 2000 blocks"
         - stop
+    - take iteminhand
     - run teleportation_animation_run def:<context.item.flag[town].spawn>
