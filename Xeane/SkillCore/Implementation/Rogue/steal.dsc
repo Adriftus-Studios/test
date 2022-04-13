@@ -33,7 +33,7 @@ impl_skill_steal:
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "<player.target[2].if_null[<player.cursor_on[2].if_null[null]>]>"
+  - "<player.precise_target[2].if_null[<player.cursor_on[2].if_null[null]>]>"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
