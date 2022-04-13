@@ -57,10 +57,10 @@ town_return_execute:
   type: task
   debug: false
   script:
-    - if !<context.item.has_flag[town]> || !<context.item.flag[town].spawn.exists>:
-      - narrate "<&c>This crystal appears to be broken..."
-      - determine cancelled
     - define type <context.item.flag[type]>
+    - if !<context.item.has_flag[town]> || !<context.item.flag[town].spawn.exists>:
+      - narrate "<&c>This <[type]> appears to be broken..."
+      - determine cancelled
     - if <[type]> == scroll:
       - if <context.item.flag[town].spawn.world> != <player.location.world>:
         - narrate "<&c>This item lacks the power for cross dimensional travel"
