@@ -65,7 +65,7 @@ return_task:
       - if <context.item.flag[destination].distance[<player.location>]> > 2000:
         - narrate "<&c>This item lacks the power for distances grater than 2000 blocks"
         - stop
+    - take iteminhand
     - run totem_test def:101
     - wait 2s
-    - take iteminhand
     - run teleportation_animation_run def:<context.item.flag[destination]>
