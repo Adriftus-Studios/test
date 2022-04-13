@@ -25,7 +25,7 @@ chair_sit_events:
     - stop if:<context.location.material.name.ends_with[stairs].not.if_null[true]>
     - stop if:<context.location.material.half.equals[BOTTOM].not>
     - stop if:<player.is_sneaking>
-    - stop if:<player.is_inside_vehicle>
+    # - stop if:<player.is_inside_vehicle>
     - determine passively cancelled
     - if <player.is_inside_vehicle>:
       - adjust <player.vehicle> passengers:<list[]>
