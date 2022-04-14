@@ -48,8 +48,10 @@ give_player_armor:
         #Choice to equip
         - if <context.args.get[2].equals[wear].not>:
             - give <[chest]>|<[legs]>|<[head]>|<[boots]>
+            - narrate "You have received the <[material]> armor set!"
         - else if <context.args.get[2].equals[wear]>:
             - equip boots:<[boots]> chest:<[chest]> head:<[head]> legs:<[legs]>
+            - narrate "You have fully equipped the <[material]> armor set!"
 
 give_tool:
     type: command
