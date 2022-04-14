@@ -11,9 +11,9 @@ vanish:
             - flag <player> poof
         - if <player.has_flag[poof]>:
             - playeffect effect:explosion_normal at:<player.location> visibility:200
-            - invisible <player> state:true
+            - adjust <player> hide_from_players
             - narrate <gray><bold>POOF!
         - else if !<player.has_flag[poof]>:
-            - invisible <player> state:false
+            - adjust <player> show_to_players
             - narrate <gray><bold>Unpoofed.
 #
