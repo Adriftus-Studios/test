@@ -1,4 +1,4 @@
-custom_ingredient_grinderitem:
+cooking_tool_grinder:
   type: item
   debug: false
   material: apple

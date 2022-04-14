@@ -7,9 +7,9 @@ custom_food_pepperonipizza:
     amount: 16
     saturation: 19
   lore:
-  - <&e>Hunger: <&f>16 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>19 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>16 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>19 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_ingredient_doughitem|custom_crop_tomato|custom_food_cheese|custom_food_pepperoni
+      input: cooking_tool_bakeware|custom_ingredient_doughitem|custom_crop_tomato|custom_food_cheese|custom_food_pepperoni

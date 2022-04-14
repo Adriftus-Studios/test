@@ -7,9 +7,9 @@ custom_food_mochicake:
     amount: 17
     saturation: 20
   lore:
-  - <&e>Hunger: <&f>17 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>20 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>17 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>20 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_ingredient_butteritem|custom_food_mochi|custom_ingredient_flouritem|custom_crop_avocado/custom_crop_banana|custom_ingredient_vanillaitem|milk_bucket/custom_ingredient_freshmilkitem|custom_ingredient_grinderitem|custom_ingredient_grinderitem
+      input: cooking_tool_bakeware|custom_ingredient_butteritem|custom_food_mochi|custom_ingredient_flouritem|custom_crop_avocado/custom_crop_banana|custom_ingredient_vanillaitem|milk_bucket/custom_ingredient_freshmilkitem|cooking_tool_grinder|cooking_tool_grinder

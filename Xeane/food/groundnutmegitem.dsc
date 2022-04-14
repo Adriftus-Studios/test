@@ -6,4 +6,4 @@ custom_ingredient_groundnutmegitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_grinderitem|custom_crop_nutmeg|custom_ingredient_grinderitem|custom_ingredient_grinderitem|custom_ingredient_grinderitem|custom_ingredient_grinderitem|custom_ingredient_grinderitem|custom_ingredient_grinderitem|custom_ingredient_grinderitem
+      input: cooking_tool_grinder|custom_crop_nutmeg|cooking_tool_grinder|cooking_tool_grinder|cooking_tool_grinder|cooking_tool_grinder|cooking_tool_grinder|cooking_tool_grinder|cooking_tool_grinder

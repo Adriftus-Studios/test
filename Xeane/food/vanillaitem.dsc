@@ -6,4 +6,4 @@ custom_ingredient_vanillaitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_crop_vanillabean
+      input: cooking_tool_bakeware|custom_crop_vanillabean

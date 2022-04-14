@@ -7,9 +7,9 @@ custom_food_fishtaco:
     amount: 14
     saturation: 17
   lore:
-  - <&e>Hunger: <&f>14 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>17 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>14 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>17 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|cod/salmon/tropical_fish|custom_crop_lettuce|custom_food_cheese|custom_food_tortilla
+      input: cooking_tool_cuttingboard|cod/salmon/tropical_fish|custom_crop_lettuce|custom_food_cheese|custom_food_tortilla

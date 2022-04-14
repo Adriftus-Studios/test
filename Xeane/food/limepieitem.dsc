@@ -7,9 +7,9 @@ custom_food_limepie:
     amount: 6
     saturation: 7
   lore:
-  - <&e>Hunger: <&f>6 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>7 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>6 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>7 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_crop_lime|sugar|custom_ingredient_doughitem
+      input: cooking_tool_bakeware|custom_crop_lime|sugar|custom_ingredient_doughitem

@@ -6,4 +6,4 @@ custom_ingredient_mushroomoilitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_rolleritem|brown_mushroom/red_mushroom/custom_crop_whitemushroom
+      input: cooking_tool_roller|brown_mushroom/red_mushroom/custom_crop_whitemushroom

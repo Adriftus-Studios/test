@@ -7,9 +7,9 @@ custom_food_chickengumbo:
     amount: 19
     saturation: 23
   lore:
-  - <&e>Hunger: <&f>19 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>23 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>19 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>23 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_potitem|custom_crop_okra|chicken|custom_crop_celery|custom_crop_onion|custom_food_stock|custom_crop_spiceleaf|custom_crop_bellpepper
+      input: cooking_tool_pot|custom_crop_okra|chicken|custom_crop_celery|custom_crop_onion|custom_food_stock|custom_crop_spiceleaf|custom_crop_bellpepper

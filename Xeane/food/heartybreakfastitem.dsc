@@ -7,9 +7,9 @@ custom_food_heartybreakfast:
     amount: 24
     saturation: 29
   lore:
-  - <&e>Hunger: <&f>24 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>29 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>24 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>29 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skilletitem|porkchop|custom_food_boiledegg|custom_food_toast|custom_food_potatocakes|custom_food_chocolatemilk
+      input: cooking_tool_skillet|porkchop|custom_food_boiledegg|custom_food_toast|custom_food_potatocakes|custom_food_chocolatemilk

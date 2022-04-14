@@ -7,9 +7,9 @@ custom_food_groiledcheesesandwich:
     amount: 18
     saturation: 22
   lore:
-  - <&e>Hunger: <&f>18 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>22 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>18 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>22 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skilletitem|custom_food_cheese|custom_food_vegemite|bread|custom_ingredient_cookingoilitem
+      input: cooking_tool_skillet|custom_food_cheese|custom_food_vegemite|bread|custom_ingredient_cookingoilitem

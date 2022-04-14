@@ -7,9 +7,9 @@ custom_food_meringueroulade:
     amount: 18
     saturation: 22
   lore:
-  - <&e>Hunger: <&f>18 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>22 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>18 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>22 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_food_meringue|custom_crop_strawberry|custom_food_strawberryjelly|custom_crop_mango
+      input: cooking_tool_cuttingboard|custom_food_meringue|custom_crop_strawberry|custom_food_strawberryjelly|custom_crop_mango

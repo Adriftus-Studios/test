@@ -7,9 +7,9 @@ custom_food_cherrycoconutchocolatebar:
     amount: 11
     saturation: 13
   lore:
-  - <&e>Hunger: <&f>11 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>13 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>11 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>13 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepanitem|custom_food_chocolatebar|custom_crop_cherry|custom_crop_coconut
+      input: cooking_tool_saucepan|custom_food_chocolatebar|custom_crop_cherry|custom_crop_coconut

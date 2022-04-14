@@ -7,9 +7,9 @@ custom_food_epicblt:
     amount: 23
     saturation: 28
   lore:
-  - <&e>Hunger: <&f>23 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>28 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>23 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>28 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skilletitem|custom_food_epicbacon|custom_crop_lettuce|custom_crop_tomato|bread
+      input: cooking_tool_skillet|custom_food_epicbacon|custom_crop_lettuce|custom_crop_tomato|bread

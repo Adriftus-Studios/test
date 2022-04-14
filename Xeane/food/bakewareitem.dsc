@@ -1,4 +1,4 @@
-custom_ingredient_bakewareitem:
+cooking_tool_bakeware:
   type: item
   debug: false
   material: apple

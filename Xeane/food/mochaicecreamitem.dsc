@@ -7,9 +7,9 @@ custom_food_mochaicecream:
     amount: 7
     saturation: 8
   lore:
-  - <&e>Hunger: <&f>7 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>8 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>7 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>8 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowlitem|custom_food_icecream|custom_crop_coffeebean|custom_ingredient_cocoapowderitem
+      input: cooking_tool_mixingbowl|custom_food_icecream|custom_crop_coffeebean|custom_ingredient_cocoapowderitem

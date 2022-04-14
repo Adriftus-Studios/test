@@ -7,9 +7,9 @@ custom_food_biscuitsandgravy:
     amount: 16
     saturation: 19
   lore:
-  - <&e>Hunger: <&f>16 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>19 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>16 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>19 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_food_biscuit|custom_food_gravy
+      input: cooking_tool_cuttingboard|custom_food_biscuit|custom_food_gravy

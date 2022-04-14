@@ -7,9 +7,9 @@ custom_food_coleslaw:
     amount: 15
     saturation: 18
   lore:
-  - <&e>Hunger: <&f>15 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>18 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>15 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>18 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowlitem|custom_crop_cabbage|carrot|custom_ingredient_mayonaiseitem|custom_ingredient_vinegaritem
+      input: cooking_tool_mixingbowl|custom_crop_cabbage|carrot|custom_ingredient_mayonaiseitem|custom_ingredient_vinegaritem

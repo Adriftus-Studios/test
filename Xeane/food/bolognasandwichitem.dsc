@@ -7,9 +7,9 @@ custom_food_bolognasandwich:
     amount: 28
     saturation: 34
   lore:
-  - <&e>Hunger: <&f>28 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>34 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>28 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>34 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|bread|custom_food_bologna|custom_crop_lettuce|custom_crop_tomato|custom_ingredient_mayonaiseitem
+      input: cooking_tool_cuttingboard|bread|custom_food_bologna|custom_crop_lettuce|custom_crop_tomato|custom_ingredient_mayonaiseitem

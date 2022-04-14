@@ -6,4 +6,4 @@ custom_ingredient_saladdressingitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowlitem|custom_ingredient_mayonaiseitem|custom_crop_spiceleaf
+      input: cooking_tool_mixingbowl|custom_ingredient_mayonaiseitem|custom_crop_spiceleaf

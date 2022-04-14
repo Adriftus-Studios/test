@@ -7,9 +7,9 @@ custom_food_chickencurry:
     amount: 19
     saturation: 23
   lore:
-  - <&e>Hunger: <&f>19 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>23 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>19 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>23 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_potitem|custom_crop_coconut|custom_food_yogurt|chicken|custom_ingredient_currypowderitem|custom_crop_chilipepper|custom_crop_rice
+      input: cooking_tool_pot|custom_crop_coconut|custom_food_yogurt|chicken|custom_ingredient_currypowderitem|custom_crop_chilipepper|custom_crop_rice

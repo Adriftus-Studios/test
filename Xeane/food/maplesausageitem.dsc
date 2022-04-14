@@ -7,9 +7,9 @@ custom_food_maplesausage:
     amount: 6
     saturation: 7
   lore:
-  - <&e>Hunger: <&f>6 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>7 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>6 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>7 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skilletitem|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_crop_spiceleaf|custom_crop_maplesyrup
+      input: cooking_tool_skillet|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_crop_spiceleaf|custom_crop_maplesyrup

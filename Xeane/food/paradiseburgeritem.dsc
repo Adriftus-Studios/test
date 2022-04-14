@@ -7,9 +7,9 @@ custom_food_paradiseburger:
     amount: 26
     saturation: 31
   lore:
-  - <&e>Hunger: <&f>26 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>31 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>26 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>31 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skilletitem|beef|custom_food_cheese|custom_ingredient_relishitem|bread|custom_crop_cabbage/custom_crop_kale/custom_crop_lettuce/custom_crop_spinach|custom_crop_tomato|custom_ingredient_mayonaiseitem
+      input: cooking_tool_skillet|beef|custom_food_cheese|custom_ingredient_relishitem|bread|custom_crop_cabbage/custom_crop_kale/custom_crop_lettuce/custom_crop_spinach|custom_crop_tomato|custom_ingredient_mayonaiseitem

@@ -1,4 +1,4 @@
-custom_ingredient_mixingbowlitem:
+cooking_tool_mixingbowl:
   type: item
   debug: false
   material: apple

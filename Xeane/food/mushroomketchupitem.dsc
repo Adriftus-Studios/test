@@ -7,9 +7,9 @@ custom_food_mushroomketchup:
     amount: 10
     saturation: 12
   lore:
-  - <&e>Hunger: <&f>10 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>12 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>10 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>12 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_potitem|brown_mushroom/red_mushroom/custom_crop_whitemushroom|custom_ingredient_vinegaritem|custom_crop_spiceleaf|water_bucket/custom_ingredient_freshwateritem
+      input: cooking_tool_pot|brown_mushroom/red_mushroom/custom_crop_whitemushroom|custom_ingredient_vinegaritem|custom_crop_spiceleaf|water_bucket/custom_ingredient_freshwateritem

@@ -1,4 +1,4 @@
-custom_ingredient_saucepanitem:
+cooking_tool_saucepan:
   type: item
   debug: false
   material: apple

@@ -7,9 +7,9 @@ custom_food_potatoandleeksoup:
     amount: 14
     saturation: 17
   lore:
-  - <&e>Hunger: <&f>14 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>17 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>14 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>17 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_potitem|potato|custom_crop_leek|custom_food_stock|custom_ingredient_creamitem|custom_crop_spiceleaf|custom_ingredient_blackpepperitem
+      input: cooking_tool_pot|potato|custom_crop_leek|custom_food_stock|custom_ingredient_creamitem|custom_crop_spiceleaf|custom_ingredient_blackpepperitem

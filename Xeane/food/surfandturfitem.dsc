@@ -7,9 +7,9 @@ custom_food_surfandturf:
     amount: 9
     saturation: 11
   lore:
-  - <&e>Hunger: <&f>9 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>11 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>9 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>11 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|cod/salmon/tropical_fish|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_crop_avocado/custom_crop_olive
+      input: cooking_tool_cuttingboard|cod/salmon/tropical_fish|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_crop_avocado/custom_crop_olive

@@ -7,9 +7,9 @@ custom_food_kohlundpinkel:
     amount: 23
     saturation: 28
   lore:
-  - <&e>Hunger: <&f>23 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>28 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>23 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>28 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_potitem|porkchop|custom_food_pinkel|potato|custom_ingredient_blackpepperitem|custom_crop_onion|custom_food_sausage|custom_crop_kale
+      input: cooking_tool_pot|porkchop|custom_food_pinkel|potato|custom_ingredient_blackpepperitem|custom_crop_onion|custom_food_sausage|custom_crop_kale

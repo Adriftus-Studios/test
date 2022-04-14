@@ -7,9 +7,9 @@ custom_food_kungpaochicken:
     amount: 15
     saturation: 18
   lore:
-  - <&e>Hunger: <&f>15 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>18 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>15 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>18 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepanitem|chicken|custom_crop_orange|custom_crop_ginger|custom_crop_garlic|sugar|custom_ingredient_cookingoilitem|custom_ingredient_blackpepperitem|custom_crop_peanut
+      input: cooking_tool_saucepan|chicken|custom_crop_orange|custom_crop_ginger|custom_crop_garlic|sugar|custom_ingredient_cookingoilitem|custom_ingredient_blackpepperitem|custom_crop_peanut

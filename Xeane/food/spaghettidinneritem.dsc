@@ -7,9 +7,9 @@ custom_food_spaghettidinner:
     amount: 25
     saturation: 30
   lore:
-  - <&e>Hunger: <&f>25 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>30 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>25 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>30 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_food_spagettiandmeatballs|custom_food_garlicbread|milk_bucket/custom_ingredient_freshmilkitem
+      input: cooking_tool_cuttingboard|custom_food_spagettiandmeatballs|custom_food_garlicbread|milk_bucket/custom_ingredient_freshmilkitem

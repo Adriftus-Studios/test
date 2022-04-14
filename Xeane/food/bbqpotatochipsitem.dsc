@@ -7,9 +7,9 @@ custom_food_bbqpotatochips:
     amount: 9
     saturation: 11
   lore:
-  - <&e>Hunger: <&f>9 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>11 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>9 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>11 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_potitem|custom_food_bbqsauce|potato|custom_ingredient_cookingoilitem
+      input: cooking_tool_pot|custom_food_bbqsauce|potato|custom_ingredient_cookingoilitem

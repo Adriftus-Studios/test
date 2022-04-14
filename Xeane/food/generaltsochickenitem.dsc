@@ -7,9 +7,9 @@ custom_food_generaltsochicken:
     amount: 13
     saturation: 16
   lore:
-  - <&e>Hunger: <&f>13 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>16 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>13 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>16 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skilletitem|chicken|custom_crop_broccoli|sugar|custom_ingredient_flouritem|custom_crop_chilipepper|custom_crop_rice
+      input: cooking_tool_skillet|chicken|custom_crop_broccoli|sugar|custom_ingredient_flouritem|custom_crop_chilipepper|custom_crop_rice

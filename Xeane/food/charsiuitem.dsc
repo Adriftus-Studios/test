@@ -7,9 +7,9 @@ custom_food_charsiu:
     amount: 30
     saturation: 36
   lore:
-  - <&e>Hunger: <&f>30 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>36 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>30 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>36 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepanitem|porkchop|custom_ingredient_hoisinsauceitem|custom_ingredient_fivespiceitem|honey_bottle|custom_ingredient_soysauceitem
+      input: cooking_tool_saucepan|porkchop|custom_ingredient_hoisinsauceitem|custom_ingredient_fivespiceitem|honey_bottle|custom_ingredient_soysauceitem

@@ -7,9 +7,9 @@ custom_food_supremepizza:
     amount: 21
     saturation: 25
   lore:
-  - <&e>Hunger: <&f>21 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>25 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>21 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>25 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_ingredient_doughitem|custom_crop_tomato|custom_food_cheese|custom_food_pepperoni|custom_crop_bellpepper|custom_crop_onion|custom_crop_spiceleaf
+      input: cooking_tool_bakeware|custom_ingredient_doughitem|custom_crop_tomato|custom_food_cheese|custom_food_pepperoni|custom_crop_bellpepper|custom_crop_onion|custom_crop_spiceleaf

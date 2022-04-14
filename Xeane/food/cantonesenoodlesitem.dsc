@@ -7,9 +7,9 @@ custom_food_cantonesenoodles:
     amount: 25
     saturation: 30
   lore:
-  - <&e>Hunger: <&f>25 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>30 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>25 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>30 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skilletitem|custom_ingredient_pastaitem|beef|custom_food_boiledegg|custom_crop_corn|carrot|custom_crop_cabbage|brown_mushroom/red_mushroom/custom_crop_whitemushroom|custom_food_oystersauce
+      input: cooking_tool_skillet|custom_ingredient_pastaitem|beef|custom_food_boiledegg|custom_crop_corn|carrot|custom_crop_cabbage|brown_mushroom/red_mushroom/custom_crop_whitemushroom|custom_food_oystersauce

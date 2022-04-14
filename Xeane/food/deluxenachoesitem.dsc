@@ -7,9 +7,9 @@ custom_food_deluxenachoes:
     amount: 30
     saturation: 36
   lore:
-  - <&e>Hunger: <&f>30 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>36 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>30 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>36 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowlitem|custom_food_tortillachips|custom_food_salsa|custom_food_cheese|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_crop_chilipepper|custom_ingredient_creamitem
+      input: cooking_tool_mixingbowl|custom_food_tortillachips|custom_food_salsa|custom_food_cheese|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_crop_chilipepper|custom_ingredient_creamitem

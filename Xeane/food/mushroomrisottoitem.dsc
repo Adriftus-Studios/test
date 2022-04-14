@@ -7,9 +7,9 @@ custom_food_mushroomrisotto:
     amount: 8
     saturation: 10
   lore:
-  - <&e>Hunger: <&f>8 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>10 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>8 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>10 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_crop_rice|brown_mushroom/red_mushroom/custom_crop_whitemushroom|custom_crop_onion|custom_food_cheese
+      input: cooking_tool_bakeware|custom_crop_rice|brown_mushroom/red_mushroom/custom_crop_whitemushroom|custom_crop_onion|custom_food_cheese

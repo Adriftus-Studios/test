@@ -1,4 +1,4 @@
-custom_ingredient_cuttingboarditem:
+cooking_tool_cuttingboard:
   type: item
   debug: false
   material: apple

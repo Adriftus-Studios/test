@@ -7,9 +7,9 @@ custom_food_toastedwestern:
     amount: 18
     saturation: 22
   lore:
-  - <&e>Hunger: <&f>18 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>22 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>18 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>22 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skilletitem|porkchop|custom_crop_bellpepper|custom_crop_onion|custom_crop_avocado/custom_crop_banana|custom_ingredient_butteritem|custom_food_toast
+      input: cooking_tool_skillet|porkchop|custom_crop_bellpepper|custom_crop_onion|custom_crop_avocado/custom_crop_banana|custom_ingredient_butteritem|custom_food_toast

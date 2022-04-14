@@ -7,9 +7,9 @@ custom_food_vanillaicecream:
     amount: 6
     saturation: 7
   lore:
-  - <&e>Hunger: <&f>6 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>7 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>6 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>7 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowlitem|custom_food_icecream|custom_ingredient_vanillaitem
+      input: cooking_tool_mixingbowl|custom_food_icecream|custom_ingredient_vanillaitem

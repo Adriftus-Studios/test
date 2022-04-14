@@ -7,9 +7,9 @@ custom_food_oystersauce:
     amount: 4
     saturation: 9
   lore:
-  - <&e>Hunger: <&f>4 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>9 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>4 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>9 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepanitem|cod/salmon/tropical_fish|sugar|custom_ingredient_saltitem
+      input: cooking_tool_saucepan|cod/salmon/tropical_fish|sugar|custom_ingredient_saltitem

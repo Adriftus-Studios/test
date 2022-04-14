@@ -7,9 +7,9 @@ custom_food_pepperoni:
     amount: 5
     saturation: 6
   lore:
-  - <&e>Hunger: <&f>5 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>6 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>5 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>6 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_grinderitem|porkchop|custom_crop_spiceleaf
+      input: cooking_tool_grinder|porkchop|custom_crop_spiceleaf

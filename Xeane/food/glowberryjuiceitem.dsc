@@ -7,9 +7,9 @@ custom_food_glowberryjuice:
     amount: 3
     saturation: 4
   lore:
-  - <&e>Hunger: <&f>3 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>4 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>3 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>4 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juiceritem|glow_berries|glow_berries
+      input: cooking_tool_juicer|glow_berries|glow_berries
