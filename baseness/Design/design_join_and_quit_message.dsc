@@ -3,9 +3,9 @@ join_and_quit_message:
     debug: false
     events:
         on player first login:
-            - determine "<yellow><bold><player.name> has joined for the first time. Welcome!"
+            - determine "<element[<bold><player.name> has joined for the first time. Welcome!].color_gradient[from=yellow;to=blue]>"
         on player login:
-            - determine "<yellow><bold>Welcome back, <player.name>!"
+            - determine "<element[<bold>Welcome back, <player.name>!].color_gradient[from=yellow;to=blue]>"
         on player quits:
-            - determine "<yellow><bold><player.name> has left the server. See you later!"
+            - determine "<element[<bold><player.name> has left the server. See you later!].color_gradient[from=yellow;to=blue]>"
 #
