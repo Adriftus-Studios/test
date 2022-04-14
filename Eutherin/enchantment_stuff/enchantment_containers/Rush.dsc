@@ -3,7 +3,7 @@ Rush_enchantment:
   id: Rush
   debug: false
   slots:
-  - head
+  - feet
   rarity: uncommon
   min_cost: <context.level.mul[1]>
   max_cost: <context.level.mul[2]>
@@ -13,7 +13,7 @@ Rush_enchantment:
       - _
       - Lasts 1 second per level
     item_slots:
-      - armor
+      - boots
   category: WEARABLE
   full_name: <&7>Rush <context.level.proc[arabic_to_roman]>
   min_level: 1
