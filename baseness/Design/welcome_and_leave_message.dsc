@@ -1,11 +1,25 @@
-welcome_message:
+join_and_quit_message:
     type: world
     debug: false
     events:
         after player first login:
-            - determine "<yellow><bold><underline><player.name> has joined for the first time. Welcome!"
+            - run welcome_message
         after player login:
-            - determine "<yellow><bold><underline>Welcome back, <player.name>!"
+            - run welcome_back_message
         after player quits:
-            - determine "<yellow><bold><underline><player.name> has left the server. See you later!"
+            - run quit_message
 #
+welcome_message:
+    type: task
+    script:
+        - determine "<yellow><bold><underline><player.name> has joined for the first time. Welcome!"
+
+welcome_back_message:
+    type: task
+    script:
+        - determine "<yellow><bold><underline>Welcome back, <player.name>!"
+
+quit_message:
+    type: task
+    script:
+        - determine "<yellow><bold><underline><player.name> has left the server. See you later!"
