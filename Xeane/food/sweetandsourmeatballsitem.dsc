@@ -7,9 +7,9 @@ custom_food_sweetandsourmeatballs:
     amount: 19
     saturation: 23
   lore:
-  - <&e>Hunger: <&f>19 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>23 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>19 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>23 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepanitem|custom_food_groundbeef|custom_ingredient_sweetandsoursauceitem
+      input: cooking_tool_saucepan|custom_food_groundbeef|custom_ingredient_sweetandsoursauceitem

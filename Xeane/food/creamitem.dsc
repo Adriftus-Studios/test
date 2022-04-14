@@ -6,4 +6,4 @@ custom_ingredient_creamitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowlitem|milk_bucket/custom_ingredient_freshmilkitem
+      input: cooking_tool_mixingbowl|milk_bucket/custom_ingredient_freshmilkitem

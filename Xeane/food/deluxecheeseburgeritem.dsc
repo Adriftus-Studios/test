@@ -7,9 +7,9 @@ custom_food_deluxecheeseburger:
     amount: 24
     saturation: 29
   lore:
-  - <&e>Hunger: <&f>24 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>29 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>24 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>29 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skilletitem|custom_food_groundbeef|custom_food_cheese|custom_crop_lettuce|custom_crop_onion|custom_ingredient_mayonaiseitem|bread
+      input: cooking_tool_skillet|custom_food_groundbeef|custom_food_cheese|custom_crop_lettuce|custom_crop_onion|custom_ingredient_mayonaiseitem|bread

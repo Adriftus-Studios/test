@@ -7,9 +7,9 @@ custom_food_footlong:
     amount: 18
     saturation: 22
   lore:
-  - <&e>Hunger: <&f>18 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>22 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>18 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>22 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|bread|porkchop|custom_crop_cabbage/custom_crop_kale/custom_crop_lettuce/custom_crop_spinach|custom_crop_tomato|custom_ingredient_mayonaiseitem
+      input: cooking_tool_cuttingboard|bread|porkchop|custom_crop_cabbage/custom_crop_kale/custom_crop_lettuce/custom_crop_spinach|custom_crop_tomato|custom_ingredient_mayonaiseitem

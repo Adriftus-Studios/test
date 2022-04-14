@@ -6,4 +6,4 @@ custom_ingredient_butteritem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_potitem|milk_bucket/custom_ingredient_freshmilkitem
+      input: cooking_tool_pot|milk_bucket/custom_ingredient_freshmilkitem

@@ -1,4 +1,4 @@
-custom_ingredient_rolleritem:
+cooking_tool_roller:
   type: item
   debug: false
   material: apple

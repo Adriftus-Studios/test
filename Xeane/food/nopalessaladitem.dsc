@@ -7,9 +7,9 @@ custom_food_nopalessalad:
     amount: 14
     saturation: 17
   lore:
-  - <&e>Hunger: <&f>14 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>17 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>14 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>17 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|cactus|custom_crop_onion|custom_crop_chilipepper|custom_crop_tomato|custom_crop_avocado|custom_crop_spiceleaf
+      input: cooking_tool_cuttingboard|cactus|custom_crop_onion|custom_crop_chilipepper|custom_crop_tomato|custom_crop_avocado|custom_crop_spiceleaf

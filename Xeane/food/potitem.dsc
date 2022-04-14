@@ -1,4 +1,4 @@
-custom_ingredient_potitem:
+cooking_tool_pot:
   type: item
   debug: false
   material: apple

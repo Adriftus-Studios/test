@@ -7,9 +7,9 @@ custom_food_grilledcheesevegemitetoast:
     amount: 20
     saturation: 24
   lore:
-  - <&e>Hunger: <&f>20 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>24 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>20 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>24 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_food_grilledcheese|custom_food_vegemite
+      input: cooking_tool_cuttingboard|custom_food_grilledcheese|custom_food_vegemite

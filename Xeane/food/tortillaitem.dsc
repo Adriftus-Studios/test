@@ -7,9 +7,9 @@ custom_food_tortilla:
     amount: 4
     saturation: 5
   lore:
-  - <&e>Hunger: <&f>4 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>5 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>4 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>5 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skilletitem|custom_food_cornmeal|water_bucket/custom_ingredient_freshwateritem
+      input: cooking_tool_skillet|custom_food_cornmeal|water_bucket/custom_ingredient_freshwateritem

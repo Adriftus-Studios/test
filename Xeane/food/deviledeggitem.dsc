@@ -7,9 +7,9 @@ custom_food_deviledegg:
     amount: 15
     saturation: 18
   lore:
-  - <&e>Hunger: <&f>15 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>18 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>15 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>18 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowlitem|custom_food_boiledegg|custom_ingredient_mayonaiseitem|custom_crop_mustard|custom_crop_spiceleaf|custom_ingredient_saltandpepperitem
+      input: cooking_tool_mixingbowl|custom_food_boiledegg|custom_ingredient_mayonaiseitem|custom_crop_mustard|custom_crop_spiceleaf|custom_ingredient_saltandpepperitem

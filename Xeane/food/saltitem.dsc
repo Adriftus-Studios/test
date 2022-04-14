@@ -6,4 +6,4 @@ custom_ingredient_saltitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_potitem|water_bucket/custom_ingredient_freshwateritem
+      input: cooking_tool_pot|water_bucket/custom_ingredient_freshwateritem

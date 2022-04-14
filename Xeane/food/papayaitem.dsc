@@ -7,5 +7,5 @@ custom_crop_papaya:
     amount: 1
     saturation: 1
   lore:
-  - <&e>Hunger: <&f>1 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>1 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>1 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>1 <&chr[0001].font[adriftus:foods]>

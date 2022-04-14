@@ -6,4 +6,4 @@ custom_ingredient_cookingoilitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_rolleritem|custom_crop_avocado/custom_crop_olive
+      input: cooking_tool_roller|custom_crop_avocado/custom_crop_olive

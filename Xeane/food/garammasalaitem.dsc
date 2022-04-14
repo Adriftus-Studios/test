@@ -6,4 +6,4 @@ custom_ingredient_garammasalaitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_grinderitem|custom_ingredient_blackpepperitem|custom_food_groundcinnamon|custom_crop_spiceleaf|custom_ingredient_groundnutmegitem
+      input: cooking_tool_grinder|custom_ingredient_blackpepperitem|custom_food_groundcinnamon|custom_crop_spiceleaf|custom_ingredient_groundnutmegitem

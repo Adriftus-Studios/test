@@ -7,9 +7,9 @@ custom_food_gourmetporkburger:
     amount: 42
     saturation: 50
   lore:
-  - <&e>Hunger: <&f>42 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>50 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>42 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>50 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skilletitem|custom_food_gourmetporkpatty|custom_food_briochebun|custom_crop_tomato|custom_crop_cabbage/custom_crop_kale/custom_crop_lettuce/custom_crop_spinach|custom_crop_avocado|custom_food_friedonions|custom_ingredient_grinderitem|custom_ingredient_grinderitem
+      input: cooking_tool_skillet|custom_food_gourmetporkpatty|custom_food_briochebun|custom_crop_tomato|custom_crop_cabbage/custom_crop_kale/custom_crop_lettuce/custom_crop_spinach|custom_crop_avocado|custom_food_friedonions|cooking_tool_grinder|cooking_tool_grinder

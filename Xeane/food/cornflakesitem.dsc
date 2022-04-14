@@ -7,9 +7,9 @@ custom_food_cornflakes:
     amount: 4
     saturation: 5
   lore:
-  - <&e>Hunger: <&f>4 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>5 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>4 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>5 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowlitem|custom_crop_corn|milk_bucket/custom_ingredient_freshmilkitem
+      input: cooking_tool_mixingbowl|custom_crop_corn|milk_bucket/custom_ingredient_freshmilkitem

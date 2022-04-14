@@ -6,4 +6,4 @@ custom_ingredient_ketchupitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juiceritem|custom_crop_tomato
+      input: cooking_tool_juicer|custom_crop_tomato

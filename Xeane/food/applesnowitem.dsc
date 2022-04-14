@@ -7,9 +7,9 @@ custom_food_applesnow:
     amount: 15
     saturation: 18
   lore:
-  - <&e>Hunger: <&f>15 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>18 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>15 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>18 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_food_meringue|custom_ingredient_butteritem|apple
+      input: cooking_tool_cuttingboard|custom_food_meringue|custom_ingredient_butteritem|apple

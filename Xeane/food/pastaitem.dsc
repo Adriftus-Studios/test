@@ -6,4 +6,4 @@ custom_ingredient_pastaitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_rolleritem|custom_ingredient_doughitem
+      input: cooking_tool_roller|custom_ingredient_doughitem

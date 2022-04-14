@@ -7,9 +7,9 @@ custom_food_cornedbeefhash:
     amount: 29
     saturation: 35
   lore:
-  - <&e>Hunger: <&f>29 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>35 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>29 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>35 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skilletitem|custom_food_cornedbeef|custom_crop_onion|custom_crop_bellpepper|potato|custom_crop_avocado/custom_crop_banana|custom_ingredient_butteritem|custom_food_cheese
+      input: cooking_tool_skillet|custom_food_cornedbeef|custom_crop_onion|custom_crop_bellpepper|potato|custom_crop_avocado/custom_crop_banana|custom_ingredient_butteritem|custom_food_cheese

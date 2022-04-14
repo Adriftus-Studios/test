@@ -6,4 +6,4 @@ custom_ingredient_blackpepperitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_grinderitem|custom_crop_peppercorn
+      input: cooking_tool_grinder|custom_crop_peppercorn

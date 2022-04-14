@@ -1,4 +1,4 @@
-custom_ingredient_skilletitem:
+cooking_tool_skillet:
   type: item
   debug: false
   material: apple

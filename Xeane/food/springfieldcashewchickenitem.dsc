@@ -7,9 +7,9 @@ custom_food_springfieldcashewchicken:
     amount: 16
     saturation: 19
   lore:
-  - <&e>Hunger: <&f>16 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>19 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>16 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>19 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skilletitem|custom_food_friedchicken|custom_crop_cashew|custom_food_oystersauce|custom_crop_rice
+      input: cooking_tool_skillet|custom_food_friedchicken|custom_crop_cashew|custom_food_oystersauce|custom_crop_rice

@@ -6,4 +6,4 @@ custom_ingredient_saltandpepperitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowlitem|custom_ingredient_saltitem|custom_ingredient_blackpepperitem
+      input: cooking_tool_mixingbowl|custom_ingredient_saltitem|custom_ingredient_blackpepperitem

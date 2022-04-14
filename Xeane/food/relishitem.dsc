@@ -6,4 +6,4 @@ custom_ingredient_relishitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juiceritem|custom_crop_cucumber
+      input: cooking_tool_juicer|custom_crop_cucumber

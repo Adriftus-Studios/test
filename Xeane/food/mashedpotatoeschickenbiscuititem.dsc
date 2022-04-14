@@ -7,9 +7,9 @@ custom_food_mashedpotatoeschickenbiscuit:
     amount: 21
     saturation: 25
   lore:
-  - <&e>Hunger: <&f>21 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>25 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>21 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>25 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_food_biscuit|custom_food_mashedpotatoes|chicken
+      input: cooking_tool_cuttingboard|custom_food_biscuit|custom_food_mashedpotatoes|chicken

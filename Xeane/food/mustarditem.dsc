@@ -6,4 +6,4 @@ custom_crop_mustard:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juiceritem|custom_crop_mustardseeds
+      input: cooking_tool_juicer|custom_crop_mustardseeds

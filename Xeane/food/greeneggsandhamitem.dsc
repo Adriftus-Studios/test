@@ -7,9 +7,9 @@ custom_food_greeneggsandham:
     amount: 7
     saturation: 8
   lore:
-  - <&e>Hunger: <&f>7 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>8 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>7 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>8 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skilletitem|porkchop|custom_crop_avocado/custom_crop_banana|green_dye
+      input: cooking_tool_skillet|porkchop|custom_crop_avocado/custom_crop_banana|green_dye

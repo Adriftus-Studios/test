@@ -7,9 +7,9 @@ custom_food_coleslawburger:
     amount: 29
     saturation: 35
   lore:
-  - <&e>Hunger: <&f>29 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>35 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>29 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>35 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_food_basichamburger|custom_food_coleslaw
+      input: cooking_tool_cuttingboard|custom_food_basichamburger|custom_food_coleslaw

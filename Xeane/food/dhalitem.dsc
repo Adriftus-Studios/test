@@ -7,9 +7,9 @@ custom_food_dhal:
     amount: 18
     saturation: 22
   lore:
-  - <&e>Hunger: <&f>18 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>22 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>18 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>22 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_potitem|custom_crop_peas|custom_ingredient_garammasalaitem|custom_crop_mustardseeds|custom_crop_onion|custom_crop_tomato|custom_crop_garlic
+      input: cooking_tool_pot|custom_crop_peas|custom_ingredient_garammasalaitem|custom_crop_mustardseeds|custom_crop_onion|custom_crop_tomato|custom_crop_garlic

@@ -7,9 +7,9 @@ custom_food_meatloafsandwich:
     amount: 22
     saturation: 26
   lore:
-  - <&e>Hunger: <&f>22 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>26 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>22 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>26 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_food_meatloaf|bread|custom_ingredient_ketchupitem
+      input: cooking_tool_cuttingboard|custom_food_meatloaf|bread|custom_ingredient_ketchupitem

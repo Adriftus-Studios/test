@@ -7,9 +7,9 @@ custom_food_koreandinner:
     amount: 40
     saturation: 48
   lore:
-  - <&e>Hunger: <&f>40 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>48 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>40 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>48 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_food_bulgogi|custom_food_omurice|custom_food_kimchi|custom_crop_cabbage/custom_crop_kale/custom_crop_lettuce/custom_crop_spinach
+      input: cooking_tool_cuttingboard|custom_food_bulgogi|custom_food_omurice|custom_food_kimchi|custom_crop_cabbage/custom_crop_kale/custom_crop_lettuce/custom_crop_spinach

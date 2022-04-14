@@ -7,9 +7,9 @@ custom_food_honeylemonlamb:
     amount: 12
     saturation: 14
   lore:
-  - <&e>Hunger: <&f>12 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>14 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>12 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>14 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|mutton|custom_crop_lemon|custom_crop_mustard|honey_bottle
+      input: cooking_tool_bakeware|mutton|custom_crop_lemon|custom_crop_mustard|honey_bottle

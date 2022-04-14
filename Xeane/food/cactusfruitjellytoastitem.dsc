@@ -7,9 +7,9 @@ custom_food_cactusfruitjellytoast:
     amount: 10
     saturation: 12
   lore:
-  - <&e>Hunger: <&f>10 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>12 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>10 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>12 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_food_cactusfruitjelly|custom_food_toast
+      input: cooking_tool_cuttingboard|custom_food_cactusfruitjelly|custom_food_toast

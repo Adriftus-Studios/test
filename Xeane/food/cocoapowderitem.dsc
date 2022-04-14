@@ -6,4 +6,4 @@ custom_ingredient_cocoapowderitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_grinderitem|cocoa_beans
+      input: cooking_tool_grinder|cocoa_beans

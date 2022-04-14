@@ -7,9 +7,9 @@ custom_food_cornishpasty:
     amount: 11
     saturation: 13
   lore:
-  - <&e>Hunger: <&f>11 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>13 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>11 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>13 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|beef|potato|custom_ingredient_doughitem|custom_crop_rutabaga|custom_ingredient_blackpepperitem
+      input: cooking_tool_bakeware|beef|potato|custom_ingredient_doughitem|custom_crop_rutabaga|custom_ingredient_blackpepperitem

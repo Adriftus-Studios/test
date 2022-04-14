@@ -7,9 +7,9 @@ custom_food_rawtofutton:
     amount: 3
     saturation: 4
   lore:
-  - <&e>Hunger: <&f>3 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>4 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>3 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>4 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowlitem|custom_food_firmtofu|custom_ingredient_soysauceitem|custom_crop_spiceleaf
+      input: cooking_tool_mixingbowl|custom_food_firmtofu|custom_ingredient_soysauceitem|custom_crop_spiceleaf

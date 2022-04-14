@@ -7,9 +7,9 @@ custom_food_chocolatesprinklecake:
     amount: 10
     saturation: 12
   lore:
-  - <&e>Hunger: <&f>10 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>12 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>10 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>12 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_ingredient_cocoapowderitem|sugar|custom_ingredient_doughitem|custom_ingredient_dyes/pink/custom_ingredient_dyes/yellow/custom_ingredient_dyes/orange/custom_ingredient_dyes/red/custom_ingredient_dyes/blue/custom_ingredient_dyes/green/custom_ingredient_dyes/purple|custom_ingredient_dyes/pink/custom_ingredient_dyes/yellow/custom_ingredient_dyes/orange/custom_ingredient_dyes/red/custom_ingredient_dyes/blue/custom_ingredient_dyes/green/custom_ingredient_dyes/purple|custom_ingredient_dyes/pink/custom_ingredient_dyes/yellow/custom_ingredient_dyes/orange/custom_ingredient_dyes/red/custom_ingredient_dyes/blue/custom_ingredient_dyes/green/custom_ingredient_dyes/purple
+      input: cooking_tool_bakeware|custom_ingredient_cocoapowderitem|sugar|custom_ingredient_doughitem|custom_ingredient_dyes/pink/custom_ingredient_dyes/yellow/custom_ingredient_dyes/orange/custom_ingredient_dyes/red/custom_ingredient_dyes/blue/custom_ingredient_dyes/green/custom_ingredient_dyes/purple|custom_ingredient_dyes/pink/custom_ingredient_dyes/yellow/custom_ingredient_dyes/orange/custom_ingredient_dyes/red/custom_ingredient_dyes/blue/custom_ingredient_dyes/green/custom_ingredient_dyes/purple|custom_ingredient_dyes/pink/custom_ingredient_dyes/yellow/custom_ingredient_dyes/orange/custom_ingredient_dyes/red/custom_ingredient_dyes/blue/custom_ingredient_dyes/green/custom_ingredient_dyes/purple

@@ -7,9 +7,9 @@ custom_food_bakedalaska:
     amount: 15
     saturation: 18
   lore:
-  - <&e>Hunger: <&f>15 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>18 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>15 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>18 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_food_meringue|custom_ingredient_doughitem|sugar|custom_food_icecream/custom_food_chocolateicecream/custom_food_caramelicecream
+      input: cooking_tool_bakeware|custom_food_meringue|custom_ingredient_doughitem|sugar|custom_food_icecream/custom_food_chocolateicecream/custom_food_caramelicecream

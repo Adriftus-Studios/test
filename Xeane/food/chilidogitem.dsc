@@ -7,9 +7,9 @@ custom_food_chilidog:
     amount: 27
     saturation: 32
   lore:
-  - <&e>Hunger: <&f>27 <&font[adriftus:foods]><&chr[0000]>
-  - <&e>Saturation: <&f>32 <&font[adriftus:foods]><&chr[0001]>
+  - <&e>Hunger: <&f>27 <&chr[0000].font[adriftus:foods]>
+  - <&e>Saturation: <&f>32 <&chr[0001].font[adriftus:foods]>
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skilletitem|custom_food_hotdog|custom_food_chili
+      input: cooking_tool_skillet|custom_food_hotdog|custom_food_chili

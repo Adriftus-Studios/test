@@ -1,4 +1,4 @@
-custom_ingredient_juiceritem:
+cooking_tool_juicer:
   type: item
   debug: false
   material: apple
