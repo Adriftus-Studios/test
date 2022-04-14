@@ -1,4 +1,4 @@
-custom_ingredient_chaiteaitem:
+custom_food_chaitea:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_chaiteaitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_potitem|custom_crop_tealeaf|custom_ingredient_groundcinnamonitem|custom_ingredient_blackpepperitem
+      input: custom_ingredient_potitem|custom_crop_tealeaf|custom_food_groundcinnamon|custom_ingredient_blackpepperitem

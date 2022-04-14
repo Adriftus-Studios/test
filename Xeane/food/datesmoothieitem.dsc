@@ -1,4 +1,4 @@
-custom_ingredient_datesmoothieitem:
+custom_food_datesmoothie:
   type: item
   debug: false
   material: apple

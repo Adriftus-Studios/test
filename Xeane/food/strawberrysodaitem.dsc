@@ -1,4 +1,4 @@
-custom_ingredient_strawberrysodaitem:
+custom_food_strawberrysoda:
   type: item
   debug: false
   material: apple

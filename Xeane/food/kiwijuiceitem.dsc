@@ -1,4 +1,4 @@
-custom_ingredient_kiwijuiceitem:
+custom_food_kiwijuice:
   type: item
   debug: false
   material: apple

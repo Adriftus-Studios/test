@@ -12,4 +12,4 @@ custom_food_corndog:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_potitem|custom_ingredient_cookingoilitem|custom_ingredient_groundporkitem|custom_ingredient_batteritem
+      input: custom_ingredient_potitem|custom_ingredient_cookingoilitem|custom_food_groundpork|custom_ingredient_batteritem

@@ -1,4 +1,4 @@
-custom_ingredient_limepieitem:
+custom_food_limepie:
   type: item
   debug: false
   material: apple

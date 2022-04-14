@@ -1,4 +1,4 @@
-custom_ingredient_grapefruitjellytoastitem:
+custom_food_grapefruitjellytoast:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_grapefruitjellytoastitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_ingredient_grapefruitjellyitem|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_food_grapefruitjelly|custom_food_toast

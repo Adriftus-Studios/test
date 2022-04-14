@@ -1,4 +1,4 @@
-custom_ingredient_persimmonjuiceitem:
+custom_food_persimmonjuice:
   type: item
   debug: false
   material: apple

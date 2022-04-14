@@ -1,4 +1,4 @@
-custom_ingredient_mangosmoothieitem:
+custom_food_mangosmoothie:
   type: item
   debug: false
   material: apple

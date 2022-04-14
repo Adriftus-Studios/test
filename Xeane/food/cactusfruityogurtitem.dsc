@@ -1,4 +1,4 @@
-custom_ingredient_cactusfruityogurtitem:
+custom_food_cactusfruityogurt:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_cactusfruityogurtitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_crop_cactusfruit|custom_ingredient_yogurtitem
+      input: custom_ingredient_cuttingboarditem|custom_crop_cactusfruit|custom_food_yogurt

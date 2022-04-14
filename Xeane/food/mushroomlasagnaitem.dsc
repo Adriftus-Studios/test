@@ -12,4 +12,4 @@ custom_food_mushroomlasagna:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_ingredient_pastaitem|custom_ingredient_cheeseitem|custom_crop_tomato|custom_crop_onion|custom_crop_garlic|brown_mushroom/red_mushroom/custom_crop_whitemushroom
+      input: custom_ingredient_bakewareitem|custom_ingredient_pastaitem|custom_food_cheese|custom_crop_tomato|custom_crop_onion|custom_crop_garlic|brown_mushroom/red_mushroom/custom_crop_whitemushroom

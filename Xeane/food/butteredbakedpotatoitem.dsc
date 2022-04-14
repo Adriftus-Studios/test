@@ -1,4 +1,4 @@
-custom_ingredient_butteredbakedpotatoitem:
+custom_food_butteredbakedpotato:
   type: item
   debug: false
   material: apple

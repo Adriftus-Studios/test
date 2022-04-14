@@ -12,4 +12,4 @@ custom_food_strawberryyogurt:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_crop_strawberry|custom_ingredient_yogurtitem
+      input: custom_ingredient_cuttingboarditem|custom_crop_strawberry|custom_food_yogurt

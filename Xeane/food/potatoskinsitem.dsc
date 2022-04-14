@@ -12,4 +12,4 @@ custom_food_potatoskins:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|baked_potato|custom_ingredient_cheeseitem|custom_ingredient_creamitem|custom_crop_onion/custom_crop_scallion
+      input: custom_ingredient_bakewareitem|baked_potato|custom_food_cheese|custom_ingredient_creamitem|custom_crop_onion/custom_crop_scallion

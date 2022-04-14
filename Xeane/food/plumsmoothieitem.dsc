@@ -1,4 +1,4 @@
-custom_ingredient_plumsmoothieitem:
+custom_food_plumsmoothie:
   type: item
   debug: false
   material: apple

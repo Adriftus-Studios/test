@@ -12,4 +12,4 @@ custom_food_apricotglazedpork:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|porkchop|custom_ingredient_apricotjellyitem
+      input: custom_ingredient_bakewareitem|porkchop|custom_food_apricotjelly

@@ -1,4 +1,4 @@
-custom_ingredient_dragonfruitjellyitem:
+custom_food_dragonfruitjelly:
   type: item
   debug: false
   material: apple

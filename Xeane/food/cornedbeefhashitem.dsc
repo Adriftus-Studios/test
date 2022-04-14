@@ -12,4 +12,4 @@ custom_food_cornedbeefhash:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skilletitem|custom_food_cornedbeef|custom_crop_onion|custom_crop_bellpepper|potato|custom_crop_avocado/custom_crop_banana|custom_ingredient_butteritem|custom_ingredient_cheeseitem
+      input: custom_ingredient_skilletitem|custom_food_cornedbeef|custom_crop_onion|custom_crop_bellpepper|potato|custom_crop_avocado/custom_crop_banana|custom_ingredient_butteritem|custom_food_cheese

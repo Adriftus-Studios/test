@@ -1,4 +1,4 @@
-custom_ingredient_gooseberryjellytoastitem:
+custom_food_gooseberryjellytoast:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_gooseberryjellytoastitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_ingredient_gooseberryjellyitem|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_food_gooseberryjelly|custom_food_toast

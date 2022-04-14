@@ -1,4 +1,4 @@
-custom_ingredient_marshmellowsitem:
+custom_food_marshmellows:
   type: item
   debug: false
   material: apple

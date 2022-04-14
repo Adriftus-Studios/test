@@ -1,4 +1,4 @@
-custom_ingredient_cactusfruitjellytoastitem:
+custom_food_cactusfruitjellytoast:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_cactusfruitjellytoastitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_ingredient_cactusfruitjellyitem|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_food_cactusfruitjelly|custom_food_toast

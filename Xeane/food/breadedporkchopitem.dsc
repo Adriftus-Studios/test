@@ -1,4 +1,4 @@
-custom_ingredient_breadedporkchopitem:
+custom_food_breadedporkchop:
   type: item
   debug: false
   material: apple

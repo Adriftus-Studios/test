@@ -1,4 +1,4 @@
-custom_ingredient_datejuiceitem:
+custom_food_datejuice:
   type: item
   debug: false
   material: apple

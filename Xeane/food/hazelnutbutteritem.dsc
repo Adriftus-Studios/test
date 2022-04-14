@@ -1,4 +1,4 @@
-custom_ingredient_hazelnutbutteritem:
+custom_food_hazelnutbutter:
   type: item
   debug: false
   material: apple

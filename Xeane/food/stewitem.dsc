@@ -1,4 +1,4 @@
-custom_ingredient_stewitem:
+custom_food_stew:
   type: item
   debug: false
   material: apple

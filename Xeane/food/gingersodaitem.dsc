@@ -1,4 +1,4 @@
-custom_ingredient_gingersodaitem:
+custom_food_gingersoda:
   type: item
   debug: false
   material: apple

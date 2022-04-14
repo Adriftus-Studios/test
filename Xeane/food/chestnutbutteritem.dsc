@@ -1,4 +1,4 @@
-custom_ingredient_chestnutbutteritem:
+custom_food_chestnutbutter:
   type: item
   debug: false
   material: apple

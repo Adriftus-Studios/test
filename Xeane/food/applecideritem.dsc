@@ -1,4 +1,4 @@
-custom_ingredient_applecideritem:
+custom_food_applecider:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_macncheeseitem:
+custom_food_macncheese:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_macncheeseitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_potitem|custom_ingredient_pastaitem|custom_ingredient_cheeseitem
+      input: custom_ingredient_potitem|custom_ingredient_pastaitem|custom_food_cheese

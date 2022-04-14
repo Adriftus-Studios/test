@@ -1,4 +1,4 @@
-custom_ingredient_pineapplejellytoastitem:
+custom_food_pineapplejellytoast:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_pineapplejellytoastitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_ingredient_pineapplejellyitem|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_food_pineapplejelly|custom_food_toast

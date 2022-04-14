@@ -12,4 +12,4 @@ custom_food_kiwiyogurt:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_crop_kiwi|custom_ingredient_yogurtitem
+      input: custom_ingredient_cuttingboarditem|custom_crop_kiwi|custom_food_yogurt

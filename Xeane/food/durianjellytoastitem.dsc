@@ -1,4 +1,4 @@
-custom_ingredient_durianjellytoastitem:
+custom_food_durianjellytoast:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_durianjellytoastitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_ingredient_durianjellyitem|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_food_durianjelly|custom_food_toast

@@ -1,4 +1,4 @@
-custom_ingredient_hushpuppiesitem:
+custom_food_hushpuppies:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_hushpuppiesitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_potitem|custom_ingredient_cornmealitem|custom_crop_avocado/custom_crop_banana|custom_crop_onion
+      input: custom_ingredient_potitem|custom_food_cornmeal|custom_crop_avocado/custom_crop_banana|custom_crop_onion

@@ -1,4 +1,4 @@
-custom_ingredient_colasodaitem:
+custom_food_colasoda:
   type: item
   debug: false
   material: apple

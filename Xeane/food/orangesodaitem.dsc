@@ -1,4 +1,4 @@
-custom_ingredient_orangesodaitem:
+custom_food_orangesoda:
   type: item
   debug: false
   material: apple

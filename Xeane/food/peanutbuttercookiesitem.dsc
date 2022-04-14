@@ -12,4 +12,4 @@ custom_food_peanutbuttercookies:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_ingredient_almondbutteritem/custom_ingredient_cashewbutteritem/custom_ingredient_chestnutbutteritem/custom_ingredient_hazelnutbutteritem/custom_ingredient_peanutbutteritem/custom_ingredient_pecanbutteritem/custom_ingredient_pistachiobutteritem/custom_ingredient_walnutbutteritem|custom_ingredient_batteritem|sugar
+      input: custom_ingredient_bakewareitem|custom_food_almondbutter/custom_food_cashewbutter/custom_food_chestnutbutter/custom_food_hazelnutbutter/custom_food_peanutbutter/custom_food_pecanbutter/custom_food_pistachiobutter/custom_food_walnutbutter|custom_ingredient_batteritem|sugar

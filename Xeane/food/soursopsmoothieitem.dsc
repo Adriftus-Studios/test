@@ -1,4 +1,4 @@
-custom_ingredient_soursopsmoothieitem:
+custom_food_soursopsmoothie:
   type: item
   debug: false
   material: apple

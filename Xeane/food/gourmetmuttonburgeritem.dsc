@@ -12,4 +12,4 @@ custom_food_gourmetmuttonburger:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skilletitem|custom_food_gourmetmuttonpatty|custom_food_briochebun|custom_crop_spiceleaf|custom_ingredient_cheeseitem|custom_crop_tomato|custom_crop_spinach|custom_ingredient_roastedmushroomitem
+      input: custom_ingredient_skilletitem|custom_food_gourmetmuttonpatty|custom_food_briochebun|custom_crop_spiceleaf|custom_food_cheese|custom_crop_tomato|custom_crop_spinach|custom_ingredient_roastedmushroomitem

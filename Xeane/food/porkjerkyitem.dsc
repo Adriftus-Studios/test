@@ -1,4 +1,4 @@
-custom_ingredient_porkjerkyitem:
+custom_food_porkjerky:
   type: item
   debug: false
   material: apple

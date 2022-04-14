@@ -1,4 +1,4 @@
-custom_ingredient_strawberryrhubarbpieitem:
+custom_food_strawberryrhubarbpie:
   type: item
   debug: false
   material: apple

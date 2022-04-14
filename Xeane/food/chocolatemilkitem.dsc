@@ -1,4 +1,4 @@
-custom_ingredient_chocolatemilkitem:
+custom_food_chocolatemilk:
   type: item
   debug: false
   material: apple

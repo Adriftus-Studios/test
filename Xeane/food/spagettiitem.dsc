@@ -1,4 +1,4 @@
-custom_ingredient_spagettiitem:
+custom_food_spagetti:
   type: item
   debug: false
   material: apple

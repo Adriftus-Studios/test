@@ -12,4 +12,4 @@ custom_food_paradiseburger:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skilletitem|beef|custom_ingredient_cheeseitem|custom_ingredient_relishitem|bread|custom_crop_cabbage/custom_crop_kale/custom_crop_lettuce/custom_crop_spinach|custom_crop_tomato|custom_ingredient_mayonaiseitem
+      input: custom_ingredient_skilletitem|beef|custom_food_cheese|custom_ingredient_relishitem|bread|custom_crop_cabbage/custom_crop_kale/custom_crop_lettuce/custom_crop_spinach|custom_crop_tomato|custom_ingredient_mayonaiseitem

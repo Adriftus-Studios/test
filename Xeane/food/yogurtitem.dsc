@@ -1,4 +1,4 @@
-custom_ingredient_yogurtitem:
+custom_food_yogurt:
   type: item
   debug: false
   material: apple

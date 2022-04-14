@@ -12,4 +12,4 @@ custom_food_poutine:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowlitem|custom_food_fries|custom_ingredient_cheeseitem|custom_food_gravy
+      input: custom_ingredient_mixingbowlitem|custom_food_fries|custom_food_cheese|custom_food_gravy

@@ -1,4 +1,4 @@
-custom_ingredient_pumpkinspicelatteitem:
+custom_food_pumpkinspicelatte:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_pumpkinspicelatteitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepanitem|pumpkin|milk_bucket/custom_ingredient_freshmilkitem|custom_ingredient_espressoitem|custom_ingredient_groundnutmegitem|custom_ingredient_groundcinnamonitem
+      input: custom_ingredient_saucepanitem|pumpkin|milk_bucket/custom_ingredient_freshmilkitem|custom_food_espresso|custom_ingredient_groundnutmegitem|custom_food_groundcinnamon

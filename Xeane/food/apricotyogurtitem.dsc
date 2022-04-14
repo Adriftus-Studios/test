@@ -12,4 +12,4 @@ custom_food_apricotyogurt:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_crop_apricot|custom_ingredient_yogurtitem
+      input: custom_ingredient_cuttingboarditem|custom_crop_apricot|custom_food_yogurt

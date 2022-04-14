@@ -1,4 +1,4 @@
-custom_ingredient_hamsweetpicklesandwichitem:
+custom_food_hamsweetpicklesandwich:
   type: item
   debug: false
   material: apple

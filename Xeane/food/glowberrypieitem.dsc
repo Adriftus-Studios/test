@@ -1,4 +1,4 @@
-custom_ingredient_glowberrypieitem:
+custom_food_glowberrypie:
   type: item
   debug: false
   material: apple

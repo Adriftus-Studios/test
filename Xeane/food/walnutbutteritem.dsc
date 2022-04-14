@@ -1,4 +1,4 @@
-custom_ingredient_walnutbutteritem:
+custom_food_walnutbutter:
   type: item
   debug: false
   material: apple

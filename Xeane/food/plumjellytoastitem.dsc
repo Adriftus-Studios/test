@@ -1,4 +1,4 @@
-custom_ingredient_plumjellytoastitem:
+custom_food_plumjellytoast:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_plumjellytoastitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_ingredient_plumjellyitem|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_food_plumjelly|custom_food_toast

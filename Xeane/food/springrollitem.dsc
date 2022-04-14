@@ -1,4 +1,4 @@
-custom_ingredient_springrollitem:
+custom_food_springroll:
   type: item
   debug: false
   material: apple

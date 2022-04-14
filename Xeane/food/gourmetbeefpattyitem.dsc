@@ -12,4 +12,4 @@ custom_food_gourmetbeefpatty:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowlitem|custom_ingredient_groundbeefitem|custom_ingredient_saltandpepperitem|custom_crop_spiceleaf|custom_crop_mustardseeds
+      input: custom_ingredient_mixingbowlitem|custom_food_groundbeef|custom_ingredient_saltandpepperitem|custom_crop_spiceleaf|custom_crop_mustardseeds

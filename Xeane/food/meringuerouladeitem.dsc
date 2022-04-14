@@ -12,4 +12,4 @@ custom_food_meringueroulade:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_ingredient_meringueitem|custom_crop_strawberry|custom_ingredient_strawberryjellyitem|custom_crop_mango
+      input: custom_ingredient_cuttingboarditem|custom_food_meringue|custom_crop_strawberry|custom_food_strawberryjelly|custom_crop_mango

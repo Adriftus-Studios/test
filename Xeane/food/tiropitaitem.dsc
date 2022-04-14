@@ -12,4 +12,4 @@ custom_food_tiropita:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_ingredient_doughitem|custom_ingredient_cookingoilitem|custom_crop_avocado/custom_crop_banana|custom_ingredient_cheeseitem
+      input: custom_ingredient_bakewareitem|custom_ingredient_doughitem|custom_ingredient_cookingoilitem|custom_crop_avocado/custom_crop_banana|custom_food_cheese

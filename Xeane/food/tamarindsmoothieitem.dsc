@@ -1,4 +1,4 @@
-custom_ingredient_tamarindsmoothieitem:
+custom_food_tamarindsmoothie:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_spicebunitem:
+custom_food_spicebun:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_spicebunitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_ingredient_flouritem|milk_bucket/custom_ingredient_freshmilkitem|custom_ingredient_groundnutmegitem|custom_ingredient_groundcinnamonitem|custom_food_raisins
+      input: custom_ingredient_bakewareitem|custom_ingredient_flouritem|milk_bucket/custom_ingredient_freshmilkitem|custom_ingredient_groundnutmegitem|custom_food_groundcinnamon|custom_food_raisins

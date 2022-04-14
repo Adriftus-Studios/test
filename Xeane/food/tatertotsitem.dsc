@@ -1,4 +1,4 @@
-custom_ingredient_tatertotsitem:
+custom_food_tatertots:
   type: item
   debug: false
   material: apple

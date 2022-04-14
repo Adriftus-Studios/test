@@ -12,4 +12,4 @@ custom_food_baconcheeseburger:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skilletitem|custom_ingredient_groundbeefitem|custom_ingredient_mayonaiseitem|bread|porkchop|custom_ingredient_cheeseitem
+      input: custom_ingredient_skilletitem|custom_food_groundbeef|custom_ingredient_mayonaiseitem|bread|porkchop|custom_food_cheese

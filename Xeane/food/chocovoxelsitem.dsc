@@ -1,4 +1,4 @@
-custom_ingredient_chocovoxelsitem:
+custom_food_chocovoxels:
   type: item
   debug: false
   material: apple

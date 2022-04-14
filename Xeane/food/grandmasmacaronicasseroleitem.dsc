@@ -1,4 +1,4 @@
-custom_ingredient_grandmasmacaronicasseroleitem:
+custom_food_grandmasmacaronicasserole:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_grandmasmacaronicasseroleitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_ingredient_groundbeefitem|custom_ingredient_pastaitem|custom_crop_tomato|custom_food_oystersauce|custom_crop_garlic
+      input: custom_ingredient_bakewareitem|custom_food_groundbeef|custom_ingredient_pastaitem|custom_crop_tomato|custom_food_oystersauce|custom_crop_garlic

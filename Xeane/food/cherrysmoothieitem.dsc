@@ -1,4 +1,4 @@
-custom_ingredient_cherrysmoothieitem:
+custom_food_cherrysmoothie:
   type: item
   debug: false
   material: apple

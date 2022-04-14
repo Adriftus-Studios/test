@@ -1,4 +1,4 @@
-custom_ingredient_noodlesoupitem:
+custom_food_noodlesoup:
   type: item
   debug: false
   material: apple

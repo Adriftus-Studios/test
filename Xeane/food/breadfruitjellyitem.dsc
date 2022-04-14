@@ -1,4 +1,4 @@
-custom_ingredient_breadfruitjellyitem:
+custom_food_breadfruitjelly:
   type: item
   debug: false
   material: apple

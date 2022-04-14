@@ -1,4 +1,4 @@
-custom_ingredient_guavasmoothieitem:
+custom_food_guavasmoothie:
   type: item
   debug: false
   material: apple

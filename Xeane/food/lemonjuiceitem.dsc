@@ -1,4 +1,4 @@
-custom_ingredient_lemonjuiceitem:
+custom_food_lemonjuice:
   type: item
   debug: false
   material: apple

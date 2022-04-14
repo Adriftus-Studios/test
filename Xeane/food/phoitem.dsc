@@ -12,4 +12,4 @@ custom_food_pho:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_potitem|custom_food_stock|custom_ingredient_pastaitem|custom_crop_spiceleaf|custom_ingredient_groundcinnamonitem|custom_crop_onion
+      input: custom_ingredient_potitem|custom_food_stock|custom_ingredient_pastaitem|custom_crop_spiceleaf|custom_food_groundcinnamon|custom_crop_onion

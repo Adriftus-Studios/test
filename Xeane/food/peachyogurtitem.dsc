@@ -12,4 +12,4 @@ custom_food_peachyogurt:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_crop_peach|custom_ingredient_yogurtitem
+      input: custom_ingredient_cuttingboarditem|custom_crop_peach|custom_food_yogurt

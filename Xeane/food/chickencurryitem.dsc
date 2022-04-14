@@ -12,4 +12,4 @@ custom_food_chickencurry:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_potitem|custom_crop_coconut|custom_ingredient_yogurtitem|chicken|custom_ingredient_currypowderitem|custom_crop_chilipepper|custom_crop_rice
+      input: custom_ingredient_potitem|custom_crop_coconut|custom_food_yogurt|chicken|custom_ingredient_currypowderitem|custom_crop_chilipepper|custom_crop_rice

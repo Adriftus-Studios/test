@@ -1,4 +1,4 @@
-custom_ingredient_pepperstirfryitem:
+custom_food_pepperstirfry:
   type: item
   debug: false
   material: apple

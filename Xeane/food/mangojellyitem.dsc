@@ -1,4 +1,4 @@
-custom_ingredient_mangojellyitem:
+custom_food_mangojelly:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_candleberryyogurtitem:
+custom_food_candleberryyogurt:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_candleberryyogurtitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_crop_candleberry|custom_ingredient_yogurtitem
+      input: custom_ingredient_cuttingboarditem|custom_crop_candleberry|custom_food_yogurt

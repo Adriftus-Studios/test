@@ -1,4 +1,4 @@
-custom_ingredient_creamofmushroomitem:
+custom_food_creamofmushroom:
   type: item
   debug: false
   material: apple

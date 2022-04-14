@@ -1,4 +1,4 @@
-custom_ingredient_lemonjellyitem:
+custom_food_lemonjelly:
   type: item
   debug: false
   material: apple

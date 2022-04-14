@@ -12,4 +12,4 @@ custom_food_cucumbersandwich:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|bread|custom_crop_cucumber|custom_ingredient_cheeseitem|custom_ingredient_creamitem
+      input: custom_ingredient_cuttingboarditem|bread|custom_crop_cucumber|custom_food_cheese|custom_ingredient_creamitem

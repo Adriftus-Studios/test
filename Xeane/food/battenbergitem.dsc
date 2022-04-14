@@ -12,4 +12,4 @@ custom_food_battenberg:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_ingredient_doughitem|sugar|custom_food_marzipan|custom_ingredient_apricotjellyitem|pink_dye|yellow_dye
+      input: custom_ingredient_bakewareitem|custom_ingredient_doughitem|sugar|custom_food_marzipan|custom_food_apricotjelly|pink_dye|yellow_dye

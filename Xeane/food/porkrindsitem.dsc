@@ -1,4 +1,4 @@
-custom_ingredient_porkrindsitem:
+custom_food_porkrinds:
   type: item
   debug: false
   material: apple

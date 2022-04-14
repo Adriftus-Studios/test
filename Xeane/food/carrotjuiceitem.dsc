@@ -1,4 +1,4 @@
-custom_ingredient_carrotjuiceitem:
+custom_food_carrotjuice:
   type: item
   debug: false
   material: apple

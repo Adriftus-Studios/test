@@ -1,4 +1,4 @@
-custom_ingredient_candycornitem:
+custom_food_candycorn:
   type: item
   debug: false
   material: apple

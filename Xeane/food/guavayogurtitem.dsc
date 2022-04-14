@@ -1,4 +1,4 @@
-custom_ingredient_guavayogurtitem:
+custom_food_guavayogurt:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_guavayogurtitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_crop_guava|custom_ingredient_yogurtitem
+      input: custom_ingredient_cuttingboarditem|custom_crop_guava|custom_food_yogurt

@@ -1,4 +1,4 @@
-custom_ingredient_meringueitem:
+custom_food_meringue:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_meringueitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowlitem|custom_crop_avocado/custom_crop_banana|sugar|custom_crop_lemon|custom_ingredient_cornmealitem
+      input: custom_ingredient_mixingbowlitem|custom_crop_avocado/custom_crop_banana|sugar|custom_crop_lemon|custom_food_cornmeal

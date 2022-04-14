@@ -1,4 +1,4 @@
-custom_ingredient_cantaloupejellytoastitem:
+custom_food_cantaloupejellytoast:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_cantaloupejellytoastitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_ingredient_cantaloupejellyitem|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_food_cantaloupejelly|custom_food_toast

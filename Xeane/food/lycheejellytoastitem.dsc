@@ -1,4 +1,4 @@
-custom_ingredient_lycheejellytoastitem:
+custom_food_lycheejellytoast:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_lycheejellytoastitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_ingredient_lycheejellyitem|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_food_lycheejelly|custom_food_toast

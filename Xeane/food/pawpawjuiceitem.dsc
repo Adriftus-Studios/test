@@ -1,4 +1,4 @@
-custom_ingredient_pawpawjuiceitem:
+custom_food_pawpawjuice:
   type: item
   debug: false
   material: apple

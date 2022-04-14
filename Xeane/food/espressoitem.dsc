@@ -1,4 +1,4 @@
-custom_ingredient_espressoitem:
+custom_food_espresso:
   type: item
   debug: false
   material: apple

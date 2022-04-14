@@ -1,4 +1,4 @@
-custom_ingredient_pearsmoothieitem:
+custom_food_pearsmoothie:
   type: item
   debug: false
   material: apple

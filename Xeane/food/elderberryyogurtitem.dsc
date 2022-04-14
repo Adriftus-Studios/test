@@ -1,4 +1,4 @@
-custom_ingredient_elderberryyogurtitem:
+custom_food_elderberryyogurt:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_elderberryyogurtitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_crop_elderberry|custom_ingredient_yogurtitem
+      input: custom_ingredient_cuttingboarditem|custom_crop_elderberry|custom_food_yogurt

@@ -1,4 +1,4 @@
-custom_ingredient_keylimepieitem:
+custom_food_keylimepie:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_keylimepieitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_crop_lime|custom_ingredient_meringueitem|sugar|custom_ingredient_doughitem
+      input: custom_ingredient_bakewareitem|custom_crop_lime|custom_food_meringue|sugar|custom_ingredient_doughitem

@@ -1,4 +1,4 @@
-custom_ingredient_cornedbeefandcabbageitem:
+custom_food_cornedbeefandcabbage:
   type: item
   debug: false
   material: apple

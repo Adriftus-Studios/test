@@ -1,4 +1,4 @@
-custom_ingredient_liverandonionsitem:
+custom_food_liverandonions:
   type: item
   debug: false
   material: apple

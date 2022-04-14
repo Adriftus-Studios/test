@@ -1,4 +1,4 @@
-custom_ingredient_cantaloupesmoothieitem:
+custom_food_cantaloupesmoothie:
   type: item
   debug: false
   material: apple

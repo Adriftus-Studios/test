@@ -1,4 +1,4 @@
-custom_ingredient_pepperonipizzaitem:
+custom_food_pepperonipizza:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_pepperonipizzaitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_ingredient_doughitem|custom_crop_tomato|custom_ingredient_cheeseitem|custom_food_pepperoni
+      input: custom_ingredient_bakewareitem|custom_ingredient_doughitem|custom_crop_tomato|custom_food_cheese|custom_food_pepperoni

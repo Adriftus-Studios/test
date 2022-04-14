@@ -1,4 +1,4 @@
-custom_ingredient_peaandhamsoupitem:
+custom_food_peaandhamsoup:
   type: item
   debug: false
   material: apple

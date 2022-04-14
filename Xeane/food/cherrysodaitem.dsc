@@ -1,4 +1,4 @@
-custom_ingredient_cherrysodaitem:
+custom_food_cherrysoda:
   type: item
   debug: false
   material: apple

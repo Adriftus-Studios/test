@@ -1,4 +1,4 @@
-custom_ingredient_juniperberrysmoothieitem:
+custom_food_juniperberrysmoothie:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_chickencordonbleuitem:
+custom_food_chickencordonbleu:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_chickencordonbleuitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|chicken|porkchop|custom_ingredient_flouritem|custom_ingredient_cheeseitem
+      input: custom_ingredient_bakewareitem|chicken|porkchop|custom_ingredient_flouritem|custom_food_cheese

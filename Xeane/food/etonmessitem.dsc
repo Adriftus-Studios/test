@@ -1,4 +1,4 @@
-custom_ingredient_etonmessitem:
+custom_food_etonmess:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_etonmessitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_ingredient_meringueitem|custom_ingredient_strawberryjellyitem|custom_ingredient_creamitem
+      input: custom_ingredient_cuttingboarditem|custom_food_meringue|custom_food_strawberryjelly|custom_ingredient_creamitem

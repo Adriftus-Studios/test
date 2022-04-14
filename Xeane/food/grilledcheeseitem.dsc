@@ -12,4 +12,4 @@ custom_food_grilledcheese:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skilletitem|bread|custom_ingredient_butteritem|custom_ingredient_cheeseitem
+      input: custom_ingredient_skilletitem|bread|custom_ingredient_butteritem|custom_food_cheese

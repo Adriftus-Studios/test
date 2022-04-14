@@ -1,4 +1,4 @@
-custom_ingredient_lemonlimesodaitem:
+custom_food_lemonlimesoda:
   type: item
   debug: false
   material: apple

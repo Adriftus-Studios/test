@@ -1,4 +1,4 @@
-custom_ingredient_mulberrypieitem:
+custom_food_mulberrypie:
   type: item
   debug: false
   material: apple

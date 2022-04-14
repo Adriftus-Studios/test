@@ -1,4 +1,4 @@
-custom_ingredient_passionfruitpieitem:
+custom_food_passionfruitpie:
   type: item
   debug: false
   material: apple

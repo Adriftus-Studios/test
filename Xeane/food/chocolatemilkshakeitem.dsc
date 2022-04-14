@@ -1,4 +1,4 @@
-custom_ingredient_chocolatemilkshakeitem:
+custom_food_chocolatemilkshake:
   type: item
   debug: false
   material: apple

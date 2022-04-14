@@ -1,4 +1,4 @@
-custom_ingredient_tamarindjuiceitem:
+custom_food_tamarindjuice:
   type: item
   debug: false
   material: apple

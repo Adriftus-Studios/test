@@ -1,4 +1,4 @@
-custom_ingredient_greengrapejellyitem:
+custom_food_greengrapejelly:
   type: item
   debug: false
   material: apple

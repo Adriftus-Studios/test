@@ -1,4 +1,4 @@
-custom_ingredient_apricotsmoothieitem:
+custom_food_apricotsmoothie:
   type: item
   debug: false
   material: apple

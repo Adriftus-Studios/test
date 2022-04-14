@@ -1,4 +1,4 @@
-custom_ingredient_juniperberrypieitem:
+custom_food_juniperberrypie:
   type: item
   debug: false
   material: apple

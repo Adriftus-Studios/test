@@ -1,4 +1,4 @@
-custom_ingredient_raspberrysmoothieitem:
+custom_food_raspberrysmoothie:
   type: item
   debug: false
   material: apple

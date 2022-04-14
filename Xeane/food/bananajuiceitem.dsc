@@ -1,4 +1,4 @@
-custom_ingredient_bananajuiceitem:
+custom_food_bananajuice:
   type: item
   debug: false
   material: apple

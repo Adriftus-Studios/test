@@ -12,4 +12,4 @@ custom_food_walnutraisinbread:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_crop_walnut|custom_food_raisins|custom_ingredient_doughitem|custom_ingredient_groundcinnamonitem
+      input: custom_ingredient_bakewareitem|custom_crop_walnut|custom_food_raisins|custom_ingredient_doughitem|custom_food_groundcinnamon

@@ -1,4 +1,4 @@
-custom_ingredient_fruitpunchitem:
+custom_food_fruitpunch:
   type: item
   debug: false
   material: apple

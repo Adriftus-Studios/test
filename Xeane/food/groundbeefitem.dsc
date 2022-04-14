@@ -1,4 +1,4 @@
-custom_ingredient_groundbeefitem:
+custom_food_groundbeef:
   type: item
   debug: false
   material: apple

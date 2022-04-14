@@ -1,4 +1,4 @@
-custom_ingredient_datejellytoastitem:
+custom_food_datejellytoast:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_datejellytoastitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_ingredient_datejellyitem|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_food_datejelly|custom_food_toast

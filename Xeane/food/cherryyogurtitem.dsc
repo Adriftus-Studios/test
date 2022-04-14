@@ -12,4 +12,4 @@ custom_food_cherryyogurt:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_crop_cherry|custom_ingredient_yogurtitem
+      input: custom_ingredient_cuttingboarditem|custom_crop_cherry|custom_food_yogurt

@@ -1,4 +1,4 @@
-custom_ingredient_durianyogurtitem:
+custom_food_durianyogurt:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_durianyogurtitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_crop_durian|custom_ingredient_yogurtitem
+      input: custom_ingredient_cuttingboarditem|custom_crop_durian|custom_food_yogurt

@@ -1,4 +1,4 @@
-custom_ingredient_sweetberryjuiceitem:
+custom_food_sweetberryjuice:
   type: item
   debug: false
   material: apple

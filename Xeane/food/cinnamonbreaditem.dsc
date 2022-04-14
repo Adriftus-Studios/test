@@ -12,4 +12,4 @@ custom_food_cinnamonbread:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_ingredient_doughitem|custom_ingredient_groundcinnamonitem|custom_ingredient_butteritem
+      input: custom_ingredient_bakewareitem|custom_ingredient_doughitem|custom_food_groundcinnamon|custom_ingredient_butteritem

@@ -1,4 +1,4 @@
-custom_ingredient_deluxenachoesitem:
+custom_food_deluxenachoes:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_deluxenachoesitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowlitem|custom_food_tortillachips|custom_food_salsa|custom_ingredient_cheeseitem|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_crop_chilipepper|custom_ingredient_creamitem
+      input: custom_ingredient_mixingbowlitem|custom_food_tortillachips|custom_food_salsa|custom_food_cheese|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_crop_chilipepper|custom_ingredient_creamitem

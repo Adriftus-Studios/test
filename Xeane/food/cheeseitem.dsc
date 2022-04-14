@@ -1,4 +1,4 @@
-custom_ingredient_cheeseitem:
+custom_food_cheese:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_lycheejuiceitem:
+custom_food_lycheejuice:
   type: item
   debug: false
   material: apple

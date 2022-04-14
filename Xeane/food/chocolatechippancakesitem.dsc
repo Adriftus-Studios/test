@@ -1,4 +1,4 @@
-custom_ingredient_chocolatechippancakesitem:
+custom_food_chocolatechippancakes:
   type: item
   debug: false
   material: apple

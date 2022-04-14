@@ -12,4 +12,4 @@ custom_food_cheezepuffs:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_potitem|custom_ingredient_cornmealitem|custom_ingredient_cheeseitem
+      input: custom_ingredient_potitem|custom_food_cornmeal|custom_food_cheese

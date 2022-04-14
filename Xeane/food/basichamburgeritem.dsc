@@ -1,4 +1,4 @@
-custom_ingredient_basichamburgeritem:
+custom_food_basichamburger:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_basichamburgeritem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skilletitem|custom_ingredient_groundbeefitem|custom_ingredient_mayonaiseitem|bread
+      input: custom_ingredient_skilletitem|custom_food_groundbeef|custom_ingredient_mayonaiseitem|bread

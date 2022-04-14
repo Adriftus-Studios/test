@@ -12,4 +12,4 @@ custom_food_leafychickensandwich:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_ingredient_basicchickensandwichitem|custom_crop_cabbage/custom_crop_kale/custom_crop_lettuce/custom_crop_spinach
+      input: custom_ingredient_cuttingboarditem|custom_food_basicchickensandwich|custom_crop_cabbage/custom_crop_kale/custom_crop_lettuce/custom_crop_spinach

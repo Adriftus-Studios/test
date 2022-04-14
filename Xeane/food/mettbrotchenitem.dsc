@@ -1,4 +1,4 @@
-custom_ingredient_mettbrotchenitem:
+custom_food_mettbrotchen:
   type: item
   debug: false
   material: apple

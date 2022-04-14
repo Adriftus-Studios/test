@@ -1,4 +1,4 @@
-custom_ingredient_elderberryjuiceitem:
+custom_food_elderberryjuice:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_sweetberryyogurtitem:
+custom_food_sweetberryyogurt:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_sweetberryyogurtitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_ingredient_yogurtitem|sweet_berries
+      input: custom_ingredient_cuttingboarditem|custom_food_yogurt|sweet_berries

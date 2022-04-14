@@ -1,4 +1,4 @@
-custom_ingredient_dragonfruityogurtitem:
+custom_food_dragonfruityogurt:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_dragonfruityogurtitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_crop_dragonfruit|custom_ingredient_yogurtitem
+      input: custom_ingredient_cuttingboarditem|custom_crop_dragonfruit|custom_food_yogurt

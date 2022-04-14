@@ -1,4 +1,4 @@
-custom_ingredient_rootbeersodaitem:
+custom_food_rootbeersoda:
   type: item
   debug: false
   material: apple

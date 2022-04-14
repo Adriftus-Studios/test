@@ -1,4 +1,4 @@
-custom_ingredient_misosoupitem:
+custom_food_misosoup:
   type: item
   debug: false
   material: apple

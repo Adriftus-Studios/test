@@ -1,4 +1,4 @@
-custom_ingredient_papayajellytoastitem:
+custom_food_papayajellytoast:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_papayajellytoastitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_ingredient_papayajellyitem|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_food_papayajelly|custom_food_toast

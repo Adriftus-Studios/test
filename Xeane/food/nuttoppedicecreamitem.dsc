@@ -1,4 +1,4 @@
-custom_ingredient_nuttoppedicecreamitem:
+custom_food_nuttoppedicecream:
   type: item
   debug: false
   material: apple

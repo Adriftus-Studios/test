@@ -1,4 +1,4 @@
-custom_ingredient_grapesodaitem:
+custom_food_grapesoda:
   type: item
   debug: false
   material: apple

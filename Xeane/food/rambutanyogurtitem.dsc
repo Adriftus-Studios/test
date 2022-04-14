@@ -1,4 +1,4 @@
-custom_ingredient_rambutanyogurtitem:
+custom_food_rambutanyogurt:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_rambutanyogurtitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_crop_rambutan|custom_ingredient_yogurtitem
+      input: custom_ingredient_cuttingboarditem|custom_crop_rambutan|custom_food_yogurt

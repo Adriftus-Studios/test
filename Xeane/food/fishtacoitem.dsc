@@ -12,4 +12,4 @@ custom_food_fishtaco:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|cod/salmon/tropical_fish|custom_crop_lettuce|custom_ingredient_cheeseitem|custom_food_tortilla
+      input: custom_ingredient_cuttingboarditem|cod/salmon/tropical_fish|custom_crop_lettuce|custom_food_cheese|custom_food_tortilla

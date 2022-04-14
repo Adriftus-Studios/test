@@ -1,4 +1,4 @@
-custom_ingredient_eggrollitem:
+custom_food_eggroll:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_fajitaburritoitem:
+custom_food_fajitaburrito:
   type: item
   debug: false
   material: apple

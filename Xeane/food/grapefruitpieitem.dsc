@@ -1,4 +1,4 @@
-custom_ingredient_grapefruitpieitem:
+custom_food_grapefruitpie:
   type: item
   debug: false
   material: apple

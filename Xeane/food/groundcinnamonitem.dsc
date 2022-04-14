@@ -1,4 +1,4 @@
-custom_ingredient_groundcinnamonitem:
+custom_food_groundcinnamon:
   type: item
   debug: false
   material: apple

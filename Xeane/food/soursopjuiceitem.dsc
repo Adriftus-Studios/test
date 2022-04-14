@@ -1,4 +1,4 @@
-custom_ingredient_soursopjuiceitem:
+custom_food_soursopjuice:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_cantaloupepieitem:
+custom_food_cantaloupepie:
   type: item
   debug: false
   material: apple

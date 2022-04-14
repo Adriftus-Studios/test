@@ -1,4 +1,4 @@
-custom_ingredient_pomegranatepieitem:
+custom_food_pomegranatepie:
   type: item
   debug: false
   material: apple

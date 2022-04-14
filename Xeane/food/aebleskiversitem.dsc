@@ -1,4 +1,4 @@
-custom_ingredient_aebleskiversitem:
+custom_food_aebleskivers:
   type: item
   debug: false
   material: apple

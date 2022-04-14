@@ -1,4 +1,4 @@
-custom_ingredient_kungpaochickenitem:
+custom_food_kungpaochicken:
   type: item
   debug: false
   material: apple

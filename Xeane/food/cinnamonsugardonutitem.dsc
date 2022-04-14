@@ -12,4 +12,4 @@ custom_food_cinnamonsugardonut:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_potitem|custom_ingredient_cookingoilitem|custom_ingredient_batteritem|custom_ingredient_groundcinnamonitem|sugar
+      input: custom_ingredient_potitem|custom_ingredient_cookingoilitem|custom_ingredient_batteritem|custom_food_groundcinnamon|sugar

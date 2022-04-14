@@ -1,4 +1,4 @@
-custom_ingredient_almondbutteritem:
+custom_food_almondbutter:
   type: item
   debug: false
   material: apple

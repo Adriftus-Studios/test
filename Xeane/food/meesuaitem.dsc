@@ -1,4 +1,4 @@
-custom_ingredient_meesuaitem:
+custom_food_meesua:
   type: item
   debug: false
   material: apple

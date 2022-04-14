@@ -1,4 +1,4 @@
-custom_ingredient_breadfruityogurtitem:
+custom_food_breadfruityogurt:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_breadfruityogurtitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_crop_breadfruit|custom_ingredient_yogurtitem
+      input: custom_ingredient_cuttingboarditem|custom_crop_breadfruit|custom_food_yogurt

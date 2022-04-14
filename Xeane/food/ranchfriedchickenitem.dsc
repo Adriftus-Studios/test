@@ -1,4 +1,4 @@
-custom_ingredient_ranchfriedchickenitem:
+custom_food_ranchfriedchicken:
   type: item
   debug: false
   material: apple

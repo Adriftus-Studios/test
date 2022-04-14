@@ -1,4 +1,4 @@
-custom_ingredient_durianjellyitem:
+custom_food_durianjelly:
   type: item
   debug: false
   material: apple

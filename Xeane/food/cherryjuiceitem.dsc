@@ -1,4 +1,4 @@
-custom_ingredient_cherryjuiceitem:
+custom_food_cherryjuice:
   type: item
   debug: false
   material: apple

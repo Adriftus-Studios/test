@@ -1,4 +1,4 @@
-custom_ingredient_strawberryjellytoastitem:
+custom_food_strawberryjellytoast:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_strawberryjellytoastitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_ingredient_strawberryjellyitem|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_food_strawberryjelly|custom_food_toast

@@ -12,4 +12,4 @@ custom_food_pumpkincheesecake:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|sugar|custom_ingredient_cheeseitem|pumpkin|custom_ingredient_batteritem
+      input: custom_ingredient_bakewareitem|sugar|custom_food_cheese|pumpkin|custom_ingredient_batteritem

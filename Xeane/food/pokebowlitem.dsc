@@ -1,4 +1,4 @@
-custom_ingredient_pokebowlitem:
+custom_food_pokebowl:
   type: item
   debug: false
   material: apple

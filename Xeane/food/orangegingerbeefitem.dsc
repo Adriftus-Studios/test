@@ -1,4 +1,4 @@
-custom_ingredient_orangegingerbeefitem:
+custom_food_orangegingerbeef:
   type: item
   debug: false
   material: apple

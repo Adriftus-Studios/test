@@ -1,4 +1,4 @@
-custom_ingredient_soymilkitem:
+custom_food_soymilk:
   type: item
   debug: false
   material: apple

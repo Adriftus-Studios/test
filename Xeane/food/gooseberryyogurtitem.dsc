@@ -1,4 +1,4 @@
-custom_ingredient_gooseberryyogurtitem:
+custom_food_gooseberryyogurt:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_gooseberryyogurtitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_crop_gooseberry|custom_ingredient_yogurtitem
+      input: custom_ingredient_cuttingboarditem|custom_crop_gooseberry|custom_food_yogurt

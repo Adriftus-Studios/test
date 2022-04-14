@@ -1,4 +1,4 @@
-custom_ingredient_chickennuggetitem:
+custom_food_chickennugget:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_chickennuggetitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_potitem|custom_ingredient_groundchickenitem|custom_ingredient_flouritem
+      input: custom_ingredient_potitem|custom_food_groundchicken|custom_ingredient_flouritem

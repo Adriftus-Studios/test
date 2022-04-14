@@ -12,4 +12,4 @@ custom_food_naan:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skilletitem|custom_ingredient_doughitem|custom_ingredient_yogurtitem|custom_ingredient_cookingoilitem
+      input: custom_ingredient_skilletitem|custom_ingredient_doughitem|custom_food_yogurt|custom_ingredient_cookingoilitem

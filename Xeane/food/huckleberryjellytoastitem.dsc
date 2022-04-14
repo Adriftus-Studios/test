@@ -1,4 +1,4 @@
-custom_ingredient_huckleberryjellytoastitem:
+custom_food_huckleberryjellytoast:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_huckleberryjellytoastitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_ingredient_huckleberryjellyitem|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_food_huckleberryjelly|custom_food_toast

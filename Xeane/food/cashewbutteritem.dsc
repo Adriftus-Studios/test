@@ -1,4 +1,4 @@
-custom_ingredient_cashewbutteritem:
+custom_food_cashewbutter:
   type: item
   debug: false
   material: apple

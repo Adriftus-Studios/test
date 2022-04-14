@@ -1,4 +1,4 @@
-custom_ingredient_earlgreyteaitem:
+custom_food_earlgreytea:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_blueberrysmoothieitem:
+custom_food_blueberrysmoothie:
   type: item
   debug: false
   material: apple

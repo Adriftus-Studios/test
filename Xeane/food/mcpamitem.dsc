@@ -12,4 +12,4 @@ custom_food_mcpam:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skilletitem|custom_ingredient_groundbeefitem|custom_crop_lettuce|custom_crop_onion|custom_ingredient_relishitem|custom_ingredient_mayonaiseitem|bread
+      input: custom_ingredient_skilletitem|custom_food_groundbeef|custom_crop_lettuce|custom_crop_onion|custom_ingredient_relishitem|custom_ingredient_mayonaiseitem|bread

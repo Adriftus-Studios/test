@@ -1,4 +1,4 @@
-custom_ingredient_pawpawpieitem:
+custom_food_pawpawpie:
   type: item
   debug: false
   material: apple

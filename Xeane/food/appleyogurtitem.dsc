@@ -12,4 +12,4 @@ custom_food_appleyogurt:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_ingredient_yogurtitem|apple
+      input: custom_ingredient_cuttingboarditem|custom_food_yogurt|apple

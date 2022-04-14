@@ -1,4 +1,4 @@
-custom_ingredient_mashedpotatoeschickenbiscuititem:
+custom_food_mashedpotatoeschickenbiscuit:
   type: item
   debug: false
   material: apple

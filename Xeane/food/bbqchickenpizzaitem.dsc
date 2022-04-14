@@ -12,4 +12,4 @@ custom_food_bbqchickenpizza:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|chicken|custom_food_bbqsauce|custom_crop_onion|custom_ingredient_cheeseitem|custom_ingredient_doughitem
+      input: custom_ingredient_bakewareitem|chicken|custom_food_bbqsauce|custom_crop_onion|custom_food_cheese|custom_ingredient_doughitem

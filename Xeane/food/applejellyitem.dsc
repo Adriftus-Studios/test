@@ -1,4 +1,4 @@
-custom_ingredient_applejellyitem:
+custom_food_applejelly:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_applejellyitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepanitem|custom_ingredient_applejuiceitem|sugar
+      input: custom_ingredient_saucepanitem|custom_food_applejuice|sugar

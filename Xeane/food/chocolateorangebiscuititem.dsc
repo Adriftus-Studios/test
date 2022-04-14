@@ -1,4 +1,4 @@
-custom_ingredient_chocolateorangebiscuititem:
+custom_food_chocolateorangebiscuit:
   type: item
   debug: false
   material: apple

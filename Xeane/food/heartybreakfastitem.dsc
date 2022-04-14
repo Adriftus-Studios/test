@@ -12,4 +12,4 @@ custom_food_heartybreakfast:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skilletitem|porkchop|custom_food_boiledegg|custom_food_toast|custom_food_potatocakes|custom_ingredient_chocolatemilkitem
+      input: custom_ingredient_skilletitem|porkchop|custom_food_boiledegg|custom_food_toast|custom_food_potatocakes|custom_food_chocolatemilk

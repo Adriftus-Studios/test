@@ -1,4 +1,4 @@
-custom_ingredient_chocolatepeanutbaritem:
+custom_food_chocolatepeanutbar:
   type: item
   debug: false
   material: apple

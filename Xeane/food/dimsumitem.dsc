@@ -1,4 +1,4 @@
-custom_ingredient_dimsumitem:
+custom_food_dimsum:
   type: item
   debug: false
   material: apple

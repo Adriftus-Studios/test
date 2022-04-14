@@ -1,4 +1,4 @@
-custom_ingredient_nachoesitem:
+custom_food_nachoes:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_nachoesitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_food_tortillachips|custom_ingredient_cheeseitem
+      input: custom_ingredient_cuttingboarditem|custom_food_tortillachips|custom_food_cheese

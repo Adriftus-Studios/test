@@ -1,4 +1,4 @@
-custom_ingredient_glowberryjellytoastitem:
+custom_food_glowberryjellytoast:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_glowberryjellytoastitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_food_toast|custom_ingredient_glowberryjellyitem
+      input: custom_ingredient_cuttingboarditem|custom_food_toast|custom_food_glowberryjelly

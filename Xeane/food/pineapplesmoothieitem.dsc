@@ -1,4 +1,4 @@
-custom_ingredient_pineapplesmoothieitem:
+custom_food_pineapplesmoothie:
   type: item
   debug: false
   material: apple

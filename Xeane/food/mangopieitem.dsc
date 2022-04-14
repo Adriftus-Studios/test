@@ -1,4 +1,4 @@
-custom_ingredient_mangopieitem:
+custom_food_mangopie:
   type: item
   debug: false
   material: apple

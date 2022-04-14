@@ -12,4 +12,4 @@ custom_food_sweetpotatopie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_crop_sweetpotato|custom_ingredient_doughitem|custom_ingredient_groundcinnamonitem|custom_ingredient_marshmellowsitem
+      input: custom_ingredient_bakewareitem|custom_crop_sweetpotato|custom_ingredient_doughitem|custom_food_groundcinnamon|custom_food_marshmellows

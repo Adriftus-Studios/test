@@ -1,4 +1,4 @@
-custom_ingredient_passionfruitjellyitem:
+custom_food_passionfruitjelly:
   type: item
   debug: false
   material: apple

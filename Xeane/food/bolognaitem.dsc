@@ -12,4 +12,4 @@ custom_food_bologna:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_ingredient_groundbeefitem|custom_ingredient_groundporkitem|custom_crop_onion|custom_crop_garlic|sugar|custom_ingredient_saltitem
+      input: custom_ingredient_cuttingboarditem|custom_food_groundbeef|custom_food_groundpork|custom_crop_onion|custom_crop_garlic|sugar|custom_ingredient_saltitem

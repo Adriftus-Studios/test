@@ -1,4 +1,4 @@
-custom_ingredient_pumpkincupcakeitem:
+custom_food_pumpkincupcake:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_cantaloupejellyitem:
+custom_food_cantaloupejelly:
   type: item
   debug: false
   material: apple

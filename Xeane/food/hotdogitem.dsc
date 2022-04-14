@@ -1,4 +1,4 @@
-custom_ingredient_hotdogitem:
+custom_food_hotdog:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_hotdogitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_ingredient_groundporkitem|bread|custom_ingredient_mayonaiseitem
+      input: custom_ingredient_cuttingboarditem|custom_food_groundpork|bread|custom_ingredient_mayonaiseitem

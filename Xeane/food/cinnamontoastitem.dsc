@@ -12,4 +12,4 @@ custom_food_cinnamontoast:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|bread|custom_ingredient_groundcinnamonitem|sugar|custom_ingredient_butteritem
+      input: custom_ingredient_bakewareitem|bread|custom_food_groundcinnamon|sugar|custom_ingredient_butteritem

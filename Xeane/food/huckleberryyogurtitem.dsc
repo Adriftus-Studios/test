@@ -1,4 +1,4 @@
-custom_ingredient_huckleberryyogurtitem:
+custom_food_huckleberryyogurt:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_huckleberryyogurtitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_crop_huckleberry|custom_ingredient_yogurtitem
+      input: custom_ingredient_cuttingboarditem|custom_crop_huckleberry|custom_food_yogurt

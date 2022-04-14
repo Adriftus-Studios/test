@@ -1,4 +1,4 @@
-custom_ingredient_neapolitanicecreamitem:
+custom_food_neapolitanicecream:
   type: item
   debug: false
   material: apple

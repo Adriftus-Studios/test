@@ -1,4 +1,4 @@
-custom_ingredient_huckleberrypieitem:
+custom_food_huckleberrypie:
   type: item
   debug: false
   material: apple

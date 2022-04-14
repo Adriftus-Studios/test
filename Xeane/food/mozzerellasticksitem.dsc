@@ -1,4 +1,4 @@
-custom_ingredient_mozzerellasticksitem:
+custom_food_mozzerellasticks:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_mozzerellasticksitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_potitem|custom_ingredient_cookingoilitem|custom_ingredient_cheeseitem|custom_ingredient_batteritem
+      input: custom_ingredient_potitem|custom_ingredient_cookingoilitem|custom_food_cheese|custom_ingredient_batteritem

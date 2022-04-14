@@ -1,4 +1,4 @@
-custom_ingredient_blackberryjuiceitem:
+custom_food_blackberryjuice:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_groundfishitem:
+custom_food_groundfish:
   type: item
   debug: false
   material: apple

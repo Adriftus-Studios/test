@@ -1,4 +1,4 @@
-custom_ingredient_museliitem:
+custom_food_museli:
   type: item
   debug: false
   material: apple

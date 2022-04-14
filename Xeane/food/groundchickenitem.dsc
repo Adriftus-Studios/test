@@ -1,4 +1,4 @@
-custom_ingredient_groundchickenitem:
+custom_food_groundchicken:
   type: item
   debug: false
   material: apple

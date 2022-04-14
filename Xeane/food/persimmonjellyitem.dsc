@@ -1,4 +1,4 @@
-custom_ingredient_persimmonjellyitem:
+custom_food_persimmonjelly:
   type: item
   debug: false
   material: apple

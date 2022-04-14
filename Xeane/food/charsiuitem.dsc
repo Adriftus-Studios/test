@@ -1,4 +1,4 @@
-custom_ingredient_charsiuitem:
+custom_food_charsiu:
   type: item
   debug: false
   material: apple

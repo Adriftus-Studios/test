@@ -1,4 +1,4 @@
-custom_ingredient_avocadotoastitem:
+custom_food_avocadotoast:
   type: item
   debug: false
   material: apple

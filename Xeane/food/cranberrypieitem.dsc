@@ -1,4 +1,4 @@
-custom_ingredient_cranberrypieitem:
+custom_food_cranberrypie:
   type: item
   debug: false
   material: apple

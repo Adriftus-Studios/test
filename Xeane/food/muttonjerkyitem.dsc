@@ -1,4 +1,4 @@
-custom_ingredient_muttonjerkyitem:
+custom_food_muttonjerky:
   type: item
   debug: false
   material: apple

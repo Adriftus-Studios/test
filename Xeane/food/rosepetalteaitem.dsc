@@ -1,4 +1,4 @@
-custom_ingredient_rosepetalteaitem:
+custom_food_rosepetaltea:
   type: item
   debug: false
   material: apple

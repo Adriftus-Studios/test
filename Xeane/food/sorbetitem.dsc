@@ -1,4 +1,4 @@
-custom_ingredient_sorbetitem:
+custom_food_sorbet:
   type: item
   debug: false
   material: apple

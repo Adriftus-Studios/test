@@ -1,4 +1,4 @@
-custom_ingredient_energydrinkitem:
+custom_food_energydrink:
   type: item
   debug: false
   material: apple

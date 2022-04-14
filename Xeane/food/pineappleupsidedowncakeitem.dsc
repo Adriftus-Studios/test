@@ -1,4 +1,4 @@
-custom_ingredient_pineappleupsidedowncakeitem:
+custom_food_pineappleupsidedowncake:
   type: item
   debug: false
   material: apple

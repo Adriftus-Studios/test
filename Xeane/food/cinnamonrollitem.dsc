@@ -12,4 +12,4 @@ custom_food_cinnamonroll:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_ingredient_groundcinnamonitem|sugar|custom_ingredient_doughitem
+      input: custom_ingredient_bakewareitem|custom_food_groundcinnamon|sugar|custom_ingredient_doughitem

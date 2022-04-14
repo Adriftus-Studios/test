@@ -1,4 +1,4 @@
-custom_ingredient_rambutanjellyitem:
+custom_food_rambutanjelly:
   type: item
   debug: false
   material: apple

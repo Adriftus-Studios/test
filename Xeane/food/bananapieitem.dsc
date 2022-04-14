@@ -1,4 +1,4 @@
-custom_ingredient_bananapieitem:
+custom_food_bananapie:
   type: item
   debug: false
   material: apple

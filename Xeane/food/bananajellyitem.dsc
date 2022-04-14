@@ -1,4 +1,4 @@
-custom_ingredient_bananajellyitem:
+custom_food_bananajelly:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_honeysandwichitem:
+custom_food_honeysandwich:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_honeysandwichitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_ingredient_almondbutteritem/custom_ingredient_cashewbutteritem/custom_ingredient_chestnutbutteritem/custom_ingredient_hazelnutbutteritem/custom_ingredient_peanutbutteritem/custom_ingredient_pecanbutteritem/custom_ingredient_pistachiobutteritem/custom_ingredient_walnutbutteritem|honey_bottle|bread
+      input: custom_ingredient_cuttingboarditem|custom_food_almondbutter/custom_food_cashewbutter/custom_food_chestnutbutter/custom_food_hazelnutbutter/custom_food_peanutbutter/custom_food_pecanbutter/custom_food_pistachiobutter/custom_food_walnutbutter|honey_bottle|bread

@@ -1,4 +1,4 @@
-custom_ingredient_chickenjerkyitem:
+custom_food_chickenjerky:
   type: item
   debug: false
   material: apple

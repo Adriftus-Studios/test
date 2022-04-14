@@ -12,4 +12,4 @@ custom_food_asparagusquiche:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skilletitem|custom_crop_asparagus|custom_crop_avocado/custom_crop_banana|custom_crop_onion|custom_ingredient_cheeseitem
+      input: custom_ingredient_skilletitem|custom_crop_asparagus|custom_crop_avocado/custom_crop_banana|custom_crop_onion|custom_food_cheese

@@ -1,4 +1,4 @@
-custom_ingredient_peachjellyitem:
+custom_food_peachjelly:
   type: item
   debug: false
   material: apple

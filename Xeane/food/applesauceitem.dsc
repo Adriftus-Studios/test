@@ -1,4 +1,4 @@
-custom_ingredient_applesauceitem:
+custom_food_applesauce:
   type: item
   debug: false
   material: apple

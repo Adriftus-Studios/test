@@ -12,4 +12,4 @@ custom_food_baklava:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_ingredient_doughitem|custom_crop_walnut|custom_ingredient_groundcinnamonitem|custom_ingredient_butteritem|sugar
+      input: custom_ingredient_bakewareitem|custom_ingredient_doughitem|custom_crop_walnut|custom_food_groundcinnamon|custom_ingredient_butteritem|sugar

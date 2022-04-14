@@ -1,4 +1,4 @@
-custom_ingredient_datepieitem:
+custom_food_datepie:
   type: item
   debug: false
   material: apple

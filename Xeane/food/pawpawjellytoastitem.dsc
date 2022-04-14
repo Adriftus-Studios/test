@@ -1,4 +1,4 @@
-custom_ingredient_pawpawjellytoastitem:
+custom_food_pawpawjellytoast:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_pawpawjellytoastitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_ingredient_pawpawjellyitem|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_food_pawpawjelly|custom_food_toast

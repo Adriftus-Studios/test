@@ -1,4 +1,4 @@
-custom_ingredient_apricotjellytoastitem:
+custom_food_apricotjellytoast:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_apricotjellytoastitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_ingredient_apricotjellyitem|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_food_apricotjelly|custom_food_toast

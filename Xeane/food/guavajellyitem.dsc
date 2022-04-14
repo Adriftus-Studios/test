@@ -1,4 +1,4 @@
-custom_ingredient_guavajellyitem:
+custom_food_guavajelly:
   type: item
   debug: false
   material: apple

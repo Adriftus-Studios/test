@@ -1,4 +1,4 @@
-custom_ingredient_mushroomketchupitem:
+custom_food_mushroomketchup:
   type: item
   debug: false
   material: apple

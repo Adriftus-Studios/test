@@ -1,4 +1,4 @@
-custom_ingredient_futomakiitem:
+custom_food_futomaki:
   type: item
   debug: false
   material: apple

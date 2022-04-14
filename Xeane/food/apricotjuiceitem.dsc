@@ -1,4 +1,4 @@
-custom_ingredient_apricotjuiceitem:
+custom_food_apricotjuice:
   type: item
   debug: false
   material: apple

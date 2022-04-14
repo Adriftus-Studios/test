@@ -1,4 +1,4 @@
-custom_ingredient_kiwijellyitem:
+custom_food_kiwijelly:
   type: item
   debug: false
   material: apple

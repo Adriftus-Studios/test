@@ -1,4 +1,4 @@
-custom_ingredient_onionringsitem:
+custom_food_onionrings:
   type: item
   debug: false
   material: apple

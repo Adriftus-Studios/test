@@ -1,4 +1,4 @@
-custom_ingredient_pomegranatesmoothieitem:
+custom_food_pomegranatesmoothie:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_soursopjellytoastitem:
+custom_food_soursopjellytoast:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_soursopjellytoastitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_ingredient_soursopjellyitem|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_food_soursopjelly|custom_food_toast

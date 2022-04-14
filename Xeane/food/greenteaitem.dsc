@@ -1,4 +1,4 @@
-custom_ingredient_greenteaitem:
+custom_food_greentea:
   type: item
   debug: false
   material: apple

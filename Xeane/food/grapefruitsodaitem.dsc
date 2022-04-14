@@ -1,4 +1,4 @@
-custom_ingredient_grapefruitsodaitem:
+custom_food_grapefruitsoda:
   type: item
   debug: false
   material: apple

@@ -12,4 +12,4 @@ custom_food_zestyzucchini:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_crop_zucchini|custom_ingredient_pastaitem|custom_crop_chilipepper|custom_crop_garlic|custom_ingredient_cheeseitem
+      input: custom_ingredient_bakewareitem|custom_crop_zucchini|custom_ingredient_pastaitem|custom_crop_chilipepper|custom_crop_garlic|custom_food_cheese

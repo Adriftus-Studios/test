@@ -1,4 +1,4 @@
-custom_ingredient_pistachiobutteritem:
+custom_food_pistachiobutter:
   type: item
   debug: false
   material: apple

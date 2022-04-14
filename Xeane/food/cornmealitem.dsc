@@ -1,4 +1,4 @@
-custom_ingredient_cornmealitem:
+custom_food_cornmeal:
   type: item
   debug: false
   material: apple

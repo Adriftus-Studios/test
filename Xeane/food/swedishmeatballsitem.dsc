@@ -12,4 +12,4 @@ custom_food_swedishmeatballs:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepanitem|custom_ingredient_groundbeefitem|custom_ingredient_flouritem|custom_crop_spiceleaf|custom_ingredient_groundnutmegitem|custom_ingredient_creamitem|custom_ingredient_blackpepperitem|custom_crop_onion|custom_crop_avocado/custom_crop_banana
+      input: custom_ingredient_saucepanitem|custom_food_groundbeef|custom_ingredient_flouritem|custom_crop_spiceleaf|custom_ingredient_groundnutmegitem|custom_ingredient_creamitem|custom_ingredient_blackpepperitem|custom_crop_onion|custom_crop_avocado/custom_crop_banana

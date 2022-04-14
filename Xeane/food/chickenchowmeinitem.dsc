@@ -1,4 +1,4 @@
-custom_ingredient_chickenchowmeinitem:
+custom_food_chickenchowmein:
   type: item
   debug: false
   material: apple

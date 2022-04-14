@@ -1,4 +1,4 @@
-custom_ingredient_ploughmanslunchitem:
+custom_food_ploughmanslunch:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_ploughmanslunchitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|bread|apple|custom_ingredient_cheeseitem|custom_food_sweetpickle|custom_crop_onion|porkchop|custom_food_boiledegg
+      input: custom_ingredient_cuttingboarditem|bread|apple|custom_food_cheese|custom_food_sweetpickle|custom_crop_onion|porkchop|custom_food_boiledegg

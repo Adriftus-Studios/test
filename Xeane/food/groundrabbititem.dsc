@@ -1,4 +1,4 @@
-custom_ingredient_groundrabbititem:
+custom_food_groundrabbit:
   type: item
   debug: false
   material: apple

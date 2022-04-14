@@ -1,4 +1,4 @@
-custom_ingredient_lemonaideitem:
+custom_food_lemonaide:
   type: item
   debug: false
   material: apple

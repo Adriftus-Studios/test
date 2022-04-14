@@ -1,4 +1,4 @@
-custom_ingredient_cactusfruitjellyitem:
+custom_food_cactusfruitjelly:
   type: item
   debug: false
   material: apple

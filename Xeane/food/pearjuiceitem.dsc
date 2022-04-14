@@ -1,4 +1,4 @@
-custom_ingredient_pearjuiceitem:
+custom_food_pearjuice:
   type: item
   debug: false
   material: apple

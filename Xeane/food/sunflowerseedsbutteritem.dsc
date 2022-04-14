@@ -1,4 +1,4 @@
-custom_ingredient_sunflowerseedsbutteritem:
+custom_food_sunflowerseedsbutter:
   type: item
   debug: false
   material: apple

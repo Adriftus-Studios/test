@@ -1,4 +1,4 @@
-custom_ingredient_plumjuiceitem:
+custom_food_plumjuice:
   type: item
   debug: false
   material: apple

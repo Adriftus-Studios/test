@@ -12,4 +12,4 @@ custom_food_smores:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_food_cracker|custom_ingredient_marshmellowsitem|custom_food_chocolatebar
+      input: custom_ingredient_bakewareitem|custom_food_cracker|custom_food_marshmellows|custom_food_chocolatebar

@@ -1,4 +1,4 @@
-custom_ingredient_grilledskewersitem:
+custom_food_grilledskewers:
   type: item
   debug: false
   material: apple

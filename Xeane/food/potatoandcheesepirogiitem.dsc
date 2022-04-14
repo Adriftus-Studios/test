@@ -1,4 +1,4 @@
-custom_ingredient_potatoandcheesepirogiitem:
+custom_food_potatoandcheesepirogi:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_potatoandcheesepirogiitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skilletitem|custom_ingredient_doughitem|potato|custom_ingredient_cheeseitem
+      input: custom_ingredient_skilletitem|custom_ingredient_doughitem|potato|custom_food_cheese

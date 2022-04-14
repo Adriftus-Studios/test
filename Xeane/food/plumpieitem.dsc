@@ -1,4 +1,4 @@
-custom_ingredient_plumpieitem:
+custom_food_plumpie:
   type: item
   debug: false
   material: apple

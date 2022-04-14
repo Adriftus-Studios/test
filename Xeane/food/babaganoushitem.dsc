@@ -1,4 +1,4 @@
-custom_ingredient_babaganoushitem:
+custom_food_babaganoush:
   type: item
   debug: false
   material: apple

@@ -12,4 +12,4 @@ custom_food_meringuebombe:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_ingredient_meringueitem|custom_ingredient_batteritem|sugar|custom_food_icecream/custom_food_chocolateicecream/custom_food_caramelicecream|custom_crop_cherry
+      input: custom_ingredient_bakewareitem|custom_food_meringue|custom_ingredient_batteritem|sugar|custom_food_icecream/custom_food_chocolateicecream/custom_food_caramelicecream|custom_crop_cherry

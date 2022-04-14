@@ -1,4 +1,4 @@
-custom_ingredient_basicchickensandwichitem:
+custom_food_basicchickensandwich:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_basicchickensandwichitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skilletitem|custom_ingredient_groundchickenitem|custom_ingredient_mayonaiseitem|bread
+      input: custom_ingredient_skilletitem|custom_food_groundchicken|custom_ingredient_mayonaiseitem|bread

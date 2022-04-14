@@ -1,4 +1,4 @@
-custom_ingredient_greengrapeyogurtitem:
+custom_food_greengrapeyogurt:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_greengrapeyogurtitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_crop_greengrape|custom_ingredient_yogurtitem
+      input: custom_ingredient_cuttingboarditem|custom_crop_greengrape|custom_food_yogurt

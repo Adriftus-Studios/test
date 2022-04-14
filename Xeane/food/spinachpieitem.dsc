@@ -12,4 +12,4 @@ custom_food_spinachpie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_ingredient_doughitem|custom_crop_spinach|custom_ingredient_cheeseitem
+      input: custom_ingredient_bakewareitem|custom_ingredient_doughitem|custom_crop_spinach|custom_food_cheese

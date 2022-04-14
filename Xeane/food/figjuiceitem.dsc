@@ -1,4 +1,4 @@
-custom_ingredient_figjuiceitem:
+custom_food_figjuice:
   type: item
   debug: false
   material: apple

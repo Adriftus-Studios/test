@@ -1,4 +1,4 @@
-custom_ingredient_saucedlambkebabitem:
+custom_food_saucedlambkebab:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_saucedlambkebabitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowlitem|custom_food_lambkebab|custom_ingredient_yogurtitem
+      input: custom_ingredient_mixingbowlitem|custom_food_lambkebab|custom_food_yogurt

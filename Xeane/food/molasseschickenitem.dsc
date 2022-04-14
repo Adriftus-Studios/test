@@ -1,4 +1,4 @@
-custom_ingredient_molasseschickenitem:
+custom_food_molasseschicken:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_coffeeconlecheitem:
+custom_food_coffeeconleche:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_coffeeconlecheitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_potitem|custom_ingredient_espressoitem|milk_bucket/custom_ingredient_freshmilkitem|custom_ingredient_groundcinnamonitem
+      input: custom_ingredient_potitem|custom_food_espresso|milk_bucket/custom_ingredient_freshmilkitem|custom_food_groundcinnamon

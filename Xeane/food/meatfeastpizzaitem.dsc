@@ -12,4 +12,4 @@ custom_food_meatfeastpizza:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_ingredient_doughitem|custom_crop_tomato|custom_ingredient_cheeseitem|custom_food_pepperoni|custom_food_sausage|beef|chicken
+      input: custom_ingredient_bakewareitem|custom_ingredient_doughitem|custom_crop_tomato|custom_food_cheese|custom_food_pepperoni|custom_food_sausage|beef|chicken

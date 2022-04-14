@@ -12,4 +12,4 @@ custom_food_frenchtoast:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skilletitem|bread|custom_crop_avocado/custom_crop_banana|custom_ingredient_groundcinnamonitem|milk_bucket/custom_ingredient_freshmilkitem
+      input: custom_ingredient_skilletitem|bread|custom_crop_avocado/custom_crop_banana|custom_food_groundcinnamon|milk_bucket/custom_ingredient_freshmilkitem

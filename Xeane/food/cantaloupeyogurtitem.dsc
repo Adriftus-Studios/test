@@ -1,4 +1,4 @@
-custom_ingredient_cantaloupeyogurtitem:
+custom_food_cantaloupeyogurt:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_cantaloupeyogurtitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_crop_cantaloupe|custom_ingredient_yogurtitem
+      input: custom_ingredient_cuttingboarditem|custom_crop_cantaloupe|custom_food_yogurt

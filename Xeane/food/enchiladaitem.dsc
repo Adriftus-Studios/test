@@ -12,4 +12,4 @@ custom_food_enchilada:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_food_tortilla|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_crop_tomato|custom_crop_chilipepper|custom_crop_garlic|custom_ingredient_cheeseitem|custom_crop_spiceleaf
+      input: custom_ingredient_bakewareitem|custom_food_tortilla|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_crop_tomato|custom_crop_chilipepper|custom_crop_garlic|custom_food_cheese|custom_crop_spiceleaf

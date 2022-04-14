@@ -1,4 +1,4 @@
-custom_ingredient_bananasmoothieitem:
+custom_food_bananasmoothie:
   type: item
   debug: false
   material: apple

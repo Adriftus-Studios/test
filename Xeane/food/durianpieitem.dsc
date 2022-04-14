@@ -1,4 +1,4 @@
-custom_ingredient_durianpieitem:
+custom_food_durianpie:
   type: item
   debug: false
   material: apple

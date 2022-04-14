@@ -1,4 +1,4 @@
-custom_ingredient_groundporkitem:
+custom_food_groundpork:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_limesmoothieitem:
+custom_food_limesmoothie:
   type: item
   debug: false
   material: apple

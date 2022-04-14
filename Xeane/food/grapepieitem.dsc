@@ -1,4 +1,4 @@
-custom_ingredient_grapepieitem:
+custom_food_grapepie:
   type: item
   debug: false
   material: apple

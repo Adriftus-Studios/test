@@ -1,4 +1,4 @@
-custom_ingredient_breadfruitpieitem:
+custom_food_breadfruitpie:
   type: item
   debug: false
   material: apple

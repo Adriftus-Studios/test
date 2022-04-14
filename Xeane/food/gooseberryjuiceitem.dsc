@@ -1,4 +1,4 @@
-custom_ingredient_gooseberryjuiceitem:
+custom_food_gooseberryjuice:
   type: item
   debug: false
   material: apple

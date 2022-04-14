@@ -12,4 +12,4 @@ custom_food_friedbolognasandwich:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|bread|custom_food_bologna|custom_ingredient_cheeseitem
+      input: custom_ingredient_cuttingboarditem|bread|custom_food_bologna|custom_food_cheese

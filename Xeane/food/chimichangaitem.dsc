@@ -12,4 +12,4 @@ custom_food_chimichanga:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_potitem|beef|custom_crop_lettuce|custom_food_tortilla|custom_crop_rice|custom_ingredient_cheeseitem|custom_food_salsa|custom_ingredient_creamitem|custom_ingredient_cookingoilitem
+      input: custom_ingredient_potitem|beef|custom_crop_lettuce|custom_food_tortilla|custom_crop_rice|custom_food_cheese|custom_food_salsa|custom_ingredient_creamitem|custom_ingredient_cookingoilitem

@@ -1,4 +1,4 @@
-custom_ingredient_bakedvegetablemedlyitem:
+custom_food_bakedvegetablemedly:
   type: item
   debug: false
   material: apple

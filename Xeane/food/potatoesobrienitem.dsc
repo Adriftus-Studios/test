@@ -1,4 +1,4 @@
-custom_ingredient_potatoesobrienitem:
+custom_food_potatoesobrien:
   type: item
   debug: false
   material: apple

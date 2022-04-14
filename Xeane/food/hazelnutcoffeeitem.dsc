@@ -1,4 +1,4 @@
-custom_ingredient_hazelnutcoffeeitem:
+custom_food_hazelnutcoffee:
   type: item
   debug: false
   material: apple

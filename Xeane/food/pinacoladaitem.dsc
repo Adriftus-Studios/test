@@ -1,4 +1,4 @@
-custom_ingredient_pinacoladaitem:
+custom_food_pinacolada:
   type: item
   debug: false
   material: apple

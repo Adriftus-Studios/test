@@ -1,4 +1,4 @@
-custom_ingredient_guisoitem:
+custom_food_guiso:
   type: item
   debug: false
   material: apple

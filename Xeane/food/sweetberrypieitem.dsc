@@ -1,4 +1,4 @@
-custom_ingredient_sweetberrypieitem:
+custom_food_sweetberrypie:
   type: item
   debug: false
   material: apple

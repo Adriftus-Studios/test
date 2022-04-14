@@ -1,4 +1,4 @@
-custom_ingredient_chickenalfredoitem:
+custom_food_chickenalfredo:
   type: item
   debug: false
   material: apple

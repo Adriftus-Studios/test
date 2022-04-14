@@ -12,4 +12,4 @@ custom_food_eggplantparm:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_crop_eggplant|custom_crop_tomato|custom_ingredient_pastaitem|custom_ingredient_cheeseitem
+      input: custom_ingredient_bakewareitem|custom_crop_eggplant|custom_crop_tomato|custom_ingredient_pastaitem|custom_food_cheese

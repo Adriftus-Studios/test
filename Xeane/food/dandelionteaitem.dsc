@@ -1,4 +1,4 @@
-custom_ingredient_dandelionteaitem:
+custom_food_dandeliontea:
   type: item
   debug: false
   material: apple

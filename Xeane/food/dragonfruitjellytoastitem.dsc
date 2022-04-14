@@ -1,4 +1,4 @@
-custom_ingredient_dragonfruitjellytoastitem:
+custom_food_dragonfruitjellytoast:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_dragonfruitjellytoastitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_ingredient_dragonfruitjellyitem|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_food_dragonfruitjelly|custom_food_toast

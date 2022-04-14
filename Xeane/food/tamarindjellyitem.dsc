@@ -1,4 +1,4 @@
-custom_ingredient_tamarindjellyitem:
+custom_food_tamarindjelly:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_kiwipieitem:
+custom_food_kiwipie:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_guavapieitem:
+custom_food_guavapie:
   type: item
   debug: false
   material: apple

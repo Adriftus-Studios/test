@@ -1,4 +1,4 @@
-custom_ingredient_papayasmoothieitem:
+custom_food_papayasmoothie:
   type: item
   debug: false
   material: apple

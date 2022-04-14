@@ -1,4 +1,4 @@
-custom_ingredient_fishcakesitem:
+custom_food_fishcakes:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_fishcakesitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_ingredient_groundfishitem|custom_crop_avocado/custom_crop_banana|custom_food_toast|custom_crop_scallion
+      input: custom_ingredient_bakewareitem|custom_food_groundfish|custom_crop_avocado/custom_crop_banana|custom_food_toast|custom_crop_scallion

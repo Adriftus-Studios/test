@@ -1,4 +1,4 @@
-custom_ingredient_eggnogitem:
+custom_food_eggnog:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_eggnogitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowlitem|custom_crop_avocado/custom_crop_banana|custom_ingredient_groundnutmegitem|custom_ingredient_groundcinnamonitem|custom_ingredient_creamitem
+      input: custom_ingredient_mixingbowlitem|custom_crop_avocado/custom_crop_banana|custom_ingredient_groundnutmegitem|custom_food_groundcinnamon|custom_ingredient_creamitem

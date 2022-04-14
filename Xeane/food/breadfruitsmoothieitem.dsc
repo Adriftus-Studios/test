@@ -1,4 +1,4 @@
-custom_ingredient_breadfruitsmoothieitem:
+custom_food_breadfruitsmoothie:
   type: item
   debug: false
   material: apple

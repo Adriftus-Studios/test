@@ -12,4 +12,4 @@ custom_food_gourmetmuttonpatty:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowlitem|custom_ingredient_groundmuttonitem|custom_ingredient_saltandpepperitem|custom_crop_spiceleaf|custom_crop_mustard
+      input: custom_ingredient_mixingbowlitem|custom_food_groundmutton|custom_ingredient_saltandpepperitem|custom_crop_spiceleaf|custom_crop_mustard

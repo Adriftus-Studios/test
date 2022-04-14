@@ -1,4 +1,4 @@
-custom_ingredient_lemonsmoothieitem:
+custom_food_lemonsmoothie:
   type: item
   debug: false
   material: apple

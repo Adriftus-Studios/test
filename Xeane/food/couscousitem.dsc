@@ -1,4 +1,4 @@
-custom_ingredient_couscousitem:
+custom_food_couscous:
   type: item
   debug: false
   material: apple

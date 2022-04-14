@@ -1,4 +1,4 @@
-custom_ingredient_rouxitem:
+custom_food_roux:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_starfruitpieitem:
+custom_food_starfruitpie:
   type: item
   debug: false
   material: apple

@@ -12,4 +12,4 @@ custom_food_chilipoppers:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_crop_chilipepper|custom_ingredient_batteritem|custom_ingredient_cheeseitem
+      input: custom_ingredient_bakewareitem|custom_crop_chilipepper|custom_ingredient_batteritem|custom_food_cheese

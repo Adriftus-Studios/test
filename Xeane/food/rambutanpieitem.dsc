@@ -1,4 +1,4 @@
-custom_ingredient_rambutanpieitem:
+custom_food_rambutanpie:
   type: item
   debug: false
   material: apple

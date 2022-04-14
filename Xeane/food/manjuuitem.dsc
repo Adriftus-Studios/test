@@ -1,4 +1,4 @@
-custom_ingredient_manjuuitem:
+custom_food_manjuu:
   type: item
   debug: false
   material: apple

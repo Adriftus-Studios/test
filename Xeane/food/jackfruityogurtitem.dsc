@@ -1,4 +1,4 @@
-custom_ingredient_jackfruityogurtitem:
+custom_food_jackfruityogurt:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_jackfruityogurtitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_crop_jackfruit|custom_ingredient_yogurtitem
+      input: custom_ingredient_cuttingboarditem|custom_crop_jackfruit|custom_food_yogurt

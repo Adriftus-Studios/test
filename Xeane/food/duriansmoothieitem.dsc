@@ -1,4 +1,4 @@
-custom_ingredient_duriansmoothieitem:
+custom_food_duriansmoothie:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_chickentendersitem:
+custom_food_chickentenders:
   type: item
   debug: false
   material: apple

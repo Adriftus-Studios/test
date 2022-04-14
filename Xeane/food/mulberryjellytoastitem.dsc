@@ -1,4 +1,4 @@
-custom_ingredient_mulberryjellytoastitem:
+custom_food_mulberryjellytoast:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_mulberryjellytoastitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_ingredient_mulberryjellyitem|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_food_mulberryjelly|custom_food_toast

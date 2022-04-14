@@ -1,4 +1,4 @@
-custom_ingredient_kiwismoothieitem:
+custom_food_kiwismoothie:
   type: item
   debug: false
   material: apple

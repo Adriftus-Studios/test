@@ -1,4 +1,4 @@
-custom_ingredient_chikorollitem:
+custom_food_chikoroll:
   type: item
   debug: false
   material: apple

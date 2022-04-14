@@ -12,4 +12,4 @@ custom_food_baconmushroomburger:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skilletitem|custom_ingredient_groundbeefitem|porkchop|brown_mushroom/red_mushroom/custom_crop_whitemushroom|custom_ingredient_mayonaiseitem|bread
+      input: custom_ingredient_skilletitem|custom_food_groundbeef|porkchop|brown_mushroom/red_mushroom/custom_crop_whitemushroom|custom_ingredient_mayonaiseitem|bread

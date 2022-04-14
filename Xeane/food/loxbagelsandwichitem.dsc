@@ -1,4 +1,4 @@
-custom_ingredient_loxbagelsandwichitem:
+custom_food_loxbagelsandwich:
   type: item
   debug: false
   material: apple

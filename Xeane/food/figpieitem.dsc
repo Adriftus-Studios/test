@@ -1,4 +1,4 @@
-custom_ingredient_figpieitem:
+custom_food_figpie:
   type: item
   debug: false
   material: apple

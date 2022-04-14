@@ -12,4 +12,4 @@ custom_food_gourmetporkpatty:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowlitem|custom_ingredient_groundporkitem|custom_ingredient_saltandpepperitem|custom_crop_spiceleaf|custom_crop_mustardseeds
+      input: custom_ingredient_mixingbowlitem|custom_food_groundpork|custom_ingredient_saltandpepperitem|custom_crop_spiceleaf|custom_crop_mustardseeds

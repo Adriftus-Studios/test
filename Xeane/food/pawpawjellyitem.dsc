@@ -1,4 +1,4 @@
-custom_ingredient_pawpawjellyitem:
+custom_food_pawpawjelly:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_pearpieitem:
+custom_food_pearpie:
   type: item
   debug: false
   material: apple

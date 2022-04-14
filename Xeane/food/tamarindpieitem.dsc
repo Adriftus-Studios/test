@@ -1,4 +1,4 @@
-custom_ingredient_tamarindpieitem:
+custom_food_tamarindpie:
   type: item
   debug: false
   material: apple

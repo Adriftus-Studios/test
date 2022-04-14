@@ -1,4 +1,4 @@
-custom_ingredient_candleberrysmoothieitem:
+custom_food_candleberrysmoothie:
   type: item
   debug: false
   material: apple

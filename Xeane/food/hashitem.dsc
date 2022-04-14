@@ -12,4 +12,4 @@ custom_food_hash:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skilletitem|custom_crop_onion|custom_ingredient_groundporkitem|potato|custom_ingredient_ketchupitem
+      input: custom_ingredient_skilletitem|custom_crop_onion|custom_food_groundpork|potato|custom_ingredient_ketchupitem

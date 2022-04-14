@@ -1,4 +1,4 @@
-custom_ingredient_mulberrysmoothieitem:
+custom_food_mulberrysmoothie:
   type: item
   debug: false
   material: apple

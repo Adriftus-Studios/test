@@ -12,4 +12,4 @@ custom_food_fishsticks:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_ingredient_groundfishitem|custom_ingredient_flouritem
+      input: custom_ingredient_bakewareitem|custom_food_groundfish|custom_ingredient_flouritem

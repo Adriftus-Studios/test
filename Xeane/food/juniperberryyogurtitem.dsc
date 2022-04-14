@@ -1,4 +1,4 @@
-custom_ingredient_juniperberryyogurtitem:
+custom_food_juniperberryyogurt:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_juniperberryyogurtitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_crop_juniperberry|custom_ingredient_yogurtitem
+      input: custom_ingredient_cuttingboarditem|custom_crop_juniperberry|custom_food_yogurt

@@ -1,4 +1,4 @@
-custom_ingredient_timtamitem:
+custom_food_timtam:
   type: item
   debug: false
   material: apple

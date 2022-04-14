@@ -1,4 +1,4 @@
-custom_ingredient_generaltsochickenitem:
+custom_food_generaltsochicken:
   type: item
   debug: false
   material: apple

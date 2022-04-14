@@ -1,4 +1,4 @@
-custom_ingredient_jellybeansitem:
+custom_food_jellybeans:
   type: item
   debug: false
   material: apple

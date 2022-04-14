@@ -1,4 +1,4 @@
-custom_ingredient_shepardspieitem:
+custom_food_shepardspie:
   type: item
   debug: false
   material: apple

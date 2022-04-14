@@ -1,4 +1,4 @@
-custom_ingredient_soursopyogurtitem:
+custom_food_soursopyogurt:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_soursopyogurtitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_crop_soursop|custom_ingredient_yogurtitem
+      input: custom_ingredient_cuttingboarditem|custom_crop_soursop|custom_food_yogurt

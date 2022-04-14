@@ -1,4 +1,4 @@
-custom_ingredient_broccolindipitem:
+custom_food_broccolindip:
   type: item
   debug: false
   material: apple

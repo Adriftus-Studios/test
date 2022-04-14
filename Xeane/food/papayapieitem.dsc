@@ -1,4 +1,4 @@
-custom_ingredient_papayapieitem:
+custom_food_papayapie:
   type: item
   debug: false
   material: apple

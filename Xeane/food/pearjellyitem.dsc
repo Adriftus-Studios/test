@@ -1,4 +1,4 @@
-custom_ingredient_pearjellyitem:
+custom_food_pearjelly:
   type: item
   debug: false
   material: apple

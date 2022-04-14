@@ -1,4 +1,4 @@
-custom_ingredient_fruitcakeitem:
+custom_food_fruitcake:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_fruitcakeitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_ingredient_doughitem|custom_crop_apricot|custom_crop_pineapple|custom_food_raisins|custom_ingredient_applejuiceitem/custom_ingredient_melonjuiceitem/custom_ingredient_sweetberryjuiceitem/custom_ingredient_glowberryjuiceitem|custom_crop_date|custom_crop_cherry
+      input: custom_ingredient_bakewareitem|custom_ingredient_doughitem|custom_crop_apricot|custom_crop_pineapple|custom_food_raisins|custom_food_applejuice/custom_food_melonjuice/custom_food_sweetberryjuice/custom_food_glowberryjuice|custom_crop_date|custom_crop_cherry

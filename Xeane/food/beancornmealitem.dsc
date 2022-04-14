@@ -1,4 +1,4 @@
-custom_ingredient_beancornmealitem:
+custom_food_beancornmeal:
   type: item
   debug: false
   material: apple

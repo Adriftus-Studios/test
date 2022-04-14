@@ -1,4 +1,4 @@
-custom_ingredient_persimmonpieitem:
+custom_food_persimmonpie:
   type: item
   debug: false
   material: apple

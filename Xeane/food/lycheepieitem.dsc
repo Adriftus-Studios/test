@@ -1,4 +1,4 @@
-custom_ingredient_lycheepieitem:
+custom_food_lycheepie:
   type: item
   debug: false
   material: apple

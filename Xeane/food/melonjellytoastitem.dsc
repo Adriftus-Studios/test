@@ -1,4 +1,4 @@
-custom_ingredient_melonjellytoastitem:
+custom_food_melonjellytoast:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_melonjellytoastitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_food_toast|custom_ingredient_melonjellyitem
+      input: custom_ingredient_cuttingboarditem|custom_food_toast|custom_food_melonjelly

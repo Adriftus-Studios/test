@@ -1,4 +1,4 @@
-custom_ingredient_gooseberrysmoothieitem:
+custom_food_gooseberrysmoothie:
   type: item
   debug: false
   material: apple

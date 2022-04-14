@@ -1,4 +1,4 @@
-custom_ingredient_apricotjellyitem:
+custom_food_apricotjelly:
   type: item
   debug: false
   material: apple

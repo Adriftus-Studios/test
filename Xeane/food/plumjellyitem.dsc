@@ -1,4 +1,4 @@
-custom_ingredient_plumjellyitem:
+custom_food_plumjelly:
   type: item
   debug: false
   material: apple

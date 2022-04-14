@@ -1,4 +1,4 @@
-custom_ingredient_cactusfruitjuiceitem:
+custom_food_cactusfruitjuice:
   type: item
   debug: false
   material: apple

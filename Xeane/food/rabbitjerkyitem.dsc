@@ -1,4 +1,4 @@
-custom_ingredient_rabbitjerkyitem:
+custom_food_rabbitjerky:
   type: item
   debug: false
   material: apple

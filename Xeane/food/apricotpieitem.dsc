@@ -1,4 +1,4 @@
-custom_ingredient_apricotpieitem:
+custom_food_apricotpie:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_mixedflowerssaladitem:
+custom_food_mixedflowerssalad:
   type: item
   debug: false
   material: apple

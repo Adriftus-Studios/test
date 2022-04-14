@@ -1,4 +1,4 @@
-custom_ingredient_cranberrysmoothieitem:
+custom_food_cranberrysmoothie:
   type: item
   debug: false
   material: apple

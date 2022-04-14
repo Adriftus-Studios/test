@@ -1,4 +1,4 @@
-custom_ingredient_creamofchickenitem:
+custom_food_creamofchicken:
   type: item
   debug: false
   material: apple

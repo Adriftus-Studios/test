@@ -1,4 +1,4 @@
-custom_ingredient_p8juiceitem:
+custom_food_p8juice:
   type: item
   debug: false
   material: apple

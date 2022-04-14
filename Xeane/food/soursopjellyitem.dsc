@@ -1,4 +1,4 @@
-custom_ingredient_soursopjellyitem:
+custom_food_soursopjelly:
   type: item
   debug: false
   material: apple

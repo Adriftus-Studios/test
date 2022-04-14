@@ -1,4 +1,4 @@
-custom_ingredient_guavajuiceitem:
+custom_food_guavajuice:
   type: item
   debug: false
   material: apple

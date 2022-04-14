@@ -1,4 +1,4 @@
-custom_ingredient_grapefruitsmoothieitem:
+custom_food_grapefruitsmoothie:
   type: item
   debug: false
   material: apple

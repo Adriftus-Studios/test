@@ -1,4 +1,4 @@
-custom_ingredient_peanutbutteritem:
+custom_food_peanutbutter:
   type: item
   debug: false
   material: apple

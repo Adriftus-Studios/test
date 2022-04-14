@@ -1,4 +1,4 @@
-custom_ingredient_soursoppieitem:
+custom_food_soursoppie:
   type: item
   debug: false
   material: apple

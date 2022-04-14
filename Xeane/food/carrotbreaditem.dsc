@@ -1,4 +1,4 @@
-custom_ingredient_carrotbreaditem:
+custom_food_carrotbread:
   type: item
   debug: false
   material: apple

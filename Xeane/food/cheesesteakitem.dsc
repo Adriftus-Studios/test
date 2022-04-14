@@ -1,4 +1,4 @@
-custom_ingredient_cheesesteakitem:
+custom_food_cheesesteak:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_cheesesteakitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_food_toast|beef|custom_ingredient_cheeseitem|custom_crop_bellpepper|custom_crop_onion
+      input: custom_ingredient_cuttingboarditem|custom_food_toast|beef|custom_food_cheese|custom_crop_bellpepper|custom_crop_onion

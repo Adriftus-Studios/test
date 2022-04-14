@@ -1,4 +1,4 @@
-custom_ingredient_pearjellytoastitem:
+custom_food_pearjellytoast:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_pearjellytoastitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_ingredient_pearjellyitem|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_food_pearjelly|custom_food_toast

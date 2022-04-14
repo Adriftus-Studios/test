@@ -12,4 +12,4 @@ custom_food_crackersandcheese:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_ingredient_cheeseitem|custom_food_cracker
+      input: custom_ingredient_cuttingboarditem|custom_food_cheese|custom_food_cracker

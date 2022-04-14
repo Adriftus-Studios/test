@@ -1,4 +1,4 @@
-custom_ingredient_cherrycoconutchocolatebaritem:
+custom_food_cherrycoconutchocolatebar:
   type: item
   debug: false
   material: apple

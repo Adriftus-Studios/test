@@ -6,4 +6,4 @@ custom_ingredient_currypowderitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_grinderitem|custom_crop_spiceleaf|custom_crop_mustardseeds|custom_ingredient_groundcinnamonitem
+      input: custom_ingredient_grinderitem|custom_crop_spiceleaf|custom_crop_mustardseeds|custom_food_groundcinnamon

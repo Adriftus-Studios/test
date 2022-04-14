@@ -1,4 +1,4 @@
-custom_ingredient_caramelyogurtitem:
+custom_food_caramelyogurt:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_caramelyogurtitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_ingredient_yogurtitem|custom_food_caramel
+      input: custom_ingredient_cuttingboarditem|custom_food_yogurt|custom_food_caramel

@@ -1,4 +1,4 @@
-custom_ingredient_spagettiandmeatballsitem:
+custom_food_spagettiandmeatballs:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_peachpieitem:
+custom_food_peachpie:
   type: item
   debug: false
   material: apple

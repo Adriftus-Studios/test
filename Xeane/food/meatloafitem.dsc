@@ -12,4 +12,4 @@ custom_food_meatloaf:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|custom_ingredient_groundbeefitem/custom_ingredient_groundchickenitem/custom_ingredient_groundfishitem/custom_ingredient_groundmuttonitem/custom_ingredient_groundporkitem/custom_ingredient_groundrabbititem|bread
+      input: custom_ingredient_bakewareitem|custom_food_groundbeef/custom_food_groundchicken/custom_food_groundfish/custom_food_groundmutton/custom_food_groundpork/custom_food_groundrabbit|bread

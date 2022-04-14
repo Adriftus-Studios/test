@@ -12,4 +12,4 @@ custom_food_ceasarsalad:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowlitem|custom_crop_lettuce|custom_food_toast|custom_ingredient_cheeseitem|custom_crop_garlic|custom_ingredient_blackpepperitem|custom_ingredient_saladdressingitem
+      input: custom_ingredient_mixingbowlitem|custom_crop_lettuce|custom_food_toast|custom_food_cheese|custom_crop_garlic|custom_ingredient_blackpepperitem|custom_ingredient_saladdressingitem

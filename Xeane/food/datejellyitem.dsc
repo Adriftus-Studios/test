@@ -1,4 +1,4 @@
-custom_ingredient_datejellyitem:
+custom_food_datejelly:
   type: item
   debug: false
   material: apple

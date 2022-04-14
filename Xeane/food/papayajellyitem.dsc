@@ -1,4 +1,4 @@
-custom_ingredient_papayajellyitem:
+custom_food_papayajelly:
   type: item
   debug: false
   material: apple

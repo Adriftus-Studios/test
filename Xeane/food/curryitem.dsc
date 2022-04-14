@@ -1,4 +1,4 @@
-custom_ingredient_curryitem:
+custom_food_curry:
   type: item
   debug: false
   material: apple

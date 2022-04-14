@@ -12,4 +12,4 @@ custom_food_sundayhightea:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_ingredient_earlgreyteaitem|custom_food_cucumbersandwich
+      input: custom_ingredient_cuttingboarditem|custom_food_earlgreytea|custom_food_cucumbersandwich

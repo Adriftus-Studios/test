@@ -1,4 +1,4 @@
-custom_ingredient_strawberrysouffleitem:
+custom_food_strawberrysouffle:
   type: item
   debug: false
   material: apple

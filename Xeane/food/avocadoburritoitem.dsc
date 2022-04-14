@@ -12,4 +12,4 @@ custom_food_avocadoburrito:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_crop_avocado|custom_food_tortilla|custom_ingredient_cheeseitem|chicken
+      input: custom_ingredient_cuttingboarditem|custom_crop_avocado|custom_food_tortilla|custom_food_cheese|chicken

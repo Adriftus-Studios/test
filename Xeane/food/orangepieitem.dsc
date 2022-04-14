@@ -1,4 +1,4 @@
-custom_ingredient_orangepieitem:
+custom_food_orangepie:
   type: item
   debug: false
   material: apple

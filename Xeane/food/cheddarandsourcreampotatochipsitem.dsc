@@ -12,4 +12,4 @@ custom_food_cheddarandsourcreampotatochips:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_potitem|custom_ingredient_cheeseitem|custom_ingredient_creamitem|potato|custom_ingredient_cookingoilitem
+      input: custom_ingredient_potitem|custom_food_cheese|custom_ingredient_creamitem|potato|custom_ingredient_cookingoilitem

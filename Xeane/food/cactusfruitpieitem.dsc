@@ -1,4 +1,4 @@
-custom_ingredient_cactusfruitpieitem:
+custom_food_cactusfruitpie:
   type: item
   debug: false
   material: apple

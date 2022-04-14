@@ -1,4 +1,4 @@
-custom_ingredient_rambutanjuiceitem:
+custom_food_rambutanjuice:
   type: item
   debug: false
   material: apple

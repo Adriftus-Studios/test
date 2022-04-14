@@ -1,4 +1,4 @@
-custom_ingredient_pineapplejellyitem:
+custom_food_pineapplejelly:
   type: item
   debug: false
   material: apple

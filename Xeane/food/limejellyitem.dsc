@@ -1,4 +1,4 @@
-custom_ingredient_limejellyitem:
+custom_food_limejelly:
   type: item
   debug: false
   material: apple

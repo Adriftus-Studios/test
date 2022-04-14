@@ -1,4 +1,4 @@
-custom_ingredient_fishjerkyitem:
+custom_food_fishjerky:
   type: item
   debug: false
   material: apple

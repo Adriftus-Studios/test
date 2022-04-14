@@ -1,4 +1,4 @@
-custom_ingredient_sweetteaitem:
+custom_food_sweettea:
   type: item
   debug: false
   material: apple

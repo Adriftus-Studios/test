@@ -1,4 +1,4 @@
-custom_ingredient_oatmealraisincookiesitem:
+custom_food_oatmealraisincookies:
   type: item
   debug: false
   material: apple

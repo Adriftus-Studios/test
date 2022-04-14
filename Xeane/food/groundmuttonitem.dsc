@@ -1,4 +1,4 @@
-custom_ingredient_groundmuttonitem:
+custom_food_groundmutton:
   type: item
   debug: false
   material: apple

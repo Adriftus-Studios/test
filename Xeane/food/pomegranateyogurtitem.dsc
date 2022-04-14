@@ -12,4 +12,4 @@ custom_food_pomegranateyogurt:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboarditem|custom_crop_pomegranate|custom_ingredient_yogurtitem
+      input: custom_ingredient_cuttingboarditem|custom_crop_pomegranate|custom_food_yogurt

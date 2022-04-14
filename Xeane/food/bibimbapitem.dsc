@@ -1,4 +1,4 @@
-custom_ingredient_bibimbapitem:
+custom_food_bibimbap:
   type: item
   debug: false
   material: apple

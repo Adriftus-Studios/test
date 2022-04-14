@@ -1,4 +1,4 @@
-custom_ingredient_hotdishcasseroleitem:
+custom_food_hotdishcasserole:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_hotdishcasseroleitem:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakewareitem|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_crop_avocado/custom_crop_olive|custom_crop_avocado/custom_crop_olive|custom_ingredient_cheeseitem|custom_ingredient_tatertotsitem
+      input: custom_ingredient_bakewareitem|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_crop_avocado/custom_crop_olive|custom_crop_avocado/custom_crop_olive|custom_food_cheese|custom_food_tatertots

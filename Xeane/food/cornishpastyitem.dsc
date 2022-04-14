@@ -1,4 +1,4 @@
-custom_ingredient_cornishpastyitem:
+custom_food_cornishpasty:
   type: item
   debug: false
   material: apple

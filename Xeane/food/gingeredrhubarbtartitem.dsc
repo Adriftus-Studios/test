@@ -1,4 +1,4 @@
-custom_ingredient_gingeredrhubarbtartitem:
+custom_food_gingeredrhubarbtart:
   type: item
   debug: false
   material: apple
