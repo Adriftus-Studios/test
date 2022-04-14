@@ -645,8 +645,6 @@ set_gamerule:
             - narrate "<red>Too many arguments!<reset>"
 # Search improvements - input to be checked within statements
 
-#ghostScript:
-
 no_drowning:
     type: world
     debug: false
