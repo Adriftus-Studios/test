@@ -1,6 +1,9 @@
 grass_seed:
     type: item
     material: wheat_seeds
+    display name: <element[Grass seed].color_gradient[from=green;to=dark_green]>
+    lore:
+        - idek lol
 
 grass_seed_world:
     type: world
