@@ -1,8 +1,8 @@
-Custom_Banner_name_me:
+Custom_Banner_zolta:
   type: item
   debug: false
   material: magenta_banner
-  display name: Name Me
+  display name: Zolta Flag
   mechanisms:
     hides: ALL
     patterns:
@@ -16,7 +16,7 @@ Custom_Banner_name_me:
     - BLACK/FLOWER
 
   lore:
-  - Archowhat
+  - zol-who-now?
   flags:
     category:
     - misc

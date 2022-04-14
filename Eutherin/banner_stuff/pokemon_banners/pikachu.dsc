@@ -1,7 +1,7 @@
-Custom_Banner_Pikachu:
+Custom_Banner_Pokemon_Pikachu:
   type: item
   debug: false
-  material: light_blue
+  material: light_blue_banner
   display name: <&e>Pikachu
   mechanisms:
     hides: ALL
