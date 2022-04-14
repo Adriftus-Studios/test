@@ -3,15 +3,18 @@ join_and_quit_message:
     debug: false
     events:
         on player first login:
+            - define <[player]> <player>
             - determine <script[jq_messages].data_key[first_welcome]>
         on player login:
+            - define <[player]> <player>
             - determine <script[jq_messages].data_key[welcome_back]>
         on player quits:
+            - define <[player]> <player>
             - determine <script[jq_messages].data_key[quit]>
 #
 jq_messages:
     type: data
     debug: false
-    quit: "<yellow><bold><underline><player.name> has left the server. See you later!"
-    first_login: "<yellow><bold><underline><player.name> has joined for the first time. Welcome!"
-    welcome_back: "<yellow><bold><underline>Welcome back, <player.name>!"
+    quit: <yellow><bold><underline><[player].name> has left the server. See you later!
+    first_login: <yellow><bold><underline><[player].name> has joined for the first time. Welcome!
+    welcome_back: <yellow><bold><underline>Welcome back, <[player].name>!
