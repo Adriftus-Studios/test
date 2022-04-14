@@ -3,10 +3,13 @@ join_and_quit_message:
     debug: false
     events:
         after player first login:
+            - determine passively NONE
             - run welcome_message
         after player login:
+            - determine passively NONE
             - run welcome_back_message
         after player quits:
+            - determine passively NONE
             - run quit_message
 #
 welcome_message:
