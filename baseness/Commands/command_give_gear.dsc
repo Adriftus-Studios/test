@@ -30,14 +30,26 @@ give_player_armor:
     usage: /armor <&lt>leather/chainmail/iron/diamond/gold/netherite<&gt>
     tab completions:
         1: <script[gears_list].data_key[armors]>
+        2: wear
     script:
         #Exclusion
         - if <context.args.get[1].equals[<script[gears_list].data_key[armors]>.not]> | <context.args.size.equals[0]> | <context.args.size.is_more_than[1]>:
             - narrate "<red>Invalid argument!"
             - stop
+        - else if <player.has_equipped[*_chestplate]>|<player.has_equipped[*_boots]>|<player.has_equipped[*_leggings]>|<player.has_equipped[*_helmet]>:
+            - narrate "<red>You must be unarmored to be able to wear the selected armor!"
+            - stop
         #Execution
         - define material <context.args.get[1]>
-        - give <[material]>_chestplate|<[material]>_helmet|<[material]>_leggings|<[material]>_boots
+        - define chest <[material]>_chestplate
+        - define head <[material]>_helmet
+        - define legs <[material]>_leggings
+        - define boots <[material]>_boots
+        #Choice to equip
+        - if <context.args.get[2].equals[wear].not>:
+            - give <[chest]>|<[legs]>|<[head]>|<[boots]>
+        - else if <context.args.get[2].equals[wear]>:
+            - equip boots:<[boots]> chest:<[chest]> head:<[head]> legs:<[legs]>
 
 give_tool:
     type: command
