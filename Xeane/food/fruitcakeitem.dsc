@@ -7,8 +7,8 @@ custom_food_fruitcake:
     amount: 28
     saturation: 34
   lore:
-  - <&e>Hunger: <&f>28 <&chr[0000].font[adriftus:foods]>
-  - <&e>Saturation: <&f>34 <&chr[0001].font[adriftus:foods]>
+  - <&e>Hunger: <&f>28<&chr[0001].font[adriftus:foods]>
+  - <&e>Saturation: <&f>34<&chr[0002].font[adriftus:foods]>
   mechanisms:
     custom_model_data: 681
   recipes:

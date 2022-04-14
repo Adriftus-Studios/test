@@ -7,8 +7,8 @@ custom_food_paradiseburger:
     amount: 26
     saturation: 31
   lore:
-  - <&e>Hunger: <&f>26 <&chr[0000].font[adriftus:foods]>
-  - <&e>Saturation: <&f>31 <&chr[0001].font[adriftus:foods]>
+  - <&e>Hunger: <&f>26<&chr[0001].font[adriftus:foods]>
+  - <&e>Saturation: <&f>31<&chr[0002].font[adriftus:foods]>
   mechanisms:
     custom_model_data: 960
   recipes:

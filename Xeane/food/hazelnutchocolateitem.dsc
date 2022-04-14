@@ -7,8 +7,8 @@ custom_food_hazelnutchocolate:
     amount: 4
     saturation: 5
   lore:
-  - <&e>Hunger: <&f>4 <&chr[0000].font[adriftus:foods]>
-  - <&e>Saturation: <&f>5 <&chr[0001].font[adriftus:foods]>
+  - <&e>Hunger: <&f>4<&chr[0001].font[adriftus:foods]>
+  - <&e>Saturation: <&f>5<&chr[0002].font[adriftus:foods]>
   mechanisms:
     custom_model_data: 760
   recipes:

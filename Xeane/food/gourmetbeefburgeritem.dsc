@@ -7,8 +7,8 @@ custom_food_gourmetbeefburger:
     amount: 44
     saturation: 53
   lore:
-  - <&e>Hunger: <&f>44 <&chr[0000].font[adriftus:foods]>
-  - <&e>Saturation: <&f>53 <&chr[0001].font[adriftus:foods]>
+  - <&e>Hunger: <&f>44<&chr[0001].font[adriftus:foods]>
+  - <&e>Saturation: <&f>53<&chr[0002].font[adriftus:foods]>
   mechanisms:
     custom_model_data: 709
   recipes:

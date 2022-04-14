@@ -7,8 +7,8 @@ custom_food_charsiu:
     amount: 30
     saturation: 36
   lore:
-  - <&e>Hunger: <&f>30 <&chr[0000].font[adriftus:foods]>
-  - <&e>Saturation: <&f>36 <&chr[0001].font[adriftus:foods]>
+  - <&e>Hunger: <&f>30<&chr[0001].font[adriftus:foods]>
+  - <&e>Saturation: <&f>36<&chr[0002].font[adriftus:foods]>
   mechanisms:
     custom_model_data: 485
   recipes:

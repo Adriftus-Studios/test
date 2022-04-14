@@ -7,8 +7,8 @@ custom_food_peachcobbler:
     amount: 9
     saturation: 11
   lore:
-  - <&e>Hunger: <&f>9 <&chr[0000].font[adriftus:foods]>
-  - <&e>Saturation: <&f>11 <&chr[0001].font[adriftus:foods]>
+  - <&e>Hunger: <&f>9<&chr[0001].font[adriftus:foods]>
+  - <&e>Saturation: <&f>11<&chr[0002].font[adriftus:foods]>
   mechanisms:
     custom_model_data: 978
   recipes:

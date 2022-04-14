@@ -7,8 +7,8 @@ custom_food_bentobox:
     amount: 31
     saturation: 37
   lore:
-  - <&e>Hunger: <&f>31 <&chr[0000].font[adriftus:foods]>
-  - <&e>Saturation: <&f>37 <&chr[0001].font[adriftus:foods]>
+  - <&e>Hunger: <&f>31<&chr[0001].font[adriftus:foods]>
+  - <&e>Saturation: <&f>37<&chr[0002].font[adriftus:foods]>
   mechanisms:
     custom_model_data: 399
   recipes:

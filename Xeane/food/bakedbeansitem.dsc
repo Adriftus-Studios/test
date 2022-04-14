@@ -7,8 +7,8 @@ custom_food_bakedbeans:
     amount: 10
     saturation: 12
   lore:
-  - <&e>Hunger: <&f>10 <&chr[0000].font[adriftus:foods]>
-  - <&e>Saturation: <&f>12 <&chr[0001].font[adriftus:foods]>
+  - <&e>Hunger: <&f>10<&chr[0001].font[adriftus:foods]>
+  - <&e>Saturation: <&f>12<&chr[0002].font[adriftus:foods]>
   mechanisms:
     custom_model_data: 366
   recipes:
