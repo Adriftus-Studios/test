@@ -21,6 +21,7 @@ gears_list:
         - axe
         - shovel
         - hoe
+#
 
 give_player_armor:
     type: command
@@ -52,6 +53,7 @@ give_player_armor:
         - else if <context.args.get[2].equals[wear]>:
             - equip boots:<[boots]> chest:<[chest]> head:<[head]> legs:<[legs]>
             - narrate "You have fully equipped the <[material]> armor set!"
+#
 
 give_tool:
     type: command
@@ -71,10 +73,24 @@ give_tool:
         - define material <context.args.get[2]>
         - define tool <context.args.get[1]>
         - give <[material]>_<[tool]>
-#pickaxe
-#axe
-#bow
-#crossbow
-#hoe
-#shovel
-#netherite
+#
+
+give_crossbow:
+    type: command
+    debug: false
+    name: crossbow
+    description: Gives the player a crossbow.
+    usage: /crossbow
+    script:
+        - give crossbow
+#
+
+give_bow:
+    type: command
+    debug: false
+    name: bow
+    description: Gives the player a bow.
+    usage: /bow
+    script:
+        - give bow
+#
