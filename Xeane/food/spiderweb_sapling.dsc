@@ -3,6 +3,8 @@ custom_ingredient_spiderweb_sapling:
   debug: false
   material: apple
   display name: <&a>Spiderweb Sapling
+  mechanisms:
+    custom_model_data: 1147
   recipes:
     1:
       type: shapeless

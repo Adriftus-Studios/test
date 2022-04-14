@@ -3,6 +3,8 @@ custom_ingredient_butteritem:
   debug: false
   material: apple
   display name: <&a>Butter
+  mechanisms:
+    custom_model_data: 31
   recipes:
     1:
       type: shapeless

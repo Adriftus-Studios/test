@@ -3,6 +3,8 @@ custom_ingredient_sweetandsoursauceitem:
   debug: false
   material: apple
   display name: <&a>Sweet and Sour Sauce
+  mechanisms:
+    custom_model_data: 1193
   recipes:
     1:
       type: shapeless

@@ -3,6 +3,8 @@ custom_ingredient_apricot_sapling:
   debug: false
   material: apple
   display name: <&a>Apricot Sapling
+  mechanisms:
+    custom_model_data: 353
   recipes:
     1:
       type: shapeless

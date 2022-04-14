@@ -3,6 +3,8 @@ custom_ingredient_currypowderitem:
   debug: false
   material: apple
   display name: <&a>Curry Powder
+  mechanisms:
+    custom_model_data: 158
   recipes:
     1:
       type: shapeless

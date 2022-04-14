@@ -3,6 +3,8 @@ custom_ingredient_plum_sapling:
   debug: false
   material: apple
   display name: <&a>Plum Sapling
+  mechanisms:
+    custom_model_data: 1040
   recipes:
     1:
       type: shapeless

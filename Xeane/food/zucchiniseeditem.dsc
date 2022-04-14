@@ -6,6 +6,8 @@ custom_seed_zucchiniseed:
   data:
     max_seeds: 3
     max_crops: 4
+  mechanisms:
+    custom_model_data: 319
   recipes:
     1:
       type: shapeless

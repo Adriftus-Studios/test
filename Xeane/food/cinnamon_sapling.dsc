@@ -3,6 +3,8 @@ custom_ingredient_cinnamon_sapling:
   debug: false
   material: apple
   display name: <&a>Cinnamon Sapling 
+  mechanisms:
+    custom_model_data: 554
   recipes:
     1:
       type: shapeless

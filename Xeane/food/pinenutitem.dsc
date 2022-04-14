@@ -3,3 +3,5 @@ custom_crop_pinenut:
   debug: false
   material: apple
   display name: <&a>Pinenuts
+  mechanisms:
+    custom_model_data: 63

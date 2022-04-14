@@ -9,6 +9,8 @@ custom_food_greenbeancasserole:
   lore:
   - <&e>Hunger: <&f>6 <&chr[0000].font[adriftus:foods]>
   - <&e>Saturation: <&f>7 <&chr[0001].font[adriftus:foods]>
+  mechanisms:
+    custom_model_data: 730
   recipes:
     1:
       type: shapeless

@@ -6,6 +6,8 @@ custom_seed_mustardseedsseed:
   data:
     max_seeds: 3
     max_crops: 4
+  mechanisms:
+    custom_model_data: 288
   recipes:
     1:
       type: shapeless

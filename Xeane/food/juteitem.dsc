@@ -3,3 +3,5 @@ custom_crop_jute:
   debug: false
   material: apple
   display name: <&a>Jute
+  mechanisms:
+    custom_model_data: 325

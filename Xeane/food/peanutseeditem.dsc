@@ -6,6 +6,8 @@ custom_seed_peanutseed:
   data:
     max_seeds: 3
     max_crops: 4
+  mechanisms:
+    custom_model_data: 293
   recipes:
     1:
       type: shapeless

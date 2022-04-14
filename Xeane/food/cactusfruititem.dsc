@@ -3,3 +3,5 @@ custom_crop_cactusfruit:
   debug: false
   material: apple
   display name: <&a>Cactusfruit
+  mechanisms:
+    custom_model_data: 142

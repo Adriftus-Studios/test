@@ -3,6 +3,8 @@ custom_ingredient_relishitem:
   debug: false
   material: apple
   display name: <&a>Relish
+  mechanisms:
+    custom_model_data: 130
   recipes:
     1:
       type: shapeless

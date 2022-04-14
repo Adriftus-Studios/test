@@ -3,6 +3,8 @@ custom_ingredient_pear_sapling:
   debug: false
   material: apple
   display name: <&a>Pear Sapling
+  mechanisms:
+    custom_model_data: 998
   recipes:
     1:
       type: shapeless

@@ -3,3 +3,5 @@ custom_crop_chestnut:
   debug: false
   material: apple
   display name: <&a>Chestnut
+  mechanisms:
+    custom_model_data: 60

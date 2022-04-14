@@ -3,3 +3,5 @@ custom_crop_barley:
   debug: false
   material: apple
   display name: <&a>Barley
+  mechanisms:
+    custom_model_data: 95

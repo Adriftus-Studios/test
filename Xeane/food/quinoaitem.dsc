@@ -3,3 +3,5 @@ custom_crop_quinoa:
   debug: false
   material: apple
   display name: <&a>Quinoa
+  mechanisms:
+    custom_model_data: 100

@@ -3,3 +3,5 @@ custom_crop_maplesyrup:
   debug: false
   material: apple
   display name: <&a>Maple Syrup
+  mechanisms:
+    custom_model_data: 222

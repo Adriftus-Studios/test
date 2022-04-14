@@ -9,6 +9,8 @@ custom_food_chilidog:
   lore:
   - <&e>Hunger: <&f>27 <&chr[0000].font[adriftus:foods]>
   - <&e>Saturation: <&f>32 <&chr[0001].font[adriftus:foods]>
+  mechanisms:
+    custom_model_data: 522
   recipes:
     1:
       type: shapeless

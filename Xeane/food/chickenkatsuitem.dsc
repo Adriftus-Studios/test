@@ -9,6 +9,8 @@ custom_food_chickenkatsu:
   lore:
   - <&e>Hunger: <&f>8 <&chr[0000].font[adriftus:foods]>
   - <&e>Saturation: <&f>10 <&chr[0001].font[adriftus:foods]>
+  mechanisms:
+    custom_model_data: 513
   recipes:
     1:
       type: shapeless

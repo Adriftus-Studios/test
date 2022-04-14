@@ -9,6 +9,8 @@ custom_food_crispyricepuffcereal:
   lore:
   - <&e>Hunger: <&f>4 <&chr[0000].font[adriftus:foods]>
   - <&e>Saturation: <&f>5 <&chr[0001].font[adriftus:foods]>
+  mechanisms:
+    custom_model_data: 590
   recipes:
     1:
       type: shapeless

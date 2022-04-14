@@ -3,6 +3,8 @@ custom_ingredient_cherry_sapling:
   debug: false
   material: apple
   display name: <&a>Cherry Sapling
+  mechanisms:
+    custom_model_data: 501
   recipes:
     1:
       type: shapeless

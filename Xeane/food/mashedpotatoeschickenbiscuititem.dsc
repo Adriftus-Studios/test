@@ -9,6 +9,8 @@ custom_food_mashedpotatoeschickenbiscuit:
   lore:
   - <&e>Hunger: <&f>21 <&chr[0000].font[adriftus:foods]>
   - <&e>Saturation: <&f>25 <&chr[0001].font[adriftus:foods]>
+  mechanisms:
+    custom_model_data: 874
   recipes:
     1:
       type: shapeless

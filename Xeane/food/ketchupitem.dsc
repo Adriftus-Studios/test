@@ -3,6 +3,8 @@ custom_ingredient_ketchupitem:
   debug: false
   material: apple
   display name: <&a>Ketchup
+  mechanisms:
+    custom_model_data: 174
   recipes:
     1:
       type: shapeless

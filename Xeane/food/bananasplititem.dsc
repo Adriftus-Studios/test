@@ -9,6 +9,8 @@ custom_food_bananasplit:
   lore:
   - <&e>Hunger: <&f>15 <&chr[0000].font[adriftus:foods]>
   - <&e>Saturation: <&f>18 <&chr[0001].font[adriftus:foods]>
+  mechanisms:
+    custom_model_data: 378
   recipes:
     1:
       type: shapeless

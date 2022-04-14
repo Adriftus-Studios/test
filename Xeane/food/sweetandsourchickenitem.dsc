@@ -9,6 +9,8 @@ custom_food_sweetandsourchicken:
   lore:
   - <&e>Hunger: <&f>26 <&chr[0000].font[adriftus:foods]>
   - <&e>Saturation: <&f>31 <&chr[0001].font[adriftus:foods]>
+  mechanisms:
+    custom_model_data: 1191
   recipes:
     1:
       type: shapeless

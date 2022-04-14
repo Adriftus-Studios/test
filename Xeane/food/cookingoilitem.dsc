@@ -3,6 +3,8 @@ custom_ingredient_cookingoilitem:
   debug: false
   material: apple
   display name: <&a>Cooking Oil
+  mechanisms:
+    custom_model_data: 14
   recipes:
     1:
       type: shapeless

@@ -3,3 +3,5 @@ custom_crop_breadfruit:
   debug: false
   material: apple
   display name: <&a>Breadfruit
+  mechanisms:
+    custom_model_data: 83

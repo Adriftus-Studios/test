@@ -3,6 +3,8 @@ custom_ingredient_pastaitem:
   debug: false
   material: apple
   display name: <&a>Pasta
+  mechanisms:
+    custom_model_data: 134
   recipes:
     1:
       type: shapeless

@@ -3,6 +3,8 @@ custom_ingredient_mango_sapling:
   debug: false
   material: apple
   display name: <&a>Mango Sapling
+  mechanisms:
+    custom_model_data: 864
   recipes:
     1:
       type: shapeless

@@ -3,3 +3,5 @@ custom_crop_olive:
   debug: false
   material: apple
   display name: <&a>Olive
+  mechanisms:
+    custom_model_data: 54

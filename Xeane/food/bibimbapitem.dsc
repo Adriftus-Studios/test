@@ -9,6 +9,8 @@ custom_food_bibimbap:
   lore:
   - <&e>Hunger: <&f>16 <&chr[0000].font[adriftus:foods]>
   - <&e>Saturation: <&f>19 <&chr[0001].font[adriftus:foods]>
+  mechanisms:
+    custom_model_data: 402
   recipes:
     1:
       type: shapeless

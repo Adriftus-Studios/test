@@ -3,3 +3,5 @@ cooking_tool_bakeware:
   debug: false
   material: apple
   display name: <&a>Bakeware
+  mechanisms:
+    custom_model_data: 1

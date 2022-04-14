@@ -9,6 +9,8 @@ custom_food_pecanbutter:
   lore:
   - <&e>Hunger: <&f>2 <&chr[0000].font[adriftus:foods]>
   - <&e>Saturation: <&f>2 <&chr[0001].font[adriftus:foods]>
+  mechanisms:
+    custom_model_data: 24
   recipes:
     1:
       type: shapeless

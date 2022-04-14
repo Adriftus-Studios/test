@@ -3,6 +3,8 @@ custom_ingredient_walnut_sapling:
   debug: false
   material: apple
   display name: <&a>Walnut Sapling
+  mechanisms:
+    custom_model_data: 1238
   recipes:
     1:
       type: shapeless

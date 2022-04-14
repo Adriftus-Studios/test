@@ -3,6 +3,8 @@ custom_ingredient_creamitem:
   debug: false
   material: apple
   display name: <&a>Cream
+  mechanisms:
+    custom_model_data: 133
   recipes:
     1:
       type: shapeless

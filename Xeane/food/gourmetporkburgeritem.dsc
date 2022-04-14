@@ -9,6 +9,8 @@ custom_food_gourmetporkburger:
   lore:
   - <&e>Hunger: <&f>42 <&chr[0000].font[adriftus:foods]>
   - <&e>Saturation: <&f>50 <&chr[0001].font[adriftus:foods]>
+  mechanisms:
+    custom_model_data: 713
   recipes:
     1:
       type: shapeless

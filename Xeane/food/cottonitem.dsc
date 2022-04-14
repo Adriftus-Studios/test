@@ -3,3 +3,5 @@ custom_crop_cotton:
   debug: false
   material: apple
   display name: <&a>Cotton
+  mechanisms:
+    custom_model_data: 323

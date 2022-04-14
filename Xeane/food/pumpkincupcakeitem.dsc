@@ -9,6 +9,8 @@ custom_food_pumpkincupcake:
   lore:
   - <&e>Hunger: <&f>2 <&chr[0000].font[adriftus:foods]>
   - <&e>Saturation: <&f>2 <&chr[0001].font[adriftus:foods]>
+  mechanisms:
+    custom_model_data: 1070
   recipes:
     1:
       type: shapeless

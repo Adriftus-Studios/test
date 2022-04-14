@@ -3,3 +3,5 @@ cooking_tool_roller:
   debug: false
   material: apple
   display name: <&a>Roller
+  mechanisms:
+    custom_model_data: 173

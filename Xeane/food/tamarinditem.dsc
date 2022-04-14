@@ -3,3 +3,5 @@ custom_crop_tamarind:
   debug: false
   material: apple
   display name: <&a>Tamarind
+  mechanisms:
+    custom_model_data: 89

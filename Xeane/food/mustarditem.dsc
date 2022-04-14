@@ -3,6 +3,8 @@ custom_crop_mustard:
   debug: false
   material: apple
   display name: <&a>Mustard
+  mechanisms:
+    custom_model_data: 181
   recipes:
     1:
       type: shapeless

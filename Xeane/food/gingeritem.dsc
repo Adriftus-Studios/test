@@ -3,3 +3,5 @@ custom_crop_ginger:
   debug: false
   material: apple
   display name: <&a>Ginger
+  mechanisms:
+    custom_model_data: 140

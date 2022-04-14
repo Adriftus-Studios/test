@@ -3,6 +3,8 @@ custom_ingredient_cocoapowderitem:
   debug: false
   material: apple
   display name: <&a>Cocoa Powder
+  mechanisms:
+    custom_model_data: 136
   recipes:
     1:
       type: shapeless

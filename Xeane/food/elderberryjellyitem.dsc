@@ -9,6 +9,8 @@ custom_food_elderberryjelly:
   lore:
   - <&e>Hunger: <&f>4 <&chr[0000].font[adriftus:foods]>
   - <&e>Saturation: <&f>5 <&chr[0001].font[adriftus:foods]>
+  mechanisms:
+    custom_model_data: 187
   recipes:
     1:
       type: shapeless

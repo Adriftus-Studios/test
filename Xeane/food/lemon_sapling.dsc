@@ -3,6 +3,8 @@ custom_ingredient_lemon_sapling:
   debug: false
   material: apple
   display name: <&a>Lemon Sapling
+  mechanisms:
+    custom_model_data: 838
   recipes:
     1:
       type: shapeless

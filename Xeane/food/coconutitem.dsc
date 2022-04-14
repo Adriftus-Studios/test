@@ -3,3 +3,5 @@ custom_crop_coconut:
   debug: false
   material: apple
   display name: <&a>Coconut
+  mechanisms:
+    custom_model_data: 141

@@ -3,6 +3,8 @@ custom_ingredient_batteritem:
   debug: false
   material: apple
   display name: <&a>Batter
+  mechanisms:
+    custom_model_data: 46
   recipes:
     1:
       type: shapeless

@@ -3,3 +3,5 @@ custom_crop_waterchestnut:
   debug: false
   material: apple
   display name: <&a>Waterchestnut
+  mechanisms:
+    custom_model_data: 184

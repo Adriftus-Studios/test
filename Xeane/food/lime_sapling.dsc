@@ -3,6 +3,8 @@ custom_ingredient_lime_sapling:
   debug: false
   material: apple
   display name: <&a>Lime Sapling
+  mechanisms:
+    custom_model_data: 845
   recipes:
     1:
       type: shapeless

@@ -3,6 +3,8 @@ custom_ingredient_pinenut_sapling:
   debug: false
   material: apple
   display name: <&a>Pinenut Sapling
+  mechanisms:
+    custom_model_data: 1027
   recipes:
     1:
       type: shapeless

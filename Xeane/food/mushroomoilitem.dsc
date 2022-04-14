@@ -3,6 +3,8 @@ custom_ingredient_mushroomoilitem:
   debug: false
   material: apple
   display name: <&a>Mushroom Oil
+  mechanisms:
+    custom_model_data: 914
   recipes:
     1:
       type: shapeless
