@@ -1,30 +1,33 @@
-impl_skill_stealth:
+impl_skill_call_steed:
   type: data
   # Internal Name MUST BE UNIQUE
-  name: stealth
+  name: call_steed
 
   # Display data used in commands, and GUIs
-  display_item_script: impl_skill_stealth_icon
+  display_item_script: impl_skill_call_steed_icon
 
   # Skill Tree (uses internal name)
-  skill_tree: rogue
+  skill_tree: warrior
 
   # Unlock Requirements are checked when unlocking the ability
   unlock_requirements:
   - "true"
 
   # Cooldown
-  cooldown: 35s
+  cooldown: 1m
 
   # Task Script to bee run when the ability is used successfully
   # This Task Script MUST be within this file, as with any code associated with this skill
-  on_cast: impl_skill_stealth_task
+  on_cast: impl_skill_call_steed_task
 
   # Is the ability harmful? (PvP Action)
   harmful: false
 
   # Does using this ability flag you for PvP if it succeeds (even if not damaging)
   pvp_flags: false
+
+  # Can you use this in combat
+  pvp_usable: false
 
   # Skill Targetting
   # these tags will be parsed to determine targets
@@ -40,48 +43,34 @@ impl_skill_stealth:
 
   # Balance Values used in the script
   balance:
-    duration: 25s
+    distance: 5
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
-impl_skill_stealth_icon:
+impl_skill_call_steed_icon:
   type: item
   material: iron_nugget
-  display name: "<&a>Stealth"
+  display name: "<&a>Call Steed"
   lore:
-  - "<&b>Turn invisible to ambush your enemies or escape"
-  - "<&b>This skill will be interrupted if you take or deal damage"
+  - "<&b>Call a Horse to your side"
+  - "<&e>Horse will disappear on despawn"
+  - "<&c>Must be in Overworld"
   mechanisms:
-    custom_model_data: 16
+    custom_model_data: 7
 
 
 # The On Cast Task script has specific requirements, and limits
 # The only reliable context tags in this task will be `<player>`
 # The task must `determine` true or false if the ability was successful or not.
-impl_skill_stealth_task:
+impl_skill_call_steed_task:
   type: task
   debug: false
   definitions: target
   script:
-    - cast invisibility duration:<script[impl_skill_stealth].parsed_key[balance.duration]> amplifier:0 no_ambient hide_particles
-    - fakeequip <player> for:<server.online_players.filter_tag[<[filter_value].equals[<player>].not>]> head:air chest:air legs:air boots:air offhand:air hand:air duration:<script[impl_skill_stealth].parsed_key[balance.duration]>
-    - playsound <player.location> sound:BLOCK_PORTAL_AMBIENT volume:0.3 sound_category:players
-    - flag <player> on_next_damage:impl_skill_stealth_task_remove_damage
-    - flag <player> on_next_hit:impl_skill_stealth_task_remove_hit
+    - if <player.has_flag[warrior.horse]> && <player.flag[warrior.horse].is_spawned>:
+      - remove <player.flag[warrior.horse]>
+    - spawn horse[persistent=false;owner=<player>] <player.location.forward> save:horse
+    - equip <entry[horse].spawned_entity> saddle:saddle
+    - flag <player> warrior.horse:<entry[horse].spawned_entity>
+    - flag <entry[horse].spawned_entity> on_breed:cancel
     - determine true
-
-impl_skill_stealth_task_remove_damage:
-  type: task
-  debug: false
-  script:
-    - flag <context.entity> invisibility_once:!
-    - cast invisibility remove <context.entity>
-    - fakeequip <context.entity> reset
-
-impl_skill_stealth_task_remove_hit:
-  type: task
-  debug: false
-  script:
-    - flag <context.damager> invisibility_once:!
-    - cast invisibility remove <context.damager>
-    - fakeequip <context.damager> reset

@@ -1,24 +1,24 @@
-impl_skill_magic_missile:
+impl_skill_marksman_shot:
   type: data
   # Internal Name MUST BE UNIQUE
-  name: magic_missile
+  name: marksman_shot
 
   # Display data used in commands, and GUIs
-  display_item_script: impl_skill_magic_missile_icon
+  display_item_script: impl_skill_marksman_shot_icon
 
   # Skill Tree (uses internal name)
-  skill_tree: mage
+  skill_tree: ranger
 
   # Unlock Requirements are checked when unlocking the ability
   unlock_requirements:
   - "true"
 
   # Cooldown
-  cooldown: 5s
+  cooldown: 12s
 
   # Task Script to bee run when the ability is used successfully
   # This Task Script MUST be within this file, as with any code associated with this skill
-  on_cast: impl_skill_magic_missile_task
+  on_cast: impl_skill_marksman_shot_task
 
   # Is the ability harmful? (PvP Action)
   harmful: true
@@ -26,11 +26,14 @@ impl_skill_magic_missile:
   # Does using this ability flag you for PvP if it succeeds (even if not damaging)
   pvp_flags: true
 
+  # Can you use this in combat
+  pvp_usable: true
+
   # Skill Targetting
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "none"
+  - "<player.precise_target[30]>"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
@@ -40,49 +43,35 @@ impl_skill_magic_missile:
 
   # Balance Values used in the script
   balance:
-    damage: 6
-    speed: 2
+    damage: 8
+    speed: 4
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
-impl_skill_magic_missile_icon:
+impl_skill_marksman_shot_icon:
   type: item
   material: iron_nugget
-  display name: "<&a>Magic Missile"
+  display name: "<&a>Marksman Shot"
   lore:
-  - "<&b>Shoot a magic missile at targets up to 25 blocks away"
-  - "<&b>Damages any enemies within its blast radius"
+  - "<&b>Shoot a high-velocity arrow at targets up to 30 blocks away"
   mechanisms:
-    custom_model_data: 6
+    custom_model_data: 18
 
 
 # The On Cast Task script has specific requirements, and limits
 # The only reliable context tags in this task will be `<player>`
 # The task must `determine` true or false if the ability was successful or not.
-impl_skill_magic_missile_task:
+impl_skill_marksman_shot_task:
   type: task
   debug: false
   definitions: target
   script:
-    - shoot arrow origin:<player> speed:<script[impl_skill_magic_missile].parsed_key[balance.speed]> shooter:<player> save:shot
-    - adjust <entry[shot].shot_entity> hide_from_players
-    - playsound <player.location> sound:ENTITY_ENDER_DRAGON_SHOOT volume:5.0 sound_category:players
-    - determine passively true
-    - flag <entry[shot].shot_entity> on_hit_entity:impl_skill_magic_missile_damage_task
-    - flag <entry[shot].shot_entity> on_hit_block:impl_skill_magic_missile_remove_task
-    - while <entry[shot].shot_entity.is_spawned>:
-      - playeffect at:<entry[shot].shot_entity.location> effect:end_rod quantity:8 visibility:50 offset:0.1
-      - wait 1t
+    - shoot arrow origin:<player> destination:<[target].location> speed:<script[impl_skill_marksman_shot].parsed_key[balance.speed]> script:impl_skill_marksman_shot_damage_task shooter:<player>
+    - playsound <player.location> sound:ITEM_CROSSBOW_SHOOT volume:5.0 sound_category:players
+    - determine true
 
-impl_skill_magic_missile_damage_task:
+impl_skill_marksman_shot_damage_task:
   type: task
   debug: false
   script:
-    - hurt <script[impl_skill_magic_missile].parsed_key[balance.damage]> <context.hit_entity> cause:ENTITY_ATTACK source:<player>
-    - remove <context.projectile>
-
-impl_skill_magic_missile_remove_task:
-  type: task
-  debug: false
-  script:
-    - remove <context.projectile>
+    - hurt <script[impl_skill_marksman_shot].parsed_key[balance.damage]> <[hit_entities]> cause:ENTITY_ATTACK source:<player>

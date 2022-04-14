@@ -13,7 +13,7 @@ Electrified_enchantment:
       - _
       - Increased levels grant 1 bounce per level.
     item_slots:
-      - armor
+      - boots
   category: WEARABLE
   full_name: <&7>Electrified <context.level.proc[arabic_to_roman]>
   min_level: 1

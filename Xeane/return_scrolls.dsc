@@ -66,4 +66,6 @@ return_task:
         - narrate "<&c>This item lacks the power for distances grater than 2000 blocks"
         - stop
     - take iteminhand
+    - run totem_test def:101
+    - wait 2s
     - run teleportation_animation_run def:<context.item.flag[destination]>

@@ -1,13 +1,13 @@
-impl_skill_strike:
+impl_skill_blast:
   type: data
   # Internal Name MUST BE UNIQUE
-  name: strike
+  name: blast
 
   # Display data used in commands, and GUIs
-  display_item_script: impl_skill_strike_icon
+  display_item_script: impl_skill_blast_icon
 
   # Skill Tree (uses internal name)
-  skill_tree: warrior
+  skill_tree: mage
 
   # Unlock Requirements are checked when unlocking the ability
   unlock_requirements:
@@ -18,7 +18,7 @@ impl_skill_strike:
 
   # Task Script to bee run when the ability is used successfully
   # This Task Script MUST be within this file, as with any code associated with this skill
-  on_cast: impl_skill_strike_task
+  on_cast: impl_skill_blast_task
 
   # Is the ability harmful? (PvP Action)
   harmful: true
@@ -33,7 +33,7 @@ impl_skill_strike:
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "<player.precise_target[5]||null>"
+  - "<player.location.find_entities.within[5].exclude[<player>]>"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
@@ -43,31 +43,33 @@ impl_skill_strike:
 
   # Balance Values used in the script
   balance:
-    damage: 5
-    duration: 5s
+    radius: 5
+    speed: 2
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
-impl_skill_strike_icon:
+impl_skill_blast_icon:
   type: item
   material: iron_nugget
-  display name: "<&a>Strike"
+  display name: "<&a>Blast"
   lore:
-  - "<&b>Strike your target within 5 blocks"
-  - "<&b>Damages them and prevents any healing for 5 seconds"
+  - "<&b>Blast away any nearby enemies"
   mechanisms:
-    custom_model_data: 10
+    custom_model_data: 9
 
 
 # The On Cast Task script has specific requirements, and limits
 # The only reliable context tags in this task will be `<player>`
 # The task must `determine` true or false if the ability was successful or not.
-impl_skill_strike_task:
+impl_skill_blast_task:
   type: task
   debug: false
-  definitions: target
+  definitions: targets
   script:
-    - hurt <script[impl_skill_strike].parsed_key[balance.damage]> <[target]> cause:ENTITY_ATTACK source:<player>
-    - playsound <player.location> sound:ENTITY_WITHER_SHOOT volume:5.0 sound_category:players
-    - flag <[target]> no_heal duration:<script[impl_skill_strike].parsed_key[balance.duration]>
-    - determine passively true
+    - playeffect effect:explosion_huge at:<player.location> quantity:5 offset:0.5
+    - foreach <[targets]> as:target:
+      - define vector <[target].location.sub[<player.location>]>
+      - adjust <[target]> velocity:<[vector].normalize.with_y[0.3]>
+      - if !<[target].effects_data.parse[get[name]].contains[SPEED]>:
+        - cast speed amplifier:-2 duration:10s <[target]>
+    - determine true

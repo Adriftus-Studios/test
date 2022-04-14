@@ -14,7 +14,7 @@ deflection_enchantment:
       - _
       - Chance increases by 2% per level.
     item_slots:
-      - armor
+      - Chest, Legs
   category: WEARABLE
   full_name: <&7>Deflection <context.level.proc[arabic_to_roman]>
   min_level: 1

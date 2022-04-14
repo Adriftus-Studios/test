@@ -1,36 +1,40 @@
-impl_skill_poison_dagger:
+impl_skill_shield:
   type: data
   # Internal Name MUST BE UNIQUE
-  name: poison_dagger
+  name: shield
 
   # Display data used in commands, and GUIs
-  display_item_script: impl_skill_poison_dagger_icon
+  display_item_script: impl_skill_shield_icon
 
   # Skill Tree (uses internal name)
-  skill_tree: rogue
+  skill_tree: mage
 
   # Unlock Requirements are checked when unlocking the ability
   unlock_requirements:
   - "true"
 
   # Cooldown
-  cooldown: 20s
+  # True Cooldown = cooldown - duration = 18s - 3s = 15s
+  cooldown: 18s
 
   # Task Script to bee run when the ability is used successfully
   # This Task Script MUST be within this file, as with any code associated with this skill
-  on_cast: impl_skill_poison_dagger_task
+  on_cast: impl_skill_shield_task
 
   # Is the ability harmful? (PvP Action)
-  harmful: true
+  harmful: false
 
   # Does using this ability flag you for PvP if it succeeds (even if not damaging)
-  pvp_flags: true
+  pvp_flags: false
+
+  # Can you use this in combat
+  pvp_usable: true
 
   # Skill Targetting
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "<player.precise_target[20]||null>"
+  - "<player>"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
@@ -40,34 +44,32 @@ impl_skill_poison_dagger:
 
   # Balance Values used in the script
   balance:
-    speed: 5
-    damage: 4
-    duration: 10s
+    duration: 3s
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
-impl_skill_poison_dagger_icon:
+impl_skill_shield_icon:
   type: item
   material: iron_nugget
-  display name: "<&a>Poison Dagger"
+  display name: "<&a>Shield"
   lore:
-  - "<&b>Throw a poison-tipped knife at your enemies from up to 20 blocks away"
-  - "<&b>Deals damage and poisons them if it lands"
+  - "<&b>Shield yourself from incoming damage for 3 seconds"
   mechanisms:
-    custom_model_data: 17
+    custom_model_data: 8
 
 
 # The On Cast Task script has specific requirements, and limits
 # The only reliable context tags in this task will be `<player>`
 # The task must `determine` true or false if the ability was successful or not.
-impl_skill_poison_dagger_task:
+impl_skill_shield_task:
   type: task
   debug: false
   definitions: target
   script:
-    - playeffect effect:spell_witch at:<player.eye_location.points_between[<player.precise_target_position>].distance[0.33]> quantity:5 offset:0.1
-    - playsound <player.location> sound:ENTITY_WITCH_THROW volume:5.0 sound_category:players
-    - hurt <[target]> <script[impl_skill_poison_dagger].parsed_key[balance.damage]> cause:ENTITY_ATTACK source:<player>
-    # Level 1 Poison. 25 ticks per half-heart (1 HP). 0.8 Half-hearts per second (2 HP * 0.4) (Minecraft Wiki)
-    - cast poison <[target]> duration:<script[impl_skill_poison_dagger].parsed_key[balance.duration]> amplifier:0
+    # Effect Level 10. A level of 5 and above gives full immunity to all damage. (Minecraft Wiki)
+    - flag <[target]> no_damage duration:<script[impl_skill_shield].data_key[balance.duration]>
+    - playsound <player.location> sound:ENTITY_IRON_GOLEM_REPAIR volume:5.0 sound_category:players
+    - repeat 30:
+      - playeffect effect:spell at:<player.location.above[1]> offset:0.8 quantity:5
+      - wait 2t
     - determine true

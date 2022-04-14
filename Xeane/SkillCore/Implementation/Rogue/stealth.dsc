@@ -1,24 +1,24 @@
-impl_skill_second_wind:
+impl_skill_stealth:
   type: data
   # Internal Name MUST BE UNIQUE
-  name: second_wind
+  name: stealth
 
   # Display data used in commands, and GUIs
-  display_item_script: impl_skill_second_wind_icon
+  display_item_script: impl_skill_stealth_icon
 
   # Skill Tree (uses internal name)
-  skill_tree: warrior
+  skill_tree: rogue
 
   # Unlock Requirements are checked when unlocking the ability
   unlock_requirements:
   - "true"
 
   # Cooldown
-  cooldown: 30s
+  cooldown: 35s
 
   # Task Script to bee run when the ability is used successfully
   # This Task Script MUST be within this file, as with any code associated with this skill
-  on_cast: impl_skill_second_wind_task
+  on_cast: impl_skill_stealth_task
 
   # Is the ability harmful? (PvP Action)
   harmful: false
@@ -43,29 +43,48 @@ impl_skill_second_wind:
 
   # Balance Values used in the script
   balance:
-    health: <player.health_max.div[2].round>
+    duration: 25s
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
-impl_skill_second_wind_icon:
+impl_skill_stealth_icon:
   type: item
   material: iron_nugget
-  display name: "<&a>Second Wind"
+  display name: "<&a>Stealth"
   lore:
-  - "<&b>Instantly recover 50<&pc> of your HP"
+  - "<&b>Turn invisible to ambush your enemies or escape"
+  - "<&b>This skill will be interrupted if you take or deal damage"
   mechanisms:
-    custom_model_data: 12
+    custom_model_data: 16
 
 
 # The On Cast Task script has specific requirements, and limits
 # The only reliable context tags in this task will be `<player>`
 # The task must `determine` true or false if the ability was successful or not.
-impl_skill_second_wind_task:
+impl_skill_stealth_task:
   type: task
   debug: false
   definitions: target
   script:
-    - heal <script[impl_skill_second_wind].parsed_key[balance.health]>
-    - playeffect effect:totem at:<player.location.above[2]> quantity:20 offset:0.25
-    - playsound <player.location> sound:ENTITY_SPLASH_POTION_BREAK volume:5.0 sound_category:players
+    - cast invisibility duration:<script[impl_skill_stealth].parsed_key[balance.duration]> amplifier:0 no_ambient hide_particles
+    - fakeequip <player> for:<server.online_players.filter_tag[<[filter_value].equals[<player>].not>]> head:air chest:air legs:air boots:air offhand:air hand:air duration:<script[impl_skill_stealth].parsed_key[balance.duration]>
+    - playsound <player.location> sound:BLOCK_PORTAL_AMBIENT volume:0.3 sound_category:players
+    - flag <player> on_next_damage:impl_skill_stealth_task_remove_damage
+    - flag <player> on_next_hit:impl_skill_stealth_task_remove_hit
     - determine true
+
+impl_skill_stealth_task_remove_damage:
+  type: task
+  debug: false
+  script:
+    - flag <context.entity> invisibility_once:!
+    - cast invisibility remove <context.entity>
+    - fakeequip <context.entity> reset
+
+impl_skill_stealth_task_remove_hit:
+  type: task
+  debug: false
+  script:
+    - flag <context.damager> invisibility_once:!
+    - cast invisibility remove <context.damager>
+    - fakeequip <context.damager> reset

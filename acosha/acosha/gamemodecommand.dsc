@@ -3,6 +3,7 @@ gms_command:
   name: gms
   description: Used to change gamemode adventure
   usage: /gms (Name)
+  debug: false
   script:
     - if <context.args.size> < 1 && <Player.has_permission[adriftus.staff.gms]>:
       - narrate "<green><player.name>'s Game Mode Changed To Survival"
@@ -25,6 +26,7 @@ gmc_command:
   name: gmc
   description: Used to change gamemode creative
   usage: /gmc (Name)
+  debug: false
   script:
     - if <context.args.size> < 1 && <Player.has_permission[adriftus.staff.gmc]>:
        - narrate "<green><player.name>'s Game Mode Changed To Creative"
@@ -47,6 +49,7 @@ gma_command:
   name: gma
   description: Used to Change Gamemode Adventure
   usage: /gma (Name)
+  debug: false
   script:
     - if <context.args.size> < 1 && <Player.has_permission[adriftus.staff.gma]>:
       - narrate "<green><player.name>'s Game Mode Changed To Adventure"
@@ -69,6 +72,7 @@ gmsp_command:
   name: gmsp
   description: Used to change gamemode spectator
   usage: /gmsp (Name)
+  debug: false
   script:
     - if <context.args.size> < 1 && <Player.has_permission[adriftus.staff.gmsp]>:
       - narrate "<green><player.name>'s Game Mode Changed To Spectator"

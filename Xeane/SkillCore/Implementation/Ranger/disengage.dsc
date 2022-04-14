@@ -1,31 +1,33 @@
-impl_skill_shield:
+impl_skill_disengage:
   type: data
   # Internal Name MUST BE UNIQUE
-  name: shield
+  name: disengage
 
   # Display data used in commands, and GUIs
-  display_item_script: impl_skill_shield_icon
+  display_item_script: impl_skill_disengage_icon
 
   # Skill Tree (uses internal name)
-  skill_tree: mage
+  skill_tree: ranger
 
   # Unlock Requirements are checked when unlocking the ability
   unlock_requirements:
   - "true"
 
   # Cooldown
-  # True Cooldown = cooldown - duration = 18s - 3s = 15s
-  cooldown: 18s
+  cooldown: 8s
 
   # Task Script to bee run when the ability is used successfully
   # This Task Script MUST be within this file, as with any code associated with this skill
-  on_cast: impl_skill_shield_task
+  on_cast: impl_skill_disengage_task
 
   # Is the ability harmful? (PvP Action)
   harmful: false
 
   # Does using this ability flag you for PvP if it succeeds (even if not damaging)
   pvp_flags: false
+
+  # Can you use this in combat
+  pvp_usable: true
 
   # Skill Targetting
   # these tags will be parsed to determine targets
@@ -41,32 +43,29 @@ impl_skill_shield:
 
   # Balance Values used in the script
   balance:
-    duration: 3s
+    distance: 1
+    speed: 1
 
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
-impl_skill_shield_icon:
+impl_skill_disengage_icon:
   type: item
   material: iron_nugget
-  display name: "<&a>Shield"
+  display name: "<&a>Disengage"
   lore:
-  - "<&b>Shield yourself from incoming damage for 3 seconds"
+  - "<&b>Leap backwards to put some distance between yourself and your enemies"
   mechanisms:
-    custom_model_data: 8
+    custom_model_data: 19
 
 
 # The On Cast Task script has specific requirements, and limits
 # The only reliable context tags in this task will be `<player>`
 # The task must `determine` true or false if the ability was successful or not.
-impl_skill_shield_task:
+impl_skill_disengage_task:
   type: task
   debug: false
   definitions: target
   script:
-    # Effect Level 10. A level of 5 and above gives full immunity to all damage. (Minecraft Wiki)
-    - flag <[target]> no_damage duration:<script[impl_skill_shield].data_key[balance.duration]>
-    - playsound <player.location> sound:ENTITY_IRON_GOLEM_REPAIR volume:5.0 sound_category:players
-    - repeat 30:
-      - playeffect effect:spell at:<player.location.above[1]> offset:0.8 quantity:5
-      - wait 2t
+    - adjust <player> velocity:<player.location.with_pitch[35].backward.sub[<player.location.with_pitch[35]>]>
+    - playsound <player.location> sound:ENTITY_GOAT_LONG_JUMP volume:5.0 sound_category:players
     - determine true
