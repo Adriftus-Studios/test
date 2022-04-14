@@ -1,4 +1,4 @@
-custom_ingredient_hoisinsauce:
+custom_ingredient_hoisinsauceitem:
   type: item
   debug: false
   material: apple
@@ -6,4 +6,4 @@ custom_ingredient_hoisinsauce:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_sweetpotato|sugar|custom_food_soybean|custom_ingredient_sesameseeds|custom_food_garlic|custom_ingredient_chilipepper
+      input: custom_ingredient_saucepanitem|custom_crop_sweetpotato|sugar|custom_crop_soybean|custom_crop_sesameseeds|custom_crop_garlic|custom_crop_chilipepper

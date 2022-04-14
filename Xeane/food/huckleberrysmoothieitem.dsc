@@ -1,4 +1,4 @@
-custom_ingredient_huckleberrysmoothie:
+custom_ingredient_huckleberrysmoothieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_huckleberrysmoothie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_huckleberry|blue_ice/ice/packed_ice/snowball
+      input: custom_ingredient_mixingbowlitem|custom_crop_huckleberry|blue_ice/ice/packed_ice/snowball

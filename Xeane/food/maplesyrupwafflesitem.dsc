@@ -12,4 +12,4 @@ custom_food_maplesyrupwaffles:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_ingredient_cookingoil|custom_ingredient_batter|custom_ingredient_butter|custom_food_avocado/custom_food_banana|custom_ingredient_maplesyrup
+      input: custom_ingredient_skilletitem|custom_ingredient_cookingoilitem|custom_ingredient_batteritem|custom_ingredient_butteritem|custom_crop_avocado/custom_crop_banana|custom_crop_maplesyrup

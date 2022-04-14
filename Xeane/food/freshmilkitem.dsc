@@ -1,4 +1,4 @@
-custom_ingredient_freshmilk:
+custom_ingredient_freshmilkitem:
   type: item
   debug: false
   material: apple

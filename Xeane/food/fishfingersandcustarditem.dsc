@@ -1,4 +1,4 @@
-custom_ingredient_fishfingersandcustard:
+custom_ingredient_fishfingersandcustarditem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_fishfingersandcustard:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_groundfish|custom_ingredient_batter|custom_ingredient_mayonaise|custom_ingredient_mustard|custom_food_garlic|custom_food_lemon
+      input: custom_ingredient_bakewareitem|custom_ingredient_groundfishitem|custom_ingredient_batteritem|custom_ingredient_mayonaiseitem|custom_crop_mustard|custom_crop_garlic|custom_crop_lemon

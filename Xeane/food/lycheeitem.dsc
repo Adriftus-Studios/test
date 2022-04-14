@@ -1,4 +1,4 @@
-custom_food_lychee:
+custom_crop_lychee:
   type: item
   debug: false
   material: apple

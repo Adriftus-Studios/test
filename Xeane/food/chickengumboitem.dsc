@@ -12,4 +12,4 @@ custom_food_chickengumbo:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_food_okra|chicken|custom_food_celery|custom_food_onion|custom_food_stock|custom_ingredient_spiceleaf|custom_food_bellpepper
+      input: custom_ingredient_potitem|custom_crop_okra|chicken|custom_crop_celery|custom_crop_onion|custom_food_stock|custom_crop_spiceleaf|custom_crop_bellpepper

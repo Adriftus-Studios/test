@@ -12,4 +12,4 @@ custom_food_southernstylebreakfast:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_food_grits|custom_food_biscuit|porkchop|custom_food_avocado/custom_food_banana
+      input: custom_ingredient_cuttingboarditem|custom_food_grits|custom_food_biscuit|porkchop|custom_crop_avocado/custom_crop_banana

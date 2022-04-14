@@ -1,4 +1,4 @@
-custom_ingredient_vanilla:
+custom_ingredient_vanillaitem:
   type: item
   debug: false
   material: apple
@@ -6,4 +6,4 @@ custom_ingredient_vanilla:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_vanillabean
+      input: custom_ingredient_bakewareitem|custom_crop_vanillabean

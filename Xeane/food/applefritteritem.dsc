@@ -12,4 +12,4 @@ custom_food_applefritter:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|apple|custom_ingredient_dough|sugar|custom_ingredient_cookingoil
+      input: custom_ingredient_potitem|apple|custom_ingredient_doughitem|sugar|custom_ingredient_cookingoilitem

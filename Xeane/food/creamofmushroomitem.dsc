@@ -1,4 +1,4 @@
-custom_ingredient_creamofmushroom:
+custom_ingredient_creamofmushroomitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_creamofmushroom:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|brown_mushroom/red_mushroom/custom_food_whitemushroom|custom_ingredient_cream
+      input: custom_ingredient_saucepanitem|brown_mushroom/red_mushroom/custom_crop_whitemushroom|custom_ingredient_creamitem

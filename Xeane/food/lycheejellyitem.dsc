@@ -1,4 +1,4 @@
-custom_ingredient_lycheejelly:
+custom_ingredient_lycheejellyitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_lycheejelly:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_lychee|sugar
+      input: custom_ingredient_saucepanitem|custom_crop_lychee|sugar

@@ -1,4 +1,4 @@
-custom_ingredient_olive:
+custom_crop_olive:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_apricotjuice:
+custom_ingredient_apricotjuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_apricotjuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_apricot|custom_food_apricot
+      input: custom_ingredient_juiceritem|custom_crop_apricot|custom_crop_apricot

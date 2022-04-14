@@ -1,4 +1,4 @@
-custom_ingredient_melonsmoothie:
+custom_ingredient_melonsmoothieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_melonsmoothie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_ingredient_melonjuice|blue_ice/ice/packed_ice/snowball
+      input: custom_ingredient_mixingbowlitem|custom_ingredient_melonjuiceitem|blue_ice/ice/packed_ice/snowball

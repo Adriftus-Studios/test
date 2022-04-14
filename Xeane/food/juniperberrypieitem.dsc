@@ -1,4 +1,4 @@
-custom_ingredient_juniperberrypie:
+custom_ingredient_juniperberrypieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_juniperberrypie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_juniperberry|sugar|custom_ingredient_dough
+      input: custom_ingredient_bakewareitem|custom_crop_juniperberry|sugar|custom_ingredient_doughitem

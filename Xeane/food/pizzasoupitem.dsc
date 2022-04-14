@@ -12,4 +12,4 @@ custom_food_pizzasoup:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_food_tomatosoup|custom_food_onion|custom_food_bellpepper|brown_mushroom/red_mushroom/custom_food_whitemushroom|custom_food_garlic|custom_ingredient_cheese
+      input: custom_ingredient_potitem|custom_food_tomatosoup|custom_crop_onion|custom_crop_bellpepper|brown_mushroom/red_mushroom/custom_crop_whitemushroom|custom_crop_garlic|custom_ingredient_cheeseitem

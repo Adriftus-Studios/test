@@ -12,4 +12,4 @@ custom_food_berryvinaigrettesalad:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_avocado/custom_ingredient_olive|custom_food_cabbage/custom_food_kale/custom_food_lettuce/custom_food_spinach|custom_ingredient_applejuice/custom_ingredient_melonjuice/custom_ingredient_sweetberryjuice/custom_ingredient_glowberryjuice|custom_ingredient_vinegar
+      input: custom_ingredient_mixingbowlitem|custom_crop_avocado/custom_crop_olive|custom_crop_cabbage/custom_crop_kale/custom_crop_lettuce/custom_crop_spinach|custom_ingredient_applejuiceitem/custom_ingredient_melonjuiceitem/custom_ingredient_sweetberryjuiceitem/custom_ingredient_glowberryjuiceitem|custom_ingredient_vinegaritem

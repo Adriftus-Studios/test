@@ -1,4 +1,4 @@
-custom_ingredient_rambutanjellytoast:
+custom_ingredient_rambutanjellytoastitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_rambutanjellytoast:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_ingredient_rambutanjelly|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_ingredient_rambutanjellyitem|custom_food_toast

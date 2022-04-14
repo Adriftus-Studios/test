@@ -1,4 +1,4 @@
-custom_ingredient_garammasala:
+custom_ingredient_garammasalaitem:
   type: item
   debug: false
   material: apple
@@ -6,4 +6,4 @@ custom_ingredient_garammasala:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_grinder|custom_ingredient_blackpepper|custom_ingredient_groundcinnamon|custom_ingredient_spiceleaf|custom_ingredient_groundnutmeg
+      input: custom_ingredient_grinderitem|custom_ingredient_blackpepperitem|custom_ingredient_groundcinnamonitem|custom_crop_spiceleaf|custom_ingredient_groundnutmegitem

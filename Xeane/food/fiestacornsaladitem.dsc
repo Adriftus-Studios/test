@@ -12,4 +12,4 @@ custom_food_fiestacornsalad:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_corn|custom_food_soybean|custom_food_onion|custom_food_lime|custom_food_garlic|custom_ingredient_chilipepper|custom_food_tomato
+      input: custom_ingredient_mixingbowlitem|custom_crop_corn|custom_crop_soybean|custom_crop_onion|custom_crop_lime|custom_crop_garlic|custom_crop_chilipepper|custom_crop_tomato

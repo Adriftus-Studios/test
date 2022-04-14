@@ -12,4 +12,4 @@ custom_food_friedonions:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_food_onion|custom_ingredient_butter
+      input: custom_ingredient_potitem|custom_crop_onion|custom_ingredient_butteritem

@@ -12,4 +12,4 @@ custom_food_oldworldveggiesoup:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_food_stock|custom_food_onion|custom_food_peas|custom_ingredient_barley
+      input: custom_ingredient_potitem|custom_food_stock|custom_crop_onion|custom_crop_peas|custom_crop_barley

@@ -12,4 +12,4 @@ custom_food_peachesandcreamoatmeal:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_oats|custom_food_peach|custom_ingredient_cream|water_bucket/custom_ingredient_freshwater
+      input: custom_ingredient_potitem|custom_crop_oats|custom_crop_peach|custom_ingredient_creamitem|water_bucket/custom_ingredient_freshwateritem

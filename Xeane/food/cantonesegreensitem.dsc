@@ -12,4 +12,4 @@ custom_food_cantonesegreens:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_food_cabbage|custom_food_oystersauce
+      input: custom_ingredient_potitem|custom_crop_cabbage|custom_food_oystersauce

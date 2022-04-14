@@ -1,4 +1,4 @@
-custom_ingredient_cantaloupejelly:
+custom_ingredient_cantaloupejellyitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_cantaloupejelly:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_cantaloupe|sugar
+      input: custom_ingredient_saucepanitem|custom_crop_cantaloupe|sugar

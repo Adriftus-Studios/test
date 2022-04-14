@@ -1,4 +1,4 @@
-custom_ingredient_blackpepper:
+custom_ingredient_blackpepperitem:
   type: item
   debug: false
   material: apple
@@ -6,4 +6,4 @@ custom_ingredient_blackpepper:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_grinder|custom_ingredient_peppercorn
+      input: custom_ingredient_grinderitem|custom_crop_peppercorn

@@ -1,4 +1,4 @@
-custom_ingredient_durianjuice:
+custom_ingredient_durianjuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_durianjuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_durian|custom_food_durian
+      input: custom_ingredient_juiceritem|custom_crop_durian|custom_crop_durian

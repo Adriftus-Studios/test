@@ -1,4 +1,4 @@
-custom_ingredient_soursopjuice:
+custom_ingredient_soursopjuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_soursopjuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_soursop|custom_food_soursop
+      input: custom_ingredient_juiceritem|custom_crop_soursop|custom_crop_soursop

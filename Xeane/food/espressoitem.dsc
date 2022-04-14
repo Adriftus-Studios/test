@@ -1,4 +1,4 @@
-custom_ingredient_espresso:
+custom_ingredient_espressoitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_espresso:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_hotcoffee|custom_ingredient_hotcoffee|custom_ingredient_hotcoffee|sugar
+      input: custom_ingredient_potitem|custom_ingredient_hotcoffeeitem|custom_ingredient_hotcoffeeitem|custom_ingredient_hotcoffeeitem|sugar

@@ -1,4 +1,4 @@
-custom_ingredient_freshwater:
+custom_ingredient_freshwateritem:
   type: item
   debug: false
   material: apple

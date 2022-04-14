@@ -12,4 +12,4 @@ custom_food_wontonsoup:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_food_stock|custom_ingredient_dough|custom_food_scallion|custom_ingredient_ginger|custom_ingredient_soysauce
+      input: custom_ingredient_potitem|custom_food_stock|custom_ingredient_doughitem|custom_crop_scallion|custom_crop_ginger|custom_ingredient_soysauceitem

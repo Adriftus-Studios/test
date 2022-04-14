@@ -6,4 +6,4 @@ custom_ingredient_lemon_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_food_lemon|custom_food_lemon|custom_food_lemon|custom_food_lemon|custom_food_lemon|custom_food_lemon|custom_food_lemon|custom_food_lemon|custom_ingredient_saplings
+      input: custom_crop_lemon|custom_crop_lemon|custom_crop_lemon|custom_crop_lemon|custom_crop_lemon|custom_crop_lemon|custom_crop_lemon|custom_crop_lemon|custom_ingredient_saplings

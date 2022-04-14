@@ -1,4 +1,4 @@
-custom_ingredient_chickenalfredo:
+custom_ingredient_chickenalfredoitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_chickenalfredo:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|chicken|custom_ingredient_cream|custom_ingredient_spiceleaf|custom_ingredient_pasta
+      input: custom_ingredient_saucepanitem|chicken|custom_ingredient_creamitem|custom_crop_spiceleaf|custom_ingredient_pastaitem

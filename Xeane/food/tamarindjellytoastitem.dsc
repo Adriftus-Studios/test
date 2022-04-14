@@ -1,4 +1,4 @@
-custom_ingredient_tamarindjellytoast:
+custom_ingredient_tamarindjellytoastitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_tamarindjellytoast:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_ingredient_tamarindjelly|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_ingredient_tamarindjellyitem|custom_food_toast

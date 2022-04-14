@@ -1,4 +1,4 @@
-custom_ingredient_gingersoda:
+custom_ingredient_gingersodaitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_gingersoda:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|water_bucket/custom_ingredient_freshwater|sugar|custom_ingredient_ginger
+      input: custom_ingredient_potitem|water_bucket/custom_ingredient_freshwateritem|sugar|custom_crop_ginger

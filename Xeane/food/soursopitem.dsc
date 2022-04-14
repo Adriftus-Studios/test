@@ -1,4 +1,4 @@
-custom_food_soursop:
+custom_crop_soursop:
   type: item
   debug: false
   material: apple

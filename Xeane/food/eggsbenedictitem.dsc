@@ -12,4 +12,4 @@ custom_food_eggsbenedict:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_food_avocado/custom_food_banana|custom_food_biscuit|porkchop|custom_ingredient_butter|custom_food_lemon
+      input: custom_ingredient_cuttingboarditem|custom_crop_avocado/custom_crop_banana|custom_food_biscuit|porkchop|custom_ingredient_butteritem|custom_crop_lemon

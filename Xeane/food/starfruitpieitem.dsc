@@ -1,4 +1,4 @@
-custom_ingredient_starfruitpie:
+custom_ingredient_starfruitpieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_starfruitpie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_starfruit|sugar|custom_ingredient_dough
+      input: custom_ingredient_bakewareitem|custom_crop_starfruit|sugar|custom_ingredient_doughitem

@@ -1,4 +1,4 @@
-custom_ingredient_cherryjuice:
+custom_ingredient_cherryjuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_cherryjuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_cherry|custom_food_cherry
+      input: custom_ingredient_juiceritem|custom_crop_cherry|custom_crop_cherry

@@ -1,4 +1,4 @@
-custom_ingredient_hazelnutcoffee:
+custom_ingredient_hazelnutcoffeeitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_hazelnutcoffee:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_coffeebean|custom_ingredient_hazelnut
+      input: custom_ingredient_potitem|custom_crop_coffeebean|custom_crop_hazelnut

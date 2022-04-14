@@ -1,4 +1,4 @@
-custom_ingredient_tatertots:
+custom_ingredient_tatertotsitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_tatertots:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|potato|custom_ingredient_flour|custom_ingredient_salt
+      input: custom_ingredient_bakewareitem|potato|custom_ingredient_flouritem|custom_ingredient_saltitem

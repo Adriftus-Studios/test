@@ -1,4 +1,4 @@
-custom_ingredient_loxbagelsandwich:
+custom_ingredient_loxbagelsandwichitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_loxbagelsandwich:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|cod/salmon/tropical_fish|custom_food_toast|custom_ingredient_cream|custom_food_scallion
+      input: custom_ingredient_cuttingboarditem|cod/salmon/tropical_fish|custom_food_toast|custom_ingredient_creamitem|custom_crop_scallion

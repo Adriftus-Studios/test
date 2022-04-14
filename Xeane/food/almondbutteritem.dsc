@@ -1,4 +1,4 @@
-custom_ingredient_almondbutter:
+custom_ingredient_almondbutteritem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_almondbutter:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_grinder|custom_ingredient_almond
+      input: custom_ingredient_grinderitem|custom_crop_almond

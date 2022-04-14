@@ -1,4 +1,4 @@
-custom_ingredient_barley:
+custom_crop_barley:
   type: item
   debug: false
   material: apple

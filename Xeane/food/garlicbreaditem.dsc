@@ -12,4 +12,4 @@ custom_food_garlicbread:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_food_garlic|custom_food_toast|custom_ingredient_butter
+      input: custom_ingredient_cuttingboarditem|custom_crop_garlic|custom_food_toast|custom_ingredient_butteritem

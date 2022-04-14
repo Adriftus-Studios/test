@@ -12,4 +12,4 @@ custom_food_merveilleux:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_ingredient_meringue|custom_ingredient_cream|custom_food_chocolatebar
+      input: custom_ingredient_cuttingboarditem|custom_ingredient_meringueitem|custom_ingredient_creamitem|custom_food_chocolatebar

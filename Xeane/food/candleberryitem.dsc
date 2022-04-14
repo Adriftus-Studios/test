@@ -1,4 +1,4 @@
-custom_ingredient_candleberry:
+custom_crop_candleberry:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_peanut:
+custom_crop_peanut:
   type: item
   debug: false
   material: apple

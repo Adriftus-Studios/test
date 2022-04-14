@@ -6,4 +6,4 @@ custom_ingredient_chestnut_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_chestnut|custom_ingredient_chestnut|custom_ingredient_chestnut|custom_ingredient_chestnut|custom_ingredient_chestnut|custom_ingredient_chestnut|custom_ingredient_chestnut|custom_ingredient_chestnut|custom_ingredient_saplings
+      input: custom_crop_chestnut|custom_crop_chestnut|custom_crop_chestnut|custom_crop_chestnut|custom_crop_chestnut|custom_crop_chestnut|custom_crop_chestnut|custom_crop_chestnut|custom_ingredient_saplings

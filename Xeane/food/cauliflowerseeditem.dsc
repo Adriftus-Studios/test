@@ -1,9 +1,12 @@
-custom_ingredient_cauliflowerseed:
+custom_seed_cauliflowerseed:
   type: item
   debug: false
   material: apple
   display name: <&a>Cauliflower Seed
+  data:
+    max_seeds: 3
+    max_crops: 4
   recipes:
     1:
       type: shapeless
-      input: custom_food_cauliflower
+      input: custom_crop_cauliflower

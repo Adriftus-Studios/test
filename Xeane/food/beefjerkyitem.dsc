@@ -12,4 +12,4 @@ custom_food_beefjerky:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|beef|custom_ingredient_salt
+      input: custom_ingredient_cuttingboarditem|beef|custom_ingredient_saltitem

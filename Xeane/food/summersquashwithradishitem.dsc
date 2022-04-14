@@ -12,4 +12,4 @@ custom_food_summersquashwithradish:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_radish|custom_food_zucchini|pumpkin|custom_ingredient_spiceleaf|custom_ingredient_cookingoil
+      input: custom_ingredient_mixingbowlitem|custom_crop_radish|custom_crop_zucchini|pumpkin|custom_crop_spiceleaf|custom_ingredient_cookingoilitem

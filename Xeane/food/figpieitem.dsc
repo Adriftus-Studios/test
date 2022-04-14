@@ -1,4 +1,4 @@
-custom_ingredient_figpie:
+custom_ingredient_figpieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_figpie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_fig|sugar|custom_ingredient_dough
+      input: custom_ingredient_bakewareitem|custom_crop_fig|sugar|custom_ingredient_doughitem

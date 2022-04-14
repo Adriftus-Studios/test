@@ -1,4 +1,4 @@
-custom_ingredient_gooseberryjuice:
+custom_ingredient_gooseberryjuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_gooseberryjuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_gooseberry|custom_food_gooseberry
+      input: custom_ingredient_juiceritem|custom_crop_gooseberry|custom_crop_gooseberry

@@ -12,4 +12,4 @@ custom_food_threebeansalad:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_ingredient_bean|custom_ingredient_bean|custom_ingredient_bean|custom_ingredient_spiceleaf|custom_food_onion|custom_ingredient_cookingoil|custom_ingredient_blackpepper|custom_ingredient_vinegar
+      input: custom_ingredient_mixingbowlitem|custom_crop_bean|custom_crop_bean|custom_crop_bean|custom_crop_spiceleaf|custom_crop_onion|custom_ingredient_cookingoilitem|custom_ingredient_blackpepperitem|custom_ingredient_vinegaritem

@@ -6,4 +6,4 @@ custom_ingredient_orange_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_food_orange|custom_food_orange|custom_food_orange|custom_food_orange|custom_food_orange|custom_food_orange|custom_food_orange|custom_food_orange|custom_ingredient_saplings
+      input: custom_crop_orange|custom_crop_orange|custom_crop_orange|custom_crop_orange|custom_crop_orange|custom_crop_orange|custom_crop_orange|custom_crop_orange|custom_ingredient_saplings

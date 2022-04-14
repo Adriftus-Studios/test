@@ -12,4 +12,4 @@ custom_food_cornflakes:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_corn|milk_bucket/custom_ingredient_freshmilk
+      input: custom_ingredient_mixingbowlitem|custom_crop_corn|milk_bucket/custom_ingredient_freshmilkitem

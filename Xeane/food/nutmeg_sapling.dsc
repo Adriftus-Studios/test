@@ -6,4 +6,4 @@ custom_ingredient_nutmeg_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_nutmeg|custom_ingredient_nutmeg|custom_ingredient_nutmeg|custom_ingredient_nutmeg|custom_ingredient_nutmeg|custom_ingredient_nutmeg|custom_ingredient_nutmeg|custom_ingredient_nutmeg|custom_ingredient_saplings
+      input: custom_crop_nutmeg|custom_crop_nutmeg|custom_crop_nutmeg|custom_crop_nutmeg|custom_crop_nutmeg|custom_crop_nutmeg|custom_crop_nutmeg|custom_crop_nutmeg|custom_ingredient_saplings

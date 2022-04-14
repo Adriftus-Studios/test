@@ -1,4 +1,4 @@
-custom_food_peach:
+custom_crop_peach:
   type: item
   debug: false
   material: apple

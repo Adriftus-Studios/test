@@ -1,4 +1,4 @@
-custom_food_greengrape:
+custom_crop_greengrape:
   type: item
   debug: false
   material: apple

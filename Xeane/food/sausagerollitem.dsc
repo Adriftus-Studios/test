@@ -12,4 +12,4 @@ custom_food_sausageroll:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_sausage|custom_ingredient_dough|custom_food_avocado/custom_food_banana
+      input: custom_ingredient_bakewareitem|custom_food_sausage|custom_ingredient_doughitem|custom_crop_avocado/custom_crop_banana

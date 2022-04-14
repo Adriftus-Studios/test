@@ -12,4 +12,4 @@ custom_food_fries:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|potato|custom_ingredient_cookingoil|custom_ingredient_salt
+      input: custom_ingredient_potitem|potato|custom_ingredient_cookingoilitem|custom_ingredient_saltitem

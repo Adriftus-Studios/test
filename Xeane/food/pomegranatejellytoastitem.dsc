@@ -1,4 +1,4 @@
-custom_ingredient_pomegranatejellytoast:
+custom_ingredient_pomegranatejellytoastitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_pomegranatejellytoast:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_ingredient_pomegranatejelly|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_ingredient_pomegranatejellyitem|custom_food_toast

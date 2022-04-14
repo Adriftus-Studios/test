@@ -1,4 +1,4 @@
-custom_ingredient_glowberryjuice:
+custom_ingredient_glowberryjuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_glowberryjuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|glow_berries|glow_berries
+      input: custom_ingredient_juiceritem|glow_berries|glow_berries

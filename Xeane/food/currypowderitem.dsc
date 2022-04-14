@@ -1,4 +1,4 @@
-custom_ingredient_currypowder:
+custom_ingredient_currypowderitem:
   type: item
   debug: false
   material: apple
@@ -6,4 +6,4 @@ custom_ingredient_currypowder:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_grinder|custom_ingredient_spiceleaf|custom_ingredient_mustardseeds|custom_ingredient_groundcinnamon
+      input: custom_ingredient_grinderitem|custom_crop_spiceleaf|custom_crop_mustardseeds|custom_ingredient_groundcinnamonitem

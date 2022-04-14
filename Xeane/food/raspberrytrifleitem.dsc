@@ -12,4 +12,4 @@ custom_food_raspberrytrifle:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_raspberry|custom_ingredient_cream|custom_ingredient_vanillabean|custom_ingredient_dough
+      input: custom_ingredient_bakewareitem|custom_crop_raspberry|custom_ingredient_creamitem|custom_crop_vanillabean|custom_ingredient_doughitem

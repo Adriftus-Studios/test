@@ -12,4 +12,4 @@ custom_food_chocolatebacon:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_chocolatebar|porkchop
+      input: custom_ingredient_saucepanitem|custom_food_chocolatebar|porkchop

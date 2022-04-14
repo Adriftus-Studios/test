@@ -1,4 +1,4 @@
-custom_ingredient_jellyroll:
+custom_ingredient_jellyrollitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_jellyroll:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_chocolatebar|custom_ingredient_flour|custom_ingredient_applejelly/custom_ingredient_melonjelly/custom_ingredient_sweetberryjelly/custom_ingredient_glowberryjelly
+      input: custom_ingredient_bakewareitem|custom_food_chocolatebar|custom_ingredient_flouritem|custom_ingredient_applejellyitem/custom_ingredient_melonjellyitem/custom_ingredient_sweetberryjellyitem/custom_ingredient_glowberryjellyitem

@@ -1,4 +1,4 @@
-custom_food_banana:
+custom_crop_banana:
   type: item
   debug: false
   material: apple

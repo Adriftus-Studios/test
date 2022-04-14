@@ -1,4 +1,4 @@
-custom_food_rhubarb:
+custom_crop_rhubarb:
   type: item
   debug: false
   material: apple

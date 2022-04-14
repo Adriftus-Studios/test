@@ -1,4 +1,4 @@
-custom_ingredient_cornedbeefandcabbage:
+custom_ingredient_cornedbeefandcabbageitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_cornedbeefandcabbage:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_food_cornedbeef|custom_food_cabbage
+      input: custom_ingredient_potitem|custom_food_cornedbeef|custom_crop_cabbage

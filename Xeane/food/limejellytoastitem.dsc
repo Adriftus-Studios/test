@@ -1,4 +1,4 @@
-custom_ingredient_limejellytoast:
+custom_ingredient_limejellytoastitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_limejellytoast:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_ingredient_limejelly|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_ingredient_limejellyitem|custom_food_toast

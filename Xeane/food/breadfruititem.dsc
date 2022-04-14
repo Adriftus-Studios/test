@@ -1,4 +1,4 @@
-custom_ingredient_breadfruit:
+custom_crop_breadfruit:
   type: item
   debug: false
   material: apple

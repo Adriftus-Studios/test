@@ -12,4 +12,4 @@ custom_food_bakedcactus:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|cactus
+      input: custom_ingredient_bakewareitem|cactus

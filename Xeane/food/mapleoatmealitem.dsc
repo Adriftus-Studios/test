@@ -12,4 +12,4 @@ custom_food_mapleoatmeal:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_oats|custom_ingredient_maplesyrup|water_bucket/custom_ingredient_freshwater
+      input: custom_ingredient_potitem|custom_crop_oats|custom_crop_maplesyrup|water_bucket/custom_ingredient_freshwateritem

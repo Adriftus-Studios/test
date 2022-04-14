@@ -12,4 +12,4 @@ custom_food_caramel:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|sugar|milk_bucket/custom_ingredient_freshmilk
+      input: custom_ingredient_saucepanitem|sugar|milk_bucket/custom_ingredient_freshmilkitem

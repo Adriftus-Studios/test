@@ -12,4 +12,4 @@ custom_food_honeysoyribs:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|porkchop|honey_bottle|custom_ingredient_soysauce|custom_food_garlic|custom_ingredient_vinegar
+      input: custom_ingredient_bakewareitem|porkchop|honey_bottle|custom_ingredient_soysauceitem|custom_crop_garlic|custom_ingredient_vinegaritem

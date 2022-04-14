@@ -1,4 +1,4 @@
-custom_ingredient_orangejuice:
+custom_ingredient_orangejuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_orangejuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_orange|custom_food_orange
+      input: custom_ingredient_juiceritem|custom_crop_orange|custom_crop_orange

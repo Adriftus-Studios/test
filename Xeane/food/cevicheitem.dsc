@@ -12,4 +12,4 @@ custom_food_ceviche:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|cod/salmon/tropical_fish|custom_ingredient_salt|custom_food_lemon|custom_food_onion|custom_food_sweetpotato|custom_ingredient_spiceleaf
+      input: custom_ingredient_bakewareitem|cod/salmon/tropical_fish|custom_ingredient_saltitem|custom_crop_lemon|custom_crop_onion|custom_crop_sweetpotato|custom_crop_spiceleaf

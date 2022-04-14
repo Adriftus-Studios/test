@@ -1,4 +1,4 @@
-custom_ingredient_passionfruitjuice:
+custom_ingredient_passionfruitjuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_passionfruitjuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_ingredient_passionfruit|custom_ingredient_passionfruit
+      input: custom_ingredient_juiceritem|custom_crop_passionfruit|custom_crop_passionfruit

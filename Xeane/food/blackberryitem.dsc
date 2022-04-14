@@ -1,4 +1,4 @@
-custom_food_blackberry:
+custom_crop_blackberry:
   type: item
   debug: false
   material: apple

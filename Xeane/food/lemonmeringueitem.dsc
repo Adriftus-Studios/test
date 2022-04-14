@@ -12,4 +12,4 @@ custom_food_lemonmeringue:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_lemon|sugar|custom_ingredient_dough|custom_ingredient_meringue
+      input: custom_ingredient_bakewareitem|custom_crop_lemon|sugar|custom_ingredient_doughitem|custom_ingredient_meringueitem

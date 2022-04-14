@@ -1,4 +1,4 @@
-custom_food_huckleberry:
+custom_crop_huckleberry:
   type: item
   debug: false
   material: apple

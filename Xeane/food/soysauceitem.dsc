@@ -1,4 +1,4 @@
-custom_ingredient_soysauce:
+custom_ingredient_soysauceitem:
   type: item
   debug: false
   material: apple
@@ -6,4 +6,4 @@ custom_ingredient_soysauce:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_soybean
+      input: custom_ingredient_juiceritem|custom_crop_soybean

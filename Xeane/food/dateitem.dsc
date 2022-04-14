@@ -1,4 +1,4 @@
-custom_food_date:
+custom_crop_date:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_hotchocolate:
+custom_ingredient_hotchocolateitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_hotchocolate:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|milk_bucket/custom_ingredient_freshmilk|custom_ingredient_cocoapowder|custom_ingredient_marshmellows
+      input: custom_ingredient_saucepanitem|milk_bucket/custom_ingredient_freshmilkitem|custom_ingredient_cocoapowderitem|custom_ingredient_marshmellowsitem

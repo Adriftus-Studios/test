@@ -1,4 +1,4 @@
-custom_ingredient_grapejuice:
+custom_ingredient_grapejuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_grapejuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_grape|custom_food_grape
+      input: custom_ingredient_juiceritem|custom_crop_grape|custom_crop_grape

@@ -1,4 +1,4 @@
-custom_food_peas:
+custom_crop_peas:
   type: item
   debug: false
   material: apple

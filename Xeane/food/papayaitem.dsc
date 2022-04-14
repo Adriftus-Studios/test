@@ -1,4 +1,4 @@
-custom_food_papaya:
+custom_crop_papaya:
   type: item
   debug: false
   material: apple

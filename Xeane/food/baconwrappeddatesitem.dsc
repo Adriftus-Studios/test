@@ -12,4 +12,4 @@ custom_food_baconwrappeddates:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_date|porkchop
+      input: custom_ingredient_bakewareitem|custom_crop_date|porkchop

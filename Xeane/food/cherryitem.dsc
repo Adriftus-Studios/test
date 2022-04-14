@@ -1,4 +1,4 @@
-custom_food_cherry:
+custom_crop_cherry:
   type: item
   debug: false
   material: apple

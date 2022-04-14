@@ -1,4 +1,4 @@
-custom_ingredient_waterchestnut:
+custom_crop_waterchestnut:
   type: item
   debug: false
   material: apple

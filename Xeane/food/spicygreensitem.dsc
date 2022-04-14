@@ -12,4 +12,4 @@ custom_food_spicygreens:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_ingredient_mustard|custom_food_broccoli|custom_ingredient_blackpepper|custom_food_garlic|custom_ingredient_cookingoil|custom_food_onion
+      input: custom_ingredient_saucepanitem|custom_crop_mustard|custom_crop_broccoli|custom_ingredient_blackpepperitem|custom_crop_garlic|custom_ingredient_cookingoilitem|custom_crop_onion

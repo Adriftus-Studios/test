@@ -12,4 +12,4 @@ custom_food_californiaroll:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|cod/salmon/tropical_fish|custom_food_avocado|custom_food_cucumber|kelp|custom_ingredient_rice
+      input: custom_ingredient_cuttingboarditem|cod/salmon/tropical_fish|custom_crop_avocado|custom_crop_cucumber|kelp|custom_crop_rice

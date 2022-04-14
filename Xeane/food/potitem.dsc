@@ -1,4 +1,4 @@
-custom_ingredient_pot:
+custom_ingredient_potitem:
   type: item
   debug: false
   material: apple

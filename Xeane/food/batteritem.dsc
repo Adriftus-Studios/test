@@ -1,4 +1,4 @@
-custom_ingredient_batter:
+custom_ingredient_batteritem:
   type: item
   debug: false
   material: apple
@@ -6,4 +6,4 @@ custom_ingredient_batter:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_ingredient_flour|milk_bucket/custom_ingredient_freshmilk|custom_food_avocado/custom_food_banana
+      input: custom_ingredient_mixingbowlitem|custom_ingredient_flouritem|milk_bucket/custom_ingredient_freshmilkitem|custom_crop_avocado/custom_crop_banana

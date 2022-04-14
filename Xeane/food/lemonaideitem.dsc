@@ -1,4 +1,4 @@
-custom_ingredient_lemonaide:
+custom_ingredient_lemonaideitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_lemonaide:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_lemon|custom_food_lemon|sugar
+      input: custom_ingredient_mixingbowlitem|custom_crop_lemon|custom_crop_lemon|sugar

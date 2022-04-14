@@ -12,4 +12,4 @@ custom_food_chickendinner:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_food_friedchicken|custom_food_mashedpotatoes|custom_food_avocado/custom_ingredient_olive
+      input: custom_ingredient_cuttingboarditem|custom_food_friedchicken|custom_food_mashedpotatoes|custom_crop_avocado/custom_crop_olive

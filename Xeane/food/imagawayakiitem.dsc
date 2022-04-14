@@ -12,4 +12,4 @@ custom_food_imagawayaki:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_ingredient_dough|custom_ingredient_vanilla|custom_ingredient_cream
+      input: custom_ingredient_skilletitem|custom_ingredient_doughitem|custom_ingredient_vanillaitem|custom_ingredient_creamitem

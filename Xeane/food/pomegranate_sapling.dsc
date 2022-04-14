@@ -6,4 +6,4 @@ custom_ingredient_pomegranate_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_food_pomegranate|custom_food_pomegranate|custom_food_pomegranate|custom_food_pomegranate|custom_food_pomegranate|custom_food_pomegranate|custom_food_pomegranate|custom_food_pomegranate|custom_ingredient_saplings
+      input: custom_crop_pomegranate|custom_crop_pomegranate|custom_crop_pomegranate|custom_crop_pomegranate|custom_crop_pomegranate|custom_crop_pomegranate|custom_crop_pomegranate|custom_crop_pomegranate|custom_ingredient_saplings

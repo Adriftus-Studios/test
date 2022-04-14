@@ -1,4 +1,4 @@
-custom_food_rambutan:
+custom_crop_rambutan:
   type: item
   debug: false
   material: apple

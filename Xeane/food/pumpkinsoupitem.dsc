@@ -12,4 +12,4 @@ custom_food_pumpkinsoup:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|pumpkin|custom_food_stock
+      input: custom_ingredient_potitem|pumpkin|custom_food_stock

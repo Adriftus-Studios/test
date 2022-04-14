@@ -1,4 +1,4 @@
-custom_food_mango:
+custom_crop_mango:
   type: item
   debug: false
   material: apple

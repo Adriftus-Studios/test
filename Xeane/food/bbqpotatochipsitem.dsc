@@ -12,4 +12,4 @@ custom_food_bbqpotatochips:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_food_bbqsauce|potato|custom_ingredient_cookingoil
+      input: custom_ingredient_potitem|custom_food_bbqsauce|potato|custom_ingredient_cookingoilitem

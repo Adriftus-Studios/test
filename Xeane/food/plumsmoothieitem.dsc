@@ -1,4 +1,4 @@
-custom_ingredient_plumsmoothie:
+custom_ingredient_plumsmoothieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_plumsmoothie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_plum|blue_ice/ice/packed_ice/snowball
+      input: custom_ingredient_mixingbowlitem|custom_crop_plum|blue_ice/ice/packed_ice/snowball

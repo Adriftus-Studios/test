@@ -1,4 +1,4 @@
-custom_ingredient_jellybeans:
+custom_ingredient_jellybeansitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_jellybeans:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|sugar|blue_dye|orange_dye
+      input: custom_ingredient_saucepanitem|sugar|blue_dye|orange_dye

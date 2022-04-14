@@ -1,4 +1,4 @@
-custom_ingredient_candycorn:
+custom_ingredient_candycornitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_candycorn:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|sugar|milk_bucket/custom_ingredient_freshmilk|custom_ingredient_butter|yellow_dye|orange_dye
+      input: custom_ingredient_saucepanitem|sugar|milk_bucket/custom_ingredient_freshmilkitem|custom_ingredient_butteritem|yellow_dye|orange_dye

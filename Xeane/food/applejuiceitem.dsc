@@ -1,4 +1,4 @@
-custom_ingredient_applejuice:
+custom_ingredient_applejuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_applejuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|apple|apple
+      input: custom_ingredient_juiceritem|apple|apple

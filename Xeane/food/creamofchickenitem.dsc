@@ -1,4 +1,4 @@
-custom_ingredient_creamofchicken:
+custom_ingredient_creamofchickenitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_creamofchicken:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|chicken|custom_ingredient_cream
+      input: custom_ingredient_saucepanitem|chicken|custom_ingredient_creamitem

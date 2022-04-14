@@ -12,4 +12,4 @@ custom_food_bolognasandwich:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|bread|custom_food_bologna|custom_food_lettuce|custom_food_tomato|custom_ingredient_mayonaise
+      input: custom_ingredient_cuttingboarditem|bread|custom_food_bologna|custom_crop_lettuce|custom_crop_tomato|custom_ingredient_mayonaiseitem

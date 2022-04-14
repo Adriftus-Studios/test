@@ -12,4 +12,4 @@ custom_food_candiedlemon:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|sugar|custom_food_lemon
+      input: custom_ingredient_saucepanitem|sugar|custom_crop_lemon

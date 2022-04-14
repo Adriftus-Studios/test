@@ -12,4 +12,4 @@ custom_food_sweetandsourchicken:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|chicken|custom_ingredient_flour|custom_food_pineapple|custom_food_bellpepper|custom_food_onion|custom_ingredient_sweetandsoursauce
+      input: custom_ingredient_saucepanitem|chicken|custom_ingredient_flouritem|custom_crop_pineapple|custom_crop_bellpepper|custom_crop_onion|custom_ingredient_sweetandsoursauceitem

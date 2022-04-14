@@ -1,4 +1,4 @@
-custom_ingredient_gingeredrhubarbtart:
+custom_ingredient_gingeredrhubarbtartitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_gingeredrhubarbtart:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_dough|custom_food_rhubarb|custom_ingredient_ginger|sugar|custom_food_avocado/custom_food_banana
+      input: custom_ingredient_bakewareitem|custom_ingredient_doughitem|custom_crop_rhubarb|custom_crop_ginger|sugar|custom_crop_avocado/custom_crop_banana

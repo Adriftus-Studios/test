@@ -1,4 +1,4 @@
-custom_food_chickpea:
+custom_crop_chickpea:
   type: item
   debug: false
   material: apple

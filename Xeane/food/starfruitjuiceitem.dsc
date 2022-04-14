@@ -1,4 +1,4 @@
-custom_ingredient_starfruitjuice:
+custom_ingredient_starfruitjuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_starfruitjuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_starfruit|custom_food_starfruit
+      input: custom_ingredient_juiceritem|custom_crop_starfruit|custom_crop_starfruit

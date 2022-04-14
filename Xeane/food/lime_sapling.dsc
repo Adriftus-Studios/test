@@ -6,4 +6,4 @@ custom_ingredient_lime_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_food_lime|custom_food_lime|custom_food_lime|custom_food_lime|custom_food_lime|custom_food_lime|custom_food_lime|custom_food_lime|custom_ingredient_saplings
+      input: custom_crop_lime|custom_crop_lime|custom_crop_lime|custom_crop_lime|custom_crop_lime|custom_crop_lime|custom_crop_lime|custom_crop_lime|custom_ingredient_saplings

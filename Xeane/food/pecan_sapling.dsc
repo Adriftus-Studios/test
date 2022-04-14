@@ -6,4 +6,4 @@ custom_ingredient_pecan_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pecan|custom_ingredient_pecan|custom_ingredient_pecan|custom_ingredient_pecan|custom_ingredient_pecan|custom_ingredient_pecan|custom_ingredient_pecan|custom_ingredient_pecan|custom_ingredient_saplings
+      input: custom_crop_pecan|custom_crop_pecan|custom_crop_pecan|custom_crop_pecan|custom_crop_pecan|custom_crop_pecan|custom_crop_pecan|custom_crop_pecan|custom_ingredient_saplings

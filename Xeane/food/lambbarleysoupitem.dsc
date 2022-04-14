@@ -12,4 +12,4 @@ custom_food_lambbarleysoup:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_food_stock|mutton|custom_food_onion|carrot|custom_ingredient_barley
+      input: custom_ingredient_potitem|custom_food_stock|mutton|custom_crop_onion|carrot|custom_crop_barley

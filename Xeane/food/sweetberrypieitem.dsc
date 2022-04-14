@@ -1,4 +1,4 @@
-custom_ingredient_sweetberrypie:
+custom_ingredient_sweetberrypieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_sweetberrypie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|sugar|sweet_berries|custom_ingredient_dough
+      input: custom_ingredient_bakewareitem|sugar|sweet_berries|custom_ingredient_doughitem

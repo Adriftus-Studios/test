@@ -1,4 +1,4 @@
-custom_ingredient_mulberryyogurt:
+custom_ingredient_mulberryyogurtitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_mulberryyogurt:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_food_mulberry|custom_ingredient_yogurt
+      input: custom_ingredient_cuttingboarditem|custom_crop_mulberry|custom_ingredient_yogurtitem

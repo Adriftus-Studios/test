@@ -1,4 +1,4 @@
-custom_ingredient_tamarindpie:
+custom_ingredient_tamarindpieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_tamarindpie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_tamarind|sugar|custom_ingredient_dough
+      input: custom_ingredient_bakewareitem|custom_crop_tamarind|sugar|custom_ingredient_doughitem

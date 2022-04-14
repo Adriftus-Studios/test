@@ -1,4 +1,4 @@
-custom_ingredient_coffeebean:
+custom_crop_coffeebean:
   type: item
   debug: false
   material: apple

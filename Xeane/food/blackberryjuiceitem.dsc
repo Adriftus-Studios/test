@@ -1,4 +1,4 @@
-custom_ingredient_blackberryjuice:
+custom_ingredient_blackberryjuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_blackberryjuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_blackberry|custom_food_blackberry
+      input: custom_ingredient_juiceritem|custom_crop_blackberry|custom_crop_blackberry

@@ -1,4 +1,4 @@
-custom_ingredient_flax:
+custom_crop_flax:
   type: item
   debug: false
   material: apple

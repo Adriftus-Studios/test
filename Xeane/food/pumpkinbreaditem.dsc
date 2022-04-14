@@ -12,4 +12,4 @@ custom_food_pumpkinbread:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|pumpkin|custom_ingredient_dough
+      input: custom_ingredient_bakewareitem|pumpkin|custom_ingredient_doughitem

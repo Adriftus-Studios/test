@@ -1,4 +1,4 @@
-custom_food_blueberry:
+custom_crop_blueberry:
   type: item
   debug: false
   material: apple

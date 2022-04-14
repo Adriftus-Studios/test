@@ -1,4 +1,4 @@
-custom_ingredient_groundbeef:
+custom_ingredient_groundbeefitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_groundbeef:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_grinder|beef
+      input: custom_ingredient_grinderitem|beef

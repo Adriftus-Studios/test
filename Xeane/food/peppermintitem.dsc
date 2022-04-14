@@ -12,4 +12,4 @@ custom_food_peppermint:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|sugar|custom_ingredient_spiceleaf
+      input: custom_ingredient_saucepanitem|sugar|custom_crop_spiceleaf

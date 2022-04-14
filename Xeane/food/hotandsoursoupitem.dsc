@@ -12,4 +12,4 @@ custom_food_hotandsoursoup:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|porkchop|custom_ingredient_sesameoil|brown_mushroom/red_mushroom/custom_food_whitemushroom|bamboo|custom_food_avocado/custom_food_banana|custom_ingredient_vinegar|custom_ingredient_blackpepper
+      input: custom_ingredient_saucepanitem|porkchop|custom_ingredient_sesameoilitem|brown_mushroom/red_mushroom/custom_crop_whitemushroom|bamboo|custom_crop_avocado/custom_crop_banana|custom_ingredient_vinegaritem|custom_ingredient_blackpepperitem

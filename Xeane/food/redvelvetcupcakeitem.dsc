@@ -12,4 +12,4 @@ custom_food_redvelvetcupcake:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_batter|sugar|custom_ingredient_cream|custom_ingredient_butter|red_dye
+      input: custom_ingredient_bakewareitem|custom_ingredient_batteritem|sugar|custom_ingredient_creamitem|custom_ingredient_butteritem|red_dye

@@ -12,4 +12,4 @@ custom_food_lambwithmintsauce:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|mutton|custom_ingredient_spiceleaf|custom_ingredient_vinegar|sugar
+      input: custom_ingredient_bakewareitem|mutton|custom_crop_spiceleaf|custom_ingredient_vinegaritem|sugar

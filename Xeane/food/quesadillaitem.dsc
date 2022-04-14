@@ -12,4 +12,4 @@ custom_food_quesadilla:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_food_tortilla|custom_ingredient_cheese
+      input: custom_ingredient_skilletitem|custom_food_tortilla|custom_ingredient_cheeseitem

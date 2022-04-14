@@ -1,4 +1,4 @@
-custom_ingredient_quinoa:
+custom_crop_quinoa:
   type: item
   debug: false
   material: apple

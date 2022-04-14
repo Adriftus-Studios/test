@@ -12,4 +12,4 @@ custom_food_banananutbread:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_banana|custom_ingredient_flour|custom_ingredient_almond/custom_ingredient_cashew/custom_ingredient_chestnut/custom_ingredient_hazelnut/custom_ingredient_pecan/custom_ingredient_pinenut/custom_ingredient_pistachio/custom_ingredient_walnut|milk_bucket/custom_ingredient_freshmilk|custom_ingredient_salt
+      input: custom_ingredient_bakewareitem|custom_crop_banana|custom_ingredient_flouritem|custom_crop_almond/custom_crop_cashew/custom_crop_chestnut/custom_crop_hazelnut/custom_crop_pecan/custom_crop_pinenut/custom_crop_pistachio/custom_crop_walnut|milk_bucket/custom_ingredient_freshmilkitem|custom_ingredient_saltitem

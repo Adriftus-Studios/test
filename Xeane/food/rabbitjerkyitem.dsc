@@ -1,4 +1,4 @@
-custom_ingredient_rabbitjerky:
+custom_ingredient_rabbitjerkyitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_rabbitjerky:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|rabbit|custom_ingredient_salt
+      input: custom_ingredient_cuttingboarditem|rabbit|custom_ingredient_saltitem

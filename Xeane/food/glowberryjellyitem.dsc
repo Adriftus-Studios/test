@@ -1,4 +1,4 @@
-custom_ingredient_glowberryjelly:
+custom_ingredient_glowberryjellyitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_glowberryjelly:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_ingredient_glowberryjuice|sugar
+      input: custom_ingredient_saucepanitem|custom_ingredient_glowberryjuiceitem|sugar

@@ -12,4 +12,4 @@ custom_food_cracklins:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|porkchop|custom_ingredient_cookingoil|custom_ingredient_spiceleaf
+      input: custom_ingredient_potitem|porkchop|custom_ingredient_cookingoilitem|custom_crop_spiceleaf

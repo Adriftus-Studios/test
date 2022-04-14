@@ -1,4 +1,4 @@
-custom_ingredient_applesauce:
+custom_ingredient_applesauceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_applesauce:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|apple|apple|sugar
+      input: custom_ingredient_cuttingboarditem|apple|apple|sugar

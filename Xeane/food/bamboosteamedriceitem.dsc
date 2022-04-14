@@ -12,4 +12,4 @@ custom_food_bamboosteamedrice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_grinder|custom_ingredient_rice|bamboo
+      input: custom_ingredient_grinderitem|custom_crop_rice|bamboo

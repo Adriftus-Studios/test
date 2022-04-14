@@ -1,4 +1,4 @@
-custom_ingredient_peppercorn:
+custom_crop_peppercorn:
   type: item
   debug: false
   material: apple

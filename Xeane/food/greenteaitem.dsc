@@ -1,4 +1,4 @@
-custom_ingredient_greentea:
+custom_ingredient_greenteaitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_greentea:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_tealeaf|custom_ingredient_spiceleaf
+      input: custom_ingredient_potitem|custom_crop_tealeaf|custom_crop_spiceleaf

@@ -12,4 +12,4 @@ custom_food_mochi:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_grinder|custom_ingredient_rice|sugar|water_bucket/custom_ingredient_freshwater
+      input: custom_ingredient_grinderitem|custom_crop_rice|sugar|water_bucket/custom_ingredient_freshwateritem

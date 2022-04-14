@@ -12,4 +12,4 @@ custom_food_vegetarianlettucewrap:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_food_cucumber|custom_food_lettuce|custom_food_tomato
+      input: custom_ingredient_cuttingboarditem|custom_crop_cucumber|custom_crop_lettuce|custom_crop_tomato

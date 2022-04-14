@@ -12,4 +12,4 @@ custom_food_braisedonions:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_onion|custom_ingredient_butter|custom_food_stock
+      input: custom_ingredient_saucepanitem|custom_crop_onion|custom_ingredient_butteritem|custom_food_stock

@@ -12,4 +12,4 @@ custom_food_onionhamburger:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_ingredient_basichamburger|custom_food_friedonions
+      input: custom_ingredient_cuttingboarditem|custom_ingredient_basichamburgeritem|custom_food_friedonions

@@ -1,9 +1,12 @@
-custom_ingredient_sweetpotatoseed:
+custom_seed_sweetpotatoseed:
   type: item
   debug: false
   material: apple
   display name: <&a>Sweet Potato Seed
+  data:
+    max_seeds: 3
+    max_crops: 4
   recipes:
     1:
       type: shapeless
-      input: custom_food_sweetpotato
+      input: custom_crop_sweetpotato

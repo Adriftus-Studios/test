@@ -1,4 +1,4 @@
-custom_ingredient_marshmellows:
+custom_ingredient_marshmellowsitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_marshmellows:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|sugar
+      input: custom_ingredient_saucepanitem|sugar

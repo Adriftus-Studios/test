@@ -1,4 +1,4 @@
-custom_ingredient_meesua:
+custom_ingredient_meesuaitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_meesua:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_ingredient_pasta|porkchop|custom_food_corn|carrot|custom_food_scallion|custom_food_oystersauce|custom_ingredient_coconut
+      input: custom_ingredient_skilletitem|custom_ingredient_pastaitem|porkchop|custom_crop_corn|carrot|custom_crop_scallion|custom_food_oystersauce|custom_crop_coconut

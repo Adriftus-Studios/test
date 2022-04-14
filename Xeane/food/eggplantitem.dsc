@@ -1,4 +1,4 @@
-custom_food_eggplant:
+custom_crop_eggplant:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_babaganoush:
+custom_ingredient_babaganoushitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_babaganoush:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_eggplant|custom_food_garlic|custom_food_lemon|custom_ingredient_cookingoil|custom_ingredient_spiceleaf
+      input: custom_ingredient_bakewareitem|custom_crop_eggplant|custom_crop_garlic|custom_crop_lemon|custom_ingredient_cookingoilitem|custom_crop_spiceleaf

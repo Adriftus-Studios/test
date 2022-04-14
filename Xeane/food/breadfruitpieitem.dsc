@@ -1,4 +1,4 @@
-custom_ingredient_breadfruitpie:
+custom_ingredient_breadfruitpieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_breadfruitpie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_breadfruit|sugar|custom_ingredient_dough
+      input: custom_ingredient_bakewareitem|custom_crop_breadfruit|sugar|custom_ingredient_doughitem

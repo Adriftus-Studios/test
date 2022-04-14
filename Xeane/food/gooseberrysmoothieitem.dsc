@@ -1,4 +1,4 @@
-custom_ingredient_gooseberrysmoothie:
+custom_ingredient_gooseberrysmoothieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_gooseberrysmoothie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_gooseberry|blue_ice/ice/packed_ice/snowball
+      input: custom_ingredient_mixingbowlitem|custom_crop_gooseberry|blue_ice/ice/packed_ice/snowball

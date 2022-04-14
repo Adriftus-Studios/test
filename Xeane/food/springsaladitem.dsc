@@ -12,4 +12,4 @@ custom_food_springsalad:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_food_lettuce|custom_food_avocado/custom_ingredient_olive|custom_ingredient_saladdressing
+      input: custom_ingredient_cuttingboarditem|custom_crop_lettuce|custom_crop_avocado/custom_crop_olive|custom_ingredient_saladdressingitem

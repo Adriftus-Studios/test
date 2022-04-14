@@ -1,4 +1,4 @@
-custom_ingredient_juniperberryjellytoast:
+custom_ingredient_juniperberryjellytoastitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_juniperberryjellytoast:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_ingredient_juniperberryjelly|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_ingredient_juniperberryjellyitem|custom_food_toast

@@ -1,4 +1,4 @@
-custom_ingredient_peanutbutter:
+custom_ingredient_peanutbutteritem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_peanutbutter:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_grinder|custom_ingredient_peanut
+      input: custom_ingredient_grinderitem|custom_crop_peanut

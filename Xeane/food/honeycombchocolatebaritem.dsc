@@ -12,4 +12,4 @@ custom_food_honeycombchocolatebar:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_chocolatebar|honey_bottle
+      input: custom_ingredient_saucepanitem|custom_food_chocolatebar|honey_bottle

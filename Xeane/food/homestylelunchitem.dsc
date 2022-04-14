@@ -12,4 +12,4 @@ custom_food_homestylelunch:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_food_grilledcheese|custom_food_tomatosoup
+      input: custom_ingredient_cuttingboarditem|custom_food_grilledcheese|custom_food_tomatosoup

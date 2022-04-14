@@ -12,4 +12,4 @@ custom_food_deviledegg:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_boiledegg|custom_ingredient_mayonaise|custom_ingredient_mustard|custom_ingredient_spiceleaf|custom_ingredient_saltandpepper
+      input: custom_ingredient_mixingbowlitem|custom_food_boiledegg|custom_ingredient_mayonaiseitem|custom_crop_mustard|custom_crop_spiceleaf|custom_ingredient_saltandpepperitem

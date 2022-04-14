@@ -12,4 +12,4 @@ custom_food_sunflowerwheatrolls:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_sunflowerseeds|custom_food_sunflowerseeds|custom_food_sunflowerseeds|custom_ingredient_flour|custom_ingredient_salt|custom_ingredient_cookingoil
+      input: custom_ingredient_bakewareitem|custom_food_sunflowerseeds|custom_food_sunflowerseeds|custom_food_sunflowerseeds|custom_ingredient_flouritem|custom_ingredient_saltitem|custom_ingredient_cookingoilitem

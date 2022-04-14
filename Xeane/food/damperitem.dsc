@@ -12,4 +12,4 @@ custom_food_damper:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_flour|milk_bucket/custom_ingredient_freshmilk|custom_ingredient_salt|custom_ingredient_butter
+      input: custom_ingredient_bakewareitem|custom_ingredient_flouritem|milk_bucket/custom_ingredient_freshmilkitem|custom_ingredient_saltitem|custom_ingredient_butteritem

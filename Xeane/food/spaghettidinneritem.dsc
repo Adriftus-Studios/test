@@ -1,4 +1,4 @@
-custom_ingredient_spaghettidinner:
+custom_ingredient_spaghettidinneritem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_spaghettidinner:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_ingredient_spagettiandmeatballs|custom_food_garlicbread|milk_bucket/custom_ingredient_freshmilk
+      input: custom_ingredient_cuttingboarditem|custom_ingredient_spagettiandmeatballsitem|custom_food_garlicbread|milk_bucket/custom_ingredient_freshmilkitem

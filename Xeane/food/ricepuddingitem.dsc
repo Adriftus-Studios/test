@@ -12,4 +12,4 @@ custom_food_ricepudding:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_ingredient_rice|milk_bucket/custom_ingredient_freshmilk|sugar|custom_ingredient_groundcinnamon|custom_ingredient_vanilla
+      input: custom_ingredient_saucepanitem|custom_crop_rice|milk_bucket/custom_ingredient_freshmilkitem|sugar|custom_ingredient_groundcinnamonitem|custom_ingredient_vanillaitem

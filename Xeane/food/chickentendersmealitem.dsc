@@ -1,4 +1,4 @@
-custom_ingredient_chickentendersmeal:
+custom_ingredient_chickentendersmealitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_chickentendersmeal:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_ingredient_chickentenders|custom_food_fries|custom_ingredient_cherrysoda/custom_ingredient_colasoda/custom_ingredient_gingersoda/custom_ingredient_grapefruitsoda/custom_ingredient_grapesoda/custom_ingredient_lemonlimesoda/custom_ingredient_orangesoda/custom_ingredient_rootbeersoda/custom_ingredient_strawberrysoda
+      input: custom_ingredient_cuttingboarditem|custom_ingredient_chickentendersitem|custom_food_fries|custom_ingredient_cherrysodaitem/custom_ingredient_colasodaitem/custom_ingredient_gingersodaitem/custom_ingredient_grapefruitsodaitem/custom_ingredient_grapesodaitem/custom_ingredient_lemonlimesodaitem/custom_ingredient_orangesodaitem/custom_ingredient_rootbeersodaitem/custom_ingredient_strawberrysodaitem

@@ -1,4 +1,4 @@
-custom_ingredient_pomegranatepie:
+custom_ingredient_pomegranatepieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_pomegranatepie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_pomegranate|sugar|custom_ingredient_dough
+      input: custom_ingredient_bakewareitem|custom_crop_pomegranate|sugar|custom_ingredient_doughitem

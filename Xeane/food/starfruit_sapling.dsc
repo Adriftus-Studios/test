@@ -6,4 +6,4 @@ custom_ingredient_starfruit_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_food_starfruit|custom_food_starfruit|custom_food_starfruit|custom_food_starfruit|custom_food_starfruit|custom_food_starfruit|custom_food_starfruit|custom_food_starfruit|custom_ingredient_saplings
+      input: custom_crop_starfruit|custom_crop_starfruit|custom_crop_starfruit|custom_crop_starfruit|custom_crop_starfruit|custom_crop_starfruit|custom_crop_starfruit|custom_crop_starfruit|custom_ingredient_saplings

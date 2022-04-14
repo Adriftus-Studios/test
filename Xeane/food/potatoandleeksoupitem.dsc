@@ -12,4 +12,4 @@ custom_food_potatoandleeksoup:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|potato|custom_food_leek|custom_food_stock|custom_ingredient_cream|custom_ingredient_spiceleaf|custom_ingredient_blackpepper
+      input: custom_ingredient_potitem|potato|custom_crop_leek|custom_food_stock|custom_ingredient_creamitem|custom_crop_spiceleaf|custom_ingredient_blackpepperitem

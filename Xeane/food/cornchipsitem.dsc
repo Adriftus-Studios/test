@@ -12,4 +12,4 @@ custom_food_cornchips:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_food_corn|custom_ingredient_salt|custom_ingredient_cookingoil
+      input: custom_ingredient_potitem|custom_crop_corn|custom_ingredient_saltitem|custom_ingredient_cookingoilitem

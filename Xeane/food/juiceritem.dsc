@@ -1,4 +1,4 @@
-custom_ingredient_juicer:
+custom_ingredient_juiceritem:
   type: item
   debug: false
   material: apple

@@ -12,4 +12,4 @@ custom_food_stock:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|bone/beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish
+      input: custom_ingredient_potitem|bone/beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish

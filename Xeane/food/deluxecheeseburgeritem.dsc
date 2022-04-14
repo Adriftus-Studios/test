@@ -12,4 +12,4 @@ custom_food_deluxecheeseburger:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_ingredient_groundbeef|custom_ingredient_cheese|custom_food_lettuce|custom_food_onion|custom_ingredient_mayonaise|bread
+      input: custom_ingredient_skilletitem|custom_ingredient_groundbeefitem|custom_ingredient_cheeseitem|custom_crop_lettuce|custom_crop_onion|custom_ingredient_mayonaiseitem|bread

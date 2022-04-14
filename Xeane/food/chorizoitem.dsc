@@ -12,4 +12,4 @@ custom_food_chorizo:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|porkchop|custom_ingredient_spiceleaf|custom_food_garlic|custom_ingredient_salt
+      input: custom_ingredient_cuttingboarditem|porkchop|custom_crop_spiceleaf|custom_crop_garlic|custom_ingredient_saltitem

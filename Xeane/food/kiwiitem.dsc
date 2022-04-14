@@ -1,4 +1,4 @@
-custom_food_kiwi:
+custom_crop_kiwi:
   type: item
   debug: false
   material: apple

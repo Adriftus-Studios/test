@@ -1,4 +1,4 @@
-custom_food_cauliflower:
+custom_crop_cauliflower:
   type: item
   debug: false
   material: apple

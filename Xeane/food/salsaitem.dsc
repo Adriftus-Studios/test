@@ -12,4 +12,4 @@ custom_food_salsa:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_tomato|custom_food_onion|custom_ingredient_spiceleaf|custom_food_lime|custom_food_garlic
+      input: custom_ingredient_mixingbowlitem|custom_crop_tomato|custom_crop_onion|custom_crop_spiceleaf|custom_crop_lime|custom_crop_garlic

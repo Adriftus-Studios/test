@@ -1,4 +1,4 @@
-custom_food_pawpaw:
+custom_crop_pawpaw:
   type: item
   debug: false
   material: apple

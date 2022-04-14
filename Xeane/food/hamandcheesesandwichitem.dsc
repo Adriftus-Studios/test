@@ -1,4 +1,4 @@
-custom_ingredient_hamandcheesesandwich:
+custom_ingredient_hamandcheesesandwichitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_hamandcheesesandwich:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|bread|porkchop|custom_ingredient_cheese
+      input: custom_ingredient_cuttingboarditem|bread|porkchop|custom_ingredient_cheeseitem

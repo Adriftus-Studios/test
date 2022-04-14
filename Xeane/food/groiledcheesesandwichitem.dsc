@@ -12,4 +12,4 @@ custom_food_groiledcheesesandwich:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_ingredient_cheese|custom_food_vegemite|bread|custom_ingredient_cookingoil
+      input: custom_ingredient_skilletitem|custom_ingredient_cheeseitem|custom_food_vegemite|bread|custom_ingredient_cookingoilitem

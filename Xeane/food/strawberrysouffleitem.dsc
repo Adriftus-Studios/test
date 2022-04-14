@@ -1,4 +1,4 @@
-custom_ingredient_strawberrysouffle:
+custom_ingredient_strawberrysouffleitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_strawberrysouffle:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_strawberry|milk_bucket/custom_ingredient_freshmilk|custom_ingredient_cream|custom_ingredient_vanilla|custom_food_avocado/custom_food_banana|sugar
+      input: custom_ingredient_bakewareitem|custom_crop_strawberry|milk_bucket/custom_ingredient_freshmilkitem|custom_ingredient_creamitem|custom_ingredient_vanillaitem|custom_crop_avocado/custom_crop_banana|sugar

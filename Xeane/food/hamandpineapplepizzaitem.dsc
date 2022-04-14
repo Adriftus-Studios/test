@@ -1,4 +1,4 @@
-custom_ingredient_hamandpineapplepizza:
+custom_ingredient_hamandpineapplepizzaitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_hamandpineapplepizza:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_dough|custom_food_tomato|porkchop|custom_food_pineapple|custom_ingredient_cheese
+      input: custom_ingredient_bakewareitem|custom_ingredient_doughitem|custom_crop_tomato|porkchop|custom_crop_pineapple|custom_ingredient_cheeseitem

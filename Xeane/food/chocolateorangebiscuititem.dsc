@@ -1,4 +1,4 @@
-custom_ingredient_chocolateorangebiscuit:
+custom_ingredient_chocolateorangebiscuititem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_chocolateorangebiscuit:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_avocado/custom_food_banana|sugar|custom_ingredient_flour|custom_food_chocolatebar|custom_food_orange
+      input: custom_ingredient_bakewareitem|custom_crop_avocado/custom_crop_banana|sugar|custom_ingredient_flouritem|custom_food_chocolatebar|custom_crop_orange

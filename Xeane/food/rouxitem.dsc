@@ -1,4 +1,4 @@
-custom_ingredient_roux:
+custom_ingredient_rouxitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_roux:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_ingredient_butter|custom_ingredient_flour
+      input: custom_ingredient_saucepanitem|custom_ingredient_butteritem|custom_ingredient_flouritem

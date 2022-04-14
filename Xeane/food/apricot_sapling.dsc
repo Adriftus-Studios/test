@@ -6,4 +6,4 @@ custom_ingredient_apricot_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_food_apricot|custom_food_apricot|custom_food_apricot|custom_food_apricot|custom_food_apricot|custom_food_apricot|custom_food_apricot|custom_food_apricot|custom_ingredient_saplings
+      input: custom_crop_apricot|custom_crop_apricot|custom_crop_apricot|custom_crop_apricot|custom_crop_apricot|custom_crop_apricot|custom_crop_apricot|custom_crop_apricot|custom_ingredient_saplings

@@ -1,4 +1,4 @@
-custom_ingredient_liverandonions:
+custom_ingredient_liverandonionsitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_liverandonions:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|rotten_flesh|custom_food_onion|custom_food_avocado/custom_ingredient_olive
+      input: custom_ingredient_skilletitem|rotten_flesh|custom_crop_onion|custom_crop_avocado/custom_crop_olive

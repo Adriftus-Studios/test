@@ -1,4 +1,4 @@
-custom_food_pear:
+custom_crop_pear:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_mushroomketchup:
+custom_ingredient_mushroomketchupitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_mushroomketchup:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|brown_mushroom/red_mushroom/custom_food_whitemushroom|custom_ingredient_vinegar|custom_ingredient_spiceleaf|water_bucket/custom_ingredient_freshwater
+      input: custom_ingredient_potitem|brown_mushroom/red_mushroom/custom_crop_whitemushroom|custom_ingredient_vinegaritem|custom_crop_spiceleaf|water_bucket/custom_ingredient_freshwateritem

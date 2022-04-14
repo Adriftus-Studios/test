@@ -12,4 +12,4 @@ custom_food_timpano:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_dough|custom_ingredient_spagettiandmeatballs|custom_food_deviledegg|custom_food_sausage
+      input: custom_ingredient_bakewareitem|custom_ingredient_doughitem|custom_ingredient_spagettiandmeatballsitem|custom_food_deviledegg|custom_food_sausage

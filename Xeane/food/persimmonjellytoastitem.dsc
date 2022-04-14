@@ -1,4 +1,4 @@
-custom_ingredient_persimmonjellytoast:
+custom_ingredient_persimmonjellytoastitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_persimmonjellytoast:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_ingredient_persimmonjelly|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_ingredient_persimmonjellyitem|custom_food_toast

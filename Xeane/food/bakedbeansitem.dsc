@@ -12,4 +12,4 @@ custom_food_bakedbeans:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_bean|porkchop|custom_food_bbqsauce
+      input: custom_ingredient_potitem|custom_crop_bean|porkchop|custom_food_bbqsauce

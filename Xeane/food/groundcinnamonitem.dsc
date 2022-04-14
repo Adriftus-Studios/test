@@ -1,4 +1,4 @@
-custom_ingredient_groundcinnamon:
+custom_ingredient_groundcinnamonitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_groundcinnamon:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_grinder|custom_ingredient_cinnamon
+      input: custom_ingredient_grinderitem|custom_crop_cinnamon

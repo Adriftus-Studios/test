@@ -12,4 +12,4 @@ custom_food_garlicchicken:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_garlic|custom_food_garlic|custom_food_garlic|custom_ingredient_cookingoil|chicken
+      input: custom_ingredient_bakewareitem|custom_crop_garlic|custom_crop_garlic|custom_crop_garlic|custom_ingredient_cookingoilitem|chicken

@@ -12,4 +12,4 @@ custom_food_cantonesenoodles:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_ingredient_pasta|beef|custom_food_boiledegg|custom_food_corn|carrot|custom_food_cabbage|brown_mushroom/red_mushroom/custom_food_whitemushroom|custom_food_oystersauce
+      input: custom_ingredient_skilletitem|custom_ingredient_pastaitem|beef|custom_food_boiledegg|custom_crop_corn|carrot|custom_crop_cabbage|brown_mushroom/red_mushroom/custom_crop_whitemushroom|custom_food_oystersauce

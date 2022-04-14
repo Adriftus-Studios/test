@@ -1,4 +1,4 @@
-custom_ingredient_saltandpepper:
+custom_ingredient_saltandpepperitem:
   type: item
   debug: false
   material: apple
@@ -6,4 +6,4 @@ custom_ingredient_saltandpepper:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_ingredient_salt|custom_ingredient_blackpepper
+      input: custom_ingredient_mixingbowlitem|custom_ingredient_saltitem|custom_ingredient_blackpepperitem

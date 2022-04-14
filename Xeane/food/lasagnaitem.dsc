@@ -12,4 +12,4 @@ custom_food_lasagna:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_pasta|custom_ingredient_cheese|custom_food_tomato|custom_food_onion|custom_food_garlic
+      input: custom_ingredient_bakewareitem|custom_ingredient_pastaitem|custom_ingredient_cheeseitem|custom_crop_tomato|custom_crop_onion|custom_crop_garlic

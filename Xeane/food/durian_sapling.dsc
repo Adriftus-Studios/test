@@ -6,4 +6,4 @@ custom_ingredient_durian_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_food_durian|custom_food_durian|custom_food_durian|custom_food_durian|custom_food_durian|custom_food_durian|custom_food_durian|custom_food_durian|custom_ingredient_saplings
+      input: custom_crop_durian|custom_crop_durian|custom_crop_durian|custom_crop_durian|custom_crop_durian|custom_crop_durian|custom_crop_durian|custom_crop_durian|custom_ingredient_saplings

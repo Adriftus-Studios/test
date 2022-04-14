@@ -1,4 +1,4 @@
-custom_ingredient_persimmonjuice:
+custom_ingredient_persimmonjuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_persimmonjuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_persimmon|custom_food_persimmon
+      input: custom_ingredient_juiceritem|custom_crop_persimmon|custom_crop_persimmon

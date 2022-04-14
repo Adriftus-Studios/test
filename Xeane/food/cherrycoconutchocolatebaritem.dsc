@@ -1,4 +1,4 @@
-custom_ingredient_cherrycoconutchocolatebar:
+custom_ingredient_cherrycoconutchocolatebaritem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_cherrycoconutchocolatebar:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_chocolatebar|custom_food_cherry|custom_ingredient_coconut
+      input: custom_ingredient_saucepanitem|custom_food_chocolatebar|custom_crop_cherry|custom_crop_coconut

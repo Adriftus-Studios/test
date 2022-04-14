@@ -6,4 +6,4 @@ custom_ingredient_candlenut_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_candlenut|custom_ingredient_candlenut|custom_ingredient_candlenut|custom_ingredient_candlenut|custom_ingredient_candlenut|custom_ingredient_candlenut|custom_ingredient_candlenut|custom_ingredient_candlenut|custom_ingredient_saplings
+      input: custom_crop_candlenut|custom_crop_candlenut|custom_crop_candlenut|custom_crop_candlenut|custom_crop_candlenut|custom_crop_candlenut|custom_crop_candlenut|custom_crop_candlenut|custom_ingredient_saplings

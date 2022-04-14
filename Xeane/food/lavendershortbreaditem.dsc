@@ -12,4 +12,4 @@ custom_food_lavendershortbread:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|purple_dye|custom_ingredient_dough
+      input: custom_ingredient_bakewareitem|purple_dye|custom_ingredient_doughitem

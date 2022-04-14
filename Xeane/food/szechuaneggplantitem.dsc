@@ -12,4 +12,4 @@ custom_food_szechuaneggplant:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_cookingoil|custom_food_eggplant|custom_food_firmtofu|custom_ingredient_rice|custom_food_garlic|custom_ingredient_chilipepper|custom_ingredient_ginger|custom_ingredient_vinegar
+      input: custom_ingredient_potitem|custom_ingredient_cookingoilitem|custom_crop_eggplant|custom_food_firmtofu|custom_crop_rice|custom_crop_garlic|custom_crop_chilipepper|custom_crop_ginger|custom_ingredient_vinegaritem

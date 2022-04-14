@@ -12,4 +12,4 @@ custom_food_friedchicken:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_flour|chicken|custom_ingredient_cookingoil
+      input: custom_ingredient_potitem|custom_ingredient_flouritem|chicken|custom_ingredient_cookingoilitem

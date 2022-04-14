@@ -12,4 +12,4 @@ custom_food_fortunecookie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_dough|sugar|paper
+      input: custom_ingredient_bakewareitem|custom_ingredient_doughitem|sugar|paper

@@ -12,4 +12,4 @@ custom_food_zucchinibake:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_zucchini|custom_food_tomato|custom_food_toast|custom_food_corn|custom_ingredient_cheese
+      input: custom_ingredient_bakewareitem|custom_crop_zucchini|custom_crop_tomato|custom_food_toast|custom_crop_corn|custom_ingredient_cheeseitem

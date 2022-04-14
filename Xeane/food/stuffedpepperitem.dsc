@@ -12,4 +12,4 @@ custom_food_stuffedpepper:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_bellpepper|custom_food_tomato|custom_ingredient_rice
+      input: custom_ingredient_bakewareitem|custom_crop_bellpepper|custom_crop_tomato|custom_crop_rice

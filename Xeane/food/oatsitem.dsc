@@ -1,4 +1,4 @@
-custom_ingredient_oats:
+custom_crop_oats:
   type: item
   debug: false
   material: apple

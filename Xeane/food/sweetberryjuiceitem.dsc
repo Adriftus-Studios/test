@@ -1,4 +1,4 @@
-custom_ingredient_sweetberryjuice:
+custom_ingredient_sweetberryjuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_sweetberryjuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|sweet_berries|sweet_berries
+      input: custom_ingredient_juiceritem|sweet_berries|sweet_berries

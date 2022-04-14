@@ -12,4 +12,4 @@ custom_food_veggiestirfry:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_food_bellpepper|carrot|custom_ingredient_rice|custom_food_onion|custom_food_avocado/custom_ingredient_olive
+      input: custom_ingredient_skilletitem|custom_crop_bellpepper|carrot|custom_crop_rice|custom_crop_onion|custom_crop_avocado/custom_crop_olive

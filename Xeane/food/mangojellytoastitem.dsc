@@ -1,4 +1,4 @@
-custom_ingredient_mangojellytoast:
+custom_ingredient_mangojellytoastitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_mangojellytoast:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_ingredient_mangojelly|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_ingredient_mangojellyitem|custom_food_toast

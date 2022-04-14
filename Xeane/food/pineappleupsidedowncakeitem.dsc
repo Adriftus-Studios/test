@@ -1,4 +1,4 @@
-custom_ingredient_pineappleupsidedowncake:
+custom_ingredient_pineappleupsidedowncakeitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_pineappleupsidedowncake:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_pineapple|custom_ingredient_dough|custom_food_cherry|custom_ingredient_walnut
+      input: custom_ingredient_bakewareitem|custom_crop_pineapple|custom_ingredient_doughitem|custom_crop_cherry|custom_crop_walnut

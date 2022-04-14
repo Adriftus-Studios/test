@@ -1,4 +1,4 @@
-custom_ingredient_bakedvegetablemedly:
+custom_ingredient_bakedvegetablemedlyitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_bakedvegetablemedly:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_avocado/custom_ingredient_olive|custom_food_avocado/custom_ingredient_olive
+      input: custom_ingredient_bakewareitem|custom_crop_avocado/custom_crop_olive|custom_crop_avocado/custom_crop_olive

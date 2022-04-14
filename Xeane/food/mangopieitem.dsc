@@ -1,4 +1,4 @@
-custom_ingredient_mangopie:
+custom_ingredient_mangopieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_mangopie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_mango|sugar|custom_ingredient_dough
+      input: custom_ingredient_bakewareitem|custom_crop_mango|sugar|custom_ingredient_doughitem

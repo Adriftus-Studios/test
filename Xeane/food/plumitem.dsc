@@ -1,4 +1,4 @@
-custom_food_plum:
+custom_crop_plum:
   type: item
   debug: false
   material: apple

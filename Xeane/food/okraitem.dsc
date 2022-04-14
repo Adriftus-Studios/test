@@ -1,4 +1,4 @@
-custom_food_okra:
+custom_crop_okra:
   type: item
   debug: false
   material: apple

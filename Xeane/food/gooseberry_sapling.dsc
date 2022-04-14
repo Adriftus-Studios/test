@@ -6,4 +6,4 @@ custom_ingredient_gooseberry_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_food_gooseberry|custom_food_gooseberry|custom_food_gooseberry|custom_food_gooseberry|custom_food_gooseberry|custom_food_gooseberry|custom_food_gooseberry|custom_food_gooseberry|custom_ingredient_saplings
+      input: custom_crop_gooseberry|custom_crop_gooseberry|custom_crop_gooseberry|custom_crop_gooseberry|custom_crop_gooseberry|custom_crop_gooseberry|custom_crop_gooseberry|custom_crop_gooseberry|custom_ingredient_saplings

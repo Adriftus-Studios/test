@@ -1,4 +1,4 @@
-custom_ingredient_curry:
+custom_ingredient_curryitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_curry:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_ingredient_rice|custom_ingredient_blackpepper|custom_ingredient_chilipepper|custom_ingredient_coconut|custom_ingredient_currypowder|custom_ingredient_grinder|custom_ingredient_grinder|custom_ingredient_grinder
+      input: custom_ingredient_saucepanitem|custom_crop_rice|custom_ingredient_blackpepperitem|custom_crop_chilipepper|custom_crop_coconut|custom_ingredient_currypowderitem|custom_ingredient_grinderitem|custom_ingredient_grinderitem|custom_ingredient_grinderitem

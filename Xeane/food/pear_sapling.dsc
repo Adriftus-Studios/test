@@ -6,4 +6,4 @@ custom_ingredient_pear_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_food_pear|custom_food_pear|custom_food_pear|custom_food_pear|custom_food_pear|custom_food_pear|custom_food_pear|custom_food_pear|custom_ingredient_saplings
+      input: custom_crop_pear|custom_crop_pear|custom_crop_pear|custom_crop_pear|custom_crop_pear|custom_crop_pear|custom_crop_pear|custom_crop_pear|custom_ingredient_saplings

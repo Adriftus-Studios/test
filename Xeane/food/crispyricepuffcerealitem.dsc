@@ -12,4 +12,4 @@ custom_food_crispyricepuffcereal:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_ingredient_rice|milk_bucket/custom_ingredient_freshmilk
+      input: custom_ingredient_mixingbowlitem|custom_crop_rice|milk_bucket/custom_ingredient_freshmilkitem

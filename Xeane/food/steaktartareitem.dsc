@@ -12,4 +12,4 @@ custom_food_steaktartare:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|beef|custom_food_avocado/custom_food_banana|custom_food_onion|custom_ingredient_blackpepper
+      input: custom_ingredient_cuttingboarditem|beef|custom_crop_avocado/custom_crop_banana|custom_crop_onion|custom_ingredient_blackpepperitem

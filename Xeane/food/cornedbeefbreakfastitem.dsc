@@ -12,4 +12,4 @@ custom_food_cornedbeefbreakfast:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_food_cornedbeefhash|custom_food_friedegg|custom_food_toast|custom_ingredient_ketchup|milk_bucket/custom_ingredient_freshmilk
+      input: custom_ingredient_skilletitem|custom_food_cornedbeefhash|custom_food_friedegg|custom_food_toast|custom_ingredient_ketchupitem|milk_bucket/custom_ingredient_freshmilkitem

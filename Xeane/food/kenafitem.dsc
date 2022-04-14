@@ -1,4 +1,4 @@
-custom_ingredient_kenaf:
+custom_crop_kenaf:
   type: item
   debug: false
   material: apple

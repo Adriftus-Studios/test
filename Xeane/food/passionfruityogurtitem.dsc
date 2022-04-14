@@ -1,4 +1,4 @@
-custom_ingredient_passionfruityogurt:
+custom_ingredient_passionfruityogurtitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_passionfruityogurt:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_ingredient_passionfruit|custom_ingredient_yogurt
+      input: custom_ingredient_cuttingboarditem|custom_crop_passionfruit|custom_ingredient_yogurtitem

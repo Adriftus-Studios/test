@@ -1,4 +1,4 @@
-custom_ingredient_tamarind:
+custom_crop_tamarind:
   type: item
   debug: false
   material: apple

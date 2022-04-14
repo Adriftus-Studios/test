@@ -12,4 +12,4 @@ custom_food_carrotcupcake:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|carrot|custom_ingredient_dough
+      input: custom_ingredient_mixingbowlitem|carrot|custom_ingredient_doughitem

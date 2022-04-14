@@ -12,4 +12,4 @@ custom_food_coleslawburger:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_ingredient_basichamburger|custom_food_coleslaw
+      input: custom_ingredient_cuttingboarditem|custom_ingredient_basichamburgeritem|custom_food_coleslaw

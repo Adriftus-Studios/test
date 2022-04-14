@@ -1,4 +1,4 @@
-custom_ingredient_hotsauce:
+custom_ingredient_hotsauceitem:
   type: item
   debug: false
   material: apple
@@ -6,4 +6,4 @@ custom_ingredient_hotsauce:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_ingredient_chilipepper
+      input: custom_ingredient_juiceritem|custom_crop_chilipepper

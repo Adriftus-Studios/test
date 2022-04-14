@@ -12,4 +12,4 @@ custom_food_frosteddonut:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_cookingoil|custom_ingredient_batter|sugar|custom_ingredient_butter|milk_bucket/custom_ingredient_freshmilk
+      input: custom_ingredient_potitem|custom_ingredient_cookingoilitem|custom_ingredient_batteritem|sugar|custom_ingredient_butteritem|milk_bucket/custom_ingredient_freshmilkitem

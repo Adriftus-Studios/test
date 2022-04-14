@@ -12,4 +12,4 @@ custom_food_vegemite:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|sugar|custom_ingredient_barley|water_bucket/custom_ingredient_freshwater|custom_ingredient_spiceleaf
+      input: custom_ingredient_potitem|sugar|custom_crop_barley|water_bucket/custom_ingredient_freshwateritem|custom_crop_spiceleaf

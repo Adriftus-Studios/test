@@ -1,4 +1,4 @@
-custom_ingredient_elderberryjelly:
+custom_ingredient_elderberryjellyitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_elderberryjelly:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_elderberry|sugar
+      input: custom_ingredient_saucepanitem|custom_crop_elderberry|sugar

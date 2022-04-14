@@ -6,4 +6,4 @@ custom_ingredient_pistachio_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pistachio|custom_ingredient_pistachio|custom_ingredient_pistachio|custom_ingredient_pistachio|custom_ingredient_pistachio|custom_ingredient_pistachio|custom_ingredient_pistachio|custom_ingredient_pistachio|custom_ingredient_saplings
+      input: custom_crop_pistachio|custom_crop_pistachio|custom_crop_pistachio|custom_crop_pistachio|custom_crop_pistachio|custom_crop_pistachio|custom_crop_pistachio|custom_crop_pistachio|custom_ingredient_saplings

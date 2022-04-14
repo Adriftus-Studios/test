@@ -12,4 +12,4 @@ custom_food_gardensoup:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_food_stock|custom_food_avocado/custom_ingredient_olive|custom_food_avocado/custom_ingredient_olive
+      input: custom_ingredient_potitem|custom_food_stock|custom_crop_avocado/custom_crop_olive|custom_crop_avocado/custom_crop_olive

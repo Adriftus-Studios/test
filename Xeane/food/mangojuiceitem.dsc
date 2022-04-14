@@ -1,4 +1,4 @@
-custom_ingredient_mangojuice:
+custom_ingredient_mangojuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_mangojuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_mango|custom_food_mango
+      input: custom_ingredient_juiceritem|custom_crop_mango|custom_crop_mango

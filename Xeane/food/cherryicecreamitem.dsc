@@ -12,4 +12,4 @@ custom_food_cherryicecream:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_icecream|custom_food_cherry
+      input: custom_ingredient_mixingbowlitem|custom_food_icecream|custom_crop_cherry

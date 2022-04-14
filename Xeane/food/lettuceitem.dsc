@@ -1,4 +1,4 @@
-custom_food_lettuce:
+custom_crop_lettuce:
   type: item
   debug: false
   material: apple

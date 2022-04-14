@@ -12,4 +12,4 @@ custom_food_roastedrootveggiemedley:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_parsnip|carrot|custom_food_onion|custom_ingredient_spiceleaf
+      input: custom_ingredient_bakewareitem|custom_crop_parsnip|carrot|custom_crop_onion|custom_crop_spiceleaf

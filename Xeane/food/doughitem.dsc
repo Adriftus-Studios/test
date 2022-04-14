@@ -1,4 +1,4 @@
-custom_ingredient_dough:
+custom_ingredient_doughitem:
   type: item
   debug: false
   material: apple
@@ -6,4 +6,4 @@ custom_ingredient_dough:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_ingredient_flour|water_bucket/custom_ingredient_freshwater|custom_ingredient_salt
+      input: custom_ingredient_mixingbowlitem|custom_ingredient_flouritem|water_bucket/custom_ingredient_freshwateritem|custom_ingredient_saltitem

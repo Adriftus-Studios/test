@@ -6,4 +6,4 @@ custom_ingredient_rambutan_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_food_rambutan|custom_food_rambutan|custom_food_rambutan|custom_food_rambutan|custom_food_rambutan|custom_food_rambutan|custom_food_rambutan|custom_food_rambutan|custom_ingredient_saplings
+      input: custom_crop_rambutan|custom_crop_rambutan|custom_crop_rambutan|custom_crop_rambutan|custom_crop_rambutan|custom_crop_rambutan|custom_crop_rambutan|custom_crop_rambutan|custom_ingredient_saplings

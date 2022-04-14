@@ -12,4 +12,4 @@ custom_food_bentobox:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_food_bamboosteamedrice|custom_food_pickledbeets|custom_food_teriyakichicken|custom_food_sushi
+      input: custom_ingredient_cuttingboarditem|custom_food_bamboosteamedrice|custom_food_pickledbeets|custom_food_teriyakichicken|custom_food_sushi

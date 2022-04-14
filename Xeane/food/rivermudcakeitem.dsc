@@ -1,4 +1,4 @@
-custom_ingredient_rivermudcake:
+custom_ingredient_rivermudcakeitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_rivermudcake:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_cocoapowder|custom_ingredient_coconut|custom_ingredient_marshmellows|custom_ingredient_flour|custom_food_avocado/custom_food_banana|custom_ingredient_butter
+      input: custom_ingredient_bakewareitem|custom_ingredient_cocoapowderitem|custom_crop_coconut|custom_ingredient_marshmellowsitem|custom_ingredient_flouritem|custom_crop_avocado/custom_crop_banana|custom_ingredient_butteritem

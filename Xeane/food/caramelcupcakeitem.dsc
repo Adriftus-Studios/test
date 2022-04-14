@@ -12,4 +12,4 @@ custom_food_caramelcupcake:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_caramel|custom_ingredient_dough
+      input: custom_ingredient_mixingbowlitem|custom_food_caramel|custom_ingredient_doughitem

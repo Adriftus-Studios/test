@@ -12,4 +12,4 @@ custom_food_spicymustardpork:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_ingredient_mustard|porkchop|custom_food_garlic
+      input: custom_ingredient_saucepanitem|custom_crop_mustard|porkchop|custom_crop_garlic

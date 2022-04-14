@@ -1,4 +1,4 @@
-custom_ingredient_glowberryyogurt:
+custom_ingredient_glowberryyogurtitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_glowberryyogurt:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_ingredient_yogurt|glow_berries
+      input: custom_ingredient_cuttingboarditem|custom_ingredient_yogurtitem|glow_berries

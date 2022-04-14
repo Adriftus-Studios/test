@@ -1,4 +1,4 @@
-custom_ingredient_yogurt:
+custom_ingredient_yogurtitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_yogurt:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|milk_bucket/custom_ingredient_freshmilk
+      input: custom_ingredient_saucepanitem|milk_bucket/custom_ingredient_freshmilkitem

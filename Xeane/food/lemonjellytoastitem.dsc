@@ -1,4 +1,4 @@
-custom_ingredient_lemonjellytoast:
+custom_ingredient_lemonjellytoastitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_lemonjellytoast:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_ingredient_lemonjelly|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_ingredient_lemonjellyitem|custom_food_toast

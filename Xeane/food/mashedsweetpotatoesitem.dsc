@@ -12,4 +12,4 @@ custom_food_mashedsweetpotatoes:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_sweetpotato|custom_ingredient_butter
+      input: custom_ingredient_saucepanitem|custom_crop_sweetpotato|custom_ingredient_butteritem

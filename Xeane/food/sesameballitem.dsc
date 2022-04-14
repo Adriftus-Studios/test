@@ -12,4 +12,4 @@ custom_food_sesameball:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_sesameseeds|custom_ingredient_cookingoil|custom_ingredient_bean|sugar|custom_ingredient_flour
+      input: custom_ingredient_potitem|custom_crop_sesameseeds|custom_ingredient_cookingoilitem|custom_crop_bean|sugar|custom_ingredient_flouritem

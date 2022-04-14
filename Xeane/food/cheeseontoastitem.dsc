@@ -12,4 +12,4 @@ custom_food_cheeseontoast:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_toast|custom_ingredient_cheese
+      input: custom_ingredient_bakewareitem|custom_food_toast|custom_ingredient_cheeseitem

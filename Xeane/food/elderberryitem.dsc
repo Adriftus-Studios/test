@@ -1,4 +1,4 @@
-custom_food_elderberry:
+custom_crop_elderberry:
   type: item
   debug: false
   material: apple

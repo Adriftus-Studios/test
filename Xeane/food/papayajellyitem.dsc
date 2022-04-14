@@ -1,4 +1,4 @@
-custom_ingredient_papayajelly:
+custom_ingredient_papayajellyitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_papayajelly:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_papaya|sugar
+      input: custom_ingredient_saucepanitem|custom_crop_papaya|sugar

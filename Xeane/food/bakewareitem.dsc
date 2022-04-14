@@ -1,4 +1,4 @@
-custom_ingredient_bakeware:
+custom_ingredient_bakewareitem:
   type: item
   debug: false
   material: apple

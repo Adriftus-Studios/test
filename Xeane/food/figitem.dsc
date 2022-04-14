@@ -1,4 +1,4 @@
-custom_food_fig:
+custom_crop_fig:
   type: item
   debug: false
   material: apple

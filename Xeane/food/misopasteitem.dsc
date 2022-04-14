@@ -12,4 +12,4 @@ custom_food_misopaste:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_grinder|custom_food_soybean|brown_mushroom/red_mushroom/custom_food_whitemushroom|custom_ingredient_rice|custom_ingredient_salt
+      input: custom_ingredient_grinderitem|custom_crop_soybean|brown_mushroom/red_mushroom/custom_crop_whitemushroom|custom_crop_rice|custom_ingredient_saltitem

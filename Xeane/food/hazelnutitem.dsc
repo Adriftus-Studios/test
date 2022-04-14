@@ -1,4 +1,4 @@
-custom_ingredient_hazelnut:
+custom_crop_hazelnut:
   type: item
   debug: false
   material: apple

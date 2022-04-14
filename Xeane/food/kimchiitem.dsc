@@ -12,4 +12,4 @@ custom_food_kimchi:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_salt|custom_food_cabbage|custom_food_garlic|custom_ingredient_ginger|custom_food_radish|custom_food_scallion|custom_ingredient_spiceleaf|custom_ingredient_sesameseeds
+      input: custom_ingredient_potitem|custom_ingredient_saltitem|custom_crop_cabbage|custom_crop_garlic|custom_crop_ginger|custom_crop_radish|custom_crop_scallion|custom_crop_spiceleaf|custom_crop_sesameseeds

@@ -12,4 +12,4 @@ custom_food_porklomein:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|porkchop|custom_ingredient_pasta|custom_food_onion|carrot|custom_food_cabbage|custom_food_garlic|custom_ingredient_soysauce
+      input: custom_ingredient_potitem|porkchop|custom_ingredient_pastaitem|custom_crop_onion|carrot|custom_crop_cabbage|custom_crop_garlic|custom_ingredient_soysauceitem

@@ -12,4 +12,4 @@ custom_food_potatosoup:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|potato|custom_food_stock
+      input: custom_ingredient_potitem|potato|custom_food_stock

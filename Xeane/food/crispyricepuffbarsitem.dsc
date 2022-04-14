@@ -1,4 +1,4 @@
-custom_ingredient_crispyricepuffbars:
+custom_ingredient_crispyricepuffbarsitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_crispyricepuffbars:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_ingredient_marshmellows|custom_ingredient_rice
+      input: custom_ingredient_saucepanitem|custom_ingredient_marshmellowsitem|custom_crop_rice

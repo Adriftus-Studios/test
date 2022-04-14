@@ -1,4 +1,4 @@
-custom_ingredient_relish:
+custom_ingredient_relishitem:
   type: item
   debug: false
   material: apple
@@ -6,4 +6,4 @@ custom_ingredient_relish:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_cucumber
+      input: custom_ingredient_juiceritem|custom_crop_cucumber

@@ -1,4 +1,4 @@
-custom_ingredient_tamarindyogurt:
+custom_ingredient_tamarindyogurtitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_tamarindyogurt:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_ingredient_tamarind|custom_ingredient_yogurt
+      input: custom_ingredient_cuttingboarditem|custom_crop_tamarind|custom_ingredient_yogurtitem

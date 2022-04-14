@@ -12,4 +12,4 @@ custom_food_gravy:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_food_stock|custom_ingredient_flour
+      input: custom_ingredient_potitem|custom_food_stock|custom_ingredient_flouritem

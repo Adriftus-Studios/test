@@ -1,4 +1,4 @@
-custom_ingredient_strawberryjelly:
+custom_ingredient_strawberryjellyitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_strawberryjelly:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_strawberry|sugar
+      input: custom_ingredient_saucepanitem|custom_crop_strawberry|sugar

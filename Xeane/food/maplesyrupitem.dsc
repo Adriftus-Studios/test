@@ -1,4 +1,4 @@
-custom_ingredient_maplesyrup:
+custom_crop_maplesyrup:
   type: item
   debug: false
   material: apple

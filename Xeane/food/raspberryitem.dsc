@@ -1,4 +1,4 @@
-custom_food_raspberry:
+custom_crop_raspberry:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_energydrink:
+custom_ingredient_energydrinkitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_energydrink:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|water_bucket/custom_ingredient_freshwater|sugar|redstone
+      input: custom_ingredient_potitem|water_bucket/custom_ingredient_freshwateritem|sugar|redstone

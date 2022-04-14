@@ -1,4 +1,4 @@
-custom_ingredient_mangoyogurt:
+custom_ingredient_mangoyogurtitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_mangoyogurt:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_food_mango|custom_ingredient_yogurt
+      input: custom_ingredient_cuttingboarditem|custom_crop_mango|custom_ingredient_yogurtitem

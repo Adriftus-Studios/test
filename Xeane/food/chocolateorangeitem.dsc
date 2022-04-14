@@ -12,4 +12,4 @@ custom_food_chocolateorange:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_chocolatebar|custom_food_orange
+      input: custom_ingredient_saucepanitem|custom_food_chocolatebar|custom_crop_orange

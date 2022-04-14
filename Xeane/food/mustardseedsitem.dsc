@@ -1,4 +1,4 @@
-custom_ingredient_mustardseeds:
+custom_crop_mustardseeds:
   type: item
   debug: false
   material: apple

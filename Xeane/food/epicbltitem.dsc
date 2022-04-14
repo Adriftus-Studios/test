@@ -12,4 +12,4 @@ custom_food_epicblt:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_food_epicbacon|custom_food_lettuce|custom_food_tomato|bread
+      input: custom_ingredient_skilletitem|custom_food_epicbacon|custom_crop_lettuce|custom_crop_tomato|bread

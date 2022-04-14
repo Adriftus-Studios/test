@@ -1,4 +1,4 @@
-custom_food_wintersquash:
+custom_crop_wintersquash:
   type: item
   debug: false
   material: apple

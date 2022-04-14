@@ -12,4 +12,4 @@ custom_food_beansandrice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_bean|custom_ingredient_rice|custom_food_bellpepper|porkchop
+      input: custom_ingredient_potitem|custom_crop_bean|custom_crop_rice|custom_crop_bellpepper|porkchop

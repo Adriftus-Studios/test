@@ -1,4 +1,4 @@
-custom_ingredient_dandeliontea:
+custom_ingredient_dandelionteaitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_dandeliontea:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_tealeaf|water_bucket/custom_ingredient_freshwater|dandelion
+      input: custom_ingredient_potitem|custom_crop_tealeaf|water_bucket/custom_ingredient_freshwateritem|dandelion

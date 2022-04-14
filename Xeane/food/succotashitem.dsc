@@ -12,4 +12,4 @@ custom_food_succotash:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_bean|custom_food_corn|custom_food_onion|custom_ingredient_spiceleaf|custom_food_tomato|custom_ingredient_butter
+      input: custom_ingredient_potitem|custom_crop_bean|custom_crop_corn|custom_crop_onion|custom_crop_spiceleaf|custom_crop_tomato|custom_ingredient_butteritem

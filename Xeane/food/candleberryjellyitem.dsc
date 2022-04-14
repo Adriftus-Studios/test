@@ -1,4 +1,4 @@
-custom_ingredient_candleberryjelly:
+custom_ingredient_candleberryjellyitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_candleberryjelly:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_ingredient_candleberry|sugar
+      input: custom_ingredient_saucepanitem|custom_crop_candleberry|sugar

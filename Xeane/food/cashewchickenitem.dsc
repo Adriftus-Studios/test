@@ -12,4 +12,4 @@ custom_food_cashewchicken:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|chicken|custom_ingredient_cashew|custom_ingredient_rice|custom_food_bellpepper/custom_ingredient_chilipepper
+      input: custom_ingredient_saucepanitem|chicken|custom_crop_cashew|custom_crop_rice|custom_crop_bellpepper/custom_crop_chilipepper

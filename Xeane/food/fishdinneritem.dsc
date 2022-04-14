@@ -12,4 +12,4 @@ custom_food_fishdinner:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_food_lemon|custom_ingredient_batter|cod/salmon/tropical_fish|custom_ingredient_mayonaise
+      input: custom_ingredient_skilletitem|custom_crop_lemon|custom_ingredient_batteritem|cod/salmon/tropical_fish|custom_ingredient_mayonaiseitem

@@ -12,4 +12,4 @@ custom_food_pineappleham:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_pineapple|porkchop|custom_food_cherry|sugar
+      input: custom_ingredient_bakewareitem|custom_crop_pineapple|porkchop|custom_crop_cherry|sugar

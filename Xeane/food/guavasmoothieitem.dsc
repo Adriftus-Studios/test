@@ -1,4 +1,4 @@
-custom_ingredient_guavasmoothie:
+custom_ingredient_guavasmoothieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_guavasmoothie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_guava|blue_ice/ice/packed_ice/snowball
+      input: custom_ingredient_mixingbowlitem|custom_crop_guava|blue_ice/ice/packed_ice/snowball

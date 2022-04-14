@@ -1,4 +1,4 @@
-custom_ingredient_limejelly:
+custom_ingredient_limejellyitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_limejelly:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_lime|sugar
+      input: custom_ingredient_saucepanitem|custom_crop_lime|sugar

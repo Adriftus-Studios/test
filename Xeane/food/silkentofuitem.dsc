@@ -12,4 +12,4 @@ custom_food_silkentofu:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_soybean
+      input: custom_ingredient_saucepanitem|custom_crop_soybean

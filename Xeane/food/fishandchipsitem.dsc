@@ -12,4 +12,4 @@ custom_food_fishandchips:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|cod/salmon/tropical_fish|custom_ingredient_flour|custom_food_fries
+      input: custom_ingredient_potitem|cod/salmon/tropical_fish|custom_ingredient_flouritem|custom_food_fries

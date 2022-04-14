@@ -12,4 +12,4 @@ custom_food_pickledbeets:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_vinegar|beetroot
+      input: custom_ingredient_potitem|custom_ingredient_vinegaritem|beetroot

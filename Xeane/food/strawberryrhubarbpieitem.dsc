@@ -1,4 +1,4 @@
-custom_ingredient_strawberryrhubarbpie:
+custom_ingredient_strawberryrhubarbpieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_strawberryrhubarbpie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_dough|sugar|custom_food_strawberry|custom_food_rhubarb
+      input: custom_ingredient_bakewareitem|custom_ingredient_doughitem|sugar|custom_crop_strawberry|custom_crop_rhubarb

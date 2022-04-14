@@ -1,4 +1,4 @@
-custom_ingredient_papayapie:
+custom_ingredient_papayapieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_papayapie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_papaya|sugar|custom_ingredient_dough
+      input: custom_ingredient_bakewareitem|custom_crop_papaya|sugar|custom_ingredient_doughitem

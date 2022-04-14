@@ -1,4 +1,4 @@
-custom_ingredient_guiso:
+custom_ingredient_guisoitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_guiso:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|beef|custom_food_tomato|custom_ingredient_pasta|custom_food_peas|potato|custom_food_sweetpotato|custom_ingredient_spiceleaf
+      input: custom_ingredient_potitem|beef|custom_crop_tomato|custom_ingredient_pastaitem|custom_crop_peas|potato|custom_crop_sweetpotato|custom_crop_spiceleaf

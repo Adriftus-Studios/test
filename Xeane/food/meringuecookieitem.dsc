@@ -12,4 +12,4 @@ custom_food_meringuecookie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_meringue|custom_ingredient_dough|sugar|custom_food_chocolatebar
+      input: custom_ingredient_bakewareitem|custom_ingredient_meringueitem|custom_ingredient_doughitem|sugar|custom_food_chocolatebar

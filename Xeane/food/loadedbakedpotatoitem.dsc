@@ -12,4 +12,4 @@ custom_food_loadedbakedpotato:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|baked_potato|cooked_porkchop|custom_ingredient_cheese|custom_food_onion/custom_food_scallion|custom_ingredient_cream
+      input: custom_ingredient_bakewareitem|baked_potato|cooked_porkchop|custom_ingredient_cheeseitem|custom_crop_onion/custom_crop_scallion|custom_ingredient_creamitem

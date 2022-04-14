@@ -1,4 +1,4 @@
-custom_ingredient_grapesoda:
+custom_ingredient_grapesodaitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_grapesoda:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|water_bucket/custom_ingredient_freshwater|sugar|custom_food_grape
+      input: custom_ingredient_potitem|water_bucket/custom_ingredient_freshwateritem|sugar|custom_crop_grape

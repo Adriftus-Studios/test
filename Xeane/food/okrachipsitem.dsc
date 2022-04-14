@@ -12,4 +12,4 @@ custom_food_okrachips:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_okra|custom_ingredient_salt|custom_ingredient_spiceleaf
+      input: custom_ingredient_bakewareitem|custom_crop_okra|custom_ingredient_saltitem|custom_crop_spiceleaf

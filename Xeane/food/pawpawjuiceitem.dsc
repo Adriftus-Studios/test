@@ -1,4 +1,4 @@
-custom_ingredient_pawpawjuice:
+custom_ingredient_pawpawjuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_pawpawjuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_pawpaw|custom_food_pawpaw
+      input: custom_ingredient_juiceritem|custom_crop_pawpaw|custom_crop_pawpaw

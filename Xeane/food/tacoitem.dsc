@@ -12,4 +12,4 @@ custom_food_taco:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|beef|custom_food_lettuce|custom_ingredient_cheese|custom_food_tortilla
+      input: custom_ingredient_cuttingboarditem|beef|custom_crop_lettuce|custom_ingredient_cheeseitem|custom_food_tortilla

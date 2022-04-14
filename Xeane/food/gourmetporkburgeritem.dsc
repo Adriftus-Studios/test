@@ -12,4 +12,4 @@ custom_food_gourmetporkburger:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_food_gourmetporkpatty|custom_food_briochebun|custom_food_tomato|custom_food_cabbage/custom_food_kale/custom_food_lettuce/custom_food_spinach|custom_food_avocado|custom_food_friedonions|custom_ingredient_grinder|custom_ingredient_grinder
+      input: custom_ingredient_skilletitem|custom_food_gourmetporkpatty|custom_food_briochebun|custom_crop_tomato|custom_crop_cabbage/custom_crop_kale/custom_crop_lettuce/custom_crop_spinach|custom_crop_avocado|custom_food_friedonions|custom_ingredient_grinderitem|custom_ingredient_grinderitem

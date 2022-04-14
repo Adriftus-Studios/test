@@ -12,4 +12,4 @@ custom_food_kohlundpinkel:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|porkchop|custom_food_pinkel|potato|custom_ingredient_blackpepper|custom_food_onion|custom_food_sausage|custom_food_kale
+      input: custom_ingredient_potitem|porkchop|custom_food_pinkel|potato|custom_ingredient_blackpepperitem|custom_crop_onion|custom_food_sausage|custom_crop_kale

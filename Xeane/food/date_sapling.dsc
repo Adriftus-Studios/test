@@ -6,4 +6,4 @@ custom_ingredient_date_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_food_date|custom_food_date|custom_food_date|custom_food_date|custom_food_date|custom_food_date|custom_food_date|custom_food_date|custom_ingredient_saplings
+      input: custom_crop_date|custom_crop_date|custom_crop_date|custom_crop_date|custom_crop_date|custom_crop_date|custom_crop_date|custom_crop_date|custom_ingredient_saplings

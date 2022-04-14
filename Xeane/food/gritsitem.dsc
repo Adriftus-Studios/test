@@ -12,4 +12,4 @@ custom_food_grits:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_cornmeal|milk_bucket/custom_ingredient_freshmilk|water_bucket/custom_ingredient_freshwater|custom_ingredient_salt
+      input: custom_ingredient_potitem|custom_ingredient_cornmealitem|milk_bucket/custom_ingredient_freshmilkitem|water_bucket/custom_ingredient_freshwateritem|custom_ingredient_saltitem

@@ -6,4 +6,4 @@ custom_ingredient_olive_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_olive|custom_ingredient_olive|custom_ingredient_olive|custom_ingredient_olive|custom_ingredient_olive|custom_ingredient_olive|custom_ingredient_olive|custom_ingredient_olive|custom_ingredient_saplings
+      input: custom_crop_olive|custom_crop_olive|custom_crop_olive|custom_crop_olive|custom_crop_olive|custom_crop_olive|custom_crop_olive|custom_crop_olive|custom_ingredient_saplings

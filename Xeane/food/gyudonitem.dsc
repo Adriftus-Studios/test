@@ -12,4 +12,4 @@ custom_food_gyudon:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|beef|custom_food_onion|custom_food_scallion|custom_ingredient_ginger|custom_ingredient_rice
+      input: custom_ingredient_skilletitem|beef|custom_crop_onion|custom_crop_scallion|custom_crop_ginger|custom_crop_rice

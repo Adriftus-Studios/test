@@ -12,4 +12,4 @@ custom_food_honeyglazedcarrots:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|carrot|honey_bottle|custom_ingredient_butter|custom_food_lemon
+      input: custom_ingredient_saucepanitem|carrot|honey_bottle|custom_ingredient_butteritem|custom_crop_lemon

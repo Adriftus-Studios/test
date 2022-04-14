@@ -12,4 +12,4 @@ custom_food_deluxechickencurry:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_food_chickencurry|custom_ingredient_rice|custom_food_naan|custom_food_mangochutney
+      input: custom_ingredient_cuttingboarditem|custom_food_chickencurry|custom_crop_rice|custom_food_naan|custom_food_mangochutney

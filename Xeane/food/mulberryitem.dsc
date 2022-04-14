@@ -1,4 +1,4 @@
-custom_food_mulberry:
+custom_crop_mulberry:
   type: item
   debug: false
   material: apple

@@ -12,4 +12,4 @@ custom_food_lamington:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_dough|custom_food_chocolatebar|custom_ingredient_coconut
+      input: custom_ingredient_bakewareitem|custom_ingredient_doughitem|custom_food_chocolatebar|custom_crop_coconut

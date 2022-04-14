@@ -12,4 +12,4 @@ custom_food_paneer:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|milk_bucket/custom_ingredient_freshmilk|custom_ingredient_vinegar|custom_food_lemon
+      input: custom_ingredient_potitem|milk_bucket/custom_ingredient_freshmilkitem|custom_ingredient_vinegaritem|custom_crop_lemon

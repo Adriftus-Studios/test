@@ -1,4 +1,4 @@
-custom_ingredient_dimsum:
+custom_ingredient_dimsumitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_dimsum:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_rice|custom_ingredient_dough|custom_ingredient_waterchestnut|brown_mushroom/red_mushroom/custom_food_whitemushroom|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish
+      input: custom_ingredient_potitem|custom_crop_rice|custom_ingredient_doughitem|custom_crop_waterchestnut|brown_mushroom/red_mushroom/custom_crop_whitemushroom|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish

@@ -12,4 +12,4 @@ custom_food_mashedpotatoes:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|baked_potato|custom_ingredient_butter|custom_ingredient_salt
+      input: custom_ingredient_mixingbowlitem|baked_potato|custom_ingredient_butteritem|custom_ingredient_saltitem

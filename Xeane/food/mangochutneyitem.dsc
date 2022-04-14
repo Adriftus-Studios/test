@@ -12,4 +12,4 @@ custom_food_mangochutney:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_food_mango|custom_ingredient_spiceleaf|custom_ingredient_mustardseeds|custom_ingredient_cookingoil
+      input: custom_ingredient_potitem|custom_crop_mango|custom_crop_spiceleaf|custom_crop_mustardseeds|custom_ingredient_cookingoilitem

@@ -12,4 +12,4 @@ custom_food_chocolatecupcake:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_ingredient_cocoapowder|custom_ingredient_dough
+      input: custom_ingredient_mixingbowlitem|custom_ingredient_cocoapowderitem|custom_ingredient_doughitem

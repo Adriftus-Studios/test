@@ -1,4 +1,4 @@
-custom_ingredient_groundpork:
+custom_ingredient_groundporkitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_groundpork:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_grinder|porkchop
+      input: custom_ingredient_grinderitem|porkchop

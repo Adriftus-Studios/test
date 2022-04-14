@@ -12,4 +12,4 @@ custom_food_vegetablesoup:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|potato|carrot|brown_mushroom/red_mushroom/custom_food_whitemushroom|custom_food_stock
+      input: custom_ingredient_potitem|potato|carrot|brown_mushroom/red_mushroom/custom_crop_whitemushroom|custom_food_stock

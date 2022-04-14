@@ -12,4 +12,4 @@ custom_food_mushroomsteak:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|beef|brown_mushroom/red_mushroom/custom_food_whitemushroom|custom_ingredient_butter|custom_ingredient_blackpepper
+      input: custom_ingredient_skilletitem|beef|brown_mushroom/red_mushroom/custom_crop_whitemushroom|custom_ingredient_butteritem|custom_ingredient_blackpepperitem

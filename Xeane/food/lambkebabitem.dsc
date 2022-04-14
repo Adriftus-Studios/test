@@ -12,4 +12,4 @@ custom_food_lambkebab:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|mutton|custom_food_onion|custom_food_bellpepper|stick
+      input: custom_ingredient_cuttingboarditem|mutton|custom_crop_onion|custom_crop_bellpepper|stick

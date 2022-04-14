@@ -1,4 +1,4 @@
-custom_ingredient_mulberryjelly:
+custom_ingredient_mulberryjellyitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_mulberryjelly:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_mulberry|sugar
+      input: custom_ingredient_saucepanitem|custom_crop_mulberry|sugar

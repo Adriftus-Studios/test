@@ -12,4 +12,4 @@ custom_food_mushroomrisotto:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_rice|brown_mushroom/red_mushroom/custom_food_whitemushroom|custom_food_onion|custom_ingredient_cheese
+      input: custom_ingredient_bakewareitem|custom_crop_rice|brown_mushroom/red_mushroom/custom_crop_whitemushroom|custom_crop_onion|custom_ingredient_cheeseitem

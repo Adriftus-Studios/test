@@ -12,4 +12,4 @@ custom_food_splitpeasoup:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_food_peas|porkchop|custom_ingredient_blackpepper|custom_food_stock
+      input: custom_ingredient_potitem|custom_crop_peas|porkchop|custom_ingredient_blackpepperitem|custom_food_stock

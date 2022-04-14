@@ -1,4 +1,4 @@
-custom_ingredient_blueberryjellytoast:
+custom_ingredient_blueberryjellytoastitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_blueberryjellytoast:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_ingredient_blueberryjelly|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_ingredient_blueberryjellyitem|custom_food_toast

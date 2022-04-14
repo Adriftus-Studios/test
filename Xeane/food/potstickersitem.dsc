@@ -12,4 +12,4 @@ custom_food_potstickers:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|porkchop|custom_food_cabbage|custom_food_scallion|custom_ingredient_cookingoil|custom_ingredient_soysauce|custom_food_garlic
+      input: custom_ingredient_skilletitem|porkchop|custom_crop_cabbage|custom_crop_scallion|custom_ingredient_cookingoilitem|custom_ingredient_soysauceitem|custom_crop_garlic

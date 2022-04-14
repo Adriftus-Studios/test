@@ -1,4 +1,4 @@
-custom_ingredient_almond:
+custom_crop_almond:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_pomegranatejuice:
+custom_ingredient_pomegranatejuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_pomegranatejuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_pomegranate|custom_food_pomegranate
+      input: custom_ingredient_juiceritem|custom_crop_pomegranate|custom_crop_pomegranate

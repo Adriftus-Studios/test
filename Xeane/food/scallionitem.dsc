@@ -1,4 +1,4 @@
-custom_food_scallion:
+custom_crop_scallion:
   type: item
   debug: false
   material: apple

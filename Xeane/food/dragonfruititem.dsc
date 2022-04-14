@@ -1,4 +1,4 @@
-custom_food_dragonfruit:
+custom_crop_dragonfruit:
   type: item
   debug: false
   material: apple

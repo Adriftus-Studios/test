@@ -1,4 +1,4 @@
-custom_ingredient_jalapenoburger:
+custom_ingredient_jalapenoburgeritem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_jalapenoburger:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_ingredient_basichamburger|custom_ingredient_chilipepper
+      input: custom_ingredient_cuttingboarditem|custom_ingredient_basichamburgeritem|custom_crop_chilipepper

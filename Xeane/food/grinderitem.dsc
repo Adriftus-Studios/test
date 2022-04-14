@@ -1,4 +1,4 @@
-custom_ingredient_grinder:
+custom_ingredient_grinderitem:
   type: item
   debug: false
   material: apple

@@ -12,4 +12,4 @@ custom_food_peasandcelery:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_celery|custom_food_peas|custom_food_lemon|custom_ingredient_blackpepper
+      input: custom_ingredient_mixingbowlitem|custom_crop_celery|custom_crop_peas|custom_crop_lemon|custom_ingredient_blackpepperitem

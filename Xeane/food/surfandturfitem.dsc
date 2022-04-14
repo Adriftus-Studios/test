@@ -12,4 +12,4 @@ custom_food_surfandturf:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|cod/salmon/tropical_fish|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_food_avocado/custom_ingredient_olive
+      input: custom_ingredient_cuttingboarditem|cod/salmon/tropical_fish|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_crop_avocado/custom_crop_olive

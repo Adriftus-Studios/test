@@ -1,4 +1,4 @@
-custom_ingredient_pumpkincupcake:
+custom_ingredient_pumpkincupcakeitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_pumpkincupcake:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|pumpkin|custom_ingredient_dough
+      input: custom_ingredient_mixingbowlitem|pumpkin|custom_ingredient_doughitem

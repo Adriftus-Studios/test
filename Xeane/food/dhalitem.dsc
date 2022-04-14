@@ -12,4 +12,4 @@ custom_food_dhal:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_food_peas|custom_ingredient_garammasala|custom_ingredient_mustardseeds|custom_food_onion|custom_food_tomato|custom_food_garlic
+      input: custom_ingredient_potitem|custom_crop_peas|custom_ingredient_garammasalaitem|custom_crop_mustardseeds|custom_crop_onion|custom_crop_tomato|custom_crop_garlic

@@ -1,4 +1,4 @@
-custom_food_sweetpotato:
+custom_crop_sweetpotato:
   type: item
   debug: false
   material: apple

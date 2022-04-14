@@ -1,4 +1,4 @@
-custom_ingredient_melonjuice:
+custom_ingredient_melonjuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_melonjuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|melon_slice|melon_slice
+      input: custom_ingredient_juiceritem|melon_slice|melon_slice

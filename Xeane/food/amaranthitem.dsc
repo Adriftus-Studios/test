@@ -1,4 +1,4 @@
-custom_ingredient_amaranth:
+custom_crop_amaranth:
   type: item
   debug: false
   material: apple

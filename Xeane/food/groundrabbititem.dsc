@@ -1,4 +1,4 @@
-custom_ingredient_groundrabbit:
+custom_ingredient_groundrabbititem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_groundrabbit:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_grinder|rabbit
+      input: custom_ingredient_grinderitem|rabbit

@@ -1,4 +1,4 @@
-custom_ingredient_chickentenders:
+custom_ingredient_chickentendersitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_chickentenders:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|chicken|custom_ingredient_batter
+      input: custom_ingredient_bakewareitem|chicken|custom_ingredient_batteritem

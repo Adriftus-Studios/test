@@ -1,4 +1,4 @@
-custom_ingredient_charsiu:
+custom_ingredient_charsiuitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_charsiu:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|porkchop|custom_ingredient_hoisinsauce|custom_ingredient_fivespice|honey_bottle|custom_ingredient_soysauce
+      input: custom_ingredient_saucepanitem|porkchop|custom_ingredient_hoisinsauceitem|custom_ingredient_fivespiceitem|honey_bottle|custom_ingredient_soysauceitem

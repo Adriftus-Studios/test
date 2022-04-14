@@ -1,4 +1,4 @@
-custom_ingredient_groundchicken:
+custom_ingredient_groundchickenitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_groundchicken:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_grinder|chicken
+      input: custom_ingredient_grinderitem|chicken

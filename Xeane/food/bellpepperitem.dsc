@@ -1,4 +1,4 @@
-custom_food_bellpepper:
+custom_crop_bellpepper:
   type: item
   debug: false
   material: apple

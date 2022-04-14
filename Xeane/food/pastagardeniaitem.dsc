@@ -12,4 +12,4 @@ custom_food_pastagardenia:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_ingredient_pasta|custom_ingredient_cookingoil|custom_food_tomato|custom_ingredient_spiceleaf|custom_ingredient_cheese
+      input: custom_ingredient_mixingbowlitem|custom_ingredient_pastaitem|custom_ingredient_cookingoilitem|custom_crop_tomato|custom_crop_spiceleaf|custom_ingredient_cheeseitem

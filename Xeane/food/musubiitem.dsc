@@ -12,4 +12,4 @@ custom_food_musubi:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|porkchop|custom_ingredient_rice|kelp
+      input: custom_ingredient_cuttingboarditem|porkchop|custom_crop_rice|kelp

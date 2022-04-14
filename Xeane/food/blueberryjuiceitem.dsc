@@ -1,4 +1,4 @@
-custom_ingredient_blueberryjuice:
+custom_ingredient_blueberryjuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_blueberryjuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_blueberry|custom_food_blueberry
+      input: custom_ingredient_juiceritem|custom_crop_blueberry|custom_crop_blueberry

@@ -12,4 +12,4 @@ custom_food_toastsandwich:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_food_toast|custom_food_toast|custom_ingredient_blackpepper
+      input: custom_ingredient_skilletitem|custom_food_toast|custom_food_toast|custom_ingredient_blackpepperitem

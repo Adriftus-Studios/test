@@ -12,4 +12,4 @@ custom_food_chickennoodlesoup:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|chicken|carrot|custom_ingredient_pasta|custom_food_stock
+      input: custom_ingredient_potitem|chicken|carrot|custom_ingredient_pastaitem|custom_food_stock

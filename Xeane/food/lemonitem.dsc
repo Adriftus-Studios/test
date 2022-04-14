@@ -1,4 +1,4 @@
-custom_food_lemon:
+custom_crop_lemon:
   type: item
   debug: false
   material: apple

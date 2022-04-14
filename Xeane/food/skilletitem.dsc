@@ -1,4 +1,4 @@
-custom_ingredient_skillet:
+custom_ingredient_skilletitem:
   type: item
   debug: false
   material: apple

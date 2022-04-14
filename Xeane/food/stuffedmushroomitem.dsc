@@ -12,4 +12,4 @@ custom_food_stuffedmushroom:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|brown_mushroom/red_mushroom/custom_food_whitemushroom|custom_ingredient_cheese|custom_food_toast
+      input: custom_ingredient_bakewareitem|brown_mushroom/red_mushroom/custom_crop_whitemushroom|custom_ingredient_cheeseitem|custom_food_toast

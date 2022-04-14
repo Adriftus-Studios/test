@@ -1,4 +1,4 @@
-custom_ingredient_spagettiandmeatballs:
+custom_ingredient_spagettiandmeatballsitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_spagettiandmeatballs:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_tomato|custom_ingredient_pasta|custom_ingredient_spiceleaf|beef
+      input: custom_ingredient_saucepanitem|custom_crop_tomato|custom_ingredient_pastaitem|custom_crop_spiceleaf|beef

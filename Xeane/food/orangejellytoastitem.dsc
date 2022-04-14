@@ -1,4 +1,4 @@
-custom_ingredient_orangejellytoast:
+custom_ingredient_orangejellytoastitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_orangejellytoast:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_ingredient_orangejelly|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_ingredient_orangejellyitem|custom_food_toast

@@ -12,4 +12,4 @@ custom_food_stuffedchilipeppers:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_chilipepper|custom_ingredient_cheese|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_food_onion|custom_ingredient_spiceleaf
+      input: custom_ingredient_bakewareitem|custom_crop_chilipepper|custom_ingredient_cheeseitem|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_crop_onion|custom_crop_spiceleaf

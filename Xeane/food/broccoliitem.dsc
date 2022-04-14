@@ -1,4 +1,4 @@
-custom_food_broccoli:
+custom_crop_broccoli:
   type: item
   debug: false
   material: apple

@@ -12,4 +12,4 @@ custom_food_steakandchips:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|beef|custom_food_fries
+      input: custom_ingredient_skilletitem|beef|custom_food_fries

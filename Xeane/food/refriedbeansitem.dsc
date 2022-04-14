@@ -12,4 +12,4 @@ custom_food_refriedbeans:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_ingredient_bean|custom_food_onion|custom_ingredient_butter
+      input: custom_ingredient_skilletitem|custom_crop_bean|custom_crop_onion|custom_ingredient_butteritem

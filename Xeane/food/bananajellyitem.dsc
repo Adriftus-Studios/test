@@ -1,4 +1,4 @@
-custom_ingredient_bananajelly:
+custom_ingredient_bananajellyitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_bananajelly:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_banana|sugar
+      input: custom_ingredient_saucepanitem|custom_crop_banana|sugar

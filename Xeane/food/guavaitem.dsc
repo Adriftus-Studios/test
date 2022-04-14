@@ -1,4 +1,4 @@
-custom_food_guava:
+custom_crop_guava:
   type: item
   debug: false
   material: apple

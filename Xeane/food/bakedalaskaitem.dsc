@@ -12,4 +12,4 @@ custom_food_bakedalaska:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_meringue|custom_ingredient_dough|sugar|custom_food_icecream/custom_food_chocolateicecream/custom_food_caramelicecream
+      input: custom_ingredient_bakewareitem|custom_ingredient_meringueitem|custom_ingredient_doughitem|sugar|custom_food_icecream/custom_food_chocolateicecream/custom_food_caramelicecream

@@ -12,4 +12,4 @@ custom_food_dango:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_food_mochi|custom_food_mochi|custom_food_mochi|stick
+      input: custom_ingredient_cuttingboarditem|custom_food_mochi|custom_food_mochi|custom_food_mochi|stick

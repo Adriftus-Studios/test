@@ -12,4 +12,4 @@ custom_food_salisburysteak:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|beef|custom_ingredient_flour|custom_food_avocado/custom_food_banana|custom_ingredient_blackpepper
+      input: custom_ingredient_bakewareitem|beef|custom_ingredient_flouritem|custom_crop_avocado/custom_crop_banana|custom_ingredient_blackpepperitem

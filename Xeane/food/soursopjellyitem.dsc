@@ -1,4 +1,4 @@
-custom_ingredient_soursopjelly:
+custom_ingredient_soursopjellyitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_soursopjelly:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_soursop|sugar
+      input: custom_ingredient_saucepanitem|custom_crop_soursop|sugar

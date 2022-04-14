@@ -12,4 +12,4 @@ custom_food_maplesausage:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_ingredient_spiceleaf|custom_ingredient_maplesyrup
+      input: custom_ingredient_skilletitem|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_crop_spiceleaf|custom_crop_maplesyrup

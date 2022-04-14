@@ -1,4 +1,4 @@
-custom_ingredient_datejuice:
+custom_ingredient_datejuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_datejuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_date|custom_food_date
+      input: custom_ingredient_juiceritem|custom_crop_date|custom_crop_date

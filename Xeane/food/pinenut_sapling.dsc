@@ -6,4 +6,4 @@ custom_ingredient_pinenut_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pinenut|custom_ingredient_pinenut|custom_ingredient_pinenut|custom_ingredient_pinenut|custom_ingredient_pinenut|custom_ingredient_pinenut|custom_ingredient_pinenut|custom_ingredient_pinenut|custom_ingredient_saplings
+      input: custom_crop_pinenut|custom_crop_pinenut|custom_crop_pinenut|custom_crop_pinenut|custom_crop_pinenut|custom_crop_pinenut|custom_crop_pinenut|custom_crop_pinenut|custom_ingredient_saplings

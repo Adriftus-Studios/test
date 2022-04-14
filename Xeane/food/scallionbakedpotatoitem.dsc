@@ -12,4 +12,4 @@ custom_food_scallionbakedpotato:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|baked_potato|custom_food_scallion|custom_ingredient_cream
+      input: custom_ingredient_cuttingboarditem|baked_potato|custom_crop_scallion|custom_ingredient_creamitem

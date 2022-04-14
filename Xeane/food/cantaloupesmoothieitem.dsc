@@ -1,4 +1,4 @@
-custom_ingredient_cantaloupesmoothie:
+custom_ingredient_cantaloupesmoothieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_cantaloupesmoothie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_cantaloupe|blue_ice/ice/packed_ice/snowball
+      input: custom_ingredient_mixingbowlitem|custom_crop_cantaloupe|blue_ice/ice/packed_ice/snowball

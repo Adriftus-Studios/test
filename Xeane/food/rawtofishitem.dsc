@@ -12,4 +12,4 @@ custom_food_rawtofish:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_firmtofu|custom_ingredient_soysauce|kelp
+      input: custom_ingredient_mixingbowlitem|custom_food_firmtofu|custom_ingredient_soysauceitem|kelp

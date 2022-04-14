@@ -1,4 +1,4 @@
-custom_ingredient_cheese:
+custom_ingredient_cheeseitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_cheese:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|milk_bucket/custom_ingredient_freshmilk|custom_ingredient_salt
+      input: custom_ingredient_potitem|milk_bucket/custom_ingredient_freshmilkitem|custom_ingredient_saltitem

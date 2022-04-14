@@ -12,4 +12,4 @@ custom_food_supremepizza:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_dough|custom_food_tomato|custom_ingredient_cheese|custom_food_pepperoni|custom_food_bellpepper|custom_food_onion|custom_ingredient_spiceleaf
+      input: custom_ingredient_bakewareitem|custom_ingredient_doughitem|custom_crop_tomato|custom_ingredient_cheeseitem|custom_food_pepperoni|custom_crop_bellpepper|custom_crop_onion|custom_crop_spiceleaf

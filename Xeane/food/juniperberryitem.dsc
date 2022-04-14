@@ -1,4 +1,4 @@
-custom_food_juniperberry:
+custom_crop_juniperberry:
   type: item
   debug: false
   material: apple

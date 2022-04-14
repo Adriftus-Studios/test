@@ -12,4 +12,4 @@ custom_food_stuffing:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_toast|custom_ingredient_spiceleaf|custom_food_celery|custom_food_stock
+      input: custom_ingredient_bakewareitem|custom_food_toast|custom_crop_spiceleaf|custom_crop_celery|custom_food_stock

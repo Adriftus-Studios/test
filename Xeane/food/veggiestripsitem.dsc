@@ -12,4 +12,4 @@ custom_food_veggiestrips:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_avocado/custom_ingredient_olive|custom_food_avocado/custom_ingredient_olive|custom_food_avocado/custom_ingredient_olive|custom_ingredient_salt|custom_ingredient_spiceleaf
+      input: custom_ingredient_bakewareitem|custom_crop_avocado/custom_crop_olive|custom_crop_avocado/custom_crop_olive|custom_crop_avocado/custom_crop_olive|custom_ingredient_saltitem|custom_crop_spiceleaf

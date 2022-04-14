@@ -1,4 +1,4 @@
-custom_ingredient_millet:
+custom_crop_millet:
   type: item
   debug: false
   material: apple

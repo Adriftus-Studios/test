@@ -1,4 +1,4 @@
-custom_ingredient_blackberrysmoothie:
+custom_ingredient_blackberrysmoothieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_blackberrysmoothie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_blackberry|blue_ice/ice/packed_ice/snowball
+      input: custom_ingredient_mixingbowlitem|custom_crop_blackberry|blue_ice/ice/packed_ice/snowball

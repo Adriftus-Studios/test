@@ -1,4 +1,4 @@
-custom_ingredient_carrotjuice:
+custom_ingredient_carrotjuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_carrotjuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|carrot|carrot
+      input: custom_ingredient_juiceritem|carrot|carrot

@@ -1,4 +1,4 @@
-custom_ingredient_chocovoxels:
+custom_ingredient_chocovoxelsitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_chocovoxels:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|milk_bucket/custom_ingredient_freshmilk|cookie
+      input: custom_ingredient_mixingbowlitem|milk_bucket/custom_ingredient_freshmilkitem|cookie

@@ -1,4 +1,4 @@
-custom_ingredient_cheesytacotortillachips:
+custom_ingredient_cheesytacotortillachipsitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_cheesytacotortillachips:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_cornmeal|custom_ingredient_cookingoil|custom_ingredient_cheese|custom_ingredient_spiceleaf
+      input: custom_ingredient_potitem|custom_ingredient_cornmealitem|custom_ingredient_cookingoilitem|custom_ingredient_cheeseitem|custom_crop_spiceleaf

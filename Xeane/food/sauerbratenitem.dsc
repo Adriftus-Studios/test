@@ -12,4 +12,4 @@ custom_food_sauerbraten:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_ingredient_vinegar|water_bucket/custom_ingredient_freshwater|custom_ingredient_spiceleaf|potato
+      input: custom_ingredient_saucepanitem|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_ingredient_vinegaritem|water_bucket/custom_ingredient_freshwateritem|custom_crop_spiceleaf|potato

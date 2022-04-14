@@ -12,4 +12,4 @@ custom_food_scrambledegg:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_food_avocado/custom_food_banana|milk_bucket/custom_ingredient_freshmilk|custom_ingredient_salt
+      input: custom_ingredient_skilletitem|custom_crop_avocado/custom_crop_banana|milk_bucket/custom_ingredient_freshmilkitem|custom_ingredient_saltitem

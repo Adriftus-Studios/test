@@ -1,4 +1,4 @@
-custom_ingredient_fajitaburrito:
+custom_ingredient_fajitaburritoitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_fajitaburrito:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_food_onion|custom_food_bellpepper|custom_ingredient_spiceleaf|custom_food_tomato|custom_food_tortilla
+      input: custom_ingredient_skilletitem|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_crop_onion|custom_crop_bellpepper|custom_crop_spiceleaf|custom_crop_tomato|custom_food_tortilla

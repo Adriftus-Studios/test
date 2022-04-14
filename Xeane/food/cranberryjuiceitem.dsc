@@ -1,4 +1,4 @@
-custom_ingredient_cranberryjuice:
+custom_ingredient_cranberryjuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_cranberryjuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_cranberry|custom_food_cranberry
+      input: custom_ingredient_juiceritem|custom_crop_cranberry|custom_crop_cranberry

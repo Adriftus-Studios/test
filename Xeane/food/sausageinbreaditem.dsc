@@ -12,4 +12,4 @@ custom_food_sausageinbread:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_food_maplesausage|bread|custom_ingredient_ketchup|custom_food_onion
+      input: custom_ingredient_cuttingboarditem|custom_food_maplesausage|bread|custom_ingredient_ketchupitem|custom_crop_onion

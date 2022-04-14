@@ -12,4 +12,4 @@ custom_food_baconpancakes:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_ingredient_batter|milk_bucket/custom_ingredient_freshmilk|cooked_porkchop
+      input: custom_ingredient_skilletitem|custom_ingredient_batteritem|milk_bucket/custom_ingredient_freshmilkitem|cooked_porkchop

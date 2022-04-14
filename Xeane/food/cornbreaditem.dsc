@@ -12,4 +12,4 @@ custom_food_cornbread:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_cornmeal
+      input: custom_ingredient_bakewareitem|custom_ingredient_cornmealitem

@@ -12,4 +12,4 @@ custom_food_eggtart:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_dough|custom_food_avocado/custom_food_banana|sugar|water_bucket/custom_ingredient_freshwater|milk_bucket/custom_ingredient_freshmilk
+      input: custom_ingredient_bakewareitem|custom_ingredient_doughitem|custom_crop_avocado/custom_crop_banana|sugar|water_bucket/custom_ingredient_freshwateritem|milk_bucket/custom_ingredient_freshmilkitem

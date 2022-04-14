@@ -1,4 +1,4 @@
-custom_ingredient_sesameseeds:
+custom_crop_sesameseeds:
   type: item
   debug: false
   material: apple

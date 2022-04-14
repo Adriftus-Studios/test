@@ -1,4 +1,4 @@
-custom_ingredient_glowberrysmoothie:
+custom_ingredient_glowberrysmoothieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_glowberrysmoothie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_ingredient_glowberryjuice|blue_ice/ice/packed_ice/snowball
+      input: custom_ingredient_mixingbowlitem|custom_ingredient_glowberryjuiceitem|blue_ice/ice/packed_ice/snowball

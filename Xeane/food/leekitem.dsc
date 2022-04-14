@@ -1,4 +1,4 @@
-custom_food_leek:
+custom_crop_leek:
   type: item
   debug: false
   material: apple

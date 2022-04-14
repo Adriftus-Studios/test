@@ -12,4 +12,4 @@ custom_food_breakfastburrito:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_food_tortilla|custom_food_scrambledegg|porkchop|potato|custom_ingredient_cheese
+      input: custom_ingredient_cuttingboarditem|custom_food_tortilla|custom_food_scrambledegg|porkchop|potato|custom_ingredient_cheeseitem

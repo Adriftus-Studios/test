@@ -1,4 +1,4 @@
-custom_food_orange:
+custom_crop_orange:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_muttonjerky:
+custom_ingredient_muttonjerkyitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_muttonjerky:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|mutton|custom_ingredient_salt
+      input: custom_ingredient_cuttingboarditem|mutton|custom_ingredient_saltitem

@@ -12,4 +12,4 @@ custom_food_bbqjackfruit:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_food_jackfruit|custom_food_bbqsauce
+      input: custom_ingredient_skilletitem|custom_crop_jackfruit|custom_food_bbqsauce

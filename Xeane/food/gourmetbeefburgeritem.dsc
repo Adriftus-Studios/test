@@ -12,4 +12,4 @@ custom_food_gourmetbeefburger:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_food_gourmetbeefpatty|custom_food_briochebun|custom_ingredient_cheese|custom_food_cabbage/custom_food_kale/custom_food_lettuce/custom_food_spinach|custom_ingredient_relish|custom_ingredient_chilipepper|custom_food_tomato
+      input: custom_ingredient_skilletitem|custom_food_gourmetbeefpatty|custom_food_briochebun|custom_ingredient_cheeseitem|custom_crop_cabbage/custom_crop_kale/custom_crop_lettuce/custom_crop_spinach|custom_ingredient_relishitem|custom_crop_chilipepper|custom_crop_tomato

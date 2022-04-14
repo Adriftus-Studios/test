@@ -1,4 +1,4 @@
-custom_ingredient_pawpawpie:
+custom_ingredient_pawpawpieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_pawpawpie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_pawpaw|sugar|custom_ingredient_dough
+      input: custom_ingredient_bakewareitem|custom_crop_pawpaw|sugar|custom_ingredient_doughitem

@@ -12,4 +12,4 @@ custom_food_orangechicken:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_orange|chicken|sugar|custom_ingredient_rice|custom_food_broccoli
+      input: custom_ingredient_saucepanitem|custom_crop_orange|chicken|sugar|custom_crop_rice|custom_crop_broccoli

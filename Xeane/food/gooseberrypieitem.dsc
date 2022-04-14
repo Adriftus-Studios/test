@@ -12,4 +12,4 @@ custom_food_gooseberrypie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_gooseberry|sugar|custom_ingredient_dough
+      input: custom_ingredient_bakewareitem|custom_crop_gooseberry|sugar|custom_ingredient_doughitem

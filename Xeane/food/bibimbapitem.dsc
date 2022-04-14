@@ -1,4 +1,4 @@
-custom_ingredient_bibimbap:
+custom_ingredient_bibimbapitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_bibimbap:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_food_boiledegg|custom_food_avocado/custom_ingredient_olive|custom_food_avocado/custom_ingredient_olive|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish
+      input: custom_ingredient_skilletitem|custom_food_boiledegg|custom_crop_avocado/custom_crop_olive|custom_crop_avocado/custom_crop_olive|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish

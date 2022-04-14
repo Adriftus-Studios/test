@@ -12,4 +12,4 @@ custom_food_pralines:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|sugar|custom_ingredient_pecan
+      input: custom_ingredient_saucepanitem|sugar|custom_crop_pecan

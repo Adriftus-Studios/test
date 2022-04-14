@@ -1,4 +1,4 @@
-custom_ingredient_couscous:
+custom_ingredient_couscousitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_couscous:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_ingredient_flour|water_bucket/custom_ingredient_freshwater
+      input: custom_ingredient_mixingbowlitem|custom_ingredient_flouritem|water_bucket/custom_ingredient_freshwateritem

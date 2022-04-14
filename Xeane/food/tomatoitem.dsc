@@ -1,4 +1,4 @@
-custom_food_tomato:
+custom_crop_tomato:
   type: item
   debug: false
   material: apple

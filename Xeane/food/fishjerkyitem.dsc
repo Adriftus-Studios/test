@@ -1,4 +1,4 @@
-custom_ingredient_fishjerky:
+custom_ingredient_fishjerkyitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_fishjerky:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|cod/salmon/tropical_fish|custom_ingredient_salt
+      input: custom_ingredient_cuttingboarditem|cod/salmon/tropical_fish|custom_ingredient_saltitem

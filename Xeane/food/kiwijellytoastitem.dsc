@@ -1,4 +1,4 @@
-custom_ingredient_kiwijellytoast:
+custom_ingredient_kiwijellytoastitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_kiwijellytoast:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_ingredient_kiwijelly|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_ingredient_kiwijellyitem|custom_food_toast

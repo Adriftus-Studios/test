@@ -12,4 +12,4 @@ custom_food_bakedham:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|porkchop|apple
+      input: custom_ingredient_bakewareitem|porkchop|apple

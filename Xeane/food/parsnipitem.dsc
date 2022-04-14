@@ -1,4 +1,4 @@
-custom_food_parsnip:
+custom_crop_parsnip:
   type: item
   debug: false
   material: apple

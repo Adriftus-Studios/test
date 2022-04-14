@@ -1,4 +1,4 @@
-custom_ingredient_grapefruitjelly:
+custom_ingredient_grapefruitjellyitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_grapefruitjelly:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_grapefruit|sugar
+      input: custom_ingredient_saucepanitem|custom_crop_grapefruit|sugar

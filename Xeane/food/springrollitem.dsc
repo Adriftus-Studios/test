@@ -1,4 +1,4 @@
-custom_ingredient_springroll:
+custom_ingredient_springrollitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_springroll:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_ingredient_rice|custom_ingredient_hoisinsauce|custom_ingredient_peanut|custom_food_garlic|custom_food_lime|custom_ingredient_spiceleaf|custom_food_cabbage
+      input: custom_ingredient_mixingbowlitem|custom_crop_rice|custom_ingredient_hoisinsauceitem|custom_crop_peanut|custom_crop_garlic|custom_crop_lime|custom_crop_spiceleaf|custom_crop_cabbage

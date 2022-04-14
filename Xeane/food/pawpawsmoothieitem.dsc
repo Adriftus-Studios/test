@@ -1,4 +1,4 @@
-custom_ingredient_pawpawsmoothie:
+custom_ingredient_pawpawsmoothieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_pawpawsmoothie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_pawpaw|blue_ice/ice/packed_ice/snowball
+      input: custom_ingredient_mixingbowlitem|custom_crop_pawpaw|blue_ice/ice/packed_ice/snowball

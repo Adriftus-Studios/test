@@ -12,4 +12,4 @@ custom_food_applepie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|sugar|apple|custom_ingredient_dough
+      input: custom_ingredient_bakewareitem|sugar|apple|custom_ingredient_doughitem

@@ -12,4 +12,4 @@ custom_food_caramelmuffin:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_caramel|custom_ingredient_batter
+      input: custom_ingredient_bakewareitem|custom_food_caramel|custom_ingredient_batteritem

@@ -1,4 +1,4 @@
-custom_ingredient_sunflowerseedsbutter:
+custom_ingredient_sunflowerseedsbutteritem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_sunflowerseedsbutter:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_grinder|custom_food_sunflowerseeds
+      input: custom_ingredient_grinderitem|custom_food_sunflowerseeds

@@ -1,4 +1,4 @@
-custom_food_avocado:
+custom_crop_avocado:
   type: item
   debug: false
   material: apple

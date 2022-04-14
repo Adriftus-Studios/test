@@ -12,4 +12,4 @@ custom_food_biscuitsandgravy:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_food_biscuit|custom_food_gravy
+      input: custom_ingredient_cuttingboarditem|custom_food_biscuit|custom_food_gravy

@@ -12,4 +12,4 @@ custom_food_chilidog:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_ingredient_hotdog|custom_food_chili
+      input: custom_ingredient_skilletitem|custom_ingredient_hotdogitem|custom_food_chili

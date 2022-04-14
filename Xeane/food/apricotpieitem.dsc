@@ -1,4 +1,4 @@
-custom_ingredient_apricotpie:
+custom_ingredient_apricotpieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_apricotpie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_apricot|sugar|custom_ingredient_dough
+      input: custom_ingredient_bakewareitem|custom_crop_apricot|sugar|custom_ingredient_doughitem

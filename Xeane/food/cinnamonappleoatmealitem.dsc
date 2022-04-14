@@ -12,4 +12,4 @@ custom_food_cinnamonappleoatmeal:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_oats|custom_ingredient_groundcinnamon|apple|water_bucket/custom_ingredient_freshwater
+      input: custom_ingredient_potitem|custom_crop_oats|custom_ingredient_groundcinnamonitem|apple|water_bucket/custom_ingredient_freshwateritem

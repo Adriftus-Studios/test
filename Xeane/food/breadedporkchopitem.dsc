@@ -1,4 +1,4 @@
-custom_ingredient_breadedporkchop:
+custom_ingredient_breadedporkchopitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_breadedporkchop:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_ingredient_cookingoil|porkchop|custom_ingredient_flour|custom_food_avocado/custom_food_banana
+      input: custom_ingredient_skilletitem|custom_ingredient_cookingoilitem|porkchop|custom_ingredient_flouritem|custom_crop_avocado/custom_crop_banana

@@ -1,4 +1,4 @@
-custom_ingredient_cocoapowder:
+custom_ingredient_cocoapowderitem:
   type: item
   debug: false
   material: apple
@@ -6,4 +6,4 @@ custom_ingredient_cocoapowder:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_grinder|cocoa_beans
+      input: custom_ingredient_grinderitem|cocoa_beans

@@ -12,4 +12,4 @@ custom_food_creamedcorn:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_corn|custom_food_onion|custom_ingredient_cream
+      input: custom_ingredient_saucepanitem|custom_crop_corn|custom_crop_onion|custom_ingredient_creamitem

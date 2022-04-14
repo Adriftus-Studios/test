@@ -1,4 +1,4 @@
-custom_ingredient_candleberrypie:
+custom_ingredient_candleberrypieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_candleberrypie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_candleberry|sugar|custom_ingredient_dough
+      input: custom_ingredient_bakewareitem|custom_crop_candleberry|sugar|custom_ingredient_doughitem

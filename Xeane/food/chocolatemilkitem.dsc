@@ -1,4 +1,4 @@
-custom_ingredient_chocolatemilk:
+custom_ingredient_chocolatemilkitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_chocolatemilk:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|milk_bucket/custom_ingredient_freshmilk|custom_ingredient_cocoapowder
+      input: custom_ingredient_mixingbowlitem|milk_bucket/custom_ingredient_freshmilkitem|custom_ingredient_cocoapowderitem

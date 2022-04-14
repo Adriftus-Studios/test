@@ -1,4 +1,4 @@
-custom_ingredient_pineapplepie:
+custom_ingredient_pineapplepieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_pineapplepie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_pineapple|sugar|custom_ingredient_dough
+      input: custom_ingredient_bakewareitem|custom_crop_pineapple|sugar|custom_ingredient_doughitem

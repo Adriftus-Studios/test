@@ -12,4 +12,4 @@ custom_food_greeneggsandham:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|porkchop|custom_food_avocado/custom_food_banana|green_dye
+      input: custom_ingredient_skilletitem|porkchop|custom_crop_avocado/custom_crop_banana|green_dye

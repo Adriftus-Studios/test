@@ -1,4 +1,4 @@
-custom_ingredient_cranberryjellytoast:
+custom_ingredient_cranberryjellytoastitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_cranberryjellytoast:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_ingredient_cranberryjelly|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_ingredient_cranberryjellyitem|custom_food_toast

@@ -12,4 +12,4 @@ custom_food_hummus:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_food_chickpea|custom_food_garlic|custom_food_lemon|custom_ingredient_cookingoil
+      input: custom_ingredient_cuttingboarditem|custom_crop_chickpea|custom_crop_garlic|custom_crop_lemon|custom_ingredient_cookingoilitem

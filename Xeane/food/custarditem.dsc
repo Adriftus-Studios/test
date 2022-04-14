@@ -12,4 +12,4 @@ custom_food_custard:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_avocado/custom_food_banana|custom_ingredient_groundnutmeg|custom_ingredient_groundcinnamon|custom_ingredient_cream
+      input: custom_ingredient_saucepanitem|custom_crop_avocado/custom_crop_banana|custom_ingredient_groundnutmegitem|custom_ingredient_groundcinnamonitem|custom_ingredient_creamitem

@@ -12,4 +12,4 @@ custom_food_carrotmuffin:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|carrot|custom_ingredient_batter
+      input: custom_ingredient_bakewareitem|carrot|custom_ingredient_batteritem

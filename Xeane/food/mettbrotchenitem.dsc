@@ -1,4 +1,4 @@
-custom_ingredient_mettbrotchen:
+custom_ingredient_mettbrotchenitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_mettbrotchen:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|porkchop|bread|custom_food_onion|custom_ingredient_saltandpepper
+      input: custom_ingredient_cuttingboarditem|porkchop|bread|custom_crop_onion|custom_ingredient_saltandpepperitem

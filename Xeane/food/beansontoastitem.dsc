@@ -12,4 +12,4 @@ custom_food_beansontoast:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_food_toast|custom_ingredient_butter|custom_food_bakedbeans
+      input: custom_ingredient_cuttingboarditem|custom_food_toast|custom_ingredient_butteritem|custom_food_bakedbeans

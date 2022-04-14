@@ -12,4 +12,4 @@ custom_food_gherkin:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_vinegar|custom_ingredient_salt|custom_ingredient_spiceleaf|custom_food_cucumber
+      input: custom_ingredient_potitem|custom_ingredient_vinegaritem|custom_ingredient_saltitem|custom_crop_spiceleaf|custom_crop_cucumber

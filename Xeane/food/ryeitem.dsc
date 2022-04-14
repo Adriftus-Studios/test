@@ -1,4 +1,4 @@
-custom_ingredient_rye:
+custom_crop_rye:
   type: item
   debug: false
   material: apple

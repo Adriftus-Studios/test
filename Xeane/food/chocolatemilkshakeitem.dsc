@@ -1,4 +1,4 @@
-custom_ingredient_chocolatemilkshake:
+custom_ingredient_chocolatemilkshakeitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_chocolatemilkshake:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|milk_bucket/custom_ingredient_freshmilk|custom_ingredient_cocoapowder|blue_ice/ice/packed_ice/snowball
+      input: custom_ingredient_mixingbowlitem|milk_bucket/custom_ingredient_freshmilkitem|custom_ingredient_cocoapowderitem|blue_ice/ice/packed_ice/snowball

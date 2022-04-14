@@ -12,4 +12,4 @@ custom_food_caramelicecream:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_icecream|custom_food_caramel
+      input: custom_ingredient_mixingbowlitem|custom_food_icecream|custom_food_caramel

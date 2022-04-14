@@ -12,4 +12,4 @@ custom_food_chocolatestrawberry:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_chocolatebar|custom_food_strawberry
+      input: custom_ingredient_saucepanitem|custom_food_chocolatebar|custom_crop_strawberry

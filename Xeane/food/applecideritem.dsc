@@ -1,4 +1,4 @@
-custom_ingredient_applecider:
+custom_ingredient_applecideritem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_applecider:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|apple|sugar
+      input: custom_ingredient_potitem|apple|sugar

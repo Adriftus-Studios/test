@@ -12,4 +12,4 @@ custom_food_bananayogurt:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_food_banana|custom_ingredient_yogurt
+      input: custom_ingredient_cuttingboarditem|custom_crop_banana|custom_ingredient_yogurtitem

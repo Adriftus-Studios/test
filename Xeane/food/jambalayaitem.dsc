@@ -12,4 +12,4 @@ custom_food_jambalaya:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_food_stock|custom_food_sausage|chicken|custom_food_onion|custom_food_bellpepper|custom_food_tomato|custom_ingredient_spiceleaf|custom_ingredient_blackpepper
+      input: custom_ingredient_potitem|custom_food_stock|custom_food_sausage|chicken|custom_crop_onion|custom_crop_bellpepper|custom_crop_tomato|custom_crop_spiceleaf|custom_ingredient_blackpepperitem

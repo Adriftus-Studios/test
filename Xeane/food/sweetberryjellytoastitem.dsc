@@ -1,4 +1,4 @@
-custom_ingredient_sweetberryjellytoast:
+custom_ingredient_sweetberryjellytoastitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_sweetberryjellytoast:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_food_toast|custom_ingredient_sweetberryjelly
+      input: custom_ingredient_cuttingboarditem|custom_food_toast|custom_ingredient_sweetberryjellyitem

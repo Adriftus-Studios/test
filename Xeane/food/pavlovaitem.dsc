@@ -12,4 +12,4 @@ custom_food_pavlova:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_avocado/custom_food_banana|sugar|custom_food_lemon|custom_ingredient_meringue|custom_food_strawberry
+      input: custom_ingredient_bakewareitem|custom_crop_avocado/custom_crop_banana|sugar|custom_crop_lemon|custom_ingredient_meringueitem|custom_crop_strawberry

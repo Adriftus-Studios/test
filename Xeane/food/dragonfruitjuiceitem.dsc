@@ -1,4 +1,4 @@
-custom_ingredient_dragonfruitjuice:
+custom_ingredient_dragonfruitjuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_dragonfruitjuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_dragonfruit|custom_food_dragonfruit
+      input: custom_ingredient_juiceritem|custom_crop_dragonfruit|custom_crop_dragonfruit

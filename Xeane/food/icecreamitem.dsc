@@ -12,4 +12,4 @@ custom_food_icecream:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|milk_bucket/custom_ingredient_freshmilk|custom_ingredient_salt|blue_ice/ice/packed_ice/snowball
+      input: custom_ingredient_mixingbowlitem|milk_bucket/custom_ingredient_freshmilkitem|custom_ingredient_saltitem|blue_ice/ice/packed_ice/snowball

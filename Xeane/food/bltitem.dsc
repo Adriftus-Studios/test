@@ -12,4 +12,4 @@ custom_food_blt:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|porkchop|custom_food_lettuce|custom_food_tomato|bread
+      input: custom_ingredient_skilletitem|porkchop|custom_crop_lettuce|custom_crop_tomato|bread

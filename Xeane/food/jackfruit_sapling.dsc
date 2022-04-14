@@ -6,4 +6,4 @@ custom_ingredient_jackfruit_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_food_jackfruit|custom_food_jackfruit|custom_food_jackfruit|custom_food_jackfruit|custom_food_jackfruit|custom_food_jackfruit|custom_food_jackfruit|custom_food_jackfruit|custom_ingredient_saplings
+      input: custom_crop_jackfruit|custom_crop_jackfruit|custom_crop_jackfruit|custom_crop_jackfruit|custom_crop_jackfruit|custom_crop_jackfruit|custom_crop_jackfruit|custom_crop_jackfruit|custom_ingredient_saplings

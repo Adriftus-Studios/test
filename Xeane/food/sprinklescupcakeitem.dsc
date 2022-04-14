@@ -12,4 +12,4 @@ custom_food_sprinklescupcake:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_batter|sugar|custom_ingredient_cream|custom_ingredient_butter|custom_ingredient_dyes/pink/custom_ingredient_dyes/yellow/custom_ingredient_dyes/orange/custom_ingredient_dyes/red/custom_ingredient_dyes/blue/custom_ingredient_dyes/green/custom_ingredient_dyes/purple
+      input: custom_ingredient_bakewareitem|custom_ingredient_batteritem|sugar|custom_ingredient_creamitem|custom_ingredient_butteritem|custom_ingredient_dyes/pink/custom_ingredient_dyes/yellow/custom_ingredient_dyes/orange/custom_ingredient_dyes/red/custom_ingredient_dyes/blue/custom_ingredient_dyes/green/custom_ingredient_dyes/purple

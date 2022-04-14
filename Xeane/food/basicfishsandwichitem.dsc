@@ -1,4 +1,4 @@
-custom_ingredient_basicfishsandwich:
+custom_ingredient_basicfishsandwichitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_basicfishsandwich:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_ingredient_groundfish|custom_ingredient_mayonaise|bread
+      input: custom_ingredient_skilletitem|custom_ingredient_groundfishitem|custom_ingredient_mayonaiseitem|bread

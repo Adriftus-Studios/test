@@ -6,4 +6,4 @@ custom_ingredient_peppercorn_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_peppercorn|custom_ingredient_peppercorn|custom_ingredient_peppercorn|custom_ingredient_peppercorn|custom_ingredient_peppercorn|custom_ingredient_peppercorn|custom_ingredient_peppercorn|custom_ingredient_peppercorn|custom_ingredient_saplings
+      input: custom_crop_peppercorn|custom_crop_peppercorn|custom_crop_peppercorn|custom_crop_peppercorn|custom_crop_peppercorn|custom_crop_peppercorn|custom_crop_peppercorn|custom_crop_peppercorn|custom_ingredient_saplings

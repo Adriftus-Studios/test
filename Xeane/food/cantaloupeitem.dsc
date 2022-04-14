@@ -1,4 +1,4 @@
-custom_food_cantaloupe:
+custom_crop_cantaloupe:
   type: item
   debug: false
   material: apple

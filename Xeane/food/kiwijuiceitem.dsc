@@ -1,4 +1,4 @@
-custom_ingredient_kiwijuice:
+custom_ingredient_kiwijuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_kiwijuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_kiwi|custom_food_kiwi
+      input: custom_ingredient_juiceritem|custom_crop_kiwi|custom_crop_kiwi

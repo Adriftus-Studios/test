@@ -12,4 +12,4 @@ custom_food_chocolatemuffin:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_cocoapowder|custom_ingredient_batter
+      input: custom_ingredient_bakewareitem|custom_ingredient_cocoapowderitem|custom_ingredient_batteritem

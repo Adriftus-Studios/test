@@ -1,4 +1,4 @@
-custom_ingredient_pearjelly:
+custom_ingredient_pearjellyitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_pearjelly:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_pear|sugar
+      input: custom_ingredient_saucepanitem|custom_crop_pear|sugar

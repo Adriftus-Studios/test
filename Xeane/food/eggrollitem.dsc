@@ -1,4 +1,4 @@
-custom_ingredient_eggroll:
+custom_ingredient_eggrollitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_eggroll:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_dough|custom_food_cabbage|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish
+      input: custom_ingredient_potitem|custom_ingredient_doughitem|custom_crop_cabbage|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish

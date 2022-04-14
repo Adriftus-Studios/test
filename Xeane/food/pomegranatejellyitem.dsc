@@ -1,4 +1,4 @@
-custom_ingredient_pomegranatejelly:
+custom_ingredient_pomegranatejellyitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_pomegranatejelly:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_pomegranate|sugar
+      input: custom_ingredient_saucepanitem|custom_crop_pomegranate|sugar

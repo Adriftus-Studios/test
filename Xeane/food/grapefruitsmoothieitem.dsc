@@ -1,4 +1,4 @@
-custom_ingredient_grapefruitsmoothie:
+custom_ingredient_grapefruitsmoothieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_grapefruitsmoothie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_grapefruit|blue_ice/ice/packed_ice/snowball
+      input: custom_ingredient_mixingbowlitem|custom_crop_grapefruit|blue_ice/ice/packed_ice/snowball

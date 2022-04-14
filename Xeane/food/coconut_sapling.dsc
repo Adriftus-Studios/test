@@ -6,4 +6,4 @@ custom_ingredient_coconut_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_coconut|custom_ingredient_coconut|custom_ingredient_coconut|custom_ingredient_coconut|custom_ingredient_coconut|custom_ingredient_coconut|custom_ingredient_coconut|custom_ingredient_coconut|custom_ingredient_saplings
+      input: custom_crop_coconut|custom_crop_coconut|custom_crop_coconut|custom_crop_coconut|custom_crop_coconut|custom_crop_coconut|custom_crop_coconut|custom_crop_coconut|custom_ingredient_saplings

@@ -1,4 +1,4 @@
-custom_ingredient_rambutansmoothie:
+custom_ingredient_rambutansmoothieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_rambutansmoothie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_rambutan|blue_ice/ice/packed_ice/snowball
+      input: custom_ingredient_mixingbowlitem|custom_crop_rambutan|blue_ice/ice/packed_ice/snowball

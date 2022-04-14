@@ -12,4 +12,4 @@ custom_food_cactussoup:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|cactus|custom_food_stock
+      input: custom_ingredient_potitem|cactus|custom_food_stock

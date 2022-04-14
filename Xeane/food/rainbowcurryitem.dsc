@@ -12,4 +12,4 @@ custom_food_rainbowcurry:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_ingredient_rice|red_dye|orange_dye|yellow_dye|green_dye|blue_dye|purple_dye
+      input: custom_ingredient_skilletitem|custom_crop_rice|red_dye|orange_dye|yellow_dye|green_dye|blue_dye|purple_dye

@@ -12,4 +12,4 @@ custom_food_sunflowerbroccolisalad:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_food_sunflowerseeds|custom_food_broccoli|custom_ingredient_mayonaise|sugar|porkchop
+      input: custom_ingredient_cuttingboarditem|custom_food_sunflowerseeds|custom_crop_broccoli|custom_ingredient_mayonaiseitem|sugar|porkchop

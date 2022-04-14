@@ -1,4 +1,4 @@
-custom_food_radish:
+custom_crop_radish:
   type: item
   debug: false
   material: apple

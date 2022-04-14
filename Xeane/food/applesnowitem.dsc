@@ -12,4 +12,4 @@ custom_food_applesnow:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_ingredient_meringue|custom_ingredient_butter|apple
+      input: custom_ingredient_cuttingboarditem|custom_ingredient_meringueitem|custom_ingredient_butteritem|apple

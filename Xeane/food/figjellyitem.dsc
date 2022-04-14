@@ -1,4 +1,4 @@
-custom_ingredient_figjelly:
+custom_ingredient_figjellyitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_figjelly:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_fig|sugar
+      input: custom_ingredient_saucepanitem|custom_crop_fig|sugar

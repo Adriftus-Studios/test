@@ -1,4 +1,4 @@
-custom_ingredient_molasseschicken:
+custom_ingredient_molasseschickenitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_molasseschicken:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|chicken|sugar|custom_food_garlic|custom_food_onion|custom_ingredient_soysauce
+      input: custom_ingredient_saucepanitem|chicken|sugar|custom_crop_garlic|custom_crop_onion|custom_ingredient_soysauceitem

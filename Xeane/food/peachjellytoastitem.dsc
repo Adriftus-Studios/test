@@ -1,4 +1,4 @@
-custom_ingredient_peachjellytoast:
+custom_ingredient_peachjellytoastitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_peachjellytoast:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_ingredient_peachjelly|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_ingredient_peachjellyitem|custom_food_toast

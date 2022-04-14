@@ -6,4 +6,4 @@ custom_ingredient_avocado_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_food_avocado|custom_food_avocado|custom_food_avocado|custom_food_avocado|custom_food_avocado|custom_food_avocado|custom_food_avocado|custom_food_avocado|custom_ingredient_saplings
+      input: custom_crop_avocado|custom_crop_avocado|custom_crop_avocado|custom_crop_avocado|custom_crop_avocado|custom_crop_avocado|custom_crop_avocado|custom_crop_avocado|custom_ingredient_saplings

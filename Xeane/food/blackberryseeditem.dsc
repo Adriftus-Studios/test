@@ -1,9 +1,12 @@
-custom_ingredient_blackberryseed:
+custom_seed_blackberryseed:
   type: item
   debug: false
   material: apple
   display name: <&a>Blackberry Seed
+  data:
+    max_seeds: 3
+    max_crops: 4
   recipes:
     1:
       type: shapeless
-      input: custom_food_blackberry
+      input: custom_crop_blackberry

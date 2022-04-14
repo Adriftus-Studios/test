@@ -12,4 +12,4 @@ custom_food_beanburrito:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_ingredient_bean|custom_food_tortilla|custom_ingredient_rice|custom_ingredient_cheese
+      input: custom_ingredient_skilletitem|custom_crop_bean|custom_food_tortilla|custom_crop_rice|custom_ingredient_cheeseitem

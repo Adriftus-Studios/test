@@ -1,4 +1,4 @@
-custom_food_cucumber:
+custom_crop_cucumber:
   type: item
   debug: false
   material: apple

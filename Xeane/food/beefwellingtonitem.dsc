@@ -12,4 +12,4 @@ custom_food_beefwellington:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|beef|custom_ingredient_dough|brown_mushroom/red_mushroom/custom_food_whitemushroom|custom_food_spinach
+      input: custom_ingredient_bakewareitem|beef|custom_ingredient_doughitem|brown_mushroom/red_mushroom/custom_crop_whitemushroom|custom_crop_spinach

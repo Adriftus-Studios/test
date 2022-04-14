@@ -12,4 +12,4 @@ custom_food_pickledonions:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_food_onion|custom_ingredient_salt|custom_ingredient_vinegar
+      input: custom_ingredient_potitem|custom_crop_onion|custom_ingredient_saltitem|custom_ingredient_vinegaritem

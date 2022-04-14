@@ -1,4 +1,4 @@
-custom_food_spinach:
+custom_crop_spinach:
   type: item
   debug: false
   material: apple

@@ -12,4 +12,4 @@ custom_food_chickencelerycasserole:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_celery|chicken|custom_food_garlic|carrot|brown_mushroom/red_mushroom/custom_food_whitemushroom
+      input: custom_ingredient_bakewareitem|custom_crop_celery|chicken|custom_crop_garlic|carrot|brown_mushroom/red_mushroom/custom_crop_whitemushroom

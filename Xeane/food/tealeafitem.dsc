@@ -1,4 +1,4 @@
-custom_ingredient_tealeaf:
+custom_crop_tealeaf:
   type: item
   debug: false
   material: apple

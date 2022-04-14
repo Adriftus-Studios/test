@@ -6,4 +6,4 @@ custom_ingredient_persimmon_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_food_persimmon|custom_food_persimmon|custom_food_persimmon|custom_food_persimmon|custom_food_persimmon|custom_food_persimmon|custom_food_persimmon|custom_food_persimmon|custom_ingredient_saplings
+      input: custom_crop_persimmon|custom_crop_persimmon|custom_crop_persimmon|custom_crop_persimmon|custom_crop_persimmon|custom_crop_persimmon|custom_crop_persimmon|custom_crop_persimmon|custom_ingredient_saplings

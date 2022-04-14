@@ -12,4 +12,4 @@ custom_food_steakfajita:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|beef|custom_food_onion|custom_food_bellpepper|custom_ingredient_chilipepper|custom_ingredient_spiceleaf|custom_food_tortilla
+      input: custom_ingredient_skilletitem|beef|custom_crop_onion|custom_crop_bellpepper|custom_crop_chilipepper|custom_crop_spiceleaf|custom_food_tortilla

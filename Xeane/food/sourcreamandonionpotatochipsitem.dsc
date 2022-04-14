@@ -12,4 +12,4 @@ custom_food_sourcreamandonionpotatochips:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_food_onion|custom_ingredient_cream|potato|custom_ingredient_cookingoil
+      input: custom_ingredient_potitem|custom_crop_onion|custom_ingredient_creamitem|potato|custom_ingredient_cookingoilitem

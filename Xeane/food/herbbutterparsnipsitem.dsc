@@ -12,4 +12,4 @@ custom_food_herbbutterparsnips:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_parsnip|custom_ingredient_butter|custom_ingredient_spiceleaf
+      input: custom_ingredient_saucepanitem|custom_crop_parsnip|custom_ingredient_butteritem|custom_crop_spiceleaf

@@ -12,4 +12,4 @@ custom_food_cottagepie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_groundbeef|potato|carrot|custom_ingredient_dough|custom_food_peas
+      input: custom_ingredient_bakewareitem|custom_ingredient_groundbeefitem|potato|carrot|custom_ingredient_doughitem|custom_crop_peas

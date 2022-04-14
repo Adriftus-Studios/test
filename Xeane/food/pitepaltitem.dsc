@@ -12,4 +12,4 @@ custom_food_pitepalt:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_ingredient_flour|custom_ingredient_barley|potato|porkchop|custom_ingredient_salt
+      input: custom_ingredient_saucepanitem|custom_ingredient_flouritem|custom_crop_barley|potato|porkchop|custom_ingredient_saltitem

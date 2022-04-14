@@ -12,4 +12,4 @@ custom_food_pickles:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_food_cucumber|custom_ingredient_salt|custom_ingredient_vinegar
+      input: custom_ingredient_potitem|custom_crop_cucumber|custom_ingredient_saltitem|custom_ingredient_vinegaritem

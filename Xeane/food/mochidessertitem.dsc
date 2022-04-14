@@ -12,4 +12,4 @@ custom_food_mochidessert:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_mochi|custom_food_icecream
+      input: custom_ingredient_mixingbowlitem|custom_food_mochi|custom_food_icecream

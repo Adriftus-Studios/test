@@ -1,4 +1,4 @@
-custom_ingredient_tamarindjuice:
+custom_ingredient_tamarindjuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_tamarindjuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_ingredient_tamarind|custom_ingredient_tamarind
+      input: custom_ingredient_juiceritem|custom_crop_tamarind|custom_crop_tamarind

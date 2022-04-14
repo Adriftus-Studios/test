@@ -12,4 +12,4 @@ custom_food_cornedbeef:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|beef|custom_ingredient_salt|sugar|custom_ingredient_groundcinnamon|custom_ingredient_mustardseeds|custom_ingredient_blackpepper|custom_ingredient_spiceleaf|custom_ingredient_ginger
+      input: custom_ingredient_potitem|beef|custom_ingredient_saltitem|sugar|custom_ingredient_groundcinnamonitem|custom_crop_mustardseeds|custom_ingredient_blackpepperitem|custom_crop_spiceleaf|custom_crop_ginger

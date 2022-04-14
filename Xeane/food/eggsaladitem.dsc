@@ -12,4 +12,4 @@ custom_food_eggsalad:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_avocado/custom_food_banana|custom_ingredient_mayonaise|custom_ingredient_mustard|custom_ingredient_spiceleaf
+      input: custom_ingredient_mixingbowlitem|custom_crop_avocado/custom_crop_banana|custom_ingredient_mayonaiseitem|custom_crop_mustard|custom_crop_spiceleaf

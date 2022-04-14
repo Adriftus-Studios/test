@@ -12,4 +12,4 @@ custom_food_jellydonut:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_cookingoil|custom_ingredient_batter|custom_ingredient_applejelly/custom_ingredient_melonjelly/custom_ingredient_sweetberryjelly/custom_ingredient_glowberryjelly
+      input: custom_ingredient_potitem|custom_ingredient_cookingoilitem|custom_ingredient_batteritem|custom_ingredient_applejellyitem/custom_ingredient_melonjellyitem/custom_ingredient_sweetberryjellyitem/custom_ingredient_glowberryjellyitem

@@ -1,4 +1,4 @@
-custom_ingredient_soursoppie:
+custom_ingredient_soursoppieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_soursoppie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_soursop|sugar|custom_ingredient_dough
+      input: custom_ingredient_bakewareitem|custom_crop_soursop|sugar|custom_ingredient_doughitem

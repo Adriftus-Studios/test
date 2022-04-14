@@ -1,4 +1,4 @@
-custom_ingredient_cactusfruit:
+custom_crop_cactusfruit:
   type: item
   debug: false
   material: apple

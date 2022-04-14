@@ -1,4 +1,4 @@
-custom_ingredient_peachjuice:
+custom_ingredient_peachjuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_peachjuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_peach|custom_food_peach
+      input: custom_ingredient_juiceritem|custom_crop_peach|custom_crop_peach

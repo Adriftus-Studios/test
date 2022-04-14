@@ -1,4 +1,4 @@
-custom_food_onion:
+custom_crop_onion:
   type: item
   debug: false
   material: apple

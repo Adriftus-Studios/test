@@ -12,4 +12,4 @@ custom_food_chocolatecake:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|sugar|custom_food_chocolatebar|custom_ingredient_batter
+      input: custom_ingredient_bakewareitem|sugar|custom_food_chocolatebar|custom_ingredient_batteritem

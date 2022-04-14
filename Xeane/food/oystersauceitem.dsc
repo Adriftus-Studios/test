@@ -12,4 +12,4 @@ custom_food_oystersauce:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|cod/salmon/tropical_fish|sugar|custom_ingredient_salt
+      input: custom_ingredient_saucepanitem|cod/salmon/tropical_fish|sugar|custom_ingredient_saltitem

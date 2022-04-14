@@ -1,4 +1,4 @@
-custom_food_pomegranate:
+custom_crop_pomegranate:
   type: item
   debug: false
   material: apple

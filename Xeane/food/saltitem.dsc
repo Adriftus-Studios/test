@@ -1,4 +1,4 @@
-custom_ingredient_salt:
+custom_ingredient_saltitem:
   type: item
   debug: false
   material: apple
@@ -6,4 +6,4 @@ custom_ingredient_salt:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|water_bucket/custom_ingredient_freshwater
+      input: custom_ingredient_potitem|water_bucket/custom_ingredient_freshwateritem

@@ -12,4 +12,4 @@ custom_food_turkishdelight:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|water_bucket/custom_ingredient_freshwater|sugar|custom_food_orange|custom_ingredient_vanillabean|custom_ingredient_pistachio
+      input: custom_ingredient_potitem|water_bucket/custom_ingredient_freshwateritem|sugar|custom_crop_orange|custom_crop_vanillabean|custom_crop_pistachio

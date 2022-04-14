@@ -1,4 +1,4 @@
-custom_ingredient_bean:
+custom_crop_bean:
   type: item
   debug: false
   material: apple

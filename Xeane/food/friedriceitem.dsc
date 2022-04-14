@@ -12,4 +12,4 @@ custom_food_friedrice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_ingredient_rice|carrot|custom_food_avocado/custom_food_banana|custom_food_onion|custom_food_peas
+      input: custom_ingredient_skilletitem|custom_crop_rice|carrot|custom_crop_avocado/custom_crop_banana|custom_crop_onion|custom_crop_peas

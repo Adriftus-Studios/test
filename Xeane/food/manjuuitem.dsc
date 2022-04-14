@@ -1,4 +1,4 @@
-custom_ingredient_manjuu:
+custom_ingredient_manjuuitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_manjuu:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|sugar|custom_ingredient_rice|custom_ingredient_bean
+      input: custom_ingredient_mixingbowlitem|sugar|custom_crop_rice|custom_crop_bean

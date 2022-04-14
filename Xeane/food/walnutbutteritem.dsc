@@ -1,4 +1,4 @@
-custom_ingredient_walnutbutter:
+custom_ingredient_walnutbutteritem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_walnutbutter:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_grinder|custom_ingredient_walnut
+      input: custom_ingredient_grinderitem|custom_crop_walnut

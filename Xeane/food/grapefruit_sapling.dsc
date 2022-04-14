@@ -6,4 +6,4 @@ custom_ingredient_grapefruit_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_food_grapefruit|custom_food_grapefruit|custom_food_grapefruit|custom_food_grapefruit|custom_food_grapefruit|custom_food_grapefruit|custom_food_grapefruit|custom_food_grapefruit|custom_ingredient_saplings
+      input: custom_crop_grapefruit|custom_crop_grapefruit|custom_crop_grapefruit|custom_crop_grapefruit|custom_crop_grapefruit|custom_crop_grapefruit|custom_crop_grapefruit|custom_crop_grapefruit|custom_ingredient_saplings

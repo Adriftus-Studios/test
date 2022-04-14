@@ -12,4 +12,4 @@ custom_food_cottoncandy:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|sugar
+      input: custom_ingredient_potitem|sugar

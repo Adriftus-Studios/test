@@ -12,4 +12,4 @@ custom_food_toast:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|bread|custom_ingredient_butter
+      input: custom_ingredient_skilletitem|bread|custom_ingredient_butteritem

@@ -1,4 +1,4 @@
-custom_food_kale:
+custom_crop_kale:
   type: item
   debug: false
   material: apple

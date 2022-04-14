@@ -1,4 +1,4 @@
-custom_ingredient_cornishpasty:
+custom_ingredient_cornishpastyitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_cornishpasty:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|beef|potato|custom_ingredient_dough|custom_food_rutabaga|custom_ingredient_blackpepper
+      input: custom_ingredient_bakewareitem|beef|potato|custom_ingredient_doughitem|custom_crop_rutabaga|custom_ingredient_blackpepperitem

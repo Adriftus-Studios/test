@@ -12,4 +12,4 @@ custom_food_omurice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|beef|custom_ingredient_rice|custom_food_scallion|carrot|custom_food_onion|custom_food_avocado/custom_food_banana
+      input: custom_ingredient_skilletitem|beef|custom_crop_rice|custom_crop_scallion|carrot|custom_crop_onion|custom_crop_avocado/custom_crop_banana

@@ -1,4 +1,4 @@
-custom_food_whitemushroom:
+custom_crop_whitemushroom:
   type: item
   debug: false
   material: apple

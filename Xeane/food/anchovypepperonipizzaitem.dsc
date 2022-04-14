@@ -12,4 +12,4 @@ custom_food_anchovypepperonipizza:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_dough|custom_food_tomato|custom_ingredient_cheese|custom_food_pepperoni|cod/salmon/tropical_fish
+      input: custom_ingredient_bakewareitem|custom_ingredient_doughitem|custom_crop_tomato|custom_ingredient_cheeseitem|custom_food_pepperoni|cod/salmon/tropical_fish

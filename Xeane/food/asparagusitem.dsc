@@ -1,4 +1,4 @@
-custom_food_asparagus:
+custom_crop_asparagus:
   type: item
   debug: false
   material: apple

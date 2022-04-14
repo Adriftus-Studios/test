@@ -1,4 +1,4 @@
-custom_ingredient_peanutbutterbananapancakes:
+custom_ingredient_peanutbutterbananapancakesitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_peanutbutterbananapancakes:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_ingredient_almondbutter/custom_ingredient_cashewbutter/custom_ingredient_chestnutbutter/custom_ingredient_hazelnutbutter/custom_ingredient_peanutbutter/custom_ingredient_pecanbutter/custom_ingredient_pistachiobutter/custom_ingredient_walnutbutter|custom_food_banana|custom_ingredient_cookingoil|custom_ingredient_batter|custom_ingredient_butter
+      input: custom_ingredient_skilletitem|custom_ingredient_almondbutteritem/custom_ingredient_cashewbutteritem/custom_ingredient_chestnutbutteritem/custom_ingredient_hazelnutbutteritem/custom_ingredient_peanutbutteritem/custom_ingredient_pecanbutteritem/custom_ingredient_pistachiobutteritem/custom_ingredient_walnutbutteritem|custom_crop_banana|custom_ingredient_cookingoilitem|custom_ingredient_batteritem|custom_ingredient_butteritem

@@ -1,4 +1,4 @@
-custom_food_agave:
+custom_crop_agave:
   type: item
   debug: false
   material: apple

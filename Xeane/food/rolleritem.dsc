@@ -1,4 +1,4 @@
-custom_ingredient_roller:
+custom_ingredient_rolleritem:
   type: item
   debug: false
   material: apple

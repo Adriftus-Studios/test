@@ -12,4 +12,4 @@ custom_food_lemondrizzlecake:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_lemon|custom_ingredient_butter|sugar|custom_ingredient_batter
+      input: custom_ingredient_bakewareitem|custom_crop_lemon|custom_ingredient_butteritem|sugar|custom_ingredient_batteritem

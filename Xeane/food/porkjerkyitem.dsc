@@ -1,4 +1,4 @@
-custom_ingredient_porkjerky:
+custom_ingredient_porkjerkyitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_porkjerky:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|porkchop|custom_ingredient_salt
+      input: custom_ingredient_cuttingboarditem|porkchop|custom_ingredient_saltitem

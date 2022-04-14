@@ -1,4 +1,4 @@
-custom_ingredient_lemonlimesoda:
+custom_ingredient_lemonlimesodaitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_lemonlimesoda:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|water_bucket/custom_ingredient_freshwater|sugar|custom_food_lemon|custom_food_lime
+      input: custom_ingredient_potitem|water_bucket/custom_ingredient_freshwateritem|sugar|custom_crop_lemon|custom_crop_lime

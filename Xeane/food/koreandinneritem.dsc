@@ -12,4 +12,4 @@ custom_food_koreandinner:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_food_bulgogi|custom_food_omurice|custom_food_kimchi|custom_food_cabbage/custom_food_kale/custom_food_lettuce/custom_food_spinach
+      input: custom_ingredient_cuttingboarditem|custom_food_bulgogi|custom_food_omurice|custom_food_kimchi|custom_crop_cabbage/custom_crop_kale/custom_crop_lettuce/custom_crop_spinach

@@ -1,4 +1,4 @@
-custom_ingredient_cookoutmeal:
+custom_ingredient_cookoutmealitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_cookoutmeal:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_ingredient_basichamburger|custom_ingredient_hotdog|custom_ingredient_cherrysoda/custom_ingredient_colasoda/custom_ingredient_gingersoda/custom_ingredient_grapefruitsoda/custom_ingredient_grapesoda/custom_ingredient_lemonlimesoda/custom_ingredient_orangesoda/custom_ingredient_rootbeersoda/custom_ingredient_strawberrysoda
+      input: custom_ingredient_cuttingboarditem|custom_ingredient_basichamburgeritem|custom_ingredient_hotdogitem|custom_ingredient_cherrysodaitem/custom_ingredient_colasodaitem/custom_ingredient_gingersodaitem/custom_ingredient_grapefruitsodaitem/custom_ingredient_grapesodaitem/custom_ingredient_lemonlimesodaitem/custom_ingredient_orangesodaitem/custom_ingredient_rootbeersodaitem/custom_ingredient_strawberrysodaitem

@@ -1,4 +1,4 @@
-custom_ingredient_museli:
+custom_ingredient_museliitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_museli:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_ingredient_amaranth/custom_ingredient_barley/custom_ingredient_bean/custom_food_chickpea/custom_food_corn/custom_ingredient_lentil/custom_ingredient_millet/custom_ingredient_oats/custom_ingredient_quinoa/custom_ingredient_rice/custom_ingredient_rye/custom_food_soybean/wheat|custom_food_raisins|custom_ingredient_pecan|sugar|milk_bucket/custom_ingredient_freshmilk
+      input: custom_ingredient_mixingbowlitem|custom_crop_amaranth/custom_crop_barley/custom_crop_bean/custom_crop_chickpea/custom_crop_corn/custom_crop_lentil/custom_crop_millet/custom_crop_oats/custom_crop_quinoa/custom_crop_rice/custom_crop_rye/custom_crop_soybean/wheat|custom_food_raisins|custom_crop_pecan|sugar|milk_bucket/custom_ingredient_freshmilkitem

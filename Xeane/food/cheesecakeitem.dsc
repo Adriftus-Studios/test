@@ -12,4 +12,4 @@ custom_food_cheesecake:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|sugar|custom_ingredient_cheese|custom_ingredient_batter
+      input: custom_ingredient_bakewareitem|sugar|custom_ingredient_cheeseitem|custom_ingredient_batteritem

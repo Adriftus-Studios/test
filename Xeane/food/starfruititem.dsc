@@ -1,4 +1,4 @@
-custom_food_starfruit:
+custom_crop_starfruit:
   type: item
   debug: false
   material: apple

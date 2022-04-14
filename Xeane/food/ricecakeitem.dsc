@@ -12,4 +12,4 @@ custom_food_ricecake:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_rice
+      input: custom_ingredient_bakewareitem|custom_crop_rice

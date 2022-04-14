@@ -1,4 +1,4 @@
-custom_ingredient_cream:
+custom_ingredient_creamitem:
   type: item
   debug: false
   material: apple
@@ -6,4 +6,4 @@ custom_ingredient_cream:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|milk_bucket/custom_ingredient_freshmilk
+      input: custom_ingredient_mixingbowlitem|milk_bucket/custom_ingredient_freshmilkitem

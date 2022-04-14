@@ -1,4 +1,4 @@
-custom_ingredient_gooseberryjelly:
+custom_ingredient_gooseberryjellyitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_gooseberryjelly:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_gooseberry|sugar
+      input: custom_ingredient_saucepanitem|custom_crop_gooseberry|sugar

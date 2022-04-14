@@ -1,4 +1,4 @@
-custom_ingredient_beancornmeal:
+custom_ingredient_beancornmealitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_beancornmeal:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_ingredient_bean|custom_food_corn|custom_ingredient_amaranth/custom_ingredient_barley/custom_ingredient_bean/custom_food_chickpea/custom_food_corn/custom_ingredient_lentil/custom_ingredient_millet/custom_ingredient_oats/custom_ingredient_quinoa/custom_ingredient_rice/custom_ingredient_rye/custom_food_soybean/wheat|custom_food_garlic|custom_food_onion|custom_food_tomato|custom_ingredient_mustardseeds
+      input: custom_ingredient_skilletitem|custom_crop_bean|custom_crop_corn|custom_crop_amaranth/custom_crop_barley/custom_crop_bean/custom_crop_chickpea/custom_crop_corn/custom_crop_lentil/custom_crop_millet/custom_crop_oats/custom_crop_quinoa/custom_crop_rice/custom_crop_rye/custom_crop_soybean/wheat|custom_crop_garlic|custom_crop_onion|custom_crop_tomato|custom_crop_mustardseeds

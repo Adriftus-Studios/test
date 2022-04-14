@@ -12,4 +12,4 @@ custom_food_teriyakichicken:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|chicken|custom_ingredient_rice|custom_ingredient_soysauce|honey_bottle|custom_food_scallion|custom_ingredient_cookingoil
+      input: custom_ingredient_skilletitem|chicken|custom_crop_rice|custom_ingredient_soysauceitem|honey_bottle|custom_crop_scallion|custom_ingredient_cookingoilitem

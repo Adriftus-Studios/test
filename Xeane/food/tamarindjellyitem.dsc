@@ -1,4 +1,4 @@
-custom_ingredient_tamarindjelly:
+custom_ingredient_tamarindjellyitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_tamarindjelly:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_ingredient_tamarind|sugar
+      input: custom_ingredient_saucepanitem|custom_crop_tamarind|sugar

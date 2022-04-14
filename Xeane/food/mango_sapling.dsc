@@ -6,4 +6,4 @@ custom_ingredient_mango_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_food_mango|custom_food_mango|custom_food_mango|custom_food_mango|custom_food_mango|custom_food_mango|custom_food_mango|custom_food_mango|custom_ingredient_saplings
+      input: custom_crop_mango|custom_crop_mango|custom_crop_mango|custom_crop_mango|custom_crop_mango|custom_crop_mango|custom_crop_mango|custom_crop_mango|custom_ingredient_saplings

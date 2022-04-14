@@ -12,4 +12,4 @@ custom_food_citrussalad:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_food_grapefruit/custom_food_lemon/custom_food_lime|custom_food_grapefruit/custom_food_lemon/custom_food_lime|custom_food_cabbage/custom_food_kale/custom_food_lettuce/custom_food_spinach
+      input: custom_ingredient_cuttingboarditem|custom_crop_grapefruit/custom_crop_lemon/custom_crop_lime|custom_crop_grapefruit/custom_crop_lemon/custom_crop_lime|custom_crop_cabbage/custom_crop_kale/custom_crop_lettuce/custom_crop_spinach

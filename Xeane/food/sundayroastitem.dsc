@@ -12,4 +12,4 @@ custom_food_sundayroast:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_roastchicken|custom_food_roastpotatoes|custom_food_avocado/custom_ingredient_olive
+      input: custom_ingredient_bakewareitem|custom_food_roastchicken|custom_food_roastpotatoes|custom_crop_avocado/custom_crop_olive

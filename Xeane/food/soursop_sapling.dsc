@@ -6,4 +6,4 @@ custom_ingredient_soursop_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_food_soursop|custom_food_soursop|custom_food_soursop|custom_food_soursop|custom_food_soursop|custom_food_soursop|custom_food_soursop|custom_food_soursop|custom_ingredient_saplings
+      input: custom_crop_soursop|custom_crop_soursop|custom_crop_soursop|custom_crop_soursop|custom_crop_soursop|custom_crop_soursop|custom_crop_soursop|custom_crop_soursop|custom_ingredient_saplings

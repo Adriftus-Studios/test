@@ -1,4 +1,4 @@
-custom_ingredient_figjuice:
+custom_ingredient_figjuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_figjuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_fig|custom_food_fig
+      input: custom_ingredient_juiceritem|custom_crop_fig|custom_crop_fig

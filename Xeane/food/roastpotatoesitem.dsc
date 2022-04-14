@@ -12,4 +12,4 @@ custom_food_roastpotatoes:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|potato|custom_ingredient_saltandpepper
+      input: custom_ingredient_bakewareitem|potato|custom_ingredient_saltandpepperitem

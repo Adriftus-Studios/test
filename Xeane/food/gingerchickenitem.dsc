@@ -12,4 +12,4 @@ custom_food_gingerchicken:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|chicken|custom_ingredient_ginger|custom_food_onion/custom_food_scallion|honey_bottle
+      input: custom_ingredient_saucepanitem|chicken|custom_crop_ginger|custom_crop_onion/custom_crop_scallion|honey_bottle

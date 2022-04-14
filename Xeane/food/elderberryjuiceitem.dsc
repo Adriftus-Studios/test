@@ -1,4 +1,4 @@
-custom_ingredient_elderberryjuice:
+custom_ingredient_elderberryjuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_elderberryjuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_elderberry|custom_food_elderberry
+      input: custom_ingredient_juiceritem|custom_crop_elderberry|custom_crop_elderberry

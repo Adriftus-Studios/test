@@ -1,4 +1,4 @@
-custom_ingredient_hazelnutbutter:
+custom_ingredient_hazelnutbutteritem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_hazelnutbutter:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_grinder|custom_ingredient_hazelnut
+      input: custom_ingredient_grinderitem|custom_crop_hazelnut

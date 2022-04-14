@@ -12,4 +12,4 @@ custom_food_meatpie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_ingredient_dough|custom_food_onion|custom_food_garlic|custom_ingredient_blackpepper|custom_food_stock
+      input: custom_ingredient_bakewareitem|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_ingredient_doughitem|custom_crop_onion|custom_crop_garlic|custom_ingredient_blackpepperitem|custom_food_stock

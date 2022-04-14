@@ -12,4 +12,4 @@ custom_food_zeppole:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_cookingoil|custom_ingredient_dough|custom_ingredient_groundcinnamon
+      input: custom_ingredient_potitem|custom_ingredient_cookingoilitem|custom_ingredient_doughitem|custom_ingredient_groundcinnamonitem

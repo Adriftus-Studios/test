@@ -1,4 +1,4 @@
-custom_food_cranberry:
+custom_crop_cranberry:
   type: item
   debug: false
   material: apple

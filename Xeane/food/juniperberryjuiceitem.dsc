@@ -1,4 +1,4 @@
-custom_ingredient_juniperberryjuice:
+custom_ingredient_juniperberryjuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_juniperberryjuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_juniperberry|custom_food_juniperberry
+      input: custom_ingredient_juiceritem|custom_crop_juniperberry|custom_crop_juniperberry

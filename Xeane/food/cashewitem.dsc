@@ -1,4 +1,4 @@
-custom_ingredient_cashew:
+custom_crop_cashew:
   type: item
   debug: false
   material: apple

@@ -12,4 +12,4 @@ custom_food_zucchinifries:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_zucchini|custom_food_toast|custom_ingredient_cheese|custom_food_avocado/custom_food_banana
+      input: custom_ingredient_bakewareitem|custom_crop_zucchini|custom_food_toast|custom_ingredient_cheeseitem|custom_crop_avocado/custom_crop_banana

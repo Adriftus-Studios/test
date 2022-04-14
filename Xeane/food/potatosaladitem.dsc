@@ -12,4 +12,4 @@ custom_food_potatosalad:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|potato|custom_ingredient_mayonaise|custom_ingredient_mustard|custom_ingredient_spiceleaf|custom_food_avocado/custom_food_banana|custom_food_onion/custom_food_scallion
+      input: custom_ingredient_mixingbowlitem|potato|custom_ingredient_mayonaiseitem|custom_crop_mustard|custom_crop_spiceleaf|custom_crop_avocado/custom_crop_banana|custom_crop_onion/custom_crop_scallion

@@ -12,4 +12,4 @@ custom_food_marzipan:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|honey_bottle|custom_ingredient_almond
+      input: custom_ingredient_mixingbowlitem|honey_bottle|custom_crop_almond

@@ -1,4 +1,4 @@
-custom_ingredient_guavajuice:
+custom_ingredient_guavajuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_guavajuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_guava|custom_food_guava
+      input: custom_ingredient_juiceritem|custom_crop_guava|custom_crop_guava

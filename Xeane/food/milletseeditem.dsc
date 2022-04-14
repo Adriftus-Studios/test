@@ -1,9 +1,12 @@
-custom_ingredient_milletseed:
+custom_seed_milletseed:
   type: item
   debug: false
   material: apple
   display name: <&a>Millet Seed
+  data:
+    max_seeds: 3
+    max_crops: 4
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_millet
+      input: custom_crop_millet

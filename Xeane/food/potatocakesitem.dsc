@@ -12,4 +12,4 @@ custom_food_potatocakes:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_food_onion|potato|custom_ingredient_butter
+      input: custom_ingredient_skilletitem|custom_crop_onion|potato|custom_ingredient_butteritem

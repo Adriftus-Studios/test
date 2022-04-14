@@ -1,4 +1,4 @@
-custom_food_persimmon:
+custom_crop_persimmon:
   type: item
   debug: false
   material: apple

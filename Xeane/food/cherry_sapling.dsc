@@ -6,4 +6,4 @@ custom_ingredient_cherry_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_food_cherry|custom_food_cherry|custom_food_cherry|custom_food_cherry|custom_food_cherry|custom_food_cherry|custom_food_cherry|custom_food_cherry|custom_ingredient_saplings
+      input: custom_crop_cherry|custom_crop_cherry|custom_crop_cherry|custom_crop_cherry|custom_crop_cherry|custom_crop_cherry|custom_crop_cherry|custom_crop_cherry|custom_ingredient_saplings

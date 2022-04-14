@@ -1,4 +1,4 @@
-custom_food_garlic:
+custom_crop_garlic:
   type: item
   debug: false
   material: apple

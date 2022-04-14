@@ -12,4 +12,4 @@ custom_food_stuffedeggplant:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_eggplant|custom_food_onion|custom_food_bellpepper|custom_food_avocado/custom_food_banana
+      input: custom_ingredient_bakewareitem|custom_crop_eggplant|custom_crop_onion|custom_crop_bellpepper|custom_crop_avocado/custom_crop_banana

@@ -6,4 +6,4 @@ custom_ingredient_plum_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_food_plum|custom_food_plum|custom_food_plum|custom_food_plum|custom_food_plum|custom_food_plum|custom_food_plum|custom_food_plum|custom_ingredient_saplings
+      input: custom_crop_plum|custom_crop_plum|custom_crop_plum|custom_crop_plum|custom_crop_plum|custom_crop_plum|custom_crop_plum|custom_crop_plum|custom_ingredient_saplings

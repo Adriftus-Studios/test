@@ -12,4 +12,4 @@ custom_food_firmtofu:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_roller|custom_food_silkentofu
+      input: custom_ingredient_rolleritem|custom_food_silkentofu

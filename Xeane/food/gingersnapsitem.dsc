@@ -12,4 +12,4 @@ custom_food_gingersnaps:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_ginger|custom_ingredient_flour|sugar
+      input: custom_ingredient_bakewareitem|custom_crop_ginger|custom_ingredient_flouritem|sugar

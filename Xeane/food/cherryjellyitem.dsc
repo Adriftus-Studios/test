@@ -1,4 +1,4 @@
-custom_ingredient_cherryjelly:
+custom_ingredient_cherryjellyitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_cherryjelly:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_cherry|sugar
+      input: custom_ingredient_saucepanitem|custom_crop_cherry|sugar

@@ -12,4 +12,4 @@ custom_food_roastchicken:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|chicken|custom_ingredient_saltandpepper
+      input: custom_ingredient_bakewareitem|chicken|custom_ingredient_saltandpepperitem

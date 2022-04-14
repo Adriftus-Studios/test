@@ -1,4 +1,4 @@
-custom_ingredient_rootbeerfloat:
+custom_ingredient_rootbeerfloatitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_rootbeerfloat:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_ingredient_rootbeersoda|custom_food_icecream/custom_food_chocolateicecream/custom_food_caramelicecream
+      input: custom_ingredient_mixingbowlitem|custom_ingredient_rootbeersodaitem|custom_food_icecream/custom_food_chocolateicecream/custom_food_caramelicecream

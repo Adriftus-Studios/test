@@ -1,4 +1,4 @@
-custom_ingredient_passionfruitsmoothie:
+custom_ingredient_passionfruitsmoothieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_passionfruitsmoothie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_ingredient_passionfruit|blue_ice/ice/packed_ice/snowball
+      input: custom_ingredient_mixingbowlitem|custom_crop_passionfruit|blue_ice/ice/packed_ice/snowball

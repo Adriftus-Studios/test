@@ -12,4 +12,4 @@ custom_food_okracreole:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_food_okra|custom_food_garlic|custom_food_tomato|custom_food_bellpepper|custom_food_onion|custom_ingredient_spiceleaf
+      input: custom_ingredient_skilletitem|custom_crop_okra|custom_crop_garlic|custom_crop_tomato|custom_crop_bellpepper|custom_crop_onion|custom_crop_spiceleaf

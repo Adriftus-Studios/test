@@ -12,4 +12,4 @@ custom_food_garlicmashedpotatoes:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_ingredient_salt|custom_ingredient_butter|baked_potato|custom_food_garlic
+      input: custom_ingredient_mixingbowlitem|custom_ingredient_saltitem|custom_ingredient_butteritem|baked_potato|custom_crop_garlic

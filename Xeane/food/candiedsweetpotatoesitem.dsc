@@ -12,4 +12,4 @@ custom_food_candiedsweetpotatoes:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|sugar|custom_food_sweetpotato
+      input: custom_ingredient_saucepanitem|sugar|custom_crop_sweetpotato

@@ -1,4 +1,4 @@
-custom_ingredient_raspberryjuice:
+custom_ingredient_raspberryjuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_raspberryjuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_raspberry|custom_food_raspberry
+      input: custom_ingredient_juiceritem|custom_crop_raspberry|custom_crop_raspberry

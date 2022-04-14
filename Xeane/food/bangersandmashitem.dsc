@@ -12,4 +12,4 @@ custom_food_bangersandmash:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_food_sausage|custom_ingredient_mashedpotatoes
+      input: custom_ingredient_skilletitem|custom_food_sausage|custom_ingredient_mashedpotatoes

@@ -1,4 +1,4 @@
-custom_ingredient_rambutanjelly:
+custom_ingredient_rambutanjellyitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_rambutanjelly:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_rambutan|sugar
+      input: custom_ingredient_saucepanitem|custom_crop_rambutan|sugar

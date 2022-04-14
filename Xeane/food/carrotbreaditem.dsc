@@ -1,4 +1,4 @@
-custom_ingredient_carrotbread:
+custom_ingredient_carrotbreaditem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_carrotbread:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|carrot|custom_ingredient_dough
+      input: custom_ingredient_bakewareitem|carrot|custom_ingredient_doughitem

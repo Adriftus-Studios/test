@@ -1,4 +1,4 @@
-custom_ingredient_bananapie:
+custom_ingredient_bananapieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_bananapie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_banana|sugar|custom_ingredient_dough
+      input: custom_ingredient_bakewareitem|custom_crop_banana|sugar|custom_ingredient_doughitem

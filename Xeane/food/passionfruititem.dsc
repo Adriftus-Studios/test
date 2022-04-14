@@ -1,4 +1,4 @@
-custom_ingredient_passionfruit:
+custom_crop_passionfruit:
   type: item
   debug: false
   material: apple

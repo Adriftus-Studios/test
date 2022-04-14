@@ -12,4 +12,4 @@ custom_food_cheesedanish:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_dough|custom_ingredient_cheese|custom_ingredient_cream
+      input: custom_ingredient_bakewareitem|custom_ingredient_doughitem|custom_ingredient_cheeseitem|custom_ingredient_creamitem

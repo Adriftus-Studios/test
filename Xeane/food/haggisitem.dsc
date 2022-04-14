@@ -12,4 +12,4 @@ custom_food_haggis:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|rotten_flesh|spider_eye|custom_food_onion|custom_ingredient_oats|custom_ingredient_saltandpepper|custom_ingredient_spiceleaf
+      input: custom_ingredient_potitem|rotten_flesh|spider_eye|custom_crop_onion|custom_crop_oats|custom_ingredient_saltandpepperitem|custom_crop_spiceleaf

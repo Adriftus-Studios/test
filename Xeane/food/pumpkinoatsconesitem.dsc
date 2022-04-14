@@ -12,4 +12,4 @@ custom_food_pumpkinoatscones:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_flour|custom_ingredient_oats|pumpkin|custom_ingredient_butter
+      input: custom_ingredient_bakewareitem|custom_ingredient_flouritem|custom_crop_oats|pumpkin|custom_ingredient_butteritem

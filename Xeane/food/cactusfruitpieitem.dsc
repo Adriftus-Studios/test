@@ -1,4 +1,4 @@
-custom_ingredient_cactusfruitpie:
+custom_ingredient_cactusfruitpieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_cactusfruitpie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_cactusfruit|sugar|custom_ingredient_dough
+      input: custom_ingredient_bakewareitem|custom_crop_cactusfruit|sugar|custom_ingredient_doughitem

@@ -1,4 +1,4 @@
-custom_ingredient_chestnut:
+custom_crop_chestnut:
   type: item
   debug: false
   material: apple

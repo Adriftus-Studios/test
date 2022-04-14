@@ -12,4 +12,4 @@ custom_food_pumpkinmuffin:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|pumpkin|custom_ingredient_batter
+      input: custom_ingredient_bakewareitem|pumpkin|custom_ingredient_batteritem

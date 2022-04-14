@@ -12,4 +12,4 @@ custom_food_leekbaconsoup:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_food_leek|porkchop|potato|custom_ingredient_cream
+      input: custom_ingredient_potitem|custom_crop_leek|porkchop|potato|custom_ingredient_creamitem

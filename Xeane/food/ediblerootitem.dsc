@@ -12,4 +12,4 @@ custom_food_edibleroot:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_ingredient_spiceleaf
+      input: custom_ingredient_cuttingboarditem|custom_crop_spiceleaf

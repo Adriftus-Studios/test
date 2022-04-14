@@ -1,4 +1,4 @@
-custom_ingredient_aebleskivers:
+custom_ingredient_aebleskiversitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_aebleskivers:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_flour|milk_bucket/custom_ingredient_freshmilk|custom_food_avocado/custom_food_banana|sugar|custom_ingredient_salt
+      input: custom_ingredient_bakewareitem|custom_ingredient_flouritem|milk_bucket/custom_ingredient_freshmilkitem|custom_crop_avocado/custom_crop_banana|sugar|custom_ingredient_saltitem

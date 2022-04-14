@@ -1,4 +1,4 @@
-custom_ingredient_huckleberryjelly:
+custom_ingredient_huckleberryjellyitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_huckleberryjelly:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_huckleberry|sugar
+      input: custom_ingredient_saucepanitem|custom_crop_huckleberry|sugar

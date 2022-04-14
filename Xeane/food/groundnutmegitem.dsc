@@ -1,4 +1,4 @@
-custom_ingredient_groundnutmeg:
+custom_ingredient_groundnutmegitem:
   type: item
   debug: false
   material: apple
@@ -6,4 +6,4 @@ custom_ingredient_groundnutmeg:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_grinder|custom_ingredient_nutmeg|custom_ingredient_grinder|custom_ingredient_grinder|custom_ingredient_grinder|custom_ingredient_grinder|custom_ingredient_grinder|custom_ingredient_grinder|custom_ingredient_grinder
+      input: custom_ingredient_grinderitem|custom_crop_nutmeg|custom_ingredient_grinderitem|custom_ingredient_grinderitem|custom_ingredient_grinderitem|custom_ingredient_grinderitem|custom_ingredient_grinderitem|custom_ingredient_grinderitem|custom_ingredient_grinderitem

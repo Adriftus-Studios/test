@@ -12,4 +12,4 @@ custom_food_holidaycake:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_avocado/custom_food_banana|sugar|custom_food_cherry|custom_ingredient_cream|custom_ingredient_spiceleaf
+      input: custom_ingredient_bakewareitem|custom_crop_avocado/custom_crop_banana|sugar|custom_crop_cherry|custom_ingredient_creamitem|custom_crop_spiceleaf

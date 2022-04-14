@@ -12,4 +12,4 @@ custom_food_lemonchicken:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_lemon|chicken|custom_ingredient_butter
+      input: custom_ingredient_bakewareitem|custom_crop_lemon|chicken|custom_ingredient_butteritem

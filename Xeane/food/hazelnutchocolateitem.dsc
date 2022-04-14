@@ -1,4 +1,4 @@
-custom_ingredient_hazelnutchocolate:
+custom_ingredient_hazelnutchocolateitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_hazelnutchocolate:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_chocolatebar|custom_ingredient_hazelnut
+      input: custom_ingredient_saucepanitem|custom_food_chocolatebar|custom_crop_hazelnut

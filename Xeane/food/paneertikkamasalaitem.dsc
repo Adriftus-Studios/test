@@ -12,4 +12,4 @@ custom_food_paneertikkamasala:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_paneer|custom_ingredient_garammasala|custom_ingredient_currypowder|custom_ingredient_coconut|custom_food_onion|custom_food_bellpepper|custom_food_tomato|custom_ingredient_ginger
+      input: custom_ingredient_saucepanitem|custom_food_paneer|custom_ingredient_garammasalaitem|custom_ingredient_currypowderitem|custom_crop_coconut|custom_crop_onion|custom_crop_bellpepper|custom_crop_tomato|custom_crop_ginger

@@ -12,4 +12,4 @@ custom_food_epicbacon:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|cooked_porkchop|red_dye|orange_dye|yellow_dye|green_dye|blue_dye|purple_dye|pink_dye
+      input: custom_ingredient_bakewareitem|cooked_porkchop|red_dye|orange_dye|yellow_dye|green_dye|blue_dye|purple_dye|pink_dye

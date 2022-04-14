@@ -1,4 +1,4 @@
-custom_ingredient_mixedflowerssalad:
+custom_ingredient_mixedflowerssaladitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_mixedflowerssalad:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_cabbage/custom_food_kale/custom_food_lettuce/custom_food_spinach|custom_ingredient_flowers|custom_ingredient_flowers|custom_ingredient_saladdressing
+      input: custom_ingredient_mixingbowlitem|custom_crop_cabbage/custom_crop_kale/custom_crop_lettuce/custom_crop_spinach|custom_ingredient_flowers|custom_ingredient_flowers|custom_ingredient_saladdressingitem

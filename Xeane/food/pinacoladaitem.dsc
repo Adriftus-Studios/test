@@ -1,4 +1,4 @@
-custom_ingredient_pinacolada:
+custom_ingredient_pinacoladaitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_pinacolada:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_ingredient_coconut|custom_food_pineapple
+      input: custom_ingredient_mixingbowlitem|custom_crop_coconut|custom_crop_pineapple

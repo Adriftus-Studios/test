@@ -12,4 +12,4 @@ custom_food_coleslaw:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_cabbage|carrot|custom_ingredient_mayonaise|custom_ingredient_vinegar
+      input: custom_ingredient_mixingbowlitem|custom_crop_cabbage|carrot|custom_ingredient_mayonaiseitem|custom_ingredient_vinegaritem

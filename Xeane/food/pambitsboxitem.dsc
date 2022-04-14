@@ -12,4 +12,4 @@ custom_food_pambitsbox:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_dough|custom_ingredient_cookingoil|paper|custom_ingredient_cocoapowder|sugar|custom_ingredient_groundcinnamon
+      input: custom_ingredient_potitem|custom_ingredient_doughitem|custom_ingredient_cookingoilitem|paper|custom_ingredient_cocoapowderitem|sugar|custom_ingredient_groundcinnamonitem

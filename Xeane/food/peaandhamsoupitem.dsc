@@ -1,4 +1,4 @@
-custom_ingredient_peaandhamsoup:
+custom_ingredient_peaandhamsoupitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_peaandhamsoup:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_food_peas|porkchop|custom_food_onion|carrot|custom_food_celery|custom_ingredient_blackpepper
+      input: custom_ingredient_potitem|custom_crop_peas|porkchop|custom_crop_onion|carrot|custom_crop_celery|custom_ingredient_blackpepperitem

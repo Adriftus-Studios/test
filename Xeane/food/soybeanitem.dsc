@@ -1,4 +1,4 @@
-custom_food_soybean:
+custom_crop_soybean:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_limejuice:
+custom_ingredient_limejuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_limejuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_lime|custom_food_lime
+      input: custom_ingredient_juiceritem|custom_crop_lime|custom_crop_lime

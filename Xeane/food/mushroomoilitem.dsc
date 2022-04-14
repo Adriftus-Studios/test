@@ -1,4 +1,4 @@
-custom_ingredient_mushroomoil:
+custom_ingredient_mushroomoilitem:
   type: item
   debug: false
   material: apple
@@ -6,4 +6,4 @@ custom_ingredient_mushroomoil:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_roller|brown_mushroom/red_mushroom/custom_food_whitemushroom
+      input: custom_ingredient_rolleritem|brown_mushroom/red_mushroom/custom_crop_whitemushroom

@@ -6,4 +6,4 @@ custom_ingredient_banana_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_food_banana|custom_food_banana|custom_food_banana|custom_food_banana|custom_food_banana|custom_food_banana|custom_food_banana|custom_food_banana|custom_ingredient_saplings
+      input: custom_crop_banana|custom_crop_banana|custom_crop_banana|custom_crop_banana|custom_crop_banana|custom_crop_banana|custom_crop_banana|custom_crop_banana|custom_ingredient_saplings

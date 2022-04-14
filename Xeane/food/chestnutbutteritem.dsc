@@ -1,4 +1,4 @@
-custom_ingredient_chestnutbutter:
+custom_ingredient_chestnutbutteritem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_chestnutbutter:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_grinder|custom_ingredient_chestnut
+      input: custom_ingredient_grinderitem|custom_crop_chestnut

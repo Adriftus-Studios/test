@@ -12,4 +12,4 @@ custom_food_toadinthehole:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_yorkshirepudding|custom_food_sausage
+      input: custom_ingredient_bakewareitem|custom_food_yorkshirepudding|custom_food_sausage

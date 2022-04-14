@@ -12,4 +12,4 @@ custom_food_vindaloo:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_ingredient_currypowder|custom_ingredient_butter|custom_ingredient_blackpepper|custom_food_onion
+      input: custom_ingredient_saucepanitem|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_ingredient_currypowderitem|custom_ingredient_butteritem|custom_ingredient_blackpepperitem|custom_crop_onion

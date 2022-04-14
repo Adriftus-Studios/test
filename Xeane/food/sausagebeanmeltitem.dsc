@@ -12,4 +12,4 @@ custom_food_sausagebeanmelt:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_dough|custom_food_sausage|custom_ingredient_bean|custom_ingredient_cheese
+      input: custom_ingredient_bakewareitem|custom_ingredient_doughitem|custom_food_sausage|custom_crop_bean|custom_ingredient_cheeseitem

@@ -6,4 +6,4 @@ custom_ingredient_dragonfruit_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_food_dragonfruit|custom_food_dragonfruit|custom_food_dragonfruit|custom_food_dragonfruit|custom_food_dragonfruit|custom_food_dragonfruit|custom_food_dragonfruit|custom_food_dragonfruit|custom_ingredient_saplings
+      input: custom_crop_dragonfruit|custom_crop_dragonfruit|custom_crop_dragonfruit|custom_crop_dragonfruit|custom_crop_dragonfruit|custom_crop_dragonfruit|custom_crop_dragonfruit|custom_crop_dragonfruit|custom_ingredient_saplings

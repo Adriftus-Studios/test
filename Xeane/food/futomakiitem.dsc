@@ -1,4 +1,4 @@
-custom_ingredient_futomaki:
+custom_ingredient_futomakiitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_futomaki:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_food_boiledegg|custom_food_cucumber|custom_food_wintersquash|custom_food_radish|kelp|custom_ingredient_ginger|custom_ingredient_rice
+      input: custom_ingredient_cuttingboarditem|custom_food_boiledegg|custom_crop_cucumber|custom_crop_wintersquash|custom_crop_radish|kelp|custom_crop_ginger|custom_crop_rice

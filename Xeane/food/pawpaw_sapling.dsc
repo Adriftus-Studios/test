@@ -6,4 +6,4 @@ custom_ingredient_pawpaw_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_food_pawpaw|custom_food_pawpaw|custom_food_pawpaw|custom_food_pawpaw|custom_food_pawpaw|custom_food_pawpaw|custom_food_pawpaw|custom_food_pawpaw|custom_ingredient_saplings
+      input: custom_crop_pawpaw|custom_crop_pawpaw|custom_crop_pawpaw|custom_crop_pawpaw|custom_crop_pawpaw|custom_crop_pawpaw|custom_crop_pawpaw|custom_crop_pawpaw|custom_ingredient_saplings

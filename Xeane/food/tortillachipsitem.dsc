@@ -12,4 +12,4 @@ custom_food_tortillachips:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_food_tortilla|custom_ingredient_salt|custom_food_lime
+      input: custom_ingredient_cuttingboarditem|custom_food_tortilla|custom_ingredient_saltitem|custom_crop_lime

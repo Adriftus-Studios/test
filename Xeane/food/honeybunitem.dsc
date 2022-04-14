@@ -12,4 +12,4 @@ custom_food_honeybun:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_butter|custom_food_avocado/custom_food_banana|honey_bottle|custom_ingredient_dough
+      input: custom_ingredient_bakewareitem|custom_ingredient_butteritem|custom_crop_avocado/custom_crop_banana|honey_bottle|custom_ingredient_doughitem

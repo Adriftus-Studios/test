@@ -1,4 +1,4 @@
-custom_food_lime:
+custom_crop_lime:
   type: item
   debug: false
   material: apple

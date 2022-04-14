@@ -1,4 +1,4 @@
-custom_ingredient_chilipepper:
+custom_crop_chilipepper:
   type: item
   debug: false
   material: apple

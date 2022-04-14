@@ -1,4 +1,4 @@
-custom_ingredient_ranchfriedchicken:
+custom_ingredient_ranchfriedchickenitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_ranchfriedchicken:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|chicken|custom_ingredient_cookingoil|custom_ingredient_batter|custom_ingredient_cream|custom_ingredient_spiceleaf
+      input: custom_ingredient_potitem|chicken|custom_ingredient_cookingoilitem|custom_ingredient_batteritem|custom_ingredient_creamitem|custom_crop_spiceleaf

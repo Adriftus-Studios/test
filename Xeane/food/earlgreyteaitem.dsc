@@ -1,4 +1,4 @@
-custom_ingredient_earlgreytea:
+custom_ingredient_earlgreyteaitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_earlgreytea:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_tealeaf|custom_food_orange|custom_ingredient_grinder
+      input: custom_ingredient_potitem|custom_crop_tealeaf|custom_crop_orange|custom_ingredient_grinderitem

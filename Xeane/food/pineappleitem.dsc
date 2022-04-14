@@ -1,4 +1,4 @@
-custom_food_pineapple:
+custom_crop_pineapple:
   type: item
   debug: false
   material: apple

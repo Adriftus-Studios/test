@@ -12,4 +12,4 @@ custom_food_sausage:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_ingredient_salt|custom_ingredient_spiceleaf
+      input: custom_ingredient_cuttingboarditem|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_ingredient_saltitem|custom_crop_spiceleaf

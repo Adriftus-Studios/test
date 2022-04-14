@@ -12,4 +12,4 @@ custom_food_beetburger:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|beef|beetroot|custom_food_friedegg|porkchop|custom_food_pineapple|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|beef|beetroot|custom_food_friedegg|porkchop|custom_crop_pineapple|custom_food_toast

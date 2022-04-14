@@ -1,4 +1,4 @@
-custom_food_cabbage:
+custom_crop_cabbage:
   type: item
   debug: false
   material: apple

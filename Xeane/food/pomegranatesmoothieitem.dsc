@@ -1,4 +1,4 @@
-custom_ingredient_pomegranatesmoothie:
+custom_ingredient_pomegranatesmoothieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_pomegranatesmoothie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_pomegranate|blue_ice/ice/packed_ice/snowball
+      input: custom_ingredient_mixingbowlitem|custom_crop_pomegranate|blue_ice/ice/packed_ice/snowball

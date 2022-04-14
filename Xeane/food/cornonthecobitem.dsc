@@ -12,4 +12,4 @@ custom_food_cornonthecob:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_food_corn|custom_ingredient_butter|custom_ingredient_salt
+      input: custom_ingredient_potitem|custom_crop_corn|custom_ingredient_butteritem|custom_ingredient_saltitem

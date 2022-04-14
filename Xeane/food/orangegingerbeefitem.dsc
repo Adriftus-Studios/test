@@ -1,4 +1,4 @@
-custom_ingredient_orangegingerbeef:
+custom_ingredient_orangegingerbeefitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_orangegingerbeef:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|beef|custom_food_orange|custom_ingredient_ginger|custom_food_scallion|custom_ingredient_soysauce
+      input: custom_ingredient_saucepanitem|beef|custom_crop_orange|custom_crop_ginger|custom_crop_scallion|custom_ingredient_soysauceitem

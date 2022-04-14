@@ -12,4 +12,4 @@ custom_food_glazedcarrots:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|carrot|custom_ingredient_butter|sugar
+      input: custom_ingredient_saucepanitem|carrot|custom_ingredient_butteritem|sugar

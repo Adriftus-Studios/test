@@ -1,4 +1,4 @@
-custom_ingredient_slawdog:
+custom_ingredient_slawdogitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_slawdog:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_ingredient_hotdog|custom_ingredient_ketchup|custom_ingredient_mustard|custom_ingredient_relish
+      input: custom_ingredient_cuttingboarditem|custom_ingredient_hotdogitem|custom_ingredient_ketchupitem|custom_crop_mustard|custom_ingredient_relishitem

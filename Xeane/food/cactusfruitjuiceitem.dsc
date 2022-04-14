@@ -1,4 +1,4 @@
-custom_ingredient_cactusfruitjuice:
+custom_ingredient_cactusfruitjuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_cactusfruitjuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_ingredient_cactusfruit|custom_ingredient_cactusfruit
+      input: custom_ingredient_juiceritem|custom_crop_cactusfruit|custom_crop_cactusfruit

@@ -1,4 +1,4 @@
-custom_food_rutabaga:
+custom_crop_rutabaga:
   type: item
   debug: false
   material: apple

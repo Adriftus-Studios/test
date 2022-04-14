@@ -12,4 +12,4 @@ custom_food_boiledegg:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_food_avocado/custom_food_banana
+      input: custom_ingredient_potitem|custom_crop_avocado/custom_crop_banana

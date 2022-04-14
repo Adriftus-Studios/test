@@ -12,4 +12,4 @@ custom_food_bulgogi:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|beef|custom_food_garlic|custom_ingredient_soysauce|sugar|custom_ingredient_blackpepper|custom_food_scallion|custom_ingredient_ginger|custom_ingredient_grinder
+      input: custom_ingredient_skilletitem|beef|custom_crop_garlic|custom_ingredient_soysauceitem|sugar|custom_ingredient_blackpepperitem|custom_crop_scallion|custom_crop_ginger|custom_ingredient_grinderitem

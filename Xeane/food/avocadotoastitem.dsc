@@ -1,4 +1,4 @@
-custom_ingredient_avocadotoast:
+custom_ingredient_avocadotoastitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_avocadotoast:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_food_avocado|custom_food_toast|custom_ingredient_salt|custom_ingredient_spiceleaf|custom_food_garlic
+      input: custom_ingredient_skilletitem|custom_crop_avocado|custom_food_toast|custom_ingredient_saltitem|custom_crop_spiceleaf|custom_crop_garlic

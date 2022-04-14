@@ -1,4 +1,4 @@
-custom_ingredient_pearjuice:
+custom_ingredient_pearjuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_pearjuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_pear|custom_food_pear
+      input: custom_ingredient_juiceritem|custom_crop_pear|custom_crop_pear

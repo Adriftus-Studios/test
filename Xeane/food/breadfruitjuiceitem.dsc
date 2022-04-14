@@ -1,4 +1,4 @@
-custom_ingredient_breadfruitjuice:
+custom_ingredient_breadfruitjuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_breadfruitjuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_ingredient_breadfruit|custom_ingredient_breadfruit
+      input: custom_ingredient_juiceritem|custom_crop_breadfruit|custom_crop_breadfruit

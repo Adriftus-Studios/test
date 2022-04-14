@@ -1,4 +1,4 @@
-custom_ingredient_groundfish:
+custom_ingredient_groundfishitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_groundfish:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_grinder|cod/salmon/tropical_fish
+      input: custom_ingredient_grinderitem|cod/salmon/tropical_fish

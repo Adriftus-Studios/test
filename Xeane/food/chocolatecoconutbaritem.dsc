@@ -12,4 +12,4 @@ custom_food_chocolatecoconutbar:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_chocolatebar|custom_ingredient_coconut
+      input: custom_ingredient_saucepanitem|custom_food_chocolatebar|custom_crop_coconut

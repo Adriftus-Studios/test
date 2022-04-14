@@ -12,4 +12,4 @@ custom_food_potroast:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|beef|potato|carrot
+      input: custom_ingredient_potitem|beef|potato|carrot

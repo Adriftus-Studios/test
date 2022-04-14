@@ -1,4 +1,4 @@
-custom_ingredient_rosepetaltea:
+custom_ingredient_rosepetalteaitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_rosepetaltea:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_tealeaf|rose_bush
+      input: custom_ingredient_potitem|custom_crop_tealeaf|rose_bush

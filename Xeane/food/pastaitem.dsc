@@ -1,4 +1,4 @@
-custom_ingredient_pasta:
+custom_ingredient_pastaitem:
   type: item
   debug: false
   material: apple
@@ -6,4 +6,4 @@ custom_ingredient_pasta:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_roller|custom_ingredient_dough
+      input: custom_ingredient_rolleritem|custom_ingredient_doughitem

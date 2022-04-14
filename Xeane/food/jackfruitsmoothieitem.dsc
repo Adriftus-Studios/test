@@ -1,4 +1,4 @@
-custom_ingredient_jackfruitsmoothie:
+custom_ingredient_jackfruitsmoothieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_jackfruitsmoothie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_jackfruit|blue_ice/ice/packed_ice/snowball
+      input: custom_ingredient_mixingbowlitem|custom_crop_jackfruit|blue_ice/ice/packed_ice/snowball

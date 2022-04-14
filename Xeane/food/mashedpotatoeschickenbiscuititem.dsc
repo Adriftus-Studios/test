@@ -1,4 +1,4 @@
-custom_ingredient_mashedpotatoeschickenbiscuit:
+custom_ingredient_mashedpotatoeschickenbiscuititem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_mashedpotatoeschickenbiscuit:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_food_biscuit|custom_food_mashedpotatoes|chicken
+      input: custom_ingredient_cuttingboarditem|custom_food_biscuit|custom_food_mashedpotatoes|chicken

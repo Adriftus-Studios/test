@@ -1,4 +1,4 @@
-custom_ingredient_nuttoppedicecream:
+custom_ingredient_nuttoppedicecreamitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_nuttoppedicecream:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_icecream/custom_food_chocolateicecream/custom_food_caramelicecream|custom_ingredient_almond/custom_ingredient_cashew/custom_ingredient_chestnut/custom_ingredient_hazelnut/custom_ingredient_pecan/custom_ingredient_pinenut/custom_ingredient_pistachio/custom_ingredient_walnut
+      input: custom_ingredient_mixingbowlitem|custom_food_icecream/custom_food_chocolateicecream/custom_food_caramelicecream|custom_crop_almond/custom_crop_cashew/custom_crop_chestnut/custom_crop_hazelnut/custom_crop_pecan/custom_crop_pinenut/custom_crop_pistachio/custom_crop_walnut

@@ -12,4 +12,4 @@ custom_food_tomatosoup:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_food_tomato|custom_food_stock
+      input: custom_ingredient_potitem|custom_crop_tomato|custom_food_stock

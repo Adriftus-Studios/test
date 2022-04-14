@@ -1,4 +1,4 @@
-custom_ingredient_chikoroll:
+custom_ingredient_chikorollitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_chikoroll:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_cookingoil|custom_ingredient_dough|chicken|carrot|custom_food_cabbage|custom_food_leek|custom_food_onion
+      input: custom_ingredient_potitem|custom_ingredient_cookingoilitem|custom_ingredient_doughitem|chicken|carrot|custom_crop_cabbage|custom_crop_leek|custom_crop_onion

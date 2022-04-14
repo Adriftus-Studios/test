@@ -1,4 +1,4 @@
-custom_ingredient_sesameoil:
+custom_ingredient_sesameoilitem:
   type: item
   debug: false
   material: apple
@@ -6,4 +6,4 @@ custom_ingredient_sesameoil:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_roller|custom_ingredient_sesameseeds
+      input: custom_ingredient_rolleritem|custom_crop_sesameseeds

@@ -12,4 +12,4 @@ custom_food_chipsanddip:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_food_potatochips|custom_ingredient_cream
+      input: custom_ingredient_skilletitem|custom_food_potatochips|custom_ingredient_creamitem

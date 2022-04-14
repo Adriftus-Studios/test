@@ -1,4 +1,4 @@
-custom_ingredient_soymilk:
+custom_ingredient_soymilkitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_soymilk:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_food_soybean
+      input: custom_ingredient_potitem|custom_crop_soybean

@@ -12,4 +12,4 @@ custom_food_sweetpotatosouffle:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_sweetpotato|custom_ingredient_pecan|custom_ingredient_dough|custom_ingredient_butter
+      input: custom_ingredient_bakewareitem|custom_crop_sweetpotato|custom_crop_pecan|custom_ingredient_doughitem|custom_ingredient_butteritem

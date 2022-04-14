@@ -12,4 +12,4 @@ custom_food_garlicsteak:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|beef|custom_food_garlic|custom_ingredient_butter|custom_ingredient_spiceleaf
+      input: custom_ingredient_skilletitem|beef|custom_crop_garlic|custom_ingredient_butteritem|custom_crop_spiceleaf

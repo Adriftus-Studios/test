@@ -1,4 +1,4 @@
-custom_ingredient_rambutanjuice:
+custom_ingredient_rambutanjuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_rambutanjuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_rambutan|custom_food_rambutan
+      input: custom_ingredient_juiceritem|custom_crop_rambutan|custom_crop_rambutan

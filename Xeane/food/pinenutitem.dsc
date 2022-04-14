@@ -1,4 +1,4 @@
-custom_ingredient_pinenut:
+custom_crop_pinenut:
   type: item
   debug: false
   material: apple

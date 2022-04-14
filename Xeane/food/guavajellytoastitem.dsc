@@ -1,4 +1,4 @@
-custom_ingredient_guavajellytoast:
+custom_ingredient_guavajellytoastitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_guavajellytoast:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_ingredient_guavajelly|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_ingredient_guavajellyitem|custom_food_toast

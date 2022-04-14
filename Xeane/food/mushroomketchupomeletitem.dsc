@@ -12,4 +12,4 @@ custom_food_mushroomketchupomelet:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_ingredient_mushroomketchup|custom_food_avocado/custom_food_banana
+      input: custom_ingredient_skilletitem|custom_ingredient_mushroomketchupitem|custom_crop_avocado/custom_crop_banana

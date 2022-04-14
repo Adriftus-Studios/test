@@ -1,4 +1,4 @@
-custom_food_corn:
+custom_crop_corn:
   type: item
   debug: false
   material: apple

@@ -12,4 +12,4 @@ custom_food_baconwrappedchili:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_chilipepper|porkchop
+      input: custom_ingredient_bakewareitem|custom_crop_chilipepper|porkchop

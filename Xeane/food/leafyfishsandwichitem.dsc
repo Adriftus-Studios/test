@@ -12,4 +12,4 @@ custom_food_leafyfishsandwich:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_ingredient_basicfishsandwhich|custom_food_cabbage/custom_food_kale/custom_food_lettuce/custom_food_spinach
+      input: custom_ingredient_cuttingboarditem|custom_ingredient_basicfishsandwhichitem|custom_crop_cabbage/custom_crop_kale/custom_crop_lettuce/custom_crop_spinach

@@ -12,4 +12,4 @@ custom_food_pepperoni:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_grinder|porkchop|custom_ingredient_spiceleaf
+      input: custom_ingredient_grinderitem|porkchop|custom_crop_spiceleaf

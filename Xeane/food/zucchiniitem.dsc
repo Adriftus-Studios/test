@@ -1,4 +1,4 @@
-custom_food_zucchini:
+custom_crop_zucchini:
   type: item
   debug: false
   material: apple

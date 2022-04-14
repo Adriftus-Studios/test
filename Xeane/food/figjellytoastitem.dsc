@@ -1,4 +1,4 @@
-custom_ingredient_figjellytoast:
+custom_ingredient_figjellytoastitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_figjellytoast:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_ingredient_figjelly|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_ingredient_figjellyitem|custom_food_toast

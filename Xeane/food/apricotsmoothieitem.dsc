@@ -1,4 +1,4 @@
-custom_ingredient_apricotsmoothie:
+custom_ingredient_apricotsmoothieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_apricotsmoothie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_apricot|blue_ice/ice/packed_ice/snowball
+      input: custom_ingredient_mixingbowlitem|custom_crop_apricot|blue_ice/ice/packed_ice/snowball

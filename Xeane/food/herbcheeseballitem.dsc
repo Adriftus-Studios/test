@@ -1,4 +1,4 @@
-custom_ingredient_herbcheeseball:
+custom_ingredient_herbcheeseballitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_herbcheeseball:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_ingredient_cheese|custom_ingredient_spiceleaf
+      input: custom_ingredient_mixingbowlitem|custom_ingredient_cheeseitem|custom_crop_spiceleaf

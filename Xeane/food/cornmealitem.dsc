@@ -1,4 +1,4 @@
-custom_ingredient_cornmeal:
+custom_ingredient_cornmealitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_cornmeal:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_grinder|custom_food_corn
+      input: custom_ingredient_grinderitem|custom_crop_corn

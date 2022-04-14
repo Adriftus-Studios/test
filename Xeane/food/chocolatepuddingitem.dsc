@@ -12,4 +12,4 @@ custom_food_chocolatepudding:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_ingredient_cocoapowder|milk_bucket/custom_ingredient_freshmilk
+      input: custom_ingredient_saucepanitem|custom_ingredient_cocoapowderitem|milk_bucket/custom_ingredient_freshmilkitem

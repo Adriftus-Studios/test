@@ -12,4 +12,4 @@ custom_food_mochicake:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_butter|custom_food_mochi|custom_ingredient_flour|custom_food_avocado/custom_food_banana|custom_ingredient_vanilla|milk_bucket/custom_ingredient_freshmilk|custom_ingredient_grinder|custom_ingredient_grinder
+      input: custom_ingredient_bakewareitem|custom_ingredient_butteritem|custom_food_mochi|custom_ingredient_flouritem|custom_crop_avocado/custom_crop_banana|custom_ingredient_vanillaitem|milk_bucket/custom_ingredient_freshmilkitem|custom_ingredient_grinderitem|custom_ingredient_grinderitem

@@ -12,4 +12,4 @@ custom_food_creamofavocadosoup:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_food_avocado|custom_ingredient_cream|custom_food_lime|custom_ingredient_spiceleaf|custom_food_stock
+      input: custom_ingredient_potitem|custom_crop_avocado|custom_ingredient_creamitem|custom_crop_lime|custom_crop_spiceleaf|custom_food_stock

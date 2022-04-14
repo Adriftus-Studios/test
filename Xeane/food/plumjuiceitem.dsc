@@ -1,4 +1,4 @@
-custom_ingredient_plumjuice:
+custom_ingredient_plumjuiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_plumjuice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_plum|custom_food_plum
+      input: custom_ingredient_juiceritem|custom_crop_plum|custom_crop_plum

@@ -12,4 +12,4 @@ custom_food_taiyaki:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_ingredient_dough|custom_food_misopaste|sugar
+      input: custom_ingredient_skilletitem|custom_ingredient_doughitem|custom_food_misopaste|sugar

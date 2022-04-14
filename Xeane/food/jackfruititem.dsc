@@ -1,4 +1,4 @@
-custom_food_jackfruit:
+custom_crop_jackfruit:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_cranberryjelly:
+custom_ingredient_cranberryjellyitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_cranberryjelly:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_cranberry|sugar
+      input: custom_ingredient_saucepanitem|custom_crop_cranberry|sugar

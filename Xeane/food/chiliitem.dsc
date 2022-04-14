@@ -12,4 +12,4 @@ custom_food_chili:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_ingredient_chilipepper|custom_food_tomato|custom_food_onion/custom_food_scallion|custom_ingredient_spiceleaf|custom_ingredient_bean
+      input: custom_ingredient_potitem|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_crop_chilipepper|custom_crop_tomato|custom_crop_onion/custom_crop_scallion|custom_crop_spiceleaf|custom_crop_bean

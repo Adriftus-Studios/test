@@ -12,4 +12,4 @@ custom_food_chocolatecaramelfudge:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_food_chocolatebar|custom_food_caramel
+      input: custom_ingredient_bakewareitem|custom_food_chocolatebar|custom_food_caramel

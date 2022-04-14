@@ -12,4 +12,4 @@ custom_food_chocolatebar:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|cocoa_beans
+      input: custom_ingredient_saucepanitem|cocoa_beans

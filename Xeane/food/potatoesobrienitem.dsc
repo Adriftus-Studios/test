@@ -1,4 +1,4 @@
-custom_ingredient_potatoesobrien:
+custom_ingredient_potatoesobrienitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_potatoesobrien:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|potato|custom_food_onion|custom_food_bellpepper|custom_ingredient_cookingoil
+      input: custom_ingredient_skilletitem|potato|custom_crop_onion|custom_crop_bellpepper|custom_ingredient_cookingoilitem

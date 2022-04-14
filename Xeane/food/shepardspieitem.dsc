@@ -1,4 +1,4 @@
-custom_ingredient_shepardspie:
+custom_ingredient_shepardspieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_shepardspie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|mutton|potato|carrot|custom_ingredient_dough|custom_food_peas
+      input: custom_ingredient_bakewareitem|mutton|potato|carrot|custom_ingredient_doughitem|custom_crop_peas

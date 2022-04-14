@@ -6,4 +6,4 @@ custom_ingredient_vanillabean_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_vanillabean|custom_ingredient_vanillabean|custom_ingredient_vanillabean|custom_ingredient_vanillabean|custom_ingredient_vanillabean|custom_ingredient_vanillabean|custom_ingredient_vanillabean|custom_ingredient_vanillabean|custom_ingredient_saplings
+      input: custom_crop_vanillabean|custom_crop_vanillabean|custom_crop_vanillabean|custom_crop_vanillabean|custom_crop_vanillabean|custom_crop_vanillabean|custom_crop_vanillabean|custom_crop_vanillabean|custom_ingredient_saplings

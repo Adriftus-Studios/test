@@ -12,4 +12,4 @@ custom_food_pinkel:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|porkchop|wheat|custom_food_onion
+      input: custom_ingredient_mixingbowlitem|porkchop|wheat|custom_crop_onion

@@ -12,4 +12,4 @@ custom_food_hotwings:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_ingredient_hotsauce|chicken
+      input: custom_ingredient_mixingbowlitem|custom_ingredient_hotsauceitem|chicken

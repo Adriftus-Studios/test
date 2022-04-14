@@ -1,4 +1,4 @@
-custom_ingredient_noodlesoup:
+custom_ingredient_noodlesoupitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_noodlesoup:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_pasta|custom_food_stock
+      input: custom_ingredient_potitem|custom_ingredient_pastaitem|custom_food_stock

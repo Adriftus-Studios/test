@@ -1,4 +1,4 @@
-custom_food_durian:
+custom_crop_durian:
   type: item
   debug: false
   material: apple

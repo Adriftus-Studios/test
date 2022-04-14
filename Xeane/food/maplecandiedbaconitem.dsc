@@ -12,4 +12,4 @@ custom_food_maplecandiedbacon:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_ingredient_maplesyrup|porkchop
+      input: custom_ingredient_saucepanitem|custom_crop_maplesyrup|porkchop

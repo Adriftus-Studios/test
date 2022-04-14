@@ -12,4 +12,4 @@ custom_food_sweetandsourmeatballs:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_ingredient_groundbeef|custom_ingredient_sweetandsoursauce
+      input: custom_ingredient_saucepanitem|custom_ingredient_groundbeefitem|custom_ingredient_sweetandsoursauceitem

@@ -1,4 +1,4 @@
-custom_ingredient_misosoup:
+custom_ingredient_misosoupitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_misosoup:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_food_firmtofu|water_bucket/custom_ingredient_freshwater|custom_food_scallion|custom_food_taiyaki
+      input: custom_ingredient_potitem|custom_food_firmtofu|water_bucket/custom_ingredient_freshwateritem|custom_crop_scallion|custom_food_taiyaki

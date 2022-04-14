@@ -12,4 +12,4 @@ custom_food_broccolimac:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_pasta|custom_ingredient_cheese|custom_food_broccoli
+      input: custom_ingredient_potitem|custom_ingredient_pastaitem|custom_ingredient_cheeseitem|custom_crop_broccoli

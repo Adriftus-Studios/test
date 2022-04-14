@@ -1,4 +1,4 @@
-custom_ingredient_grilledskewers:
+custom_ingredient_grilledskewersitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_grilledskewers:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_food_bellpepper|custom_food_onion|carrot|stick
+      input: custom_ingredient_cuttingboarditem|custom_crop_bellpepper|custom_crop_onion|carrot|stick

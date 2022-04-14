@@ -1,4 +1,4 @@
-custom_ingredient_lentil:
+custom_crop_lentil:
   type: item
   debug: false
   material: apple

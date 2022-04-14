@@ -1,4 +1,4 @@
-custom_food_gooseberry:
+custom_crop_gooseberry:
   type: item
   debug: false
   material: apple

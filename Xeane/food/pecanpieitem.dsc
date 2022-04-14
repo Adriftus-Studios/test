@@ -12,4 +12,4 @@ custom_food_pecanpie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_pecan|custom_ingredient_dough|sugar|custom_ingredient_butter
+      input: custom_ingredient_bakewareitem|custom_crop_pecan|custom_ingredient_doughitem|sugar|custom_ingredient_butteritem

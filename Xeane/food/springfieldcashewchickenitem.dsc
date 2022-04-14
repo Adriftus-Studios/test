@@ -12,4 +12,4 @@ custom_food_springfieldcashewchicken:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_food_friedchicken|custom_ingredient_cashew|custom_food_oystersauce|custom_ingredient_rice
+      input: custom_ingredient_skilletitem|custom_food_friedchicken|custom_crop_cashew|custom_food_oystersauce|custom_crop_rice

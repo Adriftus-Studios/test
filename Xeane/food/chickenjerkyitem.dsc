@@ -1,4 +1,4 @@
-custom_ingredient_chickenjerky:
+custom_ingredient_chickenjerkyitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_chickenjerky:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|chicken|custom_ingredient_salt
+      input: custom_ingredient_cuttingboarditem|chicken|custom_ingredient_saltitem

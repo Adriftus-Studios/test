@@ -1,4 +1,4 @@
-custom_ingredient_groundmutton:
+custom_ingredient_groundmuttonitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_groundmutton:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_grinder|mutton
+      input: custom_ingredient_grinderitem|mutton

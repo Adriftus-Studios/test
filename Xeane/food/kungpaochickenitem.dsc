@@ -1,4 +1,4 @@
-custom_ingredient_kungpaochicken:
+custom_ingredient_kungpaochickenitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_kungpaochicken:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|chicken|custom_food_orange|custom_ingredient_ginger|custom_food_garlic|sugar|custom_ingredient_cookingoil|custom_ingredient_blackpepper|custom_ingredient_peanut
+      input: custom_ingredient_saucepanitem|chicken|custom_crop_orange|custom_crop_ginger|custom_crop_garlic|sugar|custom_ingredient_cookingoilitem|custom_ingredient_blackpepperitem|custom_crop_peanut

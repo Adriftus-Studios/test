@@ -12,4 +12,4 @@ custom_food_nopalessalad:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|cactus|custom_food_onion|custom_ingredient_chilipepper|custom_food_tomato|custom_food_avocado|custom_ingredient_spiceleaf
+      input: custom_ingredient_cuttingboarditem|cactus|custom_crop_onion|custom_crop_chilipepper|custom_crop_tomato|custom_crop_avocado|custom_crop_spiceleaf

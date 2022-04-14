@@ -1,4 +1,4 @@
-custom_ingredient_p8juice:
+custom_ingredient_p8juiceitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_p8juice:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_food_avocado/custom_ingredient_olive|custom_food_avocado/custom_ingredient_olive
+      input: custom_ingredient_juiceritem|custom_crop_avocado/custom_crop_olive|custom_crop_avocado/custom_crop_olive

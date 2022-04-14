@@ -12,4 +12,4 @@ custom_food_yorkshirepudding:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_batter|custom_ingredient_salt|custom_food_stock|milk_bucket/custom_ingredient_freshmilk
+      input: custom_ingredient_bakewareitem|custom_ingredient_batteritem|custom_ingredient_saltitem|custom_food_stock|milk_bucket/custom_ingredient_freshmilkitem

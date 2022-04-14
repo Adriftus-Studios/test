@@ -12,4 +12,4 @@ custom_food_bbqchickenbiscuit:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_food_friedchicken|custom_food_biscuit|custom_food_bbqsauce|custom_ingredient_grinder|custom_ingredient_grinder|custom_ingredient_grinder|custom_ingredient_grinder|custom_ingredient_grinder
+      input: custom_ingredient_cuttingboarditem|custom_food_friedchicken|custom_food_biscuit|custom_food_bbqsauce|custom_ingredient_grinderitem|custom_ingredient_grinderitem|custom_ingredient_grinderitem|custom_ingredient_grinderitem|custom_ingredient_grinderitem

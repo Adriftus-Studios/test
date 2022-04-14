@@ -12,4 +12,4 @@ custom_food_chipsandsalsa:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_tortillachips|custom_food_salsa
+      input: custom_ingredient_mixingbowlitem|custom_food_tortillachips|custom_food_salsa

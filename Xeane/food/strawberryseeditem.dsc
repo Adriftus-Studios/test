@@ -1,9 +1,12 @@
-custom_ingredient_strawberryseed:
+custom_seed_strawberryseed:
   type: item
   debug: false
   material: apple
   display name: <&a>Strawberry Seed
+  data:
+    max_seeds: 3
+    max_crops: 4
   recipes:
     1:
       type: shapeless
-      input: custom_food_strawberry
+      input: custom_crop_strawberry

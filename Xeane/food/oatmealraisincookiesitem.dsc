@@ -1,4 +1,4 @@
-custom_ingredient_oatmealraisincookies:
+custom_ingredient_oatmealraisincookiesitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_oatmealraisincookies:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|custom_ingredient_batter|sugar|custom_food_raisins
+      input: custom_ingredient_bakewareitem|custom_ingredient_batteritem|sugar|custom_food_raisins

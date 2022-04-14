@@ -1,4 +1,4 @@
-custom_ingredient_butteredbakedpotato:
+custom_ingredient_butteredbakedpotatoitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_butteredbakedpotato:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|baked_potato|custom_ingredient_butter|custom_ingredient_salt
+      input: custom_ingredient_cuttingboarditem|baked_potato|custom_ingredient_butteritem|custom_ingredient_saltitem

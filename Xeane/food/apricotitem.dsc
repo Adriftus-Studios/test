@@ -1,4 +1,4 @@
-custom_food_apricot:
+custom_crop_apricot:
   type: item
   debug: false
   material: apple

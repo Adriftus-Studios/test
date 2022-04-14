@@ -1,4 +1,4 @@
-custom_food_celery:
+custom_crop_celery:
   type: item
   debug: false
   material: apple

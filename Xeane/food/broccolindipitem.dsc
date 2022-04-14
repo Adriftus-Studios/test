@@ -1,4 +1,4 @@
-custom_ingredient_broccolindip:
+custom_ingredient_broccolindipitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_broccolindip:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_broccoli|custom_food_onion|custom_ingredient_cream
+      input: custom_ingredient_mixingbowlitem|custom_crop_broccoli|custom_crop_onion|custom_ingredient_creamitem

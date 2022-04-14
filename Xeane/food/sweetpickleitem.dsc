@@ -12,4 +12,4 @@ custom_food_sweetpickle:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_vinegar|custom_food_cucumber|sugar
+      input: custom_ingredient_potitem|custom_ingredient_vinegaritem|custom_crop_cucumber|sugar

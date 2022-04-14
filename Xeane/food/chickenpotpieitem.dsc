@@ -12,4 +12,4 @@ custom_food_chickenpotpie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|chicken|potato|carrot|custom_ingredient_dough
+      input: custom_ingredient_bakewareitem|chicken|potato|carrot|custom_ingredient_doughitem

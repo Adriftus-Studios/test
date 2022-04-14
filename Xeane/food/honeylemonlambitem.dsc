@@ -12,4 +12,4 @@ custom_food_honeylemonlamb:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|mutton|custom_food_lemon|custom_ingredient_mustard|honey_bottle
+      input: custom_ingredient_bakewareitem|mutton|custom_crop_lemon|custom_crop_mustard|honey_bottle

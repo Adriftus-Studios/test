@@ -12,4 +12,4 @@ custom_food_friedpecanokra:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_food_okra|custom_ingredient_pecan|custom_ingredient_cookingoil|custom_ingredient_blackpepper
+      input: custom_ingredient_skilletitem|custom_crop_okra|custom_crop_pecan|custom_ingredient_cookingoilitem|custom_ingredient_blackpepperitem

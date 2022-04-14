@@ -6,4 +6,4 @@ custom_ingredient_lychee_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_food_lychee|custom_food_lychee|custom_food_lychee|custom_food_lychee|custom_food_lychee|custom_food_lychee|custom_food_lychee|custom_food_lychee|custom_ingredient_saplings
+      input: custom_crop_lychee|custom_crop_lychee|custom_crop_lychee|custom_crop_lychee|custom_crop_lychee|custom_crop_lychee|custom_crop_lychee|custom_crop_lychee|custom_ingredient_saplings

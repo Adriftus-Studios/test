@@ -1,4 +1,4 @@
-custom_ingredient_butter:
+custom_ingredient_butteritem:
   type: item
   debug: false
   material: apple
@@ -6,4 +6,4 @@ custom_ingredient_butter:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|milk_bucket/custom_ingredient_freshmilk
+      input: custom_ingredient_potitem|milk_bucket/custom_ingredient_freshmilkitem

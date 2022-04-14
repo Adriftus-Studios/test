@@ -12,4 +12,4 @@ custom_food_padthai:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_ingredient_pasta|custom_ingredient_peanut|custom_food_boiledegg|custom_food_firmtofu|custom_ingredient_chilipepper|custom_food_lime
+      input: custom_ingredient_skilletitem|custom_ingredient_pastaitem|custom_crop_peanut|custom_food_boiledegg|custom_food_firmtofu|custom_crop_chilipepper|custom_crop_lime

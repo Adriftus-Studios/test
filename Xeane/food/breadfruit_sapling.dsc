@@ -6,4 +6,4 @@ custom_ingredient_breadfruit_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_breadfruit|custom_ingredient_breadfruit|custom_ingredient_breadfruit|custom_ingredient_breadfruit|custom_ingredient_breadfruit|custom_ingredient_breadfruit|custom_ingredient_breadfruit|custom_ingredient_breadfruit|custom_ingredient_saplings
+      input: custom_crop_breadfruit|custom_crop_breadfruit|custom_crop_breadfruit|custom_crop_breadfruit|custom_crop_breadfruit|custom_crop_breadfruit|custom_crop_breadfruit|custom_crop_breadfruit|custom_ingredient_saplings

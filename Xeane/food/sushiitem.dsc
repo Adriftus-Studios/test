@@ -12,4 +12,4 @@ custom_food_sushi:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|cod/salmon/tropical_fish|kelp|custom_ingredient_rice
+      input: custom_ingredient_cuttingboarditem|cod/salmon/tropical_fish|kelp|custom_crop_rice

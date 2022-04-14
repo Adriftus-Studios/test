@@ -6,4 +6,4 @@ custom_ingredient_walnut_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_walnut|custom_ingredient_walnut|custom_ingredient_walnut|custom_ingredient_walnut|custom_ingredient_walnut|custom_ingredient_walnut|custom_ingredient_walnut|custom_ingredient_walnut|custom_ingredient_saplings
+      input: custom_crop_walnut|custom_crop_walnut|custom_crop_walnut|custom_crop_walnut|custom_crop_walnut|custom_crop_walnut|custom_crop_walnut|custom_crop_walnut|custom_ingredient_saplings

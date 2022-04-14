@@ -1,4 +1,4 @@
-custom_ingredient_onionrings:
+custom_ingredient_onionringsitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_onionrings:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_food_onion|custom_ingredient_cookingoil|custom_ingredient_batter
+      input: custom_ingredient_potitem|custom_crop_onion|custom_ingredient_cookingoilitem|custom_ingredient_batteritem

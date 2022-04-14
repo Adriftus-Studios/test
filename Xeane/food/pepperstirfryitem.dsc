@@ -1,4 +1,4 @@
-custom_ingredient_pepperstirfry:
+custom_ingredient_pepperstirfryitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_pepperstirfry:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_food_bellpepper|custom_ingredient_chilipepper|custom_food_garlic|custom_ingredient_soysauce
+      input: custom_ingredient_skilletitem|custom_crop_bellpepper|custom_crop_chilipepper|custom_crop_garlic|custom_ingredient_soysauceitem

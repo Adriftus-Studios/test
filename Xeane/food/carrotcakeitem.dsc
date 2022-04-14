@@ -12,4 +12,4 @@ custom_food_carrotcake:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|sugar|carrot|custom_ingredient_batter
+      input: custom_ingredient_bakewareitem|sugar|carrot|custom_ingredient_batteritem

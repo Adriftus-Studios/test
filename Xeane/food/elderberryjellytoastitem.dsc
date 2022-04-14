@@ -1,4 +1,4 @@
-custom_ingredient_elderberryjellytoast:
+custom_ingredient_elderberryjellytoastitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_elderberryjellytoast:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_ingredient_elderberryjelly|custom_food_toast
+      input: custom_ingredient_cuttingboarditem|custom_ingredient_elderberryjellyitem|custom_food_toast

@@ -12,4 +12,4 @@ custom_food_donut:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_cookingoil|custom_ingredient_batter
+      input: custom_ingredient_potitem|custom_ingredient_cookingoilitem|custom_ingredient_batteritem

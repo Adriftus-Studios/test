@@ -1,4 +1,4 @@
-custom_ingredient_datesmoothie:
+custom_ingredient_datesmoothieitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_datesmoothie:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_date|blue_ice/ice/packed_ice/snowball
+      input: custom_ingredient_mixingbowlitem|custom_crop_date|blue_ice/ice/packed_ice/snowball

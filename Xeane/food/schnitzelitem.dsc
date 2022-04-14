@@ -12,4 +12,4 @@ custom_food_schnitzel:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|porkchop|custom_ingredient_flour|custom_food_lemon|custom_ingredient_cookingoil|custom_ingredient_blackpepper
+      input: custom_ingredient_skilletitem|porkchop|custom_ingredient_flouritem|custom_crop_lemon|custom_ingredient_cookingoilitem|custom_ingredient_blackpepperitem

@@ -12,4 +12,4 @@ custom_food_cranberrysauce:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_food_cranberry|custom_food_cranberry|sugar
+      input: custom_ingredient_saucepanitem|custom_crop_cranberry|custom_crop_cranberry|sugar

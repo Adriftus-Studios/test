@@ -12,4 +12,4 @@ custom_food_tortilla:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|custom_ingredient_cornmeal|water_bucket/custom_ingredient_freshwater
+      input: custom_ingredient_skilletitem|custom_ingredient_cornmealitem|water_bucket/custom_ingredient_freshwateritem

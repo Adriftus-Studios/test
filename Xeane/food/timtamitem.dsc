@@ -1,4 +1,4 @@
-custom_ingredient_timtam:
+custom_ingredient_timtamitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_timtam:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|sugar|custom_ingredient_flour|milk_bucket/custom_ingredient_freshmilk|custom_food_chocolatebar
+      input: custom_ingredient_bakewareitem|sugar|custom_ingredient_flouritem|milk_bucket/custom_ingredient_freshmilkitem|custom_food_chocolatebar

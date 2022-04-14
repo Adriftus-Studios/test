@@ -1,4 +1,4 @@
-custom_ingredient_melonjelly:
+custom_ingredient_melonjellyitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_melonjelly:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|custom_ingredient_melonjuice|sugar
+      input: custom_ingredient_saucepanitem|custom_ingredient_melonjuiceitem|sugar

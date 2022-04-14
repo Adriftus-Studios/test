@@ -1,4 +1,4 @@
-custom_ingredient_stew:
+custom_ingredient_stewitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_stew:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_food_avocado/custom_ingredient_olive|custom_food_avocado/custom_ingredient_olive|custom_ingredient_flour
+      input: custom_ingredient_potitem|beef/chicken/cod/mutton/porkchop/rabbit/salmon/tropical_fish|custom_crop_avocado/custom_crop_olive|custom_crop_avocado/custom_crop_olive|custom_ingredient_flouritem

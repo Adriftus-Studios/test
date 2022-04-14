@@ -6,4 +6,4 @@ custom_ingredient_papaya_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_food_papaya|custom_food_papaya|custom_food_papaya|custom_food_papaya|custom_food_papaya|custom_food_papaya|custom_food_papaya|custom_food_papaya|custom_ingredient_saplings
+      input: custom_crop_papaya|custom_crop_papaya|custom_crop_papaya|custom_crop_papaya|custom_crop_papaya|custom_crop_papaya|custom_crop_papaya|custom_crop_papaya|custom_ingredient_saplings

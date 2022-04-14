@@ -1,4 +1,4 @@
-custom_ingredient_dateyogurt:
+custom_ingredient_dateyogurtitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_dateyogurt:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_food_date|custom_ingredient_yogurt
+      input: custom_ingredient_cuttingboarditem|custom_crop_date|custom_ingredient_yogurtitem

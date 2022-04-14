@@ -12,4 +12,4 @@ custom_food_porklettucewrap:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_cuttingboard|custom_food_lettuce|porkchop
+      input: custom_ingredient_cuttingboarditem|custom_crop_lettuce|porkchop

@@ -1,4 +1,4 @@
-custom_ingredient_capresesalad:
+custom_ingredient_capresesaladitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_capresesalad:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_ingredient_cheese|custom_food_tomato|custom_ingredient_spiceleaf
+      input: custom_ingredient_mixingbowlitem|custom_ingredient_cheeseitem|custom_crop_tomato|custom_crop_spiceleaf

@@ -1,4 +1,4 @@
-custom_ingredient_generaltsochicken:
+custom_ingredient_generaltsochickenitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_generaltsochicken:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|chicken|custom_food_broccoli|sugar|custom_ingredient_flour|custom_ingredient_chilipepper|custom_ingredient_rice
+      input: custom_ingredient_skilletitem|chicken|custom_crop_broccoli|sugar|custom_ingredient_flouritem|custom_crop_chilipepper|custom_crop_rice

@@ -12,4 +12,4 @@ custom_food_gummybears:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_saucepan|sugar|red_dye|green_dye
+      input: custom_ingredient_saucepanitem|sugar|red_dye|green_dye

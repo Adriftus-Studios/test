@@ -6,4 +6,4 @@ custom_ingredient_maple_sapling:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_maplesyrup|custom_ingredient_maplesyrup|custom_ingredient_maplesyrup|custom_ingredient_maplesyrup|custom_ingredient_maplesyrup|custom_ingredient_maplesyrup|custom_ingredient_maplesyrup|custom_ingredient_maplesyrup|custom_ingredient_saplings
+      input: custom_crop_maplesyrup|custom_crop_maplesyrup|custom_crop_maplesyrup|custom_crop_maplesyrup|custom_crop_maplesyrup|custom_crop_maplesyrup|custom_crop_maplesyrup|custom_crop_maplesyrup|custom_ingredient_saplings

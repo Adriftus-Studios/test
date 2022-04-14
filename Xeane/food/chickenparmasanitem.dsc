@@ -1,4 +1,4 @@
-custom_ingredient_chickenparmasan:
+custom_ingredient_chickenparmasanitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_chickenparmasan:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_bakeware|chicken|custom_food_tomato|custom_ingredient_cheese
+      input: custom_ingredient_bakewareitem|chicken|custom_crop_tomato|custom_ingredient_cheeseitem

@@ -1,4 +1,4 @@
-custom_ingredient_saucepan:
+custom_ingredient_saucepanitem:
   type: item
   debug: false
   material: apple

@@ -12,4 +12,4 @@ custom_food_rawtofutton:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_mixingbowl|custom_food_firmtofu|custom_ingredient_soysauce|custom_ingredient_spiceleaf
+      input: custom_ingredient_mixingbowlitem|custom_food_firmtofu|custom_ingredient_soysauceitem|custom_crop_spiceleaf

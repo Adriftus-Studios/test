@@ -1,4 +1,4 @@
-custom_ingredient_mustard:
+custom_crop_mustard:
   type: item
   debug: false
   material: apple
@@ -6,4 +6,4 @@ custom_ingredient_mustard:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_juicer|custom_ingredient_mustardseeds
+      input: custom_ingredient_juiceritem|custom_crop_mustardseeds

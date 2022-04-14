@@ -12,4 +12,4 @@ custom_food_toastedwestern:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_skillet|porkchop|custom_food_bellpepper|custom_food_onion|custom_food_avocado/custom_food_banana|custom_ingredient_butter|custom_food_toast
+      input: custom_ingredient_skilletitem|porkchop|custom_crop_bellpepper|custom_crop_onion|custom_crop_avocado/custom_crop_banana|custom_ingredient_butteritem|custom_food_toast

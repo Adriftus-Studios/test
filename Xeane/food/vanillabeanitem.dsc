@@ -1,4 +1,4 @@
-custom_ingredient_vanillabean:
+custom_crop_vanillabean:
   type: item
   debug: false
   material: apple

@@ -1,4 +1,4 @@
-custom_ingredient_sweettea:
+custom_ingredient_sweetteaitem:
   type: item
   debug: false
   material: apple
@@ -12,4 +12,4 @@ custom_ingredient_sweettea:
   recipes:
     1:
       type: shapeless
-      input: custom_ingredient_pot|custom_ingredient_hottea|sugar|custom_food_lemon|blue_ice/ice/packed_ice/snowball
+      input: custom_ingredient_potitem|custom_ingredient_hotteaitem|sugar|custom_crop_lemon|blue_ice/ice/packed_ice/snowball
