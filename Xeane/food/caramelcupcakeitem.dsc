@@ -1,0 +1,15 @@
+custom_food_caramelcupcake:
+  type: item
+  debug: false
+  material: apple
+  display name: <&a>Caramel Cupcake
+  data:
+    amount: 2
+    saturation: 2
+  lore:
+  - <&e>Hunger: <&f>2 <&font[adriftus:foods]><&chr[0000]>
+  - <&e>Saturation: <&f>2 <&font[adriftus:foods]><&chr[0001]>
+  recipes:
+    1:
+      type: shapeless
+      input: custom_ingredient_mixingbowl|custom_food_caramel|custom_ingredient_dough
