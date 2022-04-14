@@ -137,20 +137,11 @@ fishing_minigame_build_whirlpools:
         - foreach <server.flag[fishing_minigame_active_whirlpool_locations]> as:loc:
             - define stand <entity[armor_stand[equipment=air|air|air|cyan_stained_glass[custom_model_data=1]]]>
             - spawn <[stand]> <[loc]> save:entity persistent
-            - flag <entry[entity].spawned_entity> on_entity_added:fishing_minigame_whirlpool_hide
             - adjust <entry[entity].spawned_entity> gravity:false
             - adjust <entry[entity].spawned_entity> marker:true
             - invisible <entry[entity].spawned_entity> state:true
             - flag server fishing_minigame_active_whirlpool_locations.<[loc]>.entity:<entry[entity].spawned_entity.escaped>
         - run fishing_minigame_whirlpool_animation
-
-# % ██ [ Hides whirlpools from players by default ] ██
-fishing_minigame_whirlpool_hide:
-    debug: false
-    type: task
-    script:
-        - wait 1t
-        - adjust <context.entity> hide_from_players:true
 
 # % ██ [ Task for whirlpool animations ] ██
 fishing_minigame_whirlpool_animation:
@@ -159,9 +150,6 @@ fishing_minigame_whirlpool_animation:
     script:
         - define circles <server.flag[fishing_minigame_active_whirlpool_locations].keys.parse[above]>
         - while !<server.has_flag[fishing_minigame_reset_whirlpools]>:
-# XEANE #
-            - foreach <server.flag[fishingminigame.activeplayers]> as:viewer:
-                - adjust <[viewer]> show_entity:<server.flag[fishing_minigame_active_whirlpool_locations]>
             - playeffect at:<[circles]> dolphin quantity:30 offset:0.45,0.2,0.45 targets:<server.flag[fishingminingame.activeplayers]>
             - if <[loop_index].mod[7]> == 0:
               - playeffect at:<[circles]> end_rod quantity:1 offset:1.8,0.2,1.8 velocity:0,0.025,0 targets:<server.flag[fishingminingame.activeplayers]>
