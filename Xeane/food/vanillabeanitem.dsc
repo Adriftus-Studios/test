@@ -3,3 +3,5 @@ custom_crop_vanillabean:
   debug: false
   material: apple
   display name: <&a>Vanillabean
+  mechanisms:
+    custom_model_data: 241

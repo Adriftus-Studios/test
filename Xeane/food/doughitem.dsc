@@ -3,6 +3,8 @@ custom_ingredient_doughitem:
   debug: false
   material: apple
   display name: <&a>Dough
+  mechanisms:
+    custom_model_data: 9
   recipes:
     1:
       type: shapeless

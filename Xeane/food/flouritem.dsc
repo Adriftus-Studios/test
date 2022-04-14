@@ -3,6 +3,8 @@ custom_ingredient_flouritem:
   debug: false
   material: apple
   display name: <&a>Flour
+  mechanisms:
+    custom_model_data: 2
   recipes:
     1:
       type: shapeless

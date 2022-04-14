@@ -3,6 +3,8 @@ custom_ingredient_banana_sapling:
   debug: false
   material: apple
   display name: <&a>Banana Sapling
+  mechanisms:
+    custom_model_data: 380
   recipes:
     1:
       type: shapeless

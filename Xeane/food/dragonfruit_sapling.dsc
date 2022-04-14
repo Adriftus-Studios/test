@@ -3,6 +3,8 @@ custom_ingredient_dragonfruit_sapling:
   debug: false
   material: apple
   display name: <&a>Dragonfruit Sapling
+  mechanisms:
+    custom_model_data: 619
   recipes:
     1:
       type: shapeless

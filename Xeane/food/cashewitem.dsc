@@ -3,3 +3,5 @@ custom_crop_cashew:
   debug: false
   material: apple
   display name: <&a>Cashew
+  mechanisms:
+    custom_model_data: 59

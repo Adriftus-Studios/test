@@ -3,6 +3,8 @@ custom_ingredient_gooseberry_sapling:
   debug: false
   material: apple
   display name: <&a>Gooseberry Sapling
+  mechanisms:
+    custom_model_data: 708
   recipes:
     1:
       type: shapeless

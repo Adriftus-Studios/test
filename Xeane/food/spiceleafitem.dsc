@@ -3,3 +3,5 @@ custom_crop_spiceleaf:
   debug: false
   material: apple
   display name: <&a>Spiceleaf
+  mechanisms:
+    custom_model_data: 39

@@ -9,6 +9,8 @@ custom_food_homestylelunch:
   lore:
   - <&e>Hunger: <&f>23 <&chr[0000].font[adriftus:foods]>
   - <&e>Saturation: <&f>28 <&chr[0001].font[adriftus:foods]>
+  mechanisms:
+    custom_model_data: 767
   recipes:
     1:
       type: shapeless

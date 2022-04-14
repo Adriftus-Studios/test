@@ -3,3 +3,5 @@ custom_crop_almond:
   debug: false
   material: apple
   display name: <&a>Almond
+  mechanisms:
+    custom_model_data: 8

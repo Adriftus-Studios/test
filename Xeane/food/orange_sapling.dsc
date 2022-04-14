@@ -3,6 +3,8 @@ custom_ingredient_orange_sapling:
   debug: false
   material: apple
   display name: <&a>Orange Sapling
+  mechanisms:
+    custom_model_data: 944
   recipes:
     1:
       type: shapeless

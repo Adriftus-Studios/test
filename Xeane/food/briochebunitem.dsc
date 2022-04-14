@@ -9,6 +9,8 @@ custom_food_briochebun:
   lore:
   - <&e>Hunger: <&f>14 <&chr[0000].font[adriftus:foods]>
   - <&e>Saturation: <&f>17 <&chr[0001].font[adriftus:foods]>
+  mechanisms:
+    custom_model_data: 432
   recipes:
     1:
       type: shapeless

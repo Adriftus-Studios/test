@@ -3,3 +3,5 @@ cooking_tool_saucepan:
   debug: false
   material: apple
   display name: <&a>Saucepan
+  mechanisms:
+    custom_model_data: 15

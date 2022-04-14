@@ -3,6 +3,8 @@ custom_ingredient_persimmon_sapling:
   debug: false
   material: apple
   display name: <&a>Persimmon Sapling
+  mechanisms:
+    custom_model_data: 1013
   recipes:
     1:
       type: shapeless

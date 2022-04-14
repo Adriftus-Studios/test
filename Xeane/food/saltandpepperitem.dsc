@@ -3,6 +3,8 @@ custom_ingredient_saltandpepperitem:
   debug: false
   material: apple
   display name: <&a>Salt and Pepper
+  mechanisms:
+    custom_model_data: 182
   recipes:
     1:
       type: shapeless

@@ -3,6 +3,8 @@ custom_ingredient_avocado_sapling:
   debug: false
   material: apple
   display name: <&a>Avocado Sapling
+  mechanisms:
+    custom_model_data: 357
   recipes:
     1:
       type: shapeless

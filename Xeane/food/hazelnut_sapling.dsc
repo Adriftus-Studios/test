@@ -3,6 +3,8 @@ custom_ingredient_hazelnut_sapling:
   debug: false
   material: apple
   display name: <&a>Hazelnut Sapling
+  mechanisms:
+    custom_model_data: 762
   recipes:
     1:
       type: shapeless

@@ -3,6 +3,8 @@ custom_ingredient_pomegranate_sapling:
   debug: false
   material: apple
   display name: <&a>Pomegranate Sapling
+  mechanisms:
+    custom_model_data: 1049
   recipes:
     1:
       type: shapeless

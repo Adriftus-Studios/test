@@ -3,6 +3,8 @@ custom_ingredient_saltitem:
   debug: false
   material: apple
   display name: <&a>Salt
+  mechanisms:
+    custom_model_data: 6
   recipes:
     1:
       type: shapeless

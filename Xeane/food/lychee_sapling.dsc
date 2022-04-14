@@ -3,6 +3,8 @@ custom_ingredient_lychee_sapling:
   debug: false
   material: apple
   display name: <&a>Lychee Sapling
+  mechanisms:
+    custom_model_data: 855
   recipes:
     1:
       type: shapeless

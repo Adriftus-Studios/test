@@ -6,6 +6,8 @@ custom_seed_lentilseed:
   data:
     max_seeds: 3
     max_crops: 4
+  mechanisms:
+    custom_model_data: 284
   recipes:
     1:
       type: shapeless

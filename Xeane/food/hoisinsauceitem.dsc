@@ -3,6 +3,8 @@ custom_ingredient_hoisinsauceitem:
   debug: false
   material: apple
   display name: <&a>Hoisin Sauce
+  mechanisms:
+    custom_model_data: 154
   recipes:
     1:
       type: shapeless

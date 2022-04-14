@@ -3,6 +3,8 @@ custom_ingredient_vanillaitem:
   debug: false
   material: apple
   display name: <&a>Vanilla
+  mechanisms:
+    custom_model_data: 211
   recipes:
     1:
       type: shapeless

@@ -3,3 +3,5 @@ custom_crop_candleberry:
   debug: false
   material: apple
   display name: <&a>Candleberry
+  mechanisms:
+    custom_model_data: 109

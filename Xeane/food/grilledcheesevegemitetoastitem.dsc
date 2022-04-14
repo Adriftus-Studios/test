@@ -9,6 +9,8 @@ custom_food_grilledcheesevegemitetoast:
   lore:
   - <&e>Hunger: <&f>20 <&chr[0000].font[adriftus:foods]>
   - <&e>Saturation: <&f>24 <&chr[0001].font[adriftus:foods]>
+  mechanisms:
+    custom_model_data: 740
   recipes:
     1:
       type: shapeless

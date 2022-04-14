@@ -9,6 +9,8 @@ custom_food_datesmoothie:
   lore:
   - <&e>Hunger: <&f>11 <&chr[0000].font[adriftus:foods]>
   - <&e>Saturation: <&f>13 <&chr[0001].font[adriftus:foods]>
+  mechanisms:
+    custom_model_data: 602
   recipes:
     1:
       type: shapeless

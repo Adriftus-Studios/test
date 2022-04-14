@@ -9,6 +9,8 @@ custom_food_chimichanga:
   lore:
   - <&e>Hunger: <&f>29 <&chr[0000].font[adriftus:foods]>
   - <&e>Saturation: <&f>35 <&chr[0001].font[adriftus:foods]>
+  mechanisms:
+    custom_model_data: 525
   recipes:
     1:
       type: shapeless

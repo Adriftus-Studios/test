@@ -3,6 +3,8 @@ custom_ingredient_pistachio_sapling:
   debug: false
   material: apple
   display name: <&a>Pistachio Sapling
+  mechanisms:
+    custom_model_data: 1029
   recipes:
     1:
       type: shapeless

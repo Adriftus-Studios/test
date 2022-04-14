@@ -9,6 +9,8 @@ custom_food_bolognasandwich:
   lore:
   - <&e>Hunger: <&f>28 <&chr[0000].font[adriftus:foods]>
   - <&e>Saturation: <&f>34 <&chr[0001].font[adriftus:foods]>
+  mechanisms:
+    custom_model_data: 420
   recipes:
     1:
       type: shapeless

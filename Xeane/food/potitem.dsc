@@ -3,3 +3,5 @@ cooking_tool_pot:
   debug: false
   material: apple
   display name: <&a>Pot
+  mechanisms:
+    custom_model_data: 13

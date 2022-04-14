@@ -9,6 +9,8 @@ custom_food_deluxechickencurry:
   lore:
   - <&e>Hunger: <&f>39 <&chr[0000].font[adriftus:foods]>
   - <&e>Saturation: <&f>47 <&chr[0001].font[adriftus:foods]>
+  mechanisms:
+    custom_model_data: 607
   recipes:
     1:
       type: shapeless

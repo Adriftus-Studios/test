@@ -3,6 +3,8 @@ custom_ingredient_apple_sapling:
   debug: false
   material: apple
   display name: <&a>Apple Sapling
+  mechanisms:
+    custom_model_data: 345
   recipes:
     1:
       type: shapeless

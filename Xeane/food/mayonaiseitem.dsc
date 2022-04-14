@@ -3,6 +3,8 @@ custom_ingredient_mayonaiseitem:
   debug: false
   material: apple
   display name: <&a>Mayonnaise
+  mechanisms:
+    custom_model_data: 43
   recipes:
     1:
       type: shapeless

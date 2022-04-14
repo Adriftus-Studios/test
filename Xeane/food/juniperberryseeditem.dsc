@@ -6,6 +6,8 @@ custom_seed_juniperberryseed:
   data:
     max_seeds: 3
     max_crops: 4
+  mechanisms:
+    custom_model_data: 277
   recipes:
     1:
       type: shapeless

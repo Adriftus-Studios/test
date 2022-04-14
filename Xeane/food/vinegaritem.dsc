@@ -3,6 +3,8 @@ custom_ingredient_vinegaritem:
   debug: false
   material: apple
   display name: <&a>Vinegar
+  mechanisms:
+    custom_model_data: 123
   recipes:
     1:
       type: shapeless

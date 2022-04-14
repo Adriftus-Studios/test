@@ -3,3 +3,5 @@ custom_crop_kenaf:
   debug: false
   material: apple
   display name: <&a>Kenaf
+  mechanisms:
+    custom_model_data: 326

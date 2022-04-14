@@ -3,6 +3,8 @@ custom_ingredient_soysauceitem:
   debug: false
   material: apple
   display name: <&a>Soy Sauce
+  mechanisms:
+    custom_model_data: 137
   recipes:
     1:
       type: shapeless

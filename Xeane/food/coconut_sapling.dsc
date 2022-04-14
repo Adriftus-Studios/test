@@ -3,6 +3,8 @@ custom_ingredient_coconut_sapling:
   debug: false
   material: apple
   display name: <&a>Coconut Sapling
+  mechanisms:
+    custom_model_data: 556
   recipes:
     1:
       type: shapeless

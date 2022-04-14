@@ -3,3 +3,5 @@ cooking_tool_juicer:
   debug: false
   material: apple
   display name: <&a>Juicer
+  mechanisms:
+    custom_model_data: 28

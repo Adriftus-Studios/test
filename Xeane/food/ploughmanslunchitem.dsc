@@ -9,6 +9,8 @@ custom_food_ploughmanslunch:
   lore:
   - <&e>Hunger: <&f>31 <&chr[0000].font[adriftus:foods]>
   - <&e>Saturation: <&f>37 <&chr[0001].font[adriftus:foods]>
+  mechanisms:
+    custom_model_data: 1033
   recipes:
     1:
       type: shapeless

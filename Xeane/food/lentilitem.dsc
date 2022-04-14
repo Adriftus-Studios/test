@@ -3,3 +3,5 @@ custom_crop_lentil:
   debug: false
   material: apple
   display name: <&a>Lentil
+  mechanisms:
+    custom_model_data: 97

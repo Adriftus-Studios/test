@@ -3,6 +3,8 @@ custom_ingredient_fivespiceitem:
   debug: false
   material: apple
   display name: <&a>Five Spice
+  mechanisms:
+    custom_model_data: 668
   recipes:
     1:
       type: shapeless

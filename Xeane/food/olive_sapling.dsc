@@ -3,6 +3,8 @@ custom_ingredient_olive_sapling:
   debug: false
   material: apple
   display name: <&a>Olive Sapling
+  mechanisms:
+    custom_model_data: 930
   recipes:
     1:
       type: shapeless

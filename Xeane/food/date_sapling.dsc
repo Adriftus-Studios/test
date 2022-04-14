@@ -3,6 +3,8 @@ custom_ingredient_date_sapling:
   debug: false
   material: apple
   display name: <&a>Date Sapling
+  mechanisms:
+    custom_model_data: 604
   recipes:
     1:
       type: shapeless

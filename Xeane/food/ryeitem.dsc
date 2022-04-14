@@ -3,3 +3,5 @@ custom_crop_rye:
   debug: false
   material: apple
   display name: <&a>Rye
+  mechanisms:
+    custom_model_data: 101

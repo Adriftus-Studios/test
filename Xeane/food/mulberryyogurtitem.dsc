@@ -9,6 +9,8 @@ custom_food_mulberryyogurt:
   lore:
   - <&e>Hunger: <&f>5 <&chr[0000].font[adriftus:foods]>
   - <&e>Saturation: <&f>6 <&chr[0001].font[adriftus:foods]>
+  mechanisms:
+    custom_model_data: 909
   recipes:
     1:
       type: shapeless

@@ -9,6 +9,8 @@ custom_food_delightedmeal:
   lore:
   - <&e>Hunger: <&f>32 <&chr[0000].font[adriftus:foods]>
   - <&e>Saturation: <&f>38 <&chr[0001].font[adriftus:foods]>
+  mechanisms:
+    custom_model_data: 605
   recipes:
     1:
       type: shapeless

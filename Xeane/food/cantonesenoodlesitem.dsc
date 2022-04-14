@@ -9,6 +9,8 @@ custom_food_cantonesenoodles:
   lore:
   - <&e>Hunger: <&f>25 <&chr[0000].font[adriftus:foods]>
   - <&e>Saturation: <&f>30 <&chr[0001].font[adriftus:foods]>
+  mechanisms:
+    custom_model_data: 467
   recipes:
     1:
       type: shapeless

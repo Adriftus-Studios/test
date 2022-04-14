@@ -3,6 +3,8 @@ custom_ingredient_groundnutmegitem:
   debug: false
   material: apple
   display name: <&a>Ground Nutmeg
+  mechanisms:
+    custom_model_data: 179
   recipes:
     1:
       type: shapeless

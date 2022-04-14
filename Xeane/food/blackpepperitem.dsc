@@ -3,6 +3,8 @@ custom_ingredient_blackpepperitem:
   debug: false
   material: apple
   display name: <&a>Black Pepper
+  mechanisms:
+    custom_model_data: 138
   recipes:
     1:
       type: shapeless

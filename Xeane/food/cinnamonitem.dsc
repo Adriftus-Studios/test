@@ -3,3 +3,5 @@ custom_crop_cinnamon:
   debug: false
   material: apple
   display name: <&a>Cinnamon
+  mechanisms:
+    custom_model_data: 202

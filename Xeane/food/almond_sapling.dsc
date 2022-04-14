@@ -3,6 +3,8 @@ custom_ingredient_almond_sapling:
   debug: false
   material: apple
   display name: <&a>Almond Sapling
+  mechanisms:
+    custom_model_data: 334
   recipes:
     1:
       type: shapeless

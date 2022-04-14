@@ -6,6 +6,8 @@ custom_seed_okraseed:
   data:
     max_seeds: 3
     max_crops: 4
+  mechanisms:
+    custom_model_data: 290
   recipes:
     1:
       type: shapeless

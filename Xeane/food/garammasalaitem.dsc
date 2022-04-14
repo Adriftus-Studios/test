@@ -3,6 +3,8 @@ custom_ingredient_garammasalaitem:
   debug: false
   material: apple
   display name: <&a>Garamasala
+  mechanisms:
+    custom_model_data: 183
   recipes:
     1:
       type: shapeless

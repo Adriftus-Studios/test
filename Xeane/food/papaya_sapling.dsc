@@ -3,6 +3,8 @@ custom_ingredient_papaya_sapling:
   debug: false
   material: apple
   display name: <&a>Papaya Sapling
+  mechanisms:
+    custom_model_data: 958
   recipes:
     1:
       type: shapeless

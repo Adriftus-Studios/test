@@ -3,6 +3,8 @@ custom_ingredient_guava_sapling:
   debug: false
   material: apple
   display name: <&a>Guava Sapling
+  mechanisms:
+    custom_model_data: 751
   recipes:
     1:
       type: shapeless

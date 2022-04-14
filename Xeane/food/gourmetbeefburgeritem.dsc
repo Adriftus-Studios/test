@@ -9,6 +9,8 @@ custom_food_gourmetbeefburger:
   lore:
   - <&e>Hunger: <&f>44 <&chr[0000].font[adriftus:foods]>
   - <&e>Saturation: <&f>53 <&chr[0001].font[adriftus:foods]>
+  mechanisms:
+    custom_model_data: 709
   recipes:
     1:
       type: shapeless

@@ -3,6 +3,8 @@ custom_ingredient_sesameoilitem:
   debug: false
   material: apple
   display name: <&a>Sesame Oil
+  mechanisms:
+    custom_model_data: 208
   recipes:
     1:
       type: shapeless

@@ -3,6 +3,8 @@ custom_ingredient_hotsauceitem:
   debug: false
   material: apple
   display name: <&a>Hot Sauce
+  mechanisms:
+    custom_model_data: 209
   recipes:
     1:
       type: shapeless

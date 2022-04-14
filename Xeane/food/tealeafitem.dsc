@@ -3,3 +3,5 @@ custom_crop_tealeaf:
   debug: false
   material: apple
   display name: <&a>Tealeaf
+  mechanisms:
+    custom_model_data: 153

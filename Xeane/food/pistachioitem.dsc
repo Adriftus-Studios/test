@@ -3,3 +3,5 @@ custom_crop_pistachio:
   debug: false
   material: apple
   display name: <&a>Pistachio
+  mechanisms:
+    custom_model_data: 64

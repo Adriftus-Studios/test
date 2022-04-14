@@ -3,6 +3,8 @@ custom_ingredient_saladdressingitem:
   debug: false
   material: apple
   display name: <&a>Salad Dressing
+  mechanisms:
+    custom_model_data: 151
   recipes:
     1:
       type: shapeless

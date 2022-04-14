@@ -9,6 +9,8 @@ custom_food_stuffing:
   lore:
   - <&e>Hunger: <&f>15 <&chr[0000].font[adriftus:foods]>
   - <&e>Saturation: <&f>18 <&chr[0001].font[adriftus:foods]>
+  mechanisms:
+    custom_model_data: 1177
   recipes:
     1:
       type: shapeless

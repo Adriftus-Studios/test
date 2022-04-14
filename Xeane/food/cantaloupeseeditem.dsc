@@ -6,6 +6,8 @@ custom_seed_cantaloupeseed:
   data:
     max_seeds: 3
     max_crops: 4
+  mechanisms:
+    custom_model_data: 257
   recipes:
     1:
       type: shapeless
