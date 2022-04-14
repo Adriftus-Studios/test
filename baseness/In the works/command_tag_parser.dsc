@@ -11,7 +11,8 @@ tag_parser:
         2: <&lt>tag<&gt>
     script:
         - if <context.args.get[1].equals[announce]>:
-            - announce <context.args.get[2].parse[tag]>
+            - announce <context.args.get[2].parsed>
         - else if <context.args.get[1].equals[narrate]>:
-            - narrate <context.args.get[2].parse[tag]>
+            - narrate <context.args.get[2].parsed>
 # narrate <element[<&lt>tag<&gt>].parse[tag]>
+# dangerous
