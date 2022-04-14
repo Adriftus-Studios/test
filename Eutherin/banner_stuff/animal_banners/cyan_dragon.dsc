@@ -1,7 +1,7 @@
 Custom_Banner_dragon_cyan:
   type: item
   debug: false
-  material: cyan_banner_banner
+  material: cyan_banner
   display name: Cyan Dragon
   mechanisms:
     hides: ALL

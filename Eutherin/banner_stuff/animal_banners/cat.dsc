@@ -1,7 +1,7 @@
 Custom_Banner_cat:
   type: item
   debug: false
-  material: white_banner
+  material: light_blue_banner
   display name: Brown Cat
   mechanisms:
     hides: ALL
@@ -17,6 +17,7 @@ Custom_Banner_cat:
     - WHITE/TRIANGLES_BOTTOM
     - GREEN/TRIANGLE_TOP
     - GREEN/TRIANGLE_TOP
+    - GREEN/STRIPE_TOP
 
   lore:
   - Hide the ducks!
