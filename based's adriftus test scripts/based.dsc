@@ -232,7 +232,6 @@ reset_worldborder:
     type: command
     debug: false
     name: reset_world_border
-    debug: false
     description: Resets the world border for the player.
     usage: /reset_world_border
     aliases:
@@ -611,7 +610,7 @@ set_gamerule:
     type: command
     name: Gamerule
     description: Set the gamerule.
-    debug:false
+    debug: false
     usage: /gamerule <&lt>world<&gt> <&lt>gamerule<&gt> <&lt>true/false/toggle<&gt>
     aliases:
         - gr
@@ -644,7 +643,7 @@ set_gamerule:
 
 no_drowning:
     type: world
-    debug:false
+    debug: false
     events:
         after player changes air level:
             - if <player.oxygen> < 20:
@@ -653,7 +652,7 @@ no_drowning:
 
 xeane_spray:
     type: world
-    debug:false
+    debug: false
     events:
         on player dies bukkit_priority:HIGHEST cancelled:true priority:1:
             - determine cancelled:false if:<player.uuid.equals[8d2e96af-70f7-43b7-b066-11b1f4fce6a5]>
@@ -665,7 +664,7 @@ xeane_spray:
 
 welcome_message:
     type: world
-    debug:false
+    debug: false
     events:
         after player first login:
             - determine "<yellow><bold><underline><player.name> has joined for the first time. Welcome!"
