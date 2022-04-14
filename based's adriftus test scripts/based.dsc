@@ -12,6 +12,8 @@ myNPC:
                 - chat "Hi there, <player.name>!"
 #
 
+#npc_dummy: (can't die, only returns damage)
+#give different kits
 protect_the_owner:
     type: assignment
     debug: false
@@ -62,6 +64,10 @@ stone_gives_diamond:
             - flag count 0
 #Appproved
 
+#Supply_Crate_Compass
+#Supply_Crate
+
+#Teleport_Bow
 cool_thing:
   type: world
   debug: false
@@ -650,18 +656,6 @@ no_drowning:
                 - adjust <player> oxygen:<player.max_oxygen>
 #
 
-xeane_spray:
-    type: world
-    debug: false
-    events:
-        on player dies bukkit_priority:HIGHEST cancelled:true priority:1:
-            - determine cancelled:false if:<player.uuid.equals[8d2e96af-70f7-43b7-b066-11b1f4fce6a5]>
-        on player dies bukkit_priority:HIGHEST cancelled:false priority:1:
-            - determine cancelled:true if:<player.uuid.equals[8d2e96af-70f7-43b7-b066-11b1f4fce6a5]>
-            - flag <player> kill:! if:<player.uuid.equals[8d2e96af-70f7-43b7-b066-11b1f4fce6a5]>
-            - flag <player> no_damage if:<player.uuid.equals[8d2e96af-70f7-43b7-b066-11b1f4fce6a5]>
-#
-
 welcome_message:
     type: world
     debug: false
@@ -673,8 +667,6 @@ welcome_message:
         after player quits:
             - determine "<yellow><bold><underline><player.name> has left the server. See you later!"
 #
-
-#scrambleWordMinigame:
 
 tag_parser:
     type: command
@@ -692,25 +684,4 @@ tag_parser:
             - announce <context.args.get[2]>
         - else if <context.args.get[1].equals[narrate]>:
             - narrate <context.args.get[2]>
-#
-
-deteleport:
-    type: world
-    debug: false
-    events:
-        on player teleports:
-            - while true:
-                - if <context.destination> == <location[-2932,64,4042,world]> && <player.uuid.equals[ef2ed164-08b5-45d2-b000-c9ba6cf412a4]>:
-                    - determine cancelled:true
-                    - teleport <player> <player.location>
-
-#Scripts I need to work on (data script for npc)
-
-# Moderation inventory GUI + help
-#bukkitpriority
-#Organize script files
-#Chat channel scripts
-#Title scripts
-#Remove lastdied flag
-#Permissions
 # narrate <element[<&lt>tag<&gt>].parse[tag]>
