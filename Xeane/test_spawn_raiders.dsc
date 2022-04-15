@@ -2,16 +2,16 @@ test_spawn_blood_raiders:
   type: task
   debug: false
   script:
-    - define location <player.location.above[15]>
+    - define location <player.location.forward[10].above[15]>
     - define players <player.location.find_players_within[100]>
-    - foreach <player.location.points_between[<[location]>].distance[0.5]>:
+    - foreach <proc[define_curve1].context[<player.location>|<[location]>|5|-90|0.5]>:
       - playeffect redstone quantity:10 special_data:10|red offset:0.2 at:<[value]> targets:<server.online_players>
       - wait 2t
-    - repeat 120:
+    - repeat 80:
       - playeffect redstone quantity:40 special_data:10|red offset:0.7 at:<[location]> targets:<server.online_players>
       - wait 2t
-    - repeat <server.online_players.size>:
-      - repeat 20:
+    - repeat <server.online_players.size.mul[2]>:
+      - repeat 10:
         - playeffect redstone quantity:40 special_data:10|red offset:0.7 at:<[location]> targets:<server.online_players>
         - wait 2t
       - run test_spawn_blood_raiders_task def:<[location]>
