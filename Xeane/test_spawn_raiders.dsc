@@ -30,7 +30,7 @@ test_spawn_blood_raiders_task:
       - playeffect redstone quantity:10 special_data:5|red offset:0.2 at:<[value]> targets:<server.online_players>
       - wait 2t
     - repeat 3:
-      - playeffect redstone quantity:10 special_data:5|red offset:0.7 at:<[spawn_at]> targets:<server.online_players>
+      - playeffect redstone quantity:10 special_data:5|red offset:0.7 at:<[spawn_at].above> targets:<server.online_players>
       - wait 2t
     - spawn test_spawn_blood_radier <[spawn_at]> target:<[target_player]>
 
