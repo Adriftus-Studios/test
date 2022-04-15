@@ -44,13 +44,13 @@ test_spawn_blood_raider_particles:
     - while <server.has_flag[test_spawn_blood_raiders]>:
       - foreach <server.flag[test_spawn_blood_raiders]>:
         - foreach next if:<[value].is_spawned.not>
-        - playeffect at:<[value].location> effect:redstone quantity:10 special_data:1|#660000 offset:0.7 targets:<server.online_players>
+        - playeffect at:<[value].location.above> effect:redstone quantity:10 special_data:1|#660000 offset:0.7 targets:<server.online_players>
         - wait 1t
 
 test_spawn_blood_radier:
   type: entity
   debug: false
-  entity_type: piglin_brute
+  entity_type: zombified_piglin
   mechanisms:
     custom_name: <&c>Blood Raider
     custom_name_visible: true
@@ -61,6 +61,9 @@ test_spawn_blood_raider_remove:
   type: task
   debug: false
   script:
+    - announce <context.entity>
+    - announce <server.flag[test_spawn_blood_raiders]>
     - flag server test_spawn_blood_raiders:<-:<context.entity>
     - if <server.flag[test_spawn_blood_raiders].is_empty>:
+      - announce "Flag Cleared"
       - flag server test_spawn_blood_raiders:!
