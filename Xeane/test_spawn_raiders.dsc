@@ -29,8 +29,12 @@ test_spawn_blood_raiders:
       - wait 2t
     - define players <[location].find_players_within[60]>
     - run test_spawn_blood_raider_particles
+    - if <[players].size> <= 2:
+      - define count 4
+    - else:
+      - define count 2
     - foreach <[players]> as:target:
-      - repeat 2:
+      - repeat <[count]>:
         - repeat 5:
           - playeffect effect:redstone quantity:40 special_data:10|#660000 offset:0.7 at:<[location]> targets:<server.online_players>
           - wait 2t
