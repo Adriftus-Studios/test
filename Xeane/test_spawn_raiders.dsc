@@ -1,8 +1,24 @@
-test_spawn_blood_raiders:
+test_spawn_blood_crystal:
+  type: item
+  debug: false
+  material: snowball
+  mechanisms:
+    cutsom_model_data: 1
+  flags:
+    on_projectile_launched: 
+
+test_spawn_blood_raiders_flag_projectile:
   type: task
   debug: false
   script:
-    - define location <player.location.forward_flat[30].above[15]>
+    - flag <context.entity> on_hit_block:test_spawn_blood_raiders
+
+test_spawn_blood_raiders:
+  type: task
+  debug: false
+  definitions: location
+  script:
+    - define location <context.entity.location> if:<[location].exists.not>
     - define players <player.location.find_players_within[100]>
     - foreach <proc[define_curve1].context[<player.location>|<[location]>|4|-90|0.5]>:
       - playeffect effect:redstone quantity:10 special_data:10|#660000 offset:0.2 at:<[value]> targets:<server.online_players>
@@ -35,7 +51,7 @@ test_spawn_blood_raiders_task:
       - wait 2t
     - spawn test_spawn_blood_radier <[spawn_at]> target:<[target_player]> save:ent
     - flag server test_spawn_blood_raiders:->:<entry[ent].spawned_entity>
-    - adjust <entry[ent].spawned_entity> "custom_name:<entry[ent].spawned_entity.script.data_key[mechanisms.custom_name]> <entry[ent].spawned_entity.health_data>"
+    - adjust <entry[ent].spawned_entity> "custom_name:<entry[ent].parsed_key.script.data_key[mechanisms.custom_name]> <entry[ent].spawned_entity.health_data>"
 
 test_spawn_blood_raider_particles:
   type: task
@@ -73,4 +89,4 @@ test_spawn_blood_raider_update_name:
   debug: false
   script:
     - wait 1t
-    - adjust <context.entity> "custom_name:<context.entity.script.data_key[mechanisms.custom_name]> <context.entity.health.round>/<context.entity.health_max>"
+    - adjust <context.entity> "custom_name:<context.entity.script.parsed_key[mechanisms.custom_name]> <context.entity.health.round>/<context.entity.health_max>"
