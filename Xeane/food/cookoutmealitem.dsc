@@ -7,8 +7,8 @@ custom_food_cookoutmeal:
     amount: 32
     saturation: 38
   lore:
-  - <&e>Hunger: <&f>32 <&chr[0000].font[adriftus:foods]>
-  - <&e>Saturation: <&f>38 <&chr[0001].font[adriftus:foods]>
+  - <&e>Hunger: <&f>32<&chr[0001].font[adriftus:foods]>
+  - <&e>Saturation: <&f>38<&chr[0002].font[adriftus:foods]>
   mechanisms:
     custom_model_data: 561
   recipes:

@@ -7,8 +7,8 @@ custom_food_gourmetmuttonburger:
     amount: 40
     saturation: 48
   lore:
-  - <&e>Hunger: <&f>40 <&chr[0000].font[adriftus:foods]>
-  - <&e>Saturation: <&f>48 <&chr[0001].font[adriftus:foods]>
+  - <&e>Hunger: <&f>40<&chr[0001].font[adriftus:foods]>
+  - <&e>Saturation: <&f>48<&chr[0002].font[adriftus:foods]>
   mechanisms:
     custom_model_data: 711
   recipes:

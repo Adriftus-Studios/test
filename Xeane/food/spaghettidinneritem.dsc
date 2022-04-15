@@ -7,8 +7,8 @@ custom_food_spaghettidinner:
     amount: 25
     saturation: 30
   lore:
-  - <&e>Hunger: <&f>25 <&chr[0000].font[adriftus:foods]>
-  - <&e>Saturation: <&f>30 <&chr[0001].font[adriftus:foods]>
+  - <&e>Hunger: <&f>25<&chr[0001].font[adriftus:foods]>
+  - <&e>Saturation: <&f>30<&chr[0002].font[adriftus:foods]>
   mechanisms:
     custom_model_data: 1143
   recipes:

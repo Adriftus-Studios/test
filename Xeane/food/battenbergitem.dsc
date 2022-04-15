@@ -7,8 +7,8 @@ custom_food_battenberg:
     amount: 21
     saturation: 25
   lore:
-  - <&e>Hunger: <&f>21 <&chr[0000].font[adriftus:foods]>
-  - <&e>Saturation: <&f>25 <&chr[0001].font[adriftus:foods]>
+  - <&e>Hunger: <&f>21<&chr[0001].font[adriftus:foods]>
+  - <&e>Saturation: <&f>25<&chr[0002].font[adriftus:foods]>
   mechanisms:
     custom_model_data: 386
   recipes:

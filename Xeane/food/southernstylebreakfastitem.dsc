@@ -7,8 +7,8 @@ custom_food_southernstylebreakfast:
     amount: 22
     saturation: 26
   lore:
-  - <&e>Hunger: <&f>22 <&chr[0000].font[adriftus:foods]>
-  - <&e>Saturation: <&f>26 <&chr[0001].font[adriftus:foods]>
+  - <&e>Hunger: <&f>22<&chr[0001].font[adriftus:foods]>
+  - <&e>Saturation: <&f>26<&chr[0002].font[adriftus:foods]>
   mechanisms:
     custom_model_data: 1139
   recipes:

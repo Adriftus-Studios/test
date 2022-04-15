@@ -7,8 +7,8 @@ custom_food_carrotsoup:
     amount: 7
     saturation: 8
   lore:
-  - <&e>Hunger: <&f>7 <&chr[0000].font[adriftus:foods]>
-  - <&e>Saturation: <&f>8 <&chr[0001].font[adriftus:foods]>
+  - <&e>Hunger: <&f>7<&chr[0001].font[adriftus:foods]>
+  - <&e>Saturation: <&f>8<&chr[0002].font[adriftus:foods]>
   mechanisms:
     custom_model_data: 478
   recipes:

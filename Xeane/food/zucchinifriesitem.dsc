@@ -7,8 +7,8 @@ custom_food_zucchinifries:
     amount: 15
     saturation: 18
   lore:
-  - <&e>Hunger: <&f>15 <&chr[0000].font[adriftus:foods]>
-  - <&e>Saturation: <&f>18 <&chr[0001].font[adriftus:foods]>
+  - <&e>Hunger: <&f>15<&chr[0001].font[adriftus:foods]>
+  - <&e>Saturation: <&f>18<&chr[0002].font[adriftus:foods]>
   mechanisms:
     custom_model_data: 1245
   recipes:

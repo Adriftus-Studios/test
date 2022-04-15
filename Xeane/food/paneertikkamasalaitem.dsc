@@ -7,8 +7,8 @@ custom_food_paneertikkamasala:
     amount: 35
     saturation: 42
   lore:
-  - <&e>Hunger: <&f>35 <&chr[0000].font[adriftus:foods]>
-  - <&e>Saturation: <&f>42 <&chr[0001].font[adriftus:foods]>
+  - <&e>Hunger: <&f>35<&chr[0001].font[adriftus:foods]>
+  - <&e>Saturation: <&f>42<&chr[0002].font[adriftus:foods]>
   mechanisms:
     custom_model_data: 951
   recipes:

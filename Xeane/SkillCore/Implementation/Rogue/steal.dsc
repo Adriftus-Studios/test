@@ -14,7 +14,7 @@ impl_skill_steal:
   - "true"
 
   # Cooldown
-  cooldown: 5s
+  cooldown: 1m
 
   # Task Script to bee run when the ability is used successfully
   # This Task Script MUST be within this file, as with any code associated with this skill
@@ -74,11 +74,12 @@ impl_skill_steal_task:
       - else:
         - choose <[inventory].inventory_type>:
           - case PLAYER:
-            - define slot <[map_slots].keys.exclude[41|40|39|38|37].last>
-            - if <[slot]> < 10:
+            - define slot <[map_slots].keys.exclude[41|40|39|38|37].last.if_null[false]>
+            - if <[slot]> < 10 || !<[slot].is_truthy>:
               - narrate "<&c>Player has no items to steal"
               - determine false
             - define item <[inventory].slot[<[slot]>]>
+            - narrate "<player.name><&e> has stolen <&b><[item].formatted><&e> from you." targets:<[inventory].id_holder>
           - case FURNACE:
             - if <[inventory].slot[3].material.name> == air:
               - narrate "<&c>Player has no items to steal"

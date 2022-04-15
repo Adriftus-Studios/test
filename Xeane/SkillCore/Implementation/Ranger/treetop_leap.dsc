@@ -61,7 +61,7 @@ impl_skill_treetop_leap_task:
   debug: false
   definitions: targets
   script:
-    - if <player.location.below.material.name.ends_with[leaves]>:
+    - if <player.location.below.find_blocks[*leaves].within[1.9].size> > 0:
       - adjust <player> velocity:<player.location.direction.vector.mul[1.5]>
       - flag player no_fall_damage_once expire:10s
       - determine true

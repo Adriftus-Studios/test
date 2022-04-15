@@ -7,8 +7,8 @@ custom_food_lasagna:
     amount: 14
     saturation: 17
   lore:
-  - <&e>Hunger: <&f>14 <&chr[0000].font[adriftus:foods]>
-  - <&e>Saturation: <&f>17 <&chr[0001].font[adriftus:foods]>
+  - <&e>Hunger: <&f>14<&chr[0001].font[adriftus:foods]>
+  - <&e>Saturation: <&f>17<&chr[0002].font[adriftus:foods]>
   mechanisms:
     custom_model_data: 823
   recipes:

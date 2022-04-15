@@ -7,8 +7,8 @@ custom_food_porklomein:
     amount: 18
     saturation: 22
   lore:
-  - <&e>Hunger: <&f>18 <&chr[0000].font[adriftus:foods]>
-  - <&e>Saturation: <&f>22 <&chr[0001].font[adriftus:foods]>
+  - <&e>Hunger: <&f>18<&chr[0001].font[adriftus:foods]>
+  - <&e>Saturation: <&f>22<&chr[0002].font[adriftus:foods]>
   mechanisms:
     custom_model_data: 1053
   recipes:

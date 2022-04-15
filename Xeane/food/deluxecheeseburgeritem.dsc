@@ -7,8 +7,8 @@ custom_food_deluxecheeseburger:
     amount: 24
     saturation: 29
   lore:
-  - <&e>Hunger: <&f>24 <&chr[0000].font[adriftus:foods]>
-  - <&e>Saturation: <&f>29 <&chr[0001].font[adriftus:foods]>
+  - <&e>Hunger: <&f>24<&chr[0001].font[adriftus:foods]>
+  - <&e>Saturation: <&f>29<&chr[0002].font[adriftus:foods]>
   mechanisms:
     custom_model_data: 606
   recipes:
