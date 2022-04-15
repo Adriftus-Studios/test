@@ -13,7 +13,7 @@ test_spawn_blood_raiders:
     - repeat <server.online_players.size.mul[2]>:
       - repeat 5:
         - playeffect redstone quantity:40 special_data:10|red offset:0.7 at:<[location]> targets:<server.online_players>
-        - wait 1t
+        - wait 2t
       - run test_spawn_blood_raiders_task def:<[location]>
 
 
