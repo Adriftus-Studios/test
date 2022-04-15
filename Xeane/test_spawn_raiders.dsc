@@ -10,7 +10,7 @@ test_spawn_blood_raiders:
     - repeat 80:
       - playeffect redstone quantity:40 special_data:10|red offset:0.7 at:<[location]> targets:<server.online_players>
       - wait 2t
-    - define players <[location].location.find_players_within[60]>
+    - define players <[location].find_players_within[60]>
     - foreach <[players]> as:target:
       - repeat 2:
         - repeat 5:
