@@ -39,6 +39,15 @@ test_spawn_blood_raiders:
           - playeffect effect:redstone quantity:40 special_data:10|#660000 offset:0.7 at:<[location]> targets:<server.online_players>
           - wait 2t
         - run test_spawn_blood_raiders_task def:<[location]>|<[target]>
+    - while <server.has_flag[test_spawn_blood_raiders]>:
+      - playeffect effect:redstone quantity:40 special_data:10|#660000 offset:0.7 at:<[location]> targets:<server.online_players>
+      - wait 4t
+    - foreach <[players]> as:target:
+      - repeat <[count]>:
+        - repeat 5:
+          - playeffect effect:redstone quantity:40 special_data:10|#660000 offset:0.7 at:<[location]> targets:<server.online_players>
+          - wait 2t
+        - run test_spawn_blood_raiders_task2 def:<[location]>|<[target]>
 
 
 test_spawn_blood_raiders_task:
@@ -55,6 +64,23 @@ test_spawn_blood_raiders_task:
       - playeffect effect:redstone quantity:10 special_data:5|#660000 offset:0.7 at:<[spawn_at].above> targets:<server.online_players>
       - wait 2t
     - spawn test_spawn_blood_radier <[spawn_at]> target:<[target_player]> save:ent
+    - flag server test_spawn_blood_raiders:->:<entry[ent].spawned_entity>
+    - adjust <entry[ent].spawned_entity> "custom_name:<entry[ent].spawned_entity.script.parsed_key[mechanisms.custom_name]> <entry[ent].spawned_entity.health_data>"
+
+test_spawn_blood_raiders_task2:
+  type: task
+  debug: false
+  definitions: location|target_player
+  script:
+    - define spawn_at <[location].add[<[location].sub[<[target_player].location>].mul[0.5]>].highest>
+    - define locations <proc[define_curve1].context[<[location]>|<[spawn_at]>|<util.random.int[5].to[15]>|<util.random.int[45].to[180]>|1]>
+    - foreach <[locations]>:
+      - playeffect effect:redstone quantity:10 special_data:5|#660000 offset:0.2 at:<[value]> targets:<server.online_players>
+      - wait 2t
+    - repeat 3:
+      - playeffect effect:redstone quantity:10 special_data:5|#660000 offset:0.7 at:<[spawn_at].above> targets:<server.online_players>
+      - wait 2t
+    - spawn test_spawn_blood_radier2 <[spawn_at]> target:<[target_player]> save:ent
     - flag server test_spawn_blood_raiders:->:<entry[ent].spawned_entity>
     - adjust <entry[ent].spawned_entity> "custom_name:<entry[ent].spawned_entity.script.parsed_key[mechanisms.custom_name]> <entry[ent].spawned_entity.health_data>"
 
@@ -76,6 +102,18 @@ test_spawn_blood_radier:
   mechanisms:
     health_data: 200/200
     custom_name: <&c>Blood Raider
+    custom_name_visible: true
+  flags:
+    on_death: test_spawn_blood_raider_remove
+    on_damaged: test_spawn_blood_raider_update_name
+
+test_spawn_blood_radier2:
+  type: entity
+  debug: false
+  entity_type: zombified_piglin
+  mechanisms:
+    health_data: 200/200
+    custom_name: <&c>Blood Raider2
     custom_name_visible: true
   flags:
     on_death: test_spawn_blood_raider_remove
