@@ -79,7 +79,7 @@ impl_skill_steal_task:
               - narrate "<&c>Player has no items to steal"
               - determine false
             - define item <[inventory].slot[<[slot]>]>
-            - narrate "<player.name><&e> has stolen <&b><[item].formatted><&e> from you."
+            - narrate "<player.name><&e> has stolen <&b><[item].formatted><&e> from you." targets:<[inventory].id_holder>
           - case FURNACE:
             - if <[inventory].slot[3].material.name> == air:
               - narrate "<&c>Player has no items to steal"
