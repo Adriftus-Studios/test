@@ -78,7 +78,7 @@ test_spawn_blood_raiders_task:
     - foreach <[locations]>:
       - playeffect effect:redstone quantity:10 special_data:5|#660000 offset:0.2 at:<[value]> targets:<server.online_players>
       - wait 2t
-    - repeat 3:
+    - repeat 5:
       - playeffect effect:redstone quantity:10 special_data:5|#660000 offset:0.7 at:<[spawn_at].above> targets:<server.online_players>
       - wait 2t
     - spawn test_spawn_blood_radier <[spawn_at]> target:<[target_player]> save:ent
@@ -95,7 +95,7 @@ test_spawn_blood_raiders_task2:
     - foreach <[locations]>:
       - playeffect effect:redstone quantity:10 special_data:5|#660000 offset:0.2 at:<[value]> targets:<server.online_players>
       - wait 2t
-    - repeat 3:
+    - repeat 5:
       - playeffect effect:redstone quantity:10 special_data:5|#660000 offset:0.7 at:<[spawn_at].above> targets:<server.online_players>
       - wait 2t
     - spawn test_spawn_blood_radier2 <[spawn_at]> target:<[target_player]> save:ent
@@ -112,7 +112,7 @@ test_spawn_blood_raiders_task3:
     - foreach <[locations]>:
       - playeffect effect:redstone quantity:10 special_data:5|#660000 offset:0.7 at:<[value]> targets:<server.online_players>
       - wait 2t
-    - repeat 3:
+    - repeat 5:
       - playeffect effect:redstone quantity:10 special_data:5|#660000 offset:0.7 at:<[spawn_at].above> targets:<server.online_players>
       - wait 2t
     - spawn test_spawn_blood_radier3 <[spawn_at]> target:<[target_player]> save:ent
