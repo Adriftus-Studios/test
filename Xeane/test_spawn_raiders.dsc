@@ -13,6 +13,18 @@ test_spawn_blood_raiders_flag_projectile:
   script:
     - flag <context.entity> on_hit_block:test_spawn_blood_raiders
 
+test_spawn_blood_raiders_split:
+  type: task
+  debug: false
+  script:
+    - define locations <context.location.find_spawnable_blocks_within[20].random[3]>
+    - foreach <[locations]>:
+      - define curve<[loop_index]> <proc[define_curve1].context[<context.location>|<[value]>|5|90|0.5]>
+    - repeat <[curve1].size>:
+      - playeffect effect:redstone quantity:5 special_data:10|#660000 offset:0.2 at:<[curve1].get[<[loop_index]>]>|<[curve2].get[<[loop_index]>]>|<[curve3].get[<[loop_index]>]> targets:<server.online_players>
+    - foreach <[location]>:
+      - run test_spawn_blood_raiders def:<[value]>|<[value].above[20]>
+
 test_spawn_blood_raiders:
   type: task
   debug: false
