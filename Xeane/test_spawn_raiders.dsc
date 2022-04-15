@@ -22,8 +22,8 @@ test_spawn_blood_raiders_task:
   debug: false
   definitions: location
   script:
-    - define spawn_at <[location].find_spawnable_blocks_within[20].random>
-    - define locations <proc[define_curve1].context[<[location]>|<[spawn_at]>|<util.random.int[5].to[15]>|<util.random.int[-180].to[180]>|0.8]>
+    - define spawn_at <[location].find_spawnable_blocks_within[25].random>
+    - define locations <proc[define_curve1].context[<[location]>|<[spawn_at]>|<util.random.int[5].to[15]>|<util.random.int[45].to[180]>|0.8]>
     - foreach <[locations]>:
       - playeffect redstone quantity:10 special_data:5|red offset:0.2 at:<[value]> targets:<server.online_players>
       - wait 2t
