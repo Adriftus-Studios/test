@@ -21,8 +21,6 @@ test_spawn_blood_raiders:
     - define start <context.location> if:<[start].exists.not>
     - define location <context.location.above[20]> if:<[location].exists.not>
     - define players <[start].find_players_within[100]>
-    - flag server test_spawn_blood_raiders_active
-    - run test_spawn_blood_raiders_biome_change def:<[location]>
     - foreach <[start].points_between[<[location]>].distance[0.5]>:
       - playeffect effect:redstone quantity:5 special_data:10|#660000 offset:0.2 at:<[value]> targets:<server.online_players>
       - wait 1t
@@ -175,44 +173,6 @@ test_spawn_blood_raider_remove:
     - if <server.flag[test_spawn_blood_raiders].is_empty>:
       - flag server test_spawn_blood_raiders:!
 
-test_spawn_blood_raiders_biome_change:
-  type: task
-  debug: false
-  script:
-    - define chunk <[location].chunk>
-    - define ox <[chunk].x>
-    - define oz <[chunk].z>
-    - repeat 11 as:x:
-      - define tx <[oz].sub[<[x].sub[6]>]>
-      - repeat 11 as:z:
-        - define tz <[oz].sub[<[z].sub[6]>]>
-        - if !<chunk[<[x]>,<[tz]>,<[chunk].world>].is_loaded>:
-          - chunkload <chunk[<[x]>,<[tz]>,<[chunk].world>]> duration:10s
-        - foreach <chunk[<[x]>,<[tz]>,<[chunk].world>].cuboid.blocks[air].filter[y.is_less_than[<[location].y.add[30]>]]>:
-          - flag <[value]> test_spawn_blood_raiders_biome:<[value].biome>
-          - if <[loop_index].mod[30]> == 0:
-            - wait 1t
-        - foreach <chunk[<[x]>,<[tz]>,<[chunk].world>].cuboid.blocks[air].filter[y.is_less_than[<[location].y.add[30]>]]>:
-          - adjust <[value]> biome:forest
-          - if <[loop_index].mod[30]> == 0:
-            - wait 1t
-        - foreach <chunk[<[x]>,<[tz]>,<[chunk].world>]>:
-          - adjust <[chunk]> refresh_chunk
-    - waituntil <server.has_flag[test_spawn_blood_raiders_active].not> rate:1s
-    - repeat 11 as:x:
-      - define tx <[oz].sub[<[x].sub[6]>]>
-      - repeat 11 as:z:
-        - define tz <[oz].sub[<[z].sub[6]>]>
-        - if !<chunk[<[x]>,<[tz]>,<[chunk].world>].is_loaded>:
-          - chunkload <chunk[<[x]>,<[tz]>,<[chunk].world>]> duration:10s
-        - foreach <chunk[<[x]>,<[tz]>,<[chunk].world>].cuboid.blocks[air].filter[y.is_less_than[<[location].y.add[30]>]]>:
-          - adjust <[value]> biome:<[value].flag[test_spawn_blood_raiders_biome]>
-          - flag <[value]> test_spawn_blood_raiders_biome:!
-          - if <[loop_index].mod[30]> == 0:
-            - wait 1t
-        - foreach <chunk[<[x]>,<[tz]>,<[chunk].world>]>:
-          - adjust <[chunk]> refresh_chunk
-
 test_spawn_blood_raider_update_name:
   type: task
   debug: false
@@ -224,4 +184,4 @@ test_spawn_blood_raider_boss_death:
   type: task
   debug: false
   script:
-    - flag server test_spawn_blood_raiders_active:!
+    - announce "<&c>BOSS DEAD - SPAWN ENCHANTS (PLACEHOLDER)"
