@@ -14,7 +14,7 @@ impl_skill_steal:
   - "true"
 
   # Cooldown
-  cooldown: 5s
+  cooldown: 1m
 
   # Task Script to bee run when the ability is used successfully
   # This Task Script MUST be within this file, as with any code associated with this skill
