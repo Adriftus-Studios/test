@@ -64,14 +64,8 @@ test_spawn_blood_raiders:
     - repeat 40:
         - playeffect effect:redstone quantity:40 special_data:10|#660000 offset:0.7 at:<[location]> targets:<server.online_players>
         - wait 2t
-    - while <server.has_flag[test_spawn_blood_raiders]>:
-      - playeffect effect:redstone quantity:40 special_data:10|#660000 offset:0.7 at:<[location]> targets:<server.online_players>
-      - wait 4t
-      - repeat 5:
-        - playeffect effect:redstone quantity:40 special_data:10|#660000 offset:0.7 at:<[location]> targets:<server.online_players>
-        - wait 2t
-      - define players <[location].find_players_within[60]>
-      - run test_spawn_blood_raiders_task3 def:<[location]>|<[players].random>
+    - define players <[location].find_players_within[60]>
+    - run test_spawn_blood_raiders_task3 def:<[location]>|<[players].random>
 
 
 test_spawn_blood_raiders_task:
