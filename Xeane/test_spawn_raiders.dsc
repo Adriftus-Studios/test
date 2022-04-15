@@ -52,6 +52,7 @@ test_spawn_blood_radier:
   debug: false
   entity_type: zombified_piglin
   mechanisms:
+    health_data: 200/200
     custom_name: <&c>Blood Raider
     custom_name_visible: true
   flags:
@@ -61,9 +62,6 @@ test_spawn_blood_raider_remove:
   type: task
   debug: false
   script:
-    - announce <context.entity>
-    - announce <server.flag[test_spawn_blood_raiders]>
     - flag server test_spawn_blood_raiders:<-:<context.entity>
     - if <server.flag[test_spawn_blood_raiders].is_empty>:
-      - announce "Flag Cleared"
       - flag server test_spawn_blood_raiders:!
