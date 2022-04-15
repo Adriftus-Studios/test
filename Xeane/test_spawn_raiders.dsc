@@ -2,7 +2,7 @@ test_spawn_blood_raiders:
   type: task
   debug: false
   script:
-    - define location <player.location.forward[20].above[15]>
+    - define location <player.location.forward[30].above[15]>
     - define players <player.location.find_players_within[100]>
     - foreach <proc[define_curve1].context[<player.location>|<[location]>|5|-90|0.5]>:
       - playeffect redstone quantity:10 special_data:10|red offset:0.2 at:<[value]> targets:<server.online_players>
