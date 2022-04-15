@@ -18,7 +18,7 @@ test_spawn_blood_raiders:
   debug: false
   definitions: start|location
   script:
-    - define start <context.entity.location> if:<[start].exists.not>
+    - define start <context.location> if:<[start].exists.not>
     - define location <context.entity.location.above[15]> if:<[location].exists.not>
     - define players <[start].find_players_within[100]>
     - foreach <[start].points_between[<[location]>].distance[0.5]>:
