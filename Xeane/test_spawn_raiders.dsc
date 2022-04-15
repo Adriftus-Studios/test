@@ -19,7 +19,7 @@ test_spawn_blood_raiders:
   definitions: start|location
   script:
     - define start <context.location> if:<[start].exists.not>
-    - define location <context.entity.location.above[15]> if:<[location].exists.not>
+    - define location <context.location.above[15]> if:<[location].exists.not>
     - define players <[start].find_players_within[100]>
     - foreach <[start].points_between[<[location]>].distance[0.5]>:
       - playeffect effect:redstone quantity:5 special_data:10|#660000 offset:0.2 at:<[value]> targets:<server.online_players>
@@ -52,7 +52,7 @@ test_spawn_blood_raiders_task:
       - wait 2t
     - spawn test_spawn_blood_radier <[spawn_at]> target:<[target_player]> save:ent
     - flag server test_spawn_blood_raiders:->:<entry[ent].spawned_entity>
-    - adjust <entry[ent].spawned_entity> "custom_name:<entry[ent].parsed_key.script.data_key[mechanisms.custom_name]> <entry[ent].spawned_entity.health_data>"
+    - adjust <entry[ent].spawned_entity> "custom_name:<entry[ent].spawned_entity.script.parsed_key[mechanisms.custom_name]> <entry[ent].spawned_entity.health_data>"
 
 test_spawn_blood_raider_particles:
   type: task
