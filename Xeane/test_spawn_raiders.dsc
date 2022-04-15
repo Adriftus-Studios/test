@@ -11,7 +11,7 @@ test_spawn_blood_raiders_flag_projectile:
   type: task
   debug: false
   script:
-    - flag <context.entity> on_hit_block:test_spawn_blood_raiders
+    - flag <context.entity> on_hit_block:test_spawn_blood_raiders_split
 
 test_spawn_blood_raiders_split:
   type: task
