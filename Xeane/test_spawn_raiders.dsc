@@ -21,8 +21,8 @@ test_spawn_blood_raiders:
     - define start <context.entity.location> if:<[start].exists.not>
     - define location <context.entity.location.above[15]> if:<[location].exists.not>
     - define players <[start].find_players_within[100]>
-    - foreach <proc[define_curve1].context[<[start]>|<[location]>|4|-90|0.5]>:
-      - playeffect effect:redstone quantity:10 special_data:10|#660000 offset:0.2 at:<[value]> targets:<server.online_players>
+    - foreach <[start].points_between[<[location]>].distance[0.5]>:
+      - playeffect effect:redstone quantity:5 special_data:10|#660000 offset:0.2 at:<[value]> targets:<server.online_players>
       - wait 1t
     - repeat 80:
       - playeffect effect:redstone quantity:40 special_data:10|#660000 offset:0.7 at:<[location]> targets:<server.online_players>
