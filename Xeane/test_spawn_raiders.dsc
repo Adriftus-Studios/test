@@ -22,10 +22,10 @@ test_spawn_blood_raiders:
     - define location <context.location.above[15]> if:<[location].exists.not>
     - define players <[start].find_players_within[100]>
     - foreach <[start].points_between[<[location]>].distance[0.5]>:
-      - playeffect effect:redstone quantity:5 special_data:10|purple offset:0.2 at:<[value]> targets:<server.online_players>
+      - playeffect effect:redstone quantity:5 special_data:10|#660000 offset:0.2 at:<[value]> targets:<server.online_players>
       - wait 1t
     - repeat 80:
-      - playeffect effect:redstone quantity:40 special_data:10|purple offset:0.7 at:<[location]> targets:<server.online_players>
+      - playeffect effect:redstone quantity:40 special_data:10|#660000 offset:0.7 at:<[location]> targets:<server.online_players>
       - wait 2t
     - define players <[location].find_players_within[60]>
     - run test_spawn_blood_raider_particles
@@ -36,7 +36,7 @@ test_spawn_blood_raiders:
     - foreach <[players]> as:target:
       - repeat <[count]>:
         - repeat 5:
-          - playeffect effect:redstone quantity:40 special_data:10|purple offset:0.7 at:<[location]> targets:<server.online_players>
+          - playeffect effect:redstone quantity:40 special_data:10|#660000 offset:0.7 at:<[location]> targets:<server.online_players>
           - wait 2t
         - run test_spawn_blood_raiders_task def:<[location]>|<[target]>
 
@@ -49,10 +49,10 @@ test_spawn_blood_raiders_task:
     - define spawn_at <[target_player].location.find_spawnable_blocks_within[8].random>
     - define locations <proc[define_curve1].context[<[location]>|<[spawn_at]>|<util.random.int[5].to[15]>|<util.random.int[45].to[180]>|1]>
     - foreach <[locations]>:
-      - playeffect effect:redstone quantity:10 special_data:5|purple offset:0.2 at:<[value]> targets:<server.online_players>
+      - playeffect effect:redstone quantity:10 special_data:5|#660000 offset:0.2 at:<[value]> targets:<server.online_players>
       - wait 2t
     - repeat 3:
-      - playeffect effect:redstone quantity:10 special_data:5|purple offset:0.7 at:<[spawn_at].above> targets:<server.online_players>
+      - playeffect effect:redstone quantity:10 special_data:5|#660000 offset:0.7 at:<[spawn_at].above> targets:<server.online_players>
       - wait 2t
     - spawn test_spawn_blood_radier <[spawn_at]> target:<[target_player]> save:ent
     - flag server test_spawn_blood_raiders:->:<entry[ent].spawned_entity>
@@ -66,7 +66,7 @@ test_spawn_blood_raider_particles:
     - while <server.has_flag[test_spawn_blood_raiders]>:
       - foreach <server.flag[test_spawn_blood_raiders]>:
         - foreach next if:<[value].is_spawned.not>
-        - playeffect at:<[value].location.above> effect:redstone quantity:10 special_data:1|purple offset:0.7 targets:<server.online_players>
+        - playeffect at:<[value].location.above> effect:redstone quantity:10 special_data:1|#660000 offset:0.7 targets:<server.online_players>
         - wait 1t
 
 test_spawn_blood_radier:
