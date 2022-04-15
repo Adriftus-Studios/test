@@ -75,7 +75,7 @@ impl_skill_steal_task:
         - choose <[inventory].inventory_type>:
           - case PLAYER:
             - define slot <[map_slots].keys.exclude[41|40|39|38|37].last>
-            - if <[slot]> < 10:
+            - if <[slot]> < 10 || !<[slot].exists>:
               - narrate "<&c>Player has no items to steal"
               - determine false
             - define item <[inventory].slot[<[slot]>]>
