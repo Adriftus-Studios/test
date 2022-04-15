@@ -5,7 +5,7 @@ test_spawn_blood_crystal:
   mechanisms:
     cutsom_model_data: 1
   flags:
-    on_projectile_launched: 
+    on_projectile_launched: test_spawn_blood_raiders_flag_projectile
 
 test_spawn_blood_raiders_flag_projectile:
   type: task
