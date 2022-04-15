@@ -15,3 +15,10 @@ saltusage:
     events:
         on player right clicks dirt with:salt_item:
             - flag <context.location> salt:<player>
+            - narrate "<green>Block Salted"
+
+saltremoval:
+    type: world
+    events:
+        on weather rains:
+        - flag server salt:!
