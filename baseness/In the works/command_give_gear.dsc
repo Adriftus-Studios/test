@@ -32,6 +32,7 @@ give_player_armor:
     tab completions:
         1: <script[gears_list].data_key[armors]>
         2: wear
+    #permission: adriftus.give.armor
     script:
         #Exclusion
         - if <context.args.get[1].equals[<script[gears_list].data_key[armors]>.not]> | <context.args.size.equals[0]> | <context.args.size.is_more_than[1]>:
@@ -52,7 +53,7 @@ give_player_armor:
             - narrate "You have received the <[material]> armor set!"
         - else if <context.args.get[2].equals[wear]>:
             - equip boots:<[boots]> chest:<[chest]> head:<[head]> legs:<[legs]>
-            - narrate "You have fully equipped the <[material]> armor set!"
+            - narrate "You have fully equipped the <[material].to_sentence_case> armor set!"
 #
 
 give_tool:
@@ -64,6 +65,7 @@ give_tool:
     tab completions:
         1: <script[gears_list].data_key[tools]>
         2: <script[gears_list].data_key[tool_material]>
+    #permission: adriftus.give.tool
     script:
         #Exclusion
         - if <context.args.get[1].equals[<script[gears_list].data_key[tools].not>]> | <context.args.get[2].equals[<script[gears_list].data_key[tool_material].not>]> | <context.args.size.equals[0]> | <context.args.size.is_more_than[1]>:
@@ -73,6 +75,7 @@ give_tool:
         - define material <context.args.get[2]>
         - define tool <context.args.get[1]>
         - give <[material]>_<[tool]>
+        - narrate "<yellow><bold>You have received a <[material].to_sentence_case> <[tool].to_sentence_case>."
 #
 
 give_crossbow:
@@ -81,8 +84,10 @@ give_crossbow:
     name: crossbow
     description: Gives the player a crossbow.
     usage: /crossbow
+    #permission: adriftus.give.crossbow
     script:
         - give crossbow
+        - narrate "<yellow><bold>You have received a bow."
 #
 
 give_bow:
@@ -91,6 +96,8 @@ give_bow:
     name: bow
     description: Gives the player a bow.
     usage: /bow
+    #permission: adriftus.give.bow
     script:
         - give bow
+        - narrate "<yellow><bold>You have received a bow."
 #
