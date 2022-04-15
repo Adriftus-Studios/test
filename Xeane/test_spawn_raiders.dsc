@@ -107,7 +107,7 @@ test_spawn_blood_raiders_task3:
   debug: false
   definitions: location|target_player
   script:
-    - define spawn_at <[location].sub[<[location].sub[<[target_player].location>].mul[0.25]>].highest.above>
+    - define spawn_at <[location].sub[<[location].sub[<[target_player].location>].mul[0.75]>].highest.above>
     - define locations <proc[define_curve1].context[<[location]>|<[spawn_at]>|5|90|1]>
     - foreach <[locations]>:
       - playeffect effect:redstone quantity:10 special_data:5|#660000 offset:0.7 at:<[value]> targets:<server.online_players>
@@ -146,7 +146,7 @@ test_spawn_blood_radier2:
   debug: false
   entity_type: zombified_piglin
   mechanisms:
-    health_data: 200/200
+    health_data: 500/500
     custom_name: <&c>Blood Raider2
     custom_name_visible: true
   flags:
@@ -158,8 +158,8 @@ test_spawn_blood_radier3:
   debug: false
   entity_type: zombified_piglin
   mechanisms:
-    health_data: 200/200
-    custom_name: <&c>Blood Raider2
+    health_data: 1000/1000
+    custom_name: <&c>Blood Raider3
     custom_name_visible: true
   flags:
     on_death: test_spawn_blood_raider_boss_death
