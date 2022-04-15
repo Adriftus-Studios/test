@@ -19,12 +19,14 @@ test_spawn_blood_raiders:
   definitions: start|location
   script:
     - define start <context.location> if:<[start].exists.not>
-    - define location <context.location.above[15]> if:<[location].exists.not>
+    - define location <context.location.above[20]> if:<[location].exists.not>
     - define players <[start].find_players_within[100]>
+    - flag server test_spawn_blood_raiders_active
+    - run test_spawn_blood_raiders_biome_change def:<[location]>
     - foreach <[start].points_between[<[location]>].distance[0.5]>:
       - playeffect effect:redstone quantity:5 special_data:10|#660000 offset:0.2 at:<[value]> targets:<server.online_players>
       - wait 1t
-    - repeat 80:
+    - repeat 100:
       - playeffect effect:redstone quantity:40 special_data:10|#660000 offset:0.7 at:<[location]> targets:<server.online_players>
       - wait 2t
     - define players <[location].find_players_within[60]>
@@ -116,7 +118,6 @@ test_spawn_blood_raiders_task3:
       - playeffect effect:redstone quantity:10 special_data:5|#660000 offset:0.7 at:<[spawn_at].above> targets:<server.online_players>
       - wait 2t
     - spawn test_spawn_blood_radier3 <[spawn_at]> target:<[target_player]> save:ent
-    - flag server test_spawn_blood_raiders:->:<entry[ent].spawned_entity>
     - adjust <entry[ent].spawned_entity> "custom_name:<entry[ent].spawned_entity.script.parsed_key[mechanisms.custom_name]> <entry[ent].spawned_entity.health_data>"
 
 test_spawn_blood_raider_particles:
@@ -163,7 +164,7 @@ test_spawn_blood_radier3:
     custom_name: <&c>Blood Raider2
     custom_name_visible: true
   flags:
-    on_death: test_spawn_blood_raider_remove
+    on_death: test_spawn_blood_raider_boss_death
     on_damaged: test_spawn_blood_raider_update_name
 
 test_spawn_blood_raider_remove:
@@ -174,9 +175,53 @@ test_spawn_blood_raider_remove:
     - if <server.flag[test_spawn_blood_raiders].is_empty>:
       - flag server test_spawn_blood_raiders:!
 
+test_spawn_blood_raiders_biome_change:
+  type: task
+  debug: false
+  script:
+    - define chunk <[location].chunk>
+    - define ox <[chunk].x>
+    - define oz <[chunk].z>
+    - repeat 11 as:x:
+      - define tx <[oz].sub[<[x].sub[6]>]>
+      - repeat 11 as:z:
+        - define tz <[oz].sub[<[z].sub[6]>]>
+        - if !<chunk[<[x]>,<[tz]>,<[chunk].world>].is_loaded>:
+          - chunkload <chunk[<[x]>,<[tz]>,<[chunk].world>]> duration:10s
+        - foreach <chunk[<[x]>,<[tz]>,<[chunk].world>].cuboid.blocks[air].filter[y.is_less_than[<[location].y.add[30]>]]>:
+          - flag <[value]> test_spawn_blood_raiders_biome:<[value].biome>
+          - if <[loop_index].mod[30]> == 0:
+            - wait 1t
+        - foreach <chunk[<[x]>,<[tz]>,<[chunk].world>].cuboid.blocks[air].filter[y.is_less_than[<[location].y.add[30]>]]>:
+          - adjust <[value]> biome:forest
+          - if <[loop_index].mod[30]> == 0:
+            - wait 1t
+        - foreach <chunk[<[x]>,<[tz]>,<[chunk].world>]>:
+          - adjust <[chunk]> refresh_chunk
+    - waituntil <server.has_flag[test_spawn_blood_raiders_active].not> rate:1s
+    - repeat 11 as:x:
+      - define tx <[oz].sub[<[x].sub[6]>]>
+      - repeat 11 as:z:
+        - define tz <[oz].sub[<[z].sub[6]>]>
+        - if !<chunk[<[x]>,<[tz]>,<[chunk].world>].is_loaded>:
+          - chunkload <chunk[<[x]>,<[tz]>,<[chunk].world>]> duration:10s
+        - foreach <chunk[<[x]>,<[tz]>,<[chunk].world>].cuboid.blocks[air].filter[y.is_less_than[<[location].y.add[30]>]]>:
+          - adjust <[value]> biome:<[value].flag[test_spawn_blood_raiders_biome]>
+          - flag <[value]> test_spawn_blood_raiders_biome:!
+          - if <[loop_index].mod[30]> == 0:
+            - wait 1t
+        - foreach <chunk[<[x]>,<[tz]>,<[chunk].world>]>:
+          - adjust <[chunk]> refresh_chunk
+
 test_spawn_blood_raider_update_name:
   type: task
   debug: false
   script:
     - wait 1t
     - adjust <context.entity> "custom_name:<context.entity.script.parsed_key[mechanisms.custom_name]> <context.entity.health.round>/<context.entity.health_max>"
+
+test_spawn_blood_raider_boss_death:
+  type: task
+  debug: false
+  script:
+    - flag server test_spawn_blood_raiders_active:!
