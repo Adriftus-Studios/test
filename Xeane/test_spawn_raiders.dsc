@@ -22,7 +22,7 @@ test_spawn_blood_raiders_split:
       - define curve<[loop_index]> <proc[define_curve1].context[<context.location>|<[value]>|5|90|0.5]>
     - repeat <[curve1].size>:
       - playeffect effect:redstone quantity:5 special_data:10|#660000 offset:0.2 at:<[curve1].get[<[loop_index]>]>|<[curve2].get[<[loop_index]>]>|<[curve3].get[<[loop_index]>]> targets:<server.online_players>
-    - foreach <[location]>:
+    - foreach <[locations]>:
       - run test_spawn_blood_raiders def:<[value]>|<[value].above[20]>
 
 test_spawn_blood_raiders:
