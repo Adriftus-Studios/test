@@ -35,6 +35,7 @@ test_spawn_blood_raiders_task:
       - wait 2t
     - spawn test_spawn_blood_radier <[spawn_at]> target:<[target_player]> save:ent
     - flag server test_spawn_blood_raiders:->:<entry[ent].spawned_entity>
+    - adjust <entry[ent].spawned_entity> "custom_name:<entry[ent].spawned_entity.script.data_key[mechanisms.custom_name]> <context.entity.health_data>"
 
 test_spawn_blood_raider_particles:
   type: task
@@ -57,6 +58,7 @@ test_spawn_blood_radier:
     custom_name_visible: true
   flags:
     on_death: test_spawn_blood_raider_remove
+    on_damaged: test_spawn_blood_raider_update_name
 
 test_spawn_blood_raider_remove:
   type: task
@@ -65,3 +67,10 @@ test_spawn_blood_raider_remove:
     - flag server test_spawn_blood_raiders:<-:<context.entity>
     - if <server.flag[test_spawn_blood_raiders].is_empty>:
       - flag server test_spawn_blood_raiders:!
+
+test_spawn_blood_raider_update_name:
+  type: task
+  debug: false
+  script:
+    - wait 1t
+    - adjust <context.entity> "custom_name:<context.entity.script.data_key[mechanisms.custom_name]> <context.entity.health_data>"
