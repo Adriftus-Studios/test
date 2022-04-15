@@ -2,9 +2,9 @@ test_spawn_blood_raiders:
   type: task
   debug: false
   script:
-    - define location <player.location.forward[30].above[15]>
+    - define location <player.location.forward_flat[30].above[15]>
     - define players <player.location.find_players_within[100]>
-    - foreach <proc[define_curve1].context[<player.location>|<[location]>|2|-90|0.5]>:
+    - foreach <proc[define_curve1].context[<player.location>|<[location]>|4|-90|0.5]>:
       - playeffect redstone quantity:10 special_data:10|red offset:0.2 at:<[value]> targets:<server.online_players>
       - wait 1t
     - repeat 80:
@@ -15,7 +15,7 @@ test_spawn_blood_raiders:
       - repeat 2:
         - repeat 5:
           - playeffect redstone quantity:40 special_data:10|red offset:0.7 at:<[location]> targets:<server.online_players>
-          - wait 1t
+          - wait 2t
         - run test_spawn_blood_raiders_task def:<[location]>|<[target]>
 
 
@@ -25,7 +25,7 @@ test_spawn_blood_raiders_task:
   definitions: location|target_player
   script:
     - define spawn_at <[target_player].location.find_spawnable_blocks_within[8].random>
-    - define locations <proc[define_curve1].context[<[location]>|<[spawn_at]>|<util.random.int[5].to[15]>|<util.random.int[45].to[180]>|0.8]>
+    - define locations <proc[define_curve1].context[<[location]>|<[spawn_at]>|<util.random.int[5].to[15]>|<util.random.int[45].to[180]>|1]>
     - foreach <[locations]>:
       - playeffect redstone quantity:10 special_data:5|red offset:0.2 at:<[value]> targets:<server.online_players>
       - wait 2t
