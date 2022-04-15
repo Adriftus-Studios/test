@@ -75,7 +75,7 @@ test_spawn_blood_raiders_task2:
   debug: false
   definitions: location|target_player
   script:
-    - define spawn_at <[location].add[<[location].sub[<[target_player].location>].mul[0.5]>].highest>
+    - define spawn_at <[location].sub[<[location].sub[<[target_player].location>].mul[0.5]>].highest>
     - define locations <proc[define_curve1].context[<[location]>|<[spawn_at]>|<util.random.int[5].to[15]>|<util.random.int[45].to[180]>|1]>
     - foreach <[locations]>:
       - playeffect effect:redstone quantity:10 special_data:5|#660000 offset:0.2 at:<[value]> targets:<server.online_players>
