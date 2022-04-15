@@ -90,7 +90,7 @@ test_spawn_blood_raiders_task2:
   debug: false
   definitions: location|target_player
   script:
-    - define spawn_at <[location].sub[<[location].sub[<[target_player].location>].mul[0.5]>].highest.above>
+    - define spawn_at <[location].sub[<[location].sub[<[target_player].location>].mul[0.8]>].highest.above>
     - define locations <proc[define_curve1].context[<[location]>|<[spawn_at]>|<util.random.int[5].to[15]>|<util.random.int[45].to[180]>|1]>
     - foreach <[locations]>:
       - playeffect effect:redstone quantity:10 special_data:5|#660000 offset:0.2 at:<[value]> targets:<server.online_players>
@@ -107,8 +107,8 @@ test_spawn_blood_raiders_task3:
   debug: false
   definitions: location|target_player
   script:
-    - define spawn_at <[location].sub[<[location].sub[<[target_player].location>].mul[0.1]>].highest.above>
-    - define locations <proc[define_curve1].context[<[location]>|<[spawn_at]>|<util.random.int[5].to[15]>|<util.random.int[45].to[180]>|1]>
+    - define spawn_at <[location].sub[<[location].sub[<[target_player].location>].mul[0.25]>].highest.above>
+    - define locations <proc[define_curve1].context[<[location]>|<[spawn_at]>|5|90|1]>
     - foreach <[locations]>:
       - playeffect effect:redstone quantity:10 special_data:5|#660000 offset:0.7 at:<[value]> targets:<server.online_players>
       - wait 2t
