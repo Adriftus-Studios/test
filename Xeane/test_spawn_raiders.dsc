@@ -18,7 +18,7 @@ test_spawn_blood_raiders:
   debug: false
   definitions: location
   script:
-    - define location <context.entity.location> if:<[location].exists.not>
+    - define location <context.entity.location.above[15]> if:<[location].exists.not>
     - define players <player.location.find_players_within[100]>
     - foreach <proc[define_curve1].context[<player.location>|<[location]>|4|-90|0.5]>:
       - playeffect effect:redstone quantity:10 special_data:10|#660000 offset:0.2 at:<[value]> targets:<server.online_players>
