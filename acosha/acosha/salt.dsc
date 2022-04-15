@@ -22,3 +22,14 @@ saltremoval:
     events:
         on weather rains:
         - flag server salt:!
+
+saltobtain:
+    type: world
+    events:
+        on player breaks stone:
+         - define chance <util.random.int[1].to[15]>
+         - choose  <[chance]>:
+                - case 1:
+                    - drop salt_item
+                - default:
+                    - stop
