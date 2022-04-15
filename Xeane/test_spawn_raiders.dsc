@@ -1,0 +1,36 @@
+test_spawn_blood_raiders:
+  type: task
+  debug: false
+  script:
+    - define location <player.location.above[15]>
+    - define players <player.location.find_players_within[100]>
+    - foreach <player.location.points_between[<[location]>].distance[0.5]>:
+      - playeffect redstone quantity:10 special_data:10|red offset:0.2 at:<[value]>
+      - wait 2t
+    - repeat 120:
+      - playeffect redstone quantity:40 special_data:10|red offset:0.7 at:<[location]>
+      - wait 2t
+    - repeat <server.online_players.size>:
+      - repeat 20:
+        - playeffect redstone quantity:40 special_data:10|red offset:0.7 at:<[location]>
+        - wait 2t
+      - run test_spawn_blood_raiders_task def:<[location]>
+
+
+test_spawn_blood_raiders_task:
+  type: task
+  debug: false
+  definitions: location
+  script:
+    - define spawn_at <[location].find_spawnable_blocks_within[20].random>
+    - define locations <proc[define_curve1].context[<[location]>|<[spawn_at]>|1|45|0.5]>
+    - foreach <[locations]>:
+      - playeffect redstone quantity:10 special_data:10|red offset:0.2 at:<[value]>
+      - wait 2t
+    - spawn test_spawn_blood_radier <[spawn_at]>
+
+test_spawn_blood_radier:
+  type: entity
+  debug: false
+  custom_name: <&c>Blood Raider
+  custom_name_visible: true
