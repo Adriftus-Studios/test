@@ -3,7 +3,7 @@ test_spawn_blood_crystal:
   debug: false
   material: snowball
   mechanisms:
-    cutsom_model_data: 1
+    custom_model_data: 1
   flags:
     on_projectile_launched: test_spawn_blood_raiders_flag_projectile
 
@@ -16,11 +16,12 @@ test_spawn_blood_raiders_flag_projectile:
 test_spawn_blood_raiders:
   type: task
   debug: false
-  definitions: location
+  definitions: start|location
   script:
+    - define start <context.entity.location> if:<[start].exists.not>
     - define location <context.entity.location.above[15]> if:<[location].exists.not>
-    - define players <player.location.find_players_within[100]>
-    - foreach <proc[define_curve1].context[<player.location>|<[location]>|4|-90|0.5]>:
+    - define players <[start].find_players_within[100]>
+    - foreach <proc[define_curve1].context[<[start]>|<[location]>|4|-90|0.5]>:
       - playeffect effect:redstone quantity:10 special_data:10|#660000 offset:0.2 at:<[value]> targets:<server.online_players>
       - wait 1t
     - repeat 80:
