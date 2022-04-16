@@ -9,9 +9,9 @@ grass_seed:
     hides: all
     custom_model_data: 694200
     can_place_on:
-    - dirt
-    - grass
-    - grass_block
+        - dirt
+        - grass
+        - grass_block
 
 grass_seed_world:
     type: world
