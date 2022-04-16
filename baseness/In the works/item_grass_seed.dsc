@@ -1,10 +1,17 @@
 grass_seed:
-    type: item
-    debug: false
-    material: wheat_seeds
-    display name: Grass seed
-    lore:
-        - idek lol
+  type: item
+  debug: false
+  material: wheat_seeds
+  display name: <&1><&l>Grass Seed
+  lore:
+  - "<&e>Right click <&6> to grow grass"
+  mechanisms:
+    hides: all
+    custom_model_data: 694200
+    can_place_on:
+    - dirt
+    - grass
+    - grass_block
 
 grass_seed_world:
     type: world
