@@ -30,3 +30,4 @@ chair_sit_events:
             - adjust <[point]> passenger:<player>
 # - Made by AJ
 # - To be tweaked into a sit command for a block below me
+# - Hide arrow

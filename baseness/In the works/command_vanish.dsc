@@ -16,4 +16,4 @@ vanish:
         - else if !<player.has_flag[poof]>:
             - adjust <player> show_to_players
             - narrate <gray><bold>Unpoofed.
-#
+#Speeding smoke effect?
