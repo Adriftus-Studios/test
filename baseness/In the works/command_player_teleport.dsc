@@ -8,12 +8,10 @@ player_teleport:
         - tp
     tab completions:
         1: <server.online_players.parse[name]>|coordinates
-        2: <server.online_players.parse[name]>
+        2: <server.online_players.parse[name]> if:<context.args.get[1].equals[coordinates].not>
     tab complete:
         - if <server.online_players.parse[name].contains[<context.args.get[1]>]>:
             - determine <list[<server.online_players.parse[name]>|<server.online_players.parse[name]>]>
-        - else if <context.args.get[1].contains[coordinates]>:
-            - determine <list[coordinates|x|y|z]>
     script:
         - if <context.args.size> == 0:
             - narrate "<red><bold>Please enter a player's name."
