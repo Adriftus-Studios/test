@@ -2,6 +2,8 @@ early_herocraft_reset_porkchop_task:
   type: task
   debug: false
   script:
+    - if !<context.entity.framed_item.exists>:
+      - determine cancelled
     - flag <context.entity> last_broken:<util.time_now>
     - wait 5m
     - if <context.entity.is_spawned>:
