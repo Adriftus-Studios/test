@@ -1,4 +1,4 @@
-chair_sit_events:
+aj_chair_sit_events:
   type: world
   debug: false
   data:
@@ -18,8 +18,11 @@ chair_sit_events:
     - stop if:<context.location.material.name.ends_with[stairs].not.if_null[true]>
     - stop if:<context.location.material.half.equals[BOTTOM].not>
     - stop if:<player.is_sneaking>
+    - stop if:<context.location.above[1].material.name.ends_with[air].not>
+    - ratelimit 5t <player>_<context.location> if:<player.has_permission[admin].not>
     - determine passively cancelled
     - if <player.is_inside_vehicle>:
+      - flag <player.vehicle> aj.is.a.good.dev
       - adjust <player.vehicle> passengers:<list[]>
       - wait 1t
     - spawn armor_stand <context.location.center.below[1.5]> save:mount_point
@@ -32,7 +35,7 @@ chair_sit_events:
     - adjust <[point]> passenger:<player>
     after player exits vehicle:
     - stop if:<context.vehicle.has_flag[sit.offset].not>
-    - teleport <player> <context.vehicle.location.sub[<context.vehicle.flag[sit.offset]>].with_yaw[<player.location.yaw>].with_pitch[<player.location.pitch>]>
+    - teleport <player> <context.vehicle.location.sub[<context.vehicle.flag[sit.offset]>].with_yaw[<player.location.yaw>].with_pitch[<player.location.pitch>]> if:<context.vehicle.has_flag[aj.is.a.good.dev].not>
     - adjust <context.vehicle> passengers:<list[]>
     - remove <context.vehicle>
     on player kicked for flying:

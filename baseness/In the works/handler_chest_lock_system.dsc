@@ -10,7 +10,7 @@ chest_lock_system:
     type: world
     debug: false
     events:
-        on player right clicks chest|trapped_chest|barrel with:chestLockItem:
+        on player right clicks chest|trapped_chest|barrel with:chest_lock_item:
             - determine passively cancelled
             - if <context.location.has_flag[locked_chest]>:
                 - narrate "This chest is already locked."
