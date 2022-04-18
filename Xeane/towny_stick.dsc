@@ -139,12 +139,15 @@ towny_plot_assign:
   type: task
   debug: false
   script:
+    - if !<context.location.has_town> || <context.location.town> && <player.town>:
+      - narrate "<&c>This plot is not claimed by your town"
     - define start <player.location>
     - define chunk <context.inventory.slot[5].flag[chunk]>
     - choose <context.item.flag[plot_type]>:
       - case default:
         - teleport <player> <[chunk].cuboid.center>
         - execute as_player "plot set default"
+        - execute as_player "plot evict"
         - teleport <player> <[start]>
       - case shop:
         - teleport <player> <[chunk].cuboid.center>
