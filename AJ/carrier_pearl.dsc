@@ -17,7 +17,4 @@ item_carrier_pearl_events:
     - stop if:<context.entity.shooter.is_player.not.if_null[true]>
     - stop if:<context.entity.shooter.is_inside_vehicle>
     - adjust <context.entity> passenger:<context.entity.shooter>
-    - flag <context.entity> carrier_pearl
-    after player exits vehicle:
-    - if <context.vehicle.has_flag[carrier_pearl]>:
-      - remove <context.vehicle>
+    - flag <context.entity> on_dismount:->:cancel
