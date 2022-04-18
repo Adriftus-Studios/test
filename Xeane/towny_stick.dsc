@@ -20,6 +20,9 @@ towny_horrible_things:
     - if <context.entity.has_town>:
       - narrate "<&c>Player has town."
       - determine cancelled
+    - if !<context.damager.has_town>:
+      - narrate "<&c>You has not town."
+      - determine cancelled
     - if <util.random_chance[5]>:
       - repeat 10:
         - playeffect effect:totem offset:0.5 at:<context.entity.eye_location.above> quantity:10
@@ -133,6 +136,7 @@ towny_plot_menu:
       - jail
       - shop
   script:
+    - stop if:<context.location.exists.not>
     - define inventory <inventory[towny_plot_inventory]>
     - define chunk <context.location.chunk>
     - inventory set slot:5 o:<item[grass_block].with[display=<[chunk]>;flag=chunk:<[chunk]>]> d:<[inventory]>
