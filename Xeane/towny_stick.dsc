@@ -37,8 +37,8 @@ towny_plot_inventory:
   title: <&a>Towny Plot Menu
   gui: true
   slots:
-    - [stndard_filler] [stndard_filler] [stndard_filler] [stndard_filler] [] [stndard_filler] [stndard_filler] [stndard_filler] [stndard_filler]
-    - [stndard_filler] [stndard_filler] [stndard_filler] [stndard_filler] [stndard_filler] [stndard_filler] [stndard_filler] [stndard_filler] [stndard_filler]
+    - [standard_filler] [standard_filler] [standard_filler] [standard_filler] [] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
+    - [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
     - [towny_plot_residential_item] [towny_plot_arena_item] [towny_plot_farm_item] [] [towny_plot_default_item] [] [towny_plot_inn_item] [towny_plot_jail_item] [towny_plot_shop_item]
 
 towny_plot_residential_item:
@@ -168,7 +168,7 @@ towny_plot_assign:
         - teleport <player> <[start]>
       - case residential:
         - flag player towny_stick_chunk:<[chunk]>
-        - run target_players_open def:towny_set_player_plot|<list_single[<player.town.residents>]>
+        - run target_players_open def.callback:towny_set_player_plot def.list:<player.town.residents>
 
 towny_set_player_plot:
   type: task
