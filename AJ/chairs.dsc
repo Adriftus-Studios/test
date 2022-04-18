@@ -1,4 +1,4 @@
-chair_sit_events:
+aj_chair_sit_events:
   type: world
   debug: false
   data:
@@ -18,8 +18,7 @@ chair_sit_events:
     - stop if:<context.location.material.name.ends_with[stairs].not.if_null[true]>
     - stop if:<context.location.material.half.equals[BOTTOM].not>
     - stop if:<player.is_sneaking>
-    - if <context.location.above[1].material.name.ends_with[air].not>:
-      - stop
+    - stop if:<context.location.above[1].material.name.ends_with[air].not>
     - narrate test
     - ratelimit 5t <player>_<context.location> if:<player.has_permission[admin].not>
     - determine passively cancelled
