@@ -168,7 +168,7 @@ towny_plot_assign:
         - teleport <player> <[start]>
       - case residential:
         - flag player towny_stick_chunk:<[chunk]>
-        - run target_players_open def.callback:towny_set_player_plot def.list:<player.town.residents>
+        - run target_players_open def.callback:towny_set_player_plot def.list:<list_single[<player.town.residents>]>
 
 towny_set_player_plot:
   type: task
