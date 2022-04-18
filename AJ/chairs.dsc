@@ -19,7 +19,6 @@ aj_chair_sit_events:
     - stop if:<context.location.material.half.equals[BOTTOM].not>
     - stop if:<player.is_sneaking>
     - stop if:<context.location.above[1].material.name.ends_with[air].not>
-    - narrate test
     - ratelimit 5t <player>_<context.location> if:<player.has_permission[admin].not>
     - determine passively cancelled
     - if <player.is_inside_vehicle>:
