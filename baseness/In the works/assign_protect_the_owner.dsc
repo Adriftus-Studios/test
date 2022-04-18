@@ -8,4 +8,6 @@ protect_the_owner:
             - if <context.entity> == <npc.owner>:
                 - look <context.attacker>
                 - attack <context.attacker>
+        on entity death:
+            - attack <context.attacker> cancel
 #
