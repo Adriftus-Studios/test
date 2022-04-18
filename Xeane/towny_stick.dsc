@@ -109,8 +109,8 @@ towny_plot_shop_item:
 
 towny_plot_default_item:
   type: item
-  material: diamond_sword
-  display name: <&c>Arena
+  material: grass_block
+  display name: <&7>Default
   lore:
     - "<&e>Set chunk to Default type"
     - "<&7>Basic plot type"
@@ -175,8 +175,9 @@ towny_set_player_plot:
   debug: false
   definitions: target
   script:
+    - define chunk <player.flag[towny_stick_chunk]>
     - define start <player.location>
-    - teleport <player> <[chunk].center>
+    - teleport <player> <[chunk].cuboid.center>
     - execute as_op "ta plot claim <[target].name>"
     - teleport <player> <[start]>
     - flag player towny_stick_chunk:!
