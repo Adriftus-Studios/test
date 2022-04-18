@@ -132,7 +132,7 @@ towny_plot_menu:
   script:
     - define inventory <inventory[towny_plot_inventory]>
     - define chunk <context.location.chunk>
-    - inventory set slot:5 o:<item[grass_block].with[display=<[chunk]>;flag=chunk:<[chunk]>]>
+    - inventory set slot:5 o:<item[grass_block].with[display=<[chunk]>;flag=chunk:<[chunk]>]> d:<[inventory]>
     - inventory open d:<[inventory]>
 
 towny_plot_assign:
