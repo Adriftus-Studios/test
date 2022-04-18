@@ -18,7 +18,7 @@ chair_sit_events:
     - stop if:<context.location.material.name.ends_with[stairs].not.if_null[true]>
     - stop if:<context.location.material.half.equals[BOTTOM].not>
     - stop if:<player.is_sneaking>
-    - stop if:<context.location.above.material.is_solid>
+    - stop if:<context.location.above[1].material.is_solid>
     - ratelimit 5t <player>_<context.location> if:<player.has_permission[admin].not>
     - determine passively cancelled
     - if <player.is_inside_vehicle>:
