@@ -17,6 +17,9 @@ towny_horrible_things:
   type: task
   debug: false
   script:
+    - if <context.entity.has_town>:
+      - narrate "<&c>Player has town."
+      - determine cancelled
     - if <util.random_chance[5]>:
       - repeat 10:
         - playeffect effect:totem offset:0.5 at:<context.entity.eye_location.above> quantity:10
