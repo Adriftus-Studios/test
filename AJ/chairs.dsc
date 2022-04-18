@@ -20,6 +20,7 @@ chair_sit_events:
     - stop if:<player.is_sneaking>
     - if <context.location.above[1].material.name.ends_with[air].not>:
       - stop
+    - narrate t
     - ratelimit 5t <player>_<context.location> if:<player.has_permission[admin].not>
     - determine passively cancelled
     - if <player.is_inside_vehicle>:
