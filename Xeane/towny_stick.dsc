@@ -141,27 +141,27 @@ towny_plot_assign:
     - define start <player.location>
     - choose <context.item.flag[plot_type]>:
       - case default:
-        - teleport <player> <context.chunk.center>
+        - teleport <player> <context.location.chunk.cuboid.center>
         - execute as_player "plot set default"
         - teleport <player> <[start]>
       - case shop:
-        - teleport <player> <context.chunk.center>
+        - teleport <player> <context.location.chunk.cuboid.center>
         - execute as_player "plot set shop"
         - teleport <player> <[start]>
       - case jail:
-        - teleport <player> <context.chunk.center>
+        - teleport <player> <context.location.chunk.cuboid.center>
         - execute as_player "plot set jail"
         - teleport <player> <[start]>
       - case inn:
-        - teleport <player> <context.chunk.center>
+        - teleport <player> <context.location.chunk.cuboid.center>
         - execute as_player "plot set inn"
         - teleport <player> <[start]>
       - case farm:
-        - teleport <player> <context.chunk.center>
+        - teleport <player> <context.location.chunk.cuboid.center>
         - execute as_player "plot set farm"
         - teleport <player> <[start]>
       - case arena:
-        - teleport <player> <context.chunk.center>
+        - teleport <player> <context.location.chunk.cuboid.center>
         - execute as_player "plot set arena"
         - teleport <player> <[start]>
       - case residential:
@@ -174,7 +174,7 @@ towny_set_player_plot:
   definitions: target
   script:
     - define start <player.location>
-    - teleport <player> <context.chunk.center>
+    - teleport <player> <context.location.chunk.center>
     - execute as_op "ta plot claim <[target].name>"
     - teleport <player> <[start]>
     - flag player towny_stick_chunk:!
