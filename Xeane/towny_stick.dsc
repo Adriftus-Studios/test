@@ -127,7 +127,7 @@ towny_plot_default_item:
 towny_plot_name_item:
   type: item
   material: name_tag
-  display name: <&c>Jail
+  display name: <&e>Rename Plot
   lore:
     - "<&e>Rename this plot"
   flags:
