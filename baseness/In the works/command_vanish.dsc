@@ -7,9 +7,9 @@ vanish:
     usage: /vanish
     script:
         - if !<player.has_flag[vanished]>:
-          - run unvanish_task
-        - else:
           - run vanish_task
+        - else:
+          - run unvanish_task
 
 vanish_task:
   type: task
