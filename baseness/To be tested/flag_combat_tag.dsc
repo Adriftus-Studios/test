@@ -13,7 +13,6 @@ combat_tag:
                 - narrate "<yellow><bold>You are no longer in combat."
         on player dies flagged:combat_tag:
             - flag <context.entity> combat_tag:!
-            - narrate "<yellow><bold>You are no longer in combat."
         on player quit flagged:combat_tag:
             #instant kill then forced respawn
             - kill <player>
