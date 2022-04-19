@@ -131,7 +131,7 @@ towny_plot_name_item:
   lore:
     - "<&e>Rename this plot"
   flags:
-    run_script: towny_rename_chunk
+    run_script: towny_rename_chunk_task
 
 towny_plot_menu:
   type: task
