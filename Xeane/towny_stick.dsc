@@ -205,7 +205,7 @@ towny_rename_chunk_task:
   type: task
   debug: false
   script:
-    - flag <player> rename_location:<context.location>
+    - flag <player> rename_location:<context.inventory.slot[5].flag[chunk].cuboid.center.location>
     - run anvil_gui_text_input "def: |<&e>Enter Plot Name|towny_rename_chunk"
 
 towny_rename_chunk:
