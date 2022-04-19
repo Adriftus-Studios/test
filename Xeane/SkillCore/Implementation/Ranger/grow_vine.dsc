@@ -70,7 +70,7 @@ impl_skill_grow_vine_task:
       - narrate "<&c>No room to grow vines here"
       - determine false
     - determine passively true
-    - define orientation <[location].sub[<[direction]>]>
+    - define orientation <[location].direction[<[location].sub[<[direction]>]>]>
     - modifyblock <[location]> vine[faces=<[orientation]>]
     - repeat 64:
       - define location <[location].below>
