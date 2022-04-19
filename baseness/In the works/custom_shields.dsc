@@ -42,7 +42,12 @@ gold_shield:
                 - air|gold_ingot|air
                 - gold_ingot|shield|gold_ingot
                 - air|gold_ingot|air
-# = Insert world script for gold shield
+gold_shield_world:
+    type: world
+    debug: false
+    events:
+        on player equips gold_shield:
+            - while <player.has_equipped[gold_shield]>
 
 diamond_shield:
     type: item
@@ -65,7 +70,13 @@ diamond_shield:
                 - air|diamond|air
                 - diamond|shield|diamond
                 - air|diamond|air
-# = Insert world script for diamond shield
+diamond_shield_effect:
+    type: world
+    debug: false
+    events:
+        on player equips diamond_shield:
+            - while <player.has_equipped[diamond_shield]>:
+                - adjust <player> walk_speed:0.9*<player.walk_speed>
 
 netherite_shield:
     type: item
@@ -88,4 +99,10 @@ netherite_shield:
                 - air|netherite_ingot|air
                 - netherite_ingot|shield|netherite_ingot
                 - air|netherite_ingot|air
-# = Insert world script for netherite shield
+netherite_shield_world:
+    type: world
+    debug: false
+    events:
+        on player equips netherite_shield:
+            - while <player.has_equipped[netherite_shield]>:
+                - adjust <player> speed:0.8*<player.speed>
