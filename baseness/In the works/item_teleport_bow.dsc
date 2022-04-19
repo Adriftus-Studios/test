@@ -12,4 +12,5 @@ teleporting_using_bow:
     type: world
     debug: false
     events:
-        on player shoots arrow:
+        on player shoots teleport_bow:
+            - teleport <player> <context.projectile.location>
