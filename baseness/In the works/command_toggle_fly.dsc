@@ -5,6 +5,7 @@ toggle_fly:
     description: Toggles fly mode.
     usage: /fly
     script:
-        - adjust <player> velocity:<location[0,1,0]>
+        - if <player.standing_on.material.is_solid>:
+            - adjust <player> velocity:<location[0,1,0]>
         - adjust <player> flying:true
 #

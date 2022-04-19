@@ -8,7 +8,7 @@ player_teleport:
         - tp
     tab completions:
         1: <server.online_players.parse[name]>|coordinates
-        2: <server.online_players.parse[name]> if:<context.args.get[1].equals[coordinates].not>
+        2: <server.online_players.parse[name]> if:!(<context.args.get[1]> == coordinates)
     tab complete:
         - if <server.online_players.parse[name].contains[<context.args.get[1]>]>:
             - determine <list[<server.online_players.parse[name]>|<server.online_players.parse[name]>]>
@@ -21,7 +21,7 @@ player_teleport:
             - narrate "Teleported <player.name> to <[player].name>" targets:<player>|<[player]>
         - if <context.args.get[1]> == <element[coordinates]>:
             - teleport <player> location:<location[<context.args.get[2]>,<context.args.get[3]>,<context.args.get[4]>,<player.world.name>]>
-        - if <context.args.get[1].equals[<player.name>]> && <context.args.get[2].equals[<player.name>]>:
+        - if <context.args.get[1]> == <player.name> && <context.args.get[2]> == <player.name>:
             - narrate "Bro did you just try to teleport to yourself"
         - if <context.args.size> == 2:
             - define player1 <server.match_player[<context.args.get[1]>]>

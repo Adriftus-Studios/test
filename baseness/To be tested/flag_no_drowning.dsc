@@ -3,6 +3,6 @@ no_drowning:
     debug: false
     events:
         after player changes air level:
-            - if <player.oxygen> < 20:
+            - while <player.oxygen> > 20:
                 - adjust <player> oxygen:<player.max_oxygen>
 #

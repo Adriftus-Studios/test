@@ -11,7 +11,7 @@ spawn_sheep:
     type: task
     debug: false
     script:
-        - if <player.location.forward_flat[2].equals[air].not>:
+        - if !(<player.location.forward_flat[2]> == air):
             - strike <player.location.forward_flat[2]> no_damage
             - spawn sheep <player.location.forward_flat[2]>
             - narrate "Sheep spawned!"

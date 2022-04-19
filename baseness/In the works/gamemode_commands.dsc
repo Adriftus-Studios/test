@@ -9,10 +9,10 @@ switch_gamemode_survival_creative:
     permissions: modelock.creative; modelock.survival;
     permission message: <red><bold>Access denied.
     script:
-        - if <player.gamemode.equals[CREATIVE]>:
+        - if <player.gamemode> == CREATIVE:
             - adjust <player> gamemode:survival
             - narrate "<yellow><bold><underline>Switched to Survival mode.<reset>"
-        - else if <player.gamemode.equals[SURVIVAL]>:
+        - else if <player.gamemode> == SURVIVAL:
             - adjust <player> gamemode:creative
             - narrate "<yellow><bold><underline>Switched to Creative mode.<reset>"
 
@@ -42,19 +42,19 @@ select_gamemode_callback:
     definitions: gamemode
     script:
         # - flag player callback:<[callback]>
-        - else if <[gamemode]> == <element[creative]> && <player.has_flag[callback]>:
+        - else if <[gamemode]> == creative && <player.has_flag[callback]>:
             - adjust <player> gamemode:creative
             - narrate "<green>You have switched to <bold><underline>Creative<reset><green> mode."
             - flag player callback:!
-        - else if <[gamemode]> == <element[survival]> && <player.has_flag[callback]>:
+        - else if <[gamemode]> == survival && <player.has_flag[callback]>:
             - adjust <player> gamemode:survival
             - narrate "<green>You have switched to <bold><underline>Survival<reset><green> mode."
             - flag player callback:!
-        - else if <[gamemode]> == <element[adventure]> && <player.has_flag[callback]>:
+        - else if <[gamemode]> == adventure && <player.has_flag[callback]>:
             - adjust <player> gamemode:adventure
             - narrate "<green>You have switched to <bold><underline>Adventure<reset><green> mode."
             - flag player callback:!
-        - else if <[gamemode]> == <element[spectator]> && <player.has_flag[callback]>:
+        - else if <[gamemode]> == spectator && <player.has_flag[callback]>:
             - adjust <player> gamemode:spectator
             - narrate "<green>You have switched to <bold><underline>Spectator<reset><green> mode."
             - flag player callback:!

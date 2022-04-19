@@ -18,11 +18,11 @@ set_difficulty:
     script:
         # Exclusions
         # Too little arguments
-        - if <context.args.size.is_less_than[1]>:
+        - if <context.args.size> < 1:
             - narrate "<red>Set the difficulty of the world (peaceful, easy, normal, hard)."
             - stop
         # Already set difficulty value
-        - else if <context.args.get[2].equals[<world[<context.args.get[1]>].difficulty>]>:
+        - else if <context.args.get[2]> == <world[<context.args.get[1]>].difficulty>:
             - narrate "<yellow><bold>Difficulty already set to <context.args.get[2]> in world [<context.args.get[1]>]!"
             - stop
         #Doesn't match either world name or difficulty name
@@ -30,7 +30,7 @@ set_difficulty:
             - narrate "<red>Invalid input!"
             - stop
         # Too many arguments
-        - else if <context.args.size.is_more_than[2]>:
+        - else if <context.args.size> > 2:
             - narrate "<red>Too many arguments!"
             - stop
         # Execution

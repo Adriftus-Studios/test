@@ -32,6 +32,7 @@ see_inventory_world:
                 - inventory adjust <context.item> slot:<player.held_item_slot>
         on player closes inventory flagged:seeing_inventory:
             - flag <player> seeingInventory:!
+            - inventory swap origin:<context.inventory> destination:<context.inventory>
 
 # Idea -
 #   - Displays inventory of any player, offline and online.
