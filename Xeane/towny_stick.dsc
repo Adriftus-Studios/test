@@ -44,6 +44,7 @@ towny_plot_inventory:
   gui: true
   slots:
     - [standard_filler] [standard_filler] [standard_filler] [standard_filler] [] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
+    - [standard_filler] [towny_plot_name_item] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
     - [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
     - [towny_plot_residential_item] [towny_plot_arena_item] [towny_plot_farm_item] [] [towny_plot_default_item] [] [towny_plot_inn_item] [towny_plot_jail_item] [towny_plot_shop_item]
 
@@ -124,6 +125,15 @@ towny_plot_default_item:
     plot_type: default
     run_script: towny_plot_assign
 
+towny_plot_name_item:
+  type: item
+  material: name_tag
+  display name: <&e>Rename Plot
+  lore:
+    - "<&e>Rename this plot"
+  flags:
+    run_script: towny_rename_chunk_task
+
 towny_plot_menu:
   type: task
   debug: false
@@ -137,6 +147,9 @@ towny_plot_menu:
       - shop
   script:
     - stop if:<context.location.exists.not>
+    - if !<context.location.has_town> || <context.location.town> != <player.town>:
+      - narrate "<&c>This plot is not claimed by your town"
+      - stop
     - define inventory <inventory[towny_plot_inventory]>
     - define chunk <context.location.chunk>
     - inventory set slot:5 o:<item[grass_block].with[display=<[chunk]>;flag=chunk:<[chunk]>]> d:<[inventory]>
@@ -146,8 +159,6 @@ towny_plot_assign:
   type: task
   debug: false
   script:
-    - if !<context.location.has_town> || <context.location.town> && <player.town>:
-      - narrate "<&c>This plot is not claimed by your town"
     - define start <player.location>
     - define chunk <context.inventory.slot[5].flag[chunk]>
     - choose <context.item.flag[plot_type]>:
@@ -191,3 +202,21 @@ towny_set_player_plot:
     - execute as_op "ta plot claim <[target].name>"
     - teleport <player> <[start]>
     - flag player towny_stick_chunk:!
+
+towny_rename_chunk_task:
+  type: task
+  debug: false
+  script:
+    - flag <player> rename_location:<context.inventory.slot[5].flag[chunk].cuboid.center>
+    - run anvil_gui_text_input "def:<&sp>|<&e>Enter Plot Name|towny_rename_chunk"
+
+towny_rename_chunk:
+  type: task
+  debug: false
+  definitions: name
+  script:
+    - define location <player.location>
+    - teleport <player> <player.flag[rename_location]>
+    - execute as_player "plot set name <[name]>"
+    - teleport <[location]>
+    - flag player rename_location:1
