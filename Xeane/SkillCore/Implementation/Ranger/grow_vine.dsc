@@ -63,12 +63,13 @@ impl_skill_grow_vine_task:
   script:
     - if !<[targets].material.name.advanced_matches_text[*leaves]>:
       - narrate "<&c>Invalid Target Block"
-      - stop
+      - determine false
     - define direction <player.eye_location.precise_impact_normal>
     - define location <player.cursor_on.add[<[direction]>]>
-    - if !<[location].material.name.advanced_matches_test[*air]>:
+    - if !<[location].material.name.advanced_matches_text[*air]>:
       - narrate "<&c>No room to grow vines here"
-      - stop
+      - determine false
+    - determine passively true
     - define orientation <[location].sub[<[direction]>]>
     - modifyblock <[location]> vine[faces=<[orientation]>]
     - repeat 64:
