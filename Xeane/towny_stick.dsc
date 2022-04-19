@@ -147,6 +147,8 @@ towny_plot_menu:
       - shop
   script:
     - stop if:<context.location.exists.not>
+    - if !<context.location.has_town> || <context.location.town> != <player.town>:
+      - narrate "<&c>This plot is not claimed by your town"
     - define inventory <inventory[towny_plot_inventory]>
     - define chunk <context.location.chunk>
     - inventory set slot:5 o:<item[grass_block].with[display=<[chunk]>;flag=chunk:<[chunk]>]> d:<[inventory]>
@@ -156,8 +158,6 @@ towny_plot_assign:
   type: task
   debug: false
   script:
-    - if !<context.location.has_town> || <context.location.town> != <player.town>:
-      - narrate "<&c>This plot is not claimed by your town"
     - define start <player.location>
     - define chunk <context.inventory.slot[5].flag[chunk]>
     - choose <context.item.flag[plot_type]>:
