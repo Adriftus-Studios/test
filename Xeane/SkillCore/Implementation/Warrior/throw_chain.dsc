@@ -62,13 +62,15 @@ impl_skill_throw_chain_task:
   debug: false
   definitions: targets
   script:
-    - shoot arrow speed:5 script:impl_skill_throw_chain_task_unfurl
+    - shoot arrow speed:5 save:proj
+    - flag <entry[proj].shot_entity> on_hit_block:impl_skill_throw_chain_task_unfurl
 
 impl_skill_throw_chain_task_unfurl:
   type: task
   debug: false
   definitions: location
   script:
+    - define location <context.location> if:<[location].exists.not>
     - if <[location].material.name> == air:
       - modifyblock <[location]> chain[direction=Y]
       - repeat 64:
