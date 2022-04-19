@@ -45,6 +45,7 @@ towny_plot_inventory:
   slots:
     - [standard_filler] [standard_filler] [standard_filler] [standard_filler] [] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
     - [standard_filler] [towny_plot_name_item] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
+    - [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
     - [towny_plot_residential_item] [towny_plot_arena_item] [towny_plot_farm_item] [] [towny_plot_default_item] [] [towny_plot_inn_item] [towny_plot_jail_item] [towny_plot_shop_item]
 
 towny_plot_residential_item:
@@ -155,7 +156,7 @@ towny_plot_assign:
   type: task
   debug: false
   script:
-    - if !<context.location.has_town> || <context.location.town> && <player.town>:
+    - if !<context.location.has_town> || <context.location.town> != <player.town>:
       - narrate "<&c>This plot is not claimed by your town"
     - define start <player.location>
     - define chunk <context.inventory.slot[5].flag[chunk]>
