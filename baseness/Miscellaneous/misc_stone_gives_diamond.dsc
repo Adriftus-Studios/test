@@ -3,8 +3,8 @@ stone_gives_diamond:
     debug: false
     events:
         after player breaks stone:
-        - flag player count:+:1
-        - if [count] == 10:
+        - flag <player> count:+:1
+        - if <player.flag[count]> == 10:
             - drop diamond <context.location>
-            - flag count 0
-#Appproved
+            - flag <player> count 0
+#Approved
