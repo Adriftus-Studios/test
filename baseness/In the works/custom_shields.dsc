@@ -72,7 +72,7 @@ diamond_shield:
                 - air|diamond|air
                 - diamond|shield|diamond
                 - air|diamond|air
-diamond_shield_effect:
+diamond_shield_world:
     type: world
     debug: false
     events:
