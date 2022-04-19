@@ -44,7 +44,7 @@ towny_plot_inventory:
   gui: true
   slots:
     - [standard_filler] [standard_filler] [standard_filler] [standard_filler] [] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
-    - [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
+    - [standard_filler] [towny_plot_name_item] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler] [standard_filler]
     - [towny_plot_residential_item] [towny_plot_arena_item] [towny_plot_farm_item] [] [towny_plot_default_item] [] [towny_plot_inn_item] [towny_plot_jail_item] [towny_plot_shop_item]
 
 towny_plot_residential_item:
