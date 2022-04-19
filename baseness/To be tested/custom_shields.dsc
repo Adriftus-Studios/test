@@ -61,7 +61,7 @@ diamond_shield:
         - idek lol
     mechanisms:
         hides: all
-        custom_model_data: 694202
+        custom_model_data: 694203
     recipes:
         1:
             type: shaped
@@ -91,7 +91,7 @@ netherite_shield:
         - idek lol
     mechanisms:
         hides: all
-        custom_model_data: 694202
+        custom_model_data: 694204
     recipes:
         1:
             type: shaped
@@ -107,10 +107,9 @@ netherite_shield_world:
     debug: false
     events:
         on player equips netherite_shield:
-            - flag <player> base_speed:<player.speed>
+            - flag <player> base_run_speed:<player.speed>
             - adjust <player> speed:0.8*<player.speed>
 
         on player unequips netherite_shield:
-            - adjust <player> speed:<player.flag[base_speed]>
-            - flag <player> base_speed:!
+            - adjust <player> speed:<player.flag[base_run_speed]>
 #

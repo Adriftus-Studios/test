@@ -7,6 +7,8 @@ support_bell:
         - Gives you food, fills your hunger bar and fully insta-heals you!
     enchantments:
         - sharpness:5
+    mechanisms:
+        custom_model_data: 694206
 magic_replenishing_bell:
     type: world
     debug: false
