@@ -12,5 +12,5 @@ teleporting_using_bow:
     type: world
     debug: false
     events:
-        on player shoots block with:teleport_bow:
-            - teleport <player> <context.projectile.location>
+        on arrow hits block:
+            - flag <context.item> on_hit_block:teleport
