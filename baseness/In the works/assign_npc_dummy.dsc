@@ -5,3 +5,4 @@ npc_dummy:
         on damage:
             - narrate <context.damage>
             - determine cancelled
+#
