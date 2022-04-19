@@ -8,7 +8,7 @@ combat_tag:
             - flag <context.damager>|<context.entity> combat_tag expire:30s
             - flag <context.entity> combat_tag expire:30s
             - narrate "<yellow><bold>You have been combat-tagged. Do not log out!" targets:<context.damager>|<context.entity>
-            - wait 30s
+            - waituntil !<player.has_flag[combat_tag]>
             - if !<player.has_flag[combat_tag]>:
                 - narrate "<yellow><bold>You are no longer in combat."
         on player dies flagged:combat_tag:
