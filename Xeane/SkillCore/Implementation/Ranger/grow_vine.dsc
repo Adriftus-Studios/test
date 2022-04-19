@@ -33,7 +33,7 @@ impl_skill_grow_vine:
   # these tags will be parsed to determine targets
   # Only available context is <player>
   targetting_tags:
-  - "<player.eye_location.precise_cursor_on[40].if_null[null]>"
+  - "<player.cursor_on[40].if_null[null]>"
 
   # Messages are parsed in the script, use tags for colors
   # Each script should make a list in this comment for available context
