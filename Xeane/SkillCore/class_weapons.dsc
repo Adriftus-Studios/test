@@ -197,7 +197,7 @@ class_weapon_add_skillTree:
     - if <server.has_flag[skills.trees.<[skillTree]>]>:
       - foreach <server.flag[skills.trees.<[skillTree]>].keys.exclude[script]> as:skill:
         - flag player skills.abilities.<[skill]>:<server.flag[skills.trees.<[skillTree]>.<[skill]>]>
-        - flag player skills.trees.<[skillTree]>.<[skill]>:<server.flag[<server.flag[skills.trees.<[skillTree]>.<[skill]>]>]>
+        - flag player skills.trees.<[skillTree]>.<[skill]>:<server.flag[skills.trees.<[skillTree]>.<[skill]>]>
 
 class_weapon_use_event:
   type: world
