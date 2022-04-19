@@ -6,16 +6,16 @@ vanish:
     permission: adriftus.staff
     usage: /vanish
     script:
-        - if !<player.has_flag[vanished]>:
-          - run vanish_task
-        - else:
+        - if !<player.has_flag[staff_vanish]>:
           - run unvanish_task
+        - else:
+          - run vanish_task
 
 vanish_task:
   type: task
   debug: false
   script:
-    - flag <player> vanished
+    - flag <player> vanished:!
     - flag server vanished_staff:->:<player>
     - adjust <player> hide_from_players
     - flag player on_item_pickup:->:vanish_cancel
