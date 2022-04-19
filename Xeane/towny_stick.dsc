@@ -124,6 +124,15 @@ towny_plot_default_item:
     plot_type: default
     run_script: towny_plot_assign
 
+towny_plot_name_item:
+  type: item
+  material: name_tag
+  display name: <&c>Jail
+  lore:
+    - "<&e>Rename this plot"
+  flags:
+    run_script: towny_rename_chunk
+
 towny_plot_menu:
   type: task
   debug: false
@@ -191,3 +200,21 @@ towny_set_player_plot:
     - execute as_op "ta plot claim <[target].name>"
     - teleport <player> <[start]>
     - flag player towny_stick_chunk:!
+
+towny_rename_chunk_task:
+  type: task
+  debug: false
+  script:
+    - flag <player> rename_location:<context.location>
+    - run anvil_gui_text_input def:towny_rename_chunk
+
+towny_rename_chunk:
+  type: task
+  debug: false
+  definitions: name
+  script:
+    - define location <player.location>
+    - teleport <player> <player.flag[rename_location]>
+    - execute as_player "plot set name <[name]>"
+    - teleport <[location]>
+    - flag player rename_location:1
