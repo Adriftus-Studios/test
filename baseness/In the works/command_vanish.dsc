@@ -15,7 +15,7 @@ vanish_task:
   type: task
   debug: false
   script:
-    - flag <player> vanished:!
+    - flag <player> vanished
     - flag server vanished_staff:->:<player>
     - adjust <player> hide_from_players
     - flag player on_item_pickup:->:vanish_cancel
