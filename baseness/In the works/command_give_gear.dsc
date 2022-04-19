@@ -35,10 +35,10 @@ give_player_armor:
     #permission: adriftus.give.armor
     script:
         #Exclusion
-        - if <context.args.get[1].equals[<script[gears_list].data_key[armors]>.not]> | <context.args.size.equals[0]> | <context.args.size.is_more_than[1]>:
+        - if !(<context.args.get[1]> == <script[gears_list].data_key[armors]>) | <context.args.size> == 0 | <context.args.size> > 1:
             - narrate "<red>Invalid argument!"
             - stop
-        - else if <player.has_equipped[*_chestplate]> | <player.has_equipped[*_boots]> | <player.has_equipped[*_leggings]> | <player.has_equipped[*_helmet]>:
+        - else if <player.has_equipped[*_chestplate|*_boots|*_helmet|*_leggings]>:
             - narrate "<red>You must be unarmored to be able to wear the selected armor!"
             - stop
         #Execution
