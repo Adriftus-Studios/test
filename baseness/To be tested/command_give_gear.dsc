@@ -48,13 +48,13 @@ give_player_armor:
         - define legs <[material]>_leggings
         - define boots <[material]>_boots
         #Choice to equip
-        - if <context.args.get[2].equals[wear].not>:
+        - if !(<context.args.get[2]> == wear):
             - give <[chest]>|<[legs]>|<[head]>|<[boots]>
             - narrate "You have received the <[material]> armor set!"
         - else if <context.args.get[2].equals[wear]>:
             - equip boots:<[boots]> chest:<[chest]> head:<[head]> legs:<[legs]>
             - narrate "You have fully equipped the <[material].to_sentence_case> armor set!"
-#
+# - Fix tab completions
 
 give_tool:
     type: command
@@ -68,7 +68,7 @@ give_tool:
     #permission: adriftus.give.tool
     script:
         #Exclusion
-        - if <context.args.get[1].equals[<script[gears_list].data_key[tools].not>]> | <context.args.get[2].equals[<script[gears_list].data_key[tool_material].not>]> | <context.args.size.equals[0]> | <context.args.size.is_more_than[1]>:
+        - if !(<context.args.get[1]> == <script[gears_list].data_key[tools]>) | <context.args.get[2]> == <script[gears_list].data_key[tool_material]> | <context.args.size> == 0 | <context.args.size> > 1:
             - narrate "<red>Invalid argument!"
             - stop
         #Execution
