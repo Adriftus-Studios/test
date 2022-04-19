@@ -4,7 +4,8 @@ grass_seed:
   material: wheat_seeds
   display name: <&1><&l>Grass Seed
   lore:
-  - "<&e>Right click <&6> to grow grass"
+  - <&e>Right click <&6> to grow grass
+  # - May need to be fixed...
   mechanisms:
     hides: all
     custom_model_data: 694200
@@ -13,7 +14,7 @@ grass_seed:
         - grass
         - grass_block
 
-grass_seed_world:
+grass_seed_drop:
     type: world
     debug: false
     events:
