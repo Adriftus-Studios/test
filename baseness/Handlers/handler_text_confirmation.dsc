@@ -17,7 +17,7 @@ confirm_Script_Text_callback:
   script:
     - if <[bool]> && <player.has_flag[callback]>:
       - inject <player.flag[callback]>
-    - else if <[bool].equals[false]>:
+    - else if <[bool]> == false:
         - narrate <red><bold>Cancelled.<reset>
     - flag player callback:!
 #Very approved

@@ -107,6 +107,10 @@ netherite_shield_world:
     debug: false
     events:
         on player equips netherite_shield:
-            - while <player.has_equipped[netherite_shield]>:
-                - adjust <player> speed:0.8*<player.speed>
+            - flag <player> base_speed:<player.speed>
+            - adjust <player> speed:0.8*<player.speed>
+
+        on player unequips netherite_shield:
+            - adjust <player> speed:<player.flag[base_speed]>
+            - flag <player> base_speed:!
 #

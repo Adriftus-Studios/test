@@ -12,9 +12,9 @@ clear_inventory:
         - if <context.args.size> < 1:
             - inventory clear destination:<player.inventory>
             - narrate "<yellow><bold>Your inventory has been cleared."
-        - if <context.args.size.equals[1]>:
+        - if <context.args.size> == 1:
             - inventory clear destination:<context.args.get[1].inventory>
             - narrate "<yellow><bold><context.args.get[1]>'s inventory has been cleared."
-        - if <context.args.size.is_more_than[1]>:
+        - if <context.args.size> > 1:
             - narrate "<red>Too many arguments!"
 #Username case to be fixed
