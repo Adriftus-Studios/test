@@ -231,7 +231,8 @@ Shield_enchant_handler:
   type: world
   debug: false
   events:
-    - if <player.is_blocking>:
-      - narrate passed
-    - if <player.item_in_hand.material.name> == shield:
-      - narrate shield
+    on player damaged by entity:
+      - if <player.is_blocking>:
+        - narrate passed
+      - if <player.item_in_hand.material.name> == shield:
+        - narrate shield
