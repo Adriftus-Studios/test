@@ -24,7 +24,7 @@ grass_seed_drop:
 
 grass_seed_grow:
     type: world
-    debug: false
+    debug: true
     events:
         on player right clicks block with:grass_seed:
             - ratelimit <player> 1t
