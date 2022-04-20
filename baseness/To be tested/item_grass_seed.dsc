@@ -32,9 +32,12 @@ grass_seed_grow:
             #Turns into grass_block
             - if <context.location.material.name> == dirt:
                 - modifyblock <context.location> material:grass_block
+                - stop
             #Grows grass on grass block
             - if <context.location.material.name> == grass_block:
                 - modifyblock <[blockontop].material> material:grass
+                - stop
             #Further grows the grass
             - if <context.location.material.name> == grass:
                 - modifyblock <[blockontop]> material:tall_grass
+                - stop
