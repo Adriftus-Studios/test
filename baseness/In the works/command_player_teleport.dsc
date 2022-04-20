@@ -11,7 +11,7 @@ player_teleport:
         2: <server.online_players.parse[name]>
     tab complete:
         - if <server.online_players.parse[name].contains[<context.args.get[1]>]>:
-            - determine <list[<server.online_players.parse[name]>|<server.online_players.parse[name]>]>
+            - determine <list[<server.online_players.parse[name]>].formatted>
     script:
         - if <context.args.size> == 0:
             - narrate "<red><bold>Please enter a player's name."
