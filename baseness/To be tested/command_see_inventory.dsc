@@ -9,7 +9,8 @@ see_inventory:
     tab completion:
         1: <server.online_players.parse[name]>
     script:
-        - flag <player> seeing_inventory
+        - flag <player> seeing_inventory:<context.args.get[1].inventory.list_contents>
+        - flag <player> si_who:<context.args.get[1]>
         - if <context.args.size> < 1:
             - inventory open destination:<player>
             - stop
@@ -26,6 +27,8 @@ see_inventory_world:
     events:
         on player left|right clicks item in inventory flagged:seeing_inventory:
             - determine passively cancelled
+            - foreach <player.flag[seeing_inventory]>:
+                - adjust <player.flag[si_who].inventory.list_contents> contents:<player.flag[seeing_inventory]>
             - if <context.inventory.location.material.name.equals[shulker_box]>:
                 - inventory open destination:<context.item.inventory>
             - if <context.item> == <context.item_in_hand>:
@@ -40,4 +43,4 @@ see_inventory_world:
 #   - Shulkers, upon click, should be displayed
 #   - Ender chest button to see the player's inventory
 # Issues -
-#   - Item on hand disappears if interacted with (should be adjusted manually)
+#   - Inventory disappears if interacted with (should be adjusted manually)
