@@ -31,10 +31,10 @@ grass_seed_grow:
             - define blockontop <context.location.above[1]>
             #Turns into grass_block
             - if <context.location.material.name.equals[dirt]>:
-                - adjust <context.location> material:grass_block
+                - modifyblock <context.location> material:grass_block
             #Grows grass on grass block
             - else if <context.location.material.equals[grass_block]>:
-                - adjust <[blockontop].material> material:grass
+                - modifyblock <[blockontop].material> material:grass
             #Further grows the grass
             - else if <[blockontop].material.equals[grass]>:
-                - adjust <[blockontop]> material:tall_grass
+                - modifyblock <[blockontop]> material:tall_grass
