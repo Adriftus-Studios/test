@@ -6,6 +6,6 @@ npc_dummy:
             - trigger state:true
             - vulnerable state:true
         on damage:
-            - heal <npc>
             - chat <context.damage> targets:<player>
+            - heal <npc>
 #To be tested
