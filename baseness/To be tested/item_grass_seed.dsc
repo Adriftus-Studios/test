@@ -30,11 +30,11 @@ grass_seed_grow:
             - ratelimit <player> 1t
             - define blockontop <context.location.above[1]>
             #Turns into grass_block
-            - if <context.location.material.name.equals[dirt]>:
+            - if <context.location.material.name> == dirt :
                 - modifyblock <context.location> material:grass_block
             #Grows grass on grass block
-            - else if <context.location.material.equals[grass_block]>:
+            - if <context.location.material> == grass_block:
                 - modifyblock <[blockontop].material> material:grass
             #Further grows the grass
-            - else if <[blockontop].material.equals[grass]>:
+            - if <[blockontop].material> == grass:
                 - modifyblock <[blockontop]> material:tall_grass
