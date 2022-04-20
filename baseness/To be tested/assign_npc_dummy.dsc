@@ -3,9 +3,9 @@ npc_dummy:
     debug: false
     actions:
         on assignment:
-            - trigger state:true
             - vulnerable state:true
+            - flag <npc> no_damage
         on damage:
             - chat <context.damage> targets:<player>
-            - heal <npc>
+            - determine cancelled
 #To be tested
