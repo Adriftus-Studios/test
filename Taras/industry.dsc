@@ -54,7 +54,7 @@ industry_obsidian_robot:
     debug: false
     type: item
     material: player_head
-    display name: <&b><&l>Obsidian Robot
+    display name: <&5><&l>Obsidian Robot
     mechanisms:
         skull_skin: f41e4ad6-aae2-4fe9-b5e9-9d9a490db28f|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDA1YTE2MzE2OTUzYWZmNWZhM2RkNjQ4MjMyODFlYmY1ZmI1Mjc1NzFkMmNkMWVjNjRhMzNmNmFjYmY1Y2I4In19fQ==
     data:
@@ -67,7 +67,7 @@ industry_netherite_robot:
     debug: false
     type: item
     material: player_head
-    display name: <&b><&l>Netherite Robot
+    display name: <&7><&l>Netherite Robot
     mechanisms:
         skull_skin: f913f574-bb7a-4f9a-b92c-41e34504f62c|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYzc3MTY3MzI4NjI5ZmQzMDM2MGRhZWNhOTAyZDM5YjM2ZjRjMWFmNjQ5YzQ3OTM4ZjUxOGE2NjMwNzQwMmUyMSJ9fX0=
     data:
@@ -80,7 +80,7 @@ industry_bedrock_robot:
     debug: false
     type: item
     material: player_head
-    display name: <&7><&l>Bedrock Robot
+    display name: <&8><&l>Bedrock Robot
     mechanisms:
         skull_skin: bb07d8b0-945a-4a84-9d2b-ec8b09546822|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvOWIyMzM0ZTc0NDU4OGY2ODNkM2MzNjVkZGVjODczMTFiYjAyMjFiYTlhOGY4ZWI1ZjAzYjEzMWJiM2VkMTFiMiJ9fX0=
     data:
