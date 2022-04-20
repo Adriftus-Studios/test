@@ -15,3 +15,21 @@ saltusage:
     events:
         on player right clicks dirt with:salt_item:
             - flag <context.location> salt:<player>
+            - narrate "<green>Block Salted"
+
+saltremoval:
+    type: world
+    events:
+        on weather rains:
+        - flag server salt:!
+
+saltobtain:
+    type: world
+    events:
+        on player breaks stone:
+         - define chance <util.random.int[1].to[15]>
+         - choose  <[chance]>:
+                - case 1:
+                    - drop salt_item
+                - default:
+                    - stop
