@@ -21,26 +21,24 @@ grass_seed_grow:
     type: world
     debug: true
     events:
-        on player right clicks dirt|grass|grasss_block with:grass_seed:
+        on player right clicks dirt|grass|grass_block with:grass_seed:
             - ratelimit <player> 5t
             - define blockontop <context.location.above[1]>
             #Turns into grass_block
-            - if <context.location.material.name> == dirt:
-                - playsound sound:BLOCK_GRASS_PLACE <player.location>
-                - modifyblock <context.location> material:grass_block
-                - take iteminhand quantity:1
-                - stop
-            #Grows grass on grass block
-            - if <context.location.material.name> == grass_block:
-                - playsound sound:BLOCK_GRASS_PLACE <player.location>
-                - modifyblock <[blockontop]> material:grass
-                - take iteminhand quantity:1
-                - stop
-            #Further grows the grass
-            - if <context.location.material.name> == grass:
-                - playsound sound:BLOCK_GRASS_PLACE <player.location>
-                - modifyblock <context.location> material:tall_grass no_physics
-                - modifyblock <[blockontop]> material:tall_grass no_physics
-                - adjustblock <[blockontop]> half:top no_physics
-                - take iteminhand quantity:1
-                - stop
+            - choose <context.location.material.name>:
+                - case dirt:
+                    - playsound sound:BLOCK_GRASS_PLACE <player.location>
+                    - modifyblock <context.location> material:grass_block
+                    - take iteminhand quantity:1
+                #Grows grass on grass block
+                - case grass_block:
+                    - playsound sound:BLOCK_GRASS_PLACE <player.location>
+                    - modifyblock <[blockontop]> material:grass
+                    - take iteminhand quantity:1
+                #Further grows the grass
+                - case grass:
+                    - playsound sound:BLOCK_GRASS_PLACE <player.location>
+                    - modifyblock <context.location> material:tall_grass no_physics
+                    - modifyblock <[blockontop]> material:tall_grass no_physics
+                    - adjustblock <[blockontop]> half:top no_physics
+                    - take iteminhand quantity:1
