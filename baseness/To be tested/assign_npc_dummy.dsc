@@ -3,8 +3,9 @@ npc_dummy:
     debug: false
     actions:
         on assignment:
+            - trigger state:true
             - vulnerable state:true
         on damage:
-            - narrate <context.damage>
             - determine passively cancelled
+            - narrate <context.damage> targets:<player>
 #To be tested
