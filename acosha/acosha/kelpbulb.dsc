@@ -5,7 +5,7 @@ kelpbulbobtain:
             - define chance <util.random.int[1].to[15]>
             - choose  <[chance]>:
                 - case 1:
-                    - drop kelp_bulb
+                    - determine kelp_bulb
                 - default:
                     - stop
 
@@ -15,6 +15,9 @@ kelp_bulb:
     type: item
     material: sugar
     display name: <yellow>Kelp Bulb
+    lore:
+    - <&e>Right click <&6>to regain the air
+    - Can be found from Kelp.
     data:
         recipe_book_category: misc.kelp_bulb
     recipes:
