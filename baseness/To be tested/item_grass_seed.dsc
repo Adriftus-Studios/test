@@ -2,17 +2,12 @@ grass_seed:
   type: item
   debug: false
   material: wheat_seeds
-  display name: <&1><&l>Grass Seed
+  display name: <&6>Grass Seed
   lore:
   - <&e>Right click <&6> to grow grass
-  # - May need to be fixed...
   mechanisms:
     hides: all
-    custom_model_data: 694200
-    can_place_on:
-        - dirt
-        - grass
-        - grass_block
+    custom_model_data: 2
 
 grass_seed_drop:
     type: world
