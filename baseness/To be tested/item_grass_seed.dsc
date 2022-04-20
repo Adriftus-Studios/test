@@ -19,26 +19,22 @@ grass_seed_drop:
 
 grass_seed_grow:
     type: world
-    debug: true
+    debug: false
     events:
         on player right clicks dirt|grass|grass_block with:grass_seed:
             - ratelimit <player> 5t
             - define blockontop <context.location.above[1]>
+            - playsound sound:BLOCK_GRASS_PLACE <player.location>
             #Turns into grass_block
             - choose <context.location.material.name>:
                 - case dirt:
-                    - playsound sound:BLOCK_GRASS_PLACE <player.location>
                     - modifyblock <context.location> material:grass_block
-                    - take iteminhand quantity:1
                 #Grows grass on grass block
                 - case grass_block:
-                    - playsound sound:BLOCK_GRASS_PLACE <player.location>
                     - modifyblock <[blockontop]> material:grass
-                    - take iteminhand quantity:1
                 #Further grows the grass
                 - case grass:
-                    - playsound sound:BLOCK_GRASS_PLACE <player.location>
                     - modifyblock <context.location> material:tall_grass no_physics
                     - modifyblock <[blockontop]> material:tall_grass no_physics
                     - adjustblock <[blockontop]> half:top no_physics
-                    - take iteminhand quantity:1
+            - take iteminhand quantity:1
