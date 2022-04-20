@@ -30,4 +30,4 @@ player_teleport:
             - narrate "Teleported <[player1].name> to <[player2].name>"
         - if <context.args.size> > 2:
             - narrate "<red><bold>Too many arguments!<reset>"
-#
+# = Player names need to be removed from second tab completion
