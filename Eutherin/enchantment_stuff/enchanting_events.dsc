@@ -232,7 +232,24 @@ Shield_enchant_handler:
   debug: false
   events:
     on player damaged by entity:
+      - ratelimit <player> 2t
       - if <player.is_blocking>:
         - narrate passed
       - if <player.item_in_hand.material.name> == shield:
-        - narrate shield
+        - define enchants_list <player.item_in_hand.enchantment_types.parse[name]>
+      - if <player.item_in_offhand.material.name> == shield:
+        - define enchants_list <player.item_in_hand.enchantment_types.parse[name]>
+      - if <[enchants_list].contains_any[spikes]>:
+        - if !<player.has_flag[temp.spikes.cd]>:
+          - flag <player> temp.spikes.cd expire:40t
+          - hurt <context.damager> <player.item_in_hand.enchantment_map.get[Spikes]>
+      - if <[enchants_list].contains_any[flamebrand]>:
+        - if !<player.has_flag[temp.flamebrand.cd]>:
+          - flag <player> temp.flamebrand.cd expire:40t
+          - burn <context.damager> duration:<player.item_in_hand.enchantment_map.get[flamebrand]>s
+      - if <[enchants_list].contains_any[rebuking]>:
+        - if !<player.has_flag[temp.rebuking.cd]>:
+          - flag <player> temp.rebuking.cd expire:40t
+          - if <player.flag[temp.rebuking.stacks]> < 3:
+            - flag <player> temp.rebuking.stacks:++
+

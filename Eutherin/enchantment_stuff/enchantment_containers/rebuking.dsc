@@ -21,4 +21,3 @@ Rebuking_enchantment:
   is_tradable: false
   can_enchant: <context.item.advanced_matches[*_shield]>
 #  is_compatible:
-  after attack:
