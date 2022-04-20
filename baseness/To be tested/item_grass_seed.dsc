@@ -21,7 +21,7 @@ grass_seed_grow:
     type: world
     debug: true
     events:
-        on player right clicks block with:grass_seed:
+        on player right clicks dirt|grass|grasss_block with:grass_seed:
             - ratelimit <player> 5t
             - define blockontop <context.location.above[1]>
             #Turns into grass_block
