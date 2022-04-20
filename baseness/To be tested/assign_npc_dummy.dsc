@@ -6,6 +6,6 @@ npc_dummy:
             - trigger state:true
             - vulnerable state:true
         on damage:
-            - determine passively cancelled
-            - narrate <context.damage> targets:<player>
+            - heal <npc>
+            - chat <context.damage> targets:<player>
 #To be tested
