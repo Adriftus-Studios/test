@@ -226,3 +226,13 @@ enchanted_book_opener:
             - define slot_number <server.flag[custom_enchant_data.valid_enchants].alphabetical.find[<[enchant]>]>
             - define book_pages <[book_pages].include[<server.flag[enchantment_book_pages].get[<[slot_number]>]>]>
         - adjust <player> show_book:enchantment_explainer_book_item[book_pages=<[book_pages]>]
+
+Shield_enchant_handler:
+  type: world
+  debug: false
+  events:
+    on player damaged by entity:
+      - if <player.is_blocking>:
+        - narrate passed
+      - if <player.item_in_hand.material.name> == shield:
+        - narrate shield
