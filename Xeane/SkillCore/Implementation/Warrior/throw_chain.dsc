@@ -59,16 +59,18 @@ impl_skill_throw_chain_icon:
 # The task must `determine` true or false if the ability was successful or not.
 impl_skill_throw_chain_task:
   type: task
-  debug: false
+  debug: true
   definitions: targets
   script:
-    - shoot arrow speed:5 script:impl_skill_throw_chain_task_unfurl
+    - shoot arrow speed:5 save:proj
+    - flag <entry[proj].shot_entity> on_hit_block:impl_skill_throw_chain_task_unfurl
 
 impl_skill_throw_chain_task_unfurl:
   type: task
-  debug: false
+  debug: true
   definitions: location
   script:
+    - define location <context.location.add[<context.hit_face>]> if:<[location].exists.not>
     - if <[location].material.name> == air:
       - modifyblock <[location]> chain[direction=Y]
       - repeat 64:
