@@ -16,8 +16,8 @@ kelp_bulb:
     material: sugar
     display name: <yellow>Kelp Bulb
     lore:
-    - <&e>Right click <&6>to regain the air
-    - Can be found from Kelp.
+    - <&6>The root of a kelp plant.
+    - <&e>Right click <&6>to breathe the air within
     data:
         recipe_book_category: misc.kelp_bulb
     recipes:
