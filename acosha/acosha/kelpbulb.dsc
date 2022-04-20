@@ -5,7 +5,7 @@ kelpbulbobtain:
             - define chance <util.random.int[1].to[15]>
             - choose  <[chance]>:
                 - case 1:
-                    - drop kelp_bulb
+                    - determine kelp_bulb
                 - default:
                     - stop
 
@@ -15,6 +15,9 @@ kelp_bulb:
     type: item
     material: sugar
     display name: <yellow>Kelp Bulb
+    lore:
+    - <&6>The root of a kelp plant.
+    - <&e>Right click <&6>to breathe the air within
     data:
         recipe_book_category: misc.kelp_bulb
     recipes:
@@ -33,9 +36,9 @@ kelpbulbevents:
         on player right clicks block with:kelp_bulb:
                 - if <player.oxygen.in_seconds> < 9:
                     - oxygen 120 mode:add
-                    - narrate "<green>Oxygen Added"
-                    - take item:kelp_bulb
+                    - take iteminhand quantity:1
+                    - playsound sound:ENTITY_PLAYER_BURP <player>
                 - else:
-                    - narrate "<red>Wait Longer"
+                    - actionbar "<red>Wait Longer"
                     - stop
 

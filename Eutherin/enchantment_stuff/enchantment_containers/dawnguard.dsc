@@ -23,3 +23,6 @@ Dawnguard_enchantment:
   can_enchant: <context.item.advanced_matches[*_sword|*_axe]>
   is_compatible: <context.enchantment_key.advanced_matches_text[denizen:Duskguard].not>
   after attack:
+    - ratelimit <player> 12t
+    - if <context.victim.is_spawned> && <player.location.world.time> < 12786:
+      - hurt <context.victim> <context.level.mul[3]>

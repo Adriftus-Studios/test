@@ -23,3 +23,6 @@ Aqua_Aspect_enchantment:
   can_enchant: <context.item.advanced_matches[*_sword|*_axe]>
   is_compatible: <context.enchantment_key.advanced_matches_text[minecraft:bane_of_arthropods|denizen:slaying|minecraft:sharpness|minecraft:smite|denizen:lifesbane].not>
   after attack:
+    - ratelimit <player> 12t
+    - if <context.victim.is_spawned> && <list[enderman|endermite|blaze|ghast|strider].contains_any[<context.victim.entity_type>]>:
+      - hurt <context.victim> <context.level.mul[2.5]>

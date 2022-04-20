@@ -2,17 +2,11 @@ grass_seed:
   type: item
   debug: false
   material: wheat_seeds
-  display name: <&1><&l>Grass Seed
+  display name: <&e>Grass Seed
   lore:
-  - <&e>Right click <&6> to grow grass
-  # - May need to be fixed...
+  - <&e>Right click <&6>to grow grass
   mechanisms:
-    hides: all
-    custom_model_data: 694200
-    can_place_on:
-        - dirt
-        - grass
-        - grass_block
+    custom_model_data: 2
 
 grass_seed_drop:
     type: world
@@ -26,15 +20,21 @@ grass_seed_grow:
     type: world
     debug: false
     events:
-        on player right clicks block with:grass_seed:
-            - ratelimit <player> 1t
+        on player right clicks dirt|grass|grass_block with:grass_seed:
+            - ratelimit <player> 5t
             - define blockontop <context.location.above[1]>
-            #Turns into grass_block
-            - if <context.location.material.name.equals[dirt]>:
-                - adjust <context.location> material:grass_block
-            #Grows grass on grass block
-            - else if <context.location.material.equals[grass_block]>:
-                - adjust <[blockontop].material> material:grass
-            #Further grows the grass
-            - else if <[blockontop].material.equals[grass]>:
-                - adjust <[blockontop]> material:tall_grass
+            - if <[blockontop].material.name> == air:
+                #Turns into grass_block
+                - choose <context.location.material.name>:
+                    - case dirt:
+                        - modifyblock <context.location> material:grass_block
+                    #Grows grass on grass block
+                    - case grass_block:
+                        - modifyblock <[blockontop]> material:grass
+                    #Further grows the grass
+                    - case grass:
+                        - modifyblock <context.location> material:tall_grass no_physics
+                        - modifyblock <[blockontop]> material:tall_grass no_physics
+                        - adjustblock <[blockontop]> half:top no_physics
+                - playsound sound:BLOCK_GRASS_PLACE <player.location>
+                - take iteminhand quantity:1

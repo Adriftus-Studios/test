@@ -4,6 +4,7 @@ Flamebrand_enchantment:
   debug: false
   slots:
   - mainhand
+  - offhand
   rarity: uncommon
   min_cost: <context.level.mul[1]>
   max_cost: <context.level.mul[1]>
@@ -14,11 +15,9 @@ Flamebrand_enchantment:
       - Only effective during blocking. 2s CD
     item_slots:
       - Shield
-  category: shield
+  category: weapon
   full_name: <&7>Flamebrand <context.level.proc[arabic_to_roman]>
   min_level: 1
   max_level: 4
   is_tradable: false
-  can_enchant: <context.item.advanced_matches[*_shield]>
-#  is_compatible:
-  after attack:
+  can_enchant: <context.item.advanced_matches[shield]>

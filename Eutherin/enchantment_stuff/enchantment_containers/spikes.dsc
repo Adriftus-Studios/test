@@ -4,6 +4,7 @@ spikes_enchantment:
   debug: false
   slots:
   - mainhand
+  - offhand
   rarity: common
   min_cost: <context.level.mul[1]>
   max_cost: <context.level.mul[1]>
@@ -14,11 +15,11 @@ spikes_enchantment:
       - Only effective during blocking. 2s CD
     item_slots:
       - Shield
-  category: shield
+  category: weapon
   full_name: <&7>spikes <context.level.proc[arabic_to_roman]>
   min_level: 1
   max_level: 5
   is_tradable: false
-  can_enchant: <context.item.advanced_matches[*_shield]>
+  can_enchant: <context.item.advanced_matches[shield]>
 #  is_compatible:
   after attack:

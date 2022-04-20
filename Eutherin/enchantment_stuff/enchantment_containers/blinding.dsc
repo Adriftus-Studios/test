@@ -21,3 +21,6 @@ Blinding_enchantment:
   can_enchant: <context.item.advanced_matches[*_sword|*_axe]>
 #  is_compatible:
   after attack:
+    - ratelimit <player> 12t
+    - if <context.victim.is_spawned> && <util.random.int[1].to[10].add[<context.level>]> > 9:
+      - cast BLIND amplifier:0 duration:2s
