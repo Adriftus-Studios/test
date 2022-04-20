@@ -4,6 +4,8 @@ custom_death_message:
     events:
         on player dies:
             - define location <context.entity.location>
+            - flag <context.entity> respawning:<[location]>
             - determine "<yellow>You were killed by <green><context.damager.name>.<yellow> Cause - <green><context.cause.to_lowercase>"
-            - determine "You died at <[location].x.round>,<[location].y.round>,<[location].z.round>" targets:<context.entity>
-            - determine "You can do /back to return to where you last died." targets:<context.entity>
+        on player respawns flagged:respawning:
+            - narrate "<gold>You died at <player.flag[respawning].x.round>, <player.flag[respawning].y.round>,<player.flag[respawning].z.round>"
+            - narrate "<yellow>You can do /back to teleport back to where you last died."
