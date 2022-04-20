@@ -9,8 +9,7 @@ combat_tag:
             - narrate "<yellow><bold>You have attacked <context.entity.name>. Do not log out!" targets:<context.damager>
             - narrate "<yellow><bold>You have been attacked by <context.damager.name>. Do not log out!" targets:<context.entity>
             - waituntil !<player.has_flag[combat_tag]>
-            - if !<player.has_flag[combat_tag]>:
-                - narrate "<yellow><bold>You are no longer in combat."
+            - narrate "<yellow><bold>You are no longer in combat."
         on player dies flagged:combat_tag:
             - flag <context.entity> combat_tag:!
         on player quit flagged:combat_tag:
