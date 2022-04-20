@@ -4,6 +4,7 @@ spikes_enchantment:
   debug: false
   slots:
   - mainhand
+  - offhand
   rarity: common
   min_cost: <context.level.mul[1]>
   max_cost: <context.level.mul[1]>

@@ -239,6 +239,8 @@ Shield_enchant_handler:
         - define enchants_list <player.item_in_hand.enchantment_types.parse[name]>
       - if <player.item_in_offhand.material.name> == shield:
         - define enchants_list <player.item_in_hand.enchantment_types.parse[name]>
+      - if <[enchants_list]||null> == null:
+        - stop
       - if <[enchants_list].contains_any[spikes]>:
         - if !<player.has_flag[temp.spikes.cd]>:
           - flag <player> temp.spikes.cd expire:40t

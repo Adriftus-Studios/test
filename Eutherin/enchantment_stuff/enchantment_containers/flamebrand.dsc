@@ -4,6 +4,7 @@ Flamebrand_enchantment:
   debug: false
   slots:
   - mainhand
+  - offhand
   rarity: uncommon
   min_cost: <context.level.mul[1]>
   max_cost: <context.level.mul[1]>
@@ -20,5 +21,3 @@ Flamebrand_enchantment:
   max_level: 4
   is_tradable: false
   can_enchant: <context.item.advanced_matches[shield]>
-#  is_compatible:
-  after attack:
