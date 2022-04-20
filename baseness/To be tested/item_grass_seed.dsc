@@ -23,17 +23,18 @@ grass_seed_grow:
         on player right clicks dirt|grass|grass_block with:grass_seed:
             - ratelimit <player> 5t
             - define blockontop <context.location.above[1]>
-            - playsound sound:BLOCK_GRASS_PLACE <player.location>
-            #Turns into grass_block
-            - choose <context.location.material.name>:
-                - case dirt:
-                    - modifyblock <context.location> material:grass_block
-                #Grows grass on grass block
-                - case grass_block:
-                    - modifyblock <[blockontop]> material:grass
-                #Further grows the grass
-                - case grass:
-                    - modifyblock <context.location> material:tall_grass no_physics
-                    - modifyblock <[blockontop]> material:tall_grass no_physics
-                    - adjustblock <[blockontop]> half:top no_physics
-            - take iteminhand quantity:1
+            - if <[blockontop].material.name> == air:
+                #Turns into grass_block
+                - choose <context.location.material.name>:
+                    - case dirt:
+                        - modifyblock <context.location> material:grass_block
+                    #Grows grass on grass block
+                    - case grass_block:
+                        - modifyblock <[blockontop]> material:grass
+                    #Further grows the grass
+                    - case grass:
+                        - modifyblock <context.location> material:tall_grass no_physics
+                        - modifyblock <[blockontop]> material:tall_grass no_physics
+                        - adjustblock <[blockontop]> half:top no_physics
+                - playsound sound:BLOCK_GRASS_PLACE <player.location>
+                - take iteminhand quantity:1
