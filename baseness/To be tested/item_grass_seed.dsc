@@ -2,7 +2,7 @@ grass_seed:
   type: item
   debug: false
   material: wheat_seeds
-  display name: <&6>Grass Seed
+  display name: <&e>Grass Seed
   lore:
   - <&e>Right click <&6>to grow grass
   mechanisms:
