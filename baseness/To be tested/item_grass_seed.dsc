@@ -6,7 +6,6 @@ grass_seed:
   lore:
   - <&e>Right click <&6>to grow grass
   mechanisms:
-    hides: all
     custom_model_data: 2
 
 grass_seed_drop:
