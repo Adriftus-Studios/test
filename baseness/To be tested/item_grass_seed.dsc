@@ -41,5 +41,5 @@ grass_seed_grow:
             - if <context.location.material.name> == grass:
                 - modifyblock <context.location> material:tall_grass no_physics
                 - modifyblock <[blockontop]> material:tall_grass no_physics
-                - adjustblock <[blockontop]> half:upper no_physics
+                - adjustblock <[blockontop]> half:top no_physics
                 - stop
