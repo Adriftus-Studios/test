@@ -2,7 +2,7 @@ industry_iron_robot:
     debug: false
     type: item
     material: player_head
-    display name: <&r><&l>Iron Robot
+    display name: <&f><&l>Iron Robot
     mechanisms:
         skull_skin: cee3c226-d410-4863-b950-39bdb2202181|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDg1MTM5NWIzYWIzMzVkMDVhNjBkNzk2N2IwYTgzMWI3NDEyZDY2OGFjOWE2Mjk4MmQwYWUzN2U2ZDNkOTg4OCJ9fX0=
     data:
