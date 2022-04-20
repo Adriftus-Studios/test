@@ -14,7 +14,7 @@ spikes_enchantment:
       - Only effective during blocking. 2s CD
     item_slots:
       - Shield
-  category: shield
+  category: weapon
   full_name: <&7>spikes <context.level.proc[arabic_to_roman]>
   min_level: 1
   max_level: 5
