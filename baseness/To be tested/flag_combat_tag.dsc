@@ -8,7 +8,7 @@ combat_tag:
             - flag <context.damager>|<context.entity> combat_tag expire:30s
             - narrate "<yellow><bold>You have attacked <context.entity.name>. Do not log out!" targets:<context.damager>
             - narrate "<yellow><bold>You have been attacked by <context.damager.name>. Do not log out!" targets:<context.entity>
-            - wait 31s if:<context>
+            - wait 31s
             - if !<context.entity.has_flag[combat_tag]> || <context.entity.has_flag[died_during_combat]>:
                 - narrate "<yellow><bold>You are no longer in combat."
             - if !<context.damager.has_flag[combat_tag]>:
