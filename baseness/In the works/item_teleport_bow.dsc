@@ -8,9 +8,10 @@ teleport_bow:
     mechanisms:
         custom_model_data: 694205
 
-teleporting_using_bow:
+teleport_bow_function:
     type: world
     debug: false
     events:
         on arrow hits block:
-            - flag <context.item> on_hit_block:teleport
+            - if <context.shooter.item_in_hand> == teleport_bow:
+                - teleport <player> <context.projectile>
