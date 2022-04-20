@@ -8,7 +8,7 @@ player_teleport:
         - tp
     tab completions:
         1: <server.online_players.parse[name]>|coordinates
-        2: <server.online_players.parse[name]> if:!(<context.args.get[1]> == coordinates)
+        2: <server.online_players.parse[name]>
     tab complete:
         - if <server.online_players.parse[name].contains[<context.args.get[1]>]>:
             - determine <list[<server.online_players.parse[name]>|<server.online_players.parse[name]>]>
