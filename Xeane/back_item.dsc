@@ -1,5 +1,6 @@
 back_crystal:
   type: item
+  debug: false
   material: feather
   display name: <&c>Back Crystal
   data:
@@ -25,6 +26,7 @@ back_crystal:
 
 back_scroll:
   type: item
+  debug: false
   material: feather
   display name: <&c>Back Scroll
   data:

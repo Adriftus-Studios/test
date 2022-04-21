@@ -1,5 +1,6 @@
 recipe_book_basic_sushi:
   type: item
+  debug: false
   material: written_book
   mechanisms:
     book_title: Eastern Fish Preparations

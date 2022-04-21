@@ -1,5 +1,6 @@
 spawn_scroll:
   type: item
+  debug: false
   material: feather
   display name: <&6>Spawn Scroll
   data:
@@ -22,6 +23,7 @@ spawn_scroll:
 
 spawn_crystal:
   type: item
+  debug: false
   material: feather
   display name: <&6>Spawn Crystal
   data:
