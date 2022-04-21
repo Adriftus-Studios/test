@@ -1,19 +1,32 @@
-players_DCommand:
-    type: world
+server_list:
+    type: data
     debug: false
-    events:
-        on discord message received for:AdriftusBot:
-            - define message <context.message>
-            - define author <context.author>
-            - define channel <context.channel>
-            - if <[message].contains_all_text[/players]>:
-                - ~discordmessage id:AdriftusBot channel:<[channel]> Testing no_mention
-network_players_list:
+    servers: <bungee.list_servers>
+
+connect_bot:
     type: task
     debug: false
     script:
+        - ~discordconnect id:a_bot token:<secret[a_bot_token]>
+
+players_command_create:
+    type: task
+    debug: false
+    script:
+        - ~discordcommand id:a_bot create name:players "description:Lists players on the network" group:626078288556851230
+
+players_command_handler:
+    type: world
+    debug: false
+    events:
+        on discord slash command name:players:
+        # % ██ [ Defer the interaction        ] ██
+        - ~discordinteraction defer interaction:<context.interaction>
         - foreach <bungee.list_servers> as:server:
             - bungeetag server:<[server]> <server.online_players.parse[name].formatted> save:players
-            - narrate <entry[players]>
+        # % ██ [ Public message parsing        ] ██
+        - definemap embed_data:
+            color: <color[0,254,255]>
+            description: placeholder
 
-## = Using bungeetag command
+        - ~discordinteraction reply interaction:<context.interaction> <discord_embed.with_map[<[embed_data]>]>
