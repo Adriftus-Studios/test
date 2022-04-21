@@ -31,10 +31,7 @@ player_teleport:
         ## Argument 1 = coordinates
         - if <context.args.get[1]> == coordinates && <context.args.size> == 4:
             - teleport <player> location:<location[<context.args.get[2]>,<context.args.get[3]>,<context.args.get[4]>,<player.world.name>]>
-            - narrate "Teleported <player.name> to - "
-            - narrate <context.args.get[2]>
-            - narrate <context.args.get[3]>
-            - narrate <context.args.get[4]>
+            - narrate "Teleported <player.name> to <context.args.get[2]>,<context.args.get[3]>,<context.args.get[4]>"
         ## 2 arguments = teleport Player 1 to Player 2
         - if <context.args.size> == 2:
             - define player1 <server.match_player[<context.args.get[1]>]>
