@@ -14,7 +14,7 @@ storage_enchantment:
       - Pairs well with Siphon
     item_slots:
       - tools
-  category: tools
+  category: breakable
   full_name: <&7>storage <context.level.proc[arabic_to_roman]>
   min_level: 1
   max_level: 3

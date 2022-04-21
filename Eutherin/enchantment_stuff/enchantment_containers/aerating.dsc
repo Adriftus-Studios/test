@@ -12,7 +12,7 @@ aerating_enchantment:
       - 15% chance per level to the next crop on this square 2 stages.
     item_slots:
       - hoe
-  category: tools
+  category: breakable
   full_name: <&7>Aerating <context.level.proc[arabic_to_roman]>
   min_level: 1
   max_level: 5

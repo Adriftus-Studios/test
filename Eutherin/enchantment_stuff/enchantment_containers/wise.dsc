@@ -12,7 +12,7 @@ wise_enchantment:
       - Increases experience from the use of this tool by 10%/level.
     item_slots:
       - tools
-  category: tools
+  category: breakable
   full_name: <&7>Wise <context.level.proc[arabic_to_roman]>
   min_level: 1
   max_level: 3
