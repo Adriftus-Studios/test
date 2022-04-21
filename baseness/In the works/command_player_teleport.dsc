@@ -15,7 +15,7 @@ player_teleport:
         - if <context.args.size> == 0:
             - narrate "<red><bold>Please enter a player's name."
         ## Too many arguments
-        - if <context.args.size> > 2:
+        - if <context.args.size> > 2 && !(<context.args.get[1]> == coordinates):
             - narrate "<red><bold>Too many arguments!<reset>"
 
         ## = Executions = ##
@@ -29,7 +29,7 @@ player_teleport:
             - teleport <player> location:<[player].location>
             - narrate "Teleported <player.name> to <[player].name>" targets:<player>|<[player]>
         ## Argument 1 = coordinates
-        - if <context.args.get[1]> == <element[coordinates]>:
+        - if <context.args.get[1]> == coordinates && <context.args.size> == 4:
             - teleport <player> location:<location[<context.args.get[2]>,<context.args.get[3]>,<context.args.get[4]>,<player.world.name>]>
         ## 2 arguments = teleport Player 1 to Player 2
         - if <context.args.size> == 2:
