@@ -33,3 +33,11 @@ players_command_handler:
         - definemap embed_data:
             color: <color[0,254,255]>
         - ~discordinteraction reply interaction:<context.interaction> <[embed].with_map[<[embed_data]>]>
+
+network_players_list:
+    type: task
+    debug: false
+    script:
+        - foreach <bungee.list_servers> as:server:
+            - bungeetag <[server]> <server.online_players.parse[name]> save:players
+            - narrate "In <[server]>, there's <entry[players].result.formatted>"
