@@ -3,6 +3,6 @@ no_drowning:
     debug: false
     events:
         after player changes air level flagged:no_drowning:
-            - while <player.oxygen.formatted> != 15:
+            - if <player.oxygen.formatted> != 15:
                 - oxygen 30 mode:add
 #
