@@ -24,7 +24,7 @@ players_command_handler:
 
         - foreach <bungee.list_servers> as:server:
             - ~bungeetag server:<[server]> <server.online_players.parse[name]> save:players
-            - if !<entry[players].result.is_empty>:
+            - if <entry[players].result.is_empty>:
                 - foreach next
             - define player_list <entry[players].result>
             - define embed "<[embed].add_inline_field[<[server]>].value[<[player_list].size> Online<&co><n><[player_list].formatted>]>"
