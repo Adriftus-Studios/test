@@ -22,6 +22,9 @@ players_command_handler:
         on discord slash command name:players:
         # % ██ [ Defer the interaction        ] ██
         - ~discordinteraction defer interaction:<context.interaction>
+        - foreach <bungee.list_servers> as:server:
+            - ~bungeetag server:<[server]> <server.online_players.parse[name].formatted> save:players
+            - define server_player_map:|:<map.with[<[server]>].as[<entry[players].result>]>
         # % ██ [ Public message parsing        ] ██
         - definemap embed_data:
             color: <color[0,254,255]>
