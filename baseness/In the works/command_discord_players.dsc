@@ -39,7 +39,7 @@ network_players_list:
     debug: false
     script:
         - foreach <bungee.list_servers> as:server:
-            - ~bungeetag server:<[server]> <server.online_players.parse[name].if_null[null].exclude[null]> save:players
+            - ~bungeetag server:test <server.online_players.parse[name].if_null[null].exclude[null].separated_by[<n>]> save:players
             - if <entry[players].result.if_null[null]> == null:
                 - foreach next
         - define players:|:<map.with[<[server]>].as[<entry[players].result>]>
