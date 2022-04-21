@@ -1,3 +1,8 @@
+server_list:
+  type: data
+  debug: false
+  servers: <bungee.list_servers>
+
 script_name:
   type: task
   debug: false
@@ -17,12 +22,11 @@ players_command_handler:
     on discord slash command name:players:
     # % ██ [ Defer the interaction        ] ██
     - ~discordinteraction defer interaction:<context.interaction>
+    - foreach <bungee.list_servers> as:server:
+      - bungeetag server:<[server]> <server.online_players.parse[name].formatted> save:players
     # % ██ [ Public message parsing        ] ██
     - definemap embed_data:
         color: <color[0,254,255]>
-        description:
-          - foreach <bungee.list_servers> as:server:
-            - bungeetag server:<[server]> <server.online_players.parse[name].formatted> save:players
-            - narrate <entry[players]>
+        description: <entry[players]>
 
     - ~discordinteraction reply interaction:<context.interaction> <discord_embed.with_map[<[embed_data]>]>
