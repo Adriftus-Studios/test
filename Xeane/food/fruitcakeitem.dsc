@@ -1,4 +1,4 @@
-custom_food_fruitcake:
+custom_food_fruitcake_xeane:
   type: item
   debug: false
   material: apple

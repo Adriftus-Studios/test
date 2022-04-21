@@ -14,7 +14,7 @@ santa_hat:
     no_custom_enchants: 1
     hat: <server.current_time_millis>
 
-christmas_hat_canceller:
+christmas_hat_canceller_santa_hat:
   type: world
   debug: false
   events:

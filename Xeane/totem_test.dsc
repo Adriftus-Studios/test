@@ -1,4 +1,4 @@
-totem_test:
+totem_test_xeane:
   type: task
   debug: false
   definitions: cmd

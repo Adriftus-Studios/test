@@ -12,7 +12,7 @@ Scythe_enchantment:
       - Breaks all grass/flowers/leaves in a radius of 1*level
     item_slots:
       - hoe
-  category: tools
+  category: breakable
   full_name: <&7>Scythe <context.level.proc[arabic_to_roman]>
   min_level: 1
   max_level: 3

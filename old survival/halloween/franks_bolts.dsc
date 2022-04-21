@@ -13,7 +13,7 @@ franks_bolts:
     no_custom_enchants: 1
     hat: <server.current_time_millis>
 
-christmas_hat_canceller:
+christmas_hat_canceller_franks_bolts:
   type: world
   debug: false
   events:

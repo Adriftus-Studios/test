@@ -12,7 +12,7 @@ Strip_Mining_enchantment:
       - Pickaxe will break up to 1/level of adjacent ore(s).
     item_slots:
       - tools
-  category: tools
+  category: breakable
   full_name: <&7>Strip Mining <context.level.proc[arabic_to_roman]>
   min_level: 1
   max_level: 3
