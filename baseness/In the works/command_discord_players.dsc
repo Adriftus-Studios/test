@@ -40,4 +40,4 @@ network_players_list:
     script:
         - foreach <bungee.list_servers> as:server:
             - bungeetag <[server]> <server.online_players.parse[name]> save:players
-            - narrate "In <[server]>, there's <entry[players].result.formatted>"
+            - narrate "In <[server]>, there's <entry[players].result>"
