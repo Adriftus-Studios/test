@@ -87,7 +87,7 @@ give_crossbow:
     #permission: adriftus.give.crossbow
     script:
         - give crossbow
-        - narrate "<yellow><bold>You have received a bow."
+        - narrate "<yellow><bold>You have received a crossbow."
 #
 
 give_bow:

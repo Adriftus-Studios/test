@@ -24,15 +24,16 @@ see_inventory:
 see_inventory_world:
     type: world
     debug: false
+    definitions: inventory
     events:
         on player left|right clicks item in inventory flagged:seeing_inventory:
             - determine passively cancelled
             - foreach <player.flag[seeing_inventory]>:
                 - adjust <player.flag[si_who].inventory.list_contents> contents:<player.flag[seeing_inventory]>
-            - if <context.inventory.location.material.name.equals[shulker_box]>:
-                - inventory open destination:<context.item.inventory>
-            - if <context.item> == <context.item_in_hand>:
-                - inventory adjust <context.item> slot:<player.held_item_slot>
+            #- if <context.inventory.location.material.name.equals[shulker_box]>:
+            #    - inventory open destination:<context.item.inventory>
+            #- if <context.item> == <context.item_in_hand>:
+            #    - inventory adjust <context.item> slot:<player.held_item_slot>
         on player closes inventory flagged:seeing_inventory:
             - flag <player> seeingInventory:!
             - inventory swap origin:<context.inventory> destination:<context.inventory>
