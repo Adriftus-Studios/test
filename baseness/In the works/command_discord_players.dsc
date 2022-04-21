@@ -25,7 +25,7 @@ players_command_handler:
         # % ██ [ Public message parsing        ] ██
         - definemap embed_data:
             color: <color[0,254,255]>
-            description: helo
+            description: <[server_player_map]>
         - ~discordinteraction reply interaction:<context.interaction> <discord_embed.with_map[<[embed_data]>]>
 
 # - Made by Behr
