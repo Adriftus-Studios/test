@@ -25,6 +25,7 @@ leaf_blower_bow_events:
 
 leaf_blower_bow:
     type: item
+    debug: false
     material: bow
     display name: <&e>Leaf Blower
     data:
@@ -44,6 +45,7 @@ leaf_blower_bow:
 
 enchantment_leaf_blower:
     type: enchantment
+    debug: false
     id: leaf_blower
     slots:
     - mainhand
