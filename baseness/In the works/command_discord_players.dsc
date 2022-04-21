@@ -42,7 +42,5 @@ network_players_list:
             - ~bungeetag server:<[server]> <server.online_players.parse[name].if_null[null].exclude[null]> save:players
             - if <entry[players].result.if_null[null]> == null:
                 - foreach next
-            #- define player_list <entry[players].result>
-            #- define maptag <[playerlist]>
         - define players:|:<map.with[<[server]>].as[<entry[players].result>]>
         - narrate <[players]>
