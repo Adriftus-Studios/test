@@ -9,9 +9,6 @@ player_teleport:
     tab completions:
         1: <server.online_players.parse[name]>|coordinates
         2: <server.online_players.parse[name]>
-    tab complete:
-        - if <context.args.get[1]> == coordinates:
-            - determine <list[].exclude[<server.online_players.parse[name]>]>
     script:
         ## = Executions = ##
         ## No arguments
