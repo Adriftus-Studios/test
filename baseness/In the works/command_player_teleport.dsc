@@ -11,7 +11,7 @@ player_teleport:
         2: <server.online_players.parse[name]>
     tab complete:
         - if <context.args.get[1]> == coordinates:
-            - determine <list[].formatted>
+            - determine <list[].exclude[<server.online_players.parse[name]>]>
     script:
         - if <context.args.size> == 0:
             - narrate "<red><bold>Please enter a player's name."
