@@ -8,34 +8,36 @@ player_teleport:
         - tp
     tab completions:
         1: <server.online_players.parse[name]>|coordinates
-        2: <server.online_players.parse[name]>
+        2: <server.online_players.parse[name]>|coordinates
     script:
         ## = Exclusions = ##
         ## No arguments
         - if <context.args.size> == 0:
             - narrate "<red><bold>Please enter a player's name."
         ## Too many arguments
-        - if <context.args.size> > 2 && !(<context.args.get[1]> == coordinates):
+        - if <context.args.size> > 2 && !(<context.args.get[1|2]> == coordinates):
             - narrate "<red><bold>Too many arguments!<reset>"
 
         ## = Executions = ##
-        ## BUT WHY THO
+        ## /tp player player BUT WHY THO
+        - define everyplayerever <bungee.server.list_players.parse[name]>
         - if (<context.args.get[1]> == <player.name> && <context.args.get[2]> == <player.name>) || <context.args.get[1]> == <player.name>:
             - narrate "<bold><red>Did you just teleport to yourself."
             - stop
-        ## If only one argument, teleport player to target player
+        ## /tp other_player
         - if <context.args.size> == 1:
             - define player <server.match_player[<context.args.get[1]>]>
             - teleport <player> location:<[player].location>
             - narrate "Teleported <player.name> to <[player].name>" targets:<player>|<[player]>
-        ## Argument 1 = coordinates
+        ## /tp coordinates x y z
         - if <context.args.get[1]> == coordinates && <context.args.size> == 4:
             - teleport <player> location:<location[<context.args.get[2]>,<context.args.get[3]>,<context.args.get[4]>,<player.world.name>]>
             - narrate "Teleported <player.name> to <context.args.get[2]>,<context.args.get[3]>,<context.args.get[4]>"
-        ## 2 arguments = teleport Player 1 to Player 2
+        ## /tp player other_player
         - if <context.args.size> == 2:
             - define player1 <server.match_player[<context.args.get[1]>]>
             - define player2 <server.match_player[<context.args.get[2]>]>
             - teleport <[player1]> location:<[player2].location>
             - narrate "Teleported <[player1].name> to <[player2].name>"
-## Player names need to be removed from second tab completion
+        ## /tp player coordinates x y z
+## Player should be able to teleport to offline player locations too.
