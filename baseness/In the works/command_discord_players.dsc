@@ -1,12 +1,9 @@
-server_list:
-    type: data
-    debug: false
-    servers: <bungee.list_servers>
-
 connect_bot:
     type: task
     debug: false
     script:
+        # % ██ [ Manually start the bot                                  ] ██
+        # % ██ [ Typically done "on server start" or relative to startup ] ██
         - ~discordconnect id:a_bot token:<secret[a_bot_token]>
 
 players_command_create:
@@ -22,21 +19,17 @@ players_command_handler:
         on discord slash command name:players:
         # % ██ [ Defer the interaction        ] ██
         - ~discordinteraction defer interaction:<context.interaction>
+
+        - define embed <discord_embed>
+
         - foreach <bungee.list_servers> as:server:
             - ~bungeetag server:<[server]> <server.online_players.parse[name].formatted> save:players
-            - define server_player_map:|:<map.with[<[server]>].as[<entry[players].result>]>
+            - if <entry[players].result.is_empty>:
+                - foreach next
+            - define embed <[embed].add_inline_field[<[server]>].value[<entry[players].result>]>
+
         # % ██ [ Public message parsing        ] ██
         - definemap embed_data:
             color: <color[0,254,255]>
             description: <[server_player_map].formatted.seperated_by[<&nl>]>
-        - ~discordinteraction reply interaction:<context.interaction> <discord_embed.with_map[<[embed_data]>]>
-
-# - Made by Behr
-
-boom:
-    type: task
-    debug: false
-    script:
-        - foreach <bungee.list_servers> as:server:
-            - ~bungeetag server:<[server]> <server.online_players.parse[name].formatted> save:players
-            - define server_player_map:|:<map.with[<[server]>].as[<entry[players].result>]>
+        - ~discordinteraction reply interaction:<context.interaction> <[embed].with_map[<[embed_data]>]>
