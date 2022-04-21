@@ -20,6 +20,9 @@ players_command_handler:
     # % ██ [ Public message parsing        ] ██
     - definemap embed_data:
         color: <color[0,254,255]>
-        description: Stuff in message!
+        description:
+          - foreach <bungee.list_servers> as:server:
+            - bungeetag server:<[server]> <server.online_players.parse[name].formatted> save:players
+            - narrate <entry[players]>
 
     - ~discordinteraction reply interaction:<context.interaction> <discord_embed.with_map[<[embed_data]>]>
