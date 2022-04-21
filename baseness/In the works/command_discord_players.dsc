@@ -23,13 +23,13 @@ players_command_handler:
         - define embed <discord_embed>
 
         - foreach <bungee.list_servers> as:server:
-            - ~bungeetag server:<[server]> <server.online_players.parse[name].formatted> save:players
-            - if <entry[players].result.is_empty>:
+            - ~bungeetag server:<[server]> <server.online_players.parse[name]> save:players
+            - if !<entry[players].result.is_empty>:
                 - foreach next
-            - define embed <[embed].add_inline_field[<[server]>].value[<entry[players].result>]>
+            - define player_list <entry[players].result>
+            - define embed "<[embed].add_inline_field[<[server]>].value[<[player_list].size> Online<&co><n><[player_list].formatted>]>"
 
         # % ██ [ Public message parsing        ] ██
         - definemap embed_data:
             color: <color[0,254,255]>
-            description: <[server_player_map].formatted.seperated_by[<&nl>]>
         - ~discordinteraction reply interaction:<context.interaction> <[embed].with_map[<[embed_data]>]>
