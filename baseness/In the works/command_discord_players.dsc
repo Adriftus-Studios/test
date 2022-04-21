@@ -39,5 +39,7 @@ network_players_list:
     debug: false
     script:
         - foreach <bungee.list_servers> as:server:
-            - bungeetag server:<[server]> <server.online_players.parse[name]> save:players
-            - narrate "In <[server]>, there's <entry[players].result.formatted>"
+            - bungeetag server:<[server]> <server.online_players.parse[name].formatted> save:players
+            #- define player_list <entry[players].result>
+            #- define maptag <[playerlist]>
+            - narrate "In <[server]>, there's <entry[players].result>"
