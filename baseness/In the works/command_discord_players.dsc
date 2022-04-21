@@ -16,4 +16,10 @@ players_command_handler:
   events:
     on discord slash command name:players:
     # % ██ [ Defer the interaction        ] ██
-      - ~discordinteraction defer interaction:<context.interaction>
+    - ~discordinteraction defer interaction:<context.interaction>
+    # % ██ [ Public message parsing        ] ██
+    - definemap embed_data:
+        color: <color[0,254,255]>
+        description: Stuff in message!
+
+    - ~discordinteraction reply interaction:<context.interaction> <discord_embed.with_map[<[embed_data]>]>
