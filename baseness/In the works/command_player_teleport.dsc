@@ -10,34 +10,43 @@ player_teleport:
         1: <server.online_players.parse[name]>|coordinates
         2: <server.online_players.parse[name]>|coordinates
     script:
+        ## = Cache = ##
+        - define everyplayerever <bungee.server.list_players.parse[name]>
+
         ## = Exclusions = ##
-        ## No arguments
+        # - No arguments - #
         - if <context.args.size> == 0:
             - narrate "<red><bold>Please enter a player's name."
-        ## Too many arguments
+        # - Too many arguments - #
         - if <context.args.size> > 2 && !(<context.args.get[1|2]> == coordinates):
             - narrate "<red><bold>Too many arguments!<reset>"
 
         ## = Executions = ##
-        ## /tp player player BUT WHY THO
-        - define everyplayerever <bungee.server.list_players.parse[name]>
+        # - /tp player player BUT WHY THO - #
         - if (<context.args.get[1]> == <player.name> && <context.args.get[2]> == <player.name>) || <context.args.get[1]> == <player.name>:
             - narrate "<bold><red>Did you just teleport to yourself."
             - stop
-        ## /tp other_player
+        # - /tp other_player - #
         - if <context.args.size> == 1:
             - define player <server.match_player[<context.args.get[1]>]>
             - teleport <player> location:<[player].location>
             - narrate "Teleported <player.name> to <[player].name>" targets:<player>|<[player]>
-        ## /tp coordinates x y z
+        # - /tp coordinates x y z - #
         - if <context.args.get[1]> == coordinates && <context.args.size> == 4:
-            - teleport <player> location:<location[<context.args.get[2]>,<context.args.get[3]>,<context.args.get[4]>,<player.world.name>]>
-            - narrate "Teleported <player.name> to <context.args.get[2]>,<context.args.get[3]>,<context.args.get[4]>"
-        ## /tp player other_player
+            - define x <context.args.get[2]>
+            - define y <context.args.get[3]>
+            - define z <context.args.get[4]>
+            - define world <player.world.name>
+            - teleport <player> location:<location[<[x]>,<[y]>,<[z]>,<[world]>]>
+            - narrate "Teleported <player.name> to <[x]>,<[y]>,<[z]> in <[world]>"
+        # - /tp player other_player - #
         - if <context.args.size> == 2:
             - define player1 <server.match_player[<context.args.get[1]>]>
             - define player2 <server.match_player[<context.args.get[2]>]>
             - teleport <[player1]> location:<[player2].location>
             - narrate "Teleported <[player1].name> to <[player2].name>"
-        ## /tp player coordinates x y z
-## Player should be able to teleport to offline player locations too.
+        # - /tp player/other_player coordinates x y z - #
+        - if <context.args.size> == 5 && <context.args.get[1].is_player> && <context.args.get[2]> == coordinates && <context.args.get[3|4|5].is_integer>:
+            - define player <context.args.get[1]>
+            - teleport <[player]>
+# Player should be able to teleport to offline player locations too.
