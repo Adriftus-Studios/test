@@ -42,5 +42,5 @@ network_players_list:
             - bungeetag server:<[server]> <server.online_players.parse[name].separated_by[<n>]> save:players
             #- define player_list <entry[players].result>
             #- define maptag <[playerlist]>
-            - define players:|:<map.with[<[server]>].as[<entry[players]>]>
-            - narrate <[players]>
+            - define players:|:<map.with[<[server]>].as[<[players]>]>
+        
