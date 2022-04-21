@@ -13,4 +13,4 @@ network_players_list:
     debug: false
     script:
         - foreach <bungee.list_servers> as:server:
-             - narrate <server[<[server]>].online_players.parse[name]>
+             - narrate <server[<[server]>].online_players.parse[name].formatted>
