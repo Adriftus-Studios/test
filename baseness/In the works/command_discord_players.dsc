@@ -1,4 +1,4 @@
-players_command:
+players_DCommand:
     type: world
     debug: false
     events:
@@ -7,7 +7,7 @@ players_command:
             - define author <context.author>
             - define channel <context.channel>
             - if <[message].contains_all_text[/players]>:
-                - ~discordmessage id:AdriftusBot channel:<[channel]> Testing
+                - ~discordmessage id:AdriftusBot channel:<[channel]> Testing no_mention
 network_players_list:
     type: task
     debug: false
