@@ -106,10 +106,10 @@ netherite_shield_world:
     type: world
     debug: false
     events:
-        on player equips netherite_shield:
-            - flag <player> base_run_speed:<player.speed>
+        after player equips netherite_shield:
+            - flag server base_run_speed:<player.speed>
             - adjust <player> speed:0.8*<player.speed>
 
-        on player unequips netherite_shield:
-            - adjust <player> speed:<player.flag[base_run_speed]>
+        after player unequips netherite_shield:
+            - adjust <player> speed:<server.flag[base_run_speed]>
 #
