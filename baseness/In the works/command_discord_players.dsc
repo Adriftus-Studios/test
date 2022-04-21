@@ -13,4 +13,7 @@ network_players_list:
     debug: false
     script:
         - foreach <bungee.list_servers> as:server:
-             - narrate <server[<[server]>].online_players.parse[name].formatted>
+            - bungeetag server:<[server]> <server.online_players.parse[name].formatted> save:players
+            - narrate <entry[players]>
+
+## = Using bungeetag command
