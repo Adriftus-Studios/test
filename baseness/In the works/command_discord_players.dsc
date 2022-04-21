@@ -44,4 +44,4 @@ network_players_list:
             #- if <entry[players].result.if_null[null]> == null
             #- define maptag <[playerlist]>
             - define players:|:<map.with[<[server]>].as[<[players]>]>
-        
+            - narrate <[players]>
