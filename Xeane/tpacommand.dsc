@@ -1,6 +1,7 @@
 
 tpa_command:
     type: command
+    debug: false
     name: tpa
     description: Used To Request A Teleport
     usage: /tpa (name)
@@ -21,6 +22,7 @@ tpa_command:
 
 tpa_crystal:
   type: item
+  debug: false
   material: feather
   display name: <&2>TPA Crystal
   data:
@@ -83,6 +85,3 @@ tpa_command_callback:
     - narrate "<&a>TPA Accepted!" targets:<player.flag[tmp.tpa_accept]>|<player>
     - define location <player.location>
     - run teleportation_animation_run def:<[location]> player:<player.flag[tmp.tpa_accept]>
-
-
-
