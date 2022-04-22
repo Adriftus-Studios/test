@@ -47,6 +47,6 @@ network_players_list:
             - if <entry[players].result> == null:
                 - foreach next
             - repeat <entry[size].result>:
-                # - define count 1:++
-                - narrate "<[server]> - <entry[players].result.get[<entry[size].result>]><n>"
+                - define count 1:++
+                - narrate "<[server]> - <entry[players].result.get[<definition[count]>]><n>"
                 # - narrate "<[server]> - <entry[players].result.get[<[count]>]><n>"
