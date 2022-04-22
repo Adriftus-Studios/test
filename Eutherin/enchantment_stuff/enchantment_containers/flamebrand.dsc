@@ -1,7 +1,7 @@
 Flamebrand_enchantment:
   type: enchantment
   id: Flamebrand
-  debug: false
+  debug: true
   slots:
   - mainhand
   - offhand
