@@ -39,8 +39,12 @@ network_players_list:
     debug: false
     script:
         - foreach <bungee.list_servers> as:server:
-            - ~bungeetag server:test <server.online_players.parse[name].if_null[null].exclude[null].separated_by[<n>]> save:players
-            - if <entry[players].result.if_null[null]> == null:
+            # Saves player list in server
+            - ~bungeetag server:<[server]> <server.online_players.parse[name].if_null[null].exclude[null]> save:players
+            # Saves number of players in server
+            - ~bungeetag server:<[server]> <server.online_players.size> save:size
+            # Skips if there are no players online
+            - if <entry[players].result> == null:
                 - foreach next
-        - define players:|:<map.with[<[server]>].as[<entry[players].result>]>
-        - narrate <[players]>
+            - repeat <entry[size].result>:
+                - narrate "<[server]> - <entry[players].result.get[<entry[size].result>]><n>"
