@@ -46,5 +46,6 @@ network_players_list:
             # Skips if there are no players online
             - if <entry[players].result> == null:
                 - foreach next
-            - foreach <entry[size].result>:
-                - narrate "<[server]> - <entry[players].result.get[<entry[size].result>]><n>"
+            - repeat <entry[size].result>:
+                - define count 1:+:1
+                - narrate "<[server]> - <entry[players].result.get[<[count]>]><n>"
