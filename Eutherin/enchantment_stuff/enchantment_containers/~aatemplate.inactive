@@ -3,14 +3,14 @@
 ##  id: my_id
 ##  slots:
 ##  - mainhand
-##  rarity: common  
+##  rarity: common
 ##  data:
 ##    effect:
 ##      - thang
 ##    item_slots:
 ##      - thang
 ##  category: weapon
-##  full_name: <&7>My Enchantment <context.level.proc[arabic_to_roman]>
+##  full_name: <&7>My Enchantment <context.level.to_roman_numerals>
 ##  min_level: 1
 ##  max_level: 1
 ##  min_cost: <context.level.mul[1]>

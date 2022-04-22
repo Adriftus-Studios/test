@@ -10,12 +10,12 @@ prospector_enchantment:
   data:
     effect:
       - Has a small chance to cause treasure to drop when a mob dies.
-      - _
+      - <&empty>
       - Repeated strikes stack, up to the enchantment level.
     item_slots:
       - all_weapons
   category: weapon
-  full_name: <&7>Prospector <context.level.proc[arabic_to_roman]>
+  full_name: <&7>Prospector <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3
   treasure_only: true

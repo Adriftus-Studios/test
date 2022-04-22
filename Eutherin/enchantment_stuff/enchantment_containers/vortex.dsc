@@ -10,12 +10,12 @@ Vortex_enchantment:
   data:
     effect:
       - Pulls in monsters within 7 blocks.
-      - _
+      - <&empty>
       - Increased levels increase the force of the pull.
     item_slots:
       - all_weapons
   category: weapon
-  full_name: <&7>Vortex <context.level.proc[arabic_to_roman]>
+  full_name: <&7>Vortex <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3
   treasure_only: true

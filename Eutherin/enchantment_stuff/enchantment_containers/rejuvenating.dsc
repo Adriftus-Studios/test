@@ -13,7 +13,7 @@ Rejuvenating_enchantment:
     item_slots:
       - chest
   category: armor
-  full_name: <&7>Rejuvenating <context.level.proc[arabic_to_roman]>
+  full_name: <&7>Rejuvenating <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3
   is_tradable: false

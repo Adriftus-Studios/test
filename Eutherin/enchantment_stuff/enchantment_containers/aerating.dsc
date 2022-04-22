@@ -13,7 +13,7 @@ aerating_enchantment:
     item_slots:
       - hoe
   category: breakable
-  full_name: <&7>Aerating <context.level.proc[arabic_to_roman]>
+  full_name: <&7>Aerating <context.level.to_roman_numerals>
   min_level: 1
   max_level: 5
   treasure_only: true

@@ -16,7 +16,7 @@ cowardice_enchantment:
     item_slots:
       - Any Armor
   category: WEARABLE
-  full_name: <&7>Cowardice <context.level.proc[arabic_to_roman]>
+  full_name: <&7>Cowardice <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3
   treasure_only: true

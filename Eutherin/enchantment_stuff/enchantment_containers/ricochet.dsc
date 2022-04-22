@@ -16,7 +16,7 @@ Ricochet_enchantment:
       - bows
       - crossbows
   category: bow
-  full_name: <&7>Ricochet <context.level.proc[arabic_to_roman]>
+  full_name: <&7>Ricochet <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3
   treasure_only: true

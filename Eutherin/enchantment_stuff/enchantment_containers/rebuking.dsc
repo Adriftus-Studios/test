@@ -11,12 +11,12 @@ Rebuking_enchantment:
   data:
     effect:
       - Stores damage in shield, Jump to release an attack
-      - _
+      - <&empty>
       - 2S cd per stack Jump during block to release
     item_slots:
       - Shield
   category: weapon
-  full_name: <&7>Rebuking <context.level.proc[arabic_to_roman]>
+  full_name: <&7>Rebuking <context.level.to_roman_numerals>
   min_level: 1
   max_level: 4
   is_tradable: false

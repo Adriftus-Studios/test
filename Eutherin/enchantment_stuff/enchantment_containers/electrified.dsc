@@ -10,12 +10,12 @@ Electrified_enchantment:
   data:
     effect:
       - Has a chance to release an electric charge dealing 3 damage.
-      - _
+      - <&empty>
       - Increased levels grant 1 bounce per level.
     item_slots:
       - boots
   category: WEARABLE
-  full_name: <&7>Electrified <context.level.proc[arabic_to_roman]>
+  full_name: <&7>Electrified <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3
   treasure_only: true

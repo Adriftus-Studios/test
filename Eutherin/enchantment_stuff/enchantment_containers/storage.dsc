@@ -10,12 +10,12 @@ storage_enchantment:
   data:
     effect:
       - These items contain an extra inventory.
-      - _
+      - <&empty>
       - Pairs well with Siphon
     item_slots:
       - tools
   category: breakable
-  full_name: <&7>storage <context.level.proc[arabic_to_roman]>
+  full_name: <&7>storage <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3
   treasure_only: true

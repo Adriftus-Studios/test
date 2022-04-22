@@ -10,13 +10,13 @@ chain_reaction_enchantment:
   data:
     effect:
       - Has a small chance to fire arrows from the target struck.
-      - _
+      - <&empty>
       - Increased levels increase the amount of arrows.
     item_slots:
       - bows
       - crossbows
   category: bow
-  full_name: <&7>Chain Reaction <context.level.proc[arabic_to_roman]>
+  full_name: <&7>Chain Reaction <context.level.to_roman_numerals>
   min_level: 1
   max_level: 4
   treasure_only: true
