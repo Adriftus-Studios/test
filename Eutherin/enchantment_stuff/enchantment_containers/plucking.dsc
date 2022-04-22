@@ -9,12 +9,12 @@ plucking_enchantment:
   data:
     effect:
       - Allows you to pluck chickens.
-      - _
+      - <&empty>
       - Costs durability to use.
     item_slots:
       - shears
   category: digger
-  full_name: <&7>Plucking <context.level.proc[arabic_to_roman]>
+  full_name: <&7>Plucking <context.level.to_roman_numerals>
   min_level: 1
   max_level: 1
   is_tradable: false

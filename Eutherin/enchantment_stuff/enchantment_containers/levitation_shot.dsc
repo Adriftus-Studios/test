@@ -10,12 +10,12 @@ Levitation_shot_enchantment:
   data:
     effect:
       - Causes victims to levitate for 2 seconds.
-      - _
+      - <&empty>
       - Levels increase the speed of levitation.
     item_slots:
       - ranged
   category: bow
-  full_name: <&7>Levitation Shot <context.level.proc[arabic_to_roman]>
+  full_name: <&7>Levitation Shot <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3
   treasure_only: true

@@ -10,13 +10,13 @@ masochism_enchantment:
   data:
     effect:
       - Attacking drains 1 life per level per stack.
-      - _
+      - <&empty>
       - At 4 stacks, they are channeled into 7x damage.
     item_slots:
       - sword
       - axe
   category: weapon
-  full_name: <&7>Masochism <context.level.proc[arabic_to_roman]>
+  full_name: <&7>Masochism <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3
   treasure_only: true

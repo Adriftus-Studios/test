@@ -10,13 +10,13 @@ Lifestealing_enchantment:
   data:
     effect:
       - Chance to steal 1.5 hearts per level over 3.5s
-      - _
+      - <&empty>
       - Cannot be used with Vampirism or Radiance
     item_slots:
       - sword
       - axe
   category: weapon
-  full_name: <&7>Lifestealing <context.level.proc[arabic_to_roman]>
+  full_name: <&7>Lifestealing <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3
   is_tradable: false

@@ -10,7 +10,7 @@ combo_enchantment:
   data:
     effect:
       - Repeated attacks to a target do 1 damage per level per attack.
-      - _
+      - <&empty>
       - Stacks up to 2x your enchantment level.
     item_slots:
       - sword
@@ -18,7 +18,7 @@ combo_enchantment:
       - bows
       - crossbows
   category: weapon
-  full_name: <&7>Combo <context.level.proc[arabic_to_roman]>
+  full_name: <&7>Combo <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3
   is_tradable: false

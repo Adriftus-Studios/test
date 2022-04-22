@@ -1,5 +1,6 @@
 kelpbulbobtain:
     type: world
+    debug: false
     events:
         on player breaks kelp_plant:
             - define chance <util.random.int[1].to[15]>
@@ -14,6 +15,7 @@ kelpbulbobtain:
 kelp_bulb:
     type: item
     material: sugar
+    debug: false
     display name: <yellow>Kelp Bulb
     lore:
     - <&6>The root of a kelp plant.
@@ -32,6 +34,7 @@ kelp_bulb:
 
 kelpbulbevents:
     type: world
+    debug: false
     events:
         on player right clicks block with:kelp_bulb:
                 - if <player.oxygen.in_seconds> < 9:

@@ -10,12 +10,12 @@ Rush_enchantment:
   data:
     effect:
       - Has a chance to boost your speed by 20% when hit.
-      - _
+      - <&empty>
       - Lasts 1 second per level
     item_slots:
       - boots
   category: WEARABLE
-  full_name: <&7>Rush <context.level.proc[arabic_to_roman]>
+  full_name: <&7>Rush <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3
   treasure_only: true

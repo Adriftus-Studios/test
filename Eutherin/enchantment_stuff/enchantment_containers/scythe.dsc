@@ -13,7 +13,7 @@ Scythe_enchantment:
     item_slots:
       - hoe
   category: breakable
-  full_name: <&7>Scythe <context.level.proc[arabic_to_roman]>
+  full_name: <&7>Scythe <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3
   treasure_only: true

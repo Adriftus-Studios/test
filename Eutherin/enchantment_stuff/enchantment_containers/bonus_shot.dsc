@@ -14,7 +14,7 @@ bonus_shot_enchantment:
       - bows
       - crossbows
   category: bow
-  full_name: <&7>Bonus Shot <context.level.proc[arabic_to_roman]>
+  full_name: <&7>Bonus Shot <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3
   treasure_only: true

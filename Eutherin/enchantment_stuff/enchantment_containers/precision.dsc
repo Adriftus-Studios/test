@@ -12,7 +12,7 @@ Precision_enchantment:
     item_slots:
       - shears
   category: digger
-  full_name: <&7>Precision <context.level.proc[arabic_to_roman]>
+  full_name: <&7>Precision <context.level.to_roman_numerals>
   min_level: 1
   max_level: 1
   is_tradable: false

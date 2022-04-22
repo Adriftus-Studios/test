@@ -11,12 +11,12 @@ deflection_enchantment:
   data:
     effect:
       - Gives a small chance to deflect incoming arrows.
-      - _
+      - <&empty>
       - Chance increases by 2% per level.
     item_slots:
       - Chest, Legs
   category: WEARABLE
-  full_name: <&7>Deflection <context.level.proc[arabic_to_roman]>
+  full_name: <&7>Deflection <context.level.to_roman_numerals>
   min_level: 1
   max_level: 5
   treasure_only: true
