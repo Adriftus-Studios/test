@@ -5,13 +5,13 @@ spawn_sheep_command:
     description: Spawns a sheep at your location.
     usage: /spawnsheep
     script:
-    - run confirmScriptText def:spawnSheep
+    - run confirm_Script_Text def:spawnSheep
 # It works
 spawn_sheep:
     type: task
     debug: false
     script:
-        - if !(<player.location.forward_flat[2]> == air):
+        - if ! ( <player.location.forward_flat[2]> ) == air:
             - strike <player.location.forward_flat[2]> no_damage
             - spawn sheep <player.location.forward_flat[2]>
             - narrate "Sheep spawned!"

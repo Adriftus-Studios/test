@@ -1,10 +1,10 @@
 chest_lock_item:
-  type: item
-  debug: false
-  material: iron_nugget
-  display name: <white><bold>Iron Padlock
-  lore:
-    - <yellow><bold>Right-click a chest to lock it.
+    type: item
+    debug: false
+    material: iron_nugget
+    display name: <white><bold>Iron Padlock
+    lore:
+        - <yellow><bold>Right-click a chest to lock it.
 
 chest_lock_system:
     type: world
