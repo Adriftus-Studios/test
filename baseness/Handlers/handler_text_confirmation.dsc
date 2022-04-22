@@ -4,13 +4,13 @@ confirm_Script_Text:
     definitions: callback
     script:
         - flag player callback:<[callback]>
-        - clickable confirm_Script_Text_callback def:true save:Confirm usages:1
-        - clickable confirm_Script_Text_callback def:false save:Cancel usages:1
+        - clickable CST_callback def:true save:Confirm usages:1 until:30s
+        - clickable CST_callback def:false save:Cancel usages:1 until:30s
         - narrate "Are you sure about this?"
         - narrate <&hover[Confirm].type[show_text]><element[<green><bold><underline>[Yes]].on_click[<entry[Confirm].command>]><&end_hover><reset>
         - narrate <&hover[Cancel].type[show_text]><element[<red><bold><underline>[No]].on_click[<entry[Cancel].command>]><&end_hover><reset>
 #Very approved
-confirm_Script_Text_callback:
+CST_callback:
   type: task
   debug: false
   definitions: bool
@@ -21,6 +21,9 @@ confirm_Script_Text_callback:
         - narrate <red><bold>Cancelled.<reset>
     - flag player callback:!
 #Very approved
+
+# - Timeout required
+
 # |---          How to use the confirmation menu in other scripts (Example)         ---|
 # | In command script -
 # | script:
