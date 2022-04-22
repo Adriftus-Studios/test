@@ -19,20 +19,18 @@ players_command_handler:
         on discord slash command name:players:
         # % ██ [ Defer the interaction        ] ██
         - ~discordinteraction defer interaction:<context.interaction>
-
         - define embed <discord_embed>
-
         - foreach <bungee.list_servers> as:server:
             - ~bungeetag server:<[server]> <server.online_players.parse[name]> save:players
             - if <entry[players].result.is_empty>:
                 - foreach next
             - define player_list <entry[players].result>
             - define embed "<[embed].add_inline_field[<[server]>].value[<[player_list].size> Online<&co><n><[player_list].formatted>]>"
-
         # % ██ [ Public message parsing        ] ██
         - definemap embed_data:
             color: <color[0,254,255]>
         - ~discordinteraction reply interaction:<context.interaction> <[embed].with_map[<[embed_data]>]>
+# - Made by Behr
 
 network_players_list:
     type: task
