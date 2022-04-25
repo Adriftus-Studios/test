@@ -40,7 +40,7 @@ test_spawn_blood_raiders:
     - repeat 100:
       - playeffect effect:redstone quantity:40 special_data:10|#660000 offset:0.7 at:<[location]> targets:<server.online_players>
       - wait 2t
-    - define players <[location].find_players_within[60]>
+    - define players <[location].find_players_within[60].filter[gamemode.equals[SURVIVAL]]>
     - run test_spawn_blood_raider_particles
     - if <[players].size> <= 3:
       - define count 5
@@ -61,7 +61,7 @@ test_spawn_blood_raiders:
     - repeat 40:
         - playeffect effect:redstone quantity:40 special_data:10|#660000 offset:0.7 at:<[location]> targets:<server.online_players>
         - wait 2t
-    - define players <[location].find_players_within[60]>
+    - define players <[location].find_players_within[60].filter[gamemode.equals[SURVIVAL]]>
     - foreach <[players]> as:target:
       - repeat <[count]>:
         - repeat 5:
@@ -77,7 +77,7 @@ test_spawn_blood_raiders:
     - repeat 40:
         - playeffect effect:redstone quantity:40 special_data:10|#660000 offset:0.7 at:<[location]> targets:<server.online_players>
         - wait 2t
-    - define players <[location].find_players_within[60]>
+    - define players <[location].find_players_within[60].filter[gamemode.equals[SURVIVAL]]>
     - run test_spawn_blood_raiders_task3 def:<[location]>|<[players].random>
 
 
