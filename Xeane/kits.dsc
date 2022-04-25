@@ -3,7 +3,7 @@ iron_armor_pack:
   material: chest
   display name: <&f>Iron Kit
   flags:
-    on_right_click: iron_armor_pack_give
+    right_click_script: iron_armor_pack_give
 
 iron_armor_pack_give:
   type: task
@@ -19,7 +19,7 @@ diamond_armor_pack:
   material: chest
   display name: <&b>Diamond Kit
   flags:
-    on_right_click: diamond_armor_pack_give
+    right_click_script: diamond_armor_pack_give
 
 diamond_armor_pack_give:
   type: task
