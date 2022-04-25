@@ -192,6 +192,8 @@ test_spawn_blood_raider_remove:
   debug: false
   script:
     - flag server test_spawn_blood_raiders:<-:<context.entity>
+    - if <context.entity_type> == CREEPER:
+      - determine passively <list[]>
     - announce "<context.entity> removed"
     - if <server.flag[test_spawn_blood_raiders].is_empty>:
       - flag server test_spawn_blood_raiders:!
