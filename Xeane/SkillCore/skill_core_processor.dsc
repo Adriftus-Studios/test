@@ -75,3 +75,17 @@ skill_core_use:
     - if <entry[skill].created_queue.determination.get[1]||true>:
       - flag player skills.cooldowns.<[skill]> duration:<[skill_script].data_key[cooldown]||30s>
       - flag player skills.cooldowns.global duration:1.5s
+
+skill_core_gain_experience:
+  type: task
+  debug: false
+  definitions: tree|amount
+  script:
+    - flag player class.<[tree]>.experience:+:<[amount]>
+
+skill_core_lose_experience:
+  type: task
+  debug: false
+  definitions: tree|amount
+  script:
+    - flag player class.<[tree]>.experience:-:<[amount]>

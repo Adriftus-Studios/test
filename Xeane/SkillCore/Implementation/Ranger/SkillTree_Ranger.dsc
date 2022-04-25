@@ -24,3 +24,14 @@ impl_skillTree_ranger_icon:
   - "<&a>Skills for the Ranger Class"
   mechanisms:
     custom_model_data: 2
+
+impl_skillTree_rogue_events:
+  type: world
+  debug: false
+  events:
+    on player breaks *log:
+      - foreach <context.location.find_players_within[36].filter[has_flag[class.ranger]]> as:__player:
+        - run skill_core_lose_experience def:ranger|1
+        - narrate "<&c>You have lost 1 XP due to nearby nature damage"
+    on plant grows from bonemeal flagged:class.ranger:
+      - run skill_core_gain_experience def:ranger|1

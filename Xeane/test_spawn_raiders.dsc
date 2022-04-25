@@ -111,7 +111,8 @@ test_spawn_blood_raiders_task2:
     - repeat 5:
       - playeffect effect:redstone quantity:10 special_data:5|#660000 offset:0.7 at:<[spawn_at].above> targets:<server.online_players>
       - wait 2t
-    - spawn test_spawn_blood_radier2 <[spawn_at]> target:<[target_player]> save:ent
+    - mount test_spawn_blood_radier2|test_spawn_blood_raiders2_horse <[spawn_at]> save:ent
+    - attack <entry[ent].mounted_entities> target:<[target_player]>
     - flag server test_spawn_blood_raiders:->:<entry[ent].spawned_entity>
     - adjust <entry[ent].spawned_entity> "custom_name:<entry[ent].spawned_entity.script.parsed_key[mechanisms.custom_name]> <entry[ent].spawned_entity.health_data>"
 
@@ -145,34 +146,41 @@ test_spawn_blood_raider_particles:
 test_spawn_blood_radier:
   type: entity
   debug: false
-  entity_type: zombified_piglin
+  entity_type: creeper
   mechanisms:
-    health_data: 200/200
-    custom_name: <&c>Blood Raider
+    health_data: 125/125
+    custom_name: <&c>Blood Creeper
     custom_name_visible: true
   flags:
     on_death: test_spawn_blood_raider_remove
-    on_damaged: test_spawn_blood_raider_update_name
 
 test_spawn_blood_radier2:
   type: entity
   debug: false
-  entity_type: zombified_piglin
+  entity_type: skeleton
   mechanisms:
-    health_data: 500/500
-    custom_name: <&c>Blood Raider2
+    health_data: 250/250
+    custom_name: <&c>Blood Skeleton
     custom_name_visible: true
   flags:
     on_death: test_spawn_blood_raider_remove
-    on_damaged: test_spawn_blood_raider_update_name
+
+test_spawn_blood_radier2_horse:
+  type: entity
+  debug: false
+  entity_type: skeleton_horse
+  mechanisms:
+    health_data: 100/100
+  flags:
+    on_death: test_spawn_blood_raider_remove
 
 test_spawn_blood_radier3:
   type: entity
   debug: false
-  entity_type: zombified_piglin
+  entity_type: evoker
   mechanisms:
-    health_data: 1000/1000
-    custom_name: <&c>Blood Raider3
+    health_data: 400/400
+    custom_name: <&c>Evoker
     custom_name_visible: true
   flags:
     on_death: test_spawn_blood_raider_boss_death
@@ -191,7 +199,7 @@ test_spawn_blood_raider_update_name:
   debug: false
   script:
     - wait 1t
-    - adjust <context.entity> "custom_name:<context.entity.script.parsed_key[mechanisms.custom_name]> <context.entity.health.round>/<context.entity.health_max>"
+    - adjust <context.entity> "custom_name:<context.entity.script.parsed_key[mechanisms.custom_name]> <&7>(<&e><context.entity.health.round>/<context.entity.health_max><&7>)"
 
 test_spawn_blood_raider_boss_death:
   type: task
