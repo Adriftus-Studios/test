@@ -42,10 +42,10 @@ test_spawn_blood_raiders:
       - wait 2t
     - define players <[location].find_players_within[60]>
     - run test_spawn_blood_raider_particles
-    - if <[players].size> <= 2:
-      - define count 4
+    - if <[players].size> <= 3:
+      - define count 5
     - else:
-      - define count 2
+      - define count 3
     - foreach <[players]> as:target:
       - repeat <[count]>:
         - repeat 5:
@@ -96,7 +96,7 @@ test_spawn_blood_raiders_task:
       - wait 2t
     - spawn test_spawn_blood_radier <[spawn_at]> target:<[target_player]> save:ent
     - flag server test_spawn_blood_raiders:->:<entry[ent].spawned_entity>
-    - adjust <entry[ent].spawned_entity> "custom_name:<entry[ent].spawned_entity.script.parsed_key[mechanisms.custom_name]> <entry[ent].spawned_entity.health_data>"
+    - adjust <entry[ent].spawned_entity> "custom_name:<entry[ent].spawned_entity.script.parsed_key[mechanisms.custom_name]>"
 
 test_spawn_blood_raiders_task2:
   type: task
@@ -111,10 +111,10 @@ test_spawn_blood_raiders_task2:
     - repeat 5:
       - playeffect effect:redstone quantity:10 special_data:5|#660000 offset:0.7 at:<[spawn_at].above> targets:<server.online_players>
       - wait 2t
-    - mount test_spawn_blood_radier2|test_spawn_blood_raiders2_horse <[spawn_at]> save:ent
+    - mount test_spawn_blood_radier2|test_spawn_blood_raider2_horse <[spawn_at]> save:ent
     - attack <entry[ent].mounted_entities> target:<[target_player]>
-    - flag server test_spawn_blood_raiders:->:<entry[ent].spawned_entity>
-    - adjust <entry[ent].spawned_entity> "custom_name:<entry[ent].spawned_entity.script.parsed_key[mechanisms.custom_name]> <entry[ent].spawned_entity.health_data>"
+    - flag server test_spawn_blood_raiders:|:<entry[ent].mounted_entities>
+    - adjust <entry[ent].spawned_entity> "custom_name:<entry[ent].spawned_entity.script.parsed_key[mechanisms.custom_name]>"
 
 test_spawn_blood_raiders_task3:
   type: task
@@ -148,7 +148,7 @@ test_spawn_blood_radier:
   debug: false
   entity_type: creeper
   mechanisms:
-    health_data: 125/125
+    health_data: 100/100
     custom_name: <&c>Blood Creeper
     custom_name_visible: true
   flags:
