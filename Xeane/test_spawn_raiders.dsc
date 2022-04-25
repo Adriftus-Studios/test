@@ -153,6 +153,7 @@ test_spawn_blood_radier:
     custom_name_visible: true
   flags:
     on_death: test_spawn_blood_raider_remove
+    on_explode: test_spawn_blood_raider_remove
 
 test_spawn_blood_radier2:
   type: entity
