@@ -39,6 +39,7 @@ graves_config:
 
 hologram:
   type: entity
+  debug: false
   entity_type: armor_stand
   mechanisms:
     marker: true
@@ -47,6 +48,7 @@ hologram:
 
 graves_handler:
   type: world
+  debug: false
   events:
     after delta time secondly:
       # % ██ [ update grave timers               ] ██
@@ -59,7 +61,7 @@ graves_handler:
 
     after delta time secondly every:10:
       # % ██ [ remove expired graves             ] ██
-      - foreach <server.flag[graves].filter[chunk.is_loaded].filter[flag[grave.hologram.timer].is_truthy]> as:grave:
+      - foreach <server.flag[graves].filter_tag[<[filter_key].chunk.is_loaded>].filter_tag[<[filter_key].flag[grave.hologram.timer].is_truthy>]> as:grave:
         - if <server.flag_expiration[grave].is_after[<util.time_now>]>:
           - chunkload <[grave].chunk> duration:20s if:!<[grave].chunk.is_loaded>
           - remove <[grave].flag[grave.hologram.player_name_display]> if:<[grave].flag[grave.hologram.player_name_display].is_truthy>
@@ -97,7 +99,7 @@ graves_handler:
           items: <[items]>
           owner: <player>
       - flag server graves.<[location]> expire:<[duration]>
-      - flag <[location]> grave.<[grave]> expire:<[duration]>
+      - flag <[location]> grave:<[grave]> expire:<[duration]>
 
       # % ██ [ create the hologram               ] ██
       - if <script[graves_config].data_key[hologram.enabled]>:
@@ -111,12 +113,10 @@ graves_handler:
         - flag <[location]> grave.hologram.timer:<entry[timer_display].spawned_entity> expire:<[duration]>
 
     on player breaks player_head location_flagged:grave bukkit_priority:LOWEST:
-      - determine passively cancelled
-
       # % ██ [ verify owner breaking grave       ] ██
       - if <context.location.flag[grave.owner].uuid> != <player.uuid>:
         - narrate <script[graves_config].data_key[messages.not_your_grave].parse_color.parsed>
-        - stop
+        - determine cancelled
 
       # % ██ [ remove the holograms              ] ██
       - remove <context.location.flag[grave.hologram.player_name_display]> if:<context.location.flag[grave.hologram.player_name_display].is_truthy>
@@ -127,4 +127,4 @@ graves_handler:
       - narrate <script[graves_config].data_key[messages.retrieved_grave].parse_color.parsed>
       - flag <context.location> grave:!
       - flag server graves.<context.location>:!
-      - determine NOTHING
+      - determine nothing
