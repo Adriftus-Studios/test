@@ -7,3 +7,4 @@ downbad_floyd_replace:
   script:
     - create player "<&f>Downbad Floyd" <player.location> save:npc
     - animate <entry[npc].created_npc> SLEEP
+    - adjust <player> send_to:test
