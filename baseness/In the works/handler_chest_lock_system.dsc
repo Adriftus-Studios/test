@@ -26,5 +26,4 @@ chest_lock_system:
         on player breaks chest location_flagged:locked_chest:
             - flag <context.location.other_block> locked_chest:!
 #Approved
-#Issue - flag isn't deleted when chest is destroyed
 #Issue - Idea isn't very clear
