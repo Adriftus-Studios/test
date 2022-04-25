@@ -3,7 +3,7 @@ test_spawn_blood_crystal:
   debug: false
   material: snowball
   mechanisms:
-    custom_model_data: 1
+    custom_model_data: 2
   flags:
     on_projectile_launched: test_spawn_blood_raiders_flag_projectile
 
@@ -194,7 +194,6 @@ test_spawn_blood_raider_remove:
     - flag server test_spawn_blood_raiders:<-:<context.entity>
     - if <context.entity.entity_type> == CREEPER:
       - determine passively <list[]>
-    - announce "<context.entity> removed"
     - if <server.flag[test_spawn_blood_raiders].is_empty>:
       - flag server test_spawn_blood_raiders:!
 
