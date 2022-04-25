@@ -17,6 +17,9 @@ actor_weapon_blood_bandit_use:
     - if <[target]> != null:
       - define points <player.location.above.right[0.5].points_between[<[target]>].distance[0.5]>
       - foreach <[points]>:
-        - playeffect effect:redstone special_data:5|red at:<[value]> quantity:1 targets:<server.online_players>
+        - playeffect effect:redstone special_data:5|red at:<[value]> offset:0 quantity:1 targets:<server.online_players>
+        - wait 1t
+      - repeat 5:
+        - playeffect effect:redstone special_data:5|red at:<[target].above> offset:0.5 quantity:1 targets:<server.online_players>
         - wait 1t
       - spawn test_spawn_blood_radier2 <[target]>
