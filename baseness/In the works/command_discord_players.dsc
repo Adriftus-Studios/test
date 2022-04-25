@@ -47,5 +47,4 @@ network_players_list:
             - define count 1
             - repeat <entry[size].result>:
                 - define count <definition[count]>:++
-                - narrate "<[server]> - <entry[players].result.get[<definition[count]>]>"
-                # - narrate "<[server]> - <entry[players].result.get[<[count]>]><n>"
+                - narrate "<[server]> - <entry[players].result.get[<[count]>]>"
