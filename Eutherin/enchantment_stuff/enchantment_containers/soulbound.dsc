@@ -10,12 +10,12 @@ Soulbound_enchantment:
   data:
     effect:
       - Prevents this item from dropping when you die.
-      - _
+      - <&empty>
       - Will lose one level each time it takes effect.
     item_slots:
       - anything
   category: wearable
-  full_name: <&7>Soulbound <context.level.proc[arabic_to_roman]>
+  full_name: <&7>Soulbound <context.level.to_roman_numerals>
   min_level: 1
   max_level: 5
   treasure_only: true

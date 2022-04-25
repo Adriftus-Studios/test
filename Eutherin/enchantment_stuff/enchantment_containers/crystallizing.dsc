@@ -9,12 +9,12 @@ Crystallizing_enchantment:
   data:
     effect:
       - Occasionaly turns basic stones into gems
-      - _
+      - <&empty>
       - Costs extra durability to use. Incompatible with fortune/silk touch
     item_slots:
       - pickaxd
   category: digger
-  full_name: <&7>Crystallizing <context.level.proc[arabic_to_roman]>
+  full_name: <&7>Crystallizing <context.level.to_roman_numerals>
   min_level: 1
   max_level: 5
   is_tradable: false

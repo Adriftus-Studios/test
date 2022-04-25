@@ -1,5 +1,6 @@
 return_scroll:
   type: item
+  debug: false
   material: feather
   display name: <&6>Return Scroll
   data:
@@ -22,6 +23,7 @@ return_scroll:
 
 return_crystal:
   type: item
+  debug: false
   material: feather
   display name: <&6>Return Crystal
   data:

@@ -10,12 +10,12 @@ Fuse_Shot_enchantment:
   data:
     effect:
       - Has a small chance to spawn a TNT block at the victims location.
-      - _
+      - <&empty>
       - Will not destroy blocks. Deals 3 damage per level.
     item_slots:
       - bows
   category: bow
-  full_name: <&7>Fuse Shot <context.level.proc[arabic_to_roman]>
+  full_name: <&7>Fuse Shot <context.level.to_roman_numerals>
   min_level: 1
   max_level: 5
   treasure_only: true

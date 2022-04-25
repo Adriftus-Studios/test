@@ -12,8 +12,8 @@ Harvesting_enchantment:
       - Fortune, but for crops!
     item_slots:
       - hoe
-  category: tools
-  full_name: <&7>Harvesting <context.level.proc[arabic_to_roman]>
+  category: breakable
+  full_name: <&7>Harvesting <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3
   treasure_only: true

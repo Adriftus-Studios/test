@@ -10,12 +10,12 @@ Temporal_theft_enchantment:
   data:
     effect:
       - Steals a portion of the victim's speed for 2 seconds.
-      - _
+      - <&empty>
       - Levels increase the amount stolen by 10% per level.
     item_slots:
       - ranged
   category: bow
-  full_name: <&7>Temporal Theft <context.level.proc[arabic_to_roman]>
+  full_name: <&7>Temporal Theft <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3
   treasure_only: true

@@ -48,6 +48,7 @@ impl_skill_second_wind:
 # Display Icon for the skill itself
 # "lore" field might be used in chat diplays, and other GUIs
 impl_skill_second_wind_icon:
+  debug: false
   type: item
   material: iron_nugget
   display name: "<&a>Second Wind"

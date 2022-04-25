@@ -10,14 +10,14 @@ Wild_Rage_enchantment:
   data:
     effect:
       - Chance to confuse enemies and attack random targets.
-      - _
+      - <&empty>
       - Increases duration by 1 second per level.
     item_slots:
       - bows
       - crossbows
       - tridents
   category: bow
-  full_name: <&7>Wild Rage <context.level.proc[arabic_to_roman]>
+  full_name: <&7>Wild Rage <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3
   treasure_only: true

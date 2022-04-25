@@ -13,7 +13,7 @@ Radiance_enchantment:
     item_slots:
       - all_weapons
   category: weapon
-  full_name: <&7>Radiance <context.level.proc[arabic_to_roman]>
+  full_name: <&7>Radiance <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3
   treasure_only: true

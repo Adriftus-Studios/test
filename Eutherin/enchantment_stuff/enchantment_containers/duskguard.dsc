@@ -10,13 +10,13 @@ Duskguard_enchantment:
   data:
     effect:
       - Deals 3 damage/level during nighttime
-      - _
+      - <&empty>
       - Cannot be combined with Dawnguard
     item_slots:
       - sword
       - axe
   category: weapon
-  full_name: <&7>Duskguard <context.level.proc[arabic_to_roman]>
+  full_name: <&7>Duskguard <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3
   is_tradable: false

@@ -16,7 +16,7 @@ elf_hat_tintable:
     no_custom_enchants: 1
     hat: <server.current_time_millis>
 
-christmas_hat_canceller:
+christmas_hat_canceller_elf:
   type: world
   debug: false
   events:

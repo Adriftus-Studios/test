@@ -1,5 +1,6 @@
 morb_config:
   type: data
+  debug: false
   blacklisted_entities:
     - wither
     - player
@@ -7,6 +8,7 @@ morb_config:
 
 morb_empty:
   type: item
+  debug: false
   material: feather
   display name: <&7>Empty <&a>Morb
   lore:
@@ -18,6 +20,7 @@ morb_empty:
 
 morb_filled:
   type: item
+  debug: false
   material: feather
   display name: <&2>Filled <&a>Morb
   lore:
@@ -40,7 +43,7 @@ filled_morb_projectile:
 
 morb_events:
   type: world
-  debug: true
+  debug: false
   events:
     on player right clicks block with:morb_empty:
       - shoot empty_morb_projectile speed:3.7 save:shot
