@@ -114,6 +114,7 @@ test_spawn_blood_raiders_task2:
     - mount test_spawn_blood_radier2|test_spawn_blood_raider2_horse <[spawn_at]> save:ent
     - attack <entry[ent].mounted_entities> target:<[target_player]>
     - flag server test_spawn_blood_raiders:|:<entry[ent].mounted_entities>
+    - run test_spawn_blood_raider_particles
     - adjust <entry[ent].spawned_entity> "custom_name:<entry[ent].spawned_entity.script.parsed_key[mechanisms.custom_name]>"
 
 test_spawn_blood_raiders_task3:
@@ -130,6 +131,8 @@ test_spawn_blood_raiders_task3:
       - playeffect effect:redstone quantity:10 special_data:5|#660000 offset:0.7 at:<[spawn_at].above> targets:<server.online_players>
       - wait 2t
     - spawn test_spawn_blood_radier3 <[spawn_at]> target:<[target_player]> save:ent
+    - flag server test_spawn_blood_raiders:->:<entry[ent].spawned_entity>
+    - run test_spawn_blood_raider_particles
     - adjust <entry[ent].spawned_entity> "custom_name:<entry[ent].spawned_entity.script.parsed_key[mechanisms.custom_name]> <entry[ent].spawned_entity.health_data>"
 
 test_spawn_blood_raider_particles:
