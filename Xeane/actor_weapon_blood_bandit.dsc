@@ -6,6 +6,8 @@ actor_weapon_blood_bandit:
   - "<&e>Sword of the Blood Bandit"
   mechanisms:
     custom_model_data: 2
+  flags:
+    right_click_script: actor_weapon_blood_bandit_use
 
 actor_weapon_blood_bandit_use:
   type: task
