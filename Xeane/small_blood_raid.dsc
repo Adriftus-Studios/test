@@ -24,11 +24,14 @@ small_blood_raid_event:
   events:
     on player right clicks *bed bukkit_priority:HIGHEST:
       - if <context.location.has_town> && <context.location.town.has_flag[blood_raids_enabled]>:
+        - announce 1
         - if !<context.location.town.has_flag[blood_raid]> && <util.random_chance[10]>:
+          - announce 2
           - determine passively cancelled
           - narrate "<&c>Sleep escapes you..."
           - run small_blood_raid def:<context.location.town>
         - else if <context.location.town.has_flag[blood_raid]>:
+          - announce 3
           - determine passively cancelled
           - narrate "<&c>Sleep escapes you..."
 
