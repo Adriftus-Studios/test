@@ -12,6 +12,6 @@ teleport_bow_function:
     type: world
     debug: false
     events:
-        on player shoots teleport_bow:
+        after arrow hits block:
             - if <context.shooter.item_in_hand.custom_model_data> == 694205:
-                - teleport <player> <context.projectile>
+                - teleport <player> <context.projectile.location>

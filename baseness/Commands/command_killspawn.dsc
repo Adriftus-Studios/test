@@ -4,6 +4,7 @@ Killspawn:
     name: Killspawn
     description: Instantly kills a player and respawns them back to the same location.
     usage: /killspawn <&lt>player<&gt>
+    permission: adriftus.staff
     aliases:
         - ks
     tab completion:

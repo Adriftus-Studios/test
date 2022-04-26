@@ -28,12 +28,15 @@ grass_seed_grow:
             - choose <context.location.material.name>:
                 - case dirt:
                     - modifyblock <context.location> material:grass_block
+                    - playeffect effect:composter at:<context.location>
                 #Grows grass on grass block
                 - case grass_block:
                     - modifyblock <[blockontop]> material:grass
+                    - playeffect effect:composter at:<context.location.above[1]>
                 #Further grows the grass
                 - case grass:
                     - modifyblock <context.location> material:tall_grass no_physics
                     - modifyblock <[blockontop]> material:tall_grass no_physics
                     - adjustblock <[blockontop]> half:top no_physics
+                    - playeffect effect:composter at:<context.location.above[2]>
             - take iteminhand quantity:1

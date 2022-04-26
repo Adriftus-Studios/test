@@ -6,6 +6,7 @@ set_gamerule:
     usage: /gamerule <&lt>world<&gt> <&lt>gamerule<&gt> <&lt>true/false/toggle<&gt>
     aliases:
         - gr
+    permission: adriftus.set_gamerule
     tab completions:
         1: <server.worlds.parse[name]>
         2: <server.gamerules>
