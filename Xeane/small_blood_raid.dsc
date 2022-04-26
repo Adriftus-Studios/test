@@ -10,7 +10,7 @@ small_blood_raid:
     - flag <[town]> blood_raid expire:5m
     - foreach <[players]> as:target:
       - wait 1s
-      - define location <[target].location.chunk.surface_blocks.random.above>
+      - define location <[target].location.chunk.surface_blocks.random.above[3]>
       - wait 1s
       - repeat 30:
         - playeffect at:<[location]> effect:redstone special_data:10|#660000 offset:0.75 quantity:10 targets:<server.online_players>
