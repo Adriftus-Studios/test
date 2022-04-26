@@ -9,10 +9,10 @@ small_blood_raid:
     - narrate "<&c>A Blood Raid has started in <&b><[town].name><&c>..." targets:<server.online_players>
     - flag <[town]> blood_raid expire:5m
     - foreach <[players]> as:target:
-      - wait 1t
-      - define location <[target].chunk.surface_blocks.random.above>
-      - wait 1t
-      - repeat 10:
+      - wait 1s
+      - define location <[target].location.chunk.surface_blocks.random.above>
+      - wait 1s
+      - repeat 30:
         - playeffect at:<[location]> effect:redstone special_data:10|#660000 offset:0.75 quantity:10 targets:<server.online_players>
         - wait 2t
       - spawn small_blood_raid_raider2 <[location]> target:<[target]>
