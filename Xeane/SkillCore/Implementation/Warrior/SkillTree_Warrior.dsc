@@ -24,3 +24,10 @@ impl_skillTree_warrior_icon:
   - "<&a>Skills for the Warrior Class"
   mechanisms:
     custom_model_data: 1
+
+impl_skillTree_warrior_events:
+  type: world
+  debug: false
+  events:
+    on player kills entity flagged:class.warrior:
+      - run skill_core_lose_experience def:warrior|1
