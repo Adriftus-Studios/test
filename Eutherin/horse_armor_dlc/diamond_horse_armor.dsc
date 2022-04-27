@@ -7,5 +7,5 @@ custom_diamond_horse_armor:
       output_quantity: 1
       input:
       - air|air|diamond_helmet
-      - diamond_ingot|leather|diamond_ingot
+      - diamond|leather|diamond
       - diamond_leggings|air|diamond_leggings
