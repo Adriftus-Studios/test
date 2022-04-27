@@ -19,6 +19,12 @@ large_blood_raid:
     # Start the blood ground animation
     - run large_blood_raid_ground_blood def.town:<[town]> def.valid_chunks:<[valid_chunks]>
 
+    # Let the ground animation run
+    - wait 20s
+
+    # Launch arcs
+    - ~run large_blood_raid_shoot_arcs def.town:<[town]> def.chunks:<[valid_chunks]> def.count:5
+
     # Start the sky animation
     - repeat 5:
       - define yaw_add <element[72].mul[<[value]>]>
@@ -30,7 +36,7 @@ large_blood_raid:
     - repeat <[size]>:
       - define final_points <[final_points].include_single[<[points_1].get[<[value]>]>|<[points_2].get[<[value]>]>|<[points_3].get[<[value]>]>|<[points_4].get[<[value]>]>|<[points_5].get[<[value]>]>]>
       - wait 1t
-    
+
     - foreach <[final_points]> as:locations:
       - playeffect at:<[locations]> effect:redstone special_data:10|#660000 offset:0.75 quantity:10 targets:<server.online_players>
       - wait 1t
@@ -48,7 +54,22 @@ large_blood_raid_ground_blood:
     - foreach <[valid_chunks]>:
       - define surface_blocks:<[surface_blocks].include_single[<[value].surface_blocks.parse[above]>]>
       - wait 1t
+
+    # play blood animation
     - while <[town].has_flag[blood_raid]>:
       - foreach <[surface_blocks]>:
         - playeffect at:<[value].random[5]> effect:redstone special_data:10|#660000 offset:0.75 quantity:3 targets:<server.online_players>
         - wait 1t
+
+large_blood_raid_shoot_arcs:
+  type: task
+  debug: false
+  definitions: town|chunks|count
+  script:
+    - define location <[town].spawn.above[40]>
+    - repeat <[count]>:
+      - foreach <[chunks]>:
+        - define start <[value].surface_blocks.random>
+        - define locations <proc[define_curve1].proc[<[start]>|<[location]>|45|1|1]>
+        - foreach <[location]>:
+          - playeffect at:<[value]> effect:redstone special_data:10|#660000 offset:0 quantity:1 targets:<server.online_players>
