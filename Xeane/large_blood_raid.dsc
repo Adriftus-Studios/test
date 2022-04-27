@@ -20,6 +20,7 @@ large_blood_raid:
 
     # Flag the Town for the raid
     - flag <[town]> blood_raid
+    - flag <[town]> blood_raid_portal:1
 
     # Sky Animation
     - ~run large_blood_raid_start_sky def:<[base]>
@@ -74,6 +75,7 @@ large_blood_raid_shoot_arc:
     - foreach <[locations]> as:loc:
         - playeffect at:<[loc]> effect:redstone special_data:10|#660000 offset:0.25 quantity:5 targets:<server.online_players>
         - wait 2t
+    - flag <[town]> blood_raid_portal:+:1
 
 large_blood_raid_start_sky:
   type: task
@@ -101,5 +103,5 @@ large_blood_raid_big_portal:
   script:
     - define location <[town].spawn.above[40]>
     - while <[town].has_flag[blood_raid]>:
-      - playeffect at:<[location]> effect:redstone special_data:10|#660000 offset:0.75 quantity:10 targets:<server.online_players>
+      - playeffect at:<[location]> effect:redstone special_data:10|#660000 offset:<[town].flag[blood_raid_portal].mul[0.1]> quantity:10 targets:<server.online_players>
       - wait 3t
