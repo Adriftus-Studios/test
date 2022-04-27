@@ -4,31 +4,17 @@ custom_durability_block_breaking:
   events:
     on player breaks block with:copper_axe|copper_pickaxe|copper_shovel|copper_sword|copper_hoe|copper_shears|:
       - choose <player.item_in_hand.script.name.after[_]>:
-        - case axe:
-          - define value 1
-        - case pickaxe:
-          - define value 1
-        - case shovel:
-          - define value 1
-        - case hoe:
+        - case axe pickaxe shovel hoe shears:
           - define value 1
         - case sword:
           - define value 2
-        - case shears:
-          - define value 1
       - inject custom_durability_process_task
 
     on player damages entity with:copper_axe|copper_pickaxe|copper_shovel|copper_sword|copper_hoe|copper_shears|:
       - choose <player.item_in_hand.script.name.after[_]>:
-        - case axe:
+        - case axe pickaxe shovel:
           - define value 2
-        - case pickaxe:
-          - define value 2
-        - case shovel:
-          - define value 2
-        - case hoe:
-          - define value 1
-        - case sword:
+        - case hoe sword:
           - define value 1
         - case shears:
           - define value 0
