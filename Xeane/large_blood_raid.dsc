@@ -37,8 +37,8 @@ large_blood_raid:
     # Launch arcs
     - repeat 5:
       - foreach <[all_surface_blocks]> as:loc:
-        - if <[loop_index].mod[5]>:
-          - wait 1s
+        #- if <[loop_index].mod[5]>:
+        #  - wait 1s
         - run large_blood_raid_shoot_arc def.town:<[town]> def.start:<[loc]>
         - wait 5t
       - wait 3s
@@ -105,5 +105,5 @@ large_blood_raid_big_portal:
   script:
     - define location <[town].spawn.above[40]>
     - while <[town].has_flag[blood_raid]>:
-      - playeffect at:<[location]> effect:redstone special_data:10|#660000 offset:<[town].flag[blood_raid_portal].mul[0.1]> quantity:<[town].flag[blood_raid_portal].mul[5]> targets:<server.online_players>
+      - playeffect at:<[location]> effect:redstone special_data:10|#660000 offset:<[town].flag[blood_raid_portal].mul[0.05]> quantity:<[town].flag[blood_raid_portal].mul[3]> targets:<server.online_players>
       - wait 3t
