@@ -2,9 +2,9 @@ copper_pickaxe:
   type: item
   material: iron_pickaxe
   flags:
-    - durability_max:200
-    - durability_current:200
-  display name: Copper Pickaxe
+    - durability_max: 200
+    - durability_current: 200
+  display name: <&f>Copper Pickaxe
   recipes:
     1:
       type: shaped
