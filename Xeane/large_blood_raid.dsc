@@ -32,10 +32,22 @@ large_blood_raid:
     - run large_blood_raid_ground_blood def.town:<[town]> def.valid_chunks:<[valid_chunks]>
 
     # Let the ground animation run
-    - wait 20s
+    - wait 19s
+
+    # Determine iterations
+    - if <[all_surface_blocks].size> < 5:
+      - define iterations 6
+    - else if <[all_surface_blocks].size> < 8:
+      - define iterations 5
+    - else if <[all_surface_blocks].size> < 12:
+      - define iterations 4
+    - else if <[all_surface_blocks].size> < 15:
+      - define iterations 3
+    - else:
+      - define iterations 2
 
     # Launch Arcs
-    - repeat 5:
+    - repeat <[iterations]>:
       - foreach <[all_surface_blocks]> as:loc:
         - run large_blood_raid_shoot_arc def.town:<[town]> def.start:<[loc]>
         - wait 14t
