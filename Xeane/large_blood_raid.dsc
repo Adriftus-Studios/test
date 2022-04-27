@@ -12,6 +12,11 @@ large_blood_raid:
         - wait 1t
       - if <[chunk].cuboid.center.distance[<[base]>]> < 200:
         - define valid_chunks:->:<[chunk]>
+    
+    # Define surface blocks
+    - foreach <[valid_chunks]>:
+      - define all_surface_blocks:|:<[value].surface_blocks.parse[above]>
+      - wait 1t
 
     # Flag the Town for the raid
     - flag <[town]> blood_raid
@@ -23,7 +28,9 @@ large_blood_raid:
     - wait 20s
 
     # Launch arcs
-    - ~run large_blood_raid_shoot_arcs def.town:<[town]> def.chunks:<[valid_chunks]> def.count:1
+    - repeat 20:
+      - run large_blood_raid_shoot_arc def.town:<[town]> def.start:<[all_surface_blocks].random>
+      - wait 3s
 
     # Start the sky animation
     - repeat 5:
@@ -61,18 +68,13 @@ large_blood_raid_ground_blood:
         - playeffect at:<[value].random[5]> effect:redstone special_data:10|#660000 offset:0.75 quantity:3 targets:<server.online_players>
         - wait 1t
 
-large_blood_raid_shoot_arcs:
+large_blood_raid_shoot_arc:
   type: task
   debug: false
-  definitions: town|chunks|count
+  definitions: town|start
   script:
     - define location <[town].spawn.above[40]>
-    - repeat <[count]>:
-      - foreach <[chunks]> as:chunk:
-        - define start <[chunk].surface_blocks.random>
-        - announce <[start]>
-        - announce <[location]>
-        - define locations <proc[define_curve1].context[<[start]>|<[location]>|10|45|1]>
-        - foreach <[locations]> as:loc:
-          - playeffect at:<[loc]> effect:redstone special_data:10|#660000 offset:0 quantity:1 targets:<server.online_players>
-          - wait 2t
+    - define locations <proc[define_curve1].context[<[start]>|<[location]>|<util.random.int[5].to[25]>|45|1]>
+    - foreach <[locations]> as:loc:
+        - playeffect at:<[loc]> effect:redstone special_data:10|#660000 offset:0 quantity:1 targets:<server.online_players>
+        - wait 2t
