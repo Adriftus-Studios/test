@@ -32,6 +32,14 @@ players_command_handler:
         - ~discordinteraction reply interaction:<context.interaction> <[embed].with_map[<[embed_data]>]>
 # - Made by Behr
 
+npl_command:
+    type: command
+    debug: false
+    name: npl
+    description: Runs network_players_list task script.
+    usage: /npl
+    script:
+        - run network_players_list
 network_players_list:
     type: task
     debug: false
