@@ -41,7 +41,7 @@ large_blood_raid:
         #  - wait 1s
         - run large_blood_raid_shoot_arc def.town:<[town]> def.start:<[loc]>
         - wait 5t
-      - wait 3s
+      - wait 1s
 
 
 
