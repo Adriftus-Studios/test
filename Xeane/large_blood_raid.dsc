@@ -65,6 +65,9 @@ large_blood_raid:
     - flag <[town]> blood_raid.stage:2
     - run blood_sigil_spawn def:<[town]>
 
+    - run blood_raid_sigil_activate def:<[town]>|1
+
+    # DEVELOPMENT FROM HERE DOWN
     - wait 20s
     #CLEANUP - DEBUG
     - remove <[town].flag[blood_raid.sigils]>
@@ -135,6 +138,20 @@ large_blood_raid_big_portal:
       - playeffect at:<[location]> effect:redstone special_data:10|#660000 offset:8,1,8 quantity:30 targets:<server.online_players>
       - wait 3t
 
+## BLOOD SIGILS
+# Activate a Sigil
+blood_raid_sigil_activate:
+  type: task
+  debug: false
+  definitions: town|sigil_number
+  script:
+    - define sigil <[town].flag[blood_raid.sigils].get[<[sigil_number]>]>
+    - repeat 15:
+      - rotate <[sigil]> yaw:<[value].mul[2]> duration:5t
+      - wait 5t
+    - rotate <[sigil]> yaw:30 duration:10s
+
+#Spawn the 5 Sigils
 blood_sigil_spawn:
   type: task
   debug: false
