@@ -86,7 +86,7 @@ large_blood_raid:
     # Wait for Overlay
     - wait 5s
     # PLAY EXPLOSION SOUNDS
-    - run set_fake_biome def:<[town]>|<[biome_chunk_list]>|true
+    - run set_fake_biome def.town:<[town]> def.chunks:<[biome_chunk_list]> def.state:true
 
     # Spawn Blood Sigils
     - flag <[town]> blood_raid.stage:2
@@ -99,7 +99,7 @@ large_blood_raid:
     #CLEANUP - DEBUG
     - remove <[town].flag[blood_raid.sigils]>
     - flag <[town]> blood_raid:!
-    - run set_fake_biome def:<[town]>|false
+    - run set_fake_biome def.town:<[town]> def.chunks:<[biome_chunk_list]> def.state:false
 
 # Ground Blood During Raid
 large_blood_raid_ground_blood:
