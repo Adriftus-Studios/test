@@ -103,5 +103,5 @@ large_blood_raid_big_portal:
   script:
     - define location <[town].spawn.above[40]>
     - while <[town].has_flag[blood_raid]>:
-      - playeffect at:<[location]> effect:redstone special_data:10|#660000 offset:<[town].flag[blood_raid_portal].mul[0.1]> quantity:10 targets:<server.online_players>
+      - playeffect at:<[location]> effect:redstone special_data:10|#660000 offset:<[town].flag[blood_raid_portal].mul[0.1]> quantity:<[town].flag[blood_raid_portal].mul[5]> targets:<server.online_players>
       - wait 3t
