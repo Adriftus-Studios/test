@@ -15,7 +15,7 @@ large_blood_raid:
     
     # Define surface blocks
     - foreach <[valid_chunks]>:
-      - define all_surface_blocks:|:<[value].surface_blocks.parse[above]>
+      - define all_surface_blocks:|:<[value].surface_blocks.random[3].parse[above]>
       - wait 1t
 
     # Flag the Town for the raid
@@ -29,8 +29,10 @@ large_blood_raid:
 
     # Launch arcs
     - repeat 20:
+      - if <[value].mod[5]> == 0:
+        - wait 5s
       - run large_blood_raid_shoot_arc def.town:<[town]> def.start:<[all_surface_blocks].random>
-      - wait 1s
+      - wait 1t
 
     # Start the sky animation
     - repeat 5:
@@ -74,7 +76,7 @@ large_blood_raid_shoot_arc:
   definitions: town|start
   script:
     - define location <[town].spawn.above[40]>
-    - define locations <proc[define_curve1].context[<[start]>|<[location]>|<util.random.int[5].to[25]>|45|1]>
+    - define locations <proc[define_curve1].context[<[start]>|<[location]>|<util.random.int[5].to[25]>|<util.random.int[25].to[75]>|1]>
     - foreach <[locations]> as:loc:
         - playeffect at:<[loc]> effect:redstone special_data:10|#660000 offset:0.25 quantity:5 targets:<server.online_players>
         - wait 2t
