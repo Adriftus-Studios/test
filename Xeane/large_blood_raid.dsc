@@ -162,6 +162,7 @@ large_blood_raid_big_portal:
       - playeffect at:<[location]> effect:redstone special_data:10|#990000 offset:<[town].flag[blood_raid.portal].mul[0.05]> quantity:<[town].flag[blood_raid.portal].mul[3]> targets:<server.online_players>
       - wait 3t
     - waituntil <[town].has_flag[blood_raid.sigils]> rate:10t
+    - wait 5t
     - define location <[town].flag[blood_raid.sigils].parse[location.above[5]]>
     - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid.stage]> == 2:
       - playeffect at:<[location]> effect:redstone special_data:5|#990000 offset:0 quantity:5 targets:<server.online_players>
@@ -178,11 +179,11 @@ set_fake_biome:
     - else:
       - define time 1t
     - foreach <[chunks]> as:chunk:
-      - if <[loop_index].mod[20]> == 0:
+      - if <[loop_index].mod[30]> == 0:
         - wait 1t
       - fakebiome biome:<biome[adriftus:blood_raid]> players:<server.online_players> chunk:<[chunk]> duration:<[time]>
     - foreach <[chunks]> as:chunk:
-      - if <[loop_index].mod[20]> == 0:
+      - if <[loop_index].mod[30]> == 0:
         - wait 1t
       - adjust <[chunk]> refresh_chunk
 
