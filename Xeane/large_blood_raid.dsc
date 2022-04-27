@@ -70,6 +70,8 @@ large_blood_raid_shoot_arcs:
     - repeat <[count]>:
       - foreach <[chunks]> as:chunk:
         - define start <[chunk].surface_blocks.random>
+        - announce <[start]>
+        - announce <[location]>
         - define locations <proc[define_curve1].proc[<[start]>|<[location]>|5|45|1]>
         - foreach <[location]> as:loc:
           - playeffect at:<[loc]> effect:redstone special_data:10|#660000 offset:0 quantity:1 targets:<server.online_players>
