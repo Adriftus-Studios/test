@@ -1,7 +1,7 @@
 large_blood_raid:
   type: task
   debug: false
-  definition: location
+  definitions: location
   script:
     - define base <[location].with_pose[0,0]>
     - repeat 5:
