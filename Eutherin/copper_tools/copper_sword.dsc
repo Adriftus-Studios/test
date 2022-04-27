@@ -6,6 +6,8 @@ copper_sword:
       max: 200
       current: 0
   display name: <&f>Copper Sword
+  mechanisms:
+    custom_model_data: 1
   recipes:
     1:
       type: shaped

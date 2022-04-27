@@ -5,6 +5,8 @@ copper_hoe:
     custom_durability:
       max: 200
       current: 0
+  mechanisms:
+    custom_model_data: 1
   display name: <&f>Copper Hoe
   recipes:
     1:
