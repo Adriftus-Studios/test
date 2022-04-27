@@ -9,6 +9,7 @@ large_blood_raid:
       - define location_<[value]> <[base].with_yaw[<[yaw_add]>].above[40].forward[60]>
       - define points_<[value]> <[location_<[value]>].points_between[<[base].above[40]>]>
       - wait 1t
+    - define final_points <list>
     - repeat <[points_1].size>:
       - define final_points <[final_points].include_single[<[points_1].get[<[value]>]>|<[points_2].get[<[value]>]>|<[points_3].get[<[value]>]>|<[points_4].get[<[value]>]>|<[points_5].get[<[value]>]>]>
       - wait 1t
