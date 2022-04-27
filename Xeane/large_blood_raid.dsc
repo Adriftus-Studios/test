@@ -35,11 +35,13 @@ large_blood_raid:
     - wait 20s
 
     # Launch arcs
-    - repeat 20:
-      - if <[value].mod[5]> == 0:
-        - wait 3s
-      - run large_blood_raid_shoot_arc def.town:<[town]> def.start:<[all_surface_blocks].random>
-      - wait 5t
+    - repeat 5:
+      - foreach <[all_surface_blocks]> as:loc:
+        - if <[loop_index].mod[5]>:
+          - wait 1s
+        - run large_blood_raid_shoot_arc def.town:<[town]> def.start:<[loc]>
+        - wait 5t
+      - wait 3s
 
 
 
