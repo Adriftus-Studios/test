@@ -47,9 +47,9 @@ custom_durability_process_task:
   type: task
   debug: false
   script:
-      - if <context.item.flag[custom_durability.max].sub[<context.item.flag[custom_durability.current]>]> < <[value]>:
-        - flag item custom_durability:<context.item.flag[custom_durability.current].sub[<[value]>]>
-        - define percent <context.item.flag[custom_durability.current].div[<context.item.flag[custom_durability.max]>]>
+      - if <context.item.flag[custom_durability_max].sub[<context.item.flag[custom_durability_current]>]> < <[value]>:
+        - flag item custom_durability:<context.item.flag[custom_durability_current].sub[<[value]>]>
+        - define percent <context.item.flag[custom_durability_current].div[<context.item.flag[custom_durability_max]>]>
         - define current_dur <context.item.material.max_durability.mul[<[percent]>]>
         - inventory adjust slot:<player.held_item_slot> durability:<[current_dur]>
       - else:
