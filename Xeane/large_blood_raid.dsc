@@ -60,8 +60,7 @@ large_blood_raid:
     # Wait for Overlay
     - wait 5s
     # PLAY EXPLOSION SOUNDS
-    - foreach <server.online_players> as:__player:
-      - run set_fake_biome def:<[town]>|true
+    - run set_fake_biome def:<[town]>|true
 
     # Spawn Blood Sigils
     - flag <[town]> blood_raid.stage:2
@@ -74,8 +73,7 @@ large_blood_raid:
     #CLEANUP - DEBUG
     - remove <[town].flag[blood_raid.sigils]>
     - flag <[town]> blood_raid:!
-    - foreach <server.online_players> as:__player:
-      - run set_fake_biome def:<[town]>|false
+    - run set_fake_biome def:<[town]>|false
 
 # Ground Blood During Raid
 large_blood_raid_ground_blood:
