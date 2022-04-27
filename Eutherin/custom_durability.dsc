@@ -23,7 +23,6 @@ custom_durability_block_breaking:
       - inject custom_durability_process_task
 
     on player right clicks dirt with:copper_hoe:
-      - narrate <context.hand>
       - define slot <player.held_item_slot>
       - if <context.hand> == offhand:
         - define slot 41
@@ -36,6 +35,13 @@ custom_durability_block_breaking:
         - define slot 41
       - if <context.location.material.name.contains[stripped]>:
         - stop
+      - define value 1
+      - inject custom_durability_process_task
+
+    on player right clicks dirt|grass_block with:copper_shovel:
+      - define slot <player.held_item_slot>
+      - if <context.hand> == offhand:
+        - define slot 41
       - define value 1
       - inject custom_durability_process_task
 
