@@ -46,9 +46,9 @@ large_blood_raid_ground_blood:
     # get surface blocks in the chunks
     - define surface_blocks <list>
     - foreach <[valid_chunks]>:
-      - define surface_blocks:<[surface_blocks].include_single[<[value].surface_blocks>]>
+      - define surface_blocks:<[surface_blocks].include_single[<[value].surface_blocks.parse[above]>]>
       - wait 1t
     - while <[town].has_flag[blood_raid]>:
       - foreach <[surface_blocks]>:
-        - playeffect at:<[value].random.above> effect:redstone special_data:10|#660000 offset:0.75 quantity:3 targets:<server.online_players>
+        - playeffect at:<[value].random[5]> effect:redstone special_data:10|#660000 offset:0.75 quantity:3 targets:<server.online_players>
         - wait 1t
