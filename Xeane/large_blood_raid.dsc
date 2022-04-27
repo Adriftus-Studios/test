@@ -134,9 +134,9 @@ large_blood_raid_big_portal:
       - playeffect at:<[location]> effect:redstone special_data:10|#990000 offset:<[town].flag[blood_raid.portal].mul[0.05]> quantity:<[town].flag[blood_raid.portal].mul[3]> targets:<server.online_players>
       - wait 3t
     - waituntil <[town].has_flag[blood_raid.sigils]> rate:10t
-    - define location <[town].flag[blood_raid.sigils].parse[location.above[8]]>
+    - define location <[town].flag[blood_raid.sigils].parse[location.above[6]]>
     - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid.stage]> == 2:
-      - playeffect at:<[location]> effect:redstone special_data:3|#990000 offset:0 quantity:5 targets:<server.online_players>
+      - playeffect at:<[location]> effect:redstone special_data:5|#990000 offset:0 quantity:5 targets:<server.online_players>
       - wait 8t
 
 ## BLOOD SIGILS
