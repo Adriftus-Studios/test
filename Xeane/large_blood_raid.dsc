@@ -40,8 +40,7 @@ large_blood_raid:
         #- if <[loop_index].mod[5]>:
         #  - wait 1s
         - run large_blood_raid_shoot_arc def.town:<[town]> def.start:<[loc]>
-        - wait 8t
-      - wait 1s
+        - wait 14t
 
 
 
