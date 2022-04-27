@@ -19,7 +19,7 @@ large_blood_raid:
       - wait 1t
 
     # Flag the Town for the raid
-    - flag <[town]> blood_raid
+    - flag <[town]> blood_raid:1
     - flag <[town]> blood_raid_portal:1
 
     # Sky Animation
@@ -45,8 +45,17 @@ large_blood_raid:
 
     - title title:<&c><&font[adriftus:overlay]><&chr[0004]><&chr[F801]><&chr[0004]> fade_in:5s stay:1s fade_out:1t targets:<server.online_players>
 
+    # Wait for Overlay
+    - wait 5s
     # PLAY EXPLOSION SOUNDS
 
+    # Spawn Blood Sigils
+    - flag <[town]> blood_raid:2
+    - run blood_sigil_spawn def:<[town]>
+
+    - wait 20s
+    #CLEANUP - DEBUG
+    - remove <[town].flag[blood_raid_sigils]>
 
 # Ground Blood During Raid
 large_blood_raid_ground_blood:
@@ -62,7 +71,7 @@ large_blood_raid_ground_blood:
       - wait 1t
 
     # play blood animation
-    - while <[town].has_flag[blood_raid]>:
+    - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid]> == 1:
       - foreach <[surface_blocks]>:
         - playeffect at:<[value].random[5]> effect:redstone special_data:10|#660000 offset:0.75 quantity:3 targets:<server.online_players>
         - wait 1t
@@ -105,11 +114,11 @@ large_blood_raid_big_portal:
   definitions: town
   script:
     - define location <[town].spawn.above[40]>
-    - while <[town].has_flag[blood_raid]>:
+    - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid]> == 1:
       - playeffect at:<[location]> effect:redstone special_data:10|#660000 offset:<[town].flag[blood_raid_portal].mul[0.05]> quantity:<[town].flag[blood_raid_portal].mul[3]> targets:<server.online_players>
       - wait 3t
 
-blood_sigil_spawns:
+blood_sigil_spawn:
   type: task
   debug: false
   definitions: town
@@ -117,7 +126,8 @@ blood_sigil_spawns:
     - define base <[town].spawn.above[40]>
     - repeat 5:
       - define yaw_add <element[72].mul[<[value]>]>
-      - define location_<[value]> <[base].with_yaw[<[yaw_add]>].forward[8]>
+      - spawn blood_sigil_<[value]> <[base].with_yaw[<[yaw_add]>].forward[8]> save:ent
+      - flag <[town]> blood_raid_sigils:->:<entry[ent].spawned_entity>
       - wait 1t
 
 blood_sigil_1:
