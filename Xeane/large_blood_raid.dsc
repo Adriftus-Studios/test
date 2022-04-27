@@ -21,6 +21,9 @@ large_blood_raid:
     # Flag the Town for the raid
     - flag <[town]> blood_raid
 
+    # Sky Animation
+    - ~run large_blood_raid_start_sky def:<[base]>
+
     # Start the blood ground animation
     - run large_blood_raid_ground_blood def.town:<[town]> def.valid_chunks:<[valid_chunks]>
 
@@ -34,21 +37,9 @@ large_blood_raid:
       - run large_blood_raid_shoot_arc def.town:<[town]> def.start:<[all_surface_blocks].random>
       - wait 1t
 
-    # Start the sky animation
-    - repeat 5:
-      - define yaw_add <element[72].mul[<[value]>]>
-      - define location_<[value]> <[base].with_yaw[<[yaw_add]>].above[40].forward[120]>
-      - define points_<[value]> <[location_<[value]>].points_between[<[base].above[40]>]>
-      - wait 1t
-    - define size <[points_1].size>
-    - define final_points <list>
-    - repeat <[size]>:
-      - define final_points <[final_points].include_single[<[points_1].get[<[value]>]>|<[points_2].get[<[value]>]>|<[points_3].get[<[value]>]>|<[points_4].get[<[value]>]>|<[points_5].get[<[value]>]>]>
-      - wait 1t
 
-    - foreach <[final_points]> as:locations:
-      - playeffect at:<[locations]> effect:redstone special_data:10|#660000 offset:0.75 quantity:10 targets:<server.online_players>
-      - wait 1t
+
+
 
 
 # Ground Blood During Raid
@@ -80,3 +71,22 @@ large_blood_raid_shoot_arc:
     - foreach <[locations]> as:loc:
         - playeffect at:<[loc]> effect:redstone special_data:10|#660000 offset:0.25 quantity:5 targets:<server.online_players>
         - wait 2t
+
+large_blood_raid_start_sky:
+  type: task
+  debug: false
+  definitions: base
+  script:
+    - repeat 5:
+      - define yaw_add <element[72].mul[<[value]>]>
+      - define location_<[value]> <[base].with_yaw[<[yaw_add]>].above[40].forward[160]>
+      - define points_<[value]> <[location_<[value]>].points_between[<[base].above[40]>]>
+      - wait 1t
+    - define size <[points_1].size>
+    - define final_points <list>
+    - repeat <[size]>:
+      - define final_points <[final_points].include_single[<[points_1].get[<[value]>]>|<[points_2].get[<[value]>]>|<[points_3].get[<[value]>]>|<[points_4].get[<[value]>]>|<[points_5].get[<[value]>]>]>
+      - wait 1t
+    - foreach <[final_points]> as:locations:
+      - playeffect at:<[locations]> effect:redstone special_data:10|#660000 offset:0.75 quantity:10 targets:<server.online_players>
+      - wait 1t
