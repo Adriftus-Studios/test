@@ -43,7 +43,7 @@ large_blood_raid:
     # Wait for arcs
     - waituntil <[town].flag[blood_raid_portal].equals[25]> rate:1s
 
-    - title title:<&c><&font[adriftus:overlay]><&chr[0004]><&chr[F801]><&chr[0004]> fade_in:3s stay:1s fade_out:1t
+    - title title:<&c><&font[adriftus:overlay]><&chr[0004]><&chr[F801]><&chr[0004]> fade_in:5s stay:1s fade_out:1t
 
 
 
