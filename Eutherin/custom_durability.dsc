@@ -48,10 +48,10 @@ custom_durability_process_task:
   debug: false
   script:
       - if <player.item_in_hand.flag[custom_durability.max].sub[<player.item_in_hand.flag[custom_durability.current]>]> < <[value]>:
-        - flag item custom_durability:<player.item_in_hand.flag[custom_durability.current].sub[<[value]>]>
+        - inventory flag slot:<player.held_item_slot> custom_durability:<player.item_in_hand.flag[custom_durability.current].sub[<[value]>]>
         - define percent <player.item_in_hand.flag[custom_durability.current].div[<player.item_in_hand.flag[custom_durability.max]>]>
         - define current_dur <player.item_in_hand.material.max_durability.mul[<[percent]>]>
-        - inventory adjust slot:<player.held_item_slot> durability:<[current_dur]>
+        - inventory flag slot:<player.held_item_slot> durability:<[current_dur]>
       - else:
         - take iteminhand
         - playsound sound:item_shield_break <player>
