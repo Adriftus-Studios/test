@@ -7,7 +7,7 @@ copper_shovel:
       current: 0
   mechanisms:
     custom_model_data: 1
-  display name: <&f>Copper shovel
+  display name: <&f>Copper Shovel
   recipes:
     1:
       type: shaped
