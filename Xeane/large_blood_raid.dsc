@@ -15,7 +15,7 @@ large_blood_raid:
 
     # Define surface blocks
     - foreach <[valid_chunks]>:
-      - define all_surface_blocks:|:<[value].surface_blocks.random[3].parse[above]>
+      - define all_surface_blocks:|:<[value].surface_blocks.random.above>
       - wait 1t
 
     # Flag the Town for the raid
@@ -36,7 +36,7 @@ large_blood_raid:
 
     # Launch arcs
     - repeat 20:
-      - if <[value].mod[5]> == 0:
+      - if <[value].mod[4]> == 0:
         - wait 5s
       - run large_blood_raid_shoot_arc def.town:<[town]> def.start:<[all_surface_blocks].random>
       - wait 1t
