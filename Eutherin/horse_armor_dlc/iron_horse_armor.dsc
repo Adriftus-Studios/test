@@ -1,6 +1,8 @@
 custom_iron_horse_armor:
   type: item
   material: iron_horse_armor
+  data:
+    recipe_book_category: travel.horse_armor2
   recipes:
     1:
       type: shaped

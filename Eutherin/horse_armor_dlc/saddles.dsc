@@ -1,6 +1,8 @@
 custom_saddle:
   type: item
   material: saddle
+  data:
+    recipe_book_category: travel.horse_armor0
   recipes:
     1:
       type: shaped

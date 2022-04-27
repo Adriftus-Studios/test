@@ -1,6 +1,8 @@
 custom_golden_horse_armor:
   type: item
   material: golden_horse_armor
+  data:
+    recipe_book_category: travel.horse_armor3
   recipes:
     1:
       type: shaped
