@@ -23,7 +23,7 @@ large_blood_raid:
     - wait 20s
 
     # Launch arcs
-    - ~run large_blood_raid_shoot_arcs def.town:<[town]> def.chunks:<[valid_chunks]> def.count:5
+    - ~run large_blood_raid_shoot_arcs def.town:<[town]> def.chunks:<[valid_chunks]> def.count:1
 
     # Start the sky animation
     - repeat 5:
@@ -73,3 +73,4 @@ large_blood_raid_shoot_arcs:
         - define locations <proc[define_curve1].proc[<[start]>|<[location]>|45|1|1]>
         - foreach <[location]>:
           - playeffect at:<[value]> effect:redstone special_data:10|#660000 offset:0 quantity:1 targets:<server.online_players>
+          - wait 2t
