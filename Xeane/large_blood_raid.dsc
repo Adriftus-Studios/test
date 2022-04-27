@@ -134,9 +134,9 @@ large_blood_raid_big_portal:
       - playeffect at:<[location]> effect:redstone special_data:10|#990000 offset:<[town].flag[blood_raid.portal].mul[0.05]> quantity:<[town].flag[blood_raid.portal].mul[3]> targets:<server.online_players>
       - wait 3t
     - waituntil <[town].has_flag[blood_raid.sigils]> rate:10t
-    - define location <[town].flag[blood_raid.sigils].parse[location.above[6]]>
+    - define location <[town].flag[blood_raid.sigils].parse[location.above[8]]>
     - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid.stage]> == 2:
-      - playeffect at:<[location]> effect:redstone special_data:3|#990000 offset:1.5,1,1.5 quantity:3 targets:<server.online_players>
+      - playeffect at:<[location]> effect:redstone special_data:3|#990000 offset:1.5,0.5,1.5 quantity:3 targets:<server.online_players>
       - wait 8t
 
 ## BLOOD SIGILS
@@ -148,8 +148,8 @@ blood_raid_sigil_activate:
   script:
     - define sigil <[town].flag[blood_raid.sigils].get[<[sigil_number]>]>
     - repeat 9:
-      - rotate <[sigil]> yaw:<[value]> duration:5t
-      - wait 5t
+      - rotate <[sigil]> yaw:<[value]> duration:1s
+      - wait 1s
     - rotate <[sigil]> yaw:10 duration:10s
 
 #Spawn the 5 Sigils
