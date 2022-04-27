@@ -211,7 +211,7 @@ blood_sigil_spawn:
     - define base <[town].spawn.above[40]>
     - repeat 5:
       - define yaw_add <element[72].mul[<[value]>]>
-      - spawn blood_sigil_<[value]> <[base].with_yaw[<[yaw_add]>].forward[20]> save:ent
+      - spawn blood_sigil_<[value]> <[base].with_yaw[<[yaw_add]>].forward[25]> save:ent
       - flag <[town]> blood_raid.sigils:->:<entry[ent].spawned_entity>
       - wait 1t
 
