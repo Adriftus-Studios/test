@@ -74,6 +74,8 @@ large_blood_raid:
     #CLEANUP - DEBUG
     - remove <[town].flag[blood_raid.sigils]>
     - flag <[town]> blood_raid:!
+    - foreach <server.online_players> as:__player:
+      - run set_fake_biome def:<[town]>|false
 
 # Ground Blood During Raid
 large_blood_raid_ground_blood:
