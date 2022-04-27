@@ -8,7 +8,7 @@ large_blood_raid:
 
     # Determine valid chunks in range
     - foreach <[town].plots> as:chunk:
-      - if <[loop_index].mod[10]>:
+      - if <[loop_index].mod[10]> == 0:
         - wait 1t
       - if <[chunk].cuboid.center.distance[<[base]>]> < 200:
         - define valid_chunks:->:<[chunk]>
