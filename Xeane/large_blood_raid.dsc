@@ -30,7 +30,7 @@ large_blood_raid:
     # Launch arcs
     - repeat 20:
       - run large_blood_raid_shoot_arc def.town:<[town]> def.start:<[all_surface_blocks].random>
-      - wait 3s
+      - wait 1s
 
     # Start the sky animation
     - repeat 5:
@@ -76,5 +76,5 @@ large_blood_raid_shoot_arc:
     - define location <[town].spawn.above[40]>
     - define locations <proc[define_curve1].context[<[start]>|<[location]>|<util.random.int[5].to[25]>|45|1]>
     - foreach <[locations]> as:loc:
-        - playeffect at:<[loc]> effect:redstone special_data:10|#660000 offset:0 quantity:1 targets:<server.online_players>
+        - playeffect at:<[loc]> effect:redstone special_data:10|#660000 offset:0.25 quantity:5 targets:<server.online_players>
         - wait 2t
