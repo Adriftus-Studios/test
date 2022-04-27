@@ -11,7 +11,7 @@ large_blood_raid:
       - if <[loop_index].mod[10]>:
         - wait 1t
       - if <[chunk].cuboid.center.distance[<[base]>]> < 200:
-        - define valid_chunks:->:<[chunk]>
+        - define valid_chunks <[valid_chunks].include_single[<[chunk]>]>
 
     # Flag the Town for the raid
     - flag <[town]> blood_raid
@@ -50,6 +50,5 @@ large_blood_raid_ground_blood:
       - wait 1t
     - while <[town].has_flag[blood_raid]>:
       - foreach <[surface_blocks]>:
-        - if <[loop_index].mod[8]>:
-          - wait 1t
         - playeffect at:<[value].random.above> effect:redstone special_data:10|#660000 offset:0.75 quantity:3 targets:<server.online_players>
+        - wait 1t
