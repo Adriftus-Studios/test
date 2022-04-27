@@ -99,7 +99,7 @@ large_blood_raid_shoot_arc:
     - foreach <[locations]> as:loc:
         - playeffect at:<[loc]> effect:redstone special_data:10|#660000 offset:0.25 quantity:5 targets:<server.online_players>
         - wait 2t
-    - if <[town].flag[blood_raid_portal]> < 25:
+    - if <[town].flag[blood_raid.portal]> < 25:
       - flag <[town]> blood_raid.portal:+:1
 
 large_blood_raid_start_sky:
