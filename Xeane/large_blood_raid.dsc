@@ -34,20 +34,18 @@ large_blood_raid:
     # Let the ground animation run
     - wait 20s
 
-    # Launch arcs
+    # Launch Arcs
     - repeat 5:
       - foreach <[all_surface_blocks]> as:loc:
         - run large_blood_raid_shoot_arc def.town:<[town]> def.start:<[loc]>
         - wait 14t
 
-    # Wait for arcs
+    # Wait for Arcs
     - waituntil <[town].flag[blood_raid_portal].equals[25]> rate:1s
 
-    - title title:<&c><&font[adriftus:overlay]><&chr[0004]><&chr[F801]><&chr[0004]> fade_in:5s stay:1s fade_out:1t
+    - title title:<&c><&font[adriftus:overlay]><&chr[0004]><&chr[F801]><&chr[0004]> fade_in:5s stay:1s fade_out:1t targets:<server.online_players>
 
-
-
-
+    # PLAY EXPLOSION SOUNDS
 
 
 # Ground Blood During Raid
@@ -110,3 +108,54 @@ large_blood_raid_big_portal:
     - while <[town].has_flag[blood_raid]>:
       - playeffect at:<[location]> effect:redstone special_data:10|#660000 offset:<[town].flag[blood_raid_portal].mul[0.05]> quantity:<[town].flag[blood_raid_portal].mul[3]> targets:<server.online_players>
       - wait 3t
+
+blood_sigil_spawns:
+  type: task
+  debug: false
+  definitions: town
+  script:
+    - define base <[town].spawn.above[40]>
+    - repeat 5:
+      - define yaw_add <element[72].mul[<[value]>]>
+      - define location_<[value]> <[base].with_yaw[<[yaw_add]>].forward[8]>
+      - wait 1t
+
+blood_sigil_1:
+  type: entity
+  entity_type: armor_stand
+  mechanisms:
+    visible: false
+    marker: true
+    equipment: air|air|air|leahter_horse_armor[custom_model_data=300]
+
+blood_sigil_2:
+  type: entity
+  entity_type: armor_stand
+  mechanisms:
+    visible: false
+    marker: true
+    equipment: air|air|air|leahter_horse_armor[custom_model_data=301]
+
+blood_sigil_3:
+  type: entity
+  entity_type: armor_stand
+  mechanisms:
+    visible: false
+    marker: true
+    equipment: air|air|air|leahter_horse_armor[custom_model_data=302]
+
+blood_sigil_4:
+  type: entity
+  entity_type: armor_stand
+  mechanisms:
+    visible: false
+    marker: true
+    equipment: air|air|air|leahter_horse_armor[custom_model_data=303]
+
+blood_sigil_5:
+  type: entity
+  entity_type: armor_stand
+  mechanisms:
+    visible: false
+    marker: true
+    equipment: air|air|air|leahter_horse_armor[custom_model_data=304]
