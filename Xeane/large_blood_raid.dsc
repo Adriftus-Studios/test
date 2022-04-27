@@ -6,7 +6,7 @@ large_blood_raid:
     - define base <[location].with_pose[0,0]>
     - repeat 5:
       - define yaw_add <element[72].mul[<[value]>]>
-      - define location_<[value]> <[base].with_yaw[<[yaw_add]>].above[40].forward[60]>
+      - define location_<[value]> <[base].with_yaw[<[yaw_add]>].above[40].forward[120]>
       - define points_<[value]> <[location_<[value]>].points_between[<[base].above[40]>]>
       - wait 1t
     - define final_points <list>
