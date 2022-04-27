@@ -3,41 +3,37 @@ custom_durability_block_breaking:
   debug: false
   events:
     on player breaks block with:copper_axe|copper_pickaxe|copper_shovel|copper_sword|copper_hoe|copper_shears|:
+      - define slot <player.held_item_slot>
       - choose <player.item_in_hand.script.name.after[_]>:
-        - case axe:
-          - define value 1
-        - case pickaxe:
-          - define value 1
-        - case shovel:
-          - define value 1
-        - case hoe:
+        - case axe pickaxe shovel hoe shears:
           - define value 1
         - case sword:
           - define value 2
-        - case shears:
-          - define value 1
       - inject custom_durability_process_task
 
     on player damages entity with:copper_axe|copper_pickaxe|copper_shovel|copper_sword|copper_hoe|copper_shears|:
+      - define slot <player.held_item_slot>
       - choose <player.item_in_hand.script.name.after[_]>:
-        - case axe:
+        - case axe pickaxe shovel:
           - define value 2
-        - case pickaxe:
-          - define value 2
-        - case shovel:
-          - define value 2
-        - case hoe:
-          - define value 1
-        - case sword:
+        - case hoe sword:
           - define value 1
         - case shears:
           - define value 0
       - inject custom_durability_process_task
 
     on player right clicks dirt with:copper_hoe:
+      - narrate <context.hand>
+      - define slot <player.held_item_slot>
+      - if <context.hand> == offhand:
+        - define slot 41
       - define value 1
       - inject custom_durability_process_task
+
     on player right clicks *_log|stem with:copper_axe:
+      - define slot <player.held_item_slot>
+      - if <context.hand> == offhand:
+        - define slot 41
       - if <context.location.material.name.contains[stripped]>:
         - stop
       - define value 1
@@ -53,5 +49,5 @@ custom_durability_process_task:
         - define current_dur <player.item_in_hand.material.max_durability.mul[<[percent]>]>
         - inventory adjust slot:<player.held_item_slot> durability:<[current_dur].round_up>
       - else:
-        - take iteminhand
+        - take slot:<[slot]>
         - playsound sound:item_shield_break <player>
