@@ -25,6 +25,7 @@ saltremoval:
 
 saltobtain:
     type: world
+    debug: false
     events:
         on player breaks stone:
          - define chance <util.random.int[1].to[15]>

@@ -18,7 +18,7 @@ dev_null_item:
 
 dev_null_handler:
   type: world
-  debug: true
+  debug: false
   events:
     on player clicks dev_null_item in inventory:
     - define new_current null
