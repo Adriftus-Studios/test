@@ -5,6 +5,8 @@ copper_shovel:
     custom_durability:
       max: 200
       current: 0
+  data:
+    recipe_book_category: tools.copper_shovel
   mechanisms:
     custom_model_data: 1
   display name: <&f>Copper Shovel

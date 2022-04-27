@@ -7,6 +7,8 @@ copper_pickaxe:
       current: 0
   mechanisms:
     custom_model_data: 2
+  data:
+    recipe_book_category: tools.copper_pickaxe
   display name: <&f>Copper Pickaxe
   recipes:
     1:
