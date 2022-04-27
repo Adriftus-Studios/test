@@ -136,7 +136,11 @@ blood_sigil_1:
   mechanisms:
     visible: false
     marker: true
-    equipment: air|air|air|leahter_horse_armor[custom_model_data=300]
+    equipment:
+      - air
+      - air
+      - air
+      - leather_horse_armor[custom_model_data=300]
 
 blood_sigil_2:
   type: entity
@@ -144,7 +148,11 @@ blood_sigil_2:
   mechanisms:
     visible: false
     marker: true
-    equipment: air|air|air|leahter_horse_armor[custom_model_data=301]
+    equipment:
+      - air
+      - air
+      - air
+      - leather_horse_armor[custom_model_data=301]
 
 blood_sigil_3:
   type: entity
@@ -152,7 +160,11 @@ blood_sigil_3:
   mechanisms:
     visible: false
     marker: true
-    equipment: air|air|air|leahter_horse_armor[custom_model_data=302]
+    equipment:
+      - air
+      - air
+      - air
+      - leather_horse_armor[custom_model_data=302]
 
 blood_sigil_4:
   type: entity
@@ -160,7 +172,11 @@ blood_sigil_4:
   mechanisms:
     visible: false
     marker: true
-    equipment: air|air|air|leahter_horse_armor[custom_model_data=303]
+    equipment:
+      - air
+      - air
+      - air
+      - leather_horse_armor[custom_model_data=303]
 
 blood_sigil_5:
   type: entity
@@ -168,4 +184,8 @@ blood_sigil_5:
   mechanisms:
     visible: false
     marker: true
-    equipment: air|air|air|leahter_horse_armor[custom_model_data=304]
+    equipment:
+      - air
+      - air
+      - air
+      - leather_horse_armor[custom_model_data=304]
