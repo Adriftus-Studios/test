@@ -11,7 +11,7 @@ build_item_enchantment_lore:
       - define map <[item].enchantment_map>
       - define enchant_lore:|:<[item].enchantment_types.parse_tag[<[parse_value].full_name[<[map].get[<[parse_value].name>]>].replace_text[<&r>].with[]>]>
       - if <[item].script.is_truthy>:
-        - adjust def:item lore:<[item].script.data_key[lore].include[<[enchant_lore].insert[<&7>].at[1]>]>
+        - adjust def:item lore:<[item].script.data_key[lore].if_null[<list[]>].include[<[enchant_lore].insert[<&7>].at[1]>]>
       - else:
         - adjust def:item lore:<[enchant_lore]>
     - determine <[item]>
