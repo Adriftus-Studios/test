@@ -168,8 +168,8 @@ blood_raid_sigil_activate:
       - rotate <[sigil]> yaw:<[value]> duration:1s
       - wait 1s
     - rotate <[sigil]> yaw:10 duration:10s
-    - choose <[sigil_number]>:
-      - case 1:
+    #- choose <[sigil_number]>:
+      #- case 1:
 
 #Spawn the 5 Sigils
 blood_sigil_spawn:
