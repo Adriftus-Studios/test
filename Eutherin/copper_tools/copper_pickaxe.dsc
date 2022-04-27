@@ -4,7 +4,7 @@ copper_pickaxe:
   flags:
     custom_durability:
       max: 200
-      current: 200
+      current: 0
   display name: <&f>Copper Pickaxe
   recipes:
     1:
