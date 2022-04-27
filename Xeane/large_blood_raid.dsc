@@ -19,8 +19,8 @@ large_blood_raid:
       - wait 1t
 
     # Flag the Town for the raid
-    - flag <[town]> blood_raid:1
-    - flag <[town]> blood_raid_portal:1
+    - flag <[town]> blood_raid.stage:1
+    - flag <[town]> blood_raid.portal:1
 
     # Sky Animation
     - ~run large_blood_raid_start_sky def:<[base]>
@@ -53,7 +53,7 @@ large_blood_raid:
         - wait 14t
 
     # Wait for Arcs
-    - waituntil <[town].flag[blood_raid_portal].equals[25]> rate:1s
+    - waituntil <[town].flag[blood_raid.portal].equals[25]> rate:1s
 
     - title title:<&c><&font[adriftus:overlay]><&chr[0004]><&chr[F801]><&chr[0004]> fade_in:5s stay:1s fade_out:1t targets:<server.online_players>
 
@@ -62,12 +62,13 @@ large_blood_raid:
     # PLAY EXPLOSION SOUNDS
 
     # Spawn Blood Sigils
-    - flag <[town]> blood_raid:2
+    - flag <[town]> blood_raid.stage:2
     - run blood_sigil_spawn def:<[town]>
 
     - wait 20s
     #CLEANUP - DEBUG
-    - remove <[town].flag[blood_raid_sigils]>
+    - remove <[town].flag[blood_raid.sigils]>
+    - flag <[town]> blood_raid:!
 
 # Ground Blood During Raid
 large_blood_raid_ground_blood:
@@ -83,9 +84,9 @@ large_blood_raid_ground_blood:
       - wait 1t
 
     # play blood animation
-    - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid]> == 1:
+    - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid.stage]> == 1:
       - foreach <[surface_blocks]>:
-        - playeffect at:<[value].random[5]> effect:redstone special_data:10|#660000 offset:0.75 quantity:3 targets:<server.online_players>
+        - playeffect at:<[value].random[5]> effect:redstone special_data:10|#660000 offset:0.45 quantity:3 targets:<server.online_players>
         - wait 1t
 
 large_blood_raid_shoot_arc:
@@ -99,7 +100,7 @@ large_blood_raid_shoot_arc:
         - playeffect at:<[loc]> effect:redstone special_data:10|#660000 offset:0.25 quantity:5 targets:<server.online_players>
         - wait 2t
     - if <[town].flag[blood_raid_portal]> < 25:
-      - flag <[town]> blood_raid_portal:+:1
+      - flag <[town]> blood_raid.portal:+:1
 
 large_blood_raid_start_sky:
   type: task
@@ -126,8 +127,11 @@ large_blood_raid_big_portal:
   definitions: town
   script:
     - define location <[town].spawn.above[40]>
-    - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid]> == 1:
-      - playeffect at:<[location]> effect:redstone special_data:10|#660000 offset:<[town].flag[blood_raid_portal].mul[0.05]> quantity:<[town].flag[blood_raid_portal].mul[3]> targets:<server.online_players>
+    - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid.stage]> == 1:
+      - playeffect at:<[location]> effect:redstone special_data:10|#660000 offset:<[town].flag[blood_raid.portal].mul[0.05]> quantity:<[town].flag[blood_raid.portal].mul[3]> targets:<server.online_players>
+      - wait 3t
+    - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid.stage]> == 2:
+      - playeffect at:<[location]> effect:redstone special_data:10|#660000 offset:10 quantity:50 targets:<server.online_players>
       - wait 3t
 
 blood_sigil_spawn:
@@ -139,7 +143,7 @@ blood_sigil_spawn:
     - repeat 5:
       - define yaw_add <element[72].mul[<[value]>]>
       - spawn blood_sigil_<[value]> <[base].with_yaw[<[yaw_add]>].forward[8]> save:ent
-      - flag <[town]> blood_raid_sigils:->:<entry[ent].spawned_entity>
+      - flag <[town]> blood_raid.sigils:->:<entry[ent].spawned_entity>
       - wait 1t
 
 blood_sigil_1:
