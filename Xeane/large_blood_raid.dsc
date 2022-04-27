@@ -89,7 +89,7 @@ large_blood_raid_ground_blood:
     # play blood animation
     - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid.stage]> == 1:
       - foreach <[surface_blocks]>:
-        - playeffect at:<[value].random[5]> effect:redstone special_data:5|#660000 offset:0.5,0,0.5 quantity:6 targets:<server.online_players>
+        - playeffect at:<[value].random[5]> effect:redstone special_data:5|#990000 offset:0.5,0,0.5 quantity:3 targets:<server.online_players>
         - wait 4t
 
 large_blood_raid_shoot_arc:
@@ -100,7 +100,7 @@ large_blood_raid_shoot_arc:
     - define location <[town].spawn.above[40]>
     - define locations <proc[define_curve1].context[<[start]>|<[location]>|<util.random.int[5].to[25]>|<util.random.int[25].to[75]>|1]>
     - foreach <[locations]> as:loc:
-        - playeffect at:<[loc]> effect:redstone special_data:10|#660000 offset:0.25 quantity:5 targets:<server.online_players>
+        - playeffect at:<[loc]> effect:redstone special_data:10|#990000 offset:0.25 quantity:5 targets:<server.online_players>
         - wait 2t
     - if <[town].flag[blood_raid.portal]> < 30:
       - flag <[town]> blood_raid.portal:+:1
@@ -121,7 +121,7 @@ large_blood_raid_start_sky:
       - define final_points <[final_points].include_single[<[points_1].get[<[value]>]>|<[points_2].get[<[value]>]>|<[points_3].get[<[value]>]>|<[points_4].get[<[value]>]>|<[points_5].get[<[value]>]>]>
       - wait 1t
     - foreach <[final_points]> as:locations:
-      - playeffect at:<[locations]> effect:redstone special_data:10|#660000 offset:0.1 quantity:10 targets:<server.online_players>
+      - playeffect at:<[locations]> effect:redstone special_data:10|#990000 offset:0.1 quantity:10 targets:<server.online_players>
       - wait 1t
 
 large_blood_raid_big_portal:
@@ -131,12 +131,12 @@ large_blood_raid_big_portal:
   script:
     - define location <[town].spawn.above[40]>
     - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid.stage]> == 1:
-      - playeffect at:<[location]> effect:redstone special_data:10|#660000 offset:<[town].flag[blood_raid.portal].mul[0.05]> quantity:<[town].flag[blood_raid.portal].mul[3]> targets:<server.online_players>
+      - playeffect at:<[location]> effect:redstone special_data:10|#990000 offset:<[town].flag[blood_raid.portal].mul[0.05]> quantity:<[town].flag[blood_raid.portal].mul[3]> targets:<server.online_players>
       - wait 3t
     - waituntil <[town].has_flag[blood_raid.sigils]> rate:10t
     - define location <[town].flag[blood_raid.sigils].parse[location.above[6]]>
     - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid.stage]> == 2:
-      - playeffect at:<[location]> effect:redstone special_data:3|#660000 offset:1.5,1,1.5 quantity:3 targets:<server.online_players>
+      - playeffect at:<[location]> effect:redstone special_data:3|#990000 offset:1.5,1,1.5 quantity:3 targets:<server.online_players>
       - wait 8t
 
 ## BLOOD SIGILS
