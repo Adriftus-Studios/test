@@ -43,7 +43,7 @@ large_blood_raid:
     # Wait for arcs
     - waituntil <[town].flag[blood_raid_portal].equals[25]> rate:1s
 
-    - title title:<&c><&font[adriftus:guis]><&chr[0003]><&chr[F801]><&chr[0003]> fade_in:3s stay:1s fade_out:1t
+    - title title:<&c><&font[adriftus:overlay]><&chr[0004]><&chr[F801]><&chr[0004]> fade_in:3s stay:1s fade_out:1t
 
 
 
@@ -77,7 +77,7 @@ large_blood_raid_shoot_arc:
     - define location <[town].spawn.above[40]>
     - define locations <proc[define_curve1].context[<[start]>|<[location]>|<util.random.int[5].to[25]>|<util.random.int[25].to[75]>|1]>
     - foreach <[locations]> as:loc:
-        - playeffect at:<[loc]> effect:redstone special_data:10|#660000 offset:0.05 quantity:5 targets:<server.online_players>
+        - playeffect at:<[loc]> effect:redstone special_data:10|#660000 offset:0.25 quantity:5 targets:<server.online_players>
         - wait 2t
     - if <[town].flag[blood_raid_portal]> < 25:
       - flag <[town]> blood_raid_portal:+:1
@@ -98,7 +98,7 @@ large_blood_raid_start_sky:
       - define final_points <[final_points].include_single[<[points_1].get[<[value]>]>|<[points_2].get[<[value]>]>|<[points_3].get[<[value]>]>|<[points_4].get[<[value]>]>|<[points_5].get[<[value]>]>]>
       - wait 1t
     - foreach <[final_points]> as:locations:
-      - playeffect at:<[locations]> effect:redstone special_data:10|#660000 offset:0.75 quantity:10 targets:<server.online_players>
+      - playeffect at:<[locations]> effect:redstone special_data:10|#660000 offset:0.1 quantity:10 targets:<server.online_players>
       - wait 1t
 
 large_blood_raid_big_portal:
