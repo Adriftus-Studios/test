@@ -13,6 +13,32 @@ large_blood_raid:
       - if <[chunk].cuboid.center.distance[<[base]>]> < 200:
         - define valid_chunks:->:<[chunk]>
 
+    # get town corners
+    - define lowest_x <[town].spawn.chunk.x>
+    - define lowest_z <[town].spawn.chunk.z>
+    - define highest_x <[town].spawn.chunk.x>
+    - define highest_z <[town].spawn.chunk.z>
+    - foreach <[town].plots> as:chunk:
+      - if <[chunk].x> < <[lowest_x]>:
+        - define lowest_x <[chunk].x>
+      - if <[chunk].z> < <[lowest_z]>:
+        - define lowest_z <[chunk].z>
+      - if <[chunk].x> > <[highest_x]>:
+        - define highest_x <[chunk].x>
+      - if <[chunk].z> > <[highest_z]>:
+        - define highest_z <[chunk].z>
+      - wait 1t
+
+    # get all the chunks for fake biomes
+    - define biome_chunk_list <list>
+    - define start_x <[lowest_x].sub[10]>
+    - define start_z <[lowest_z].sub[10]>
+    - define x_loop_size <[highest_x].add[10].sub[<[start_x]>]>
+    - define z_loop_size <[highest_z].add[10].sub[<[start_z]>]>
+    - repeat <[x_loop_size]> as:x:
+      - repeat <[z_loop_size]> as:z:
+        - define biome_chunk_list:->:<chunk[<[start_x].add[<[x]>]>,<[start_z].add[<[z]>]>,<[base].world.name>]>
+
     # Define surface blocks
     - foreach <[valid_chunks]>:
       - define all_surface_blocks:|:<[value].surface_blocks.random.above>
@@ -55,12 +81,12 @@ large_blood_raid:
     # Wait for Arcs
     - waituntil <[town].flag[blood_raid.portal].equals[30]> rate:1s
 
-    - title title:<&c><&font[adriftus:overlay]><&chr[0004]><&chr[F801]><&chr[0004]> fade_in:5s stay:2s fade_out:1t targets:<server.online_players>
+    - title title:<&color[#990000]><&font[adriftus:overlay]><&chr[0004]><&chr[F801]><&chr[0004]> fade_in:6s stay:3s fade_out:1t targets:<server.online_players>
 
     # Wait for Overlay
     - wait 5s
     # PLAY EXPLOSION SOUNDS
-    - run set_fake_biome def:<[town]>|true
+    - run set_fake_biome def:<[town]>|<[biome_chunk_list]>|true
 
     # Spawn Blood Sigils
     - flag <[town]> blood_raid.stage:2
@@ -145,16 +171,20 @@ large_blood_raid_big_portal:
 set_fake_biome:
   type: task
   debug: false
-  definitions: town|state
+  definitions: town|chunks|state
   script:
     - if <[state]>:
       - define time 5h
     - else:
       - define time 1t
-    - foreach <[town].plots> as:chunk:
-      - if <[loop_index].mod[10]> == 0:
+    - foreach <[chunks]> as:chunk:
+      - if <[loop_index].mod[20]> == 0:
         - wait 1t
       - fakebiome biome:<biome[adriftus:blood_raid]> players:<server.online_players> chunk:<[chunk]> duration:<[time]>
+    - foreach <[chunks]> as:chunk:
+      - if <[loop_index].mod[20]> == 0:
+        - wait 1t
+      - adjust <[chunk]> refresh_chunk
 
 ## BLOOD SIGILS
 # Activate a Sigil
