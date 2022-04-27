@@ -20,7 +20,7 @@ large_blood_raid:
 
     # Flag the Town for the raid
     - flag <[town]> blood_raid.stage:1
-    - flag <[town]> blood_raid.portal:1
+    - flag <[town]> blood_raid.portal:5
 
     # Sky Animation
     - ~run large_blood_raid_start_sky def:<[base]>
@@ -53,7 +53,7 @@ large_blood_raid:
         - wait 14t
 
     # Wait for Arcs
-    - waituntil <[town].flag[blood_raid.portal].equals[25]> rate:1s
+    - waituntil <[town].flag[blood_raid.portal].equals[30]> rate:1s
 
     - title title:<&c><&font[adriftus:overlay]><&chr[0004]><&chr[F801]><&chr[0004]> fade_in:5s stay:1s fade_out:1t targets:<server.online_players>
 
@@ -83,13 +83,13 @@ large_blood_raid_ground_blood:
     # get surface blocks in the chunks
     - define surface_blocks <list>
     - foreach <[valid_chunks]>:
-      - define surface_blocks:<[surface_blocks].include_single[<[value].surface_blocks.parse[above]>]>
+      - define surface_blocks:<[surface_blocks].include_single[<[value].surface_blocks.parse[above.center]>]>
       - wait 1t
 
     # play blood animation
     - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid.stage]> == 1:
       - foreach <[surface_blocks]>:
-        - playeffect at:<[value].random[5]> effect:redstone special_data:10|#660000 offset:0.45 quantity:3 targets:<server.online_players>
+        - playeffect at:<[value].random[5]> effect:redstone special_data:10|#660000 offset:0.25 quantity:3 targets:<server.online_players>
         - wait 1t
 
 large_blood_raid_shoot_arc:
@@ -102,7 +102,7 @@ large_blood_raid_shoot_arc:
     - foreach <[locations]> as:loc:
         - playeffect at:<[loc]> effect:redstone special_data:10|#660000 offset:0.25 quantity:5 targets:<server.online_players>
         - wait 2t
-    - if <[town].flag[blood_raid.portal]> < 25:
+    - if <[town].flag[blood_raid.portal]> < 30:
       - flag <[town]> blood_raid.portal:+:1
 
 large_blood_raid_start_sky:
@@ -146,10 +146,10 @@ blood_raid_sigil_activate:
   definitions: town|sigil_number
   script:
     - define sigil <[town].flag[blood_raid.sigils].get[<[sigil_number]>]>
-    - repeat 15:
-      - rotate <[sigil]> yaw:<[value].mul[2]> duration:5t
+    - repeat 9:
+      - rotate <[sigil]> yaw:<[value]> duration:5t
       - wait 5t
-    - rotate <[sigil]> yaw:30 duration:10s
+    - rotate <[sigil]> yaw:10 duration:10s
 
 #Spawn the 5 Sigils
 blood_sigil_spawn:
