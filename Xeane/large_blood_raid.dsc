@@ -11,13 +11,13 @@ large_blood_raid:
       - if <[loop_index].mod[10]>:
         - wait 1t
       - if <[chunk].cuboid.center.distance[<[base]>]> < 200:
-        - define valid_chunks <[valid_chunks].include_single[<[chunk]>]>
+        - define valid_chunks:->:<[chunk]>
 
     # Flag the Town for the raid
     - flag <[town]> blood_raid
 
     # Start the blood ground animation
-    - run large_blood_raid_ground_blood def:<[town]>|<[valid_chunks]>
+    - run large_blood_raid_ground_blood def.town:<[town]> def.valid_chunks:<[valid_chunks]>
 
     # Start the sky animation
     - repeat 5:
