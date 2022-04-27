@@ -15,3 +15,4 @@ large_blood_raid:
       - wait 1t
     - foreach <[final_points]> as:locations:
       - playeffect at:<[locations]> effect:redstone special_data:10|#660000 offset:0.75 quantity:10 targets:<server.online_players>
+      - wait 1t
