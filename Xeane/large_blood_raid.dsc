@@ -55,11 +55,13 @@ large_blood_raid:
     # Wait for Arcs
     - waituntil <[town].flag[blood_raid.portal].equals[30]> rate:1s
 
-    - title title:<&c><&font[adriftus:overlay]><&chr[0004]><&chr[F801]><&chr[0004]> fade_in:5s stay:1s fade_out:1t targets:<server.online_players>
+    - title title:<&c><&font[adriftus:overlay]><&chr[0004]><&chr[F801]><&chr[0004]> fade_in:5s stay:2s fade_out:1t targets:<server.online_players>
 
     # Wait for Overlay
     - wait 5s
     # PLAY EXPLOSION SOUNDS
+    - foreach <server.online_players> as:__player:
+      - run set_fake_biome def:<[town]>|true
 
     # Spawn Blood Sigils
     - flag <[town]> blood_raid.stage:2
@@ -90,7 +92,7 @@ large_blood_raid_ground_blood:
     - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid.stage]> == 1:
       - foreach <[surface_blocks]>:
         - playeffect at:<[value].random[5]> effect:redstone special_data:5|#990000 offset:0.5,0,0.5 quantity:1 targets:<server.online_players>
-        - wait 1t
+        - wait 2t
 
 large_blood_raid_shoot_arc:
   type: task
@@ -134,10 +136,25 @@ large_blood_raid_big_portal:
       - playeffect at:<[location]> effect:redstone special_data:10|#990000 offset:<[town].flag[blood_raid.portal].mul[0.05]> quantity:<[town].flag[blood_raid.portal].mul[3]> targets:<server.online_players>
       - wait 3t
     - waituntil <[town].has_flag[blood_raid.sigils]> rate:10t
-    - define location <[town].flag[blood_raid.sigils].parse[location.above[6]]>
+    - define location <[town].flag[blood_raid.sigils].parse[location.above[5]]>
     - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid.stage]> == 2:
       - playeffect at:<[location]> effect:redstone special_data:5|#990000 offset:0 quantity:5 targets:<server.online_players>
       - wait 8t
+
+# Set the fake biome
+set_fake_biome:
+  type: task
+  debug: false
+  definitions: town|state
+  script:
+    - if <[state]>:
+      - define time 5h
+    - else:
+      - define time 1t
+    - foreach <[town].plots> as:chunk:
+      - if <[loop_index].mod[10]> == 0:
+        - wait 1t
+      - fakebiome biome:<biome[adriftus:blood_raid]> players:<server.online_players> chunk:<[chunk]> duration:<[time]>
 
 ## BLOOD SIGILS
 # Activate a Sigil
@@ -151,6 +168,8 @@ blood_raid_sigil_activate:
       - rotate <[sigil]> yaw:<[value]> duration:1s
       - wait 1s
     - rotate <[sigil]> yaw:10 duration:10s
+    - choose <[sigil_number]>:
+      - case 1:
 
 #Spawn the 5 Sigils
 blood_sigil_spawn:
