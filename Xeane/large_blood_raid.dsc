@@ -41,8 +41,7 @@ large_blood_raid:
         - wait 14t
 
     # Wait for arcs
-    - define arc_count <[all_surface_blocks].size.mul[5].sub[10]>
-    - waituntil <[town].flag[blood_raid_portal].equals[<[arc_count]>]> rate:1s
+    - waituntil <[town].flag[blood_raid_portal].equals[25]> rate:1s
 
     - title title:<&c><&font[adriftus:guis]><&chr[0003]><&chr[F801]><&chr[0003]> fade_in:3s stay:1s fade_out:1t
 
@@ -78,7 +77,7 @@ large_blood_raid_shoot_arc:
     - define location <[town].spawn.above[40]>
     - define locations <proc[define_curve1].context[<[start]>|<[location]>|<util.random.int[5].to[25]>|<util.random.int[25].to[75]>|1]>
     - foreach <[locations]> as:loc:
-        - playeffect at:<[loc]> effect:redstone special_data:10|#660000 offset:0.25 quantity:5 targets:<server.online_players>
+        - playeffect at:<[loc]> effect:redstone special_data:10|#660000 offset:0.05 quantity:5 targets:<server.online_players>
         - wait 2t
     - if <[town].flag[blood_raid_portal]> < 25:
       - flag <[town]> blood_raid_portal:+:1
