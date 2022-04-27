@@ -89,8 +89,8 @@ large_blood_raid_ground_blood:
     # play blood animation
     - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid.stage]> == 1:
       - foreach <[surface_blocks]>:
-        - playeffect at:<[value].random[5]> effect:redstone special_data:10|#660000 offset:0.25 quantity:3 targets:<server.online_players>
-        - wait 1t
+        - playeffect at:<[value].random[5]> effect:redstone special_data:5|#660000 offset:0.5,0,0.5 quantity:6 targets:<server.online_players>
+        - wait 4t
 
 large_blood_raid_shoot_arc:
   type: task
@@ -136,8 +136,8 @@ large_blood_raid_big_portal:
     - waituntil <[town].has_flag[blood_raid.sigils]> rate:10t
     - define location <[town].flag[blood_raid.sigils].parse[location.above[6]]>
     - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid.stage]> == 2:
-      - playeffect at:<[location]> effect:redstone special_data:10|#660000 offset:1.5,1,1.5 quantity:8 targets:<server.online_players>
-      - wait 5t
+      - playeffect at:<[location]> effect:redstone special_data:3|#660000 offset:1.5,1,1.5 quantity:3 targets:<server.online_players>
+      - wait 8t
 
 ## BLOOD SIGILS
 # Activate a Sigil
