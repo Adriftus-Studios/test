@@ -48,7 +48,7 @@ large_blood_raid:
 
     # Launch Arcs
     - repeat <[iterations]>:
-      - foreach <[all_surface_blocks]> as:loc:
+      - foreach <[all_surface_blocks].random[1000]> as:loc:
         - run large_blood_raid_shoot_arc def.town:<[town]> def.start:<[loc]>
         - wait 14t
 
@@ -83,7 +83,7 @@ large_blood_raid_ground_blood:
     # get surface blocks in the chunks
     - define surface_blocks <list>
     - foreach <[valid_chunks]>:
-      - define surface_blocks:<[surface_blocks].include_single[<[value].surface_blocks.parse[above.center]>]>
+      - define surface_blocks:<[surface_blocks].include_single[<[value].surface_blocks.parse[above[2].center]>]>
       - wait 1t
 
     # play blood animation
@@ -133,10 +133,11 @@ large_blood_raid_big_portal:
     - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid.stage]> == 1:
       - playeffect at:<[location]> effect:redstone special_data:10|#660000 offset:<[town].flag[blood_raid.portal].mul[0.05]> quantity:<[town].flag[blood_raid.portal].mul[3]> targets:<server.online_players>
       - wait 3t
-    - define location <[location].above[3]>
+    - waituntil <[town].has_flag[blood_raid.sigils]> rate:10t
+    - define location <[town].flag[blood_raid.sigils].parse[location.above[6]]>
     - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid.stage]> == 2:
-      - playeffect at:<[location]> effect:redstone special_data:10|#660000 offset:8,1,8 quantity:30 targets:<server.online_players>
-      - wait 3t
+      - playeffect at:<[location]> effect:redstone special_data:10|#660000 offset:1.5,1,1.5 quantity:8 targets:<server.online_players>
+      - wait 5t
 
 ## BLOOD SIGILS
 # Activate a Sigil
