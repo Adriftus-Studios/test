@@ -25,7 +25,7 @@ large_blood_raid:
     - ~run large_blood_raid_start_sky def:<[base]>
 
     # Start persistent portal
-    - run large_blood_raid_big_portal
+    - run large_blood_raid_big_portal def:<[town]>
 
     # Start the blood ground animation
     - run large_blood_raid_ground_blood def.town:<[town]> def.valid_chunks:<[valid_chunks]>
