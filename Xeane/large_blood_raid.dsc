@@ -12,7 +12,7 @@ large_blood_raid:
         - wait 1t
       - if <[chunk].cuboid.center.distance[<[base]>]> < 200:
         - define valid_chunks:->:<[chunk]>
-    
+
     # Define surface blocks
     - foreach <[valid_chunks]>:
       - define all_surface_blocks:|:<[value].surface_blocks.random[3].parse[above]>
@@ -23,6 +23,9 @@ large_blood_raid:
 
     # Sky Animation
     - ~run large_blood_raid_start_sky def:<[base]>
+
+    # Start persistent portal
+    - run large_blood_raid_big_portal
 
     # Start the blood ground animation
     - run large_blood_raid_ground_blood def.town:<[town]> def.valid_chunks:<[valid_chunks]>
@@ -90,3 +93,13 @@ large_blood_raid_start_sky:
     - foreach <[final_points]> as:locations:
       - playeffect at:<[locations]> effect:redstone special_data:10|#660000 offset:0.75 quantity:10 targets:<server.online_players>
       - wait 1t
+
+large_blood_raid_big_portal:
+  type: task
+  debug: false
+  definitions: town
+  script:
+    - define location <[town].spawn.above[40]>
+    - while <[town].has_flag[blood_raid]>:
+      - playeffect at:<[location]> effect:redstone special_data:10|#660000 offset:0.75 quantity:10 targets:<server.online_players>
+      - wait 3t
