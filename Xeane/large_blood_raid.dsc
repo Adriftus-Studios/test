@@ -106,7 +106,7 @@ large_blood_raid:
     - run blood_sigil_spawn def:<[town]>
 
     - wait 5s
-    - repeat 5:
+    - repeat 1:
       - run blood_raid_sigil_activate def.town:<[town]> def.sigil_number:<[value]> def.points:<[blood_sigil_<[value]>_points]>
       - wait 10s
 
