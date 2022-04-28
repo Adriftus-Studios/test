@@ -110,7 +110,6 @@ large_blood_raid:
     # DEVELOPMENT FROM HERE DOWN
     - wait 20s
     #CLEANUP - DEBUG
-    - remove <[town].flag[blood_raid.sigils].parse[passengers].combine>
     - remove <[town].flag[blood_raid.sigils]>
     - flag <[town]> blood_raid:!
     - run set_fake_biome def.town:<[town]> def.chunks:<[biome_chunk_list]> def.state:false
@@ -185,7 +184,7 @@ large_blood_raid_start_sky:
 
     # Play the spiral particles with the lists generated above
     - foreach <[final_points2]> as:locations:
-      - playeffect at:<[locations]> effect:redstone special_data:5|#990000 offset:0.0 quantity:5 targets:<server.online_players>
+      - playeffect at:<[locations]> effect:redstone special_data:3|#990000 offset:0.0 quantity:2 targets:<server.online_players>
       - wait 1t
 
 #<proc[define_spiral].context[<player.location.above[30].forward[5]>|<player.location.forward[5]>|0.75|10]>
@@ -234,9 +233,9 @@ blood_raid_sigil_activate:
   script:
     - define sigil <[town].flag[blood_raid.sigils].get[<[sigil_number]>]>
     - repeat 9:
-      - rotate <[sigil].passenger> yaw:<[value]> duration:1s
+      - rotate <[sigil]> yaw:<[value]> duration:1s
       - wait 1s
-    - rotate <[sigil].passenger> yaw:10 duration:10s
+    - rotate <[sigil]> yaw:10 duration:10s
 
 #Spawn the 5 Sigils
 blood_sigil_spawn:
