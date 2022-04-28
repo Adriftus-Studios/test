@@ -200,9 +200,8 @@ large_blood_raid_big_portal:
       - wait 3t
     - waituntil <[town].has_flag[blood_raid.sigils]> rate:10t
     - wait 5t
-    - define location <[town].flag[blood_raid.sigils].parse[location.above[5]]>
     - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid.stage]> == 2:
-      - playeffect at:<[location]> effect:redstone special_data:5|#990000 offset:0 quantity:5 targets:<server.online_players>
+      - playeffect at:<[town].flag[blood_raid.sigils_active_locations]> effect:redstone special_data:5|#990000 offset:0 quantity:5 targets:<server.online_players>
       - wait 8t
 
 # Set the fake biome
@@ -232,6 +231,7 @@ blood_raid_sigil_activate:
   definitions: town|sigil_number|points
   script:
     - define sigil <[town].flag[blood_raid.sigils].get[<[sigil_number]>]>
+    - flag <[town]> blood_raid.sigils_active_locations:|:<[sigil].location.above[5]>
     - repeat 9:
       - rotate <[sigil]> yaw:<[value]> duration:1s
       - wait 1s
@@ -249,7 +249,6 @@ blood_sigil_spawn:
       - spawn blood_sigil_<[value]> <[base].with_yaw[<[yaw_add]>].forward[25]> save:ent
       - flag <[town]> blood_raid.sigils:->:<entry[ent].spawned_entity>
       - wait 1t
-      - teleport <entry[ent].spawned_entity> <[base].with_yaw[<[yaw_add]>].forward[8]>
 
 blood_sigil_1:
   type: entity
