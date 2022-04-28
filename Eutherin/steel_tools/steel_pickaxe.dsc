@@ -3,7 +3,7 @@ Steel_pickaxe:
   material: iron_pickaxe
   flags:
     custom_durability:
-      max: 200
+      max: 469
       current: 0
   mechanisms:
     custom_model_data: 2
