@@ -108,10 +108,12 @@ large_blood_raid:
     - wait 5s
     - repeat 5:
       - run blood_raid_sigil_activate def.town:<[town]> def.sigil_number:<[value]> def.points:<[blood_sigil_<[value]>_points]>
+      - wait 10s
 
     # DEVELOPMENT FROM HERE DOWN
     - wait 20s
     #CLEANUP - DEBUG
+    - remove <[town].flag[blood_raid.sigils].parse[passengers]>
     - remove <[town].flag[blood_raid.sigils]>
     - flag <[town]> blood_raid:!
     - run set_fake_biome def.town:<[town]> def.chunks:<[biome_chunk_list]> def.state:false
@@ -245,11 +247,7 @@ blood_sigil_1:
     potion_effects: INVISIBILITY,1,999999,false,false,false
     gravity: false
     has_ai: false
-    equipment:
-      - air
-      - air
-      - air
-      - leather_horse_armor[custom_model_data=300]
+    passenger: armor_stand[visible=false;equipment=air|air|air|leather_horse_armor[custom_model_data=300]]
 
 blood_sigil_2:
   type: entity
