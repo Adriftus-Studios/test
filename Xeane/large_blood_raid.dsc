@@ -212,20 +212,11 @@ blood_raid_sigil_activate:
   definitions: town|sigil_number|points
   script:
     - define sigil <[town].flag[blood_raid.sigils].get[<[sigil_number]>]>
-    - push <[sigil]> destination:<[points].first> origin:<[sigil].location> speed:0.1 script:blood_raid_sigil_move def:<list_single[<[points].remove[first]>]>
+    - push <[sigil]> destination:<[points].first> origin:<[sigil].location> speed:0.1
     - repeat 9:
       - rotate <[sigil].passenger> yaw:<[value]> duration:1s
       - wait 1s
     - rotate <[sigil].passenger> yaw:10 duration:10s
-
-#Move the Blood Sigils
-blood_raid_sigil_move:
-  type: task
-  debug: false
-  definitions: points
-  script:
-    - define sigil <[pushed_entities].first>
-    - push <[sigil]> destination:<[points].first> origin:<[sigil].location> speed:0.1 script:blood_raid_sigil_move def:<list_single[<[points].remove[first]>]>
 
 #Spawn the 5 Sigils
 blood_sigil_spawn:
@@ -246,7 +237,7 @@ blood_sigil_1:
   mechanisms:
     potion_effects: INVISIBILITY,1,999999,false,false,false
     gravity: false
-    has_ai: false
+    is_aware: false
     passenger: armor_stand[visible=false;equipment=air|air|air|leather_horse_armor[custom_model_data=300]]
 
 blood_sigil_2:
