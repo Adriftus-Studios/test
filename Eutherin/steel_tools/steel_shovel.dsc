@@ -1,0 +1,21 @@
+steel_shovel:
+  type: item
+  material: iron_shovel
+  flags:
+    custom_durability:
+      max: 200
+      current: 0
+  data:
+    recipe_book_category: tools.steel_shovel
+  mechanisms:
+    custom_model_data: 1
+  display name: <&f>Steel Shovel
+  recipes:
+    1:
+      type: shaped
+      output_quantity: 1
+      input:
+      - air|steel_ingot|air
+      - air|stick|air
+      - air|stick|air
+
