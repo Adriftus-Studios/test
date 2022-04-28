@@ -62,7 +62,7 @@ large_blood_raid:
     - flag <[town]> blood_raid.portal:5
 
     # Sky Animation
-    - ~run large_blood_raid_start_sky def:<[base]>
+    - ~run large_blood_raid_start_sky def:<[town]>
 
     # Start the blood ground animation
     - run large_blood_raid_ground_blood def.town:<[town]> def.valid_chunks:<[valid_chunks]>
@@ -150,8 +150,9 @@ large_blood_raid_shoot_arc:
 large_blood_raid_start_sky:
   type: task
   debug: false
-  definitions: base
+  definitions: town
   script:
+    - define base <[town].spawn>
     # Build the initial points coming from far
     - repeat 5:
       - define yaw_add <element[72].mul[<[value]>]>
@@ -166,7 +167,7 @@ large_blood_raid_start_sky:
     # Build the spiral to the ground
     - repeat 5:
       - define yaw_add <element[72].mul[<[value]>]>
-      - define points_<[value]> <proc[define_spiral].context[<[base].above[40]>|<[base].below>|0.75|<[yaw_add]>]>
+      - define points_<[value]> <proc[define_spiral].context[<[base].above[40]>|<[base].below>|1.25|<[yaw_add]>]>
       - wait 1t
     - define size <[points_1].size>
     - define final_points2 <list>
@@ -253,6 +254,7 @@ blood_sigil_spawn:
       - spawn blood_sigil_<[value]> <[base].with_yaw[<[yaw_add]>].forward[8]> save:ent
       - flag <[town]> blood_raid.sigils:->:<entry[ent].spawned_entity>
       - wait 1t
+      - teleport <entry[ent].spawned_entity> <[base].with_yaw[<[yaw_add]>].forward[8]>
 
 blood_sigil_1:
   type: entity
