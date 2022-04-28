@@ -44,6 +44,19 @@ large_blood_raid:
       - define all_surface_blocks:|:<[value].surface_blocks.random.above>
       - wait 1t
 
+    # blood sigil start, end, and points between
+    - repeat 5:
+      - define yaw_add <element[72].mul[<[value]>]>
+      - define blood_sigil_<[value]>_start <[base].with_yaw[<[yaw_add]>].forward[8]>
+      - wait 1t
+    - repeat 5:
+      - define yaw_add <element[72].mul[<[value]>]>
+      - define blood_sigil_<[value]>_end <[base].with_yaw[<[yaw_add]>].forward[25]>
+      - wait 1t
+    - repeat 5:
+      - define blood_sigil_<[value]>_points <proc[define_curve1].context[<[blood_sigil_<[value]>_start]>|<[blood_sigil_<[value]>_end]>|1|0|1]>
+      - wait 1t
+
     # Flag the Town for the raid
     - flag <[town]> blood_raid.stage:1
     - flag <[town]> blood_raid.portal:5
@@ -92,7 +105,9 @@ large_blood_raid:
     - flag <[town]> blood_raid.stage:2
     - run blood_sigil_spawn def:<[town]>
 
-    - run blood_raid_sigil_activate def:<[town]>|1
+    - wait 5s
+    - repeat 5:
+      - run blood_raid_sigil_activate def.town:<[town]> def.sigil_number:<[value]> def.points:<[blood_sigil_<[value]>_points]>
 
     # DEVELOPMENT FROM HERE DOWN
     - wait 20s
@@ -192,15 +207,23 @@ set_fake_biome:
 blood_raid_sigil_activate:
   type: task
   debug: false
-  definitions: town|sigil_number
+  definitions: town|sigil_number|points
   script:
     - define sigil <[town].flag[blood_raid.sigils].get[<[sigil_number]>]>
+    - push <[sigil]> destination:<[points].first> origin:<[sigil].location> speed:0.1 script:blood_raid_sigil_move def:<list_single[<[points].remove[first]>]>
     - repeat 9:
       - rotate <[sigil]> yaw:<[value]> duration:1s
       - wait 1s
     - rotate <[sigil]> yaw:10 duration:10s
-    #- choose <[sigil_number]>:
-      #- case 1:
+
+#Move the Blood Sigils
+blood_raid_sigil_move:
+  type: task
+  debug: false
+  definitions: points
+  script:
+    - define sigil <[pushed_entities].first>
+    - push <[sigil]> destination:<[points].first> origin:<[sigil].location> speed:0.1 script:blood_raid_sigil_move def:<list_single[<[points].remove[first]>]>
 
 #Spawn the 5 Sigils
 blood_sigil_spawn:
@@ -211,16 +234,17 @@ blood_sigil_spawn:
     - define base <[town].spawn.above[40]>
     - repeat 5:
       - define yaw_add <element[72].mul[<[value]>]>
-      - spawn blood_sigil_<[value]> <[base].with_yaw[<[yaw_add]>].forward[25]> save:ent
+      - spawn blood_sigil_<[value]> <[base].with_yaw[<[yaw_add]>].forward[8]> save:ent
       - flag <[town]> blood_raid.sigils:->:<entry[ent].spawned_entity>
       - wait 1t
 
 blood_sigil_1:
   type: entity
-  entity_type: armor_stand
+  entity_type: chicken
   mechanisms:
-    visible: false
-    marker: true
+    potion_effects: INVISIBILITY,1,999999,false,false,false
+    gravity: false
+    has_ai: false
     equipment:
       - air
       - air
