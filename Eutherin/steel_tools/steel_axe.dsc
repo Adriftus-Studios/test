@@ -3,7 +3,7 @@ Steel_axe:
   material: iron_axe
   flags:
     custom_durability:
-      max: 200
+      max: 469
       current: 0
   data:
     recipe_book_category: tools.Steel_axe
