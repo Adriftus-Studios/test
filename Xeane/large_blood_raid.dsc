@@ -103,9 +103,9 @@ large_blood_raid:
     - run blood_sigil_spawn def:<[town]>
 
     - wait 5s
-    - repeat 1:
+    - repeat 5:
       - run blood_raid_sigil_activate def.town:<[town]> def.sigil_number:<[value]> def.points:<[blood_sigil_<[value]>_points]>
-      - wait 10s
+      - wait 5s
 
     # DEVELOPMENT FROM HERE DOWN
     - wait 20s
@@ -129,8 +129,8 @@ large_blood_raid_ground_blood:
 
     # play blood animation
     - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid.stage]> == 1:
-      - foreach <[surface_blocks]>:
-        - playeffect at:<[value].random[5]> effect:redstone special_data:3|#990000 offset:1.5,0.5,1.5 quantity:10 targets:<server.online_players>
+      #- foreach <[surface_blocks]>:
+        - playeffect at:<[town].spawn.above> effect:redstone special_data:3|#990000 offset:120,5,120 quantity:100 targets:<server.online_players>
         - wait 2t
 
 large_blood_raid_shoot_arc:
