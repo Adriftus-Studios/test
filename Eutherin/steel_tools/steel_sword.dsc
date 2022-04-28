@@ -3,7 +3,7 @@ Steel_sword:
   material: iron_sword
   flags:
     custom_durability:
-      max: 200
+      max: 469
       current: 0
   display name: <&f>Steel Sword
   data:
