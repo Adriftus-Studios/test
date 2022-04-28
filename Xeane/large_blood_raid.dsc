@@ -213,6 +213,10 @@ blood_raid_sigil_activate:
   script:
     - define sigil <[town].flag[blood_raid.sigils].get[<[sigil_number]>]>
     - push <[sigil]> destination:<[points].first> origin:<[sigil].location> speed:0.1
+    - foreach <[points]>:
+      - adjust <[sigil]> velocity:<[value].sub[<[sigil].location>]>
+      - wait 10t
+    - teleport <[sigil]> <[points].last>
     - repeat 9:
       - rotate <[sigil].passenger> yaw:<[value]> duration:1s
       - wait 1s
