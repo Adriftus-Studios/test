@@ -2,6 +2,9 @@ steel_durabilities:
   type: world
   debug: false
   events:
+    on player breaks obsidian with:steel_pickaxe:
+      - drop obsidian <context.location>
+
     on player breaks block with:steel_axe|steel_pickaxe|steel_shovel|steel_sword|steel_hoe|steel_shears|:
       - define slot <player.held_item_slot>
       - choose <player.item_in_hand.script.name.after[_]>:
