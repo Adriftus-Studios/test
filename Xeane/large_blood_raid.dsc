@@ -185,7 +185,7 @@ large_blood_raid_start_sky:
 
     # Play the spiral particles with the lists generated above
     - foreach <[final_points2]> as:locations:
-      - playeffect at:<[locations]> effect:redstone special_data:10|#990000 offset:0.1 quantity:10 targets:<server.online_players>
+      - playeffect at:<[locations]> effect:redstone special_data:5|#990000 offset:0.0 quantity:5 targets:<server.online_players>
       - wait 1t
 
 #<proc[define_spiral].context[<player.location.above[30].forward[5]>|<player.location.forward[5]>|0.75|10]>
@@ -233,10 +233,6 @@ blood_raid_sigil_activate:
   definitions: town|sigil_number|points
   script:
     - define sigil <[town].flag[blood_raid.sigils].get[<[sigil_number]>]>
-    - foreach <[points]>:
-      - adjust <[sigil]> velocity:<[value].sub[<[sigil].location>]>
-      - wait 10t
-    - teleport <[sigil]> <[points].last>
     - repeat 9:
       - rotate <[sigil].passenger> yaw:<[value]> duration:1s
       - wait 1s
@@ -251,7 +247,7 @@ blood_sigil_spawn:
     - define base <[town].spawn.above[40]>
     - repeat 5:
       - define yaw_add <element[72].mul[<[value]>]>
-      - spawn blood_sigil_<[value]> <[base].with_yaw[<[yaw_add]>].forward[8]> save:ent
+      - spawn blood_sigil_<[value]> <[base].with_yaw[<[yaw_add]>].forward[25]> save:ent
       - flag <[town]> blood_raid.sigils:->:<entry[ent].spawned_entity>
       - wait 1t
       - teleport <entry[ent].spawned_entity> <[base].with_yaw[<[yaw_add]>].forward[8]>
