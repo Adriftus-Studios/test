@@ -214,9 +214,9 @@ blood_raid_sigil_activate:
     - define sigil <[town].flag[blood_raid.sigils].get[<[sigil_number]>]>
     - push <[sigil]> destination:<[points].first> origin:<[sigil].location> speed:0.1 script:blood_raid_sigil_move def:<list_single[<[points].remove[first]>]>
     - repeat 9:
-      - rotate <[sigil]> yaw:<[value]> duration:1s
+      - rotate <[sigil].passenger> yaw:<[value]> duration:1s
       - wait 1s
-    - rotate <[sigil]> yaw:10 duration:10s
+    - rotate <[sigil].passenger> yaw:10 duration:10s
 
 #Move the Blood Sigils
 blood_raid_sigil_move:
