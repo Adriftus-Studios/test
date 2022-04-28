@@ -254,12 +254,15 @@ blood_sigil_spawn:
 
 blood_sigil_1:
   type: entity
-  entity_type: chicken
+  entity_type: armor_stand
   mechanisms:
-    potion_effects: INVISIBILITY,1,999999,false,false,false
-    gravity: false
-    is_aware: false
-    passenger: armor_stand[visible=false;equipment=air|air|air|leather_horse_armor[custom_model_data=300]]
+    visible: false
+    marker: true
+    equipment:
+      - air
+      - air
+      - air
+      - leather_horse_armor[custom_model_data=300]
 
 blood_sigil_2:
   type: entity
