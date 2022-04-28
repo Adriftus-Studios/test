@@ -3,7 +3,7 @@ steel_shovel:
   material: iron_shovel
   flags:
     custom_durability:
-      max: 200
+      max: 469
       current: 0
   data:
     recipe_book_category: tools.steel_shovel
