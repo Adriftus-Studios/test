@@ -7,22 +7,22 @@ steel_ingot:
   recipes:
     1:
       type: furnace
-      cook time: 1000s
+      cook_time: 100s
       experience: 0.25
       input: iron_ingot
     2:
       type: blast
-      cook time: 500s
+      cook_time: 50s
       experience: 0.15
       input: iron_ingot
     3:
       type: furnace
-      cook time: 1000s
+      cook_time: 100s
       experience: 0.25
       input: steel_ore
     4:
       type: blast
-      cook time: 500s
+      cook_time: 50s
       experience: 0.15
       input: steel_ore
 
