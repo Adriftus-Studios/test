@@ -64,9 +64,6 @@ large_blood_raid:
     # Sky Animation
     - ~run large_blood_raid_start_sky def:<[base]>
 
-    # Start persistent portal
-    - run large_blood_raid_big_portal def:<[town]>
-
     # Start the blood ground animation
     - run large_blood_raid_ground_blood def.town:<[town]> def.valid_chunks:<[valid_chunks]>
 
@@ -113,7 +110,7 @@ large_blood_raid:
     # DEVELOPMENT FROM HERE DOWN
     - wait 20s
     #CLEANUP - DEBUG
-    - remove <[town].flag[blood_raid.sigils].parse[passengers]>
+    - remove <[town].flag[blood_raid.sigils].parse[passengers].combine>
     - remove <[town].flag[blood_raid.sigils]>
     - flag <[town]> blood_raid:!
     - run set_fake_biome def.town:<[town]> def.chunks:<[biome_chunk_list]> def.state:false
@@ -155,19 +152,42 @@ large_blood_raid_start_sky:
   debug: false
   definitions: base
   script:
+    # Build the initial points coming from far
     - repeat 5:
       - define yaw_add <element[72].mul[<[value]>]>
       - define location_<[value]> <[base].with_yaw[<[yaw_add]>].above[40].forward[160]>
       - define points_<[value]> <[location_<[value]>].points_between[<[base].above[40]>]>
       - wait 1t
     - define size <[points_1].size>
-    - define final_points <list>
+    - define final_points1 <list>
     - repeat <[size]>:
-      - define final_points <[final_points].include_single[<[points_1].get[<[value]>]>|<[points_2].get[<[value]>]>|<[points_3].get[<[value]>]>|<[points_4].get[<[value]>]>|<[points_5].get[<[value]>]>]>
+      - define final_points1 <[final_points1].include_single[<[points_1].get[<[value]>]>|<[points_2].get[<[value]>]>|<[points_3].get[<[value]>]>|<[points_4].get[<[value]>]>|<[points_5].get[<[value]>]>]>
       - wait 1t
-    - foreach <[final_points]> as:locations:
+    # Build the spiral to the ground
+    - repeat 5:
+      - define yaw_add <element[72].mul[<[value]>]>
+      - define points_<[value]> <proc[define_spiral].context[<[base].above[40]>|<[base].below>|0.75|<[yaw_add]>]>
+      - wait 1t
+    - define size <[points_1].size>
+    - define final_points2 <list>
+    - repeat <[size]>:
+      - define final_points2 <[final_points2].include_single[<[points_1].get[<[value]>]>|<[points_2].get[<[value]>]>|<[points_3].get[<[value]>]>|<[points_4].get[<[value]>]>|<[points_5].get[<[value]>]>]>
+      - wait 1t
+
+    # Play the straight particles with the lists generated above
+    - foreach <[final_points1]> as:locations:
       - playeffect at:<[locations]> effect:redstone special_data:10|#990000 offset:0.1 quantity:10 targets:<server.online_players>
       - wait 1t
+
+    # Start the big Sky Portal
+    - run large_blood_raid_big_portal def:<[town]>
+
+    # Play the spiral particles with the lists generated above
+    - foreach <[final_points2]> as:locations:
+      - playeffect at:<[locations]> effect:redstone special_data:10|#990000 offset:0.1 quantity:10 targets:<server.online_players>
+      - wait 1t
+
+#<proc[define_spiral].context[<player.location.above[30].forward[5]>|<player.location.forward[5]>|0.75|10]>
 
 large_blood_raid_big_portal:
   type: task
