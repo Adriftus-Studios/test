@@ -130,7 +130,7 @@ large_blood_raid_ground_blood:
     # play blood animation
     - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid.stage]> == 1:
       - foreach <[surface_blocks]>:
-        - playeffect at:<[value].random[5]> effect:redstone special_data:5|#990000 offset:0.5,0,0.5 quantity:1 targets:<server.online_players>
+        - playeffect at:<[value].random[5]> effect:redstone special_data:3|#990000 offset:1.5,0.5,1.5 quantity:10 targets:<server.online_players>
         - wait 2t
 
 large_blood_raid_shoot_arc:
