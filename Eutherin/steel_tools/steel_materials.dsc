@@ -1,6 +1,7 @@
 steel_ingot:
   type: item
   material: iron_ingot
+  display name: <&r>Steel Ingot
   data:
       recipe_book_category: misc.steel_ingot
   recipes:
@@ -27,10 +28,11 @@ steel_ingot:
 
 steel_ore:
   type: item
-  material: iron_ore
+  material: raw_iron
+  display name: <&r>Raw Carbonized Iron
   data:
       recipe_book_category: misc.steel_ore
   recipes:
     1:
       type: shapeless
-      input: iron_ore|coal/charcoal|charcoal/coal
+      input: raw_iron|coal/charcoal|charcoal/coal
