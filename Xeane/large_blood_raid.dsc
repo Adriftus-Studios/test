@@ -73,14 +73,16 @@ large_blood_raid:
     # Determine iterations
     - if <[all_surface_blocks].size> < 5:
       - define iterations 6
-    - else if <[all_surface_blocks].size> < 8:
+    - else if <[all_surface_blocks].size> < 6:
       - define iterations 5
-    - else if <[all_surface_blocks].size> < 12:
+    - else if <[all_surface_blocks].size> < 8:
       - define iterations 4
-    - else if <[all_surface_blocks].size> < 15:
+    - else if <[all_surface_blocks].size> < 14:
       - define iterations 3
-    - else:
+    - else if <[all_surface_blocks].size> < 25:
       - define iterations 2
+    - else:
+      - define iterations 1
 
     # Launch Arcs
     - repeat <[iterations]>:
@@ -130,7 +132,7 @@ large_blood_raid_ground_blood:
     # play blood animation
     - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid.stage]> == 1:
       #- foreach <[surface_blocks]>:
-        - playeffect at:<[town].spawn> effect:redstone special_data:3|#990000 offset:120,2,120 quantity:100 targets:<server.online_players>
+        - playeffect at:<[surface_blocks].random> effect:redstone special_data:3|#990000 offset:120,0,120 quantity:100 targets:<server.online_players>
         - wait 2t
 
 large_blood_raid_shoot_arc:
