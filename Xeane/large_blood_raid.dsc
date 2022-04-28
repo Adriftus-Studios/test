@@ -212,7 +212,6 @@ blood_raid_sigil_activate:
   definitions: town|sigil_number|points
   script:
     - define sigil <[town].flag[blood_raid.sigils].get[<[sigil_number]>]>
-    - push <[sigil]> destination:<[points].first> origin:<[sigil].location> speed:0.1
     - foreach <[points]>:
       - adjust <[sigil]> velocity:<[value].sub[<[sigil].location>]>
       - wait 10t
