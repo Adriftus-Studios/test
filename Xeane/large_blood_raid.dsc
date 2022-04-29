@@ -402,7 +402,7 @@ blood_raid_raider_2:
     custom_name_visible: true
     potion_effects:
       type: CONFUSION
-      duration: 10m
+      duration: 30s
       ambient: false
       particles: false
       icon: false
