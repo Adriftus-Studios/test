@@ -67,6 +67,12 @@ large_blood_raid:
     - define sigil_4_subtitle "<&4>Blood Bombs"
     - define sigil_5_subtitle "<&4>Blood Lord"
 
+    # Set Gamerules
+    - gamerule <world[herocraft]> doMobSpawning false
+    - gamerule <world[herocraft]> doWeatherCycle false
+    - gamerule <world[herocraft]> doDaylightCycle false
+
+
     # Bossbar Intro
     - bossbar Blood_Raid_<[town].name> players:<server.online_players> progress:0 "title:<&4>Blood Raid<&co><&e> Intro" color:red
 
@@ -136,6 +142,9 @@ large_blood_raid:
     - remove <[town].flag[blood_raid.sigils]>
     - flag <[town]> blood_raid:!
     - run set_fake_biome def.town:<[town]> def.chunks:<[biome_chunk_list]> def.state:false
+    - gamerule <world[herocraft]> doMobSpawning true
+    - gamerule <world[herocraft]> doWeatherCycle true
+    - gamerule <world[herocraft]> doDaylightCycle true
 
 # Ground Blood During Raid
 large_blood_raid_ground_blood:
