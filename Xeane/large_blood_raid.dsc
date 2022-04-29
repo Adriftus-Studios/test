@@ -107,7 +107,7 @@ large_blood_raid:
     - wait 5s
     - repeat 5:
       - run blood_raid_sigil_activate def.town:<[town]> def.sigil_number:<[value]> def.points:<[blood_sigil_<[value]>_points]>
-      - wait 5s
+      - wait 60s
 
     # DEVELOPMENT FROM HERE DOWN
     - wait 20s
@@ -264,10 +264,12 @@ blood_sigil_effect_1:
   debug: false
   definitions: town
   script:
-    - define mob_list <list>
+    - flag <[town]> blood_raid.sigil_mobs.1:<list>
     - while <list[2|4].contains[<[town].flag[blood_raid.stage]>]>:
-      - if <[mob_list].size> <= 5:
+      - flag <[town]> blood_raid.sigil_mobs.1:<[town].flag[blood_raid.sigil_mobs.1].filter[is_spawned]>
+      - if <[town].flag[blood_raid.sigil_mobs.1].size> <= 4:
         - run blood_sigil_effect_1_spawn def:<[town]>
+      - wait 5s
 
 blood_sigil_effect_1_spawn:
   type: task
@@ -276,22 +278,28 @@ blood_sigil_effect_1_spawn:
   script:
     - define sigil <[town].flag[blood_raid.sigils].first>
     - define start <[sigil].location.above[5]>
+    - define location <[start].find_players_within[150].random>
     - define locations <proc[define_curve1].context[<[start]>|<[location]>|<util.random.int[5].to[25]>|<util.random.int[25].to[75]>|1]>
     - wait 1t
     - repeat 5:
-      - playeffect at:<[start]> effect:redstone special_data:5|#990000 offset:0.0 quantity:5 targets:<server.online_players>
+      - playeffect at:<[start]> effect:redstone special_data:5|#990000 offset:0.5,0,0.5 quantity:5 targets:<server.online_players>
+      - wait 2t
     - wait 1t
     - foreach <[locations]> as:loc:
         - playeffect at:<[loc]> effect:redstone special_data:10|#990000 offset:0.25 quantity:5 targets:<server.online_players>
         - wait 2t
-    - spawn blood_raider_1
+    - spawn blood_raider_1 <[locations].last> save:ent
+    - if <entry[ent].spawned_entity.is_spawned>:
+      - flag <[town]> blood_raid.sigil_mobs.1:->:<entry[ent].spawned_entity>
+    - else:
+      - explode <[locations].last> power:5
 
 blood_raid_raider_1:
   type: entity
   debug: false
   entity_type: skeleton
   mechanisms:
-    health_data: 250/250
+    health_data: 200/200
     custom_name: <&c>Blood Skeleton
     custom_name_visible: true
   flags:
