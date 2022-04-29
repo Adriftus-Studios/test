@@ -302,6 +302,7 @@ blood_raid_bow_shot:
   type: task
   debug: false
   script:
+    - wait 1t
     - flag <context.projectile> on_hit_entity:blood_raid_bow_damage
     - while <context.projectile.is_spawned>:
       - playeffect at:<context.projectile.location> effect:redstone special_data:5|#990000 offset:0 quantity:2 targets:<server.online_players>
