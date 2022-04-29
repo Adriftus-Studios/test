@@ -8,7 +8,7 @@ Steel_axe:
   data:
     recipe_book_category: tools.Steel_axe
   mechanisms:
-    custom_model_data: 1
+    custom_model_data: 2
   display name: <&f>Steel Axe
   recipes:
     1:

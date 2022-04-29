@@ -8,7 +8,7 @@ steel_shovel:
   data:
     recipe_book_category: tools.steel_shovel
   mechanisms:
-    custom_model_data: 1
+    custom_model_data: 2
   display name: <&f>Steel Shovel
   recipes:
     1:

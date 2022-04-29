@@ -6,7 +6,7 @@ Steel_pickaxe:
       max: 469
       current: 0
   mechanisms:
-    custom_model_data: 2
+    custom_model_data: 3
   data:
     recipe_book_category: tools.Steel_pickaxe
   display name: <&f>Steel Pickaxe

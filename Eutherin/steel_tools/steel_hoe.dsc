@@ -8,7 +8,7 @@ Steel_hoe:
   data:
     recipe_book_category: tools.Steel_hoe
   mechanisms:
-    custom_model_data: 1
+    custom_model_data: 2
   display name: <&f>Steel Hoe
   recipes:
     1:

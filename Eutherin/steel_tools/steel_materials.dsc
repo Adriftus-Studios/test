@@ -2,6 +2,8 @@ steel_ingot:
   type: item
   material: iron_ingot
   display name: <&r>Steel Ingot
+  mechanisms:
+    custom_model_data: 1
   data:
       recipe_book_category: misc.steel_ingot
   recipes:
@@ -16,10 +18,12 @@ steel_ingot:
       experience: 0.15
       input: steel_ore
 
-rqw_steel:
+raw_steel:
   type: item
   material: raw_iron
   display name: <&r>Raw Steel
+  mechanisms:
+    custom_model_data: 1
   data:
       recipe_book_category: misc.steel_ore
   recipes:

@@ -9,7 +9,7 @@ Steel_sword:
   data:
     recipe_book_category: tools.Steel_sword
   mechanisms:
-    custom_model_data: 1
+    custom_model_data: 2
   recipes:
     1:
       type: shaped
