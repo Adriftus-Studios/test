@@ -450,8 +450,13 @@ blood_sigil_4:
 blood_sigil_effect_4:
   type: task
   debug: false
-  definitions: town|chunks
+  definitions: town
   script:
+    - foreach <[town].plots> as:chunk:
+      - if <[loop_index].mod[10]> == 0:
+        - wait 1t
+      - if <[chunk].cuboid.center.distance[<[town].spawn>]> < 200:
+        - define chunks:->:<[chunk]>
     - while <[town].has_flag[blood_raid.stage]> && <list[2|4].contains[<[town].flag[blood_raid.stage]>]>:
       - run blood_sigil_effect_4_task def:<[town]>|<[chunks].random>
       - wait 10s
