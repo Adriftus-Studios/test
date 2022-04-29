@@ -407,7 +407,13 @@ blood_raid_raider_2:
       particles: false
       icon: false
     flags:
-      on_damage: 
+      on_damage: blood_raid_creeper_damage
+
+blood_raid_creeper_damage:
+  type: task
+  debug: false
+  script:
+    - flag <context.entity> no_heal expire:10s
 
 ##Third Blood Sigil
 blood_sigil_3:
