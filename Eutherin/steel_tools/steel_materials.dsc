@@ -13,12 +13,12 @@ steel_ingot:
       type: furnace
       cook_time: 120s
       experience: 0.25
-      input: steel_ore
+      input: raw_steel
     2:
       type: blast
       cook_time: 60s
       experience: 0.15
-      input: steel_ore
+      input: raw_steel
 
 raw_steel:
   type: item
