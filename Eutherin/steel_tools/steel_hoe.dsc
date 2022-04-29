@@ -9,6 +9,8 @@ Steel_hoe:
     recipe_book_category: tools.Steel_hoe
   mechanisms:
     custom_model_data: 2
+  lore:
+    - Tougher than iron
   display name: <&f>Steel Hoe
   recipes:
     1:

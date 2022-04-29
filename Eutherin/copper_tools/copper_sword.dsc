@@ -6,6 +6,8 @@ copper_sword:
       max: 200
       current: 0
   display name: <&f>Copper Sword
+  lore:
+    - Softer than iron
   data:
     recipe_book_category: tools.copper_sword
   mechanisms:

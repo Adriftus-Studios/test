@@ -9,6 +9,8 @@ Steel_axe:
     recipe_book_category: tools.Steel_axe
   mechanisms:
     custom_model_data: 2
+  lore:
+    - Tougher than iron
   display name: <&f>Steel Axe
   recipes:
     1:
@@ -18,4 +20,3 @@ Steel_axe:
       - Steel_ingot|Steel_ingot|air
       - Steel_ingot|stick|air
       - air|stick|air
-

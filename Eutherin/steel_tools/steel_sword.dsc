@@ -10,6 +10,8 @@ Steel_sword:
     recipe_book_category: tools.Steel_sword
   mechanisms:
     custom_model_data: 2
+  lore:
+    - Tougher than iron
   recipes:
     1:
       type: shaped

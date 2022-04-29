@@ -5,6 +5,8 @@ steel_shovel:
     custom_durability:
       max: 469
       current: 0
+  lore:
+    - Tougher than iron
   data:
     recipe_book_category: tools.steel_shovel
   mechanisms:
