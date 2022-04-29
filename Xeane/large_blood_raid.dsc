@@ -124,13 +124,6 @@ large_blood_raid_ground_blood:
   debug: false
   definitions: town|valid_chunks
   script:
-
-    # get surface blocks in the chunks
-    - define surface_blocks <list>
-    - foreach <[valid_chunks]>:
-      - define surface_blocks:<[surface_blocks].include_single[<[value].surface_blocks.parse[above[2].center]>]>
-      - wait 1t
-
     # play blood animation
     - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid.stage]> == 1:
       - playeffect at:<[town].spawn> effect:redstone special_data:1|#990000 offset:120,1,120 quantity:200 targets:<server.online_players>
@@ -328,8 +321,8 @@ blood_raid_bow_shot:
     - flag <context.projectile> on_hit_entity:blood_raid_bow_damage
     - while <context.projectile.is_spawned>:
       - playeffect at:<context.projectile.location> effect:redstone special_data:5|#990000 offset:0 quantity:2 targets:<server.online_players>
-      - wait 2t
-      - if <[loop_index]> > 50:
+      - wait 1t
+      - if <[loop_index]> > 80:
         - while stop
 
 # blood skeleton task
@@ -344,7 +337,7 @@ blood_raid_bow_damage:
     - repeat 5:
       - if !<context.hit_entity.is_spawned>:
         - repeat stop
-      - hurt <context.hit_entity> 3
+      - hurt <context.hit_entity> 2
       - wait 1s
     - flag <context.hit_entity> blood_drain:!
 
@@ -414,6 +407,7 @@ blood_raid_raider_2:
       particles: false
       icon: false
 
+##Third Blood Sigil
 blood_sigil_3:
   type: entity
   entity_type: armor_stand
@@ -426,6 +420,20 @@ blood_sigil_3:
       - air
       - leather_horse_armor[custom_model_data=302]
 
+#Third sigil effect
+blood_sigil_effect_3:
+  type: task
+  debug: false
+  definitions: town
+  script:
+    # play blood animation
+    - while <[town].has_flag[blood_raid]> && <list[2|4].contains[<[town].flag[blood_raid.stage]>]>:
+      - if <[loop_index].mod[10]>:
+        - hurt <[town].spawn.find_players_within[120]> 2
+      - playeffect at:<[town].spawn> effect:redstone special_data:10|#990000 offset:120,1,120 quantity:100 targets:<server.online_players>
+      - wait 2t
+
+##Fourth Blood Sigil
 blood_sigil_4:
   type: entity
   entity_type: armor_stand
@@ -437,6 +445,40 @@ blood_sigil_4:
       - air
       - air
       - leather_horse_armor[custom_model_data=303]
+
+#Fourth sigil effect
+blood_sigil_effect_4:
+  type: task
+  debug: false
+  definitions: town|chunks
+  script:
+    - while <[town].has_flag[blood_raid.stage]> && <list[2|4].contains[<[town].flag[blood_raid.stage]>]>:
+      - run blood_sigil_effect_4_task def:<[town]>|<[chunks].random>
+      - wait 10s
+
+blood_sigil_effect_4_task:
+  type: task
+  debug: false
+  definitions: town|chunk
+  script:
+    - define sigil <[town].flag[blood_raid.sigils].get[4]>
+    - define start <[sigil].location>
+    - define location <[chunk].surface_blocks.random>
+    - define locations <proc[define_curve1].context[<[start]>|<[location]>|<util.random.int[5].to[15]>|90|1]>
+    - wait 5t
+    - define locations2 <proc[define_curve1].context[<[start].above[5]>|<[start]>|4|-90|1]>
+    - wait 1t
+    - repeat 5:
+      - playeffect at:<[start]> effect:redstone special_data:5|#990000 offset:0.5,0,0.5 quantity:5 targets:<server.online_players>
+      - wait 2t
+    - foreach <[locations2]> as:loc:
+      - playeffect at:<[loc]> effect:redstone special_data:10|#990000 offset:0.25 quantity:5 targets:<server.online_players>
+      - wait 2t
+    - wait 1t
+    - foreach <[locations]> as:loc:
+      - playeffect at:<[loc]> effect:redstone special_data:10|#990000 offset:0.25 quantity:5 targets:<server.online_players>
+      - wait 1t
+    - explode <[loc]> power:5 breakblocks fire
 
 blood_sigil_5:
   type: entity
