@@ -307,6 +307,8 @@ blood_raid_bow_shot:
     - while <context.projectile.is_spawned>:
       - playeffect at:<context.projectile.location> effect:redstone special_data:5|#990000 offset:0 quantity:2 targets:<server.online_players>
       - wait 2t
+      - if <[loop_index]> > 50:
+        - while stop
 
 blood_raid_bow_damage:
   type: task
