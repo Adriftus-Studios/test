@@ -488,7 +488,7 @@ blood_sigil_effect_4_task:
     - repeat 5:
       - explode <[blocks].random> power:5 fire
       - wait 1t
-    - modifyblock <[loc].find_blocks.within[4]> air naturally:netherite_pickaxe
+    - modifyblock <[loc].find_blocks.within[3]> air naturally:netherite_pickaxe
 
 blood_sigil_5:
   type: entity
