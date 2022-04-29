@@ -59,6 +59,16 @@ large_blood_raid:
     - repeat 5:
       - define blood_sigil_<[value]>_points <proc[define_curve1].context[<[blood_sigil_<[value]>_start]>|<[blood_sigil_<[value]>_end]>|1|0|1]>
       - wait 1t
+    
+    # Define Sigil subtitle text
+    - define sigil_1_subtitle "<&4>Blood Skeletons"
+    - define sigil_2_subtitle "<&4>Blood Creepers"
+    - define sigil_3_subtitle "<&4>Blood Mist"
+    - define sigil_4_subtitle "<&4>Blood Bombs"
+    - define sigil_5_subtitle "<&4>Blood Lord"
+
+    # Bossbar Intro
+    - bossbar Blood_Raid_<[town].name> players:<server.online_players> progress:0 "title:Blood Raid<&co> Intro" color:red
 
     # Flag the Town for the raid
     - flag <[town]> blood_raid.stage:1
@@ -110,11 +120,14 @@ large_blood_raid:
     - wait 5s
     - repeat 5:
       - run blood_raid_sigil_activate def.town:<[town]> def.sigil_number:<[value]> def.points:<[blood_sigil_<[value]>_points]>
+      - title "title:<&4>Sigil <[value]> Activated" subtitle:<[sigil_<[value]>_subtitle]> targets:<server.online_players> fade_in:10t stay:1s fade_out:10t
+      - bossbar update Blood_Raid_<[town].name> players:<server.online_players> progress:<element[20].mul[<[value]>]> "title:Blood Raid<&co> Stage <[value]>" color:red
       - wait 60s
 
     # DEVELOPMENT FROM HERE DOWN
     - wait 10s
     #CLEANUP - DEBUG
+    - bossbar remove Blood_Raid_<[town].name> players:<server.online_players>
     - title title:<&color[#FFFFFF]><&font[adriftus:overlay]><&chr[0004]><&chr[F801]><&chr[0004]> fade_in:6s stay:5s fade_out:6s targets:<server.online_players>
     - flag <[town]> blood_raid:!
     - wait 5s
@@ -502,7 +515,7 @@ blood_sigil_effect_4:
         - define chunks:->:<[chunk]>
     - while <[town].has_flag[blood_raid.stage]> && <list[2|4].contains[<[town].flag[blood_raid.stage]>]>:
       - run blood_sigil_effect_4_task def:<[town]>|<[chunks].random>
-      - wait 10t
+      - wait 1s
 
 blood_sigil_effect_4_task:
   type: task
@@ -540,3 +553,9 @@ blood_sigil_5:
       - air
       - leather_horse_armor[custom_model_data=304]
     glowing: true
+
+blood_sigil_effect_5_task:
+  type: task
+  debug: false
+  definitions: town
+  script:
