@@ -3,12 +3,14 @@ steel_shovel:
   material: iron_shovel
   flags:
     custom_durability:
-      max: 200
+      max: 469
       current: 0
+  lore:
+    - Tougher than iron
   data:
     recipe_book_category: tools.steel_shovel
   mechanisms:
-    custom_model_data: 1
+    custom_model_data: 2
   display name: <&f>Steel Shovel
   recipes:
     1:

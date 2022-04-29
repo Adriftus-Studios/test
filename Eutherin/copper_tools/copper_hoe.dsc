@@ -5,6 +5,8 @@ copper_hoe:
     custom_durability:
       max: 200
       current: 0
+  lore:
+    - Softer than iron
   data:
     recipe_book_category: tools.copper_hoe
   mechanisms:

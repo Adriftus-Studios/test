@@ -3,12 +3,14 @@ Steel_axe:
   material: iron_axe
   flags:
     custom_durability:
-      max: 200
+      max: 469
       current: 0
   data:
     recipe_book_category: tools.Steel_axe
   mechanisms:
-    custom_model_data: 1
+    custom_model_data: 2
+  lore:
+    - Tougher than iron
   display name: <&f>Steel Axe
   recipes:
     1:
@@ -18,4 +20,3 @@ Steel_axe:
       - Steel_ingot|Steel_ingot|air
       - Steel_ingot|stick|air
       - air|stick|air
-

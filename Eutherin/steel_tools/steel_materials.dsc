@@ -1,36 +1,36 @@
 steel_ingot:
   type: item
   material: iron_ingot
+  display name: <&r>Steel Ingot
+  mechanisms:
+    custom_model_data: 1
+  lore:
+    - Its like iron with more carbon,
   data:
       recipe_book_category: misc.steel_ingot
   recipes:
     1:
       type: furnace
-      cook time: 100s
+      cook_time: 120s
       experience: 0.25
-      input: iron_ingot
+      input: raw_steel
     2:
       type: blast
-      cook time: 50s
+      cook_time: 60s
       experience: 0.15
-      input: iron_ingot
-    3:
-      type: furnace
-      cook time: 100s
-      experience: 0.25
-      input: steel_ore
-    4:
-      type: blast
-      cook time: 50s
-      experience: 0.15
-      input: steel_ore
+      input: raw_steel
 
-steel_ore:
+raw_steel:
   type: item
-  material: iron_ore
+  material: raw_iron
+  display name: <&r>Raw Steel
+  lore:
+    - Mixed and ready for smelting.
+  mechanisms:
+    custom_model_data: 1
   data:
       recipe_book_category: misc.steel_ore
   recipes:
     1:
       type: shapeless
-      input: iron_ore|coal/charcoal|charcoal/coal
+      input: raw_iron|coal/charcoal|coal/charcoal|raw_iron
