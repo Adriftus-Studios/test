@@ -462,11 +462,11 @@ blood_sigil_effect_4_task:
   definitions: town|chunk
   script:
     - define sigil <[town].flag[blood_raid.sigils].get[4]>
-    - define start <[sigil].location>
+    - define start <[sigil].location.below[5]>
     - define location <[chunk].surface_blocks.random>
     - define locations <proc[define_curve1].context[<[start]>|<[location]>|<util.random.int[5].to[15]>|90|1]>
     - wait 5t
-    - define locations2 <proc[define_curve1].context[<[start].above[5]>|<[start]>|4|-90|1]>
+    - define locations2 <proc[define_curve1].context[<[start].above[10]>|<[start]>|4|270|1]>
     - wait 1t
     - repeat 5:
       - playeffect at:<[start]> effect:redstone special_data:5|#990000 offset:0.5,0,0.5 quantity:5 targets:<server.online_players>
@@ -478,7 +478,12 @@ blood_sigil_effect_4_task:
     - foreach <[locations]> as:loc:
       - playeffect at:<[loc]> effect:redstone special_data:10|#990000 offset:0.25 quantity:5 targets:<server.online_players>
       - wait 1t
-    - explode <[loc]> power:5 breakblocks fire
+    - define loc <[locations].last>
+    - define blocks <[loc].find_blocks.within[3]>
+    - repeat 5:
+      - explode <[blocks].random> power:5 fire
+      - wait 1t
+    - modifyblock <[loc].find_blocks.within[4]> air naturally:netherite_pickaxe
 
 blood_sigil_5:
   type: entity
