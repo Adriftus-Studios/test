@@ -107,15 +107,15 @@ large_blood_raid:
     - wait 5s
     - repeat 5:
       - run blood_raid_sigil_activate def.town:<[town]> def.sigil_number:<[value]> def.points:<[blood_sigil_<[value]>_points]>
-      - wait 30s
+      - wait 60s
 
     # DEVELOPMENT FROM HERE DOWN
     - wait 10s
     #CLEANUP - DEBUG
     - title title:<&color[#FFFFFF]><&font[adriftus:overlay]><&chr[0004]><&chr[F801]><&chr[0004]> fade_in:6s stay:5s fade_out:6s targets:<server.online_players>
+    - flag <[town]> blood_raid:!
     - wait 5s
     - remove <[town].flag[blood_raid.sigils]>
-    - flag <[town]> blood_raid:!
     - run set_fake_biome def.town:<[town]> def.chunks:<[biome_chunk_list]> def.state:false
 
 # Ground Blood During Raid
@@ -429,7 +429,7 @@ blood_sigil_effect_3:
     # play blood animation
     - while <[town].has_flag[blood_raid]> && <list[2|4].contains[<[town].flag[blood_raid.stage]>]>:
       - if <[loop_index].mod[10]>:
-        - hurt <[town].spawn.find_players_within[120]> 2
+        - hurt 2 <[town].spawn.find_players_within[120]>
       - playeffect at:<[town].spawn> effect:redstone special_data:10|#990000 offset:120,1,120 quantity:100 targets:<server.online_players>
       - wait 2t
 
@@ -467,17 +467,12 @@ blood_sigil_effect_4_task:
   definitions: town|chunk
   script:
     - define sigil <[town].flag[blood_raid.sigils].get[4]>
-    - define start <[sigil].location.below[5]>
+    - define start <[sigil].location.above[5]>
     - define location <[chunk].surface_blocks.random>
-    - define locations <proc[define_curve1].context[<[start]>|<[location]>|<util.random.int[5].to[15]>|90|1]>
+    - define locations <proc[define_curve1].context[<[start]>|<[location]>|<util.random.int[10].to[25]>|90|1]>
     - wait 5t
-    - define locations2 <proc[define_curve1].context[<[start].above[10]>|<[start]>|4|270|1]>
-    - wait 1t
     - repeat 5:
       - playeffect at:<[start]> effect:redstone special_data:5|#990000 offset:0.5,0,0.5 quantity:5 targets:<server.online_players>
-      - wait 2t
-    - foreach <[locations2]> as:loc:
-      - playeffect at:<[loc]> effect:redstone special_data:10|#990000 offset:0.25 quantity:5 targets:<server.online_players>
       - wait 2t
     - wait 1t
     - foreach <[locations]> as:loc:
