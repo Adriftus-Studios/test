@@ -68,7 +68,7 @@ large_blood_raid:
     - define sigil_5_subtitle "<&4>Blood Lord"
 
     # Bossbar Intro
-    - bossbar Blood_Raid_<[town].name> players:<server.online_players> progress:0 "title:Blood Raid<&co> Intro" color:red
+    - bossbar Blood_Raid_<[town].name> players:<server.online_players> progress:0 "title:<&4>Blood Raid<&co><&e> Intro" color:red
 
     # Flag the Town for the raid
     - flag <[town]> blood_raid.stage:1
@@ -120,8 +120,8 @@ large_blood_raid:
     - wait 5s
     - repeat 5:
       - run blood_raid_sigil_activate def.town:<[town]> def.sigil_number:<[value]> def.points:<[blood_sigil_<[value]>_points]>
-      - title "title:<&4>Sigil <[value]> Activated" subtitle:<[sigil_<[value]>_subtitle]> targets:<server.online_players> fade_in:10t stay:1s fade_out:10t
-      - bossbar update Blood_Raid_<[town].name> players:<server.online_players> progress:<element[20].mul[<[value]>]> "title:Blood Raid<&co> Stage <[value]>" color:red
+      - title "title:<&4>Sigil <[value]> Activated" subtitle:<[sigil_<[value]>_subtitle]> targets:<server.online_players> fade_in:10t stay:2s fade_out:10t
+      - bossbar update Blood_Raid_<[town].name> players:<server.online_players> progress:<element[20].mul[<[value]>].div[100]> "title:<&4>Blood Raid<&co><&e> Stage <[value]>" color:red
       - wait 60s
 
     # DEVELOPMENT FROM HERE DOWN
@@ -129,11 +129,12 @@ large_blood_raid:
     #CLEANUP - DEBUG
     - bossbar remove Blood_Raid_<[town].name> players:<server.online_players>
     - title title:<&color[#FFFFFF]><&font[adriftus:overlay]><&chr[0004]><&chr[F801]><&chr[0004]> fade_in:6s stay:5s fade_out:6s targets:<server.online_players>
-    - flag <[town]> blood_raid:!
+    - flag <[town]> blood_raid.stage:5
     - wait 5s
     - rotate <[town].flag[blood_raid.sigils]> cancel
     - wait 1t
     - remove <[town].flag[blood_raid.sigils]>
+    - flag <[town]> blood_raid:!
     - run set_fake_biome def.town:<[town]> def.chunks:<[biome_chunk_list]> def.state:false
 
 # Ground Blood During Raid
