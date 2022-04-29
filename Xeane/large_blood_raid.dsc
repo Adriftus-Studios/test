@@ -93,7 +93,7 @@ large_blood_raid:
     # Wait for Arcs
     - waituntil <[town].flag[blood_raid.portal].equals[30]> rate:1s
 
-    - title title:<&color[#990000]><&font[adriftus:overlay]><&chr[0004]><&chr[F801]><&chr[0004]> fade_in:6s stay:3s fade_out:6s targets:<server.online_players>
+    - title title:<&color[#990000]><&font[adriftus:overlay]><&chr[0004]><&chr[F801]><&chr[0004]> fade_in:6s stay:5s fade_out:6s targets:<server.online_players>
 
     # Wait for Overlay
     - wait 5s
@@ -112,7 +112,7 @@ large_blood_raid:
     # DEVELOPMENT FROM HERE DOWN
     - wait 10s
     #CLEANUP - DEBUG
-    - title title:<&color[#FFFFFF]><&font[adriftus:overlay]><&chr[0004]><&chr[F801]><&chr[0004]> fade_in:6s stay:3s fade_out:6s targets:<server.online_players>
+    - title title:<&color[#FFFFFF]><&font[adriftus:overlay]><&chr[0004]><&chr[F801]><&chr[0004]> fade_in:6s stay:5s fade_out:6s targets:<server.online_players>
     - wait 5s
     - remove <[town].flag[blood_raid.sigils]>
     - flag <[town]> blood_raid:!
@@ -288,7 +288,8 @@ blood_sigil_effect_1_spawn:
     - foreach <[locations]> as:loc:
         - playeffect at:<[loc]> effect:redstone special_data:10|#990000 offset:0.25 quantity:5 targets:<server.online_players>
         - wait 2t
-    - spawn blood_raider_1 <[locations].last> save:ent
+    - spawn blood_raid_raider_1 <[locations].last> save:ent
+    - wait 1t
     - if <entry[ent].spawned_entity.is_spawned>:
       - flag <[town]> blood_raid.sigil_mobs.1:->:<entry[ent].spawned_entity>
     - else:
