@@ -118,6 +118,8 @@ large_blood_raid:
     - title title:<&color[#FFFFFF]><&font[adriftus:overlay]><&chr[0004]><&chr[F801]><&chr[0004]> fade_in:6s stay:5s fade_out:6s targets:<server.online_players>
     - flag <[town]> blood_raid:!
     - wait 5s
+    - rotate <[town].flag[blood_raid.sigils]> cancel
+    - wait 1t
     - remove <[town].flag[blood_raid.sigils]>
     - run set_fake_biome def.town:<[town]> def.chunks:<[biome_chunk_list]> def.state:false
 
@@ -283,6 +285,7 @@ blood_sigil_1:
       - air
       - air
       - leather_horse_armor[custom_model_data=300]
+    glowing: true
 
 #First sigil effect
 blood_sigil_effect_1:
@@ -374,6 +377,7 @@ blood_sigil_2:
       - air
       - air
       - leather_horse_armor[custom_model_data=301]
+    glowing: true
 
 #Second sigil effect
 blood_sigil_effect_2:
@@ -448,6 +452,7 @@ blood_sigil_3:
       - air
       - air
       - leather_horse_armor[custom_model_data=302]
+    glowing: true
 
 #Third sigil effect
 blood_sigil_effect_3:
@@ -478,6 +483,7 @@ blood_sigil_4:
       - air
       - air
       - leather_horse_armor[custom_model_data=303]
+    glowing: true
 
 #Fourth sigil effect
 blood_sigil_effect_4:
@@ -496,7 +502,7 @@ blood_sigil_effect_4:
         - define chunks:->:<[chunk]>
     - while <[town].has_flag[blood_raid.stage]> && <list[2|4].contains[<[town].flag[blood_raid.stage]>]>:
       - run blood_sigil_effect_4_task def:<[town]>|<[chunks].random>
-      - wait 3s
+      - wait 10t
 
 blood_sigil_effect_4_task:
   type: task
@@ -533,3 +539,4 @@ blood_sigil_5:
       - air
       - air
       - leather_horse_armor[custom_model_data=304]
+    glowing: true
