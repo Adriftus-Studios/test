@@ -107,10 +107,10 @@ large_blood_raid:
     - wait 5s
     - repeat 5:
       - run blood_raid_sigil_activate def.town:<[town]> def.sigil_number:<[value]> def.points:<[blood_sigil_<[value]>_points]>
-      - wait 60s
+      - wait 10s
 
     # DEVELOPMENT FROM HERE DOWN
-    - wait 20s
+    - wait 10s
     #CLEANUP - DEBUG
     - title title:<&color[#FFFFFF]><&font[adriftus:overlay]><&chr[0004]><&chr[F801]><&chr[0004]> fade_in:6s stay:3s fade_out:6s targets:<server.online_players>
     - wait 5s
@@ -278,8 +278,8 @@ blood_sigil_effect_1_spawn:
   script:
     - define sigil <[town].flag[blood_raid.sigils].first>
     - define start <[sigil].location.above[5]>
-    - define location <[start].find_players_within[150].random>
-    - define locations <proc[define_curve1].context[<[start]>|<[location]>|<util.random.int[5].to[25]>|<util.random.int[25].to[75]>|1]>
+    - define location <[start].find_players_within[220].random.location>
+    - define locations <proc[define_curve1].context[<[start]>|<[location]>|<util.random.int[5].to[15]>|<util.random.int[75].to[125]>|1]>
     - wait 1t
     - repeat 5:
       - playeffect at:<[start]> effect:redstone special_data:5|#990000 offset:0.5,0,0.5 quantity:5 targets:<server.online_players>
