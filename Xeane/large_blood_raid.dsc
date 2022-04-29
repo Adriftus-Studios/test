@@ -134,7 +134,7 @@ large_blood_raid_ground_blood:
     # play blood animation
     - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid.stage]> == 1:
       #- foreach <[surface_blocks]>:
-        - playeffect at:<[town].spawn> effect:redstone special_data:3|#990000 offset:120,1,120 quantity:100 targets:<server.online_players>
+        - playeffect at:<[town].spawn> effect:redstone special_data:1|#990000 offset:120,1,120 quantity:100 targets:<server.online_players>
         - wait 2t
 
 large_blood_raid_shoot_arc:
@@ -144,6 +144,10 @@ large_blood_raid_shoot_arc:
   script:
     - define location <[town].spawn.above[40]>
     - define locations <proc[define_curve1].context[<[start]>|<[location]>|<util.random.int[5].to[25]>|<util.random.int[25].to[75]>|1]>
+    - wait 1t
+    - repeat 10:
+      - playeffect at:<[start].center.above[0.55]> effect:redstone special_data:10|#990000 offset:0.5,0,0.5 quantity:5 targets:<server.online_players>
+      - wait 2t
     - foreach <[locations]> as:loc:
         - playeffect at:<[loc]> effect:redstone special_data:10|#990000 offset:0.25 quantity:5 targets:<server.online_players>
         - wait 2t
@@ -235,10 +239,11 @@ blood_raid_sigil_activate:
   script:
     - define sigil <[town].flag[blood_raid.sigils].get[<[sigil_number]>]>
     - flag <[town]> blood_raid.sigils_active_locations:|:<[sigil].location.above[5]>
-    - repeat 9:
+    - repeat 14:
       - rotate <[sigil]> yaw:<[value]> duration:1s
       - wait 1s
-    - rotate <[sigil]> yaw:10 duration:10s
+    - rotate <[sigil]> yaw:15 duration:10s
+    - run blood_sigil_effect_<[sigil_number]> def:<[town]>
 
 #Spawn the 5 Sigils
 blood_sigil_spawn:
@@ -252,6 +257,70 @@ blood_sigil_spawn:
       - spawn blood_sigil_<[value]> <[base].with_yaw[<[yaw_add]>].forward[25]> save:ent
       - flag <[town]> blood_raid.sigils:->:<entry[ent].spawned_entity>
       - wait 1t
+
+#5 sigil effects
+blood_sigil_effect_1:
+  type: task
+  debug: false
+  definitions: town
+  script:
+    - define mob_list <list>
+    - while <list[2|4].contains[<[town].flag[blood_raid.stage]>]>:
+      - if <[mob_list].size> <= 5:
+        - run blood_sigil_effect_1_spawn def:<[town]>
+
+blood_sigil_effect_1_spawn:
+  type: task
+  debug: false
+  definitions: town
+  script:
+    - define sigil <[town].flag[blood_raid.sigils].first>
+    - define start <[sigil].location.above[5]>
+    - define locations <proc[define_curve1].context[<[start]>|<[location]>|<util.random.int[5].to[25]>|<util.random.int[25].to[75]>|1]>
+    - wait 1t
+    - repeat 5:
+      - playeffect at:<[start]> effect:redstone special_data:5|#990000 offset:0.0 quantity:5 targets:<server.online_players>
+    - wait 1t
+    - foreach <[locations]> as:loc:
+        - playeffect at:<[loc]> effect:redstone special_data:10|#990000 offset:0.25 quantity:5 targets:<server.online_players>
+        - wait 2t
+    - spawn blood_raider_1
+
+blood_raid_raider_1:
+  type: entity
+  debug: false
+  entity_type: skeleton
+  mechanisms:
+    health_data: 250/250
+    custom_name: <&c>Blood Skeleton
+    custom_name_visible: true
+  flags:
+    on_targetting: only_target_players
+    on_shoots_bow: blood_raid_bow_shot
+
+blood_raid_bow_shot:
+  type: task
+  debug: false
+  script:
+    - flag <context.projectile> on_hit_entity:blood_raid_bow_damage
+    - while <context.projectile.is_spawned>:
+      - playeffect at:<context.projectile.location> effect:redstone special_data:5|#990000 offset:0 quantity:2 targets:<server.online_players>
+      - wait 2t
+
+blood_raid_bow_damage:
+  type: task
+  debug: false
+  script:
+    - determine cancelled
+    - if <context.hit_entity.has_Flag[blood_drain]>:
+      - stop
+    - flag <context.hit_entity> blood_drain
+    - repeat 5:
+      - if !<context.hit_entity.is_spawned>:
+        - repeat stop
+      - hurt <context.hit_entity> 3
+      - wait 1s
+    - flag <context.hit_entity> blood_drain:!
 
 blood_sigil_1:
   type: entity
