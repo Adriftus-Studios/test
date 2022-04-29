@@ -406,6 +406,8 @@ blood_raid_raider_2:
       ambient: false
       particles: false
       icon: false
+    flags:
+      on_damage: 
 
 ##Third Blood Sigil
 blood_sigil_3:
