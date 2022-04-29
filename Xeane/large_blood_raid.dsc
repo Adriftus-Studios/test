@@ -312,7 +312,7 @@ blood_raid_bow_damage:
   type: task
   debug: false
   script:
-    - determine cancelled
+    - determine passively cancelled
     - if <context.hit_entity.has_Flag[blood_drain]>:
       - stop
     - flag <context.hit_entity> blood_drain
