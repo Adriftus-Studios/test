@@ -4,7 +4,10 @@ large_blood_raid:
   definitions: town
   script:
     # Get the home chunk
-    - define base <[town].spawn.with_pose[0,0]>
+    - if <[town].has_flag[center]>:
+      - define base <[town].flag[center]>
+    - else:
+      - define base <[town].spawn.with_pose[0,0]>
 
     # Determine valid chunks in range
     - foreach <[town].plots> as:chunk:
@@ -124,9 +127,13 @@ large_blood_raid_ground_blood:
   debug: false
   definitions: town|valid_chunks
   script:
+    - if <[town].has_flag[center]>:
+      - define base <[town].flag[center]>
+    - else:
+      - define base <[town].spawn>
     # play blood animation
     - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid.stage]> == 1:
-      - playeffect at:<[town].spawn> effect:redstone special_data:1|#990000 offset:120,1,120 quantity:200 targets:<server.online_players>
+      - playeffect at:<[base]> effect:redstone special_data:1|#990000 offset:120,1,120 quantity:200 targets:<server.online_players>
       - wait 2t
 
 large_blood_raid_shoot_arc:
@@ -134,7 +141,11 @@ large_blood_raid_shoot_arc:
   debug: false
   definitions: town|start
   script:
-    - define location <[town].spawn.above[40]>
+    - if <[town].has_flag[center]>:
+      - define base <[town].flag[center]>
+    - else:
+      - define base <[town].spawn>
+    - define location <[base].above[40]>
     - define locations <proc[define_curve1].context[<[start]>|<[location]>|<util.random.int[5].to[25]>|<util.random.int[25].to[75]>|1]>
     - wait 1t
     - repeat 10:
@@ -151,7 +162,10 @@ large_blood_raid_start_sky:
   debug: false
   definitions: town
   script:
-    - define base <[town].spawn>
+    - if <[town].has_flag[center]>:
+      - define base <[town].flag[center]>
+    - else:
+      - define base <[town].spawn>
     # Build the initial points coming from far
     - repeat 5:
       - define yaw_add <element[72].mul[<[value]>]>
@@ -194,7 +208,11 @@ large_blood_raid_big_portal:
   debug: false
   definitions: town
   script:
-    - define location <[town].spawn.above[40]>
+    - if <[town].has_flag[center]>:
+      - define base <[town].flag[center]>
+    - else:
+      - define base <[town].spawn>
+    - define location <[base].above[40]>
     - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid.stage]> == 1:
       - playeffect at:<[location]> effect:redstone special_data:10|#990000 offset:<[town].flag[blood_raid.portal].mul[0.05]> quantity:<[town].flag[blood_raid.portal].mul[3]> targets:<server.online_players>
       - wait 3t
@@ -243,7 +261,10 @@ blood_sigil_spawn:
   debug: false
   definitions: town
   script:
-    - define base <[town].spawn.above[40]>
+    - if <[town].has_flag[center]>:
+      - define base <[town].flag[center]>
+    - else:
+      - define base <[town].spawn>
     - repeat 5:
       - define yaw_add <element[72].mul[<[value]>]>
       - spawn blood_sigil_<[value]> <[base].with_yaw[<[yaw_add]>].forward[25]> save:ent
@@ -434,11 +455,15 @@ blood_sigil_effect_3:
   debug: false
   definitions: town
   script:
+    - if <[town].has_flag[center]>:
+      - define base <[town].flag[center]>
+    - else:
+      - define base <[town].spawn>
     # play blood animation
     - while <[town].has_flag[blood_raid]> && <list[2|4].contains[<[town].flag[blood_raid.stage]>]>:
-      - if <[loop_index].mod[10]>:
-        - hurt 2 <[town].spawn.find_players_within[120]>
-      - playeffect at:<[town].spawn> effect:redstone special_data:10|#990000 offset:120,1,120 quantity:100 targets:<server.online_players>
+      - if <[loop_index].mod[10]> == 0:
+        - hurt 2 <[base].find_players_within[120]>
+      - playeffect at:<[base]> effect:redstone special_data:10|#990000 offset:120,1,120 quantity:100 targets:<server.online_players>
       - wait 2t
 
 ##Fourth Blood Sigil
@@ -460,10 +485,14 @@ blood_sigil_effect_4:
   debug: false
   definitions: town
   script:
+    - if <[town].has_flag[center]>:
+      - define base <[town].flag[center]>
+    - else:
+      - define base <[town].spawn>
     - foreach <[town].plots> as:chunk:
       - if <[loop_index].mod[10]> == 0:
         - wait 1t
-      - if <[chunk].cuboid.center.distance[<[town].spawn>]> < 200:
+      - if <[chunk].cuboid.center.distance[<[base]>]> < 200:
         - define chunks:->:<[chunk]>
     - while <[town].has_flag[blood_raid.stage]> && <list[2|4].contains[<[town].flag[blood_raid.stage]>]>:
       - run blood_sigil_effect_4_task def:<[town]>|<[chunks].random>
