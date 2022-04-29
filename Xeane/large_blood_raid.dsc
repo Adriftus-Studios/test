@@ -252,7 +252,7 @@ blood_raid_sigil_activate:
     - repeat 14:
       - rotate <[sigil]> yaw:<[value]> duration:1s
       - wait 1s
-    - rotate <[sigil]> yaw:15 duration:10s
+    - rotate <[sigil]> yaw:15 infinite
     - run blood_sigil_effect_<[sigil_number]> def:<[town]>
 
 #Spawn the 5 Sigils
@@ -462,7 +462,7 @@ blood_sigil_effect_3:
     # play blood animation
     - while <[town].has_flag[blood_raid]> && <list[2|4].contains[<[town].flag[blood_raid.stage]>]>:
       - if <[loop_index].mod[10]> == 0:
-        - hurt 2 <[base].find_players_within[120]>
+        - hurt 1 <[base].find_players_within[120]>
       - playeffect at:<[base]> effect:redstone special_data:10|#990000 offset:120,1,120 quantity:100 targets:<server.online_players>
       - wait 2t
 
@@ -496,7 +496,7 @@ blood_sigil_effect_4:
         - define chunks:->:<[chunk]>
     - while <[town].has_flag[blood_raid.stage]> && <list[2|4].contains[<[town].flag[blood_raid.stage]>]>:
       - run blood_sigil_effect_4_task def:<[town]>|<[chunks].random>
-      - wait 10s
+      - wait 3s
 
 blood_sigil_effect_4_task:
   type: task
