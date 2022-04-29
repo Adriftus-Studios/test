@@ -133,9 +133,8 @@ large_blood_raid_ground_blood:
 
     # play blood animation
     - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid.stage]> == 1:
-      #- foreach <[surface_blocks]>:
-        - playeffect at:<[town].spawn> effect:redstone special_data:1|#990000 offset:120,1,120 quantity:200 targets:<server.online_players>
-        - wait 2t
+      - playeffect at:<[town].spawn> effect:redstone special_data:1|#990000 offset:120,1,120 quantity:200 targets:<server.online_players>
+      - wait 2t
 
 large_blood_raid_shoot_arc:
   type: task
@@ -258,7 +257,20 @@ blood_sigil_spawn:
       - flag <[town]> blood_raid.sigils:->:<entry[ent].spawned_entity>
       - wait 1t
 
-#5 sigil effects
+##Blood Sigil 1
+blood_sigil_1:
+  type: entity
+  entity_type: armor_stand
+  mechanisms:
+    visible: false
+    marker: true
+    equipment:
+      - air
+      - air
+      - air
+      - leather_horse_armor[custom_model_data=300]
+
+#First sigil effect
 blood_sigil_effect_1:
   type: task
   debug: false
@@ -271,6 +283,7 @@ blood_sigil_effect_1:
         - run blood_sigil_effect_1_spawn def:<[town]>
       - wait 5s
 
+# Sigil Spawner
 blood_sigil_effect_1_spawn:
   type: task
   debug: false
@@ -287,7 +300,7 @@ blood_sigil_effect_1_spawn:
     - wait 1t
     - foreach <[locations]> as:loc:
         - playeffect at:<[loc]> effect:redstone special_data:10|#990000 offset:0.25 quantity:5 targets:<server.online_players>
-        - wait 2t
+        - wait 1t
     - spawn blood_raid_raider_1 <[locations].last> save:ent
     - wait 1t
     - if <entry[ent].spawned_entity.is_spawned>:
@@ -319,6 +332,7 @@ blood_raid_bow_shot:
       - if <[loop_index]> > 50:
         - while stop
 
+# blood skeleton task
 blood_raid_bow_damage:
   type: task
   debug: false
@@ -334,18 +348,7 @@ blood_raid_bow_damage:
       - wait 1s
     - flag <context.hit_entity> blood_drain:!
 
-blood_sigil_1:
-  type: entity
-  entity_type: armor_stand
-  mechanisms:
-    visible: false
-    marker: true
-    equipment:
-      - air
-      - air
-      - air
-      - leather_horse_armor[custom_model_data=300]
-
+##Blood Sigil 2
 blood_sigil_2:
   type: entity
   entity_type: armor_stand
@@ -357,6 +360,59 @@ blood_sigil_2:
       - air
       - air
       - leather_horse_armor[custom_model_data=301]
+
+#Second sigil effect
+blood_sigil_effect_2:
+  type: task
+  debug: false
+  definitions: town
+  script:
+    - flag <[town]> blood_raid.sigil_mobs.2:<list>
+    - while <list[2|4].contains[<[town].flag[blood_raid.stage]>]>:
+      - flag <[town]> blood_raid.sigil_mobs.2:<[town].flag[blood_raid.sigil_mobs.2].filter[is_spawned]>
+      - if <[town].flag[blood_raid.sigil_mobs.2].size> <= 4:
+        - run blood_sigil_effect_2_spawn def:<[town]>
+      - wait 5s
+
+# Sigil Spawner
+blood_sigil_effect_2_spawn:
+  type: task
+  debug: false
+  definitions: town
+  script:
+    - define sigil <[town].flag[blood_raid.sigils].get[2]>
+    - define start <[sigil].location.above[5]>
+    - define location <[start].find_players_within[220].random.location>
+    - define locations <proc[define_curve1].context[<[start]>|<[location]>|<util.random.int[5].to[15]>|<util.random.int[75].to[125]>|1]>
+    - wait 1t
+    - repeat 5:
+      - playeffect at:<[start]> effect:redstone special_data:5|#990000 offset:0.5,0,0.5 quantity:5 targets:<server.online_players>
+      - wait 2t
+    - wait 1t
+    - foreach <[locations]> as:loc:
+        - playeffect at:<[loc]> effect:redstone special_data:10|#990000 offset:0.25 quantity:5 targets:<server.online_players>
+        - wait 1t
+    - spawn blood_raid_raider_2 <[locations].last> save:ent
+    - wait 1t
+    - if <entry[ent].spawned_entity.is_spawned>:
+      - flag <[town]> blood_raid.sigil_mobs.2:->:<entry[ent].spawned_entity>
+    - else:
+      - explode <[locations].last> power:5
+
+blood_raid_raider_2:
+  type: entity
+  debug: false
+  entity_type: creeper
+  mechanisms:
+    health_data: 100/100
+    custom_name: <&c>Blood Creeper
+    custom_name_visible: true
+    potion_effects:
+      type: CONFUSION
+      duration: 10m
+      ambient: false
+      particles: false
+      icon: false
 
 blood_sigil_3:
   type: entity
