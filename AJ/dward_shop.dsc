@@ -1,6 +1,17 @@
 dwarf_shop_events:
   type: world
   debug: false
+  events:
+    on player clicks in dwarf_shop_inventory:
+    - stop if:<context.clicked_inventory.equals[<player.inventory>]>
+    - stop if:<script[dwarf_shop_rotate_stock].data_key[data.shop.constant].keys.include[<script[dwarf_shop_rotate_stock].data_key[data.shop.rotating.slots]>].contains[<context.slot>].not>
+    - narrate <context.slot>
+    on script reload:
+    - run dwarf_shop_rotate_stock
+    # TODO
+
+dwarf_shop_rotate_stock:
+  type: task
   data:
     shop:
       rotating:
@@ -10,7 +21,6 @@ dwarf_shop_events:
             quantity: 5
             price:
               rock_spirit_item: 64
-
         # Slots that rotating items should be in
         slots:
         - 38
@@ -28,20 +38,8 @@ dwarf_shop_events:
           # How many rock spirits
           price:
             rock_spirit_item: 10
-  events:
-    on player clicks in dwarf_shop_inventory:
-    - stop if:<context.clicked_inventory.equals[<player.inventory>]>
-    # - stop if:<script.data_key[data.shop.constant].keys.include[<script.data_key[data.shop.rotating.slots]>].contains[<context.slot>].not>
-    - narrate <context.slot>
-    on script reload:
-    - run dwarf_shop_rotate_stock
-    # TODO
-
-dwarf_shop_rotate_stock:
-  type: task
   script:
   - note dwarf_shop_inventory as:dwarf_shop
-  - narrate targets:<server.online_players.filter[has_permission[admin]]> "<&e>Dwarf shop inventory <&6>Compiled"
   - define inv <inventory[dwarf_shop]>
   - foreach <script.data_key[data.shop.constant].keys> as:slot:
     - define item <script.data_key[data.shop.constant.<[slot]>.item].as_item||null>
@@ -54,6 +52,7 @@ dwarf_shop_rotate_stock:
       - define "lore:|:<&7> - <[price_quantity]> <[price_item].display||<[price_item].material.name>>"
     - define item <[item].with[lore=<[lore]>]>
     - inventory set d:<[inv]> slot:<[slot]> o:<[item]>
+  - narrate targets:<server.online_players.filter[has_permission[admin]]> "<&e>Dwarf shop inventory <&6>Compiled"
 
 dwarf_shop_inventory:
   type: inventory
