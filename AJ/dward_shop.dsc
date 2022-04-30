@@ -4,8 +4,14 @@ dwarf_shop_events:
   data:
     shop:
       rotating:
+        # Item scripts or materials that should be sold
         items:
-        - TODO
+          diamond:
+            quantity: 5
+            price:
+              rock_spirit_item: 64
+
+        # Slots that rotating items should be in
         slots:
         - TODO
       constant:
@@ -14,11 +20,12 @@ dwarf_shop_events:
           # Item being sold
           item: diamond
           # How many rock spirits
-          price: 10
+          price:
+            rock_spirit_item: 10
   events:
     on player clicks in dwarf_shop_inventory:
     - stop if:<context.clicked_inventory.equals[<player.inventory>]>
-    - stop if:<script.data_key[data.shop.constant].keys.include[<script.data_key[data.shop.rotating.slots]>].contains[<context.slot>].not>
+    # - stop if:<script.data_key[data.shop.constant].keys.include[<script.data_key[data.shop.rotating.slots]>].contains[<context.slot>].not>
     - narrate <context.slot>
 
 dwarf_shop_inventory:
@@ -51,6 +58,7 @@ rock_spirit_events:
         total: 10
   events:
     on player breaks block:
+    - stop if:<list[survival|adventure].contains[<player.gamemode>]>
     - define material <context.material.name>
     - stop if:<script.data_key[data.drop_chances].keys.contains[<[material]>].not>
     - define config <script.data_key[data.drop_chances.<[material]>]>
