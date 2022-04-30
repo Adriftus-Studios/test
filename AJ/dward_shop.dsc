@@ -40,9 +40,9 @@ dwarf_shop_events:
       - foreach next if:<[item].equals[null]>
       - define lore <[item].lore||<list>>
       - define "lore:|:<n><&e>Price:"
-      - foreach <script.data_key[data.shop.constant.<[slot]>.price].keys> as:price_item:
+      - foreach <script.data_key[data.shop.constant.<[slot]>.price].keys.parse[as_item]> as:price_item:
         - define price_quantity <script.data_key[data.shop.constant.<[slot]>.price.<[price_item]>]>
-        - define "lore:|:<&7> - <[price_quantity]> <[price_item].as_item.display.formatted||<[price_item].as_item.material.name.formatted>>"
+        - define "lore:|:<&7> - <[price_quantity]> <[price_item].display||<[price_item].material.name>>"
       - define item <[item].with[lore=<[lore]>]>
       - inventory set d:<[inv]> slot:<[slot]> o:<[item]>
     # TODO
