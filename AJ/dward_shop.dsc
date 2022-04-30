@@ -32,14 +32,13 @@ dwarf_shop_events:
   - note <inventory[dwarf_shop_inventory]> as:dwarf_shop
   - define inv <inventory[dwarf_shop]>
   - foreach <script.data_key[data.shop.constant].keys> as:slot:
-    - define item <script.data_key[data.shop.constant.<[slot]>.item].as_item||null>
+    - define item <script.data_key[data.shop.constant.<[slot]>.item].as_item.with_flag[dwarf_shop_item]||null>
     - foreach next if:<[item].equals[null]>
-    - flag <[item]> dwarf_shop_item
     - define lore <[item].lore||<list>>
     - define "lore:|:<n><&e>Price:"
     - foreach <script.data_key[data.shop.constant.<[slot]>.price].keys> as:price_item:
       - define price_quantity <script.data_key[data.shop.constant.<[slot]>.price.<[price_item]>]>
-      - flag <[item]> price.<[price_item]>:<[price_quantity]>
+      - define item <[item].with_flag[price.<[price_item]>:<[price_quantity]>]>
       - define price_item <[price_item].as_item>
       - define "lore:|:<&7> - <[price_quantity]> <[price_item].display||<[price_item].material.name>>"
     - define item <[item].with[lore=<[lore]>]>
@@ -54,7 +53,7 @@ dwarf_shop_events:
       - define missing <[missing].with[<[price_item]>].as[<[price_quantity]>]> if:<player.inventory.find_item[<[price_item]>].is_less_than[1]>
     - narrate <[missing].keys>
     on script reload:
-    - inject <script.name> path:reload
+    - inject <script[dwarf_shop_events].name> path:reload
     # TODO
 
 dwarf_shop_inventory:
