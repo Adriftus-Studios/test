@@ -28,6 +28,7 @@ dwarf_shop_events:
           price:
             rock_spirit_item: 10
   reload:
+  - note remove as:dwarf_shop
   - note <inventory[dwarf_shop_inventory]> as:dwarf_shop
   - define inv <inventory[dwarf_shop]>
   - foreach <script.data_key[data.shop.constant].keys> as:slot:
