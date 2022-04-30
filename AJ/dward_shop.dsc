@@ -34,10 +34,12 @@ dwarf_shop_events:
   - foreach <script.data_key[data.shop.constant].keys> as:slot:
     - define item <script.data_key[data.shop.constant.<[slot]>.item].as_item||null>
     - foreach next if:<[item].equals[null]>
+    - flag <[item]> dwarf_shop_item
     - define lore <[item].lore||<list>>
     - define "lore:|:<n><&e>Price:"
     - foreach <script.data_key[data.shop.constant.<[slot]>.price].keys> as:price_item:
       - define price_quantity <script.data_key[data.shop.constant.<[slot]>.price.<[price_item]>]>
+      - flag <[item]> price.<[price_item]>:<[price_quantity]>
       - define price_item <[price_item].as_item>
       - define "lore:|:<&7> - <[price_quantity]> <[price_item].display||<[price_item].material.name>>"
     - define item <[item].with[lore=<[lore]>]>
@@ -45,12 +47,12 @@ dwarf_shop_events:
   - narrate targets:<server.online_players.filter[has_permission[admin]]> "<&e>Dwarf shop inventory <&6>Compiled"
   events:
     on player clicks in dwarf_shop_inventory:
-    - stop if:<context.clicked_inventory.equals[<player.inventory>]>
-    - stop if:<script.data_key[data.shop.constant].keys.include[<script.data_key[data.shop.rotating.slots]>].contains[<context.slot>].not>
-    - if <script.data_key[data.shop.rotating.slots].contains[<context.slot>]>:
-      - narrate ROTATING
-    - else:
-      - narrate CONSTANT
+    - stop if:<context.item.has_flag[dwarf_shop].not>
+    - define missing <map>
+    - foreach <context.item.flag[price].keys> as:price_item:
+      - define price_quantity <context.item.flag[price.<[price_item]>]>
+      - define missing <[missing].with[<[price_item]>].as[<[price_quantity]>]> if:<player.inventory.find_item[<[price_item]>].is_less_than[1]>
+    - narrate <[missing].keys>
     on script reload:
     - inject <script.name> path:reload
     # TODO
