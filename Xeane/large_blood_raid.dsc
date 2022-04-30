@@ -89,7 +89,7 @@ large_blood_raid:
     - run large_blood_raid_ground_blood def.town:<[town]> def.valid_chunks:<[valid_chunks]>
 
     # Let the ground animation run
-    - wait 19s
+    - wait 10s
 
     # Determine iterations
     - if <[all_surface_blocks].size> < 5:
@@ -125,7 +125,7 @@ large_blood_raid:
     - flag <[town]> blood_raid.stage:2
     - run blood_sigil_spawn def:<[town]>
 
-    - wait 11s
+    - wait 15s
     - repeat 5:
       - run blood_raid_sigil_activate def.town:<[town]> def.sigil_number:<[value]>
       - title "title:<&4>Sigil <[value]> Activated" subtitle:<[sigil_<[value]>_subtitle]> targets:<server.online_players> fade_in:10t stay:2s fade_out:10t
