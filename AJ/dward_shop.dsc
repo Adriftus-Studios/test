@@ -33,25 +33,27 @@ dwarf_shop_events:
     - stop if:<context.clicked_inventory.equals[<player.inventory>]>
     # - stop if:<script.data_key[data.shop.constant].keys.include[<script.data_key[data.shop.rotating.slots]>].contains[<context.slot>].not>
     - narrate <context.slot>
-    on player opens dwarf_shop_inventory:
-    - define inv <context.inventory>
-    - foreach <script.data_key[data.shop.constant].keys> as:slot:
-      - define item <script.data_key[data.shop.constant.<[slot]>.item].as_item||null>
-      - foreach next if:<[item].equals[null]>
-      - define lore <[item].lore||<list>>
-      - define "lore:|:<n><&e>Price:"
-      - foreach <script.data_key[data.shop.constant.<[slot]>.price].keys> as:price_item:
-        - define price_quantity <script.data_key[data.shop.constant.<[slot]>.price.<[price_item]>]>
-        - define price_item <[price_item].as_item>
-        - define "lore:|:<&7> - <[price_quantity]> <[price_item].display||<[price_item].material.name>>"
-      - define item <[item].with[lore=<[lore]>]>
-      - inventory set d:<[inv]> slot:<[slot]> o:<[item]>
+    on script reload:
+    - run dwarf_shop_rotate_stock
     # TODO
 
 dwarf_shop_rotate_stock:
   type: task
   script:
-  - narrate TODO
+  - note dwarf_shop_inventory as:dwarf_shop
+  - announce to_ops "<&e>Dwarf shop inventory <&6>Compiled"
+  - define inv <inventory[dwarf_shop]>
+  - foreach <script.data_key[data.shop.constant].keys> as:slot:
+    - define item <script.data_key[data.shop.constant.<[slot]>.item].as_item||null>
+    - foreach next if:<[item].equals[null]>
+    - define lore <[item].lore||<list>>
+    - define "lore:|:<n><&e>Price:"
+    - foreach <script.data_key[data.shop.constant.<[slot]>.price].keys> as:price_item:
+      - define price_quantity <script.data_key[data.shop.constant.<[slot]>.price.<[price_item]>]>
+      - define price_item <[price_item].as_item>
+      - define "lore:|:<&7> - <[price_quantity]> <[price_item].display||<[price_item].material.name>>"
+    - define item <[item].with[lore=<[lore]>]>
+    - inventory set d:<[inv]> slot:<[slot]> o:<[item]>
 
 dwarf_shop_inventory:
   type: inventory
