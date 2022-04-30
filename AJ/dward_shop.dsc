@@ -13,10 +13,16 @@ dwarf_shop_events:
 
         # Slots that rotating items should be in
         slots:
-        - TODO
+        - 38
+        - 39
+        - 40
+        - 41
+        - 42
+        - 43
+        - 44
       constant:
       # Slot
-        1:
+        11:
           # Item being sold
           item: diamond
           # How many rock spirits
@@ -27,6 +33,23 @@ dwarf_shop_events:
     - stop if:<context.clicked_inventory.equals[<player.inventory>]>
     # - stop if:<script.data_key[data.shop.constant].keys.include[<script.data_key[data.shop.rotating.slots]>].contains[<context.slot>].not>
     - narrate <context.slot>
+    on player opens dwarf_shop_inventory:
+    - define inv <context.inventory>
+    - foreach <script.data_key[data.shop.constant].keys> as:slot:
+      - define item <script.data_key[data.shop.constant.<[slot]>.item].as_item||null>
+      - foreach next if:<[item].equals[null]>
+      - define lore <[item].lore||<list>>
+      - define "lore:|:<n><&e>Price:"
+      - foreach <script.data_key[data.shop.constant.<[slot]>.price].keys> as:price_item:
+        - define price_quantity <script.data_key[data.shop.constant.<[slot]>.price.<[price_item]>]>
+        - define "lore:|:<&7> - <[price_quantity]> <[price_item].as_item.display.formatted||<[price_item].material.name.formatted>>"
+      - inventory set d:<[inv]> slot:<[slot]> o:<[item]>
+    # TODO
+
+dwarf_shop_rotate_stock:
+  type: task
+  script:
+  - narrate TODO
 
 dwarf_shop_inventory:
   type: inventory
