@@ -66,11 +66,13 @@ large_blood_raid:
     - define sigil_3_subtitle "<&4>Blood Mist"
     - define sigil_4_subtitle "<&4>Blood Bombs"
     - define sigil_5_subtitle "<&4>Blood Lord"
+    - wait 1t
 
     # Set Gamerules
     - gamerule <world[herocraft]> doMobSpawning false
     - gamerule <world[herocraft]> doWeatherCycle false
     - gamerule <world[herocraft]> doDaylightCycle false
+    - wait 1t
 
 
     # Bossbar Intro
@@ -123,7 +125,7 @@ large_blood_raid:
     - flag <[town]> blood_raid.stage:2
     - run blood_sigil_spawn def:<[town]>
 
-    - wait 5s
+    - wait 11s
     - repeat 5:
       - run blood_raid_sigil_activate def.town:<[town]> def.sigil_number:<[value]> def.points:<[blood_sigil_<[value]>_points]>
       - title "title:<&4>Sigil <[value]> Activated" subtitle:<[sigil_<[value]>_subtitle]> targets:<server.online_players> fade_in:10t stay:2s fade_out:10t
