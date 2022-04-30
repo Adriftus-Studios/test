@@ -1,17 +1,6 @@
 dwarf_shop_events:
   type: world
   debug: false
-  events:
-    on player clicks in dwarf_shop_inventory:
-    - stop if:<context.clicked_inventory.equals[<player.inventory>]>
-    - stop if:<script[dwarf_shop_rotate_stock].data_key[data.shop.constant].keys.include[<script[dwarf_shop_rotate_stock].data_key[data.shop.rotating.slots]>].contains[<context.slot>].not>
-    - narrate <context.slot>
-    on script reload:
-    - run dwarf_shop_rotate_stock
-    # TODO
-
-dwarf_shop_rotate_stock:
-  type: task
   data:
     shop:
       rotating:
@@ -38,7 +27,7 @@ dwarf_shop_rotate_stock:
           # How many rock spirits
           price:
             rock_spirit_item: 10
-  script:
+  reload:
   - note <inventory[dwarf_shop_inventory]> as:dwarf_shop
   - define inv <inventory[dwarf_shop]>
   - foreach <script.data_key[data.shop.constant].keys> as:slot:
@@ -53,6 +42,14 @@ dwarf_shop_rotate_stock:
     - define item <[item].with[lore=<[lore]>]>
     - inventory set d:<[inv]> slot:<[slot]> o:<[item]>
   - narrate targets:<server.online_players.filter[has_permission[admin]]> "<&e>Dwarf shop inventory <&6>Compiled"
+  events:
+    on player clicks in dwarf_shop_inventory:
+    - stop if:<context.clicked_inventory.equals[<player.inventory>]>
+    - stop if:<script.data_key[data.shop.constant].keys.include[<script.data_key[data.shop.rotating.slots]>].contains[<context.slot>].not>
+    - narrate <context.slot>
+    on script reload:
+    - inject <script.name> path:reload
+    # TODO
 
 dwarf_shop_inventory:
   type: inventory
