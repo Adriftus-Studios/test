@@ -48,17 +48,17 @@ large_blood_raid:
       - wait 1t
 
     # blood sigil start, end, and points between
-    - repeat 5:
-      - define yaw_add <element[72].mul[<[value]>]>
-      - define blood_sigil_<[value]>_start <[base].with_yaw[<[yaw_add]>].forward[8]>
-      - wait 1t
-    - repeat 5:
-      - define yaw_add <element[72].mul[<[value]>]>
-      - define blood_sigil_<[value]>_end <[base].with_yaw[<[yaw_add]>].forward[25]>
-      - wait 1t
-    - repeat 5:
-      - define blood_sigil_<[value]>_points <proc[define_curve1].context[<[blood_sigil_<[value]>_start]>|<[blood_sigil_<[value]>_end]>|1|0|1]>
-      - wait 1t
+    #- repeat 5:
+    #  - define yaw_add <element[72].mul[<[value]>]>
+    #  - define blood_sigil_<[value]>_start <[base].with_yaw[<[yaw_add]>].forward[8]>
+    #  - wait 1t
+    #- repeat 5:
+    #  - define yaw_add <element[72].mul[<[value]>]>
+    #  - define blood_sigil_<[value]>_end <[base].with_yaw[<[yaw_add]>].forward[25]>
+    #  - wait 1t
+    #- repeat 5:
+    #  - define blood_sigil_<[value]>_points <proc[define_curve1].context[<[blood_sigil_<[value]>_start]>|<[blood_sigil_<[value]>_end]>|1|0|1]>
+    #  - wait 1t
     
     # Define Sigil subtitle text
     - define sigil_1_subtitle "<&4>Blood Skeletons"
@@ -127,7 +127,7 @@ large_blood_raid:
 
     - wait 11s
     - repeat 5:
-      - run blood_raid_sigil_activate def.town:<[town]> def.sigil_number:<[value]> def.points:<[blood_sigil_<[value]>_points]>
+      - run blood_raid_sigil_activate def.town:<[town]> def.sigil_number:<[value]>
       - title "title:<&4>Sigil <[value]> Activated" subtitle:<[sigil_<[value]>_subtitle]> targets:<server.online_players> fade_in:10t stay:2s fade_out:10t
       - bossbar update Blood_Raid_<[town].name> players:<server.online_players> progress:<element[20].mul[<[value]>].div[100]> "title:<&4>Blood Raid<&co><&e> Stage <[value]>" color:red
       - wait 60s
@@ -272,10 +272,10 @@ set_fake_biome:
 blood_raid_sigil_activate:
   type: task
   debug: false
-  definitions: town|sigil_number|points
+  definitions: town|sigil_number
   script:
     - define sigil <[town].flag[blood_raid.sigils].get[<[sigil_number]>]>
-    - flag <[town]> blood_raid.sigils_active_locations:|:<[sigil].location.above[5]>
+    - flag <[town]> blood_raid.sigils_active_locations:->:<[sigil].location.above[5]>
     - repeat 14:
       - rotate <[sigil]> yaw:<[value]> duration:1s
       - wait 1s
