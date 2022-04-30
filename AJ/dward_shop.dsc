@@ -46,7 +46,7 @@ dwarf_shop_events:
   - narrate targets:<server.online_players.filter[has_permission[admin]]> "<&e>Dwarf shop inventory <&6>Compiled"
   events:
     on player clicks in dwarf_shop_inventory:
-    - stop if:<context.item.has_flag[dwarf_shop].not>
+    - stop if:<context.item.has_flag[dwarf_shop_item].not>
     - define missing <map>
     - foreach <context.item.flag[price].keys> as:price_item:
       - define price_quantity <context.item.flag[price.<[price_item]>]>
