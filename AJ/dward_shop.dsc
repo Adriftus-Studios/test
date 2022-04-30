@@ -47,7 +47,10 @@ dwarf_shop_events:
     on player clicks in dwarf_shop_inventory:
     - stop if:<context.clicked_inventory.equals[<player.inventory>]>
     - stop if:<script.data_key[data.shop.constant].keys.include[<script.data_key[data.shop.rotating.slots]>].contains[<context.slot>].not>
-    - narrate <context.slot>
+    - if <script.data_key[data.shop.rotating.slots].contains[<context.slot>]>:
+      - narrate ROTATING
+    - else:
+      - narrate CONSTANT
     on script reload:
     - inject <script.name> path:reload
     # TODO
