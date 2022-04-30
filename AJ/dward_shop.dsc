@@ -41,7 +41,7 @@ dwarf_shop_rotate_stock:
   type: task
   script:
   - note dwarf_shop_inventory as:dwarf_shop
-  - announce to_ops "<&e>Dwarf shop inventory <&6>Compiled"
+  - narrate targets:<server.online_players.filter[has_permission[admin]]> "<&e>Dwarf shop inventory <&6>Compiled"
   - define inv <inventory[dwarf_shop]>
   - foreach <script.data_key[data.shop.constant].keys> as:slot:
     - define item <script.data_key[data.shop.constant.<[slot]>.item].as_item||null>
