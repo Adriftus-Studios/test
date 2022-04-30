@@ -39,7 +39,7 @@ dwarf_shop_rotate_stock:
           price:
             rock_spirit_item: 10
   script:
-  - note dwarf_shop_inventory as:dwarf_shop
+  - note <inventory[dwarf_shop_inventory]> as:dwarf_shop
   - define inv <inventory[dwarf_shop]>
   - foreach <script.data_key[data.shop.constant].keys> as:slot:
     - define item <script.data_key[data.shop.constant.<[slot]>.item].as_item||null>
