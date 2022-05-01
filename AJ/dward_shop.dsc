@@ -119,7 +119,7 @@ rock_spirit_events:
         total: 10
   events:
     on player breaks block:
-    - stop if:<list[survival|adventure].contains[<player.gamemode>]>
+    - stop if:<list[survival|adventure].contains[<player.gamemode>].not>
     - define material <context.material.name>
     - stop if:<script.data_key[data.drop_chances].keys.contains[<[material]>].not>
     - define config <script.data_key[data.drop_chances.<[material]>]>
