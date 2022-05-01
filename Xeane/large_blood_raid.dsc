@@ -141,6 +141,7 @@ large_blood_raid:
     - run blood_sigil_spawn def:<[town]>
 
     - wait 15s
+    - run blood_raid_mob_watcher
     - repeat 5:
       - ~run blood_raid_sigil_activate def.town:<[town]> def.sigil_number:<[value]>
       - title "title:<&4>Sigil <[value]> Activated" subtitle:<[sigil_<[value]>_subtitle]> targets:<server.online_players> fade_in:10t stay:4s fade_out:10t
@@ -595,7 +596,7 @@ blood_sigil_5:
       - leather_horse_armor[custom_model_data=304]
     glowing: true
 
-blood_sigil_effect_5_task:
+blood_sigil_effect_5:
   type: task
   debug: false
   definitions: town
