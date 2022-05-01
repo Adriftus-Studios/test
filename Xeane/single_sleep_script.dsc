@@ -1,7 +1,7 @@
 single_sleep_script:
   type: world
   debug: false
-  time_change_duration_in_ticks: 30
+  time_change_duration_in_ticks: 140
   events:
     on player enters bed bukkit_priority:MONITOR:
       - announce "<&6><player.display_name> <&e>went to bed. Sweet Dreams!"
