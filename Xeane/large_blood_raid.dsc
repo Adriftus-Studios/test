@@ -550,7 +550,7 @@ blood_sigil_effect_4:
         - define chunks:->:<[chunk]>
     - while <[town].has_flag[blood_raid.stage]> && <list[2|4].contains[<[town].flag[blood_raid.stage]>]>:
       - run blood_sigil_effect_4_task def:<[town]>|<[chunks].random>
-      - wait 1s
+      - wait 1t
 
 blood_sigil_effect_4_task:
   type: task
