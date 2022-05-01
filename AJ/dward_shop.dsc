@@ -52,7 +52,7 @@ dwarf_shop_events:
     - define missing <map>
     - foreach <context.item.flag[price].keys> as:price_item:
       - define price_quantity <context.item.flag[price.<[price_item]>]>
-      - define missing <[missing].with[<[price_item]>].as[<[price_quantity]>]> if:<player.inventory.find_item[<[price_item]>].is_less_than[<[price_quantity]>]>
+      - define missing <[missing].with[<[price_item]>].as[<[price_quantity]>]> if:<player.inventory.quantity_item[<[price_item]>].is_less_than[<[price_quantity]>]>
     - if <[missing].is_empty.not>:
       - narrate "You are missing items."
       - stop
