@@ -46,13 +46,14 @@ dwarf_shop_events:
     - define item <[item].with[lore=<[lore]>]>
     - inventory set d:<[inv]> slot:<[slot]> o:<[item]>
   - foreach <script.data_key[data.shop.rotating.slots]> as:slot:
-    - define items <script.data_key[data.shop.rotating.items].keys.parse[as_item.if_null[null]].exclude[null]>
+    - define items <script.data_key[data.shop.rotating.items].keys.filter[as_item.is_truthy]>
     - define slots <script.data_key[data.shop.rotating.slots]>
     - define items <[items].random[<[slots].size>]>
-    - define i 1
+    - define i 0
     - foreach <[items]> as:item:
       - define i <[i].add[1]>
       - define slot <[slots].get[<[i]>]>
+      - define item <[item].as_item.with[quantity=<script.data_key[data.shop.rotating.items.<[item]>.quantity].if_null[1]>]>
       - inventory set d:<[inv]> slot:<[slot]> o:<[item]>
   - narrate targets:<server.online_players.filter[has_permission[admin]]> "<&e>Dwarf shop inventory <&6>Compiled"
   events:
