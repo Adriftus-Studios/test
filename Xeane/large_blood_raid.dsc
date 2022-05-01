@@ -571,3 +571,5 @@ blood_sigil_effect_5_task:
   debug: false
   definitions: town
   script:
+    - define blood_lord <server.match_player[Drunken_Scot]>
+    - announce "TODO - Blood Lord Animation"
