@@ -9,7 +9,7 @@ dwarf_shop_events:
           diamond:
             quantity: 5
             price:
-              rock_spirit_item: 64
+              rock_spore_item: 64
         # Slots that rotating items should be in
         slots:
         - 38
@@ -26,7 +26,7 @@ dwarf_shop_events:
           item: diamond
           # How many rock spirits
           price:
-            rock_spirit_item: 10
+            rock_spore_item: 10
   reload:
   - note remove as:dwarf_shop
   - note <inventory[dwarf_shop_inventory]> as:dwarf_shop
@@ -34,7 +34,7 @@ dwarf_shop_events:
   - foreach <script.data_key[data.shop.constant].keys> as:slot:
     - define item <script.data_key[data.shop.constant.<[slot]>.item].as_item||null>
     - define quantity <script.data_key[data.shop.constant.<[slot]>.quantity].if_null[1]>
-    - define item <[item].with_flag[dwarf_shop_item.item:<[item]>].with_flag[dwarf_shop_item.quantity:<[quantity]>]>
+    - define item <[item].with_flag[dwarf_shop_item.item:<[item]>].with_flag[dwarf_shop_item.quantity:<[quantity]>].with[quantity=<[quantity]>]>
     - foreach next if:<[item].equals[null]>
     - define lore <[item].lore||<list>>
     - define "lore:|:<n><&e>Price:"
@@ -45,6 +45,15 @@ dwarf_shop_events:
       - define "lore:|:<&7> - <[price_quantity]> <[price_item].display||<[price_item].material.name>>"
     - define item <[item].with[lore=<[lore]>]>
     - inventory set d:<[inv]> slot:<[slot]> o:<[item]>
+  - foreach <script.data_key[data.shop.rotating.slots]> as:slot:
+    - define items <script.data_key[data.shop.rotating.items].keys.parse[as_item.if_null[null]].exclude[null]>
+    - define slots <script.data_key[data.shop.rotating.slots]>
+    - define items <[items].random[<[slots].size>]>
+    - define i 1
+    - foreach <[items]> as:item:
+      - define i <[i].add[1]>
+      - define slot <[slots].get[<[i]>]>
+      - inventory set d:<[inv]> slot:<[slot]> o:<[item]>
   - narrate targets:<server.online_players.filter[has_permission[admin]]> "<&e>Dwarf shop inventory <&6>Compiled"
   events:
     on player right clicks cow:
@@ -79,7 +88,7 @@ dwarf_shop_inventory:
   - [] [] [] [] [] [] [] [] []
   - [] [] [] [] [] [] [] [] []
 
-rock_spirit_item:
+rock_spore_item:
   type: item
   material: stone
   display name: <&e>Rock Spirit
@@ -104,4 +113,4 @@ rock_spirit_events:
     - define list <[list].include[<element[yes].repeat_as_list[<[config].get[chance]>]>]>
     - define outcome <[list].random>
     - if <[outcome]> == yes:
-      - determine <context.location.drops[<player.item_in_hand>].include[<item[rock_spirit_item]>]>
+      - determine <context.location.drops[<player.item_in_hand>].include[<item[rock_spore_item]>]>
