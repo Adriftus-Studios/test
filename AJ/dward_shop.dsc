@@ -102,7 +102,7 @@ dwarf_shop_inventory:
 rock_spore_item:
   type: item
   material: stone
-  display name: <&e>Rock Spirit
+  display name: <&e>Rock Spore
 
 rock_spirit_events:
   type: world
