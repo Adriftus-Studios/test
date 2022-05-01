@@ -10,5 +10,5 @@ single_sleep_script:
       - repeat <script[single_sleep_script].data_key[time_change_duration_in_ticks]>:
         - adjust <server.worlds.first> time:<world[mainland].time.add[<[increment]>]>
         - wait 1t
-      - if <world[mainland].thundering>:
+      - if <server.worlds.first.thundering>:
         - adjust <server.worlds.first> thundering:false
