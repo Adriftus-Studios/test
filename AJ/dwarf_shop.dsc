@@ -71,7 +71,7 @@ dwarf_shop_events:
     on player right clicks cow:
     - stop if:<context.entity.mythicmob.internal_name.equals[DwarfSmith].not>
     - inventory open d:<inventory[dwarf_shop]>
-    on player clicks in dwarf_shop_inventory server_flagged:dwarf_shop_enabled:
+    on player clicks in dwarf_shop_inventory:
     - stop if:<context.item.has_flag[dwarf_shop_item].not>
     - define missing <map>
     - foreach <context.item.flag[price].keys> as:price_item:
