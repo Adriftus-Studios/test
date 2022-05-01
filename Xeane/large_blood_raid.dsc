@@ -85,7 +85,7 @@ large_blood_raid:
 
 
     # Bossbar Intro
-    - bossbar Blood_Raid_<[town].name> players:<server.online_players> progress:0 "title:<&4>Blood Raid<&co><&e> Intro" color:red
+    - bossbar create Blood_Raid_<[town].name> players:<server.online_players> progress:0 "title:<&4>Blood Raid<&co><&e> Incoming" color:red
 
     # Flag the Town for the raid
     - flag <[town]> blood_raid.stage:1
@@ -143,7 +143,7 @@ large_blood_raid:
     - wait 15s
     - repeat 5:
       - run blood_raid_sigil_activate def.town:<[town]> def.sigil_number:<[value]>
-      - title "title:<&4>Sigil <[value]> Activated" subtitle:<[sigil_<[value]>_subtitle]> targets:<server.online_players> fade_in:10t stay:2s fade_out:10t
+      - title "title:<&4>Sigil <[value]> Activated" subtitle:<[sigil_<[value]>_subtitle]> targets:<server.online_players> fade_in:10t stay:4s fade_out:10t
       - bossbar update Blood_Raid_<[town].name> players:<server.online_players> progress:<element[20].mul[<[value]>].div[100]> "title:<&4>Blood Raid<&co><&e> Stage <[value]>" color:red
       - wait 60s
 
@@ -197,7 +197,7 @@ large_blood_raid_shoot_arc:
     - define locations <proc[define_curve1].context[<[start]>|<[location]>|<util.random.int[5].to[25]>|<util.random.int[25].to[75]>|1]>
     - wait 1t
     - repeat 10:
-      - playeffect at:<[start].center.above[0.55]> effect:redstone special_data:10|#990000 offset:0.5,0,0.5 quantity:5 targets:<server.online_players>
+      - playeffect at:<[start].center.above[0.55]> effect:redstone special_data:10|#990000 offset:1,0,1 quantity:5 targets:<server.online_players>
       - wait 2t
     - foreach <[locations]> as:loc:
         - playeffect at:<[loc]> effect:redstone special_data:10|#990000 offset:0.25 quantity:5 targets:<server.online_players>
@@ -368,6 +368,7 @@ blood_sigil_effect_1_spawn:
     - wait 1t
     - if <entry[ent].spawned_entity.is_spawned>:
       - flag <[town]> blood_raid.sigil_mobs.1:->:<entry[ent].spawned_entity>
+      - flag <[town]> blood_raid.mobs:->:<entry[ent].spawned_entity>
     - else:
       - explode <[locations].last> power:5
 
@@ -376,7 +377,7 @@ blood_raid_raider_1:
   debug: false
   entity_type: skeleton
   mechanisms:
-    health_data: 200/200
+    health_data: 100/100
     custom_name: <&c>Blood Skeleton
     custom_name_visible: true
   flags:
@@ -460,6 +461,7 @@ blood_sigil_effect_2_spawn:
     - wait 1t
     - if <entry[ent].spawned_entity.is_spawned>:
       - flag <[town]> blood_raid.sigil_mobs.2:->:<entry[ent].spawned_entity>
+      - flag <[town]> blood_raid.mobs:->:<entry[ent].spawned_entity>
     - else:
       - explode <[locations].last> power:5
 
@@ -594,3 +596,35 @@ blood_sigil_effect_5_task:
   script:
     - define blood_lord <server.match_player[Drunken_Scot]>
     - announce "TODO - Blood Lord Animation"
+
+# MOB WATCHER
+blood_raid_mob_watcher:
+  type: task
+  debug: false
+  definitions: town
+  script:
+    - while <[town].has_flag[blood_raid]>:
+      - if <[town].has_flag[blood_raid.mobs]>:
+        - foreach <[town].flag[blood_raid.mobs]> as:mob:
+          - if !<[mob].is_spawned>:
+            - flag <[town]> blood_raid.mobs:<-:<[mob]>
+          - else if !<[mob].target.exists>:
+            - run blood_raid_focus_mob def:<[mob]>
+          - wait 1t
+      - wait 1s
+
+blood_raid_focus_mob:
+  type: task
+  debug: false
+  definitions: mob
+  script:
+    - wait 1t
+    - define target <[mob].location.find_players_within[32].if_null[null]>
+    - wait 1t
+    - if <[target]> == null:
+      - repeat 10:
+        - playeffect at:<[mob].location.above> effect:redstone special_data:1|#990000 offset:0.5,1,0.5 quantity:10 targets:<server.online_players>
+        - wait 2t
+      - remove <[mob]>
+    - else:
+      - attack <[mob]> target:<[target]>
