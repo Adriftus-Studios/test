@@ -152,7 +152,7 @@ large_blood_raid:
     #CLEANUP - DEBUG
     - bossbar remove Blood_Raid_<[town].name> players:<server.online_players>
     - title title:<&color[#FFFFFF]><&font[adriftus:overlay]><&chr[0004]><&chr[F801]><&chr[0004]> fade_in:6s stay:5s fade_out:6s targets:<server.online_players>
-    - flag <[town]> blood_raid.stage:5
+    - flag <[town]> blood_raid.stage:6
     - wait 5s
     - rotate <[town].flag[blood_raid.sigils]> cancel
     - wait 1t
@@ -268,6 +268,12 @@ large_blood_raid_big_portal:
     - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid.stage]> == 2:
       - playeffect at:<[town].flag[blood_raid.sigils_active_locations]> effect:redstone special_data:5|#990000 offset:0 quantity:5 targets:<server.online_players>
       - wait 8t
+    - waituntil <[town].flag[blood_raid.stage].equals[3]> rate:10t
+    - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid.stage]> == 3:
+      - playeffect at:<[town].flag[center].above[30]> effect:redstone special_data:5|#990000 offset:1 quantity:10 targets:<server.online_players>
+      - if <[loop_index].mod[10]> == 0:
+        - run blood_sigil_5_blood_arc def:<[town]>
+      - wait 2t
 
 # Set the fake biome
 set_fake_biome:
@@ -340,7 +346,7 @@ blood_sigil_effect_1:
   definitions: town
   script:
     - flag <[town]> blood_raid.sigil_mobs.1:<list>
-    - while <list[2|4].contains[<[town].flag[blood_raid.stage]>]>:
+    - while <list[2|5].contains[<[town].flag[blood_raid.stage]>]>:
       - flag <[town]> blood_raid.sigil_mobs.1:<[town].flag[blood_raid.sigil_mobs.1].filter[is_spawned]>
       - if <[town].flag[blood_raid.sigil_mobs.1].size> <= 4:
         - run blood_sigil_effect_1_spawn def:<[town]>
@@ -433,7 +439,7 @@ blood_sigil_effect_2:
   definitions: town
   script:
     - flag <[town]> blood_raid.sigil_mobs.2:<list>
-    - while <list[2|4].contains[<[town].flag[blood_raid.stage]>]>:
+    - while <list[2|5].contains[<[town].flag[blood_raid.stage]>]>:
       - flag <[town]> blood_raid.sigil_mobs.2:<[town].flag[blood_raid.sigil_mobs.2].filter[is_spawned]>
       - if <[town].flag[blood_raid.sigil_mobs.2].size> <= 4:
         - run blood_sigil_effect_2_spawn def:<[town]>
@@ -513,7 +519,7 @@ blood_sigil_effect_3:
     - else:
       - define base <[town].spawn>
     # play blood animation
-    - while <[town].has_flag[blood_raid]> && <list[2|4].contains[<[town].flag[blood_raid.stage]>]>:
+    - while <[town].has_flag[blood_raid]> && <list[2|5].contains[<[town].flag[blood_raid.stage]>]>:
       - if <[loop_index].mod[10]> == 0:
         - hurt 1 <[base].find_players_within[120]>
       - playeffect at:<[base]> effect:redstone special_data:10|#990000 offset:120,1,120 quantity:100 targets:<server.online_players>
@@ -548,9 +554,9 @@ blood_sigil_effect_4:
         - wait 1t
       - if <[chunk].cuboid.center.distance[<[base]>]> < 200:
         - define chunks:->:<[chunk]>
-    - while <[town].has_flag[blood_raid.stage]> && <list[2|4].contains[<[town].flag[blood_raid.stage]>]>:
+    - while <[town].has_flag[blood_raid.stage]> && <list[2|5].contains[<[town].flag[blood_raid.stage]>]>:
       - run blood_sigil_effect_4_task def:<[town]>|<[chunks].random>
-      - wait 1t
+      - wait 1.5s
 
 blood_sigil_effect_4_task:
   type: task
@@ -595,7 +601,29 @@ blood_sigil_effect_5_task:
   definitions: town
   script:
     - define blood_lord <server.match_player[Drunken_Scot]>
+    - flag <[town]> blood_raid.sigils_active_locations:!
+    - wait 1s
+    - flag <[town]> blood_raid.stage:3
+    - rotate <[town].flag[blood_raid.sigils]> cancel
     - announce "TODO - Blood Lord Animation"
+    - define points <proc[define_star].context[<player.town.flag[center].above[46].with_pose[90,0]>|25|18|5]>
+    - repeat 120:
+      - playeffect at:<[points]> effect:redstone special_data:10|#990000 offset:0 quantity:1 targets:<server.online_players>
+      - wait 2t
+    - flag <[town]> blood_raid.stage:4
+    - teleport <[blood_lord]> <[town].flag[center].above[30]>
+
+blood_sigil_5_blood_arc:
+  type: task
+  debug: false
+  definitions: town
+  script:
+    - flag <[town]> blood_raid.blood_arcs:+:1
+    - define sigil <[town].flag[blood_raid.blood_arcs].mod[5]>
+    - define points <proc[define_curve1].context[<[sigil].above[5]>|<[town].flag[center].above[30]>|<util.random.int[5].to[15]>|<util.random.int[75].to[125]>|1]>
+    - foreach <[points]> as:loc:
+      - playeffect at:<[loc]> effect:redstone special_data:10|#990000 offset:0.1 quantity:5 targets:<server.online_players>
+      - wait 1t
 
 # MOB WATCHER
 blood_raid_mob_watcher:
