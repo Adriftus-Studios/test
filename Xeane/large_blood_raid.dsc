@@ -142,7 +142,7 @@ large_blood_raid:
 
     - wait 15s
     - repeat 5:
-      - run blood_raid_sigil_activate def.town:<[town]> def.sigil_number:<[value]>
+      - ~run blood_raid_sigil_activate def.town:<[town]> def.sigil_number:<[value]>
       - title "title:<&4>Sigil <[value]> Activated" subtitle:<[sigil_<[value]>_subtitle]> targets:<server.online_players> fade_in:10t stay:4s fade_out:10t
       - bossbar update Blood_Raid_<[town].name> players:<server.online_players> progress:<element[20].mul[<[value]>].div[100]> "title:<&4>Blood Raid<&co><&e> Stage <[value]>" color:red
       - wait 60s
@@ -600,12 +600,11 @@ blood_sigil_effect_5_task:
   debug: false
   definitions: town
   script:
-    - define blood_lord <server.match_player[Drunken_Scot]>
+    - define blood_lord <server.match_player[Xeane]>
     - flag <[town]> blood_raid.sigils_active_locations:!
     - wait 2s
     - flag <[town]> blood_raid.stage:3
     - rotate <[town].flag[blood_raid.sigils]> cancel
-    - announce "TODO - Blood Lord Animation"
     - define points <proc[define_star].context[<player.town.flag[center].above[46].with_pose[90,0]>|25|18|5]>
     - repeat 120:
       - playeffect at:<[points]> effect:redstone special_data:5|#990000 offset:0 quantity:1 targets:<server.online_players>
