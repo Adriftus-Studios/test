@@ -66,11 +66,12 @@ dwarf_shop_events:
         - define "lore:|:<&7> - <[price_quantity]> <[price_item].display||<[price_item].material.name>>"
       - inventory set d:<[inv]> slot:<[slot]> o:<[item].with_flag[dwarf_shop_item.item:<[item].as_item>].with_flag[dwarf_shop_item.quantity:<[quantity]>].with[lore=<[lore]>]>
   - narrate targets:<server.online_players.filter[has_permission[admin]]> "<&e>Dwarf shop inventory <&6>Compiled"
+  - narrate targets:<server.online_players> "Dwarf shop something something restocked something. ##TODO"
   events:
     on player right clicks cow:
     - stop if:<context.entity.mythicmob.internal_name.equals[DwarfSmith].not>
     - inventory open d:<inventory[dwarf_shop]>
-    on player clicks in dwarf_shop_inventory:
+    on player clicks in dwarf_shop_inventory flagged:test:
     - stop if:<context.item.has_flag[dwarf_shop_item].not>
     - define missing <map>
     - foreach <context.item.flag[price].keys> as:price_item:
@@ -84,6 +85,8 @@ dwarf_shop_events:
       - take from:<player.inventory> item:<[price_item]> quantity:<[price_quantity]>
     - give to:<player.inventory> <context.item.flag[dwarf_shop_item.item].as_item> quantity:<context.item.flag[dwarf_shop_item.quantity]>
     on script reload:
+    - inject <script[dwarf_shop_events].name> path:reload
+    on delta time hourly every:2:
     - inject <script[dwarf_shop_events].name> path:reload
 
 dwarf_shop_inventory:
