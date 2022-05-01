@@ -74,15 +74,14 @@ large_blood_raid:
     - gamerule <world[herocraft]> doDaylightCycle false
     - wait 1t
 
-    # Fast Forward to Noon
+    # Fast Forward to Midnight
+    - if <[base].world.moon_phase> != 5:
+      - adjust <[base].world> full_time:<[base].world.time.add[<element[24000].mul[<element[5].sub[<[base].world.moon_phase>]>]>].round>
     - announce "<&e>A magical force takes hold of the skies..."
-    - define increment <[base].world.time.sub[29000].abs.div[240].round_up>
+    - define increment <[base].world.time.sub[17000].abs.div[240].round_up>
     - repeat 240:
       - adjust <[base].world> time:<[base].world.time.add[<[increment]>]>
       - wait 1t
-    - foreach <server.online_players> as:__player:
-      - time player 29100 freeze
-    - adjust <[base].world> time:<[base].world.time.add[12500]>
 
 
     # Bossbar Intro
@@ -126,8 +125,14 @@ large_blood_raid:
 
     - title title:<&color[#990000]><&font[adriftus:overlay]><&chr[0004]><&chr[F801]><&chr[0004]> fade_in:6s stay:5s fade_out:6s targets:<server.online_players>
 
-    # Wait for Overlay
+    # Wait for Overlay to near full occlusion
     - wait 5s
+
+    # Set time to day for shader support on biome sky color
+    - foreach <server.online_players> as:__player:
+      - time player 29100 freeze
+    - wait 1t
+
     # PLAY EXPLOSION SOUNDS
     - run set_fake_biome def.town:<[town]> def.chunks:<[biome_chunk_list]> def.state:true
 
