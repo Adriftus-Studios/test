@@ -47,6 +47,9 @@ dwarf_shop_events:
     - inventory set d:<[inv]> slot:<[slot]> o:<[item]>
   - narrate targets:<server.online_players.filter[has_permission[admin]]> "<&e>Dwarf shop inventory <&6>Compiled"
   events:
+    on player right clicks cow:
+    - stop if:<context.entity.mythicmob.internal_name.equals[DwarfSmith].not>
+    - inventory open d:<inventory[dwarf_shop]>
     on player clicks in dwarf_shop_inventory:
     - stop if:<context.item.has_flag[dwarf_shop_item].not>
     - define missing <map>
@@ -62,7 +65,6 @@ dwarf_shop_events:
     - give to:<player.inventory> <context.item.flag[dwarf_shop_item.item].as_item> quantity:<context.item.flag[dwarf_shop_item.quantity]>
     on script reload:
     - inject <script[dwarf_shop_events].name> path:reload
-    # TODO
 
 dwarf_shop_inventory:
   type: inventory
