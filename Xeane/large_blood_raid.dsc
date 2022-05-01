@@ -59,7 +59,7 @@ large_blood_raid:
     #- repeat 5:
     #  - define blood_sigil_<[value]>_points <proc[define_curve1].context[<[blood_sigil_<[value]>_start]>|<[blood_sigil_<[value]>_end]>|1|0|1]>
     #  - wait 1t
-    
+
     # Define Sigil subtitle text
     - define sigil_1_subtitle "<&4>Blood Skeletons"
     - define sigil_2_subtitle "<&4>Blood Creepers"
@@ -73,6 +73,16 @@ large_blood_raid:
     - gamerule <world[herocraft]> doWeatherCycle false
     - gamerule <world[herocraft]> doDaylightCycle false
     - wait 1t
+
+    # Fast Forward to Noon
+    - announce "<&e>A magical force takes hold of the skies..."
+    - define increment <[base].world.time.sub[29000].abs.div[240].round_up>
+    - repeat 240:
+      - adjust <[base].world> time:<[base].world.time.add[<[increment]>]>
+      - wait 1t
+    - foreach <server.online_players> as:__player:
+      - time player 29100 freeze
+    - adjust <[base].world> time:<[base].world.time.add[12500]>
 
 
     # Bossbar Intro
@@ -147,6 +157,12 @@ large_blood_raid:
     - gamerule <world[herocraft]> doMobSpawning true
     - gamerule <world[herocraft]> doWeatherCycle true
     - gamerule <world[herocraft]> doDaylightCycle true
+    - define increment <[base].world.time.sub[29000].abs.div[120].round_up>
+    - repeat 120:
+      - adjust <[base].world> time:<[base].world.time.add[<[increment]>]>
+      - wait 1t
+    - foreach <server.online_players> as:__player:
+      - time player reset
 
 # Ground Blood During Raid
 large_blood_raid_ground_blood:
