@@ -53,8 +53,17 @@ dwarf_shop_events:
     - foreach <[items]> as:item:
       - define i <[i].add[1]>
       - define slot <[slots].get[<[i]>]>
-      - define item <[item].as_item.with[quantity=<script.data_key[data.shop.rotating.items.<[item]>.quantity].if_null[1]>]>
-      - inventory set d:<[inv]> slot:<[slot]> o:<[item]>
+      - define quantity <script.data_key[data.shop.rotating.items.<[item]>.quantity].if_null[1]>
+      - define item <[item].as_item.with[quantity=<[quantity]>]>
+      - define price <script.data_key[data.shop.rotating.items.<[item]>.price]>
+      - define lore <[item].lore||<list>>
+      - define "lore:|:<n><&e>Price:"
+      - foreach <[price].keys> as:price_item:
+        - define price_quantity <script.data_key[data.shop.rotating.items.<[item]>.price.<[price_item]>]>
+        - define item <[item].with_flag[price.<[price_item]>:<[price_quantity]>]>
+        - define price_item <[price_item].as_item>
+        - define "lore:|:<&7> - <[price_quantity]> <[price_item].display||<[price_item].material.name>>"
+      - inventory set d:<[inv]> slot:<[slot]> o:<[item].with_flag[dwarf_shop_item.item:<[item].as_item>].with_flag[dwarf_shop_item.quantity:<[quantity]>].with[lore=<[lore]>]>
   - narrate targets:<server.online_players.filter[has_permission[admin]]> "<&e>Dwarf shop inventory <&6>Compiled"
   events:
     on player right clicks cow:
