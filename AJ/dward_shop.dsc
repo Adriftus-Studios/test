@@ -104,8 +104,10 @@ dwarf_shop_inventory:
 
 rock_spore_item:
   type: item
-  material: stone
+  material: feather
   display name: <&e>Rock Spore
+  mechanisms:
+    custom_model_data: 21
 
 rock_spirit_events:
   type: world
