@@ -78,14 +78,17 @@ large_blood_raid:
     - if <[base].world.moon_phase> != 5:
       - adjust <[base].world> full_time:<[base].world.time.add[<element[24000].mul[<element[5].sub[<[base].world.moon_phase>]>]>].round>
     - announce "<&e>A magical force takes hold of the skies..."
-    - define increment <[base].world.time.sub[17000].abs.div[240].round_up>
+    - define increment <[base].world.time.sub[18000].abs.div[240].round_up>
     - repeat 240:
       - adjust <[base].world> time:<[base].world.time.add[<[increment]>]>
       - wait 1t
 
 
     # Bossbar Intro
-    - bossbar create Blood_Raid_<[town].name> players:<server.online_players> progress:0 "title:<&4>Blood Raid<&co><&e> Incoming" color:red
+    - if !<server.current_bossbars.contains[Blood_Raid_<[town].name>]>:
+      - bossbar create Blood_Raid_<[town].name> players:<server.online_players> progress:0 "title:<&4>Blood Raid<&co><&e> Incoming" color:red
+    - if else:
+      - bossbar update Blood_Raid_<[town].name> players:<server.online_players> progress:0 "title:<&4>Blood Raid<&co><&e> Incoming" color:red
 
     # Flag the Town for the raid
     - flag <[town]> blood_raid.stage:1
@@ -151,7 +154,7 @@ large_blood_raid:
     # DEVELOPMENT FROM HERE DOWN
     - wait 10s
     #CLEANUP - DEBUG
-    - bossbar remove Blood_Raid_<[town].name> players:<server.online_players>
+    - bossbar remove Blood_Raid_<[town].name>
     - title title:<&color[#FFFFFF]><&font[adriftus:overlay]><&chr[0004]><&chr[F801]><&chr[0004]> fade_in:6s stay:5s fade_out:6s targets:<server.online_players>
     - flag <[town]> blood_raid.stage:6
     - wait 5s
@@ -270,6 +273,7 @@ large_blood_raid_big_portal:
       - playeffect at:<[town].flag[blood_raid.sigils_active_locations]> effect:redstone special_data:5|#990000 offset:0 quantity:5 targets:<server.online_players>
       - wait 8t
     - waituntil <[town].flag[blood_raid.stage].equals[3]> rate:10t
+    - ~run blood_sigil_5_blood_arc def:<[town]>
     - while <[town].has_flag[blood_raid]> && <[town].flag[blood_raid.stage]> == 3:
       - playeffect at:<[town].flag[center].above[30]> effect:redstone special_data:5|#990000 offset:1 quantity:10 targets:<server.online_players>
       - if <[loop_index].mod[10]> == 0:
@@ -566,7 +570,10 @@ blood_sigil_effect_4_task:
   script:
     - define sigil <[town].flag[blood_raid.sigils].get[4]>
     - define start <[sigil].location.above[5]>
-    - define location <[chunk].surface_blocks.random>
+    - if <util.random_chance[10]>:
+      - define location <[chunk].surface_blocks.random>
+    - else:
+      - define location <server.online_players.filter[location.town.equals[<[town]>]].random.location>
     - define locations <proc[define_curve1].context[<[start]>|<[location]>|<util.random.int[10].to[25]>|90|1]>
     - wait 5t
     - repeat 5:
@@ -619,7 +626,7 @@ blood_sigil_5_blood_arc:
   definitions: town
   script:
     - flag <[town]> blood_raid.blood_arcs:+:1
-    - define sigil <[town].flag[blood_raid.blood_arcs].mod[5]>
+    - define sigil <[town].flag[blood_raid.sigils].get[<[town].flag[blood_raid.blood_arcs].mod[5]>]>
     - define points <proc[define_curve1].context[<[sigil].above[5]>|<[town].flag[center].above[30]>|<util.random.int[5].to[15]>|<util.random.int[75].to[125]>|1]>
     - foreach <[points]> as:loc:
       - playeffect at:<[loc]> effect:redstone special_data:10|#990000 offset:0.1 quantity:5 targets:<server.online_players>
@@ -663,6 +670,7 @@ blood_raid_sigil_overdrive:
   definitions: town
   script:
     - flag <[town]> blood_raid.stage:5
+    - bossbar update Blood_Raid_<[town].name> players:<server.online_players> progress:100 "title:<&4>Blood Raid<&co> Overdrive" color:red
     - repeat 5:
       - run blood_raid_sigil_activate def.town:<[town]> def.sigil_number:<[value]>
       - wait 5t
