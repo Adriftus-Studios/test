@@ -68,4 +68,5 @@ actor_weapon_blood_raid_scythe_cancel_effect:
   debug: false
   script:
     - adjust <player> <map[can_fly=false;fly_speed=0.2;flying=false;velocity=0,0,0;gravity=true]>
+    - flag <player> blood_choke:!
     - flag player no_fall_damage_once
