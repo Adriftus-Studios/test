@@ -153,7 +153,9 @@ large_blood_raid:
 
     # DEVELOPMENT FROM HERE DOWN
     - waituntil <[town].flag[blood_raid.stage].equals[6]> rate:1s
+    - adjust <server.online_players.filter[location.town.equals[<[town]>]]> velocity:0,0.5,0
     - wait 5s
+    - remove <[town].flag[blood_raid.mobs].filter[is_spawned]>
     #CLEANUP - DEBUG
     - bossbar remove Blood_Raid_<[town].name>
     - title title:<&color[#FFFFFF]><&font[adriftus:overlay]><&chr[0004]><&chr[F801]><&chr[0004]> fade_in:6s stay:5s fade_out:6s targets:<server.online_players>
@@ -608,6 +610,7 @@ blood_sigil_effect_5:
   debug: false
   definitions: town
   script:
+    - stop if:<[town].flag[blood_raid.stage].equals[5]>
     - define blood_lord <server.match_player[Xeane]>
     - flag <[town]> blood_raid.sigils_active_locations:!
     - wait 2s
