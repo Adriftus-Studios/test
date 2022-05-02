@@ -34,9 +34,9 @@ actor_weapon_blood_raid_scythe_choke:
       - playeffect at:<[location]> effect:redstone special_data:1|#990000 offset:0.25,0.5,0.25 quantity:20 targets:<server.online_players>
       - define location <[target].location.sub[<[location]>].normalize>
       - wait 1t
-    - flag <[target]> blood_choke
+    - flag <[target]> blood_choke:<player.location.town.flag[center].above[10].random_offset[5,0,5]>
     - if <[target].uuid> == 41ea066b-03e4-4274-8db7-10e0c2bcba82:
-      - TRIGGER OUTRO
+      - flag <player.location.town> blood_raid.stage:6
     - title title:<&color[#990000]><&font[adriftus:overlay]><&chr[0001]><&chr[F801]><&chr[0001]> fade_in:5s stay:120s fade_out:1s targets:<[target]>
     - adjust <[target]> <map[can_fly=true;fly_speed=0;flying=true;velocity=0,0.5,0;gravity=false]>
     - run actor_weapon_blood_raid_scythe_teleport def:<[target]>
@@ -49,4 +49,14 @@ actor_weapon_blood_raid_scythe_cancel_move:
   debug: false
   script:
     - adjust <player> velocity:0,0,0
-    - determine cancelled
+    - determine passively cancelled
+    - wait 1t
+    - teleport <player.flag[blood_choke]>
+
+actor_weapon_blood_raid_scythe_teleport:
+  type: task
+  debug: false
+  definitions: target
+  script:
+    - wait 3s
+    - teleport <[target]> <[target].flag[blood_choke]>
