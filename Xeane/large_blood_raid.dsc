@@ -677,3 +677,73 @@ blood_raid_sigil_overdrive:
     - repeat 5:
       - run blood_raid_sigil_activate def.town:<[town]> def.sigil_number:<[value]>
       - wait 5t
+
+test_animation:
+  type: task
+  debug: false
+  definitions: location|entity
+  script:
+    - define location <player.cursor_on.center.above[0.5].with_pitch[-90].with_yaw[0]>
+    - spawn armor_stand[visible=false;marker=true;equipment=air|air|air|leather_horse_armor[custom_model_data=305]] <[location]> save:center_armor_stand
+    - rotate <entry[center_armor_stand].spawned_entity> duration:360t frequency:1t yaw:9
+
+    - spawn <entity[armor_stand].with[visible=false;marker=true;equipment=air|air|air|leather_horse_armor[custom_model_data=307]].repeat_as_list[5]> <[location]> save:outer_armor_stands
+
+    - foreach 0|72|144|216|288 as:rotation:
+      - define origin_location <[location].with_yaw[<[location].yaw.add[<[rotation]>]>]>
+      - run test_animation.animation def:<[origin_location]>|<entry[outer_armor_stands].spawned_entities.get[<[loop_index]>]>
+
+    - repeat 600:
+      - playeffect at:<[location].add[<location[5,0,0].rotate_around_y[<[value].mul[8].to_radians>]>]> effect:flame offset:0.2 quantity:3
+      - if <[value].mod[4]> == 0:
+        - wait 1t
+    - remove <entry[center_armor_stand].spawned_entity>
+
+  animation:
+    - define locations <[location].proc[define_star].context[3|0|5]>
+    - foreach <[locations]> as:point:
+      - teleport <[entity]> <[point].with_y[<[entity].location.y>].with_yaw[<[loop_index].mul[36]>]>
+      - playeffect at:<[point].with_y[<[entity].location.y>].above[1.1]> offset:0.2 effect:redstone quantity:10 special_data:<util.random.decimal[0.5].to[0.9]>|<color[<util.random.int[200].to[100]>,0,0]>
+      #- playeffect at:<[point].with_y[<[entity].location.y>].above[1.1]> offset:1 effect:sweep_attack quantity:1
+      - wait 2t
+    - teleport <[entity]> <[location].above[5]>
+    - run test_animation.lazy_wait def.entity:<[entity]>
+
+    - repeat 180:
+      - playeffect at:<[location].above[5].points_between[<[location].above[50]>].distance[1]> offset:0.2 effect:redstone quantity:10 special_data:<util.random.decimal[0.5].to[0.9]>|<color[<util.random.int[200].to[100]>,0,0]>  visibility:100
+      - playeffect at:<[location].above[5]> offset:1 effect:redstone quantity:20 special_data:<util.random.int[1].to[2]>|<color[<util.random.int[200].to[100]>,0,0]> visibility:100
+      - wait 2t
+    - wait 5t
+  lazy_wait:
+    - wait 5t
+    - remove <[entity]>
+
+#306 -> start
+
+arcane_ashes:
+  type: item
+  debug: false
+  material: feather
+  display name: arcane ashes
+  mechanisms:
+    custom_model_data: 105
+
+binding_raegent:
+  type: item
+  debug: false
+  material: feather
+  display name: Binding Raegent
+  mechanisms:
+    custom_model_data: 106
+
+shit_handler:
+  type: world
+  debug: false
+  events:
+    on player right clicks block with:arcane_ashes:
+      - spawn armor_stand[visible=false;marker=true;equipment=air|air|air|leather_horse_armor[custom_model_data=306]] <player.cursor_on.center.above[0.5]> save:arcane_something
+      - flag server arcane_thing:<entry[arcane_something].spawned_entity> expire:10m
+    on player right clicks block with:binding_raegent server_flagged:arcane_thing:
+      - run test_animation def:<context.location.if_null[<player.cursor_on.if_null[<player.location.forward_flat[2]>]>]>
+      - run large_blood_raid def:<context.location.town>
+      - remove <server.flag[arcane_thing]>
