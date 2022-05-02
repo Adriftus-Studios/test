@@ -87,7 +87,7 @@ large_blood_raid:
     # Bossbar Intro
     - if !<server.current_bossbars.contains[Blood_Raid_<[town].name>]>:
       - bossbar create Blood_Raid_<[town].name> players:<server.online_players> progress:0 "title:<&4>Blood Raid<&co><&e> Incoming" color:red
-    - if else:
+    - else if:
       - bossbar update Blood_Raid_<[town].name> players:<server.online_players> progress:0 "title:<&4>Blood Raid<&co><&e> Incoming" color:red
 
     # Flag the Town for the raid
@@ -144,7 +144,7 @@ large_blood_raid:
     - run blood_sigil_spawn def:<[town]>
 
     - wait 15s
-    - run blood_raid_mob_watcher
+    - run blood_raid_mob_watcher def:<[town]>
     - repeat 5:
       - ~run blood_raid_sigil_activate def.town:<[town]> def.sigil_number:<[value]>
       - title "title:<&4>Sigil <[value]> Activated" subtitle:<[sigil_<[value]>_subtitle]> targets:<server.online_players> fade_in:10t stay:4s fade_out:10t
@@ -570,7 +570,7 @@ blood_sigil_effect_4_task:
   script:
     - define sigil <[town].flag[blood_raid.sigils].get[4]>
     - define start <[sigil].location.above[5]>
-    - if <util.random_chance[10]>:
+    - if <util.random_chance[90]>:
       - define location <[chunk].surface_blocks.random>
     - else:
       - define location <server.online_players.filter[location.town.equals[<[town]>]].random.location>
