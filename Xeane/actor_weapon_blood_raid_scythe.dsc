@@ -62,3 +62,10 @@ actor_weapon_blood_raid_scythe_teleport:
   script:
     - wait 3s
     - teleport <[target]> <[target].flag[blood_choke]>
+
+actor_weapon_blood_raid_scythe_cancel_effect:
+  type: task
+  debug: false
+  script:
+    - adjust <player> <map[can_fly=false;fly_speed=0.2;flying=false;velocity=0,0,0;gravity=true]>
+    - flag player no_fall_damage_once
