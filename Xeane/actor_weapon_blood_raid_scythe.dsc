@@ -30,9 +30,10 @@ actor_weapon_blood_raid_scythe_choke:
   definitions: target
   script:
     - define start <player.eye_location.with_yaw[<player.body_yaw>].below[0.4].right[0.18].forward[0.9]>
+    - define location <[start]>
     - while <[target].is_online> && <[location].distance[<[target].eye_location>]> > 1.1:
       - playeffect at:<[location]> effect:redstone special_data:1|#990000 offset:0.25,0.5,0.25 quantity:20 targets:<server.online_players>
-      - define location <[target].location.sub[<[location]>].normalize>
+      - define location <[target].eye_location.sub[<[location]>].normalize>
       - wait 1t
     - flag <[target]> blood_choke:<player.location.town.flag[center].above[10].random_offset[5,0,5]>
     - if <[target].uuid> == 41ea066b-03e4-4274-8db7-10e0c2bcba82:

@@ -96,6 +96,7 @@ large_blood_raid:
     # Flag the Town for the raid
     - flag <[town]> blood_raid.stage:1
     - flag <[town]> blood_raid.portal:5
+    - flag server blood_raid:<[town]>
 
     # Sky Animation
     - ~run large_blood_raid_start_sky def:<[town]>
@@ -167,6 +168,7 @@ large_blood_raid:
     - wait 1t
     - remove <[town].flag[blood_raid.sigils]>
     - flag <[town]> blood_raid:!
+    - flag server blood_raid:!
     - run set_fake_biome def.town:<[town]> def.chunks:<[biome_chunk_list]> def.state:false
     - gamerule <world[herocraft]> doMobSpawning true
     - gamerule <world[herocraft]> doWeatherCycle true
@@ -747,7 +749,14 @@ shit_handler:
       - spawn armor_stand[visible=false;marker=true;equipment=air|air|air|leather_horse_armor[custom_model_data=306]] <player.cursor_on.center.above[0.5]> save:arcane_something
       - flag server arcane_thing:<entry[arcane_something].spawned_entity> expire:10m
     on player right clicks block with:binding_raegent server_flagged:arcane_thing:
-      - flag <context.location.town> center:<context.location.if_null[<player.cursor_on.if_null[<player.location.forward_flat[2]>]>]>
-      - run test_animation def:<context.location.if_null[<player.cursor_on.if_null[<player.location.forward_flat[2]>]>]>
+      - define location <context.location.if_null[<player.cursor_on.if_null[<player.location.forward_flat[2]>]>]>
+      - flag <context.location.town> center:<[location].center>
+      - run test_animation def:<[location]>
       - run large_blood_raid def:<context.location.town>
       - remove <server.flag[arcane_thing]>
+    on player dies server_flagged:blood_raid bukkit_priority:LOWEST:
+      - if <player.location.town> == <server.flag[blood_raid]>:
+        - determine passively cancelled
+        - title title:<&color[#FFFFFF]><&font[adriftus:overlay]><&chr[0004]><&chr[F801]><&chr[0004]> "subtitle:It is not your time yet..." fade_in:10t stay:1s fade_out:10t targets:<player>
+        - wait 10t
+        - teleport <player> <player.location.town.spawn>
