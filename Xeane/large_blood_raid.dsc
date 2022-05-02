@@ -3,6 +3,9 @@ large_blood_raid:
   debug: false
   definitions: town
   script:
+    # Reset flags
+    - flag <[town]> blood_raid:!
+
     # Get the home chunk
     - if <[town].has_flag[center]>:
       - define base <[town].flag[center]>
@@ -657,7 +660,7 @@ blood_raid_focus_mob:
   definitions: mob
   script:
     - wait 1t
-    - define target <[mob].location.find_players_within[32].if_null[null]>
+    - define target <[mob].location.find_players_within[32].get[1].if_null[null]>
     - wait 1t
     - if <[target]> == null:
       - repeat 10:
@@ -709,7 +712,7 @@ test_animation:
     - teleport <[entity]> <[location].above[5]>
     - run test_animation.lazy_wait def.entity:<[entity]>
 
-    - repeat 180:
+    - repeat 360:
       - playeffect at:<[location].above[5].points_between[<[location].above[50]>].distance[1]> offset:0.2 effect:redstone quantity:10 special_data:<util.random.decimal[0.5].to[0.9]>|<color[<util.random.int[200].to[100]>,0,0]>  visibility:100
       - playeffect at:<[location].above[5]> offset:1 effect:redstone quantity:20 special_data:<util.random.int[1].to[2]>|<color[<util.random.int[200].to[100]>,0,0]> visibility:100
       - wait 2t
@@ -744,6 +747,7 @@ shit_handler:
       - spawn armor_stand[visible=false;marker=true;equipment=air|air|air|leather_horse_armor[custom_model_data=306]] <player.cursor_on.center.above[0.5]> save:arcane_something
       - flag server arcane_thing:<entry[arcane_something].spawned_entity> expire:10m
     on player right clicks block with:binding_raegent server_flagged:arcane_thing:
+      - flag <context.location.town> center:<context.location.if_null[<player.cursor_on.if_null[<player.location.forward_flat[2]>]>]>
       - run test_animation def:<context.location.if_null[<player.cursor_on.if_null[<player.location.forward_flat[2]>]>]>
       - run large_blood_raid def:<context.location.town>
       - remove <server.flag[arcane_thing]>
