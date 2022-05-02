@@ -89,6 +89,19 @@ dwarf_shop_events:
     on delta time hourly every:2:
     - inject <script[dwarf_shop_events].name> path:reload
 
+dwarf_talk_events:
+  type: world
+  debug: false
+  data:
+    lines_to_say:
+    - <&e>*Random dwarf crazy speech*
+  events:
+    on delta time minutely every:5:
+    - foreach <mythicmobs.active_mobs.filter[internal_name.equals[DwarfSmith]]> as:d:
+      - define players <[d].entity.location.find_players_within[5]>
+      - define line <script.data_key[data.lines_to_say].random.parsed>
+      - say <[line]> targets:<[players]> talkers:<[d].entity> range:5
+
 dwarf_shop_inventory:
   type: inventory
   inventory: chest
