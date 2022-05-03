@@ -47,12 +47,26 @@ diamond_shield:
     display name: <&f>Diamond Shield
     lore:
         - Hard as can be
+        - <&empty>
+        - Reduces movespeed by 7<&pc>
+        - Reduces damage taken by 5<&pc>
     flags:
       custom_durability:
         max: 200
         current: 0
     mechanisms:
-        custom_model_data: 694203
+        custom_model_data: 694204
+        attribute_modifiers:
+                        generic_movement_speed:
+                              1:
+                                  operation: add_number
+                                  amount: -0.015
+                                  slot: off_hand
+                              2:
+                                  operation: add_number
+                                  amount: -0.015
+                                  slot: hand
+        hides: attributes
     recipes:
         1:
             type: shaped
@@ -76,6 +90,9 @@ netherite_shield:
     display name: <&f>Netherite Shield
     lore:
         - Bathed in lava
+        - <&empty>
+        - Reduces movespeed by 15<&pc>
+        - Reduces damage taken by 10<&pc>
     flags:
       custom_durability:
         max: 200
@@ -86,12 +103,13 @@ netherite_shield:
                         generic_movement_speed:
                               1:
                                   operation: add_number
-                                  amount: -0.01
+                                  amount: -0.03
                                   slot: off_hand
                               2:
                                   operation: add_number
-                                  amount: -0.01
+                                  amount: -0.03
                                   slot: hand
+        hides: attributes
     recipes:
         1:
             type: shaped
