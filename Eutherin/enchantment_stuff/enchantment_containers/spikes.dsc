@@ -22,4 +22,3 @@ spikes_enchantment:
   is_tradable: false
   can_enchant: <context.item.advanced_matches[shield]>
 #  is_compatible:
-  after attack:

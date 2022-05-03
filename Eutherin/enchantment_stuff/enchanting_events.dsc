@@ -233,8 +233,6 @@ Shield_enchant_handler:
   events:
     on player damaged by entity:
       - ratelimit <player> 2t
-      - if <player.is_blocking>:
-        - narrate passed
       - if <player.item_in_hand.material.name> == shield:
         - define enchants_list <player.item_in_hand.enchantment_types.parse[name]>
       - if <player.item_in_offhand.material.name> == shield:

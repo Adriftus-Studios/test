@@ -107,7 +107,9 @@ shield_durability_handler:
   Events:
     On player damaged by entity:
       - if !<player.is_blocking>:
+        - narrate stop
         - stop
+      - narrate pass_shield_test
       - if <player.item_in_hand.material.name> == shield:
         - define slot <player.held_item_slot>
       - if <player.item_in_offhand.material.name> == shield:
