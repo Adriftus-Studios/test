@@ -4,3 +4,5 @@ load_worlds:
   events:
     on server prestart:
       - createworld fourth_dimension
+      - createworld HeroCraft
+      - createworld 4_buildings
