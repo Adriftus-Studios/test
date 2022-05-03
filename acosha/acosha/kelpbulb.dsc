@@ -2,13 +2,8 @@ kelpbulbobtain:
     type: world
     debug: false
     events:
-        on player breaks kelp_plant:
-            - define chance <util.random.int[1].to[15]>
-            - choose  <[chance]>:
-                - case 1:
-                    - determine kelp_bulb
-                - default:
-                    - stop
+        on player breaks kelp_plant chance:6:
+            - determine kelp_bulb
 
 
 
@@ -20,6 +15,8 @@ kelp_bulb:
     lore:
     - <&6>The root of a kelp plant.
     - <&e>Right click <&6>to breathe the air within
+    mechanisms:
+        custom_model_data: 1
     data:
         recipe_book_category: misc.kelp_bulb
     recipes:
