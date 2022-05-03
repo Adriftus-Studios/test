@@ -7,9 +7,9 @@ iron_shield:
         - Reinforced with the power of Iron
     mechanisms:
         custom_model_data: 694201
-  flags:
-    custom_durability:
-      max: 50
+    flags:
+      custom_durability:
+        max: 50
       current: 0
     recipes:
         1:
@@ -26,10 +26,10 @@ gold_shield:
     display name: <&f>Gold Shield
     lore:
         - Brimming with potential.
-  flags:
-    custom_durability:
-      max: 200
-      current: 0
+    flags:
+      custom_durability:
+        max: 200
+        current: 0
     mechanisms:
         custom_model_data: 694202
     recipes:
@@ -44,14 +44,13 @@ diamond_shield:
     type: item
     debug: false
     material: shield
-    # - durability:
     display name: <&f>Diamond Shield
     lore:
         - Hard as can be
-  flags:
-    custom_durability:
-      max: 200
-      current: 0
+    flags:
+      custom_durability:
+        max: 200
+        current: 0
     mechanisms:
         custom_model_data: 694203
     recipes:
@@ -77,10 +76,10 @@ netherite_shield:
     display name: <&f>Netherite Shield
     lore:
         - Bathed in lava
-  flags:
-    custom_durability:
-      max: 200
-      current: 0
+    flags:
+      custom_durability:
+        max: 200
+        current: 0
     mechanisms:
         custom_model_data: 694204
     recipes:
@@ -110,7 +109,7 @@ shield_durability_handler:
       - if !<player.is_blocking>:
         - stop
       - if <player.item_in_hand.material.name> == shield:
-        - define slot <player.held_item_slot> 
+        - define slot <player.held_item_slot>
       - if <player.item_in_offhand.material.name> == shield:
         - define slot 41
       - define value 1
