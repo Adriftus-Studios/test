@@ -1,6 +1,6 @@
 copper_durabilities:
   type: world
-  debug: false
+  debug: true
   events:
     on player breaks block with:copper_axe|copper_pickaxe|copper_shovel|copper_sword|copper_hoe|copper_shears|:
       - define slot <player.held_item_slot>
