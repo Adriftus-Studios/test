@@ -18,7 +18,7 @@ inventory_logger_logout:
   type: world
   debug: true
   events:
-    on player quits:
+    on player joins:
       - stop if:<player.flag[saved_inventory.current].equals[default].not>
       - stop if:<player.inventory.list_contents.is_empty>
       - definemap map:
