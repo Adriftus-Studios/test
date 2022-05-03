@@ -6,8 +6,8 @@ saved_inventory_load:
     - define current_inventory <player.flag[saved_inventory.current].if_null[default]>
     - stop if:<[current_inventory].equals[<[name]>]>
     - flag player saved_inventory.<[current_inventory]>:<player.inventory.map_slots>
-    - if <player.has_flag[saved_inventories.<[name]>]>:
-      - inventory set o:<player.flag[saved_inventories.<[name]>]> d:<player.inventory>
+    - if <player.has_flag[saved_inventory.<[name]>]>:
+      - inventory set o:<player.flag[saved_inventory.<[name]>]> d:<player.inventory>
     - else:
       - inventory clear d:<player.inventory>
     - flag <player> saved_inventory.current:<[name]>
