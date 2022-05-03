@@ -82,6 +82,12 @@ netherite_shield:
         current: 0
     mechanisms:
         custom_model_data: 694204
+        attribute_modifiers:
+                        generic_armor:
+                              1:
+                                  operation: add_number
+                                  amount: -0.01
+                                  slot: offhand
     recipes:
         1:
             type: shaped
@@ -89,12 +95,8 @@ netherite_shield:
                 - air|netherite_ingot|air
                 - netherite_ingot|shield|netherite_ingot
                 - air|netherite_ingot|air
-    attribute_modifiers:
-              generic_armor:
-                  1:
-                      operation: add_number
-                      amount: -0.01
-                      slot: offhand
+
+
 netherite_shield_world:
     type: task
     debug: false
