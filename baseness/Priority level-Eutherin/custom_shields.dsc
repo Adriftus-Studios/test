@@ -28,7 +28,7 @@ gold_shield:
         - Brimming with potential.
     flags:
       custom_durability:
-        max: 200
+        max: 50
         current: 0
     mechanisms:
         custom_model_data: 694202
@@ -52,7 +52,7 @@ diamond_shield:
         - Reduces damage taken by 5<&pc>
     flags:
       custom_durability:
-        max: 200
+        max: 50
         current: 0
     mechanisms:
         custom_model_data: 694204
@@ -95,7 +95,7 @@ netherite_shield:
         - Reduces damage taken by 10<&pc>
     flags:
       custom_durability:
-        max: 200
+        max: 50
         current: 0
     mechanisms:
         custom_model_data: 694204
