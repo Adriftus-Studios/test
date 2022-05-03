@@ -16,9 +16,9 @@ inventory_logger_deaths:
 
 inventory_logger_logout:
   type: world
-  debug: false
+  debug: true
   events:
-    on player quits bukkit_priority:MONITOR:
+    on player quits:
       - stop if:<player.flag[saved_inventory.current].equals[default].not>
       - stop if:<player.inventory.list_contents.is_empty>
       - definemap map:
@@ -41,6 +41,6 @@ inventory_logger_list:
     - if <[target].has_flag[logged_inventories.deaths]>:
       - define list:|:<[target].flag[logged_inventories.deaths]>
     - define list <[list].sort_by_number[get[milli_time]]>
-    - repeat 10:
+    - repeat <[list].size.min[10]>:
       - define this_map <[list].get[<[value]>]>
       - narrate "<&6><[this_map].get[cause]> <&7>- <&e><[this_map].get[time].format>"
