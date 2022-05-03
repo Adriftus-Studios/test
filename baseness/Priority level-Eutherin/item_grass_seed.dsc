@@ -12,9 +12,8 @@ grass_seed_drop:
     type: world
     debug: false
     events:
-        on player breaks grass|tall_grass:
-            - if <util.random_chance[0.5]>:
-                - drop grass_seed <context.location>
+        on player breaks grass|tall_grass chance:1:
+            - drop grass_seed <context.location>
 
 grass_seed_grow:
     type: world
