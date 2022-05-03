@@ -113,3 +113,17 @@ netherite_shield_world:
         after player unequips netherite_shield:
             - adjust <player> speed:<server.flag[base_run_speed]>
 #
+
+shield_durability_handler:
+  Type: world
+  Debug: false
+  Events:
+    On player damaged by entity:
+      - if !<player.is_blocking>:
+        - stop
+      - if <player.item_in_hand.material.name> == shield:
+        - define slot <player.held_item_slot> 
+      - if <player.item_in_offhand.material.name> == shield:
+        - define slot 41
+      - define value 1
+
