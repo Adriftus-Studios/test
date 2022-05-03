@@ -2,12 +2,15 @@ iron_shield:
     type: item
     debug: false
     material: shield
-    # - durability:
     display name: <&f>Iron Shield
     lore:
         - Reinforced with the power of Iron
     mechanisms:
         custom_model_data: 694201
+  flags:
+    custom_durability:
+      max: 200
+      current: 0
     recipes:
         1:
             type: shaped
@@ -23,6 +26,10 @@ gold_shield:
     display name: <&f>Gold Shield
     lore:
         - Brimming with potential.
+  flags:
+    custom_durability:
+      max: 200
+      current: 0
     mechanisms:
         custom_model_data: 694202
     recipes:
@@ -41,6 +48,10 @@ diamond_shield:
     display name: <&f>Diamond Shield
     lore:
         - Hard as can be
+  flags:
+    custom_durability:
+      max: 200
+      current: 0
     mechanisms:
         custom_model_data: 694203
     recipes:
@@ -66,6 +77,10 @@ netherite_shield:
     display name: <&f>Netherite Shield
     lore:
         - Bathed in lava
+  flags:
+    custom_durability:
+      max: 200
+      current: 0
     mechanisms:
         custom_model_data: 694204
     recipes:
