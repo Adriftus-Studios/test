@@ -83,11 +83,15 @@ netherite_shield:
     mechanisms:
         custom_model_data: 694204
         attribute_modifiers:
-                        generic_armor:
+                        generic_movement_speed:
                               1:
                                   operation: add_number
                                   amount: -0.01
-                                  slot: offhand
+                                  slot: off_hand
+                              2:
+                                  operation: add_number
+                                  amount: -0.01
+                                  slot: hand
     recipes:
         1:
             type: shaped
