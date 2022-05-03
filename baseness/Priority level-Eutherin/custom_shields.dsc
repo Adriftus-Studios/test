@@ -89,6 +89,12 @@ netherite_shield:
                 - air|netherite_ingot|air
                 - netherite_ingot|shield|netherite_ingot
                 - air|netherite_ingot|air
+    attribute_modifiers:
+              generic_armor:
+                  1:
+                      operation: add_number
+                      amount: -0.01
+                      slot: offhand
 netherite_shield_world:
     type: task
     debug: false
@@ -107,9 +113,7 @@ shield_durability_handler:
   Events:
     On player damaged by entity:
       - if !<player.is_blocking>:
-        - narrate stop
         - stop
-      - narrate pass_shield_test
       - if <player.item_in_hand.material.name> == shield:
         - define slot <player.held_item_slot>
       - if <player.item_in_offhand.material.name> == shield:
