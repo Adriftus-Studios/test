@@ -10,7 +10,7 @@ iron_shield:
     flags:
       custom_durability:
         max: 50
-      current: 0
+        current: 0
     recipes:
         1:
             type: shaped
