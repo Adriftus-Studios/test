@@ -9,7 +9,7 @@ iron_shield:
         custom_model_data: 694201
   flags:
     custom_durability:
-      max: 200
+      max: 50
       current: 0
     recipes:
         1:
