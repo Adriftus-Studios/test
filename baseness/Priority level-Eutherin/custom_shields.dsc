@@ -115,4 +115,5 @@ shield_durability_handler:
       - if <player.item_in_offhand.material.name> == shield:
         - define slot 41
       - define value 1
+      - inject custom_durability_process_task
 
