@@ -2,8 +2,8 @@ bookshelf_inventory:
   type: inventory
   debug: false
   inventory: chest
-  size: 18
-  title: <&a>Bookshelf
+  size: 36
+  title: <&f><&font[adriftus:guis]><&chr[F808]><&chr[6928]>
   data:
     on_close: bookshelf_inventory_save
 
