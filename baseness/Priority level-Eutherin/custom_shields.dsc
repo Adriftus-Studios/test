@@ -12,7 +12,7 @@ copper_shield:
         max: 200
         current: 0
     data:
-      recipe_book_category: shields.2copper
+      recipe_book_category: combat.shields.2copper
     recipes:
         1:
             type: shaped
@@ -29,7 +29,7 @@ wooden_shield:
     lore:
         - Might as well use an old board.
     data:
-      recipe_book_category: shields.1wooden
+      recipe_book_category: combat.shields.1wooden
     flags:
       custom_durability:
         max: 20
@@ -53,7 +53,7 @@ iron_shield:
     mechanisms:
         custom_model_data: 1
     data:
-      recipe_book_category: shields.3iron
+      recipe_book_category: combat.shields.3iron
     flags:
       custom_durability:
         max: 250
@@ -80,7 +80,7 @@ steel_shield:
         max: 469
         current: 0
     data:
-      recipe_book_category: shields.4steel
+      recipe_book_category: combat.shields.4steel
     recipes:
         1:
             type: shaped
@@ -97,7 +97,7 @@ gold_shield:
     lore:
         - Brimming with potential.
     data:
-      recipe_book_category: shields.5gold
+      recipe_book_category: combat.shields.5gold
     flags:
       custom_durability:
         max: 100
@@ -123,7 +123,7 @@ diamond_shield:
         - Reduces movespeed by 7<&pc>
         - Reduces damage taken by 5<&pc>
     data:
-      recipe_book_category: shields.7diamond
+      recipe_book_category: combat.shields.7diamond
     flags:
       custom_durability:
         max: 1000
@@ -160,7 +160,7 @@ amethyst_shield:
         - Reduces movespeed by 7<&pc>
         - Reduces damage taken by 5<&pc>
     data:
-      recipe_book_category: shields.6amethyst
+      recipe_book_category: combat.shields.6amethyst
     flags:
       custom_durability:
         max: 700
@@ -197,7 +197,7 @@ netherite_shield:
         - Reduces movespeed by 15<&pc>
         - Reduces damage taken by 10<&pc>
     data:
-      recipe_book_category: shields.8netherite
+      recipe_book_category: combat.shields.8netherite
     flags:
       custom_durability:
         max: 1500
