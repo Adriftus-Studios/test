@@ -45,7 +45,7 @@ bookshelf_inventory_drop:
   debug: false
   script:
     - if <context.location.has_flag[bookshelf_inventory]>:
-      - determine passively <list[<item[<context.material>]>].include[<context.location.flag[bookshelf_inventory].values>]>
+      - determine passively <context.location.drops[<player.item_in_hand>].include[<context.location.flag[bookshelf_inventory].values>]>
 
 bookshelf_inventory_save:
   type: task
