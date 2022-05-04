@@ -4,8 +4,10 @@ bookshelf_inventory:
   inventory: chest
   size: 36
   title: <&f><&font[adriftus:guis]><&chr[F808]><&chr[6928]>
+  gui: true
   data:
     on_close: bookshelf_inventory_save
+    clickable_slots: <list[12|13|14|15|1630|31|32|33|34]>
 
 bookshelf_display:
   type: item
