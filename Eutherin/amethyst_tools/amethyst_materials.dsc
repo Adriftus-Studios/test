@@ -5,7 +5,7 @@ Amethyst_ingot:
   mechanisms:
     custom_model_data: 3
   data:
-      recipe_book_category: misc.Amethyst_ingot
+      recipe_book_category: misc.Amethyst.ingot
   recipes:
     1:
       type: shaped

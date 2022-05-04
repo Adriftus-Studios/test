@@ -7,7 +7,7 @@ steel_ingot:
   lore:
     - Its like iron with more carbon,
   data:
-      recipe_book_category: misc.steel_ingot
+      recipe_book_category: misc.steel.ingot
   recipes:
     1:
       type: furnace

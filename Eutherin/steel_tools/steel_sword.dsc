@@ -7,7 +7,7 @@ Steel_sword:
       current: 0
   display name: <&f>Steel Sword
   data:
-    recipe_book_category: tools.Steel_sword
+    recipe_book_category: tools.Steel.sword
   mechanisms:
     custom_model_data: 2
   lore:

@@ -9,7 +9,7 @@ copper_sword:
   lore:
     - Softer than iron
   data:
-    recipe_book_category: tools.copper_sword
+    recipe_book_category: tools.copper.sword
   mechanisms:
     custom_model_data: 1
   recipes:

@@ -10,7 +10,7 @@ copper_pickaxe:
   lore:
     - Softer than iron
   data:
-    recipe_book_category: tools.copper_pickaxe
+    recipe_book_category: tools.copper.pickaxe
   display name: <&f>Copper Pickaxe
   recipes:
     1:
