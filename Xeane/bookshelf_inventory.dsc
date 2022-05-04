@@ -38,14 +38,14 @@ bookshelf_inventory_on_place:
   script:
     - flag <context.location> on_break:<list[bookshelf_inventory_drop|location_remove_flags]>
     - flag <context.location> on_explodes:cancel
-    - flag <context.location> remove_flags:<list[on_break|bookshelf_inventory|remove_flags]>
+    - flag <context.location> remove_flags:<list[on_break|on_explodes|bookshelf_inventory|remove_flags]>
 
 bookshelf_inventory_drop:
   type: task
   debug: false
   script:
     - if <context.location.has_flag[bookshelf_inventory]>:
-      - determine <list[<item[<context.material>]>].include[<context.location.flag[bookshelf_inventory].values>]>
+      - determine passively <list[<item[<context.material>]>].include[<context.location.flag[bookshelf_inventory].values>]>
 
 bookshelf_inventory_save:
   type: task
