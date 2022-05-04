@@ -8,7 +8,7 @@ copper_axe:
   lore:
     - Softer than iron
   data:
-    recipe_book_category: tools.copper_axe
+    recipe_book_category: tools.copper.axe
   mechanisms:
     custom_model_data: 1
   display name: <&f>Copper Axe

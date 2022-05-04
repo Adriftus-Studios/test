@@ -6,7 +6,7 @@ Amethyst_hoe:
       max: 400
       current: 0
   data:
-    recipe_book_category: tools.Amethyst_hoe
+    recipe_book_category: tools.Amethyst.hoe
   mechanisms:
     custom_model_data: 100
   lore:

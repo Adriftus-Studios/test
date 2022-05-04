@@ -8,7 +8,7 @@ steel_shovel:
   lore:
     - Tougher than iron
   data:
-    recipe_book_category: tools.steel_shovel
+    recipe_book_category: tools.steel.shovel
   mechanisms:
     custom_model_data: 2
   display name: <&f>Steel Shovel

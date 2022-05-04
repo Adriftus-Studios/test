@@ -7,7 +7,7 @@ Amethyst_sword:
       current: 0
   display name: <&f>Amethyst Sword
   data:
-    recipe_book_category: tools.Amethyst_sword
+    recipe_book_category: tools.Amethyst.sword
   mechanisms:
     custom_model_data: 100
   lore:

@@ -8,7 +8,7 @@ copper_shovel:
   lore:
     - Softer than iron
   data:
-    recipe_book_category: tools.copper_shovel
+    recipe_book_category: tools.copper.shovel
   mechanisms:
     custom_model_data: 1
   display name: <&f>Copper Shovel

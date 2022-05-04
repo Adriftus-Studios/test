@@ -6,7 +6,7 @@ Steel_axe:
       max: 469
       current: 0
   data:
-    recipe_book_category: tools.Steel_axe
+    recipe_book_category: tools.Steel.axe
   mechanisms:
     custom_model_data: 2
   lore:

@@ -8,7 +8,7 @@ Amethyst_shovel:
   lore:
     - Far more brittle than diamond.
   data:
-    recipe_book_category: tools.Amethyst_shovel
+    recipe_book_category: tools.Amethyst.shovel
   mechanisms:
     custom_model_data: 100
   display name: <&f>Amethyst Shovel

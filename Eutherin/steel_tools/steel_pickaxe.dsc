@@ -10,7 +10,7 @@ Steel_pickaxe:
   lore:
     - Tougher than iron
   data:
-    recipe_book_category: tools.Steel_pickaxe
+    recipe_book_category: tools.Steel.pickaxe
   display name: <&f>Steel Pickaxe
   recipes:
     1:
