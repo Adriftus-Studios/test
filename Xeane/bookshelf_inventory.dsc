@@ -25,5 +25,8 @@ bookshelf_inventory_open:
     - inventory open d:<[inventory]>
 
 bookshelf_inventory_save:
+  type: task
+  debug: false
+  script:
     - define location <context.inventory.slot[5].flag[location]>
     - flag <[location]> bookshelf_inventory:<context.inventory.map_slots.exclude[5]>
