@@ -25,6 +25,27 @@ bookshelf_inventory_open:
       - inventory set o:<context.location.flag[bookshelf_inventory]> d:<[inventory]>
     - inventory open d:<[inventory]>
 
+bookshelf_inventory_no_piston:
+  type: world
+  debug: false
+  events:
+    after server start:
+      - adjust <material[bookshelf]> piston_reaction:block
+
+bookshelf_inventory_on_place:
+  type: task
+  debug: false
+  script:
+    - flag <context.location> on_break:bookshelf_inventory_drop|remove_flags
+    - flag <context.location> on_explodes:cancel
+    - flag <context.location> remove_flags:on_break|remove_flags|bookshelf_inventory
+
+bookshelf_inventory_drop:
+  type: task
+  debug: false
+  script:
+    - determine <list[<item[<context.material>]>].include[<context.location.flag[bookshelf_inventory]>]>
+
 bookshelf_inventory_save:
   type: task
   debug: false
