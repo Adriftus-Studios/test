@@ -11,13 +11,37 @@ copper_shield:
       custom_durability:
         max: 200
         current: 0
+    data:
+      recipe_book_category: shields.2copper
     recipes:
         1:
             type: shaped
             input:
                 - air|iron_ingot|air
-                - iron_ingot|shield|iron_ingot
+                - iron_ingot|wooden_shield|iron_ingot
                 - air|iron_ingot|air
+
+wooden_shield:
+    type: item
+    debug: false
+    material: shield
+    display name: <&f>Wooden Shield
+    lore:
+        - Might as well use an old board.
+    data:
+      recipe_book_category: shields.1wooden
+    flags:
+      custom_durability:
+        max: 20
+        current: 0
+    recipes:
+        1:
+            type: shaped
+            input:
+                - dark_oak_planks|iron_ingot|dark_oak_planks
+                - dark_oak_planks|dark_oak_planks|dark_oak_planks
+                - air|dark_oak_planks|air
+
 
 iron_shield:
     type: item
@@ -28,6 +52,8 @@ iron_shield:
         - Reinforced with the power of Iron
     mechanisms:
         custom_model_data: 1
+    data:
+      recipe_book_category: shields.3iron
     flags:
       custom_durability:
         max: 250
@@ -37,7 +63,7 @@ iron_shield:
             type: shaped
             input:
                 - air|iron_ingot|air
-                - iron_ingot|shield|iron_ingot
+                - iron_ingot|wooden_shield|iron_ingot
                 - air|iron_ingot|air
 
 steel_shield:
@@ -53,12 +79,14 @@ steel_shield:
       custom_durability:
         max: 469
         current: 0
+    data:
+      recipe_book_category: shields.4steel
     recipes:
         1:
             type: shaped
             input:
                 - air|iron_ingot|air
-                - iron_ingot|shield|iron_ingot
+                - iron_ingot|wooden_shield|iron_ingot
                 - air|iron_ingot|air
 
 gold_shield:
@@ -68,6 +96,8 @@ gold_shield:
     display name: <&f>Gold Shield
     lore:
         - Brimming with potential.
+    data:
+      recipe_book_category: shields.5gold
     flags:
       custom_durability:
         max: 100
@@ -79,7 +109,7 @@ gold_shield:
             type: shaped
             input:
                 - air|gold_ingot|air
-                - gold_ingot|shield|gold_ingot
+                - gold_ingot|wooden_shield|gold_ingot
                 - air|gold_ingot|air
 
 diamond_shield:
@@ -92,6 +122,8 @@ diamond_shield:
         - <empty>
         - Reduces movespeed by 7<&pc>
         - Reduces damage taken by 5<&pc>
+    data:
+      recipe_book_category: shields.7diamond
     flags:
       custom_durability:
         max: 1000
@@ -114,7 +146,7 @@ diamond_shield:
             type: shaped
             input:
                 - air|diamond|air
-                - diamond|shield|diamond
+                - diamond|wooden_shield|diamond
                 - air|diamond|air
 
 amethyst_shield:
@@ -127,6 +159,8 @@ amethyst_shield:
         - <empty>
         - Reduces movespeed by 7<&pc>
         - Reduces damage taken by 5<&pc>
+    data:
+      recipe_book_category: shields.6amethyst
     flags:
       custom_durability:
         max: 700
@@ -149,7 +183,7 @@ amethyst_shield:
             type: shaped
             input:
                 - air|amethyst_ingot|air
-                - amethyst_ingot|shield|amethyst_ingot
+                - amethyst_ingot|wooden_shield|amethyst_ingot
                 - air|amethyst_ingot|air
 
 netherite_shield:
@@ -162,6 +196,8 @@ netherite_shield:
         - <empty>
         - Reduces movespeed by 15<&pc>
         - Reduces damage taken by 10<&pc>
+    data:
+      recipe_book_category: shields.8netherite
     flags:
       custom_durability:
         max: 1500
@@ -184,7 +220,7 @@ netherite_shield:
             type: shaped
             input:
                 - air|netherite_ingot|air
-                - netherite_ingot|shield|netherite_ingot
+                - netherite_ingot|wooden_shield|netherite_ingot
                 - air|netherite_ingot|air
 
 shield_durability_handler:
@@ -230,3 +266,10 @@ gold_shield_enchant_handler:
           - define enchantment_map <[enchantment_map].with[<[enchant_applied]>].as[<[enchant_level]>]>
       ##applies the enchantment map
       - determine enchants:<[enchantment_map]>
+
+shield_replacer:
+  type: world
+  debug: false
+  events:
+    on player crafts shield:
+      - determine wooden_shield
