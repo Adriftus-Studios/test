@@ -36,9 +36,9 @@ bookshelf_inventory_on_place:
   type: task
   debug: false
   script:
-    - flag <context.location> on_break:bookshelf_inventory_drop|remove_flags
+    - flag <context.location> on_break:<list[bookshelf_inventory_drop|remove_flags]>
     - flag <context.location> on_explodes:cancel
-    - flag <context.location> remove_flags:on_break|remove_flags|bookshelf_inventory
+    - flag <context.location> remove_flags:<list[on_break|remove_flags|bookshelf_inventory]>
 
 bookshelf_inventory_drop:
   type: task
