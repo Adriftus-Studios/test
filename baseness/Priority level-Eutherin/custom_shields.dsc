@@ -9,7 +9,7 @@ copper_shield:
         custom_model_data: 3
     flags:
       custom_durability:
-        max: 50
+        max: 200
         current: 0
     recipes:
         1:
@@ -30,7 +30,7 @@ iron_shield:
         custom_model_data: 1
     flags:
       custom_durability:
-        max: 50
+        max: 250
         current: 0
     recipes:
         1:
@@ -51,7 +51,7 @@ steel_shield:
         custom_model_data: 7
     flags:
       custom_durability:
-        max: 50
+        max: 469
         current: 0
     recipes:
         1:
@@ -70,7 +70,7 @@ gold_shield:
         - Brimming with potential.
     flags:
       custom_durability:
-        max: 50
+        max: 100
         current: 0
     mechanisms:
         custom_model_data: 2
@@ -94,7 +94,7 @@ diamond_shield:
         - Reduces damage taken by 5<&pc>
     flags:
       custom_durability:
-        max: 50
+        max: 1000
         current: 0
     mechanisms:
         custom_model_data: 4
@@ -129,7 +129,7 @@ amethyst_shield:
         - Reduces damage taken by 5<&pc>
     flags:
       custom_durability:
-        max: 50
+        max: 700
         current: 0
     mechanisms:
         custom_model_data: 5
@@ -164,7 +164,7 @@ netherite_shield:
         - Reduces damage taken by 10<&pc>
     flags:
       custom_durability:
-        max: 50
+        max: 1500
         current: 0
     mechanisms:
         custom_model_data: 6
@@ -186,19 +186,6 @@ netherite_shield:
                 - air|netherite_ingot|air
                 - netherite_ingot|shield|netherite_ingot
                 - air|netherite_ingot|air
-
-
-netherite_shield_world:
-    type: task
-    debug: false
-    events:
-        after player equips netherite_shield:
-            - flag server base_run_speed:<player.speed>
-            - adjust <player> speed:0.8*<player.speed>
-
-        after player unequips netherite_shield:
-            - adjust <player> speed:<server.flag[base_run_speed]>
-#
 
 shield_durability_handler:
   Type: world
