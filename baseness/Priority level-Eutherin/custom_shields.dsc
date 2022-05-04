@@ -19,7 +19,6 @@ copper_shield:
                 - iron_ingot|shield|iron_ingot
                 - air|iron_ingot|air
 
-
 iron_shield:
     type: item
     debug: false
@@ -29,6 +28,27 @@ iron_shield:
         - Reinforced with the power of Iron
     mechanisms:
         custom_model_data: 1
+    flags:
+      custom_durability:
+        max: 50
+        current: 0
+    recipes:
+        1:
+            type: shaped
+            input:
+                - air|iron_ingot|air
+                - iron_ingot|shield|iron_ingot
+                - air|iron_ingot|air
+
+steel_shield:
+    type: item
+    debug: false
+    material: shield
+    display name: <&f>Steel Shield
+    lore:
+        - Infused with the strength of Steel
+    mechanisms:
+        custom_model_data: 7
     flags:
       custom_durability:
         max: 50
@@ -77,7 +97,7 @@ diamond_shield:
         max: 50
         current: 0
     mechanisms:
-        custom_model_data: 694204
+        custom_model_data: 4
         attribute_modifiers:
                         generic_movement_speed:
                               1:
@@ -97,13 +117,40 @@ diamond_shield:
                 - diamond|shield|diamond
                 - air|diamond|air
 
-diamond_shield_world:
-    type: task
+amethyst_shield:
+    type: item
     debug: false
-    events:
-        on player equips diamond_shield:
-            - while <player.has_equipped[diamond_shield]>:
-                - adjust <player> walk_speed:0.9*<player.walk_speed>
+    material: shield
+    display name: <&f>Amethyst Shield
+    lore:
+        - Perhaps too brittle
+        - <empty>
+        - Reduces movespeed by 7<&pc>
+        - Reduces damage taken by 5<&pc>
+    flags:
+      custom_durability:
+        max: 50
+        current: 0
+    mechanisms:
+        custom_model_data: 5
+        attribute_modifiers:
+                        generic_movement_speed:
+                              1:
+                                  operation: add_number
+                                  amount: -0.015
+                                  slot: off_hand
+                              2:
+                                  operation: add_number
+                                  amount: -0.015
+                                  slot: hand
+        hides: attributes
+    recipes:
+        1:
+            type: shaped
+            input:
+                - air|amethyst_ingot|air
+                - amethyst_ingot|shield|amethyst_ingot
+                - air|amethyst_ingot|air
 
 netherite_shield:
     type: item
@@ -120,7 +167,7 @@ netherite_shield:
         max: 50
         current: 0
     mechanisms:
-        custom_model_data: 694204
+        custom_model_data: 6
         attribute_modifiers:
                         generic_movement_speed:
                               1:
