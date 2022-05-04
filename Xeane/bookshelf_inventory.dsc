@@ -20,9 +20,9 @@ bookshelf_inventory_open:
   script:
     - stop if:<player.item_in_hand.material.name.equals[air].not>
     - define inventory <inventory[bookshelf_inventory]>
-    - inventory set slot:5 o:<item[bookshelf_display].with[flag=location:<context.location>]> d:<[inventory]>
     - if <context.location.has_flag[bookshelf_inventory]>:
       - inventory set o:<context.location.flag[bookshelf_inventory]> d:<[inventory]>
+    - inventory set slot:5 o:<item[bookshelf_display].with[flag=location:<context.location>]> d:<[inventory]>
     - inventory open d:<[inventory]>
 
 bookshelf_inventory_no_piston:
