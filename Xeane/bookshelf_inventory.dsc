@@ -7,7 +7,7 @@ bookshelf_inventory:
   gui: true
   data:
     on_close: bookshelf_inventory_save
-    clickable_slots: <list[12|13|14|15|1630|31|32|33|34]>
+    clickable_slots: <list[12|13|14|15|16|30|31|32|33|34]>
 
 bookshelf_display:
   type: item
