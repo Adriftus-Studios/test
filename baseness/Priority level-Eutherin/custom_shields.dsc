@@ -1,3 +1,25 @@
+copper_shield:
+    type: item
+    debug: false
+    material: shield
+    display name: <&f>Copper Shield
+    lore:
+        - Trimmed with Copper
+    mechanisms:
+        custom_model_data: 3
+    flags:
+      custom_durability:
+        max: 50
+        current: 0
+    recipes:
+        1:
+            type: shaped
+            input:
+                - air|iron_ingot|air
+                - iron_ingot|shield|iron_ingot
+                - air|iron_ingot|air
+
+
 iron_shield:
     type: item
     debug: false
@@ -6,7 +28,7 @@ iron_shield:
     lore:
         - Reinforced with the power of Iron
     mechanisms:
-        custom_model_data: 694201
+        custom_model_data: 1
     flags:
       custom_durability:
         max: 50
@@ -31,7 +53,7 @@ gold_shield:
         max: 50
         current: 0
     mechanisms:
-        custom_model_data: 694202
+        custom_model_data: 2
     recipes:
         1:
             type: shaped
@@ -47,7 +69,7 @@ diamond_shield:
     display name: <&f>Diamond Shield
     lore:
         - Hard as can be
-        - <&empty>
+        - <empty>
         - Reduces movespeed by 7<&pc>
         - Reduces damage taken by 5<&pc>
     flags:
@@ -90,7 +112,7 @@ netherite_shield:
     display name: <&f>Netherite Shield
     lore:
         - Bathed in lava
-        - <&empty>
+        - <empty>
         - Reduces movespeed by 15<&pc>
         - Reduces damage taken by 10<&pc>
     flags:
@@ -138,7 +160,9 @@ shield_durability_handler:
     On player damaged by entity:
       - if !<player.is_blocking>:
         - stop
-      - define value <context.damage>
+      - define value <context.damage.round_up>
+      - if <context.damage> <= 3:
+        - define value <context.damage.round_down.add[1]>
       - if <player.item_in_hand.material.name> == shield:
         - define slot <player.held_item_slot>
         - inject custom_durability_process_task
