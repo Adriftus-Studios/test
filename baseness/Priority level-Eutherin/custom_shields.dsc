@@ -273,3 +273,5 @@ shield_replacer:
   events:
     on player crafts shield:
       - determine wooden_shield
+    on shield recipe formed:
+      - determine wooden_shield
