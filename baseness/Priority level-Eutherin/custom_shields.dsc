@@ -204,3 +204,29 @@ shield_durability_handler:
       - if <player.item_in_offhand.material.name> == shield:
         - define slot 41
         - inject custom_durability_process_task
+
+gold_shield_enchant_handler:
+  debug: false
+  type: world
+  events:
+    on gold_shield enchanted:
+      ##Defines the enchantment map, without this then the definition later on will error out.
+      - define enchantment_map <map>
+      - foreach <context.enchants> as:enchant_level key:enchant_applied:
+        ##Boosts the proc rate by 0.1% a level, up to 10% at max level, seems low, but its PER enchantment on the item.
+        - define proc_rate <util.random.int[0].to[100]>
+        - if <[proc_rate]> > 80:
+          ##retrieves the enchantment level and adds one to it
+          - define enchant_level <[enchant_level].add[1]>
+          ##defines the enchantment map while adding the current enchantment to it.
+          - define enchantment_map <[enchantment_map].with[<[enchant_applied]>].as[<[enchant_level]>]>
+          ##plays an visual and audio effect so the player knows it triggered.
+          ##this is per effect, so if it triggers 4 times, it will be a particle explosion.
+          - playeffect <context.location.add[1,1,1].to_cuboid[<context.location.sub[1,1,1]>].blocks> effect:dragon_breath quantity:5
+          - playeffect <context.location.add[1,1,1].to_cuboid[<context.location.sub[1,1,1]>].blocks> effect:redstone quantity:5 special_data:3|250,0,250
+          - playsound BLOCK_BELL_RESONATE <context.location>
+        - else:
+          ##if the proc didnt trigger, then it just adds the natural level of the enchantment
+          - define enchantment_map <[enchantment_map].with[<[enchant_applied]>].as[<[enchant_level]>]>
+      ##applies the enchantment map
+      - determine enchants:<[enchantment_map]>
