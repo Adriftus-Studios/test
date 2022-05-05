@@ -1,6 +1,6 @@
 test_dungeon_elevator_events:
   type: world
-  debug: false
+  debug: true
   events:
     on player enters area:
     - narrate test
