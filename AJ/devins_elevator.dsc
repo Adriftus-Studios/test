@@ -4,12 +4,7 @@ test_dungeon_elevator_events:
   events:
     on player enters area:
     - stop if:<context.area.flag[elevator.destination].as_location.is_truthy.not.if_null[true]>
-    - define waitbefore 5t
-    - define waitmiddle 10t
-    - define waitafter 5t
-    - title title:<&color[#000000]><&font[adriftus:overlay]><&chr[0004]><&chr[F801]><&chr[0004]> fade_in:<[waitbefore]> stay:<[waitmiddle]> fade_out:<[waitafter]>
-    - wait <[waitbefore]>
-    - wait <[waitmiddle].div[2]>
+    - title title:<&color[#000000]><&font[adriftus:overlay]><&chr[0004]><&chr[F801]><&chr[0004]> fade_in:5t stay:10t fade_out:5t
+    - wait 10t
     - teleport <context.area.flag[elevator.destination]>
-    - wait <[waitmiddle].div[2]>
-    - wait <[waitafter]>
+    - wait 10t
