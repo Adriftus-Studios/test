@@ -1,4 +1,4 @@
-dungeon_elevator_events:
+test_dungeon_elevator_events:
   type: world
   debug: false
   events:
