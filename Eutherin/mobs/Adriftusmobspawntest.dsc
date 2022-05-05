@@ -8,7 +8,8 @@ mob_rarity_handler:
     - stop if:<context.entity.exists.not>
     - if <context.entity.is_mythicmob> || <context.entity.from_spawner> || <context.entity.has_flag[no_modify]>:
       - stop
-    - flag <context.entity> emboldable if:<context.entity.entity_type.advanced_matches[creeper].not>
+    - if <context.entity.entity_type> != creeper:
+      - flag <context.entity> emboldable
     - define rarity_roll <util.random.int[1].to[10000].div[1000]>
     - stop if:<[rarity_roll].is_more_than[<server.flag[custom_mob_data.mob_spawn_rates].keys.last>]>
     - foreach <server.flag[custom_mob_data.mob_spawn_rates].keys>:
