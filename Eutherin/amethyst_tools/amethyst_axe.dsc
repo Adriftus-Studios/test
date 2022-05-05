@@ -6,7 +6,7 @@ amethyst_axe:
       max: 400
       current: 0
   data:
-    recipe_book_category: tools.amethyst_axe
+    recipe_book_category: tools.amethyst.axe
   mechanisms:
     custom_model_data: 100
   lore:

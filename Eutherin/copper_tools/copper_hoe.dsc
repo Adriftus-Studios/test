@@ -8,7 +8,7 @@ copper_hoe:
   lore:
     - Softer than iron
   data:
-    recipe_book_category: tools.copper_hoe
+    recipe_book_category: tools.copper.hoe
   mechanisms:
     custom_model_data: 1
   display name: <&f>Copper Hoe
