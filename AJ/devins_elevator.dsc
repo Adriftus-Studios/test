@@ -3,6 +3,11 @@ dungeon_elevator_events:
   debug: false
   events:
     on player enters area:
+    - narrate <context.area>
+    - narrate <context.area.flag[elevator.destination]>
+    - narrate <context.area.flag[elevator.destination].as_location>
+    - narrate <context.area.flag[elevator.destination].as_location.is_truthy>
+    - narrate <context.area.flag[elevator.destination].as_location.is_truthy.not>
     - stop if:<context.area.flag[elevator.destination].as_location.is_truthy.not.if_null[true]>
     - define waitbefore 5t
     - define waitmiddle 10t
