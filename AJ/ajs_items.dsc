@@ -40,18 +40,18 @@ hammer_fix_events:
     - adjust <player> item_on_cursor:<context.item>
     - wait 1t
     - inventory update
-    on player prepares anvil craft item bukkit_priority:high:
-    - inject <script.name> path:task
-    - determine passively <context.item.with[durability=<[new_durability].max[0]>]>
-    - if <[new_durability].is_more_than[0]>:
-      - define quantity <[reagent_item].quantity>
-    - else:
-      - define num1 <[current_durability]>
-      - define quantity 1
-      - while <[num1]> > 0:
-        - define quantity:+:1
-        - define num1 <[num1].sub[<[diff]>]>
-    - determine passively <context.repair_cost.add[<[quantity].mul[2.2].round>]>
+#    on player prepares anvil craft item bukkit_priority:high:
+#    - inject <script.name> path:task
+#    - determine passively <context.item.with[durability=<[new_durability].max[0]>]>
+#    - if <[new_durability].is_more_than[0]>:
+#      - define quantity <[reagent_item].quantity>
+#    - else:
+#      - define num1 <[current_durability]>
+#      - define quantity 1
+#      - while <[num1]> > 0:
+#        - define quantity:+:1
+#        - define num1 <[num1].sub[<[diff]>]>
+#    - determine passively <context.repair_cost.add[<[quantity].mul[2.2].round>]>
 
 calculate_durability_damage:
     type: procedure
