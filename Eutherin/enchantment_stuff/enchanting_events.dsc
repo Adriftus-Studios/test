@@ -236,7 +236,7 @@ Shield_enchant_handler:
       - if <player.item_in_hand.material.name> == shield:
         - define enchants_list <player.item_in_hand.enchantment_types.parse[name]>
       - if <player.item_in_offhand.material.name> == shield:
-        - define enchants_list <player.item_in_hand.enchantment_types.parse[name]>
+        - define enchants_list <player.item_in_offhand.enchantment_types.parse[name]>
       - if <[enchants_list]||null> == null:
         - stop
       - if <[enchants_list].contains_any[spikes]>:
