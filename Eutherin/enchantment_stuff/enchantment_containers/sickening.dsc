@@ -23,4 +23,4 @@ Sickening_enchantment:
   after attack:
     - ratelimit <player> 12t
     - if <context.victim.is_spawned> && <util.random.int[1].to[10].add[<context.level>]> > 9:
-      - cast CONFUSION amplifier:0 duration:5s
+      - cast CONFUSION amplifier:0 duration:5s <context.victim>
