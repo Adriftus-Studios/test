@@ -9,7 +9,7 @@ Crystallizing_enchantment:
   data:
     effect:
       - Occasionaly turns basic stones into gems
-      - <&empty>
+      - <empty>
       - Costs extra durability to use. Incompatible with fortune/silk touch
     item_slots:
       - pickaxd

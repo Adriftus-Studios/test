@@ -11,7 +11,7 @@ spikes_enchantment:
   data:
     effect:
       - Returns 1 damage per level to the attacker.
-      - <&empty>
+      - <empty>
       - Only effective during blocking. 2s CD
     item_slots:
       - Shield

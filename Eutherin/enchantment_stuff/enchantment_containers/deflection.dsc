@@ -11,7 +11,7 @@ deflection_enchantment:
   data:
     effect:
       - Gives a small chance to deflect incoming arrows.
-      - <&empty>
+      - <empty>
       - Chance increases by 2% per level.
     item_slots:
       - Chest, Legs

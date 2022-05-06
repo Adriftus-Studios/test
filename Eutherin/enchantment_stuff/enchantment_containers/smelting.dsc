@@ -9,7 +9,7 @@ smelting_enchantment:
   data:
     effect:
       - Can cause ore to drop ingots instead of raw ore
-      - <&empty>
+      - <empty>
       - 15% chance per level. Incompatible with Fortune/Silk Touch.
     item_slots:
       - pickaxe

@@ -10,7 +10,7 @@ Electrified_enchantment:
   data:
     effect:
       - Has a chance to release an electric charge dealing 3 damage.
-      - <&empty>
+      - <empty>
       - Increased levels grant 1 bounce per level.
     item_slots:
       - boots

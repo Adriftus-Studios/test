@@ -11,7 +11,7 @@ Flamebrand_enchantment:
   data:
     effect:
       - Sets the attacker on fire for 1s per level
-      - <&empty>
+      - <empty>
       - Only effective during blocking. 2s CD
     item_slots:
       - Shield

@@ -10,7 +10,7 @@ last_Stand_enchantment:
   data:
     effect:
       - If your health goes below 10%, recieve 90% less damage for 5 seconds.
-      - <&empty>
+      - <empty>
       - Percent increases by 10% per level. 5 minute cooldown.
     item_slots:
       - Legs

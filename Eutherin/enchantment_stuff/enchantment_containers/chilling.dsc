@@ -13,7 +13,7 @@ Chilling_enchantment:
   data:
     effect:
       - Has a chance to release a barrage of ice spikes
-      - <&empty>
+      - <empty>
       - Deals 2 damage per level.
     item_slots:
       - Any Armor

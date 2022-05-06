@@ -10,7 +10,7 @@ thundering_enchantment:
   data:
     effect:
       - Has a chance to cause lightning to strike near the enemy attacked.
-      - <&empty>
+      - <empty>
       - These strikes do not damage you.
     item_slots:
       - sword

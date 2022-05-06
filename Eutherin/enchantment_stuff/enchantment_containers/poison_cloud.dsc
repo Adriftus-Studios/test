@@ -10,7 +10,7 @@ Poison_Cloud_enchantment:
   data:
     effect:
       - Has a small chance to create a poisonous cloud around victims location.
-      - <&empty>
+      - <empty>
       - Damage increases by 1 per level.
     item_slots:
       - all_weapons

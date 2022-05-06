@@ -10,7 +10,7 @@ chain_reaction_enchantment:
   data:
     effect:
       - Has a small chance to fire arrows from the target struck.
-      - <&empty>
+      - <empty>
       - Increased levels increase the amount of arrows.
     item_slots:
       - bows

@@ -9,7 +9,7 @@ plucking_enchantment:
   data:
     effect:
       - Allows you to pluck chickens.
-      - <&empty>
+      - <empty>
       - Costs durability to use.
     item_slots:
       - shears

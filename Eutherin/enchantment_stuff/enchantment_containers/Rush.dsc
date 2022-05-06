@@ -10,7 +10,7 @@ Rush_enchantment:
   data:
     effect:
       - Has a chance to boost your speed by 20% when hit.
-      - <&empty>
+      - <empty>
       - Lasts 1 second per level
     item_slots:
       - boots

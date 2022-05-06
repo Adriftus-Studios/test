@@ -10,7 +10,7 @@ prospector_enchantment:
   data:
     effect:
       - Has a small chance to cause treasure to drop when a mob dies.
-      - <&empty>
+      - <empty>
       - Repeated strikes stack, up to the enchantment level.
     item_slots:
       - all_weapons

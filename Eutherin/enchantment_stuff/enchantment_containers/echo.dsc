@@ -10,7 +10,7 @@ echo_enchantment:
   data:
     effect:
       - Some attacks will repeat their damage after a short delay.
-      - <&empty>
+      - <empty>
       - Cooldown decreases with level.
     item_slots:
       - sword

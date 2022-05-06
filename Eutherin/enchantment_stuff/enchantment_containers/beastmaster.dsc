@@ -13,7 +13,7 @@ Beastmaster_enchantment:
   data:
     effect:
       - Increases the damage done by your tamed pets.
-      - <&empty>
+      - <empty>
       - Damage increases by 1 per level.
     item_slots:
       - Any Armor

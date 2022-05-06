@@ -10,7 +10,7 @@ Lifestealing_enchantment:
   data:
     effect:
       - Chance to steal 1.5 hearts per level over 3.5s
-      - <&empty>
+      - <empty>
       - Cannot be used with Vampirism or Radiance
     item_slots:
       - sword

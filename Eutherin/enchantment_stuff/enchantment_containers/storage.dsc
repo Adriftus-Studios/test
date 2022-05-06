@@ -10,7 +10,7 @@ storage_enchantment:
   data:
     effect:
       - These items contain an extra inventory.
-      - <&empty>
+      - <empty>
       - Pairs well with Siphon
     item_slots:
       - tools

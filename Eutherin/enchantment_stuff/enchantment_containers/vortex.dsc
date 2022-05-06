@@ -10,7 +10,7 @@ Vortex_enchantment:
   data:
     effect:
       - Pulls in monsters within 7 blocks.
-      - <&empty>
+      - <empty>
       - Increased levels increase the force of the pull.
     item_slots:
       - all_weapons

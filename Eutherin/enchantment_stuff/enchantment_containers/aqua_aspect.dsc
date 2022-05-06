@@ -10,7 +10,7 @@ Aqua_Aspect_enchantment:
   data:
     effect:
       - Deals 2.5 damage per level to water fearers.
-      - <&empty>
+      - <empty>
       - Cannot be used with Banes, Slaying, Sharpness, or Smite.
     item_slots:
       - sword

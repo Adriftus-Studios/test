@@ -10,8 +10,8 @@ Slaying_enchantment:
   data:
     effect:
       - Deals 2.5 damage per level to rare monsters.
-      - <&empty>
-      - Cannot be used with Banes, Slaying, Sharpness, or Smite.
+      - <empty>
+      - Cannot be used with Banes, Sharpness, or Smite.
     item_slots:
       - all_weapons
   category: weapon

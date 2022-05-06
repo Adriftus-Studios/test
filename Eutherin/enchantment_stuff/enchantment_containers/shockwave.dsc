@@ -10,7 +10,7 @@ shockwave_enchantment:
   data:
     effect:
       - A 3 hit combo will knock monsters back, dealing 2 damage per level.
-      - <&empty>
+      - <empty>
       - Cannot be combined with Swirling or Vortex.
     item_slots:
       - sword

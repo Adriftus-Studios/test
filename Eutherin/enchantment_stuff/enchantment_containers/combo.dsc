@@ -10,7 +10,7 @@ combo_enchantment:
   data:
     effect:
       - Repeated attacks to a target do 1 damage per level per attack.
-      - <&empty>
+      - <empty>
       - Stacks up to 2x your enchantment level.
     item_slots:
       - sword

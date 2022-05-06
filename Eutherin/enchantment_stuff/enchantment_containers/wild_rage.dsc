@@ -10,7 +10,7 @@ Wild_Rage_enchantment:
   data:
     effect:
       - Chance to confuse enemies and attack random targets.
-      - <&empty>
+      - <empty>
       - Increases duration by 1 second per level.
     item_slots:
       - bows

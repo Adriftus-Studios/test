@@ -10,7 +10,7 @@ Temporal_theft_enchantment:
   data:
     effect:
       - Steals a portion of the victim's speed for 2 seconds.
-      - <&empty>
+      - <empty>
       - Levels increase the amount stolen by 10% per level.
     item_slots:
       - ranged

@@ -10,7 +10,7 @@ Levitation_shot_enchantment:
   data:
     effect:
       - Causes victims to levitate for 2 seconds.
-      - <&empty>
+      - <empty>
       - Levels increase the speed of levitation.
     item_slots:
       - ranged

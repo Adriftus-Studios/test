@@ -10,7 +10,7 @@ Lifesbane_enchantment:
   data:
     effect:
       - Deals 2.5 damage per level to living humanoids.
-      - <&empty>
+      - <empty>
       - Cannot be used with Banes, Slaying, Sharpness, or Smite.
     item_slots:
       - sword

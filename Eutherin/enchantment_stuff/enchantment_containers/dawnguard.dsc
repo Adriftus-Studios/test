@@ -10,7 +10,7 @@ Dawnguard_enchantment:
   data:
     effect:
       - Deals 3 damage/level during daytime
-      - <&empty>
+      - <empty>
       - Cannot be combined with Duskguard
     item_slots:
       - sword

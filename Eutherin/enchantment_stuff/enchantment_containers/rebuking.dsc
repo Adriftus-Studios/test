@@ -11,7 +11,7 @@ Rebuking_enchantment:
   data:
     effect:
       - Stores damage in shield, Jump to release an attack
-      - <&empty>
+      - <empty>
       - 2S cd per stack Jump during block to release
     item_slots:
       - Shield

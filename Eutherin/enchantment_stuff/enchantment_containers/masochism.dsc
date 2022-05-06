@@ -10,7 +10,7 @@ masochism_enchantment:
   data:
     effect:
       - Attacking drains 1 life per level per stack.
-      - <&empty>
+      - <empty>
       - At 4 stacks, they are channeled into 7x damage.
     item_slots:
       - sword
