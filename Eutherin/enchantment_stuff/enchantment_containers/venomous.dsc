@@ -22,5 +22,5 @@ Venomous_enchantment:
 #  is_compatible:
   after attack:
     - ratelimit <player> 12t
-    - if <context.victim.is_spawned> && <util.random.int[1].to[10].add[<context.level.mul[0.5]>]> > 9:
+    - if <context.victim.is_spawned> && <util.random.int[1].to[10].add[<context.level>]> > 9:
       - cast poison amplifier:<context.level.sub[1]> duration:4s <context.victim>
