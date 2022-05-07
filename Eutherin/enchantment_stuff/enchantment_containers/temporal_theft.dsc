@@ -30,7 +30,7 @@ Temporal_theft_enchantment:
   - if <player.has_flag[temp.custom_enchantment_tempo]> || <context.victim.has_flag[temp.custom_enchantment_tempo]> || !<context.victim.is_spawned>:
     - stop
   - playsound sound:ENTITY_ENDERMAN_TELEPORT <player.location> pitch:1.5
-  - flag <player> temp.custom_enchantment_tempo duration:40t
+  - flag <player> temp.custom_enchantment_tempo duration:100t
   - flag <context.victim> temp.custom_enchantment_tempo duration:40t
   - define player_speed <player.walk_speed>
   - define mob_speed <context.victim.speed>
