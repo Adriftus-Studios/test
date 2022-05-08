@@ -1,19 +1,19 @@
 # -- /damagetracker - Damage Tracker Command
 damage_tracker_command:
-    type: command
-    debug: false
-    name: damagetracker
-    description: Track damage taken and dealt
-    permission: adriftus.staff
-    usage: /damagetracker
-    script:
-      - if <player.has_flag[damage_tracker]>:
-        # Remove if activated
-        - flag <player> on_damaged:<-:damage_tracker_taken
-        - flag <player> on_damage:<-:damage_tracker_dealt
-      - else:
-        - flag <player> on_damaged:->:damage_tracker_taken
-        - flag <player> on_damage:->:damage_tracker_dealt
+  type: command
+  debug: false
+  name: damagetracker
+  description: Track damage taken and dealt
+  permission: adriftus.staff
+  usage: /damagetracker
+  script:
+    - if <player.has_flag[damage_tracker]>:
+      # Remove if activated
+      - flag <player> on_damaged:<-:damage_tracker_taken
+      - flag <player> on_damage:<-:damage_tracker_dealt
+    - else:
+      - flag <player> on_damaged:->:damage_tracker_taken
+      - flag <player> on_damage:->:damage_tracker_dealt
 
 damage_tracker_taken:
   type: task
