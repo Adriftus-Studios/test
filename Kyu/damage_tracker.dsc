@@ -9,9 +9,11 @@ damage_tracker_command:
   script:
     - if <player.has_flag[damage_tracker]>:
       # Remove if activated
+      - flag <player> damage_tracker:!
       - flag <player> on_damage:!
       - narrate "<&8>[<&c>DMGTracker<&8>] <&c>Toggled DMGTracker." targets:<player>
     - else:
+      - flag <player> damage_tracker:true
       - flag <player> on_damage:damage_tracker_dealt
       - narrate "<&8>[<&c>DMGTracker<&8>] <&a>Toggled DMGTracker." targets:<player>
 
