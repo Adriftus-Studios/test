@@ -1,5 +1,5 @@
 mob_rarity_handler:
-  type: world
+  type: task
   debug: false
   data:
     ranged: stray|evoker|illusioner|skeleton|blaze
