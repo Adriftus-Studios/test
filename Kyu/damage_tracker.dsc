@@ -16,7 +16,7 @@ damage_tracker_command:
     - else:
       - flag <player> damage_tracker:true
       - flag <player> on_damage:->:damage_tracker_dealt
-      - bossbar create <player.uuid>.damage_tracker players:<player> title:<&sp> progress:1.0 color:YELLOW style:SOLID
+      - bossbar create <player.uuid>.damage_tracker players:<player> title:<&c><&l>DMGTracker progress:1.0 color:YELLOW style:SOLID
       - narrate "<&8>[<&c>DMGTracker<&8>] <&a>Toggled DMGTracker." targets:<player>
 
 damage_tracker_dealt:
