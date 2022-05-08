@@ -21,12 +21,12 @@ damage_tracker_taken:
   type: task
   debug: false
   script:
-    - define text "<&4><&gt><&c><context.final_damage><tern[<context.was_critical>].pass[<&7>*].fail[<&r>]><&4><&lt>"
+    - define text "<&4><&gt><tern[<context.was_critical>].pass[<&7>*].fail[<&r>]><&c><context.final_damage.round_to[1]><&4><&lt>"
     - actionbar <[text]> targets:<player> per_player
 
 damage_tracker_dealt:
   type: task
   debug: false
   script:
-    - define text "<&6><&lt><&e><context.final_damage><tern[<context.was_critical>].pass[<&7>*].fail[<&r>]><&6><&gt>"
+    - define text "<&6><&lt><tern[<context.was_critical>].pass[<&7>*].fail[<&r>]><&e><context.final_damage.round_to[1]><&6><&gt>"
     - actionbar <[text]> targets:<player> per_player
