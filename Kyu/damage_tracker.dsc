@@ -21,6 +21,7 @@ damage_tracker_taken:
   type: task
   debug: false
   script:
+    - stop if:<context.cause.is[==].to[ENTITY_SWEEP_ATTACK]>
     - define text "<&4><&gt><&c><&l><context.final_damage.round_to[1]><tern[<context.was_critical>].pass[<&7>*].fail[<&r>]><&4><&lt>"
     - actionbar <[text]> targets:<player> per_player
 
@@ -28,5 +29,6 @@ damage_tracker_dealt:
   type: task
   debug: false
   script:
+    - stop if:<context.cause.is[==].to[ENTITY_SWEEP_ATTACK]>
     - define text "<&6><&lt><&e><&l><context.final_damage.round_to[1]><tern[<context.was_critical>].pass[<&7>*].fail[<&r>]><&6><&gt>"
     - actionbar <[text]> targets:<player> per_player
