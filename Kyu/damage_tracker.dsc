@@ -24,5 +24,6 @@ damage_tracker_dealt:
   debug: false
   script:
     - stop if:<context.cause.is[==].to[ENTITY_SWEEP_ATTACK].or[LIGHTNING]>
-    - define text <&6><&lt><&e><&l><context.final_damage.round_to[1]><tern[<context.was_critical>].pass[<&7>*].fail[<&r>]><&6><&gt>
-    - bossbar update <player.uuid>.damage_tracker title:<[text]>
+    - define text <&6><&lt><&e><&l><context.final_damage.round_to[1]><&6><&gt>
+    - define critical <tern[<context.was_critical>].pass[RED].fail[YELLOW]>
+    - bossbar update <player.uuid>.damage_tracker title:<[text]> color:<[critical]>
