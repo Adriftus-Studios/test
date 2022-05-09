@@ -128,7 +128,7 @@ on_kill_enchant_handler:
       - if <[enchants_list].contains_any[guarding]>:
         - mythicskill <player> ShieldEnchant<player.item_in_hand.enchantment_map.get[guarding]>
       - if <[enchants_list].contains_any[vampirism]>:
-        - heal <player> <player.item_in_hand.enchantment_map.get[vampirism].mul[2]>
+        - heal <player> <player.item_in_hand.enchantment_map.get[vampirism]>
         - playeffect <player.location> effect:heart quantity:5f
       - if <[enchants_list].contains_any[Rampaging]> && <util.random.int[1].to[10]> > 8:
         - cast increase_damage amplifier:0 duration:<player.item_in_hand.enchantment_map.get[Rampaging].mul[5]>
