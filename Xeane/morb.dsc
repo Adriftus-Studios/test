@@ -48,6 +48,7 @@ morb_events:
       - take item:morb_empty quantity:1
 
     on empty_morb_projectile hits entity:
+      - stop if:<context.hit_entity.has_flag[no_morb]>
       - stop if:<script[morb_config].data_key[blacklisted_entities].contains[<context.hit_entity.entity_type>]>
       - define item <item[morb_filled]>
       - if <context.hit_entity.custom_name.is_truthy>:
