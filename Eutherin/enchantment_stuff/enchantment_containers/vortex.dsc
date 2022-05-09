@@ -14,7 +14,7 @@ Vortex_enchantment:
       - Increased levels increase the force of the pull.
     item_slots:
       - all_weapons
-  category: weapon
+  category: breakable
   full_name: <&7>Vortex <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3
