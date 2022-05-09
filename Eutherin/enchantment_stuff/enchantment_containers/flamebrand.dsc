@@ -20,4 +20,4 @@ Flamebrand_enchantment:
   min_level: 1
   max_level: 4
   is_tradable: false
-  can_enchant: <context.item.advanced_matches[shield]>
+  can_enchant: <context.item.advanced_matches[*shield]>
