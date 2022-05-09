@@ -197,7 +197,7 @@ player_death_enchant_handler:
             - define keep:->:<[item].proc[build_item_enchantment_lore]>
         - else:
           - define drops:->:<[item]>
-      - flag player temp.soulbound_enchant:<[keep]>
+      - flag player temp.soulbound_enchant:|:<[keep]>
       - determine <[drops]||air>
 
 spawn_enchant_handler:
@@ -205,14 +205,15 @@ spawn_enchant_handler:
   debug: false
   events:
     after player respawns flagged:temp.soulbound_enchant:
-      - if <player.has_flag[temp.soulbound_enchant]>:
-        - define item_lore <list[]>
-        - foreach <player.flag[temp.soulbound_enchant]> as:item:
-          - foreach <[item].enchantments> as:enchant:
-            - define enchantment_name <[enchant].to_titlecase>
-            - define enchantment_level <[item].enchantment_map.get[<[enchant]>].proc[arabic_to_roman]>
-            - define item_lore <[item_lore].include[<&7><[enchantment_name].replace[_].with[<&sp>].to_titlecase><&sp><[enchantment_level]>]>
-          - give <[item].with[lore=<[item_lore]>]>
+      #- if <player.has_flag[temp.soulbound_enchant]>:
+        #- define item_lore <list[]>
+        #- foreach <player.flag[temp.soulbound_enchant]> as:item:
+          #- foreach <[item].enchantments> as:enchant:
+            #- define enchantment_name <[enchant].to_titlecase>
+            #- define enchantment_level <[item].enchantment_map.get[<[enchant]>].proc[arabic_to_roman]>
+            #- define item_lore <[item_lore].include[<&7><[enchantment_name].replace[_].with[<&sp>].to_titlecase><&sp><[enchantment_level]>]>
+          #- give <[item].with[lore=<[item_lore]>]>
+      - give <player.flag[temp.soulbound_enchant]>
       - flag <player> temp.soulbound_enchant:!
 
 enchanted_book_opener:
