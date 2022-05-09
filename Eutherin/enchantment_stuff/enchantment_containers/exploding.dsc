@@ -9,12 +9,14 @@ exploding_enchantment:
   max_cost: <context.level.mul[3]>
   data:
     effect:
-      - Monsters explode after they are defeated dealing 2 damage per level
+      - Monsters explode after they are killed, dealing 2 damage/level
+      - _
+      - 5s cooldown
     item_slots:
       - sword
       - axe
   category: breakable
-  full_name: <&7>Explosion <context.level.to_roman_numerals>
+  full_name: <&7>Exploding <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3
   treasure_only: true
