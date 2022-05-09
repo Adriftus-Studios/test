@@ -3,4 +3,4 @@ Mm_no_morb:
   Debug: false
   Events:
     After mythicmob mob spawns:
-    - flag <context.entity> nomorb
+    - flag <context.entity> no_morb
