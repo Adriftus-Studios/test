@@ -14,7 +14,7 @@ exploding_enchantment:
       - sword
       - axe
   category: breakable
-  full_name: <&7>Explosion <context.level.to_roman_numerals>
+  full_name: <&7>Exploding <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3
   treasure_only: true
