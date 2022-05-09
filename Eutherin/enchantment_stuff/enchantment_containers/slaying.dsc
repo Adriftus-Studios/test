@@ -14,7 +14,7 @@ Slaying_enchantment:
       - Cannot be used with Banes, Sharpness, or Smite.
     item_slots:
       - all_weapons
-  category: weapon
+  category: breakable
   full_name: <&7>Slaying <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3
