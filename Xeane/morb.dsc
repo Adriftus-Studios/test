@@ -34,14 +34,14 @@ empty_morb_projectile:
   entity_type: snowball
   mechanisms:
     custom_name: <&7>Empty <&a>Morb
-    custom_model_data: 1
+    item: snowball[custom_model_data=1]
 
 filled_morb_projectile:
   type: entity
   entity_type: snowball
   mechanisms:
     custom_name: <&2>Filled <&a>Morb
-    custom_model_data: 2
+    item: snowball[custom_model_data=2]
 
 morb_events:
   type: world
