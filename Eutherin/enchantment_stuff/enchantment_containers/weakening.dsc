@@ -13,7 +13,7 @@ weakening_enchantment:
     item_slots:
       - sword
       - axe
-  category: weapon
+  category: breakable
   full_name: <&7>Weakening <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3

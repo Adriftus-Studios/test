@@ -27,7 +27,7 @@ player_damage_enchant_handler:
             - define cowardice_counter <[cowardice_counter].add[<player.inventory.slot[<[slot]>].enchantment_map.get[cowardice]>]>
             - foreach next
         - if <[cowardice_counter]> > 0:
-          - hurt <context.entity> <[cowardice_counter]>
+          - hurt <context.entity> <[cowardice_counter].div[4]>
 
 thundering_enchant_immunity:
   type: world
@@ -48,7 +48,7 @@ echo_enchant_handler:
   type: world
   debug: false
   events:
-    on entity damaged by player with:item_enchanted:echo:
+    after entity damaged by player with:item_enchanted:echo:
       - ratelimit <player> 12t
       - if <player.has_flag[temp.custom_enchant_echo_cooldown]>:
         - stop
@@ -81,7 +81,7 @@ pet_damage_enchant_handler:
           - define beastmaster_counter <[beastmaster_counter].add[<[owner].inventory.slot[<[slot]>].enchantment_map.get[beastmaster]>]>
           - foreach next
       - if <[beastmaster_counter]> > 0:
-        - hurt <context.entity> <[beastmaster_counter]>
+        - hurt <context.entity> <[beastmaster_counter].div[3]>
 
 non_player_death_enchant_handler:
   type: world
@@ -128,21 +128,22 @@ on_kill_enchant_handler:
       - if <[enchants_list].contains_any[guarding]>:
         - mythicskill <player> ShieldEnchant<player.item_in_hand.enchantment_map.get[guarding]>
       - if <[enchants_list].contains_any[vampirism]>:
-        - heal <player> <player.item_in_hand.enchantment_map.get[vampirism].mul[2]>
+        - heal <player> <player.item_in_hand.enchantment_map.get[vampirism]>
         - playeffect <player.location> effect:heart quantity:5f
       - if <[enchants_list].contains_any[Rampaging]> && <util.random.int[1].to[10]> > 8:
         - cast increase_damage amplifier:0 duration:<player.item_in_hand.enchantment_map.get[Rampaging].mul[5]>
-      - if <[enchants_list].contains_any[exploding]>:
+      - if <[enchants_list].contains_any[exploding]> && !<player.has_flag[enchantment.temp.explosion_cd]>:
         - define level <player.item_in_hand.enchantment_map.get[exploding]>
         - define location <context.entity.location>
         - playsound <[location].above[1]> sound:ENTITY_GENERIC_EXPLODE
         - playeffect <[location].above[1]> effect:explosion_large
+        - flag <player> enchantment.temp.explosion_cd expire:5s
         - foreach <[location].find_entities.within[10]> as:entity:
           - if <list[player|dropped_item|armor_stand|item_frame|arrow|trident|shulker_bullet|experience_orb].contains_any[<[entity].entity_type>]> || !<[entity].is_spawned> || <[entity].is_tamed||false>:
             - foreach next
           - playeffect effect:EXPLOSION_NORMAL <[entity].location.above[0.5]> quantity:3
           - playsound <[entity].location> sound:entity_<context.entity.entity_type>_hurt
-          - hurt <[entity]> <[level].mul[3]>
+          - hurt <[entity]> <[level].mul[2]>
           - foreach next
           - playeffect effect:EXPLOSION_NORMAL <[entity].location.above[0.5]> quantity:5
       - if <[enchants_list].contains_any[poison_cloud]>:

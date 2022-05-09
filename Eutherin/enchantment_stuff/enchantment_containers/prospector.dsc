@@ -14,7 +14,7 @@ prospector_enchantment:
       - Repeated strikes stack, up to the enchantment level.
     item_slots:
       - all_weapons
-  category: weapon
+  category: breakable
   full_name: <&7>Prospector <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3

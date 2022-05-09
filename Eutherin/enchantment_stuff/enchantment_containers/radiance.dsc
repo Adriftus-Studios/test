@@ -12,7 +12,7 @@ Radiance_enchantment:
       - Has a small chance to heal all nearby players for 2 per level.
     item_slots:
       - all_weapons
-  category: weapon
+  category: breakable
   full_name: <&7>Radiance <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3

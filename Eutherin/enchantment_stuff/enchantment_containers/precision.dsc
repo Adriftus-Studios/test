@@ -11,7 +11,7 @@ Precision_enchantment:
       - Causes more drops from sheared blocks and mobs
     item_slots:
       - shears
-  category: digger
+  category: breakable
   full_name: <&7>Precision <context.level.to_roman_numerals>
   min_level: 1
   max_level: 1
