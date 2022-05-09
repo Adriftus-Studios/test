@@ -12,7 +12,7 @@ Cruelty_enchantment:
       - Increases damage by 1.5 points per level to already damaged enemies.
     item_slots:
       - all_weapons
-  category: weapon
+  category: breakable
   full_name: <&7>Cruelty <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3
