@@ -13,7 +13,7 @@ mob_rarity_handler:
     - define rarity_roll <util.random.int[1].to[10000].div[1000]>
     - stop if:<[rarity_roll].is_more_than[<server.flag[custom_mob_data.mob_spawn_rates].keys.last>]>
     - foreach <server.flag[custom_mob_data.mob_spawn_rates].keys>:
-      - if <[rarity_roll]> < <[value]>:
+      - if <[rarity_roll]> <= <[value]>:
         - define rarity <server.flag[custom_mob_data.mob_spawn_rates].get[<[value]>]>
         - foreach stop
     - define suffix_master_list <server.flag[custom_mob_data.valid_suffixes]>

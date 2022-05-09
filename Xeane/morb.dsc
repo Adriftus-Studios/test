@@ -12,8 +12,6 @@ morb_empty:
   material: feather
   display name: <&7>Empty <&a>Morb
   lore:
-    - "<&e>Rarity: <&a>Uncommon"
-    - "<&6>~~~~~~~~~~~~~~~~~~~~~~~~"
     - "<&b>Throw at an Entity to capture it."
   mechanisms:
     custom_model_data: 1
@@ -23,9 +21,6 @@ morb_filled:
   debug: false
   material: feather
   display name: <&2>Filled <&a>Morb
-  lore:
-    - "<&e>Rarity: <&a>Uncommon"
-    - "<&6>~~~~~~~~~~~~~~~~~~~~~~~~"
   mechanisms:
     custom_model_data: 2
 
