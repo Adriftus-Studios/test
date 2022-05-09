@@ -9,7 +9,9 @@ exploding_enchantment:
   max_cost: <context.level.mul[3]>
   data:
     effect:
-      - Monsters explode after they are defeated dealing 2 damage per level
+      - Monsters explode after they are killed, dealing 2 damage/level
+      - _
+      - 5s cooldown
     item_slots:
       - sword
       - axe
