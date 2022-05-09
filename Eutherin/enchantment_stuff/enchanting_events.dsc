@@ -48,7 +48,7 @@ echo_enchant_handler:
   type: world
   debug: false
   events:
-    on entity damaged by player with:item_enchanted:echo:
+    after entity damaged by player with:item_enchanted:echo:
       - ratelimit <player> 12t
       - if <player.has_flag[temp.custom_enchant_echo_cooldown]>:
         - stop
