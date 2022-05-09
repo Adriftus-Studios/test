@@ -27,7 +27,7 @@ player_damage_enchant_handler:
             - define cowardice_counter <[cowardice_counter].add[<player.inventory.slot[<[slot]>].enchantment_map.get[cowardice]>]>
             - foreach next
         - if <[cowardice_counter]> > 0:
-          - hurt <context.entity> <[cowardice_counter]>
+          - hurt <context.entity> <[cowardice_counter].div[4]>
 
 thundering_enchant_immunity:
   type: world
