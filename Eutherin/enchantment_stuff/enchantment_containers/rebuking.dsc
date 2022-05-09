@@ -15,7 +15,7 @@ Rebuking_enchantment:
       - 2S cd per stack Jump during block to release
     item_slots:
       - Shield
-  category: weapon
+  category: breakable
   full_name: <&7>Rebuking <context.level.to_roman_numerals>
   min_level: 1
   max_level: 4
