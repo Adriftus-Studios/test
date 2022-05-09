@@ -81,7 +81,7 @@ pet_damage_enchant_handler:
           - define beastmaster_counter <[beastmaster_counter].add[<[owner].inventory.slot[<[slot]>].enchantment_map.get[beastmaster]>]>
           - foreach next
       - if <[beastmaster_counter]> > 0:
-        - hurt <context.entity> <[beastmaster_counter]>
+        - hurt <context.entity> <[beastmaster_counter].div[3]>
 
 non_player_death_enchant_handler:
   type: world
