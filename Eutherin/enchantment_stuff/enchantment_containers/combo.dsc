@@ -17,7 +17,7 @@ combo_enchantment:
       - axe
       - bows
       - crossbows
-  category: weapon
+  category: breakable
   full_name: <&7>Combo <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3
