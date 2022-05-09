@@ -52,6 +52,7 @@ enchant_anvil_renamer:
   debug: false
   events:
     on player prepares anvil craft item:
+      - announce test
       - if <context.inventory.slot[3].material.name> == air || <context.inventory.slot[2].has_flag[no_custom_enchants]> || <context.inventory.slot[1].has_flag[no_custom_enchants]>:
         - stop
 #      - define item_lore <list[]>
