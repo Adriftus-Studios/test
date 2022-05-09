@@ -132,17 +132,18 @@ on_kill_enchant_handler:
         - playeffect <player.location> effect:heart quantity:5f
       - if <[enchants_list].contains_any[Rampaging]> && <util.random.int[1].to[10]> > 8:
         - cast increase_damage amplifier:0 duration:<player.item_in_hand.enchantment_map.get[Rampaging].mul[5]>
-      - if <[enchants_list].contains_any[exploding]>:
+      - if <[enchants_list].contains_any[exploding]> && !<player.has_flag[enchantment.temp.explosion_cd]>:
         - define level <player.item_in_hand.enchantment_map.get[exploding]>
         - define location <context.entity.location>
         - playsound <[location].above[1]> sound:ENTITY_GENERIC_EXPLODE
         - playeffect <[location].above[1]> effect:explosion_large
+        - flag <player> enchantment.temp.explosion_cd expire:5s
         - foreach <[location].find_entities.within[10]> as:entity:
           - if <list[player|dropped_item|armor_stand|item_frame|arrow|trident|shulker_bullet|experience_orb].contains_any[<[entity].entity_type>]> || !<[entity].is_spawned> || <[entity].is_tamed||false>:
             - foreach next
           - playeffect effect:EXPLOSION_NORMAL <[entity].location.above[0.5]> quantity:3
           - playsound <[entity].location> sound:entity_<context.entity.entity_type>_hurt
-          - hurt <[entity]> <[level].mul[3]>
+          - hurt <[entity]> <[level].mul[2]>
           - foreach next
           - playeffect effect:EXPLOSION_NORMAL <[entity].location.above[0.5]> quantity:5
       - if <[enchants_list].contains_any[poison_cloud]>:
