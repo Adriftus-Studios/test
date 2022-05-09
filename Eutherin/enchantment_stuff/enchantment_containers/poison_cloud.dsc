@@ -14,7 +14,7 @@ Poison_Cloud_enchantment:
       - Damage increases by 1 per level.
     item_slots:
       - all_weapons
-  category: weapon
+  category: breakable
   full_name: <&7>Poison Cloud <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3
