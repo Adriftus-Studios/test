@@ -20,5 +20,5 @@ spikes_enchantment:
   min_level: 1
   max_level: 5
   is_tradable: false
-  can_enchant: <context.item.advanced_matches[shield]>
+  can_enchant: <context.item.advanced_matches[*_shield]>
 #  is_compatible:
