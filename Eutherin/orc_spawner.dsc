@@ -1,5 +1,5 @@
 Orc_spawn_task:
-  Type: task
+  Type: world
   Debug: false
   Events:
     On delta time every:15:
