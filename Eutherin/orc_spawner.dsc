@@ -4,7 +4,7 @@ Orc_spawn_task:
   Events:
     On delta time secondly every:10:
       ‐ if <server.online_players.size> != 0:
-        - define count <server.online_players.size.div[5].round_up>,
+        - define count <server.online_players.size.div[5].round_up>
         - define select_few <server.online_players.random[<[count]>]>
         - foreach <[select_few]> as:poor_soul:
           - choose <[poor_soul].location.biome>:
