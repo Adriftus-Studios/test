@@ -2,7 +2,7 @@ Orc_spawn_task:
   Type: world
   Debug: false
   Events:
-    On delta time secondly every:10:
+    On delta time secondly every:1:
       ‐ if <server.online_players.size> != 0:
         - define count <server.online_players.size.div[5].round_up>
         - define select_few <server.online_players.random[<[count]>]>
