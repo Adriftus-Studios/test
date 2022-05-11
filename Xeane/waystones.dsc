@@ -51,6 +51,8 @@ waystone_use:
     - if <player.has_flag[waystones.<context.entity.flag[town]>]>:
       - inject waystone_open_teleport_menu
     - else:
+      - run totem_test def:2
+      - title "title:<&a>Waystone Unlocked!" fade_in:1s stay:1s fade_out:1s
       - flag <player> waystones.<context.entity.flag[town]>.location:<context.entity.location.simple>
       - flag <player> waystones.<context.entity.flag[town]>.entity_uuid:<context.entity.uuid>
       - flag <context.entity> unlocked_players:->:<player>
@@ -120,8 +122,8 @@ waystone_open_teleport_menu:
         - foreach next
       - give waystone_gui_item[flag=town:<town[<[town]>]>;display=<town[<[town]>].name>] to:<[inventory]>
 
-    ## For Mayor only
-    ## Revert Waystone to item form
+    # For Mayor only
+    # Revert Waystone to item form
     - if <player> == <context.entity.flag[town].mayor>:
       - inventory set slot:46 o:waystone_remove_item[flag=town:<context.entity.flag[town]>] d:<[inventory]>
 
