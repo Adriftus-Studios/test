@@ -50,8 +50,8 @@ waystone_use:
     - if <player.has_flag[waystones.<context.entity.flag[town]>]>:
       - inject waystone_open_teleport_menu
     - else:
-      - flag <player> waystones.<context.entity.town>.location:<context.entity.location.simple>
-      - flag <player> waystones.<context.entity.town>.entity_uuid:<context.entity.uuid>
+      - flag <player> waystones.<context.entity.flag[town]>.location:<context.entity.location.simple>
+      - flag <player> waystones.<context.entity.flag[town]>.entity_uuid:<context.entity.uuid>
       - flag <context.entity> unlocked_players:->:<player>
 
 waystone_rename:
