@@ -79,6 +79,15 @@ waystone_gui_item:
   display name: <&c>PLACEHOLDER
   mechanisms:
     custom_model_data: 20
+  flags:
+    run_script: waystone_teleport
+
+waystone_teleport:
+  type: task
+  debug: false
+  script:
+    - define town <context.item.flag[town]>
+    - run teleportation_animation_run def:<[town].flag[waystone.tp_location]>
 
 waystone_teleport_menu:
   type: inventory
