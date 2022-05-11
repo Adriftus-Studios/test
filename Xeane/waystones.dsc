@@ -42,6 +42,7 @@ waystone_place:
     - flag <[town]> waystone.location:<entry[waystone].spawned_entity.location.simple>
     - flag <[town]> waystone.tp_location:<player.location.with_pose[0,<player.location.yaw.sub[180]>]>
     - flag <entry[waystone].spawned_entity> town:<context.location.town>
+    - take iteminhand
 
 waystone_use:
   type: task
