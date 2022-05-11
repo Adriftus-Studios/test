@@ -21,6 +21,9 @@ waystone_place:
       - stop
     - define town <context.location.town>
     - spawn "waystone_entity[custom_name=<context.location.town.name> <&f>Waystone]" <context.location.above.center.below[0.49]> save:waystone
+    - if !<entry[waystone].spawned_entity.is_spawned>:
+      - narrate "<&c>ERROR"
+      - stop
     - flag <[town]> waystone.entity:<entry[waystone].spawned_entity>
     - flag <[town]> waystone.location:<entry[waystone].spawned_entity.location.simple>
     - flag <[town]> waystone.tp_location:<player.location.with_pose[0,<player.location.sub[180]>]>
