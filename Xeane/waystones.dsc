@@ -6,6 +6,20 @@ waystone:
   flags:
     right_click_script: waystone_place
 
+waystone_entity:
+  type: entity
+  debug: false
+  entity_type: armor_stand
+  mechanisms:
+    custom_name_visible: true
+    visible: false
+    gravity: false
+    equipment:
+      helmet: feather[custom_model_data=20]
+  flags:
+    right_click_script: waystone_use
+    on_entity_added: waystone_rename
+
 waystone_place:
   type: task
   debug: false
@@ -28,8 +42,6 @@ waystone_place:
     - flag <[town]> waystone.location:<entry[waystone].spawned_entity.location.simple>
     - flag <[town]> waystone.tp_location:<player.location.with_pose[0,<player.location.sub[180]>]>
     - flag <entry[waystone].spawned_entity> town:<context.location.town>
-    - flag <entry[waystone].spawned_entity> right_click_script:waystone_use
-    - flag <entry[waystone].spawned_entity> on_entity_added:waystone_rename
 
 waystone_use:
   type: task
