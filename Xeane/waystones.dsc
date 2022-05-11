@@ -40,7 +40,7 @@ waystone_place:
       - stop
     - flag <[town]> waystone.entity:<entry[waystone].spawned_entity>
     - flag <[town]> waystone.location:<entry[waystone].spawned_entity.location.simple>
-    - flag <[town]> waystone.tp_location:<player.location.with_pose[0,<player.location.sub[180]>]>
+    - flag <[town]> waystone.tp_location:<player.location.with_pose[0,<player.location.yaw.sub[180]>]>
     - flag <entry[waystone].spawned_entity> town:<context.location.town>
 
 waystone_use:
