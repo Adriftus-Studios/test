@@ -118,7 +118,7 @@ waystone_open_teleport_menu:
       - if <player.flag[waystones.<[town]>.location]> != <town[<[town]>].flag[waystone.location]>:
         - flag <player> waystones.<[town]>:!
         - foreach next
-      - give waystone_gui_item[flag=town:<town[town]>;display=<town[<[town]>].name>] to:<[inventory]>
+      - give waystone_gui_item[flag=town:<town[<[town]>]>;display=<town[<[town]>].name>] to:<[inventory]>
 
     ## For Mayor only
     ## Revert Waystone to item form
