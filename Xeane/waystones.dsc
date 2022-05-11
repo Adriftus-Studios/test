@@ -71,6 +71,7 @@ waystone_remove:
       - flag <[value]> waystones.<[town]>:!
     - flag <[town]> waystone:!
     - inventory close
+    - give waystone to:<player.inventory>
 
 waystone_gui_item:
   type: item
@@ -98,16 +99,16 @@ waystone_open_teleport_menu:
   debug: false
   script:
     - define inventory <inventory[waystone_teleport_menu]>
-    - foreach <player.flag[waystones]> key:key as:value:
-      - if <[value].mod[45]> == 0:
+    - foreach <player.flag[waystones]> key:town as:value:
+      - if <[loop_index].mod[45]> == 0:
         - foreach stop
-      - if !<town[<[key]>].exists>:
-        - flag <player> waystones.<[key]>:!
+      - if !<town[<[town]>].exists>:
+        - flag <player> waystones.<[town]>:!
         - foreach next
-      - if <player.flag[waystone.<[key]>.location]> != <town[<[key]>].flag[waystone]>:
-        - flag <player> waystones.<[key]>:!
+      - if <player.flag[waystone.<[town]>.location]> != <town[<[town]>].flag[waystone]>:
+        - flag <player> waystones.<[town]>:!
         - foreach next
-      - give waystone_gui_item[flag=town:<[key]>;display=<town[<[key]>].name>] to:<[inventory]>
+      - give waystone_gui_item[flag=town:<town[town]>;display=<town[<[town]>].name>] to:<[inventory]>
 
     ## For Mayor only
     ## Revert Waystone to item form
