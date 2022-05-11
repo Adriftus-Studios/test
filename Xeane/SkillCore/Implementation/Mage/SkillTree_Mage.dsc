@@ -24,3 +24,10 @@ impl_skillTree_mage_icon:
   - "<&a>Skills for the Mage Class"
   mechanisms:
     custom_model_data: 3
+
+impl_skillTree_warrior_events:
+  type: world
+  debug: false
+  events:
+    on player kills entity flagged:class.mage:
+      - run skill_core_lose_experience def:mage|1
