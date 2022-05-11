@@ -54,6 +54,7 @@ waystone_use:
   type: task
   debug: false
   script:
+    - determine passively cancelled
     - if <player.has_flag[waystones.<context.entity.flag[town]>]>:
       - inject waystone_open_teleport_menu
     - else:
@@ -140,6 +141,6 @@ waystone_open_teleport_menu:
     # For Mayor only
     # Revert Waystone to item form
     - if <player> == <context.entity.flag[town].mayor>:
-      - inventory set slot:46 o:waystone_remove_item[flag=town:<context.entity.flag[town]>] d:<[inventory]>
+      - inventory set slot:50 o:waystone_remove_item[flag=town:<context.entity.flag[town]>] d:<[inventory]>
 
     - inventory open d:<[inventory]>
