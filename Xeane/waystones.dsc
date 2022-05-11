@@ -24,6 +24,7 @@ waystone_place:
   type: task
   debug: false
   script:
+    - ratelimit <player> 1t
     - if !<context.location.town.exists>:
       - narrate "<&c>Waystones must be placed in a town."
       - stop
@@ -34,7 +35,7 @@ waystone_place:
       - narrate "<&c>You can only have one waystone in your Town"
       - stop
     - define town <context.location.town>
-    - spawn "waystone_entity[custom_name=<&a><context.location.town.name> <&f>Waystone]" <context.location.above.center.below[0.49]> save:waystone
+    - spawn "waystone_entity[custom_name=<&6><context.location.town.name> Waystone]" <context.location.above.center.below[0.49]> save:waystone
     - if !<entry[waystone].spawned_entity.is_spawned>:
       - narrate "<&c>ERROR - Report Me - Error Code<&co> WaystoneNotSpawning"
       - stop
