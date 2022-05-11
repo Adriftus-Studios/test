@@ -46,14 +46,23 @@ waystone_rename:
     - stop
     ## PLACEHOLDER FOR FUTURE CODE
 
-waystone_remove_item:
+waystone_remove:
   type: task
   debug: false
   script:
     - define town <context.item.flag[town]>
     - remove <[town].flag[waystone.entity]>
+    - foreach <[town].flag[waystone.entity].flag[unlocked_players]>:
+      - flag <[value]> waystones.<[town]>:!
     - flag <[town]> waystone:!
     - inventory close
+
+waystone_gui_item:
+  type: item
+  material: feather
+  display name: <&c>PLACEHOLDER
+  mechanisms:
+    custom_model_data: 20
 
 waystone_teleport_menu:
   type: inventory
@@ -61,6 +70,13 @@ waystone_teleport_menu:
   size: 54
   title: <&a>Available Waystones
   gui: true
+
+waystone_remove_item:
+  type: item
+  material: barrier
+  display name: <&c>Remove Waystone
+  flags:
+    run_script: waystone_remove
 
 waystone_open_teleport_menu:
   type: task
@@ -76,10 +92,10 @@ waystone_open_teleport_menu:
       - if <player.flag[waystone.<[key]>.location]> != <town[<[key]>].flag[waystone]>:
         - flag <player> waystones.<[key]>:!
         - foreach next
-      - give waystone_item[flag=town:<[key]>] to:<[inventory]>
+      - give waystone_gui_item[flag=town:<[key]>;display=<town[<[key]>].name>] to:<[inventory]>
 
-    # For Mayor only
-    # Revert Waystone to item form
+    ## For Mayor only
+    ## Revert Waystone to item form
     - if <player> == <context.entity.flag[town].mayor>:
       - inventory set slot:46 o:waystone_remove_item[flag=town:<context.entity.flag[town]>] d:<[inventory]>
 
