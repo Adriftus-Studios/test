@@ -17,3 +17,12 @@ death_log_command:
         - narrate "<player.name>'s last 40 deaths:"
         - foreach <player.flag[death_log]> as:dl:
             - narrate <[dl]>
+
+#Map format - 
+#<player>:
+#    - "death_time" : "location x y z, world"
+#    - ...39 more
+
+# - More players = more data will be piled
+# - "Death time" is system time
+# - "Location x y z, world" is eg. "1,2,3,world"
