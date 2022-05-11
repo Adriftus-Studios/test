@@ -105,7 +105,7 @@ waystone_open_teleport_menu:
       - if !<town[<[town]>].exists>:
         - flag <player> waystones.<[town]>:!
         - foreach next
-      - if <player.flag[waystone.<[town]>.location]> != <town[<[town]>].flag[waystone]>:
+      - if <player.flag[waystone.<[town]>.location]> != <town[<[town]>].flag[waystone.location]>:
         - flag <player> waystones.<[town]>:!
         - foreach next
       - give waystone_gui_item[flag=town:<town[town]>;display=<town[<[town]>].name>] to:<[inventory]>
