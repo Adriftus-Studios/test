@@ -28,11 +28,11 @@ dwisp_run:
           - flag <player> dwisp.active.location:<player.eye_location>
           - define targets <player.location.find_players_within[100]>
           - repeat 20:
-            - playeffect effect:redstone at:<player.flag[dwisp.active.location].above[0.1]> offset:0.1 quantity:5 special_data:1.25|<player.flag[dwisp.data.color1]> targets:<[targets]>
-            - playeffect effect:redstone at:<player.flag[dwisp.active.location].above[0.1]> offset:0.1 quantity:5 special_data:1.25|<player.flag[dwisp.data.color2]> targets:<[targets]>
+            - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.1 quantity:5 special_data:1.25|<player.flag[dwisp.data.color1]> targets:<[targets]>
+            - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.1 quantity:5 special_data:1.25|<player.flag[dwisp.data.color2]> targets:<[targets]>
             - flag <player> dwisp.active.location:<player.flag[dwisp.active.location].above[0.1]>
             - wait 2t
-          - flag <player> dwisp.active.task:idle if:<player.has_flag[dwisp.active.task].not>
+          - flag <player> dwisp.active.task:idle
         - case sleep:
           - define targets <player.location.find_players_within[100]>
           - flag <player> dwisp.active.path:<proc[define_curve1].context[<player.flag[dwisp.active.location]>|<player.eye_location.above[2]>|2|90|0.1]>
