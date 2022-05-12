@@ -68,7 +68,7 @@ dwisp_apply_traits:
       - define wisp <player.flag[dwisp.active.entity]>
     - if !<[wisp].is_spawned>:
       - stop
-    - foreach <player.flag[dwisp.data.traits]> as:trait:
+    - foreach <player.flag[dwisp.data.traits]> key:trait as:value:
       - choose <[trait]>:
         - case inventory:
           - if <player.flag[dwisp.data.traits.inventory]> == off && <[wisp].flag[right_click_scripts].contains[dwisp_open_inventory].if_null[false]>:
