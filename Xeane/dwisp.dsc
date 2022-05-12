@@ -14,7 +14,7 @@ dwisp_command:
   description: dWisp
   permission: adriftus.admin
   tab completions:
-    1: spawn|guard|guard|stay|follow|sleep
+    1: spawn|guard|stay|follow|sleep
     2: <server.online_players.parse[name]>
   script:
     - if <context.args.size> < 1:
