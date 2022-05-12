@@ -429,4 +429,4 @@ dwisp_run:
             - flag player dwisp.active.task:far_idle
           - else:
             - flag player dwisp.active.task:<player.flag[dwisp.active.queued_actions].first>
-            - flag player dwisp.active.queued_action:!|:<player.flag[dwisp.active.queued_actions].remove[first]>
+            - flag player dwisp.active.queued_actions:!|:<player.flag[dwisp.active.queued_actions].remove[first]>
