@@ -210,3 +210,18 @@ dwisp_run:
                 - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
                 - flag <player> dwisp.active.location:<[point]>
                 - wait 2t
+
+        # Player Assumes Wisp Form
+        - case assumed:
+          - define start_loc <player.location>
+          - define gamemode <player.gamemode>
+          - adjust <player> gamemode:spectator
+          - while <player.flag[dwisp.active.task]> == assumed && <player.is_online>:
+            - playeffect effect:redstone at:<player.location> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
+            - playeffect effect:redstone at:<player.location> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
+            - flag <player> dwisp.active.location:<player.location>
+            - wait 2t
+          - flag <player> dwisp.active.task:stay
+          - flag <player> dwisp.active.stay_target:<player.location>
+          - adjust <player> location:<[start_loc]>
+          - adjust <player> gamemode:<[gamemode]>
