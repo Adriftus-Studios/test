@@ -7,5 +7,5 @@ feed_player_command:
     tab completion:
         1: <server.online_players.parse[name]>
     script:
-        - if <context.args.get[1].matches:
-            - feed <play>
+        - if <context.args.get[1].contains[<server.online_players.parse[name]>]>:
+            - feed <context.args.get[1]>
