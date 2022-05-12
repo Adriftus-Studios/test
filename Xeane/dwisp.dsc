@@ -48,14 +48,19 @@ dwisp_heal_target:
     - define distance <player.flag[dwisp.active.location].distance[<[target].location>].mul[0.1]>
     - define points <player.flag[dwisp.active.location].points_between[<[target].eye_location.below>].distance[<[distance]>]>
     - define targets <player.flag[dwisp.active.location].find_players_within[100]>
-    - foreach <[points]> as:point:
+    - repeat 10:
+      - define point <[target.eye_location].sub[<player.flag[dwisp.active.location]>].mul[<[value].mul[0.1]>]>
       - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1|<player.flag[dwisp.data.color1]> targets:<[targets]>
       - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.5|<player.flag[dwisp.data.color2]> targets:<[targets]>
       - wait 1t
     - heal <[target]>
     - feed <[target]>
+    - repeat 5:
+      - playeffect effect:redstone at:<[target].above> offset:0.25,0.75,0.25 quantity:10 special_data:2|<player.flag[dwisp.data.color1]> targets:<[targets]>
+      - playeffect effect:redstone at:<[target].above> offset:0.25,0.75,0.25 quantity:10 special_data:1|<player.flag[dwisp.data.color2]> targets:<[targets]>
+      - wait 1t
     - ratelimit <[target]> 5s
-    - narrate "<&a>You Feel Invigorated"
+    - narrate "<&a>You Feel Invigorated" targets:<[target]>
 
 dwisp_run:
   type: task
