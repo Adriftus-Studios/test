@@ -29,6 +29,7 @@ dwisp_command:
 
       # Follow
       - case follow:
+        - flag player dwisp.active.queued_actions:->:far_idle
         - flag player dwisp.active.task:!
 
       # Stay
