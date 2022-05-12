@@ -7,6 +7,19 @@ dwisp_populate:
   events:
     on server start:
 
+dwisp_command:
+  type: command
+  name: dwisp
+  usage: /dwisp (command) (args)
+  description: dWisp
+  permission: adriftus.admin
+  script:
+    - if <context.args.size> < 1:
+      - narrate "<&c>You must specify arguments"
+      - stop
+    - choose <context.args.get[1]>:
+      - case spawn
+
 dwisp_armor_stand:
   type: entity
   debug: false
@@ -137,7 +150,7 @@ dwisp_run:
               - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
               - flag <player> dwisp.active.location:<[point]>
               - wait 2t
-            - while <player.flag[dwisp.active.task]> == stay && <player.is_online>:
+            - while <player.flag[dwisp.active.task]> == stay:
               - if <[loop_index].mod[100]> == 0:
                 - define targets <[target].find_players_within[100]>
               - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.25|<player.flag[dwisp.data.color1]> targets:<[targets]>
