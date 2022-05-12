@@ -107,7 +107,7 @@ dwisp_run:
               - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
               - flag <player> dwisp.active.location:<[point]>
               - wait 2t
-            - if <[mob]> != none:
+            - if <[mob]> != none && <[mob].is_spawned>:
               - repeat 10:
                 - playeffect effect:redstone at:<[mob].location.above> offset:0.25,0.75,0.25 quantity:20 special_data:5|<player.flag[dwisp.data.color1]> targets:<[targets]>
                 - playeffect effect:redstone at:<[mob].location.above> offset:0.25,0.75,0.25 quantity:20 special_data:2|<player.flag[dwisp.data.color2]> targets:<[targets]>
@@ -117,7 +117,7 @@ dwisp_run:
 
         # Stay Put
         - case stay:
-            - define target <player.cursor_on.center.above[2].if_null[<player.location.center.above[3]>]>
+            - define target <player.flag[dwisp.active.stay_target]>
             - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<[target]>|2|<util.random.int[-20].to[20]>|<player.flag[dwisp.active.location].distance[<[target]>].mul[0.1]>]>
             - define targets <[target].find_players_within[100]>
             - foreach <[points]> as:point:
