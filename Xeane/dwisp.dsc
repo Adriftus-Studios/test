@@ -271,7 +271,7 @@ dwisp_run:
           - define targets <player.location.find_players_within[100]>
           - if <player.location.world> != <player.flag[dwisp.active.location].world>:
             - flag player dwisp.active.location:<player.eye_location.above>
-          - flag player dwisp.active.path:<proc[define_curve1].context[<player.flag[dwisp.active.location]>|<player.eye_location.above[2]>|2|90|0.1]>
+          - flag player dwisp.active.path:<proc[define_curve1].context[<player.flag[dwisp.active.location]>|<player.eye_location.above[2]>|2|90|<player.flag[dwisp.active.location].distance[<[destination]>].mul[0.05]>]>
           - foreach <player.flag[dwisp.active.path]> as:point:
             - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
             - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
