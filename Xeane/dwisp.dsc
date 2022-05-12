@@ -121,7 +121,7 @@ dwisp_open_inventory:
     - define inventory_name <context.entity.flag[inventory]>
     - if <[owner].has_flag[dwisp.data.inventories.<[inventory_name]>]>:
       - inventory set d:<[inventory]> o:<[owner].flag[dwisp.data.inventories.<[inventory]>].with[54].as[air]>
-    - inventory set slot:5 "o:eye_of_ender[display=<context.entity.custom_name>;flag=owner:<[owner]>;flag=inventory:<[inventory_name]>;lore=<&e>Wisp Inventory;<&c>Messenger of a God]" d:<[inventory]>
+    - inventory set slot:5 "o:ender_eye[display=<context.entity.custom_name>;flag=owner:<[owner]>;flag=inventory:<[inventory_name]>;lore=<&e>Wisp Inventory;<&c>Messenger of a God]" d:<[inventory]>
     - inventory open d:<[inventory]>
 
 dwisp_armor_stand:
