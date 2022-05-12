@@ -320,7 +320,7 @@ dwisp_run:
         - case guard_area:
           - define target <player.flag[dwisp.active.guard_area].if_null[<player.location>]>
           - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<[target].above[20]>|2|90|0.75]>
-          - define targets <[target].location.find_players_within[100]>
+          - define targets <[target].find_players_within[100]>
           - foreach <[points]> as:point:
             - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
             - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
