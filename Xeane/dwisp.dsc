@@ -99,7 +99,7 @@ dwisp_run:
             - if <[mob]> != none && <[mob].is_spawned>:
               - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<[mob].eye_location>|2|<util.random.int[-20].to[20]>|<player.flag[dwisp.active.location].distance[<[mob].eye_location>].mul[0.1]>]>
             - else:
-              - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<[target].location.above[2].random_offset[1,0.5,1]>|2|<util.random.int[-20].to[20]>|<[target].flag[dwisp.active.location].distance[<[target].eye_location>].mul[0.1]>]>
+              - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<[target].location.above[2].random_offset[1,0.5,1]>|2|<util.random.int[-20].to[20]>|<player.flag[dwisp.active.location].distance[<[target].eye_location>].mul[0.1]>]>
             - define targets <[target].location.find_players_within[100]>
             - foreach <[points]> as:point:
               - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.25|<player.flag[dwisp.data.color1]> targets:<[targets]>
