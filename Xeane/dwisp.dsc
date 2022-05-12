@@ -118,11 +118,6 @@ dwisp_run:
             - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
             - flag <player> dwisp.active.location:<player.flag[dwisp.active.location].above[0.1]>
             - wait 2t
-          - if !<player.has_flag[dwisp.active.queued_action]>:
-            - flag <player> dwisp.active.task:far_idle
-          - else:
-            - flag player dwisp.active.task:<player.flag[dwisp.active.queued_action]>
-            - flag player dwisp.active.queued_action:!
 
         # Despawning Wisp
         - case sleep:
@@ -239,3 +234,9 @@ dwisp_run:
           - flag <player> dwisp.active.stay_target:<player.location>
           - adjust <player> location:<[start_loc]>
           - adjust <player> gamemode:<[gamemode]>
+        - case default:
+          - if !<player.has_flag[dwisp.active.queued_actions]> && !<player.has_flag[dwisp.active.queued_actions].is_empty>:
+            - flag <player> dwisp.active.task:far_idle
+          - else:
+            - flag player dwisp.active.task:<player.flag[dwisp.active.queued_actions].first>
+            - flag player dwisp.active.queued_action:<-:<player.flag[dwisp.active.queued_actions].first>
