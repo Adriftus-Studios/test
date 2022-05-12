@@ -12,6 +12,9 @@ dwisp_run:
   type: task
   debug: false
   script:
+    - if !<player.has_flag[dwisp.data.color1]> || !<player.has_flag[dwisp.data.color2]>:
+      - narrate "<&c>You must configure your dWisp colors first"
+      - stop
     - while <player.has_flag[dwisp.active]>:
       - choose <player.flag[dwisp.active.task]>:
         - case idle:
