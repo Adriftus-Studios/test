@@ -63,6 +63,8 @@ dwisp_heal_target:
     - ratelimit <[target]> 5s
     - narrate "<&a>You Feel Invigorated" targets:<[target]>
 
+
+
 dwisp_run:
   type: task
   debug: false
@@ -77,6 +79,8 @@ dwisp_run:
         # Basic Idle Animation
         - case idle:
           - while <player.flag[dwisp.active.task]> == idle && <player.is_online>:
+            - if <player.location.world> != <player.flag[dwisp.active.location].world>:
+              - flag <player> dwisp.active.location:<player.eye_location.above>
             - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<player.location.above[2].random_offset[1,0.5,1]>|2|<util.random.int[-20].to[20]>|<player.flag[dwisp.active.location].distance[<player.eye_location>].mul[0.1]>]>
             - define targets <player.location.find_players_within[100]>
             - foreach <[points]> as:point:
@@ -89,6 +93,8 @@ dwisp_run:
         # Far Idle (5 opposed to 2 blocks)
         - case far_idle:
           - while <player.flag[dwisp.active.task]> == far_idle && <player.is_online>:
+            - if <player.location.world> != <player.flag[dwisp.active.location].world>:
+              - flag <player> dwisp.active.location:<player.eye_location.above>
             - define destination <player.location.add[<player.location.sub[<player.flag[dwisp.active.location]>].normalize.mul[5]>].with_y[<player.eye_location.above.y>]>
             - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<[destination].random_offset[3,1,3]>|2|<util.random.int[-20].to[20]>|<player.flag[dwisp.active.location].distance[<[destination]>].mul[0.05]>]>
             - define targets <player.location.find_players_within[100]>
@@ -98,7 +104,7 @@ dwisp_run:
               - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
               - flag <player> dwisp.active.location:<[point]>
               - wait 2t
-        
+
         # Spawning Wisp
         - case spawn:
           - flag <player> dwisp.active.location:<player.eye_location>
@@ -117,10 +123,12 @@ dwisp_run:
           - else:
             - flag player dwisp.active.task:<player.flag[dwisp.active.queued_action]>
             - flag player dwisp.active.queued_action:!
-        
+
         # Despawning Wisp
         - case sleep:
           - define targets <player.location.find_players_within[100]>
+          - if <player.location.world> != <player.flag[dwisp.active.location].world>:
+            - flag <player> dwisp.active.location:<player.eye_location.above>
           - flag <player> dwisp.active.path:<proc[define_curve1].context[<player.flag[dwisp.active.location]>|<player.eye_location.above[2]>|2|90|0.1]>
           - foreach <player.flag[dwisp.active.path]> as:point:
             - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
@@ -136,11 +144,13 @@ dwisp_run:
             - wait 2t
           - remove <player.flag[dwisp.active.entity]>
           - flag <player> dwisp.active:!
-        
+
         # Guard Player
         - case guard_target:
           - define target <player.flag[dwisp.active.guard_target]>
           - while <player.flag[dwisp.active.task]> == guard_target && <player.is_online> && <[target].is_online>:
+            - if <[target].location.world> != <player.flag[dwisp.active.location].world>:
+              - flag <player> dwisp.active.location:<[target].eye_location.above>
             - if <[target].health> != <[target].health_max>:
               - run dwisp_heal_target def:<[target]>
             - define mob <[target].location.find_entities[monster].within[30].random.if_null[none]>
@@ -198,6 +208,7 @@ dwisp_run:
                 - wait 2t
               - drop dwisp_dropped_item[item=<[item]>;custom_name=<&a><[item].display.if_null[<[item].formatted>]>] <player.flag[dwisp.active.location]>
               - repeat 20:
+                - teleport <player.flag[dwisp.active.entity]> <player.flag[dwisp.active.location].below[0.5]>
                 - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
                 - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
                 - wait 2t
@@ -217,6 +228,7 @@ dwisp_run:
           - define start_loc <player.location>
           - define gamemode <player.gamemode>
           - adjust <player> gamemode:spectator
+          - teleport <player> <player.flag[dwisp.active.location]>
           - while <player.flag[dwisp.active.task]> == assumed && <player.is_online>:
             - teleport <player.flag[dwisp.active.entity]> <player.location.below[0.5]>
             - playeffect effect:redstone at:<player.location> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
