@@ -14,7 +14,7 @@ dwisp_command:
   description: dWisp
   permission: adriftus.admin
   tab completions:
-    1: spawn|area_guard|player_guard|stay|follow|sleep
+    1: spawn|guard|guard|stay|follow|sleep
     2: <server.online_players.parse[name]>
   script:
     - if <context.args.size> < 1:
@@ -47,18 +47,23 @@ dwisp_command:
         - flag player dwisp.active.task:!
       
       # Guard Player
-      - case guard_player:
+      - case guard:
         - if <context.args.size> < 2:
-          - narrate "<&c>Must Specify Player Name!"
+          - narrate "<&c>Must Specify Player Name or 'area'!"
           - stop
-        - define target <server.match_player[<context.args.get[2]>].if_null[null]>
-        - if <[target]> == null:
-          - narrate "<&c>Unknown Player<&co><&e> <context.args.get[2]>"
-          - stop
-        - flag player dwisp.active.guard_target:<[target]>
-        - flag player dwisp.active.queued_actions:->:guard_target
-        - flag player dwisp.active.task:!
-      
+        - if <context.args.get[2]> == area:
+          - flag player dwisp.active.guard_area:<player.location>
+          - flag player dwisp.active.queued_actions:->:guard_area
+          - flag player dwisp.active.task:!
+        - else:
+          - define target <server.match_player[<context.args.get[2]>].if_null[null]>
+          - if <[target]> == null:
+            - narrate "<&c>Unknown Player<&co><&e> <context.args.get[2]>"
+            - stop
+          - flag player dwisp.active.guard_target:<[target]>
+          - flag player dwisp.active.queued_actions:->:guard_target
+          - flag player dwisp.active.task:!
+
       # Inventory
       - case inventory:
         - if <context.args.size> < 2:
