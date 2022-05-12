@@ -74,7 +74,7 @@ dwisp_run:
             - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<player.location.above[2].random_offset[1,0.5,1]>|2|<util.random.int[-20].to[20]>|<player.flag[dwisp.active.location].distance[<player.eye_location>].mul[0.1]>]>
             - define targets <player.location.find_players_within[100]>
             - foreach <[points]> as:point:
-              - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5<player.flag[dwisp.data.color1]> targets:<[targets]>
+              - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5|player.flag[dwisp.data.color1]> targets:<[targets]>
               - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
               - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
               - flag <player> dwisp.active.location:<[point]>
@@ -86,7 +86,7 @@ dwisp_run:
             - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<player.location.above[2].random_offset[5,0.5,5]>|2|<util.random.int[-20].to[20]>|<player.flag[dwisp.active.location].distance[<player.eye_location>].mul[0.1]>]>
             - define targets <player.location.find_players_within[100]>
             - foreach <[points]> as:point:
-              - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5<player.flag[dwisp.data.color1]> targets:<[targets]>
+              - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5|player.flag[dwisp.data.color1]> targets:<[targets]>
               - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
               - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
               - flag <player> dwisp.active.location:<[point]>
@@ -100,7 +100,7 @@ dwisp_run:
           - flag <player> dwisp.active.entity:<entry[wisp].spawned_entity>
           - flag <entry[wisp].spawned_entity> on_entity_added:remove_this_entity
           - repeat 20:
-            - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.5<player.flag[dwisp.data.color1]> targets:<[targets]>
+            - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.5|player.flag[dwisp.data.color1]> targets:<[targets]>
             - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
             - teleport <player.flag[dwisp.active.entity]> <player.flag[dwisp.active.location].below[0.5]>
             - flag <player> dwisp.active.location:<player.flag[dwisp.active.location].above[0.1]>
@@ -116,13 +116,13 @@ dwisp_run:
           - define targets <player.location.find_players_within[100]>
           - flag <player> dwisp.active.path:<proc[define_curve1].context[<player.flag[dwisp.active.location]>|<player.eye_location.above[2]>|2|90|0.1]>
           - foreach <player.flag[dwisp.active.path]> as:point:
-            - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5<player.flag[dwisp.data.color1]> targets:<[targets]>
+            - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5|player.flag[dwisp.data.color1]> targets:<[targets]>
             - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
             - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
             - flag <player> dwisp.active.location:<[point]>
             - wait 2t
           - repeat 20:
-            - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.5<player.flag[dwisp.data.color1]> targets:<[targets]>
+            - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.5|player.flag[dwisp.data.color1]> targets:<[targets]>
             - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
             - teleport <player.flag[dwisp.active.entity]> <player.flag[dwisp.active.location].below[0.5]>
             - flag <player> dwisp.active.location:<player.flag[dwisp.active.location].below[0.1]>
@@ -143,7 +143,7 @@ dwisp_run:
               - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<[target].location.above[2].random_offset[1,0.5,1]>|2|<util.random.int[-20].to[20]>|<player.flag[dwisp.active.location].distance[<[target].eye_location>].mul[0.1]>]>
             - define targets <[target].location.find_players_within[100]>
             - foreach <[points]> as:point:
-              - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5<player.flag[dwisp.data.color1]> targets:<[targets]>
+              - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5|player.flag[dwisp.data.color1]> targets:<[targets]>
               - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
               - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
               - flag <player> dwisp.active.location:<[point]>
@@ -163,7 +163,7 @@ dwisp_run:
             - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<[target]>|2|<util.random.int[-20].to[20]>|<player.flag[dwisp.active.location].distance[<[target]>].mul[0.1]>]>
             - define targets <[target].find_players_within[100]>
             - foreach <[points]> as:point:
-              - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5<player.flag[dwisp.data.color1]> targets:<[targets]>
+              - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5|player.flag[dwisp.data.color1]> targets:<[targets]>
               - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
               - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
               - flag <player> dwisp.active.location:<[point]>
@@ -171,7 +171,7 @@ dwisp_run:
             - while <player.flag[dwisp.active.task]> == stay:
               - if <[loop_index].mod[100]> == 0:
                 - define targets <[target].find_players_within[100]>
-              - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.5<player.flag[dwisp.data.color1]> targets:<[targets]>
+              - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.5|player.flag[dwisp.data.color1]> targets:<[targets]>
               - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
               - wait 2t
 
@@ -185,13 +185,13 @@ dwisp_run:
             - if <[target]> == <player>:
               - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<player.eye_location.forward_flat[4]>|2|90|<player.flag[dwisp.active.location].distance[<player.eye_location>].mul[0.1]>]>
               - foreach <[points]> as:point:
-                - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5<player.flag[dwisp.data.color1]> targets:<[targets]>
+                - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5|player.flag[dwisp.data.color1]> targets:<[targets]>
                 - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
                 - flag <player> dwisp.active.location:<[point]>
                 - wait 2t
               - drop dwisp_dropped_item[item=<[item]>;custom_name=<&a><[item].display.if_null[<[item].formatted>]>] <player.flag[dwisp.active.location]>
               - repeat 20:
-                - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.5<player.flag[dwisp.data.color1]> targets:<[targets]>
+                - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.5|player.flag[dwisp.data.color1]> targets:<[targets]>
                 - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
                 - wait 2t
               - flag <player> dwisp.active.task:far_idle
@@ -200,7 +200,7 @@ dwisp_run:
               - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<player.location.above[2].random_offset[1,0.5,1]>|2|<util.random.int[-20].to[20]>|<player.flag[dwisp.active.location].distance[<player.eye_location>].mul[0.1]>]>
               - define targets <player.location.find_players_within[100]>
               - foreach <[points]> as:point:
-                - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5<player.flag[dwisp.data.color1]> targets:<[targets]>
+                - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5|player.flag[dwisp.data.color1]> targets:<[targets]>
                 - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
                 - flag <player> dwisp.active.location:<[point]>
                 - wait 2t
