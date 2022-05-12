@@ -138,6 +138,7 @@ dwisp_run:
             - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
             - flag <player> dwisp.active.location:<player.flag[dwisp.active.location].above[0.1]>
             - wait 2t
+          - flag <player> dwisp.active.task:!
 
         # Despawning Wisp
         - case sleep:
@@ -187,6 +188,7 @@ dwisp_run:
                 - wait 1t
               - kill <[mob]>
               - wait 2t
+          - flag <player> dwisp.active.task:!
 
         # Guard Area
         - case guard_area:
@@ -208,6 +210,7 @@ dwisp_run:
               - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
               - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
               - wait 2t
+          - flag <player> dwisp.active.task:!
 
         # Stay Put
         - case stay:
@@ -227,6 +230,7 @@ dwisp_run:
               - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
               - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
               - wait 2t
+          - flag <player> dwisp.active.task:!
 
         # Give Player Item
         - case give:
@@ -258,6 +262,7 @@ dwisp_run:
                 - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
                 - flag <player> dwisp.active.location:<[point]>
                 - wait 2t
+            - flag <player> dwisp.active.task:!
 
         # Player Assumes Wisp Form
         - case assumed:
@@ -275,6 +280,9 @@ dwisp_run:
           - flag <player> dwisp.active.stay_target:<player.location>
           - adjust <player> location:<[start_loc]>
           - adjust <player> gamemode:<[gamemode]>
+          - flag <player> dwisp.active.task:!
+        
+        # Get Next Task
         - case default:
           - if !<player.has_flag[dwisp.active.queued_actions]> || <player.has_flag[dwisp.active.queued_actions].is_empty>:
             - flag <player> dwisp.active.task:far_idle
