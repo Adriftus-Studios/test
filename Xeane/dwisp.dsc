@@ -37,7 +37,7 @@ dwisp_run:
             - foreach <[points]> as:point:
               - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.25|<player.flag[dwisp.data.color1]> targets:<[targets]>
               - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:1|<player.flag[dwisp.data.color2]> targets:<[targets]>
-              - teleport <player.flag[dwisp.active.entity]> <[point]>
+              - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
               - flag <player> dwisp.active.location:<[point]>
               - wait 2t
 
@@ -49,7 +49,7 @@ dwisp_run:
             - foreach <[points]> as:point:
               - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.25|<player.flag[dwisp.data.color1]> targets:<[targets]>
               - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:1|<player.flag[dwisp.data.color2]> targets:<[targets]>
-              - teleport <player.flag[dwisp.active.entity]> <[point]>
+              - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
               - flag <player> dwisp.active.location:<[point]>
               - wait 2t
         
@@ -57,13 +57,13 @@ dwisp_run:
         - case spawn:
           - flag <player> dwisp.active.location:<player.eye_location>
           - define targets <player.location.find_players_within[100]>
-          - spawn dwisp_armor_stand[custom_name=<player.has_flag[dwisp.data.name]>] <player.eye_location> save:wisp
+          - spawn dwisp_armor_stand[custom_name=<player.flag[dwisp.data.name]>] <player.eye_location> save:wisp
           - flag <player> dwisp.active.entity:<entry[wisp].spawned_entity>
           - flag <entry[wisp].spawned_entity> on_entity_added:remove_this_entity
           - repeat 20:
             - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.25|<player.flag[dwisp.data.color1]> targets:<[targets]>
             - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.1 quantity:5 special_data:1|<player.flag[dwisp.data.color2]> targets:<[targets]>
-            - teleport <player.flag[dwisp.active.entity]> <[point]>
+            - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
             - flag <player> dwisp.active.location:<player.flag[dwisp.active.location].above[0.1]>
             - wait 2t
           - if !<player.has_flag[dwisp.active.queued_action]>:
@@ -79,13 +79,13 @@ dwisp_run:
           - foreach <player.flag[dwisp.active.path]> as:point:
             - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.25|<player.flag[dwisp.data.color1]> targets:<[targets]>
             - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:1|<player.flag[dwisp.data.color2]> targets:<[targets]>
-            - teleport <player.flag[dwisp.active.entity]> <[point]>
+            - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
             - flag <player> dwisp.active.location:<[point]>
             - wait 2t
           - repeat 20:
             - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.25|<player.flag[dwisp.data.color1]> targets:<[targets]>
             - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.1 quantity:5 special_data:1|<player.flag[dwisp.data.color2]> targets:<[targets]>
-            - teleport <player.flag[dwisp.active.entity]> <player.flag[dwisp.active.location]>
+            - teleport <player.flag[dwisp.active.entity]> <player.flag[dwisp.active.location].below[0.5]>
             - flag <player> dwisp.active.location:<player.flag[dwisp.active.location].below[0.1]>
             - wait 2t
           - remove <player.flag[dwisp.active.entity]>
@@ -103,7 +103,7 @@ dwisp_run:
             - foreach <[points]> as:point:
               - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.25|<player.flag[dwisp.data.color1]> targets:<[targets]>
               - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:1|<player.flag[dwisp.data.color2]> targets:<[targets]>
-              - teleport <player.flag[dwisp.active.entity]> <[point]>
+              - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
               - flag <player> dwisp.active.location:<[point]>
               - wait 2t
             - if <[mob]> != none:
