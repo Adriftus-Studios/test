@@ -230,7 +230,7 @@ dwisp_run:
               - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
               - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
               - wait 2t
-          - flag <player> dwisp.active.task:!
+            - flag <player> dwisp.active.task:!
 
         # Give Player Item
         - case give:
@@ -281,7 +281,7 @@ dwisp_run:
           - adjust <player> location:<[start_loc]>
           - adjust <player> gamemode:<[gamemode]>
           - flag <player> dwisp.active.task:!
-        
+
         # Get Next Task
         - case default:
           - if !<player.has_flag[dwisp.active.queued_actions]> || <player.has_flag[dwisp.active.queued_actions].is_empty>:
