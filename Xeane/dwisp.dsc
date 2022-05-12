@@ -89,7 +89,8 @@ dwisp_run:
         # Far Idle (5 opposed to 2 blocks)
         - case far_idle:
           - while <player.flag[dwisp.active.task]> == far_idle && <player.is_online>:
-            - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<player.location.above[2].random_offset[5,0.5,5]>|2|<util.random.int[-20].to[20]>|<player.flag[dwisp.active.location].distance[<player.eye_location>].mul[0.1]>]>
+            - define destination <player.location.add[<player.flag[dwisp.active.location].sub[<player.location>].normalize.mul[5]>].with_y[<player.eye_location.above.y>]>
+            - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<[destination].random_offset[2,1,2]>|2|<util.random.int[-20].to[20]>|<player.flag[dwisp.active.location].distance[<player.eye_location>].mul[0.1]>]>
             - define targets <player.location.find_players_within[100]>
             - foreach <[points]> as:point:
               - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
@@ -210,3 +211,18 @@ dwisp_run:
                 - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
                 - flag <player> dwisp.active.location:<[point]>
                 - wait 2t
+
+        # Player Assumes Wisp Form
+        - case assumed:
+          - define start_loc <player.location>
+          - define gamemode <player.gamemode>
+          - adjust <player> gamemode:spectator
+          - while <player.flag[dwisp.active.task]> == assumed && <player.is_online>:
+            - playeffect effect:redstone at:<player.location> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
+            - playeffect effect:redstone at:<player.location> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
+            - flag <player> dwisp.active.location:<player.location>
+            - wait 2t
+          - flag <player> dwisp.active.task:stay
+          - flag <player> dwisp.active.stay_target:<player.location>
+          - adjust <player> location:<[start_loc]>
+          - adjust <player> gamemode:<[gamemode]>
