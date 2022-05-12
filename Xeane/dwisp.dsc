@@ -89,8 +89,8 @@ dwisp_run:
         # Far Idle (5 opposed to 2 blocks)
         - case far_idle:
           - while <player.flag[dwisp.active.task]> == far_idle && <player.is_online>:
-            - define destination <player.location.add[<player.flag[dwisp.active.location].sub[<player.location>].normalize.mul[5]>].with_y[<player.eye_location.above.y>]>
-            - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<[destination].random_offset[2,1,2]>|2|<util.random.int[-20].to[20]>|<player.flag[dwisp.active.location].distance[<player.eye_location>].mul[0.1]>]>
+            - define destination <player.location.add[<player.location.sub[<player.flag[dwisp.active.location]>].normalize.mul[5]>].with_y[<player.eye_location.above.y>]>
+            - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<[destination].random_offset[2,1,2]>|2|<util.random.int[-20].to[20]>|<player.flag[dwisp.active.location].distance[<[destination]>].mul[0.1]>]>
             - define targets <player.location.find_players_within[100]>
             - foreach <[points]> as:point:
               - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
