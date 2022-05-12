@@ -6,7 +6,7 @@ dwisp_populate:
     - flag server givable_items:|:<server.scripts.filter[data.show_in_give].parse[name.to_uppercase]>
   events:
     on server start:
-      
+
 dwisp_armor_stand:
   type: entity
   debug: false
@@ -17,6 +17,17 @@ dwisp_armor_stand:
     is_small: true
     invincible: true
     gravity: false
+
+dwisp_dropped_item:
+  type: entity
+  debug: false
+  entity_type: dropped_item
+  mechanisms:
+    custom_name_visible: true
+    pickup_delay: 5s
+    velocity: 0,-.05,0
+
+
 
 dwisp_run:
   type: task
@@ -135,10 +146,25 @@ dwisp_run:
 
         # Give Player Item
         - case give:
-          - while <player.flag[dwisp.active.task]> == guard && <player.is_online>:
-            - define mob <player.location.find_entities[monster].within[30].random.if_null[none]>
-            - if <[mob]> != none && <[mob].is_spawned>:
-              - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<[mob].eye_location>|2|<util.random.int[-20].to[20]>|<player.flag[dwisp.active.location].distance[<[mob].eye_location>].mul[0.1]>]>
+            # Get Definition Flags
+            - define target <player.flag[dwisp.active.give_target]>
+            - define item <player.flag[dwisp.active.give_item]>
+
+            # Spawn Item Infront of Self
+            - if <[target]> == <player>:
+              - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<player.eye_location.forward_flat[4]>|2|90|<player.flag[dwisp.active.location].distance[<[mob].eye_location>].mul[0.1]>]>
+            - foreach <[points]> as:point:
+              - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.25|<player.flag[dwisp.data.color1]> targets:<[targets]>
+              - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
+              - flag <player> dwisp.active.location:<[point]>
+              - wait 2t
+            - drop dwisp_dropped_item[item=<[item]>;custom_name=<&a><[item].display.if_null[<[item].formatted>]>] <player.flag[dwisp.active.location]>
+            - repeat 20:
+              - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.25|<player.flag[dwisp.data.color1]> targets:<[targets]>
+              - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
+              - wait 2t
+            - flag <player> dwisp.active.task:idle
+              
             - else:
               - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<player.location.above[2].random_offset[1,0.5,1]>|2|<util.random.int[-20].to[20]>|<player.flag[dwisp.active.location].distance[<player.eye_location>].mul[0.1]>]>
             - define targets <player.location.find_players_within[100]>
