@@ -194,18 +194,21 @@ dwisp_run:
         - case guard_area:
           - define target <player.flag[dwisp.active.guard_area].if_null[<player.location>]>
           - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<[target].above[20]>|2|90|0.75]>
+          - define targets <[target].location.find_players_within[100]>
           - foreach <[points]> as:point:
+            - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
             - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
             - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
             - flag <player> dwisp.active.location:<[point]>
             - wait 2t
           - while <player.flag[dwisp.active.task]> == guard_area:
+            - define targets <[target].location.find_players_within[100]>
             - repeat 10:
               - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
               - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
               - wait 2t
-            - define targets <player.flag[dwisp.active.location].find_entities[monster].within[36]>
-            - foreach <[targets]> as:target:
+            - define mobs <player.flag[dwisp.active.location].find_entities[monster].within[36]>
+            - foreach <[mobs]> as:target:
               - run dwisp_kill_target def:<[target]>
               - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
               - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
