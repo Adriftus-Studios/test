@@ -283,7 +283,7 @@ dwisp_run:
           - flag <player> dwisp.active.task:!
 
         # Get Next Task
-        - case default:
+        - default:
           - if !<player.has_flag[dwisp.active.queued_actions]> || <player.has_flag[dwisp.active.queued_actions].is_empty>:
             - flag <player> dwisp.active.task:far_idle
           - else:
