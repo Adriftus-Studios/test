@@ -27,6 +27,7 @@ dwisp_run:
               - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:1|<player.flag[dwisp.data.color2]> targets:<[targets]>
               - flag <player> dwisp.active.location:<[point]>
               - wait 2t
+            - flag <player> dwisp.active.path:!
         - case spawn:
           - flag <player> dwisp.active.location:<player.eye_location>
           - define targets <player.location.find_players_within[100]>
