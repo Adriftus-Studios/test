@@ -63,7 +63,7 @@ dwisp_run:
           - repeat 20:
             - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.25|<player.flag[dwisp.data.color1]> targets:<[targets]>
             - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.1 quantity:5 special_data:1|<player.flag[dwisp.data.color2]> targets:<[targets]>
-            - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
+            - teleport <player.flag[dwisp.active.entity]> <player.flag[dwisp.active.location].below[0.5]>
             - flag <player> dwisp.active.location:<player.flag[dwisp.active.location].above[0.1]>
             - wait 2t
           - if !<player.has_flag[dwisp.active.queued_action]>:
