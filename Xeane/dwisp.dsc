@@ -63,6 +63,26 @@ dwisp_heal_target:
     - ratelimit <[target]> 5s
     - narrate "<&a>You Feel Invigorated" targets:<[target]>
 
+dwisp_kill_target:
+  type: task
+  debug: false
+  definitions: target
+  script:
+    - define distance <player.flag[dwisp.active.location].distance[<[target].location>].mul[0.1]>
+    - define points <player.flag[dwisp.active.location].points_between[<[target].eye_location.below>].distance[<[distance]>]>
+    - define targets <player.flag[dwisp.active.location].find_players_within[100]>
+    - define start <player.flag[dwisp.active.location]>
+    - repeat 10:
+      - define point <[start].add[<[target].eye_location.sub[<player.flag[dwisp.active.location]>].mul[<[value].mul[0.1]>]>]>
+      - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1|<player.flag[dwisp.data.color1]> targets:<[targets]>
+      - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.5|<player.flag[dwisp.data.color2]> targets:<[targets]>
+      - wait 1t
+    - repeat 5:
+      - playeffect effect:redstone at:<[target].location.above> offset:0.25,0.5,0.25 quantity:10 special_data:2|<player.flag[dwisp.data.color1]> targets:<[targets]>
+      - playeffect effect:redstone at:<[target].location.above> offset:0.25,0.5,0.25 quantity:10 special_data:1|<player.flag[dwisp.data.color2]> targets:<[targets]>
+      - wait 1t
+    - kill <[target]>
+
 
 
 dwisp_run:
@@ -166,6 +186,27 @@ dwisp_run:
                 - playeffect effect:redstone at:<[mob].location.above> offset:0.25,0.75,0.25 quantity:20 special_data:2|<player.flag[dwisp.data.color2]> targets:<[targets]>
                 - wait 1t
               - kill <[mob]>
+              - wait 2t
+
+        # Guard Area
+        - case guard_area:
+          - define target <player.flag[dwisp.active.guard_area].if_null[<player.location>]>
+          - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<[target].above[20]>|2|90|0.75]>
+          - foreach <[points]> as:point:
+            - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
+            - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
+            - flag <player> dwisp.active.location:<[point]>
+            - wait 2t
+          - while <player.flag[dwisp.active.task]> == guard_area:
+            - repeat 10:
+              - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
+              - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
+              - wait 2t
+            - define targets <player.flag[dwisp.active.location].find_entities[monster].within[36]>
+            - foreach <[targets]> as:target:
+              - run dwisp_kill_target def:<[target]>
+              - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
+              - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
               - wait 2t
 
         # Stay Put
