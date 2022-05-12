@@ -15,10 +15,10 @@ dwisp_run:
     - if !<player.has_flag[dwisp.data.color1]> || !<player.has_flag[dwisp.data.color2]>:
       - narrate "<&c>You must configure your dWisp colors first"
       - stop
-    - while <player.has_flag[dwisp.active]>:
+    - while <player.has_flag[dwisp.active]> && <player.is_online>:
       - choose <player.flag[dwisp.active.task]>:
         - case idle:
-          - while <player.flag[dwisp.active.task]> == idle:
+          - while <player.flag[dwisp.active.task]> == idle && <player.is_online>:
             - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<player.location.above[2].random_offset[1,0.5,1]>|2|<util.random.int[-20].to[20]>|<player.flag[dwisp.active.location].distance[<player.eye_location>].mul[0.1]>]>
             - define targets <player.location.find_players_within[100]>
             - foreach <[points]> as:point:
@@ -50,7 +50,7 @@ dwisp_run:
             - wait 2t
           - flag <player> dwisp.active:!
         - case guard:
-          - while <player.flag[dwisp.active.task]> == guard:
+          - while <player.flag[dwisp.active.task]> == guard && <player.is_online>:
             - define mob <player.location.find_entities[monster].within[30].random.if_null[none]>
             - if <[mob]> != none:
               - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<[mob].eye_location>|2|<util.random.int[-20].to[20]>|<player.flag[dwisp.active.location].distance[<[mob].eye_location>].mul[0.1]>]>
@@ -68,3 +68,4 @@ dwisp_run:
                 - playeffect effect:redstone at:<[mob].location.above> offset:0.25,0.75,0.25 quantity:20 special_data:2|<player.flag[dwisp.data.color2]> targets:<[targets]>
                 - wait 1t
               - kill <[mob]>
+              - wait 1t
