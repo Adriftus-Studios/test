@@ -75,7 +75,7 @@ dwisp_apply_traits:
             - flag <[wisp]> right_click_script:<-:dwisp_open_inventory
           - else if !<[wisp].flag[right_click_script].contains[dwisp_open_inventory].if_null[false]>:
             - flag <[wisp]> right_click_script:->:dwisp_open_inventory
-            - flag <[wisp]> inventory:<player.flag[dwisp.data.traits.inventory]>
+            - flag <[wisp]> inventory:<[value]>
 
 dwisp_inventory:
   type: inventory
