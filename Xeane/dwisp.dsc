@@ -71,11 +71,11 @@ dwisp_apply_traits:
     - foreach <player.flag[dwisp.data.traits]> key:trait as:value:
       - choose <[trait]>:
         - case inventory:
+          - flag <[wisp]> inventory:<[value]>
           - if <player.flag[dwisp.data.traits.inventory]> == off && <[wisp].flag[right_click_scripts].contains[dwisp_open_inventory].if_null[false]>:
             - flag <[wisp]> right_click_script:<-:dwisp_open_inventory
           - else if !<[wisp].flag[right_click_script].contains[dwisp_open_inventory].if_null[false]>:
             - flag <[wisp]> right_click_script:->:dwisp_open_inventory
-          - flag <[wisp]> inventory:<[value]>
 
 dwisp_inventory:
   type: inventory
