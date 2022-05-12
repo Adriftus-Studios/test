@@ -21,11 +21,17 @@ dwisp_command:
       - narrate "<&c>You must specify arguments"
       - stop
     - choose <context.args.get[1]>:
+
+      # Spawn
       - case spawn:
         - flag player dwisp.active.task:spawn
         - run dwisp_run
+
+      # Follow
       - case follow:
         - flag player dwisp.active.task:!
+
+      # Stay
       - case stay:
         - if <context.args.size> < 2:
           - narrate "<&c>Must Specify a Target!"
@@ -39,6 +45,8 @@ dwisp_command:
             - stop
         - flag player dwisp.active.queued_actions:->:stay
         - flag player dwisp.active.task:!
+      
+      # Guard Player
       - case guard_player:
         - if <context.args.size> < 2:
           - narrate "<&c>Must Specify Player Name!"
@@ -50,12 +58,16 @@ dwisp_command:
         - flag player dwisp.active.guard_target:<[target]>
         - flag player dwisp.active.queued_actions:->:guard_target
         - flag player dwisp.active.task:!
+      
+      # Inventory
       - case inventory:
         - if <context.args.size> < 2:
           - narrate "<&c>Must Specify an Inventory Name!"
           - stop
         - flag player dwisp.data.traits.inventory:<context.args.get[2]>
         - run dwisp_apply_traits
+      
+      # Sleep
       - case sleep:
         - flag player dwisp.active.queued_actions:->:sleep
         - flag player dwisp.active.task:!
@@ -417,4 +429,4 @@ dwisp_run:
             - flag player dwisp.active.task:far_idle
           - else:
             - flag player dwisp.active.task:<player.flag[dwisp.active.queued_actions].first>
-            - flag player dwisp.active.queued_action:<-:<player.flag[dwisp.active.queued_actions].first>
+            - flag player dwisp.active.queued_action:<player.flag[dwisp.active.queued_actions].remove[first]>
