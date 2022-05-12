@@ -57,8 +57,8 @@ dwisp_heal_target:
     - heal <[target]>
     - feed <[target]>
     - repeat 5:
-      - playeffect effect:redstone at:<[target].above> offset:0.25,0.75,0.25 quantity:10 special_data:2|<player.flag[dwisp.data.color1]> targets:<[targets]>
-      - playeffect effect:redstone at:<[target].above> offset:0.25,0.75,0.25 quantity:10 special_data:1|<player.flag[dwisp.data.color2]> targets:<[targets]>
+      - playeffect effect:redstone at:<[target].location.above> offset:0.25,0.75,0.25 quantity:10 special_data:2|<player.flag[dwisp.data.color1]> targets:<[targets]>
+      - playeffect effect:redstone at:<[target].location.above> offset:0.25,0.75,0.25 quantity:10 special_data:1|<player.flag[dwisp.data.color2]> targets:<[targets]>
       - wait 1t
     - ratelimit <[target]> 5s
     - narrate "<&a>You Feel Invigorated" targets:<[target]>
