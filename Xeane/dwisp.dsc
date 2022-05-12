@@ -134,7 +134,7 @@ dwisp_run:
         - case guard_target:
           - define target <player.flag[dwisp.active.guard_target]>
           - while <player.flag[dwisp.active.task]> == guard_target && <player.is_online> && <[target].is_online>:
-            - if <[loop_index].mod[20]> = 0 && <[target].health> != <[target].health_max>:
+            - if <[target].health> != <[target].health_max>:
               - run dwisp_heal_target def:<[target]>
             - define mob <[target].location.find_entities[monster].within[30].random.if_null[none]>
             - if <[mob]> != none && <[mob].is_spawned>:
