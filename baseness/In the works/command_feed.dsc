@@ -2,7 +2,10 @@ feed_player_command:
     type: command
     debug: false
     name: feed
-    usage: /feed
+    usage: /feed (player) (amount in points) (saturation level)
     description: Feeds player.
+    tab completion:
+        1: <server.online_players.parse[name]>
     script:
-        - feed
+        - if <context.args.get[1].matches:
+            - feed <play>
