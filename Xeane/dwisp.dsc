@@ -43,6 +43,7 @@ dwisp_run:
           - foreach <player.flag[dwisp.active.path]> as:point:
             - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.25|<player.flag[dwisp.data.color1]> targets:<[targets]>
             - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:1|<player.flag[dwisp.data.color2]> targets:<[targets]>
+            - flag <player> dwisp.active.location:<[point]>
             - wait 2t
           - repeat 20:
             - playeffect effect:redstone at:<player.flag[dwisp.active.location].below[0.1]> offset:0.05 quantity:5 special_data:1.25|<player.flag[dwisp.data.color1]> targets:<[targets]>
