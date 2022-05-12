@@ -431,7 +431,7 @@ dwisp_run:
 
         # Get Next Task
         - default:
-          - if !<player.has_flag[dwisp.active.queued_actions]> || <player.has_flag[dwisp.active.queued_actions].is_empty>:
+          - if !<player.has_flag[dwisp.active.queued_actions]> || <player.flag[dwisp.active.queued_actions].is_empty>:
             - flag player dwisp.active.task:far_idle
           - else:
             - flag player dwisp.active.task:<player.flag[dwisp.active.queued_actions].first>
