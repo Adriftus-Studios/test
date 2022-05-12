@@ -27,7 +27,7 @@ dwisp_run:
               - flag <player> dwisp.active.location:<[point]>
               - wait 2t
         - case far_idle:
-          - while <player.flag[dwisp.active.task]> == idle && <player.is_online>:
+          - while <player.flag[dwisp.active.task]> == far_idle && <player.is_online>:
             - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<player.location.above[2].random_offset[5,0.5,5]>|2|<util.random.int[-20].to[20]>|<player.flag[dwisp.active.location].distance[<player.eye_location>].mul[0.1]>]>
             - define targets <player.location.find_players_within[100]>
             - foreach <[points]> as:point:
