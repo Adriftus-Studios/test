@@ -202,7 +202,7 @@ dwisp_run:
             - flag <player> dwisp.active.location:<[point]>
             - wait 2t
           - while <player.flag[dwisp.active.task]> == guard_area:
-            - define targets <[target].location.find_players_within[100]>
+            - define targets <player.flag[dwisp.active.location].location.find_players_within[100]>
             - repeat 10:
               - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
               - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
