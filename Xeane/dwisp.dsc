@@ -373,7 +373,7 @@ dwisp_run:
           - while <player.flag[dwisp.active.task].if_null[default]> == far_idle && <[target].is_online>:
             - ~run dwisp_goto def:<[target].eye_location.above[5]>
             - define destination <[target].location.add[<[target].location.sub[<player.flag[dwisp.active.location]>].normalize.mul[5]>].with_y[<[target].eye_location.above.y>]>
-            - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<[destination].random_offset[3,1,3]>|2|<util.random.int[-20].to[20]>|<player.flag[dwisp.active.location].distance[<[destination]>].mul[0.05]>]>
+            - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<[destination].random_offset[3,1,3]>|3|<util.random.int[-20].to[20]>|<player.flag[dwisp.active.location].distance[<[destination]>].mul[0.05]>]>
             - define targets <[target].location.find_players_within[100]>
             - foreach <[points]> as:point:
               - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
