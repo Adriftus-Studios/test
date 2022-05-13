@@ -372,7 +372,7 @@ dwisp_run:
           - flag player dwisp.active.location:<player.eye_location.above[30]>
           - flag player dwisp.data.target:monster if:<player.has_flag[dwisp.data.target].not>
           - define targets <player.location.find_players_within[100]>
-          - spawn dwisp_armor_stand[custom_name=<player.flag[dwisp.data.name]>] <player.eye_location> save:wisp
+          - spawn dwisp_armor_stand[custom_name=<player.flag[dwisp.data.name]>] <player.eye_location.above[30]> save:wisp
           - flag player dwisp.active.entity:<entry[wisp].spawned_entity>
           - flag <entry[wisp].spawned_entity> on_entity_added:remove_this_entity
           - flag <entry[wisp].spawned_entity> owner:<player>
