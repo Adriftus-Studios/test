@@ -294,7 +294,7 @@ dwisp_goto:
   script:
     - if <player.flag[dwisp.active.location].world> != <[destination].world>:
       - flag player dwisp.active.location:<[destination].above[30]>
-      - define points <proc[define_spiral].context[<[destination].above[30]>|<[destination]>]>
+      - define points <proc[define_spiral].context[<[destination].above[30]>|<[destination]>|1|1|1]>
       - define targets <[destination].find_players_within[100]>
       - foreach <[points]> as:point:
         - if <[loop_index].mod[2]> == 0:
@@ -351,11 +351,15 @@ dwisp_run:
 
         # Far Idle (5 opposed to 2 blocks)
         - case far_idle:
-          - while <player.flag[dwisp.active.task].if_null[default]> == far_idle && <player.is_online>:
-            - ~run dwisp_goto def:<player.eye_location.above[5]>
-            - define destination <player.location.add[<player.location.sub[<player.flag[dwisp.active.location]>].normalize.mul[5]>].with_y[<player.eye_location.above.y>]>
+          - if <player.has_flag[dwisp.active.follow_target]> && <player.flag[dwisp.active.follow_target].is_online>:
+            - define target <player.flag[dwisp.active.follow_target]>
+          - else:
+            - define target <player>
+          - while <player.flag[dwisp.active.task].if_null[default]> == far_idle && <[target].is_online>:
+            - ~run dwisp_goto def:<[target].eye_location.above[5]>
+            - define destination <[target].location.add[<[target].location.sub[<player.flag[dwisp.active.location]>].normalize.mul[5]>].with_y[<[target].eye_location.above.y>]>
             - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<[destination].random_offset[3,1,3]>|2|<util.random.int[-20].to[20]>|<player.flag[dwisp.active.location].distance[<[destination]>].mul[0.05]>]>
-            - define targets <player.location.find_players_within[100]>
+            - define targets <[target].location.find_players_within[100]>
             - foreach <[points]> as:point:
               - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
               - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
@@ -373,31 +377,29 @@ dwisp_run:
           - flag <entry[wisp].spawned_entity> on_entity_added:remove_this_entity
           - flag <entry[wisp].spawned_entity> owner:<player>
           - run dwisp_apply_traits
-          - repeat 20:
-            - teleport <player.flag[dwisp.active.entity]> <player.flag[dwisp.active.location].below[0.5]>
-            - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
-            - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
-            - flag player dwisp.active.location:<player.flag[dwisp.active.location].above[0.1]>
-            - wait 2t
-          - flag player dwisp.active.task:!
-
-        # Despawning Wisp
-        - case sleep:
-          - define targets <player.location.find_players_within[100]>
-          - ~run dwisp_goto def:<player.eye_location.above[5]>
-          - flag player dwisp.active.path:<proc[define_curve1].context[<player.flag[dwisp.active.location]>|<player.eye_location.above[2]>|2|90|<player.flag[dwisp.active.location].distance[<player.eye_location>].mul[0.1]>]>
-          - foreach <player.flag[dwisp.active.path]> as:point:
+          - flag player dwisp.active.location:<[destination].above[30]>
+          - define points <proc[define_spiral].context[<player.location.above[30]>|<player.location.above[5]>|1|1|1]>
+          - define targets <[destination].find_players_within[100]>
+          - foreach <[points]> as:point:
+            - if <[loop_index].mod[2]> == 0:
+              - wait 1t
             - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
             - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
             - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
             - flag player dwisp.active.location:<[point]>
-            - wait 2t
-          - repeat 20:
-            - teleport <player.flag[dwisp.active.entity]> <player.flag[dwisp.active.location].below[0.5]>
-            - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
-            - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
-            - flag player dwisp.active.location:<player.flag[dwisp.active.location].below[0.1]>
-            - wait 2t
+          - flag player dwisp.active.task:!
+
+        # Despawning Wisp
+        - case sleep:
+          - define points <proc[define_spiral].context[<player.flag[dwisp.active.location]>|<player.flag[dwisp.active.location].above[30]>|1|1|1]>
+          - define targets <player.flag[dwisp.active.location].find_players_within[100]>
+          - foreach <[points]> as:point:
+            - if <[loop_index].mod[2]> == 0:
+              - wait 1t
+            - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
+            - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
+            - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
+            - flag player dwisp.active.location:<[point]>
           - remove <player.flag[dwisp.active.entity]>
           - flag player dwisp.active:!
 
@@ -548,7 +550,12 @@ dwisp_run:
         # Get Next Task
         - default:
           - if !<player.has_flag[dwisp.active.queued_actions]> || <player.flag[dwisp.active.queued_actions].is_empty>:
-            - flag player dwisp.active.task:far_idle
+            - if <player.is_online>:
+              - flag player dwisp.active.task:far_idle
+              - flag player dwisp.active.follow_target:!
+            - else:
+              - flag player dwisp.active.task:sleep
+              - flag player dwisp.active.task:!
           - else:
             - flag player dwisp.active.task:<player.flag[dwisp.active.queued_actions].first>
             - flag player dwisp.active.queued_actions:!|:<player.flag[dwisp.active.queued_actions].remove[first]>
