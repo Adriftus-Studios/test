@@ -257,8 +257,10 @@ dwisp_kill_target:
       - playeffect effect:redstone at:<[target].location.above> offset:0.25,0.5,0.25 quantity:10 special_data:2|<player.flag[dwisp.data.color1]> targets:<[targets]>
       - playeffect effect:redstone at:<[target].location.above> offset:0.25,0.5,0.25 quantity:10 special_data:1|<player.flag[dwisp.data.color2]> targets:<[targets]>
       - wait 1t
-    - kill <[target]>
-
+    - if <player.has_flag[dwisp.data.damage]> && <player.flag[dwisp.data.damage]> != kill:
+      - hurt <player.flag[dwisp.data.damage]> <[target]>
+    - else:
+      - kill <[target]>
 
 
 dwisp_run:
@@ -304,6 +306,7 @@ dwisp_run:
         # Spawning Wisp
         - case spawn:
           - flag player dwisp.active.location:<player.eye_location>
+          - flag player dwisp.data.target:monster if:<player.has_flag[dwisp.data.target].not>
           - define targets <player.location.find_players_within[100]>
           - spawn dwisp_armor_stand[custom_name=<player.flag[dwisp.data.name]>] <player.eye_location> save:wisp
           - flag player dwisp.active.entity:<entry[wisp].spawned_entity>
@@ -385,7 +388,7 @@ dwisp_run:
               - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
               - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
               - wait 2t
-            - define mobs <player.flag[dwisp.active.location].find_entities[monster].within[36]>
+            - define mobs <player.flag[dwisp.active.location].find_entities[<player.flag[dwisp.data.target]>].within[36]>
             - foreach <[mobs]> as:target:
               - run dwisp_kill_target def:<[target]>
               - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
