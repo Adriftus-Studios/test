@@ -95,6 +95,8 @@ dwisp_command:
         - choose <context.args.get[2]>:
           - case name:
             - flag <player> dwisp.data.name:<context.args.get[3].parsed>
+            - if <player.has_flag[dwisp.active.entity]> && <player.flag[dwisp.active.entity].is_spawned>:
+              - adjust <player.flag[dwisp.active.entity]> custom_name:<context.args.get[3].parsed>
           - case color1:
             - flag <player> dwisp.data.color1:<context.args.get[3]>
           - case color2:
