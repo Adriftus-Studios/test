@@ -75,7 +75,14 @@ dwisp_command:
           - narrate "<&c>Must Specify Player Name or 'area'!"
           - stop
         - if <context.args.get[2]> == area:
-          - flag player dwisp.active.guard_area:<player.location>
+          - if <context.args.get[3].exists>:
+            - define target <server.match_player[<context.args.get[3]>].if_null[null]>
+            - if <[target]> == null:
+              - narrate "<&c>Unknown Player<&co><&e> <context.args.get[3]>"
+              - stop
+          - else:
+            - define target <player>
+          - flag player dwisp.active.guard_area:<[target].location>
           - flag player dwisp.active.queued_actions:->:guard_area
           - flag player dwisp.active.task:!
         - else:
@@ -145,7 +152,7 @@ dwisp_command:
         - else:
           - narrate "<&c>Must Specify 'on' or 'off'"
 
-      # Assume Wisp
+      # Give
       - case give:
         - if <context.args.size> < 3:
           - narrate "<&c>Not Enough Arguments"
