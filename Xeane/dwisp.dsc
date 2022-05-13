@@ -472,7 +472,7 @@ dwisp_run:
             - flag player dwisp.active.task:!
 
         # Player Assumes Wisp Form
-        - case assume:
+        - case assumed:
           - define start_loc <player.location>
           - define gamemode <player.gamemode>
           - adjust <player> gamemode:spectator
