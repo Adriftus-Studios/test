@@ -120,7 +120,7 @@ dwisp_command:
       # Sleep
       - case assume:
         - if <context.args.size> < 2:
-          - narrate "<&c>Must Specify 'on' or 'off'"
+          - narrate "<&c>Not Enough Arguments"
           - stop
         - if <context.args.get[3]> == on:
           - flag player dwisp.active.queued_actions:->:assume
