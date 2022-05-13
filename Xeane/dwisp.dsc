@@ -61,7 +61,11 @@ dwisp_command:
             - if <[target]> == null:
               - narrate "<&c>Must specify 'cursor', 'current', 'here', or a valid player name"
               - stop
-            - flag player dwisp.active.stay_target:<[target].location.forward_flat[6]>
+            - define destination <[target].eye_location.forward_flat[6]>
+            - if <[destination].material.name> != air:
+              - narrate "<&c>Unsafe Destination."
+              - stop
+            - flag player dwisp.active.stay_target:<[destination]>
         - flag player dwisp.active.queued_actions:->:stay
         - flag player dwisp.active.task:!
 
