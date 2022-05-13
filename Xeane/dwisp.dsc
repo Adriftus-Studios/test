@@ -278,7 +278,7 @@ dwisp_run:
         - case idle:
           - while <player.flag[dwisp.active.task].if_null[default]> == idle && <player.is_online>:
             - if <player.location.world> != <player.flag[dwisp.active.location].world>:
-              - flag player dwisp.active.location:<player.eye_location.above>
+              - flag player dwisp.active.location:<player.eye_location.above.backward_flat>
             - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<player.location.above[2].random_offset[1,0.5,1]>|2|<util.random.int[-20].to[20]>|<player.flag[dwisp.active.location].distance[<player.eye_location>].mul[0.1]>]>
             - define targets <player.location.find_players_within[100]>
             - foreach <[points]> as:point:
@@ -292,7 +292,7 @@ dwisp_run:
         - case far_idle:
           - while <player.flag[dwisp.active.task].if_null[default]> == far_idle && <player.is_online>:
             - if <player.location.world> != <player.flag[dwisp.active.location].world>:
-              - flag player dwisp.active.location:<player.eye_location.above>
+              - flag player dwisp.active.location:<player.eye_location.above.backward_flat>
             - define destination <player.location.add[<player.location.sub[<player.flag[dwisp.active.location]>].normalize.mul[5]>].with_y[<player.eye_location.above.y>]>
             - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<[destination].random_offset[3,1,3]>|2|<util.random.int[-20].to[20]>|<player.flag[dwisp.active.location].distance[<[destination]>].mul[0.05]>]>
             - define targets <player.location.find_players_within[100]>
@@ -325,7 +325,7 @@ dwisp_run:
         - case sleep:
           - define targets <player.location.find_players_within[100]>
           - if <player.location.world> != <player.flag[dwisp.active.location].world>:
-            - flag player dwisp.active.location:<player.eye_location.above>
+            - flag player dwisp.active.location:<player.eye_location.above.backward_flat>
           - flag player dwisp.active.path:<proc[define_curve1].context[<player.flag[dwisp.active.location]>|<player.eye_location.above[2]>|2|90|<player.flag[dwisp.active.location].distance[<player.eye_location>].mul[0.1]>]>
           - foreach <player.flag[dwisp.active.path]> as:point:
             - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
@@ -425,7 +425,7 @@ dwisp_run:
             # Spawn Item Infront of Self
             - if <[target]> == <player>:
               - if <player.location.world> != <player.flag[dwisp.active.location].world>:
-                - flag player dwisp.active.location:<player.eye_location.above>
+                - flag player dwisp.active.location:<player.eye_location.above.backward_flat>
               - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<player.eye_location.forward_flat[4]>|2|90|<player.flag[dwisp.active.location].distance[<player.eye_location>].mul[0.1]>]>
               - foreach <[points]> as:point:
                 - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
