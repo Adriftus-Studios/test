@@ -10,7 +10,7 @@ dwisp_command:
       2:
         spawn: no_arguments
         guard: <server.online_players.parse[name].insert[area].at[1]>
-        stay: cursor|here|current
+        stay: <list[cursor|here|current].include[<server.online_players.parse[name]>]>
         follow: <server.online_players.parse[name]>
         sleep: no_arguments
         edit: name|color1|color2|target|damage
@@ -57,8 +57,11 @@ dwisp_command:
           - case current:
             - flag player dwisp.active.stay_target:<player.flag[dwisp.active.location]>
           - default:
-            - narrate "<&c>Must specify 'cursor', 'current', or 'here'"
-            - stop
+            - define target <server.match_player[<context.args.get[2]>].if_null[null]>
+            - if <[target]> == null:
+              - narrate "<&c>Must specify 'cursor', 'current', 'here', or a valid player name"
+              - stop
+            - flag player dwisp.active.stay_target:<[target].location.forward_flat[6]>
         - flag player dwisp.active.queued_actions:->:stay
         - flag player dwisp.active.task:!
 
