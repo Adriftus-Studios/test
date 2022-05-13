@@ -24,7 +24,7 @@ dwisp_command:
         sleep: no_arguments
         edit: name|color1|color2|target|damage
         assume: on|off
-        inventory: <player.flag[dwisp.data.inventories].eys.if_null[<list>].include[off]>
+        inventory: <player.flag[dwisp.data.inventories].keys.if_null[<list>].include[off]>
   tab completions:
     1: assume|spawn|guard|stay|follow|sleep|edit|inventory
     2: <script.parsed_key[data.tab_complete.2.<context.args.get[1]>].if_null[invalid_argument]>
