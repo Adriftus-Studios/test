@@ -361,7 +361,7 @@ dwisp_run:
               - flag player dwisp.active.location:<[target].eye_location.above>
             - if <[target].health> != <[target].health_max>:
               - run dwisp_heal_target def:<[target]>
-            - define mob <[target].location.find_entities[monster].within[30].random.if_null[none]>
+            - define mob <[target].location.find_entities[<player.flag[dwisp.data.target]>].within[30].exclude[<player>|<[target]>].random.if_null[none]>
             - if <[mob]> != none && <[mob].is_spawned>:
               - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<[mob].eye_location>|2|<util.random.int[-20].to[20]>|<player.flag[dwisp.active.location].distance[<[mob].eye_location>].mul[0.1]>]>
             - else:
@@ -378,7 +378,10 @@ dwisp_run:
                 - playeffect effect:redstone at:<[mob].location.above> offset:0.25,0.75,0.25 quantity:20 special_data:5|<player.flag[dwisp.data.color1]> targets:<[targets]>
                 - playeffect effect:redstone at:<[mob].location.above> offset:0.25,0.75,0.25 quantity:20 special_data:2|<player.flag[dwisp.data.color2]> targets:<[targets]>
                 - wait 1t
-              - kill <[mob]>
+              - if <player.has_flag[dwisp.data.damage]> && <player.flag[dwisp.data.damage]> != kill:
+                - hurt <player.flag[dwisp.data.damage]> <[mob]>
+              - else:
+                - kill <[mob]>
               - wait 2t
           - flag player dwisp.active.task:!
 
@@ -399,7 +402,7 @@ dwisp_run:
               - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
               - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
               - wait 2t
-            - define mobs <player.flag[dwisp.active.location].find_entities[<player.flag[dwisp.data.target]>].within[36]>
+            - define mobs <player.flag[dwisp.active.location].find_entities[<player.flag[dwisp.data.target]>].within[36].exclude[<player>]>
             - foreach <[mobs]> as:target:
               - run dwisp_kill_target def:<[target]>
               - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
