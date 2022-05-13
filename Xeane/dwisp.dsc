@@ -507,7 +507,7 @@ dwisp_run:
 
             - else:
               - ~run dwisp_goto def:<[target].eye_location.above[5]>
-              - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<[target].eye_location.forward_flat[4]>|1|-90|<player.flag[dwisp.active.location].distance[<player.eye_location>].mul[0.1]>]>
+              - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<[target].eye_location.forward_flat[4]>|1|90|<player.flag[dwisp.active.location].distance[<player.eye_location>].mul[0.1]>]>
               - define targets <[target].location.find_players_within[100]>
               - foreach <[points]> as:point:
                 - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
