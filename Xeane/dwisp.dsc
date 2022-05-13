@@ -34,6 +34,14 @@ dwisp_command:
 
       # Follow
       - case follow:
+        - if <context.args.get[2].exists>:
+          - define target <server.match_player[<context.args.get[2]>].if_null[null]>
+          - if <[target]> == null:
+            - narrate "<&c>Unknown Player<&co> <context.args.get[2]>"
+            - stop
+          - flag player dwisp.active.follow_target:<[target]>
+        - else:
+          - flag player dwisp.active.follow_target:!
         - flag player dwisp.active.queued_actions:->:far_idle
         - flag player dwisp.active.task:!
 
