@@ -110,6 +110,13 @@ dwisp_command:
           - default:
             - narrate "<&c>Unknown field<&co> <context.args.get[2]>"
 
+      # Edit
+      - case clear:
+        - if <player.has_flag[dwisp.active.entity]> && <player.flag[dwisp.active.entity].is_spawned>:
+          - remove <player.flag[dwisp.active.entity]>
+        - flag player dwisp.active:!
+        - narrate "<&a>Wisp has been cleared"
+
       # Sleep
       - case assume:
         - if <context.args.size> < 3:
@@ -119,7 +126,6 @@ dwisp_command:
           - flag player dwisp.active.queued_actions:->:assume
           - flag player dwisp.active.task:!
         - else if <context.args.get[3]> == off:
-          - flag player dwisp.active.queued_actions:->:assume
           - flag player dwisp.active.task:!
         - else:
           - narrate "<&c>Must Specify 'on' or 'off'"
@@ -466,7 +472,7 @@ dwisp_run:
             - flag player dwisp.active.task:!
 
         # Player Assumes Wisp Form
-        - case assumed:
+        - case assume:
           - define start_loc <player.location>
           - define gamemode <player.gamemode>
           - adjust <player> gamemode:spectator
