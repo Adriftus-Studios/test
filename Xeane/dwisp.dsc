@@ -9,6 +9,7 @@
 
 dwisp_command:
   type: command
+  debug: false
   name: dwisp
   usage: /dwisp (command) (args)
   description: dWisp
