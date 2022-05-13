@@ -24,7 +24,7 @@ dwisp_command:
         edit: name|color1|color2
   tab completions:
     1: spawn|guard|stay|follow|sleep|edit
-    2: <script.parsed_key[data.<context.args.get[1]>].if_null[invalid_argument]>
+    2: <script.parsed_key[data.tab_complete.2.<context.args.get[1]>].if_null[invalid_argument]>
   script:
     - if <context.args.size> < 1:
       - narrate "<&c>You must specify arguments"
