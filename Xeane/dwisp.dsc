@@ -33,6 +33,7 @@ dwisp_command:
 
       # Spawn
       - case spawn:
+        - stop if:<player.has_flag[dwisp.active]>
         - flag player dwisp.active.task:spawn
         - run dwisp_run
 
@@ -90,7 +91,7 @@ dwisp_command:
       # Edit
       - case edit:
         - if <context.args.size> < 3:
-          - narrate "<&c>Must Specify an Field and a Value!"
+          - narrate "<&c>Must Specify a Field and a Value!"
           - stop
         - choose <context.args.get[2]>:
           - case name:
