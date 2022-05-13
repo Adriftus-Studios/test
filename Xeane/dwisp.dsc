@@ -21,9 +21,10 @@ dwisp_command:
         stay: cursor|here
         follow: <server.online_players.parse[name]>
         sleep: no_arguments
-        edit: name|color1|color2
+        edit: name|color1|color2|target|damage
+        assume: on|off
   tab completions:
-    1: spawn|guard|stay|follow|sleep|edit
+    1: assume|spawn|guard|stay|follow|sleep|edit
     2: <script.parsed_key[data.tab_complete.2.<context.args.get[1]>].if_null[invalid_argument]>
   script:
     - if <context.args.size> < 1:
@@ -102,8 +103,26 @@ dwisp_command:
             - flag <player> dwisp.data.color1:<context.args.get[3]>
           - case color2:
             - flag <player> dwisp.data.color2:<context.args.get[3]>
+          - case target:
+            - flag <player> dwisp.data.target:<context.args.get[3]>
+          - case damage:
+            - flag <player> dwisp.data.damage:<context.args.get[3]>
           - default:
             - narrate "<&c>Unknown field<&co> <context.args.get[2]>"
+
+      # Sleep
+      - case assume:
+        - if <context.args.size> < 3:
+          - narrate "<&c>Must Specify 'on' or 'off'"
+          - stop
+        - if <context.args.get[3]> == on:
+          - flag player dwisp.active.queued_actions:->:assume
+          - flag player dwisp.active.task:!
+        - else if <context.args.get[3]> == off:
+          - flag player dwisp.active.queued_actions:->:assume
+          - flag player dwisp.active.task:!
+        - else:
+          - narrate "<&c>Must Specify 'on' or 'off'"
 
       #Fallback
       - default:
