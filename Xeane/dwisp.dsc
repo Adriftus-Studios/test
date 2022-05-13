@@ -369,7 +369,7 @@ dwisp_run:
 
         # Spawning Wisp
         - case spawn:
-          - flag player dwisp.active.location:<player.eye_location>
+          - flag player dwisp.active.location:<player.eye_location.above[30]>
           - flag player dwisp.data.target:monster if:<player.has_flag[dwisp.data.target].not>
           - define targets <player.location.find_players_within[100]>
           - spawn dwisp_armor_stand[custom_name=<player.flag[dwisp.data.name]>] <player.eye_location> save:wisp
@@ -377,9 +377,8 @@ dwisp_run:
           - flag <entry[wisp].spawned_entity> on_entity_added:remove_this_entity
           - flag <entry[wisp].spawned_entity> owner:<player>
           - run dwisp_apply_traits
-          - flag player dwisp.active.location:<[destination].above[30]>
           - define points <proc[define_spiral].context[<player.location.above[30]>|<player.location.above[5]>|1|1|1]>
-          - define targets <[destination].find_players_within[100]>
+          - define targets <player.location.find_players_within[100]>
           - foreach <[points]> as:point:
             - if <[loop_index].mod[2]> == 0:
               - wait 1t
