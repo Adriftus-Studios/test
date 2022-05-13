@@ -223,7 +223,7 @@ dwisp_run:
       - choose <player.flag[dwisp.active.task].if_null[default]>:
         # Basic Idle Animation
         - case idle:
-          - while <player.flag[dwisp.active.task]> == idle && <player.is_online>:
+          - while <player.flag[dwisp.active.task].if_null[default]> == idle && <player.is_online>:
             - if <player.location.world> != <player.flag[dwisp.active.location].world>:
               - flag player dwisp.active.location:<player.eye_location.above>
             - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<player.location.above[2].random_offset[1,0.5,1]>|2|<util.random.int[-20].to[20]>|<player.flag[dwisp.active.location].distance[<player.eye_location>].mul[0.1]>]>
@@ -237,7 +237,7 @@ dwisp_run:
 
         # Far Idle (5 opposed to 2 blocks)
         - case far_idle:
-          - while <player.flag[dwisp.active.task]> == far_idle && <player.is_online>:
+          - while <player.flag[dwisp.active.task].if_null[default]> == far_idle && <player.is_online>:
             - if <player.location.world> != <player.flag[dwisp.active.location].world>:
               - flag player dwisp.active.location:<player.eye_location.above>
             - define destination <player.location.add[<player.location.sub[<player.flag[dwisp.active.location]>].normalize.mul[5]>].with_y[<player.eye_location.above.y>]>
@@ -291,7 +291,7 @@ dwisp_run:
         # Guard Player
         - case guard_target:
           - define target <player.flag[dwisp.active.guard_target]>
-          - while <player.flag[dwisp.active.task]> == guard_target && <player.is_online> && <[target].is_online>:
+          - while <player.flag[dwisp.active.task].if_null[default]> == guard_target && <player.is_online> && <[target].is_online>:
             - if <[target].location.world> != <player.flag[dwisp.active.location].world>:
               - flag player dwisp.active.location:<[target].eye_location.above>
             - if <[target].health> != <[target].health_max>:
@@ -328,7 +328,7 @@ dwisp_run:
             - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
             - flag player dwisp.active.location:<[point]>
             - wait 2t
-          - while <player.flag[dwisp.active.task]> == guard_area:
+          - while <player.flag[dwisp.active.task].if_null[default]> == guard_area:
             - define targets <player.flag[dwisp.active.location].find_players_within[100]>
             - repeat 10:
               - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
@@ -354,7 +354,7 @@ dwisp_run:
               - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
               - flag player dwisp.active.location:<[point]>
               - wait 2t
-            - while <player.flag[dwisp.active.task]> == stay:
+            - while <player.flag[dwisp.active.task].if_null[default]> == stay:
               - if <[loop_index].mod[100]> == 0:
                 - define targets <[target].find_players_within[100]>
               - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
@@ -417,7 +417,7 @@ dwisp_run:
           - define gamemode <player.gamemode>
           - adjust <player> gamemode:spectator
           - teleport <player> <player.flag[dwisp.active.location]>
-          - while <player.flag[dwisp.active.task]> == assumed && <player.is_online>:
+          - while <player.flag[dwisp.active.task].if_null[default]> == assumed && <player.is_online>:
             - teleport <player.flag[dwisp.active.entity]> <player.location.below[0.5]>
             - playeffect effect:redstone at:<player.location> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
             - playeffect effect:redstone at:<player.location> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
