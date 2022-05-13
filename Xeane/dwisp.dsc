@@ -1,12 +1,3 @@
-#dwisp_populate:
-  #type: world
-  #debug: false
-  #populate:
-    #- flag server givable_items:!
-    #- flag server givable_items:|:<server.scripts.filter[data.show_in_give].parse[name.to_uppercase]>
-  #events:
-    #on server start:
-
 dwisp_command:
   type: command
   debug: false
@@ -25,8 +16,9 @@ dwisp_command:
         edit: name|color1|color2|target|damage
         assume: on|off
         inventory: <player.flag[dwisp.data.inventories].keys.if_null[<list>].include[off]>
+        give: <server.online_players.parse[name]>
   tab completions:
-    1: assume|spawn|guard|stay|follow|sleep|edit|inventory
+    1: assume|spawn|guard|stay|follow|sleep|edit|inventory|give
     2: <script.parsed_key[data.tab_complete.2.<context.args.get[1]>].if_null[invalid_argument]>
   script:
     - if <context.args.size> < 1:
@@ -121,7 +113,7 @@ dwisp_command:
         - flag player dwisp.active:!
         - narrate "<&a>Wisp has been cleared"
 
-      # Sleep
+      # Assume Wisp
       - case assume:
         - if <context.args.size> < 2:
           - narrate "<&c>Not Enough Arguments"
@@ -137,6 +129,25 @@ dwisp_command:
           - flag player dwisp.active.task:!
         - else:
           - narrate "<&c>Must Specify 'on' or 'off'"
+
+      # Assume Wisp
+      - case give:
+        - if <context.args.size> < 3:
+          - narrate "<&c>Not Enough Arguments"
+          - stop
+        - define target <server.match_player[<context.args.get[2]>].if_null[null]>
+        - if <[target]> == null:
+          - narrate "<&c>Unknown Player<&co> <context.args.get[2]>"
+          - stop
+        - define item <item[<context.args.get[3]>].if_null[null]>
+        - if <[item]> == null:
+          - narrate "<&c>Unknown Item<&co> <context.args.get[3]>"
+          - stop
+        - flag player dwisp.active.give_target:<[target]>
+        - flag player dwisp.active.give_item:<[item]>
+        - flag player dwisp.active.queued_actions:->:give
+        - flag player dwisp.active.task:!
+
 
       #Fallback
       - default:
@@ -276,6 +287,45 @@ dwisp_kill_target:
     - else:
       - kill <[target]>
 
+dwisp_goto:
+  type: task
+  debug: false
+  definitions: destination
+  script:
+    - if <player.flag[dwisp.active.location].world> != <[destination].world>:
+      - flag player dwisp.active.location:<[destination].above[30]>
+      - define points <proc[define_spiral].context[<[destination].above[30]>|<[destination]>]>
+      - define targets <[destination].find_players_within[100]>
+      - foreach <[points]> as:point:
+        - if <[loop_index].mod[2]> == 0:
+          - wait 1t
+        - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
+        - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
+        - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
+        - flag player dwisp.active.location:<[point]>
+    - else if <player.flag[dwisp.active.location].distance[<[destination]>]> > 80:
+      - define points <proc[define_spiral].context[<player.flag[dwisp.active.location]>|<player.flag[dwisp.active.location].above[30]>|1|1|1]>
+      - define targets <[destination].find_players_within[100]>
+      - foreach <[points]> as:point:
+        - if <[loop_index].mod[2]> == 0:
+          - wait 1t
+        - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
+        - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
+        - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
+        - flag player dwisp.active.location:<[point]>
+      - flag player dwisp.active.location:<[destination].above[30]>
+      - define points <proc[define_spiral].context[<[destination].above[30]>|<[destination]>]>
+      - define targets <[destination].find_players_within[100]>
+      - foreach <[points]> as:point:
+        - if <[loop_index].mod[2]> == 0:
+          - wait 1t
+        - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
+        - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
+        - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
+        - flag player dwisp.active.location:<[point]>
+      
+        
+      
 
 dwisp_run:
   type: task
