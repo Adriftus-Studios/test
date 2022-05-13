@@ -474,7 +474,7 @@ dwisp_run:
         - case stay:
             - define target <player.flag[dwisp.active.stay_target].if_null[null]>
             - define target <player.cursor_on.center.above[2].if_null[<player.location.above[3]>]> if:<[target].equals[null]>
-            - ~run dwisp_goto def:<player.eye_location.above[5]>
+            - ~run dwisp_goto def:<[target].above[5]>
             - define points <proc[define_curve1].context[<player.flag[dwisp.active.location]>|<[target]>|2|<util.random.int[-20].to[20]>|<player.flag[dwisp.active.location].distance[<[target]>].mul[0.1]>]>
             - define targets <[target].find_players_within[100]>
             - foreach <[points]> as:point:
