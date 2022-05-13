@@ -119,7 +119,7 @@ dwisp_command:
 
       # Sleep
       - case assume:
-        - if <context.args.size> < 3:
+        - if <context.args.size> < 2:
           - narrate "<&c>Must Specify 'on' or 'off'"
           - stop
         - if <context.args.get[3]> == on:
