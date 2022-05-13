@@ -193,6 +193,7 @@ dwisp_kill_target:
   debug: false
   definitions: target
   script:
+    - stop if:<[target].is_spawned.not>
     - define distance <player.flag[dwisp.active.location].distance[<[target].location>].mul[0.1]>
     - define points <player.flag[dwisp.active.location].points_between[<[target].eye_location.below>].distance[<[distance]>]>
     - define targets <player.flag[dwisp.active.location].find_players_within[100]>
