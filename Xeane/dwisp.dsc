@@ -13,9 +13,18 @@ dwisp_command:
   usage: /dwisp (command) (args)
   description: dWisp
   permission: adriftus.admin
+  data:
+    tab_complete:
+      2:
+        spawn: no_arguments
+        guard: <server.online_players.parse[name].insert[area].at[1]>
+        stay: cursor|here
+        follow: <server.online_players.parse[name]>
+        sleep: no_arguments
+        edit: name|color1|color2
   tab completions:
-    1: spawn|guard|stay|follow|sleep
-    2: <server.online_players.parse[name]>
+    1: spawn|guard|stay|follow|sleep|edit
+    2: <script.parsed_key[data.<context.args.get[1]>].if_null[invalid_argument]>
   script:
     - if <context.args.size> < 1:
       - narrate "<&c>You must specify arguments"
@@ -42,11 +51,11 @@ dwisp_command:
           - case cursor:
             - flag player dwisp.active.stay_target:<player.cursor_on.center.above[3]>
           - default:
-            - narrate "<&c>Must specify cursor, or here"
+            - narrate "<&c>Must specify 'cursor', or 'here'"
             - stop
         - flag player dwisp.active.queued_actions:->:stay
         - flag player dwisp.active.task:!
-      
+
       # Guard Player
       - case guard:
         - if <context.args.size> < 2:
@@ -72,11 +81,30 @@ dwisp_command:
           - stop
         - flag player dwisp.data.traits.inventory:<context.args.get[2]>
         - run dwisp_apply_traits
-      
+
       # Sleep
       - case sleep:
         - flag player dwisp.active.queued_actions:->:sleep
         - flag player dwisp.active.task:!
+
+      # Edit
+      - case edit:
+        - if <context.args.size> < 3:
+          - narrate "<&c>Must Specify an Field and a Value!"
+          - stop
+        - choose <context.args.get[2]>:
+          - case name:
+            - flag <player> dwisp.data.name:<context.args.get[3].parsed>
+          - case color1:
+            - flag <player> dwisp.data.color1:<context.args.get[3]>
+          - case color2:
+            - flag <player> dwisp.data.color2:<context.args.get[3]>
+          - default:
+            - narrate "<&c>Unknown field<&co> <context.args.get[2]>"
+
+      #Fallback
+      - default:
+        - narrate "<&c>Unknown Argument<&co> <context.args.get[1]>"
 
 dwisp_apply_traits:
   type: task
