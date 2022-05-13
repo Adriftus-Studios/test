@@ -305,7 +305,7 @@ dwisp_goto:
         - flag player dwisp.active.location:<[point]>
     - else if <player.flag[dwisp.active.location].distance[<[destination]>]> > 80:
       - define points <proc[define_spiral].context[<player.flag[dwisp.active.location]>|<player.flag[dwisp.active.location].above[30]>|1|1|1]>
-      - define targets <[destination].find_players_within[100]>
+      - define targets <player.flag[dwisp.active.location].find_players_within[100]>
       - foreach <[points]> as:point:
         - if <[loop_index].mod[2]> == 0:
           - wait 1t
