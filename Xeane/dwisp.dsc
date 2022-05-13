@@ -322,7 +322,7 @@ dwisp_goto:
         - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
         - flag player dwisp.active.location:<[point]>
       - flag player dwisp.active.location:<[destination].above[30]>
-      - define points <proc[define_spiral].context[<[destination].above[30]>|<[destination]>]>
+      - define points <proc[define_spiral].context[<[destination].above[30]>|<[destination]>|1|1|1]>
       - define targets <[destination].find_players_within[100]>
       - foreach <[points]> as:point:
         - if <[loop_index].mod[2]> == 0:
