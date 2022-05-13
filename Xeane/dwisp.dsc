@@ -123,7 +123,7 @@ dwisp_command:
           - narrate "<&c>Not Enough Arguments"
           - stop
         - if <context.args.get[2]> == on:
-          - flag player dwisp.active.queued_actions:->:assume
+          - flag player dwisp.active.queued_actions:->:assumed
           - flag player dwisp.active.task:!
         - else if <context.args.get[2]> == off:
           - flag player dwisp.active.task:!
