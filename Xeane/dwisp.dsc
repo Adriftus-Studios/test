@@ -509,8 +509,8 @@ dwisp_run:
                 - teleport <player.flag[dwisp.active.entity]> <player.flag[dwisp.active.location].below[0.5]>
                 - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
                 - playeffect effect:redstone at:<player.flag[dwisp.active.location]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
-                - playeffect effect:redstone at:<entry[dropped].spawned_entity.location> offset:0.05 quantity:5 special_data:1|<player.flag[dwisp.data.color1]> targets:<[targets]>
-                - playeffect effect:redstone at:<entry[dropped].spawned_entity.location> offset:0.1 quantity:5 special_data:0.5|<player.flag[dwisp.data.color2]> targets:<[targets]>
+                - playeffect effect:redstone at:<entry[dropped].dropped_entity.location> offset:0.05 quantity:5 special_data:1|<player.flag[dwisp.data.color1]> targets:<[targets]>
+                - playeffect effect:redstone at:<entry[dropped].dropped_entity.location> offset:0.1 quantity:5 special_data:0.5|<player.flag[dwisp.data.color2]> targets:<[targets]>
                 - wait 2t
               - flag player dwisp.active.task:far_idle
 
