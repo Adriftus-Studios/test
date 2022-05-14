@@ -22,7 +22,7 @@ grappling_hook_shoot:
     - spawn snowball[custom_model_data=20;gravity=false;velocity=<[target].sub[<player.eye_location>]>;flag=on_hit_block:grappling_hook_pull] <player.eye_location.below[0.45].right[0.3]> save:ent
     - define targets <player.location.find_players_within[100]>
     - while <entry[ent].is_spawned> && <player.is_online>:
-      - playeffect at:<player.eye_location.below[0.45].right[0.3].points_between[<[target]>]> special_data:3|#FFFFFF effect:redstone targets:<[targets]>
+      - playeffect at:<player.eye_location.below[0.45].right[0.3].points_between[<[target]>].distance[0.33]> special_data:3|#FFFFFF effect:redstone targets:<[targets]>
       - wait 4t
 
 grappling_hook_pull:
