@@ -27,7 +27,7 @@ grappling_hook_shoot:
     - flag <entry[ent].spawned_entity> on_hit_block:grappling_hook_pull
     - wait 1t
     - define targets <player.location.find_players_within[100]>
-    - while <entry[ent].is_spawned> && <player.is_online>:
+    - while <entry[ent].spawned_entity.is_spawned> && <player.is_online>:
       - playeffect at:<player.eye_location.below[0.45].right[0.3].points_between[<[target]>].distance[0.33]> special_data:3|#FFFFFF effect:redstone targets:<[targets]>
       - wait 4t
 
@@ -36,7 +36,7 @@ grappling_hook_pull:
   debug: false
   script:
     - define target <context.location.add[<context.hit_face>].center>
-    - define targets <player.location.find_players_within[100]>
+    - define targets <context.location.find_players_within[100]>
     - adjust <player> gravity:false
     - while <player.location.distance[<context.location>]> > 1.1 && <player.is_online>:
       - playeffect at:<player.eye_location.below[0.45].right[0.3].points_between[<[target]>].distance[0.33]> special_data:3|#FFFFFF effect:redstone targets:<[targets]>
