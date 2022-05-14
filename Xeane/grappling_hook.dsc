@@ -24,7 +24,7 @@ grappling_hook_shoot:
       - narrate "<&c>INTERNAL ERROR - REPORT Grappling0001"
       - stop
     - wait 1t
-    - adjust <entry[ent].spawned_entity> velocity:<[target].sub[<player.eye_location>]>
+    - adjust <entry[ent].spawned_entity> velocity:<[target].sub[<player.eye_location>].normalize.mul[5]>
     - flag <entry[ent].spawned_entity> on_hit_block:grappling_hook_pull
     - define targets <player.location.find_players_within[100]>
     - while <entry[ent].spawned_entity.is_spawned> && <player.is_online>:
