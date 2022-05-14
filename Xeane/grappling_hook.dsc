@@ -16,16 +16,17 @@ grappling_hook_shoot:
   script:
     - define range <context.item.script.data_key[data.range]>
     - define target <player.location.precise_cursor_on_block[<[range]>].add[<player.eye_location.precise_impact_normal[<[range]>].if_null[0,0,0]>].if_null[null]>
+    - define start <player.eye_location.below[0.45].right[0.3].forward_flat>
     - if <[target]> == null:
       - narrate "<&c>You have no target in range"
       - stop
-    - spawn snowball[item=feather[custom_model_data=20];gravity=false] <player.eye_location.below[0.45].right[0.3].forward_flat> save:ent
+    - spawn snowball[item=feather[custom_model_data=20];gravity=false] <[start]> save:ent
     - if !<entry[ent].spawned_entity.is_spawned>:
       - narrate "<&c>INTERNAL ERROR - REPORT Grappling0001"
       - stop
-    - wait 1t
-    - adjust <entry[ent].spawned_entity> velocity:<[target].center.sub[<player.eye_location>].normalize>
+    - adjust <entry[ent].spawned_entity> velocity:<[target].center.sub[<[start]>].normalize>
     - flag <entry[ent].spawned_entity> on_hit_block:grappling_hook_pull
+    - wait 1t
     - define targets <player.location.find_players_within[100]>
     - while <entry[ent].spawned_entity.is_spawned> && <player.is_online>:
       - playeffect at:<player.eye_location.below[0.45].right[0.3].points_between[<entry[ent].spawned_entity.location>].distance[0.33]> offset:0 special_data:3|#FFFFFF effect:redstone targets:<[targets]>
