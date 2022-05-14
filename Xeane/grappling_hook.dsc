@@ -27,6 +27,7 @@ grappling_hook_shoot:
     - adjust <entry[ent].spawned_entity> velocity:<[target].sub[<[start]>].normalize>
     - flag <entry[ent].spawned_entity> on_hit_block:grappling_hook_pull
     - flag <entry[ent].spawned_entity> user:<player>
+    - flag <entry[ent].spawned_entity> target:<[target]>
     - wait 1t
     - define targets <player.location.find_players_within[100]>
     - while <entry[ent].spawned_entity.is_spawned> && <player.is_online>:
@@ -38,7 +39,7 @@ grappling_hook_pull:
   debug: false
   script:
     - adjust <queue> linked_player:<context.projectile.flag[user]>
-    - define target <context.location.add[<context.hit_face>].center>
+    - define target <context.projectile.flag[target]>
     - define targets <context.location.find_players_within[100]>
     - adjust <player> gravity:false
     - while <player.location.distance[<context.location>]> > 1.7 && <player.is_online>:
