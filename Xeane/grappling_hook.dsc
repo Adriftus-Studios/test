@@ -19,8 +19,8 @@ grappling_hook_shoot:
     - if <[target]> == null:
       - narrate "<&c>You have no target in range"
       - stop
-    - spawn snowball[custom_model_data=20;gravity=false] <player.eye_location.below[0.45].right[0.3].forward[0.8]> save:ent
-    - if !<entry[ent].is_spawned>:
+    - spawn snowball[custom_model_data=20;gravity=false] <player.eye_location.below[0.45].right[0.3].forward_flat> save:ent
+    - if !<entry[ent].spawned_entity.is_spawned>:
       - narrate "<&c>INTERNAL ERROR - REPORT Grappling0001"
       - stop
     - flag <entry[ent].spawned_entity> on_hit_block:grappling_hook_pull
