@@ -7,6 +7,8 @@ basic_grappling_hook:
   lore:
     - "<&e>Tier: <&7>Basic"
     - "<&e>Range<&co> <script.data_key[data.range]>"
+  flags:
+    right_click_script: grappling_hook_shoot
 
 grappling_hook_shoot:
   type: task
