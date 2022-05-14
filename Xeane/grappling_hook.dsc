@@ -19,8 +19,13 @@ grappling_hook_shoot:
     - if <[target]> == null:
       - narrate "<&c>You have no target in range"
       - stop
-    - spawn snowball[custom_model_data=20;gravity=false;velocity=<[target].sub[<player.eye_location>]>] <player.eye_location.below[0.45].right[0.3]> save:ent
-    - flag <entry[ent].spawned_entity> on_hit_block:grappling_hook_pull if:<entry[ent].is_spawned>
+    - spawn snowball[custom_model_data=20;gravity=false] <player.eye_location.below[0.45].right[0.3]> save:ent
+    - if !<entry[ent].is_spawned>:
+      - narrate "<&c>INTERNAL ERROR - REPORT Grappling0001"
+      - stop
+    - flag <entry[ent].spawned_entity> on_hit_block:grappling_hook_pull
+    - wait 1t
+    - adjust <entry[ent].spawned_entity> velocity:<[target].sub[<player.eye_location>]>
     - define targets <player.location.find_players_within[100]>
     - while <entry[ent].is_spawned> && <player.is_online>:
       - playeffect at:<player.eye_location.below[0.45].right[0.3].points_between[<[target]>].distance[0.33]> special_data:3|#FFFFFF effect:redstone targets:<[targets]>
