@@ -45,3 +45,4 @@ grappling_hook_pull:
       - playeffect at:<player.eye_location.below[0.45].right[0.3].points_between[<[target]>].distance[0.33]> special_data:3|#FFFFFF effect:redstone targets:<[targets]>
       - adjust <player> velocity:<[target].sub[<player.location>].normalize>
       - wait 4t
+    - adjust <player> gravity:true
