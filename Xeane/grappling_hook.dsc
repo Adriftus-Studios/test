@@ -42,7 +42,7 @@ grappling_hook_pull:
     - define target <context.projectile.flag[target]>
     - define targets <context.location.find_players_within[100]>
     - adjust <player> gravity:false
-    - while <player.location.distance[<context.location>]> > 1.7 && <player.is_online>:
+    - while <player.location.distance[<[target]>]> > 1.7 && <player.is_online>:
       - playeffect at:<player.eye_location.below[0.45].right[0.3].points_between[<[target]>].distance[0.33]> quantity:5 offset:0 special_data:2|#FFFFFF effect:redstone targets:<[targets]>
       - adjust <player> velocity:<[target].sub[<player.location>].normalize>
       - wait 4t
