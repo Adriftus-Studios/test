@@ -24,7 +24,7 @@ grappling_hook_shoot:
     - if !<entry[ent].spawned_entity.is_spawned>:
       - narrate "<&c>INTERNAL ERROR - REPORT Grappling0001"
       - stop
-    - adjust <entry[ent].spawned_entity> velocity:<[target].center.sub[<[start]>].normalize>
+    - adjust <entry[ent].spawned_entity> velocity:<[target].sub[<[start]>].normalize>
     - flag <entry[ent].spawned_entity> on_hit_block:grappling_hook_pull
     - flag <entry[ent].spawned_entity> user:<player>
     - wait 1t
