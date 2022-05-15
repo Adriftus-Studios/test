@@ -10,6 +10,55 @@ basic_grappling_hook:
   flags:
     right_click_script: grappling_hook_shoot
 
+better_grappling_hook:
+  type: item
+  material: feather
+  display name: <&a>Grappling Hook
+  data:
+    range: 20
+  lore:
+    - "<&e>Tier: <&7>Basic"
+    - "<&e>Range<&co> <script.data_key[data.range]>"
+  flags:
+    right_click_script: grappling_hook_shoot
+
+advanced_grappling_hook:
+  type: item
+  material: feather
+  display name: <&a>Grappling Hook
+  data:
+    range: 25
+  lore:
+    - "<&e>Tier: <&7>Basic"
+    - "<&e>Range<&co> <script.data_key[data.range]>"
+  flags:
+    right_click_script: grappling_hook_shoot
+
+master_grappling_hook:
+  type: item
+  material: feather
+  display name: <&a>Grappling Hook
+  data:
+    range: 30
+  lore:
+    - "<&e>Tier: <&7>Basic"
+    - "<&e>Range<&co> <script.data_key[data.range]>"
+  flags:
+    right_click_script: grappling_hook_shoot
+
+godly_grappling_hook:
+  type: item
+  material: feather
+  display name: <&a>Grappling Hook
+  data:
+    range: 40
+  lore:
+    - "<&e>Tier: <&7>Basic"
+    - "<&e>Range<&co> <script.data_key[data.range]>"
+  flags:
+    right_click_script: grappling_hook_shoot
+
+
 grappling_hook_shoot:
   type: task
   debug: false
