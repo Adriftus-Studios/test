@@ -120,7 +120,7 @@ grappling_hook_pull:
       - if <[loop_index]> > 45:
         - while stop
     - adjust <player> fall_distance:0
-    - if <[target].above.material.name.advanced_matches[*air]>:
+    - if <player.location.pitch> < -15 && <[target].above.material.name.advanced_matches[*air]>:
       - adjust <player> velocity:<player.location.direction.vector.with_y[0.5]>
     - else:
       - adjust <player> velocity:0,0,0
