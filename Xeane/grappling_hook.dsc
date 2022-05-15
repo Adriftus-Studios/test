@@ -4,11 +4,13 @@ basic_grappling_hook:
   display name: <&a>Grappling Hook
   data:
     range: 15
+    cooldown: 20s
   lore:
     - "<&e>Tier: <&7>Basic"
     - "<&e>Range<&co> <script.data_key[data.range]>"
   flags:
     right_click_script: grappling_hook_shoot
+    uuid: <util.random_uuid>
 
 better_grappling_hook:
   type: item
@@ -16,11 +18,13 @@ better_grappling_hook:
   display name: <&a>Grappling Hook
   data:
     range: 20
+    cooldown: 15s
   lore:
     - "<&e>Tier: <&7>Basic"
     - "<&e>Range<&co> <script.data_key[data.range]>"
   flags:
     right_click_script: grappling_hook_shoot
+    uuid: <util.random_uuid>
 
 advanced_grappling_hook:
   type: item
@@ -28,11 +32,13 @@ advanced_grappling_hook:
   display name: <&a>Grappling Hook
   data:
     range: 25
+    cooldown: 10s
   lore:
     - "<&e>Tier: <&7>Basic"
     - "<&e>Range<&co> <script.data_key[data.range]>"
   flags:
     right_click_script: grappling_hook_shoot
+    uuid: <util.random_uuid>
 
 master_grappling_hook:
   type: item
@@ -40,11 +46,13 @@ master_grappling_hook:
   display name: <&a>Grappling Hook
   data:
     range: 30
+    cooldown: 10s
   lore:
     - "<&e>Tier: <&7>Basic"
     - "<&e>Range<&co> <script.data_key[data.range]>"
   flags:
     right_click_script: grappling_hook_shoot
+    uuid: <util.random_uuid>
 
 godly_grappling_hook:
   type: item
@@ -52,17 +60,24 @@ godly_grappling_hook:
   display name: <&a>Grappling Hook
   data:
     range: 40
+    cooldown: 10s
   lore:
     - "<&e>Tier: <&7>Basic"
     - "<&e>Range<&co> <script.data_key[data.range]>"
   flags:
     right_click_script: grappling_hook_shoot
+    uuid: <util.random_uuid>
 
 
 grappling_hook_shoot:
   type: task
   debug: false
   script:
+    - ratelimit <player> 1t
+    - if <context.item.has_flag[last_used]> && <duration[<context.item.script.data_key[data.cooldown]>].sub[<context.item.flag[last_used].from_now>]> < <context.item.script.data_key[data.cooldown]>:
+      - narrate "<&c>This item has not recharged"
+      - narrate "<&e>Cooldown Remaining<&co> <&f><duration[<context.item.script.data_key[data.cooldown]>].sub[<context.item.flag[last_used].from_now>].formatted>"
+      - stop
     - define range <context.item.script.data_key[data.range]>
     - define target <player.eye_location.precise_cursor_on[<[range]>].if_null[null]>
     - define start <player.eye_location.forward[0.5]>
@@ -74,6 +89,7 @@ grappling_hook_shoot:
       - narrate "<&c>INTERNAL ERROR - REPORT Grappling0001"
       - stop
     - adjust <entry[ent].spawned_entity> velocity:<[target].sub[<[start]>].normalize>
+    - inventory flag slot:<player.held_item_slot> last_use:<util.time_now>
     - flag <entry[ent].spawned_entity> on_hit_block:grappling_hook_pull
     - flag <entry[ent].spawned_entity> user:<player>
     - flag <entry[ent].spawned_entity> target:<[target]>
