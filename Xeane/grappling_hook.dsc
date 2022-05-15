@@ -1,6 +1,6 @@
 grappling_hook_basic:
   type: item
-  material: feather
+  material: tripwire_hook
   display name: <script.parsed_key[data.tier]> Grappling Hook
   data:
     tier: <&7>Basic
@@ -8,7 +8,7 @@ grappling_hook_basic:
     cooldown: 20s
   lore:
     - "<&e>Tier: <script.parsed_key[data.tier]>"
-    - "<&e>Range<&co> <script.data_key[data.range]>"
+    - "<&e>Range<&co> <&f><script.data_key[data.range]>"
     - "<&e>Cooldown<&co> <&f><script.data_key[data.cooldown]>"
   flags:
     right_click_script: grappling_hook_shoot
@@ -16,7 +16,7 @@ grappling_hook_basic:
 
 grappling_hook_better:
   type: item
-  material: feather
+  material: tripwire_hook
   display name: <script.parsed_key[data.tier]> Grappling Hook
   data:
     tier: <&a>Better
@@ -24,7 +24,7 @@ grappling_hook_better:
     cooldown: 15s
   lore:
     - "<&e>Tier: <script.parsed_key[data.tier]>"
-    - "<&e>Range<&co> <script.data_key[data.range]>"
+    - "<&e>Range<&co> <&f><script.data_key[data.range]>"
     - "<&e>Cooldown<&co> <&f><script.data_key[data.cooldown]>"
   flags:
     right_click_script: grappling_hook_shoot
@@ -32,7 +32,7 @@ grappling_hook_better:
 
 grappling_hook_advanced:
   type: item
-  material: feather
+  material: tripwire_hook
   display name: <script.parsed_key[data.tier]> Grappling Hook
   data:
     tier: <&e>Advanced
@@ -40,7 +40,7 @@ grappling_hook_advanced:
     cooldown: 10s
   lore:
     - "<&e>Tier: <script.parsed_key[data.tier]>"
-    - "<&e>Range<&co> <script.data_key[data.range]>"
+    - "<&e>Range<&co> <&f><script.data_key[data.range]>"
     - "<&e>Cooldown<&co> <&f><script.data_key[data.cooldown]>"
   flags:
     right_click_script: grappling_hook_shoot
@@ -48,7 +48,7 @@ grappling_hook_advanced:
 
 grappling_hook_master:
   type: item
-  material: feather
+  material: tripwire_hook
   display name: <script.parsed_key[data.tier]> Grappling Hook
   data:
     tier: <&6>Master
@@ -56,7 +56,7 @@ grappling_hook_master:
     cooldown: 10s
   lore:
     - "<&e>Tier: <script.parsed_key[data.tier]>"
-    - "<&e>Range<&co> <script.data_key[data.range]>"
+    - "<&e>Range<&co> <&f><script.data_key[data.range]>"
     - "<&e>Cooldown<&co> <&f><script.data_key[data.cooldown]>"
   flags:
     right_click_script: grappling_hook_shoot
@@ -64,7 +64,7 @@ grappling_hook_master:
 
 grappling_hook_divine:
   type: item
-  material: feather
+  material: tripwire_hook
   display name: <script.parsed_key[data.tier]> Grappling Hook
   data:
     tier: <&b>Divine
@@ -72,7 +72,7 @@ grappling_hook_divine:
     cooldown: 10s
   lore:
     - "<&e>Tier: <script.parsed_key[data.tier]>"
-    - "<&e>Range<&co> <&f><script.data_key[data.range]>"
+    - "<&e>Range<&co> <&f><&f><script.data_key[data.range]>"
     - "<&e>Cooldown<&co> <&f><script.data_key[data.cooldown]>"
   flags:
     right_click_script: grappling_hook_shoot
@@ -83,6 +83,7 @@ grappling_hook_shoot:
   type: task
   debug: false
   script:
+    - determine passively cancelled
     - ratelimit <player> 1t
     - if <context.item.has_flag[last_used]>:
       - narrate "<&c>This item has not recharged"
@@ -94,7 +95,7 @@ grappling_hook_shoot:
     - if <[target]> == null:
       - narrate "<&c>You have no target in range"
       - stop
-    - spawn snowball[item=feather[custom_model_data=20];gravity=false] <[start]> save:ent
+    - spawn snowball[item=tripwire_hook[custom_model_data=3];gravity=false] <[start]> save:ent
     - if !<entry[ent].spawned_entity.is_spawned>:
       - narrate "<&c>INTERNAL ERROR - REPORT Grappling0001"
       - stop
