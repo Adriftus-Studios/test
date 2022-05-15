@@ -1,4 +1,4 @@
-basic_grappling_hook:
+grappling_hook_basic:
   type: item
   material: feather
   display name: <script.parsed_key[data.tier]> Grappling Hook
@@ -9,11 +9,12 @@ basic_grappling_hook:
   lore:
     - "<&e>Tier: <script.parsed_key[data.tier]>"
     - "<&e>Range<&co> <script.data_key[data.range]>"
+    - "<&e>Cooldown<&co> <&f><script.data_key[data.cooldown]>"
   flags:
     right_click_script: grappling_hook_shoot
     uuid: <util.random_uuid>
 
-better_grappling_hook:
+grappling_hook_better:
   type: item
   material: feather
   display name: <script.parsed_key[data.tier]> Grappling Hook
@@ -24,11 +25,12 @@ better_grappling_hook:
   lore:
     - "<&e>Tier: <script.parsed_key[data.tier]>"
     - "<&e>Range<&co> <script.data_key[data.range]>"
+    - "<&e>Cooldown<&co> <&f><script.data_key[data.cooldown]>"
   flags:
     right_click_script: grappling_hook_shoot
     uuid: <util.random_uuid>
 
-advanced_grappling_hook:
+grappling_hook_advanced:
   type: item
   material: feather
   display name: <script.parsed_key[data.tier]> Grappling Hook
@@ -39,11 +41,12 @@ advanced_grappling_hook:
   lore:
     - "<&e>Tier: <script.parsed_key[data.tier]>"
     - "<&e>Range<&co> <script.data_key[data.range]>"
+    - "<&e>Cooldown<&co> <&f><script.data_key[data.cooldown]>"
   flags:
     right_click_script: grappling_hook_shoot
     uuid: <util.random_uuid>
 
-master_grappling_hook:
+grappling_hook_master:
   type: item
   material: feather
   display name: <script.parsed_key[data.tier]> Grappling Hook
@@ -54,21 +57,23 @@ master_grappling_hook:
   lore:
     - "<&e>Tier: <script.parsed_key[data.tier]>"
     - "<&e>Range<&co> <script.data_key[data.range]>"
+    - "<&e>Cooldown<&co> <&f><script.data_key[data.cooldown]>"
   flags:
     right_click_script: grappling_hook_shoot
     uuid: <util.random_uuid>
 
-godly_grappling_hook:
+grappling_hook_divine:
   type: item
   material: feather
   display name: <script.parsed_key[data.tier]> Grappling Hook
   data:
-    tier: <&4>Godly
-    range: 60
+    tier: <&b>Divine
+    range: 80
     cooldown: 10s
   lore:
     - "<&e>Tier: <script.parsed_key[data.tier]>"
-    - "<&e>Range<&co> <script.data_key[data.range]>"
+    - "<&e>Range<&co> <&f><script.data_key[data.range]>"
+    - "<&e>Cooldown<&co> <&f><script.data_key[data.cooldown]>"
   flags:
     right_click_script: grappling_hook_shoot
     uuid: <util.random_uuid>
@@ -102,7 +107,7 @@ grappling_hook_shoot:
     - define targets <player.location.find_players_within[100]>
     - while <entry[ent].spawned_entity.is_spawned> && <player.is_online>:
       - adjust <entry[ent].spawned_entity> velocity:<[target].sub[<[start]>].normalize>
-      - playeffect at:<player.eye_location.below[0.45].right[0.3].points_between[<entry[ent].spawned_entity.location>].distance[0.33]> quantity:2  offset:0 special_data:1.2|#FFFFFF effect:redstone targets:<[targets]>
+      - playeffect at:<player.eye_location.below[0.45].right[0.3].points_between[<entry[ent].spawned_entity.location>].distance[0.33]> quantity:2  offset:0 special_data:1|#FFFFFF effect:redstone targets:<[targets]>
       - wait 4t
 
 grappling_hook_pull:
@@ -114,7 +119,7 @@ grappling_hook_pull:
     - define targets <context.location.find_players_within[100]>
     - adjust <player> gravity:false
     - while <player.eye_location.below[0.5].distance[<[target]>]> > 1.8 && <player.is_online>:
-      - playeffect at:<player.eye_location.below[0.45].right[0.3].points_between[<[target]>].distance[0.33]> quantity:2 offset:0 special_data:1.2|#FFFFFF effect:redstone targets:<[targets]>
+      - playeffect at:<player.eye_location.below[0.45].right[0.3].points_between[<[target]>].distance[0.33]> quantity:2 offset:0 special_data:1|#FFFFFF effect:redstone targets:<[targets]>
       - adjust <player> velocity:<[target].sub[<player.location>].normalize>
       - wait 4t
       - if <[loop_index]> > 45:
