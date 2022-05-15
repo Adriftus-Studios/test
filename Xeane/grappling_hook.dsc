@@ -80,8 +80,7 @@ grappling_hook_shoot:
     - wait 1t
     - define targets <player.location.find_players_within[100]>
     - while <entry[ent].spawned_entity.is_spawned> && <player.is_online>:
-      - if <[loop_index].mod[5]> == 0:
-        - adjust <entry[ent].spawned_entity> velocity:<[target].sub[<[start]>].normalize>
+      - adjust <entry[ent].spawned_entity> velocity:<[target].sub[<[start]>].normalize>
       - playeffect at:<player.eye_location.below[0.45].right[0.3].points_between[<entry[ent].spawned_entity.location>].distance[0.33]> quantity:5  offset:0 special_data:2|#FFFFFF effect:redstone targets:<[targets]>
       - wait 4t
 
