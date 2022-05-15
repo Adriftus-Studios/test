@@ -15,7 +15,7 @@ grappling_hook_shoot:
   debug: false
   script:
     - define range <context.item.script.data_key[data.range]>
-    - define target <player.location.precise_cursor_on[<[range]>].if_null[null]>
+    - define target <player.eye_location.precise_cursor_on[<[range]>].if_null[null]>
     - define start <player.eye_location.forward[0.5]>
     - if <[target]> == null:
       - narrate "<&c>You have no target in range"
