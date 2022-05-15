@@ -13,6 +13,8 @@ grappling_hook_basic:
   flags:
     right_click_script: grappling_hook_shoot
     uuid: <util.random_uuid>
+  mechanisms:
+    custom_model_data: 3
 
 grappling_hook_better:
   type: item
@@ -29,6 +31,8 @@ grappling_hook_better:
   flags:
     right_click_script: grappling_hook_shoot
     uuid: <util.random_uuid>
+  mechanisms:
+    custom_model_data: 3
 
 grappling_hook_advanced:
   type: item
@@ -45,6 +49,8 @@ grappling_hook_advanced:
   flags:
     right_click_script: grappling_hook_shoot
     uuid: <util.random_uuid>
+  mechanisms:
+    custom_model_data: 3
 
 grappling_hook_master:
   type: item
@@ -61,6 +67,8 @@ grappling_hook_master:
   flags:
     right_click_script: grappling_hook_shoot
     uuid: <util.random_uuid>
+  mechanisms:
+    custom_model_data: 3
 
 grappling_hook_divine:
   type: item
@@ -77,6 +85,8 @@ grappling_hook_divine:
   flags:
     right_click_script: grappling_hook_shoot
     uuid: <util.random_uuid>
+  mechanisms:
+    custom_model_data: 3
 
 
 grappling_hook_shoot:
