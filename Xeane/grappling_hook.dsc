@@ -1,12 +1,13 @@
 basic_grappling_hook:
   type: item
   material: feather
-  display name: <&a>Grappling Hook
+  display name: <script.parsed_key[data.tier]> Grappling Hook
   data:
+    tier: <&7>Basic
     range: 15
     cooldown: 20s
   lore:
-    - "<&e>Tier: <&7>Basic"
+    - "<&e>Tier: <script.parsed_key[data.tier]>"
     - "<&e>Range<&co> <script.data_key[data.range]>"
   flags:
     right_click_script: grappling_hook_shoot
@@ -15,12 +16,13 @@ basic_grappling_hook:
 better_grappling_hook:
   type: item
   material: feather
-  display name: <&a>Grappling Hook
+  display name: <script.parsed_key[data.tier]> Grappling Hook
   data:
+    tier: <&a>Better
     range: 20
     cooldown: 15s
   lore:
-    - "<&e>Tier: <&7>Basic"
+    - "<&e>Tier: <script.parsed_key[data.tier]>"
     - "<&e>Range<&co> <script.data_key[data.range]>"
   flags:
     right_click_script: grappling_hook_shoot
@@ -29,12 +31,13 @@ better_grappling_hook:
 advanced_grappling_hook:
   type: item
   material: feather
-  display name: <&a>Grappling Hook
+  display name: <script.parsed_key[data.tier]> Grappling Hook
   data:
+    tier: <&e>Advanced
     range: 25
     cooldown: 10s
   lore:
-    - "<&e>Tier: <&7>Basic"
+    - "<&e>Tier: <script.parsed_key[data.tier]>"
     - "<&e>Range<&co> <script.data_key[data.range]>"
   flags:
     right_click_script: grappling_hook_shoot
@@ -43,12 +46,13 @@ advanced_grappling_hook:
 master_grappling_hook:
   type: item
   material: feather
-  display name: <&a>Grappling Hook
+  display name: <script.parsed_key[data.tier]> Grappling Hook
   data:
+    tier: <&6>Master
     range: 30
     cooldown: 10s
   lore:
-    - "<&e>Tier: <&7>Basic"
+    - "<&e>Tier: <script.parsed_key[data.tier]>"
     - "<&e>Range<&co> <script.data_key[data.range]>"
   flags:
     right_click_script: grappling_hook_shoot
@@ -57,12 +61,13 @@ master_grappling_hook:
 godly_grappling_hook:
   type: item
   material: feather
-  display name: <&a>Grappling Hook
+  display name: <script.parsed_key[data.tier]> Grappling Hook
   data:
-    range: 40
+    tier: <&4>Godly
+    range: 60
     cooldown: 10s
   lore:
-    - "<&e>Tier: <&7>Basic"
+    - "<&e>Tier: <script.parsed_key[data.tier]>"
     - "<&e>Range<&co> <script.data_key[data.range]>"
   flags:
     right_click_script: grappling_hook_shoot
