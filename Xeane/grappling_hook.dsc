@@ -74,7 +74,7 @@ grappling_hook_shoot:
   debug: false
   script:
     - ratelimit <player> 1t
-    - if <context.item.has_flag[last_used]> && <duration[<context.item.script.data_key[data.cooldown]>].sub[<context.item.flag[last_used].from_now>]> > <duration[<context.item.script.data_key[data.cooldown]>]>:
+    - if <context.item.has_flag[last_used]>:
       - narrate "<&c>This item has not recharged"
       - narrate "<&e>Cooldown Remaining<&co> <&f><duration[<context.item.script.data_key[data.cooldown]>].sub[<context.item.flag[last_used].from_now>].formatted>"
       - stop
@@ -89,7 +89,7 @@ grappling_hook_shoot:
       - narrate "<&c>INTERNAL ERROR - REPORT Grappling0001"
       - stop
     - adjust <entry[ent].spawned_entity> velocity:<[target].sub[<[start]>].normalize>
-    - inventory flag slot:<player.held_item_slot> last_used:<util.time_now>
+    - inventory flag slot:<player.held_item_slot> last_used:<util.time_now> expire:<context.item.script.data_key[data.cooldown]>
     - flag <entry[ent].spawned_entity> on_hit_block:grappling_hook_pull
     - flag <entry[ent].spawned_entity> user:<player>
     - flag <entry[ent].spawned_entity> target:<[target]>
