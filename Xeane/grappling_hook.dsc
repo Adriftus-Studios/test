@@ -89,7 +89,7 @@ grappling_hook_shoot:
       - narrate "<&c>INTERNAL ERROR - REPORT Grappling0001"
       - stop
     - adjust <entry[ent].spawned_entity> velocity:<[target].sub[<[start]>].normalize>
-    - inventory flag slot:<player.held_item_slot> last_use:<util.time_now>
+    - inventory flag slot:<player.held_item_slot> last_used:<util.time_now>
     - flag <entry[ent].spawned_entity> on_hit_block:grappling_hook_pull
     - flag <entry[ent].spawned_entity> user:<player>
     - flag <entry[ent].spawned_entity> target:<[target]>
