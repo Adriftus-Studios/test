@@ -114,5 +114,6 @@ grappling_hook_pull:
       - wait 4t
       - if <[loop_index]> > 45:
         - while stop
+    - adjust <player> fall_distance:0
     - adjust <player> velocity:0,0,0
     - adjust <player> gravity:true
