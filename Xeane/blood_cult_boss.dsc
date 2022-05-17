@@ -118,4 +118,4 @@ blood_cult_boss_wisp_shot:
   script:
     - if <server.flag[blood_cult_boss.phase]> == 3:
       - remove <server.flag[blood_cult_boss.player].flag[dwisp.active.entity]>
-      - flag <server.flag[blood_cult_boss.player]> dwisp.active:!
+      - flag <server.flag[blood_cult_boss.player]> dwisp.active.task:immediate_despawn
