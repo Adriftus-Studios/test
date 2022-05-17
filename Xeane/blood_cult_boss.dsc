@@ -134,11 +134,12 @@ blood_cult_boss_stage_4:
       - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
       - wait 1t
     - repeat 120:
-      - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
       - playeffect effect:redstone at:<location[blood_cult_boss_blood_altar].above[5]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
       - playeffect effect:redstone at:<location[blood_cult_boss_blood_altar].above[5]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
       - wait 1t
     - repeat 40:
+      - playeffect effect:redstone at:<location[blood_cult_boss_blood_altar].above[5]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
+      - playeffect effect:redstone at:<location[blood_cult_boss_blood_altar].above[5]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
       - run blood_cult_stage_4_beam def:<[curry].eye_location>
       - wait 5t
 
@@ -150,8 +151,6 @@ blood_cult_stage_4_beam:
     - define points <proc[define_curve1].context[<location[blood_cult_boss_blood_altar].above[5]>|<server.flag[blood_cult_boss_data.center].location.above[3]>|1.5|<util.random.int[1].to[359]>|0.5]>
     - define targets <player.location.find_players_within[100]>
     - foreach <[points]> as:point:
-      - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
       - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
       - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
-      - flag player dwisp.active.location:<[point]>
-      - wait 2t
+      - wait 1t
