@@ -12,7 +12,7 @@ blood_cult_boss_start:
     - flag <player> dwisp.data.behaviour.heal:self
     - flag player dwisp.data.target:monster if:<player.has_flag[dwisp.data.target].not>
     - define targets <player.location.find_players_within[100]>
-    - spawn dwisp_armor_stand[custom_name=<player.flag[dwisp.data.name]>] <location[blood_cult_boss_blood_altar]> save:wisp
+    - spawn dwisp_armor_stand[custom_name=<player.flag[dwisp.data.name]>;invincible=false;flag=on_shot:blood_cult_boss_wisp_shot] <location[blood_cult_boss_blood_altar]> save:wisp
     - flag player dwisp.active.entity:<entry[wisp].spawned_entity>
     - flag <entry[wisp].spawned_entity> on_entity_added:cancel
     - flag <entry[wisp].spawned_entity> owner:<player>
@@ -94,6 +94,7 @@ blood_cult_boss_phase_2:
   script:
     - flag <player> dwisp.data.behaviour.spawn:off
     - flag <player> dwisp.data.behaviour.attack:PLAYER
+    - flag <player> dwisp.data.damage:2
     - flag server blood_cult_boss.phase:2
     - while <server.flag[blood_cult_boss.phase]> == 2:
       - foreach <server.flag[blood_cult_boss_data.points]>:
@@ -101,3 +102,18 @@ blood_cult_boss_phase_2:
         - flag player dwisp.active.task:!
         - flag player dwisp.active.stay_target:<[value]>
         - wait 2s
+
+blood_cult_boss_phase_3:
+  type: task
+  debug: false
+  script:
+    - flag player dwisp.active.stay_target:<server.flag[blood_cult_boss.center]>
+    - flag player dwisp.active.queued_actions:->:stay
+    - flag player dwisp.active.task:!
+
+blood_cult_boss_wisp_shot:
+  type: task
+  debug: false
+  script:
+    - if <server.flag[blood_cult_boss.phase]> == 3:
+      - flag <server.flag[blood_cult_boss.player]> dwisp.active:!
