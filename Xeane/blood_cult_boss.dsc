@@ -200,3 +200,9 @@ blood_cult_boss_death:
       - title "title:<&4>Blood Cult Defeated..." subtitle:...Right? targets:<[targets]>
       - wait 10s
       - title "title:<&4>The Blood Altar Stirs" "subtitle:Prepare Yourselves..." targets:<[targets]>
+      - run blood_cult_boss_stage_4
+    - else if <server.flag[blood_cult_boss.player].distance[<player.location>]> < 100:
+      - determine passively cancelled
+      - title title:<&color[#FFFFFF]><&font[adriftus:overlay]><&chr[0004]><&chr[F801]><&chr[0004]> "subtitle:<&color[#000000]>It is not your time yet..." fade_in:10t stay:1s fade_out:10t targets:<player>
+      - wait 10t
+      - teleport <server.flag[blood_cult_boss_data.respawn]>
