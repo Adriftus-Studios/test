@@ -23,7 +23,7 @@ blood_cult_boss_blood_curve_target:
     - define locations <proc[define_curve1].context[<[start]>|<[target].location>|<util.random.int[5].to[10]>|<util.random.int[60].to[120]>|0.5]>
     - wait 1t
     - repeat 10:
-      - playeffect at:<[start].center.above[<[value].mul[0.2]>]> effect:redstone special_data:1|#990000 offset:0 quantity:5 targets:<[players]>
+      - playeffect at:<[blood_altar].center.above[<[value].mul[0.2]>]> effect:redstone special_data:1|#990000 offset:0 quantity:5 targets:<[players]>
       - wait 2t
     - foreach <[locations]> as:loc:
       - playeffect at:<[loc]> effect:redstone special_data:1|#990000 offset:0 quantity:5 targets:<[players]>
