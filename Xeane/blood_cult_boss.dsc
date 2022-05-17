@@ -10,6 +10,7 @@ blood_cult_boss_start:
     - define players <location[blood_cult_boss_blood_altar].find_players_within[120]>
     - repeat 6:
       - run blood_cult_boss_blood_curve_target def:<server.flag[blood_cult_boss].location.above>
+      - wait 5t
 
 blood_cult_boss_blood_curve_target:
   type: task
@@ -22,11 +23,11 @@ blood_cult_boss_blood_curve_target:
     - define locations <proc[define_curve1].context[<[start]>|<[target].location>|<util.random.int[5].to[10]>|<util.random.int[80].to[100]>|1]>
     - wait 1t
     - repeat 10:
-      - playeffect at:<[start].center.above[<[value].mul[0.2]>]> effect:redstone special_data:10|#990000 offset:1,0,1 quantity:5 targets:<[players]>
+      - playeffect at:<[start].center.above[<[value].mul[0.2]>]> effect:redstone special_data:1|#990000 offset:0 quantity:5 targets:<[players]>
       - wait 2t
     - foreach <[locations]> as:loc:
-      - playeffect at:<[loc]> effect:redstone special_data:10|#990000 offset:0.25 quantity:5 targets:<[players]>
+      - playeffect at:<[loc]> effect:redstone special_data:1|#990000 offset:0.25 quantity:5 targets:<[players]>
       - wait 2t
     - repeat 5:
-      - playeffect at:<[target].location.above> effect:redstone special_data:10|#990000 offset:0.5,0.5,0.5 quantity:5 targets:<[players]>
+      - playeffect at:<[target].location.above> effect:redstone special_data:1|#990000 offset:0.5,0.5,0.5 quantity:5 targets:<[players]>
       - wait 2t
