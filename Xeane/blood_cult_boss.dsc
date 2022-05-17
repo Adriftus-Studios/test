@@ -138,7 +138,7 @@ blood_cult_boss_stage_4:
       - playeffect effect:redstone at:<location[blood_cult_boss_blood_altar].above[5]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
       - wait 2t
     - adjust <[curry]> gravity:false
-    - teleport <[curry]>
+    - teleport <[curry]> <server.flag[blood_cult_boss_data.center].above[3]>
     - rotate <[curry]> yaw:10 infinite
     - repeat 60:
       - playeffect effect:redstone at:<location[blood_cult_boss_blood_altar].above[5]> offset:0.05 quantity:5 special_data:2|<player.flag[dwisp.data.color1]> targets:<[targets]>
@@ -146,6 +146,7 @@ blood_cult_boss_stage_4:
       - run blood_cult_stage_4_beam def:<[curry].eye_location>
       - wait 5t
     - wait 2s
+    - flag server blood_cult_boss.beam_count:!
     - rotate <[curry]> cancel
     - adjust <[curry]> gravity:true
     #- run mask_wear def:
