@@ -26,7 +26,7 @@ blood_cult_boss_blood_curve_target:
       - playeffect at:<[start].center.above[<[value].mul[0.2]>]> effect:redstone special_data:1|#990000 offset:0 quantity:5 targets:<[players]>
       - wait 2t
     - foreach <[locations]> as:loc:
-      - playeffect at:<[loc]> effect:redstone special_data:1|#990000 offset:0.25 quantity:5 targets:<[players]>
+      - playeffect at:<[loc]> effect:redstone special_data:1|#990000 offset:0 quantity:5 targets:<[players]>
       - wait 2t
     - repeat 5:
       - playeffect at:<[target].location.above> effect:redstone special_data:1|#990000 offset:0.5,0.5,0.5 quantity:5 targets:<[players]>
