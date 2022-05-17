@@ -42,9 +42,9 @@ blood_cult_boss_phase_1:
     - title "title:<&4>Phase 1" "subtitle:Blood Skeletons" targets:<[targets]>
     - flag <player> dwisp.data.behaviour.attack:off
     - flag <player> dwisp.data.behaviour.spawn:blood_cult_boss_mob_1
-    - wait 1m
+    - wait 10s
     - run blood_cult_boss_phase_2
-    - wait 2m
+    - wait 20s
     - flag server blood_cult_boss.phase:3
 
 blood_cult_boss_mob_1:
