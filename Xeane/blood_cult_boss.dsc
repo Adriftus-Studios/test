@@ -111,6 +111,7 @@ blood_cult_boss_phase_2:
         - flag player dwisp.active.task:!
         - flag player dwisp.active.stay_target:<[value]>
         - wait 2s
+    - run blood_cult_boss_phase_3
 
 blood_cult_boss_phase_3:
   type: task
