@@ -34,7 +34,10 @@ blood_cult_boss_phase_1:
   type: task
   debug: false
   script:
+    - flag server blood_cult_boss.phase:1
     - flag <player> dwisp.data.behaviour.spawn:<context.args.get[3]>
+    - wait 10s
+    - run blood_cult_boss_phase_2
 
 blood_cult_boss_mob_1:
   type: entity
