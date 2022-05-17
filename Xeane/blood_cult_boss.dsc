@@ -4,7 +4,7 @@ blood_cult_boss_start:
   script:
     - flag server blood_cult_boss.player:<player>
     - spawn armor_stand[visible=false;marker=true] <location[blood_cult_boss_center].above[4]> save:ent
-    - flag server blood_cult_boss.center:<entry[ent].spawned_entities>
+    - flag server blood_cult_boss.center:<entry[ent].spawned_entity>
     - flag <player> dwisp.active.location:<location[blood_cult_boss_blood_altar]>
     - flag <player> "dwisp.data.name:<&4>Blood Wisp"
     - flag <player> dwisp.data.color1:#990000
