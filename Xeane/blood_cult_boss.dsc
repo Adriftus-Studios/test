@@ -16,7 +16,7 @@ blood_cult_boss_start:
     - flag player dwisp.active.entity:<entry[wisp].spawned_entity>
     - flag <entry[wisp].spawned_entity> on_entity_added:cancel
     - flag <entry[wisp].spawned_entity> owner:<player>
-    - define points <proc[define_curve1].context[<location[blood_cult_boss_blood_altar]>|<server.flag[blood_cult_boss.center].location.backward[3]>|4|90|0.5]>
+    - define points <proc[define_curve1].context[<location[blood_cult_boss_blood_altar]>|<server.flag[blood_cult_boss.center].location.above[3].backward[3]>|4|90|0.5]>
     - define targets <player.location.find_players_within[100]>
     - foreach <[points]> as:point:
       - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
