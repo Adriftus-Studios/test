@@ -137,7 +137,7 @@ blood_cult_boss_stage_4:
       - playeffect effect:redstone at:<location[blood_cult_boss_blood_altar].above[5]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
       - playeffect effect:redstone at:<location[blood_cult_boss_blood_altar].above[5]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
       - wait 1t
-    - repeat 40:
+    - repeat 60:
       - playeffect effect:redstone at:<location[blood_cult_boss_blood_altar].above[5]> offset:0.05 quantity:5 special_data:2|<player.flag[dwisp.data.color1]> targets:<[targets]>
       - playeffect effect:redstone at:<location[blood_cult_boss_blood_altar].above[5]> offset:0.1 quantity:5 special_data:1|<player.flag[dwisp.data.color2]> targets:<[targets]>
       - run blood_cult_stage_4_beam def:<[curry].eye_location>
@@ -166,5 +166,5 @@ blood_cult_stage_4_beam_impact:
       - flag server blood_cult_boss.beam_count:+:1
       - while <server.has_flag[blood_cult_boss.beam_count]>:
         - define targets <player.location.find_players_within[100]>
-        - playeffect effect:redstone at:<server.flag[blood_cult_boss_data.center].above[3]> offset:0.25,0.5,0.25 quantity:<server.flag[blood_cult_boss.beam_count].div[20]> special_data:3|<player.flag[dwisp.data.color1]> targets:<[targets]>
+        - playeffect effect:redstone at:<server.flag[blood_cult_boss_data.center].above[3]> offset:0.5,1,0.5 quantity:<server.flag[blood_cult_boss.beam_count].div[5].round_up> special_data:3|<player.flag[dwisp.data.color1]> targets:<[targets]>
         - wait 4t
