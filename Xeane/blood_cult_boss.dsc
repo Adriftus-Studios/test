@@ -93,6 +93,7 @@ blood_cult_boss_phase_2:
   debug: false
   script:
     - flag <player> dwisp.data.behaviour.spawn:off
+    - flag <player> dwisp.data.behaviour.attack:PLAYER
     - flag server blood_cult_boss.phase:2
     - while <server.flag[blood_cult_boss.phase]> == 2:
       - foreach <server.flag[blood_cult_boss_data.points]>:
