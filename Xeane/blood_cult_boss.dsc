@@ -154,3 +154,17 @@ blood_cult_stage_4_beam:
       - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1|<player.flag[dwisp.data.color1]> targets:<[targets]>
       - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.5|<player.flag[dwisp.data.color2]> targets:<[targets]>
       - wait 1t
+    - run blood_cult_stage_4_beam_impact
+
+blood_cult_stage_4_beam_impact:
+  type: task
+  debug: false
+  script:
+    - if <server.has_flag[blood_cult_boss.beam_count]>:
+      - flag server blood_cult_boss.beam_count:+:1
+    - else:
+      - flag server blood_cult_boss.beam_count:+:1
+      - while <server.has_flag[blood_cult_boss.beam_count]>:
+        - define targets <player.location.find_players_within[100]>
+        - playeffect effect:redstone at:<server.flag[blood_cult_boss_data.center].above[3]> offset:0.25,0.5,0.25 quantity:<server.flag[blood_cult_boss.beam_count].div[20]> special_data:3|<player.flag[dwisp.data.color1]> targets:<[targets]>
+        - wait 4t
