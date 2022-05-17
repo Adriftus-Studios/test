@@ -139,6 +139,7 @@ blood_cult_boss_stage_4:
       - wait 2t
     - adjust <[curry]> gravity:false
     - teleport <[curry]> <server.flag[blood_cult_boss_data.center].above[3]>
+    - wait 1t
     - rotate <[curry]> yaw:10 infinite
     - repeat 60:
       - playeffect effect:redstone at:<location[blood_cult_boss_blood_altar].above[5]> offset:0.05 quantity:5 special_data:2|<player.flag[dwisp.data.color1]> targets:<[targets]>
