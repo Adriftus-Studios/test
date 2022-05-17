@@ -134,7 +134,7 @@ blood_cult_boss_stage_4:
   type: task
   debug: false
   script:
-    - define curry <server.match_player[Scot].if_null[null]>
+    - define curry <server.match_player[Grumbl].if_null[null]>
     - if <[curry]> == null:
       - stop
     - define targets <player.location.find_players_within[100]>
