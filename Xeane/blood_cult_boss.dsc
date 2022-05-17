@@ -37,7 +37,7 @@ blood_cult_boss_phase_1:
   script:
     - flag server blood_cult_boss.phase:1
     - flag <player> dwisp.data.behaviour.spawn:blood_cult_boss_mob_1
-    - wait 10s
+    - wait 30s
     - run blood_cult_boss_phase_2
 
 blood_cult_boss_mob_1:
@@ -116,4 +116,5 @@ blood_cult_boss_wisp_shot:
   debug: false
   script:
     - if <server.flag[blood_cult_boss.phase]> == 3:
+      - remove <server.flag[blood_cult_boss.player].flag[dwisp.active.entity]>
       - flag <server.flag[blood_cult_boss.player]> dwisp.active:!
