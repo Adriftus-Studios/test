@@ -85,7 +85,7 @@ blood_cult_boss_bow_damage:
     - repeat 5:
       - if !<context.hit_entity.is_spawned>:
         - repeat stop
-      - hurt <context.hit_entity> 2
+      - hurt <context.hit_entity> 4
       - wait 1s
     - flag <context.hit_entity> blood_drain:!
 
@@ -119,3 +119,39 @@ blood_cult_boss_wisp_shot:
     - if <server.flag[blood_cult_boss.phase]> == 3:
       - flag <server.flag[blood_cult_boss.player]> dwisp.active.queued_actions:<list[immediate_despawn]>
       - flag <server.flag[blood_cult_boss.player]> dwisp.active.task:!
+
+blood_cult_boss_stage_4:
+  type: task
+  debug: false
+  script:
+    - define curry <server.match_player[Xeane].if_null[null]>
+    - if <[curry]> == null:
+      - stop
+    - define targets <player.location.find_players_within[100]>
+    - define points <location[blood_cult_boss_blood_altar].points_between[<location[blood_cult_boss_blood_altar].above[5]>].distance[0.25]>
+    - foreach <[points]> as:point:
+      - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
+      - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
+      - wait 1t
+    - repeat 120:
+      - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
+      - playeffect effect:redstone at:<location[blood_cult_boss_blood_altar].above[5]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
+      - playeffect effect:redstone at:<location[blood_cult_boss_blood_altar].above[5]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
+      - wait 1t
+    - repeat 40:
+      - run blood_cult_stage_4_beam def:<[curry]>
+      - wait 5t
+
+blood_cult_stage_4_beam:
+  type: task
+  debug: false
+  definitions: target
+  script:
+    - define points <proc[define_curve1].context[<location[blood_cult_boss_blood_altar].above[5]>|<server.flag[blood_cult_boss.center].location.above[3]>|1.5|<util.random.int[1].to[359]>|0.5]>
+    - define targets <player.location.find_players_within[100]>
+    - foreach <[points]> as:point:
+      - teleport <player.flag[dwisp.active.entity]> <[point].below[0.5]>
+      - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
+      - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
+      - flag player dwisp.active.location:<[point]>
+      - wait 2t
