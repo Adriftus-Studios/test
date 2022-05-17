@@ -119,7 +119,7 @@ diamond_shield:
     display name: <&f>Diamond Shield
     lore:
         - Hard as can be
-        - <empty>
+        - _
         - Reduces movespeed by 7<&pc>
         - Reduces damage taken by 5<&pc>
     data:
@@ -156,7 +156,7 @@ amethyst_shield:
     display name: <&f>Amethyst Shield
     lore:
         - Perhaps too brittle
-        - <empty>
+        - _
         - Reduces movespeed by 7<&pc>
         - Reduces damage taken by 5<&pc>
     data:
@@ -193,7 +193,7 @@ netherite_shield:
     display name: <&f>Netherite Shield
     lore:
         - Bathed in lava
-        - <empty>
+        - _
         - Reduces movespeed by 15<&pc>
         - Reduces damage taken by 10<&pc>
     data:
