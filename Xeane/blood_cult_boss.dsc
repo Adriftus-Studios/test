@@ -28,6 +28,7 @@ blood_cult_boss_start:
     - flag player dwisp.active.task:far_idle
     - run dwisp_run_movement
     - run dwisp_run_behaviour
+    - run blood_cult_boss_phase_1
 
 
 blood_cult_boss_phase_1:
