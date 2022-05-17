@@ -43,7 +43,7 @@ blood_cult_boss_spawn_wisp:
     - flag <player> dwisp.data.behaviour.heal:self
     - flag player dwisp.data.target:monster if:<player.has_flag[dwisp.data.target].not>
     - define targets <player.location.find_players_within[100]>
-    - spawn dwisp_armor_stand[custom_name=<player.flag[dwisp.data.name]>] <player.eye_location.above[30]> save:wisp
+    - spawn dwisp_armor_stand[custom_name=<player.flag[dwisp.data.name]>] <location[blood_cult_boss_blood_altar]> save:wisp
     - flag player dwisp.active.entity:<entry[wisp].spawned_entity>
     - flag <entry[wisp].spawned_entity> on_entity_added:cancel
     - flag <entry[wisp].spawned_entity> owner:<player>
