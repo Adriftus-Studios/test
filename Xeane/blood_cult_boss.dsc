@@ -3,7 +3,7 @@ blood_cult_boss_start:
   debug: false
   script:
     - flag server blood_cult_boss.player:<player>
-    - spawn armor_stand[visible=false;marker=true] <location[blood_cult_boss_center].above[4]> save:ent
+    - spawn armor_stand[visible=false;marker=true] <location[blood_cult_boss_center].above[1]> save:ent
     - flag server blood_cult_boss.center:<entry[ent].spawned_entity>
     - flag <player> dwisp.active.location:<location[blood_cult_boss_blood_altar]>
     - flag <player> "dwisp.data.name:<&4>Blood Wisp"
@@ -98,4 +98,4 @@ blood_cult_boss_phase_2:
         - flag player dwisp.active.queued_actions:stay
         - flag player dwisp.active.task:!
         - flag player dwisp.active.stay_target:<[value]>
-        - waituntil rate:10t max:100 <player.flag[dwisp.active.location].distance[<[value]>]> < 2:
+        - waituntil rate:10t max:100 <player.flag[dwisp.active.location].distance[<[value]>]> < 2
