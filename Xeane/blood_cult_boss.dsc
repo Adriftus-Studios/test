@@ -42,8 +42,10 @@ blood_cult_boss_phase_1:
     - title "title:<&4>Phase 1" "subtitle:Blood Skeletons" targets:<[targets]>
     - flag <player> dwisp.data.behaviour.attack:off
     - flag <player> dwisp.data.behaviour.spawn:blood_cult_boss_mob_1
-    - wait 30s
+    - wait 1m
     - run blood_cult_boss_phase_2
+    - wait 2m
+    - flag server blood_cult_boss.phase:3
 
 blood_cult_boss_mob_1:
   type: entity
@@ -193,7 +195,8 @@ blood_cult_boss_death:
   events:
     on player dies:
     - if <player> == <server.flag[blood_cult_boss.player]>:
+      - flag server blood_cult_boss.phase:4
       - define targets <player.location.find_players_within[100]>
       - title "title:<&4>Blood Cult Defeated..." subtitle:...Right? targets:<[targets]>
-      - wait 4s
+      - wait 10s
       - title "title:<&4>The Blood Altar Stirs" "subtitle:Prepare Yourselves..." targets:<[targets]>
