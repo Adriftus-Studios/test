@@ -9,7 +9,7 @@ blood_cult_boss_start:
       - wait 2t
     - define players <location[blood_cult_boss_blood_altar].find_players_within[120]>
     - repeat 6:
-      - run blood_cult_boss_blood_curve_target def:<server.flag[blood_cult_boss].location.above>
+      - run blood_cult_boss_blood_curve_target def:<server.flag[blood_cult_boss]>
       - wait 5t
 
 blood_cult_boss_blood_curve_target:
