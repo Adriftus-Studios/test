@@ -91,7 +91,7 @@ blood_cult_boss_bow_damage:
     - repeat 5:
       - if !<context.hit_entity.is_spawned>:
         - repeat stop
-      - hurt <context.hit_entity> 4
+      - hurt <context.hit_entity> 2
       - wait 1s
     - flag <context.hit_entity> blood_drain:!
 
