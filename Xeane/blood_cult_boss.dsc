@@ -100,4 +100,4 @@ blood_cult_boss_phase_2:
         - flag player dwisp.active.queued_actions:->:stay
         - flag player dwisp.active.task:!
         - flag player dwisp.active.stay_target:<[value]>
-        - waituntil rate:10t max:100 <player.flag[dwisp.active.location].distance[<[value]>]> < 2
+        - wait 2s
