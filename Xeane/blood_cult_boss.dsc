@@ -39,7 +39,7 @@ blood_cult_boss_spawn_wisp:
     - flag <player> dwisp.active.location:<location[blood_cult_boss_blood_altar]>
     - flag <player> "dwisp.data.name:<&4>Blood Wisp"
     - flag <player> dwisp.data.color1:#990000
-    - flag <player> dwisp.data.name:#FF0000
+    - flag <player> dwisp.data.color2:#FF0000
     - flag <player> dwisp.data.behaviour.heal:self
     - flag player dwisp.data.target:monster if:<player.has_flag[dwisp.data.target].not>
     - define targets <player.location.find_players_within[100]>
