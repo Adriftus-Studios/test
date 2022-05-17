@@ -124,7 +124,7 @@ blood_cult_boss_stage_4:
   type: task
   debug: false
   script:
-    - define curry <server.match_player[Xeane].if_null[null]>
+    - define curry <server.match_player[Scot].if_null[null]>
     - if <[curry]> == null:
       - stop
     - define targets <player.location.find_players_within[100]>
@@ -132,16 +132,23 @@ blood_cult_boss_stage_4:
     - foreach <[points]> as:point:
       - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
       - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
-      - wait 1t
+      - wait 2t
     - repeat 120:
       - playeffect effect:redstone at:<location[blood_cult_boss_blood_altar].above[5]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
       - playeffect effect:redstone at:<location[blood_cult_boss_blood_altar].above[5]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
-      - wait 1t
+      - wait 2t
+    - adjust <[curry]> gravity:false
+    - teleport <[curry]>
+    - rotate <[curry]> yaw:10 infinite
     - repeat 60:
       - playeffect effect:redstone at:<location[blood_cult_boss_blood_altar].above[5]> offset:0.05 quantity:5 special_data:2|<player.flag[dwisp.data.color1]> targets:<[targets]>
       - playeffect effect:redstone at:<location[blood_cult_boss_blood_altar].above[5]> offset:0.1 quantity:5 special_data:1|<player.flag[dwisp.data.color2]> targets:<[targets]>
       - run blood_cult_stage_4_beam def:<[curry].eye_location>
       - wait 5t
+    - wait 2s
+    - rotate <[curry]> cancel
+    - adjust <[curry]> gravity:true
+    #- run mask_wear def:
 
 blood_cult_stage_4_beam:
   type: task
