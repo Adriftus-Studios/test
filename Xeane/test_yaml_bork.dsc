@@ -3,7 +3,7 @@ test_broken_yaml:
   debug: false
   script:
     - yaml create id:test
-    - yaml set id:test test:<&font[chat]>test
+    - yaml set id:test test:test<&chr[0004]>test
     - yaml savefile:test.yml id:test
     - yaml unload id:test
     - yaml load:test.yml id:test
