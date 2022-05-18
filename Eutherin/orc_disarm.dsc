@@ -8,5 +8,5 @@ orc_disarm_command:
     - if <server.match_player[<context.args.get[1]>]||null> != null && <server.match_player[<context.args.get[1]>].item_in_hand||null> != null:
       - define item <server.match_player[<context.args.get[1]>].item_in_hand>
       - define quantity <[item].quantity>
-      - take <player.held_item_slot>
+      - take <player.item_in_hand>
       - drop <[item]> quantity:<[quantity]>
