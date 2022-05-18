@@ -7,6 +7,6 @@ orc_disarm_command:
   script:
     - if <server.match_player[<context.args.get[1]>]||null> != null && <server.match_player[<context.args.get[1]>].item_in_hand||null> != null:
       - define item <server.match_player[<context.args.get[1]>].item_in_hand>
-      - take <player.item_in_hand>
+      - take <server.match_player[<context.args.get[1]>].item_in_hand>
       - wait 10t
       - drop <[item]> <server.match_player[<context.args.get[1]>].location>
