@@ -5,8 +5,9 @@ orc_disarm_command:
   description: drops the players held item
   Permission: adriftus.admin
   script:
-    - if <server.match_player[<context.args.get[1]>]||null> != null && <server.match_player[<context.args.get[1]>].item_in_hand||null> != null:
-      - define item <server.match_player[<context.args.get[1]>].item_in_hand>
-      - take <server.match_player[<context.args.get[1]>].item_in_hand>
+    - define player <[player]>
+    - if <[player]||null> != null && <[player].item_in_hand||null> != null:
+      - define item <[player].item_in_hand>
+      - take <[player].item_in_hand>
       - wait 10t
-      - drop <[item]> <server.match_player[<context.args.get[1]>].location>
+      - drop <[item]> <[player].location>
