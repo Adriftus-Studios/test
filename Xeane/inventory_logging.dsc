@@ -40,7 +40,7 @@ inventory_logger_logout:
 
 inventory_logger_list:
   type: task
-  debug: false
+  debug: true
   definitions: target
   script:
     - define target <player> if:<[target].exists.not>
