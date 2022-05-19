@@ -1,33 +1,36 @@
 inventory_logger_deaths:
   type: world
   debug: false
+  data:
+    map:
+      location: <player.location>
+      inventory: <player.inventory.map_slots>
+      time: <util.time_now>
+      milli_time: <server.current_time_millis>
   events:
     on player dies bukkit_priority:MONITOR:
       - stop if:<player.flag[saved_inventory.current].equals[default].not>
       - stop if:<player.inventory.list_contents.is_empty>
-      - definemap map:
-        location: <player.location>
-        inventory: <player.inventory.map_slots>
-        time: <util.time_now>
-        milli_time: <server.current_time_millis>
-      - flag <player> logged_inventories.deaths:->:<[map]>
+      - flag <player> logged_inventories.deaths:->:<script.parsed_key[data.map]>
       - if <player.flag[logged_inventories.deaths].size> > 20:
         - flag <player> logged_inventories.deaths:<player.flag[logged_inventories.deaths].remove[first]>
 
 inventory_logger_logout:
   type: world
   debug: true
+  data:
+    map:
+      location: <player.location>
+      inventory: <player.inventory.map_slots>
+      time: <util.time_now>
+      milli_time: <server.current_time_millis>
+      
   events:
     on player joins:
       - announce test
       - stop if:<player.flag[saved_inventory.current].equals[default].not>
       - stop if:<player.inventory.list_contents.is_empty>
-      - definemap map:
-        location: <player.location>
-        inventory: <player.inventory.map_slots>
-        time: <util.time_now>
-        milli_time: <server.current_time_millis>
-      - flag <player> logged_inventories.logout:->:<[map]>
+      - flag <player> logged_inventories.logout:->:<script.parsed_key[data.map]>
       - if <player.flag[logged_inventories.logout].size> > 20:
         - flag <player> logged_inventories.logout:<player.flag[logged_inventories.logout].remove[first]>
 
