@@ -69,6 +69,7 @@ waystone_active:
   debug: false
   definitions: entity
   script:
+    - wait 1t
     - define entity <context.entity> if:<[entity].exists.not>
     - while <[entity].is_spawned>:
       - foreach <[entity].location.find_players_within[30]>:
