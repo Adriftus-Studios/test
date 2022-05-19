@@ -19,7 +19,7 @@ inventory_logger_deaths:
 
 inventory_logger_logout:
   type: world
-  debug: true
+  debug: false
   data:
     map:
       cause: Logout
@@ -88,7 +88,7 @@ inventory_log_open:
 
 inventory_logger_view_inventory:
   type: task
-  debug: false
+  debug: true
   definitions: uuid|target
   script:
     - define target <context.item.flag[target]> if:<[target].exists.not>
