@@ -69,6 +69,7 @@ waystone_active:
   debug: false
   definitions: entity
   script:
+    - announce fired
     - wait 1t
     - define entity <context.entity> if:<[entity].exists.not>
     - while <[entity].is_spawned>:
