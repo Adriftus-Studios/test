@@ -1,4 +1,4 @@
-inventory_logger_deaths:
+inventory_logger_death:
   type: world
   debug: false
   data:
@@ -13,9 +13,9 @@ inventory_logger_deaths:
     on player dies bukkit_priority:MONITOR:
       - stop if:<player.flag[saved_inventory.current].equals[default].not.if_null[false]>
       - stop if:<player.inventory.list_contents.is_empty>
-      - flag <player> logged_inventories.deaths:->:<script.parsed_key[data.map]>
-      - if <player.flag[logged_inventories.deaths].size> > 20:
-        - flag <player> logged_inventories.deaths:<player.flag[logged_inventories.deaths].remove[first]>
+      - flag <player> logged_inventories.death:->:<script.parsed_key[data.map]>
+      - if <player.flag[logged_inventories.death].size> > 20:
+        - flag <player> logged_inventories.death:<player.flag[logged_inventories.death].remove[first]>
 
 inventory_logger_logout:
   type: world
@@ -47,8 +47,8 @@ inventory_logger_list:
     - define list <list>
     - if <[target].has_flag[logged_inventories.logout]>:
       - define list:|:<[target].flag[logged_inventories.logout]>
-    - if <[target].has_flag[logged_inventories.deaths]>:
-      - define list:|:<[target].flag[logged_inventories.deaths]>
+    - if <[target].has_flag[logged_inventories.death]>:
+      - define list:|:<[target].flag[logged_inventories.death]>
     - define list <[list].sort_by_number[get[milli_time]]>
     - if <[list].is_empty>:
       - narrate "<&c>No Saved Inventories Recorded."
@@ -99,8 +99,8 @@ inventory_logger_view_inventory:
     - define list <list>
     - if <[target].has_flag[logged_inventories.logout]>:
       - define list:|:<[target].flag[logged_inventories.logout]>
-    - if <[target].has_flag[logged_inventories.deaths]>:
-      - define list:|:<[target].flag[logged_inventories.deaths]>
+    - if <[target].has_flag[logged_inventories.death]>:
+      - define list:|:<[target].flag[logged_inventories.death]>
     - if <[list].is_empty>:
       - narrate "<&c>No Saved Inventories Recorded."
       - stop
@@ -110,7 +110,7 @@ inventory_logger_view_inventory:
         - inventory set o:<[map].get[inventory]> d:<[inventory]>
 
     # Restore Inventory Button
-    - inventory set slot:50 d:<[inventory]> "o:player_head[skull_skin=<[target].skull_skin>;display=<&a>Restore Inventory;lore=<&a>Requires Empty Inventory;flag=run_script:inventory_logger_view_inventory_restore;flag=uuid:<[map].get[uuid]>;flag=target:<[target]>]"
+    - inventory set slot:50 d:<[inventory]> "o:player_head[skull_skin=<[target].skull_skin>;display=<&a>Restore Inventory;lore=<&a>Requires Empty Inventory;flag=cause:<[map].get[cause]>;flag=run_script:inventory_logger_view_inventory_restore;flag=uuid:<[map].get[uuid]>;flag=target:<[target]>]"
 
     # Back Button
     - inventory set slot:46 d:<[inventory]> o:<item[leather_horse_armor].with[hides=all;display_name=<&a>Back;flag=run_script:inventory_logger_list;flag=target:<[target]>;color=red;custom_model_data=6]>
@@ -124,3 +124,10 @@ inventory_logger_view_inventory_restore:
   script:
     - define target <context.item.flag[target]> if:<[target].exists.not>
     - define uuid <context.item.flag[uuid]> if:<[uuid].exists.not>
+    - if !<[target].inventory.list_contents.is_empty>:
+      - narrate "<&c>Target's Inventory must be empty."
+      - stop
+    - foreach <[target].flag[logged_inventories.<context.item.flag[cause]>]>:
+      - if <[value].get[uuid]> == <[uuid]>:
+        - inventory set d:<[target].inventory> o:<[value].get[inventory]>
+        - stop
