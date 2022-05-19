@@ -10,7 +10,7 @@ inventory_logger_deaths:
       milli_time: <server.current_time_millis>
   events:
     on player dies bukkit_priority:MONITOR:
-      - stop if:<player.flag[saved_inventory.current].equals[default].not>
+      - stop if:<player.flag[saved_inventory.current].equals[default].not.if_null[false]>
       - stop if:<player.inventory.list_contents.is_empty>
       - flag <player> logged_inventories.deaths:->:<script.parsed_key[data.map]>
       - if <player.flag[logged_inventories.deaths].size> > 20:
@@ -30,7 +30,7 @@ inventory_logger_logout:
   events:
     on player joins:
       - announce test
-      - stop if:<player.flag[saved_inventory.current].equals[default].not>
+      - stop if:<player.flag[saved_inventory.current].equals[default].not.if_null[false]>
       - stop if:<player.inventory.list_contents.is_empty>
       - flag <player> logged_inventories.logout:->:<script.parsed_key[data.map]>
       - if <player.flag[logged_inventories.logout].size> > 20:
