@@ -131,4 +131,5 @@ inventory_logger_view_inventory_restore:
     - foreach <[target].flag[logged_inventories.<context.item.flag[cause]>]>:
       - if <[value].get[uuid]> == <[uuid]>:
         - inventory set d:<[target].inventory> o:<[value].get[inventory]>
-        - stop
+        - narrate "<&a>Inventory Restored."
+        - inventory close
