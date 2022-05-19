@@ -3,6 +3,7 @@ inventory_logger_deaths:
   debug: false
   data:
     map:
+      cause: death
       location: <player.location>
       inventory: <player.inventory.map_slots>
       time: <util.time_now>
@@ -20,11 +21,12 @@ inventory_logger_logout:
   debug: true
   data:
     map:
+      cause: logout
       location: <player.location>
       inventory: <player.inventory.map_slots>
       time: <util.time_now>
       milli_time: <server.current_time_millis>
-      
+
   events:
     on player joins:
       - announce test
@@ -39,6 +41,7 @@ inventory_logger_list:
   debug: false
   definitions: target
   script:
+    - define target <player> if:<[target].exists.not>
     - define list <list>
     - if <[target].has_flag[logged_inventories.logout]>:
       - define list:|:<[target].flag[logged_inventories.logout]>
