@@ -43,7 +43,7 @@ inventory_logger_list:
   debug: true
   definitions: target
   script:
-    - define target <player> if:<[target].exists.not>
+    - define target <context.item.flag[target]> if:<[target].exists.not>
     - define list <list>
     - if <[target].has_flag[logged_inventories.logout]>:
       - define list:|:<[target].flag[logged_inventories.logout]>
@@ -108,4 +108,19 @@ inventory_logger_view_inventory:
     - foreach <[list]> as:map:
       - if <[map].get[uuid]> = <[uuid]>:
         - inventory set o:<[map].get[inventory]> d:<[inventory]>
+
+    # Restore Inventory Button
+    - inventory set slot:50 "o:player_head[skull_skin=<[target].skull_skin>;display=<&a>Restore Inventory;lore=<&a>Requires Empty Inventory;flag=run_script:inventory_logger_view_inventory_restore;flag=uuid:<[map].get[uuid]>;flag=target:<[target]>]"
+
+    # Back Button
+    - inventory set slot:46 o:<item[leather_horse_armor].with[hides=all;display_name=<&a>Back;flag=run_script:inventory_logger_list;flag=target:<[target]>;color=red;custom_model_data=6]>
+
     - inventory open d:<[inventory]>
+
+inventory_logger_view_inventory_restore:
+  type: task
+  debug: false
+  definitions: target|uuid
+  script:
+    - define target <context.item.flag[target]> if:<[target].exists.not>
+    - define uuid <context.item.flag[uuid]> if:<[uuid].exists.not>
