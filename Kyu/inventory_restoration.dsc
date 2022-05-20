@@ -1,4 +1,4 @@
-
+# -- Inventory Restoration
 inventory_logger_list:
   type: task
   debug: true
@@ -80,6 +80,9 @@ inventory_logger_view_inventory:
 
     # Title
     - adjust def:inventory "title:<&6>A<&e>MP <&f>· <&a>."
+
+    - narrate "flags of target: <[target].list_flags>"
+    - narrate "the_map: <[the_map]>"
 
     - inventory open d:<[inventory]>
 
