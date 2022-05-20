@@ -18,7 +18,7 @@ waystone_entity:
       helmet: feather[custom_model_data=20]
   flags:
     right_click_script: waystone_use
-    on_entity_added: waystone_active
+    on_entity_added: waystone_active_start
 
 waystone_place:
   type: task
@@ -50,6 +50,14 @@ waystone_place:
     - take iteminhand
     - run waystone_active def:<entry[waystone].spawned_entity>
 
+waystone_active_start:
+  type: task
+  debug: false
+  script:
+    - wait 1t
+    - define entity <context.entity>
+    - run waystone_active def:<[entity]>
+
 waystone_use:
   type: task
   debug: false
@@ -69,13 +77,12 @@ waystone_active:
   debug: false
   definitions: entity
   script:
-    - define entity <context.entity> if:<[entity].exists.not>
     - while <[entity].is_spawned>:
       - foreach <[entity].location.find_players_within[30]>:
-        - if !<[value].fake_block[<[entity].location>].exists>:
+        - if <[value].fake_block[<[entity].location>].exists>:
           - foreach next
-        - showfake <[entity].location> air duration:9999m
-        - showfake <[entity].location.above> air duration:9999m
+        - showfake <[entity].location> air duration:9999m players:<[value]>
+        - showfake <[entity].location.above> air duration:9999m players:<[value]>
       - wait 5s
 
 waystone_remove:
