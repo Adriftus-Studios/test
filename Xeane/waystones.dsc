@@ -17,7 +17,9 @@ waystone_entity:
     equipment:
       helmet: feather[custom_model_data=20]
   flags:
-    right_click_script: waystone_use
+    right_click_script:
+    - waystone_use
+    - cancel
     on_entity_added: waystone_active_start
 
 waystone_place:

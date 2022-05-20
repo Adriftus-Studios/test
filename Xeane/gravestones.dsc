@@ -31,7 +31,9 @@ gravestone_entity:
     equipment:
       helmet: feather[custom_model_data=<list[300|301|302|303].random>]
   flags:
-    right_click_script: gravestone_use|cancel
+    right_click_script:
+      - gravestone_use
+      - cancel
     on_entity_added: gravestone_active
 
 
