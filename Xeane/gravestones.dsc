@@ -99,7 +99,7 @@ gravestone_use:
       - narrate "<&c>The Gravestone is still recharging"
       - narrate "<&c>Time Remaining<&co> <&e><duration[15m].sub[<util.time_now.duration_since[<context.entity.flag[last_used]>]>].formatted>"
       - stop
-    - give <player.flag[logged_inventories.death].last.get[inventory].values> to:<player.inventory>
+    - give <player.flag[logged_inventories.death].last.get[inventory]> to:<player.inventory>
     - flag player gravestones.last_claimed_uuid:<player.flag[logged_inventories.death].last.get[uuid]>
     - narrate "<&a>You have reclaimed your lost items."
     - flag <context.entity> last_used:<util.time_now>
