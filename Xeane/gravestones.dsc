@@ -85,7 +85,7 @@ gravestone_use:
     - if <player.has_flag[gravestones.last_claimed_uuid]> && <player.flag[gravestones.last_claimed_uuid]> == <player.flag[logged_inventories.death].last.get[uuid]>:
       - narrate "<&c>You have already claimed your most recent death"
       - stop
-    - if <context.entity.has_flag[last_used]> && <util.time_now.duration_since[<context.entity.flag[last_used]>]> < <duration[15m]>:
+    - if <context.entity.has_flag[last_used]> && <util.time_now.duration_since[<context.entity.flag[last_used]>].in_minutes> < 15:
       - narrate "<&c>The Gravestone is still recharging"
       - narrate "<&c>Time Remaining<&co> <&e><duration[15m].sub[<util.time_now.duration_since[<context.entity.flag[last_used]>]>]>"
       - stop
