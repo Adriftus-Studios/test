@@ -79,7 +79,7 @@ waystone_active:
   script:
     - while <[entity].is_spawned>:
       - foreach <[entity].location.find_players_within[30]>:
-        - if !<[value].fake_block[<[entity].location>].exists>:
+        - if <[value].fake_block[<[entity].location>].exists>:
           - foreach next
         - showfake <[entity].location> air duration:9999m players:<[value]>
         - showfake <[entity].location.above> air duration:9999m players:<[value]>
