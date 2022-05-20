@@ -31,9 +31,7 @@ gravestone_entity:
     equipment:
       helmet: feather[custom_model_data=<list[300|301|302|303].random>]
   flags:
-    right_click_script:
-      - gravestone_use
-      - cancel
+    right_click_script: gravestone_use
     on_entity_added: gravestone_active
 
 
@@ -82,6 +80,8 @@ gravestone_use:
   type: task
   debug: false
   script:
+    - ratelimit <player> 1t
+    - determine passively cancelled
     - if <player.is_sneaking> && <context.entity.flag[town].mayor> == <player>:
       - run gravestone_remove def:<context.entity>
       - stop
