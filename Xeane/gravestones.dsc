@@ -56,8 +56,8 @@ gravestone_place:
     - if <context.location.town.mayor> != <player>:
       - narrate "<&c>Only Mayors can place Gravestones"
       - stop
-    - if <context.location.town.has_flag[gravestones]> && <context.location.town.flag[gravestones].size> < <context.location.town.plots.size.div[200].round_down.max[1]>:
-      - narrate "<&c>Too Many Gravestones, 1 Gravestone per 200 plots claimed"
+    - if <context.location.town.has_flag[gravestones]> && <context.location.town.flag[gravestones].size> < <element[3].add[<context.location.town.plots.size.div[200].round_down>]>:
+      - narrate "<&c>Too Many Gravestones, 3 + 1 Gravestone per 200 plots claimed"
       - stop
     - spawn gravestone_entity <context.location.above.center.below[0.49]> save:grave
     - if !<entry[grave].spawned_entity.is_spawned>:
@@ -68,6 +68,7 @@ gravestone_place:
     - modifyblock <[barrier_blocks]> barrier
     - flag <entry[grave].spawned_entity> grave.blocks:|:<[barrier_blocks]>
     - flag <entry[grave].spawned_entity> town:<context.location.town>
+    - flag <[town]> graves:->:<entry[grave].spawned_entity>
     - showfake <[barrier_blocks]> air duration:9999m players:<context.location.find_players_within[30]>
     - take iteminhand
     - run gravestone_active def:<entry[grave].spawned_entity>
@@ -102,11 +103,8 @@ gravestone_remove:
   definitions: entity
   script:
     - define town <[entity].flag[town]>
-    - remove <[town].flag[waystone.entity]>
-    - modifyblock <[town].flag[waystone.blocks]> air
-    - showfake cancel <[town].flag[waystone.blocks]>
-    - foreach <[town].flag[waystone.entity].flag[unlocked_players]>:
-      - flag <[value]> waystones.<[town]>:!
-    - flag <[town]> waystone:!
-    - inventory close
-    - give waystone to:<player.inventory>
+    - remove <[entity].flag[waystone.entity]>
+    - modifyblock <[entity].flag[grave.blocks]> air
+    - showfake cancel <[entity].flag[grave.blocks]>
+    - flag <[town]> graves:<-:<[entity]>
+    - give gravestone to:<player.inventory>
