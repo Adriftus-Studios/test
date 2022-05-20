@@ -42,8 +42,8 @@ gravestone_active:
       - foreach <[entity].location.find_players_within[30]>:
         - if <[value].fake_block[<[entity].location>].exists>:
           - foreach next
-        - showfake <[entity].location> air duration:9999m
-        - showfake <[entity].location.above> air duration:9999m
+        - showfake <[entity].location> air duration:9999m players:<[value]>
+        - showfake <[entity].location.above> air duration:9999m players:<[value]>
       - wait 5s
 
 gravestone_place:
