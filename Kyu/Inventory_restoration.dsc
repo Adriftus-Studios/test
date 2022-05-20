@@ -68,7 +68,7 @@ inventory_logger_view_inventory:
     - define inventory <inventory[inventory_logger_inventory]>
     - foreach <[list]> as:map:
       - if <[map].get[uuid]> = <[uuid]>:
-        - inventory set o:<[map].get[inventory].parse_value_tag[with_flag=run_script:inventory_logger_view_inventory_single]> d:<[inventory]>
+        - inventory set o:<[map].get[inventory].parse_value_tag[<[parse_value].with_flag[run_script:inventory_logger_view_inventory_single]>]> d:<[inventory]>
         - define the_map <[map]>
 
     # Restore Inventory Button
