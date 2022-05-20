@@ -53,6 +53,7 @@ gravestone_place:
   type: task
   debug: false
   script:
+    - ratelimit <player> 1t
     - if !<context.location.has_town>:
       - narrate "<&c>Gravestones must be placed in a Town"
       - stop
