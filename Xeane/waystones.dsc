@@ -151,3 +151,11 @@ waystone_open_teleport_menu:
       - inventory set slot:50 o:waystone_remove_item[flag=town:<context.entity.flag[town]>] d:<[inventory]>
 
     - inventory open d:<[inventory]>
+
+graves_player_death_handler:
+  type: world
+  debug: false
+  events:
+    on player dies bukkit_priority:HIGHEST:
+      - if <player.has_town> && <player.town.has_flag[graves]> && !<player.town.flag[graves].is_empty>:
+        - determine NO_DROPS
