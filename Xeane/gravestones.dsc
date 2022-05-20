@@ -92,15 +92,15 @@ gravestone_use:
     - if !<player.has_flag[logged_inventories.death]>:
       - narrate "<&c>You have no saved deaths"
       - stop
-    - if <player.has_flag[gravestones.last_claimed_uuid]> && <player.flag[gravestones.last_claimed_uuid]> == <player.flag[logged_inventories.death].last.get[uuid]>:
+    - if !<player.has_flag[graves.drops]>:
       - narrate "<&c>You have already claimed your most recent death"
       - stop
     - if <context.entity.has_flag[last_used]> && <util.time_now.duration_since[<context.entity.flag[last_used]>].in_minutes> < 15:
       - narrate "<&c>The Gravestone is still recharging"
       - narrate "<&c>Time Remaining<&co> <&e><duration[15m].sub[<util.time_now.duration_since[<context.entity.flag[last_used]>]>].formatted>"
       - stop
-    - give <player.flag[logged_inventories.death].last.get[inventory]> to:<player.inventory>
-    - flag player gravestones.last_claimed_uuid:<player.flag[logged_inventories.death].last.get[uuid]>
+    - give <player.flag[graves.drops]> to:<player.inventory>
+    - flag player graves.drops:!
     - narrate "<&a>You have reclaimed your lost items."
     - flag <context.entity> last_used:<util.time_now>
 
@@ -122,4 +122,5 @@ graves_player_death_handler:
   events:
     on player dies bukkit_priority:HIGHEST:
       - if <player.has_town> && <player.town.has_flag[graves]> && !<player.town.flag[graves].is_empty>:
+        - flag <player> graves.drops:<context.drops>
         - determine NO_DROPS
