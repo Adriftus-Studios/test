@@ -26,7 +26,7 @@ gravestone_entity:
     visible: false
     gravity: false
     equipment:
-      helmet: feather[custom_model_data=20]
+      helmet: feather[custom_model_data=<list[300|301|302|303].random>]
   flags:
     right_click_script: gravestone_use
     on_entity_added: gravestone_active
@@ -76,6 +76,8 @@ gravestone_use:
   type: task
   debug: false
   script:
+    - if <player.is_sneaking> && <context.entity.flag[town].mayor> == <player>:
+      - run gravestone_remove def:<context.entity>
     - if <player.has_town> && <context.entity.flag[town]> != <player.town>:
       - narrate "<&c>You can only use your own Town's Gravestone"
       - stop
@@ -93,3 +95,18 @@ gravestone_use:
     - flag player gravestones.last_claimed_uuid:<player.flag[logged_inventories.death].last.get[uuid]>
     - narrate "<&a>You have reclaimed your lost items."
     - flag <context.entity> last_used:<util.time_now>
+
+gravestone_remove:
+  type: task
+  debug: false
+  definitions: entity
+  script:
+    - define town <[entity].flag[town]>
+    - remove <[town].flag[waystone.entity]>
+    - modifyblock <[town].flag[waystone.blocks]> air
+    - showfake cancel <[town].flag[waystone.blocks]>
+    - foreach <[town].flag[waystone.entity].flag[unlocked_players]>:
+      - flag <[value]> waystones.<[town]>:!
+    - flag <[town]> waystone:!
+    - inventory close
+    - give waystone to:<player.inventory>
