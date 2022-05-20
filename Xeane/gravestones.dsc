@@ -18,6 +18,8 @@ gravestone:
         - air|double_compressed_stone|air
   flags:
     right_click_script: gravestone_place
+  mechanisms:
+    custom_model_data: 300
 
 gravestone_entity:
   type: entity
