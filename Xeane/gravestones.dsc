@@ -73,6 +73,7 @@ gravestone_place:
     - flag <entry[grave].spawned_entity> grave.blocks:|:<[barrier_blocks]>
     - flag <entry[grave].spawned_entity> town:<context.location.town>
     - flag <[town]> graves:->:<entry[grave].spawned_entity>
+    - flag <entry[grave].spawned_entity> last_used:<util.time_now>
     - showfake <[barrier_blocks]> air duration:9999m players:<context.location.find_players_within[30]>
     - take iteminhand
     - run gravestone_active def:<entry[grave].spawned_entity>
