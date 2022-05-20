@@ -79,10 +79,7 @@ inventory_logger_view_inventory:
     - inventory set slot:46 d:<[inventory]> o:<item[leather_horse_armor].with[hides=all;display_name=<&a>Back;flag=run_script:inventory_logger_list;flag=target:<[target]>;color=red;custom_model_data=6]>
 
     # Title
-    - adjust def:inventory "title:<&6>A<&e>MP <&f>· <&a>."
-
-    - narrate "flags of target: <[target].list_flags>"
-    - narrate "the_map: <[the_map]>"
+    - adjust def:inventory "title:<&6>A<&e>MP <&f>· <&a><[the_map].get[cause]> <[the_map].get[time]>"
 
     - inventory open d:<[inventory]>
 
