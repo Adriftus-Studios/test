@@ -1,6 +1,6 @@
 crayon_item:
     type: item
-    material: candle
+    material: arrow
     display name: Crayon
 
 crayon_Drawing:
