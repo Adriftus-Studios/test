@@ -36,6 +36,7 @@ inventory_logger_inventory:
 inventory_log_open:
   type: command
   name: inventorylog
+  permission: adriftus.moderator
   description: View a player's saved inventories
   usage: /inventorylog (player)
   tab completions:
