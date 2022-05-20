@@ -103,8 +103,8 @@ gravestone_remove:
   definitions: entity
   script:
     - define town <[entity].flag[town]>
-    - remove <[entity].flag[waystone.entity]>
     - modifyblock <[entity].flag[grave.blocks]> air
     - showfake cancel <[entity].flag[grave.blocks]>
     - flag <[town]> graves:<-:<[entity]>
+    - remove <[entity]>
     - give gravestone to:<player.inventory>
