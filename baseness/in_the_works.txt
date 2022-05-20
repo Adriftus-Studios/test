@@ -1,0 +1,18 @@
+Can be made - 
+    1. Inventory confirm handler
+    2. Player AFK/Idle handler
+    3. Scramble text minigame
+    4. Trash-can inventory command
+    5. Fly command
+    6. NPC Dummy
+    7. Sentry-like NPC behaviour
+    8. Feed command
+    9. Give gear command
+    10. Player teleport command
+    11. See inventory command
+    12. Set gamerule command
+    13. Sit command
+    14. Death logger?
+
+Prolly not possible - 
+    1. Supply crates

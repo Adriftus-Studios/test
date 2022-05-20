@@ -5,4 +5,4 @@ unknown_command:
         on command unknown:
             - determine "<red>Unknown command."
             - execute as_player /help save:output
-            - narrate <entry[output].output>
+            - narrate <entry[output].output> targets:<player>

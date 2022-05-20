@@ -23,6 +23,5 @@ death_log_command:
 #    - "death_time" : "location x y z, world"
 #    - ...39 more
 
-# - More players = more data will be piled
 # - "Death time" is system time
 # - "Location x y z, world" is eg. "1,2,3,world"
