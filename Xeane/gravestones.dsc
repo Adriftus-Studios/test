@@ -40,7 +40,7 @@ gravestone_active:
     - define entity <context.entity> if:<[entity].exists.not>
     - while <[entity].is_spawned>:
       - foreach <[entity].location.find_players_within[30]>:
-        - if !<[value].fake_block[<[entity].location>].exists>:
+        - if <[value].fake_block[<[entity].location>].exists>:
           - foreach next
         - showfake <[entity].location> air duration:9999m
         - showfake <[entity].location.above> air duration:9999m
@@ -76,7 +76,7 @@ gravestone_use:
   type: task
   debug: false
   script:
-    - if <player.has_town> && <context.entity.flag[town]> == <player.town>:
+    - if <player.has_town> && <context.entity.flag[town]> != <player.town>:
       - narrate "<&c>You can only use your own Town's Gravestone"
       - stop
     - if !<player.has_flag[logged_inventories.death]>:
