@@ -79,6 +79,7 @@ gravestone_use:
   script:
     - if <player.is_sneaking> && <context.entity.flag[town].mayor> == <player>:
       - run gravestone_remove def:<context.entity>
+      - stop
     - if <player.has_town> && <context.entity.flag[town]> != <player.town>:
       - narrate "<&c>You can only use your own Town's Gravestone"
       - stop
