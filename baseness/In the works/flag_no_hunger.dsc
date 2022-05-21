@@ -4,5 +4,5 @@ no_hunger:
     events:
         after player changes food level flagged:no_hunger:
             - if <context.food> < 20:
-                - feed <player>
+                - feed <player> saturation:20 amount:20
 #Still in the works
