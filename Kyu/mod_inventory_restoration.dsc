@@ -107,5 +107,7 @@ inventory_logger_view_inventory_single:
   debug: false
   definitions: target|uuid
   script:
-    - give <context.item> to:<player.inventory>
-    - run mod_message_discord_notification def:<player.uuid>|restored<&sp>item<&co><&sp>`<context.item>`
+    - define item <context.item>
+    - flag <[item]> run_script:!
+    - give <[item]> to:<player.inventory>
+    - run mod_message_discord_notification def:<player.uuid>|restored<&sp>item<&co><&sp>`<[item]>`
