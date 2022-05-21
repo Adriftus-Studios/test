@@ -98,7 +98,7 @@ inventory_logger_view_inventory_restore:
       - if <[value].get[uuid]> == <[uuid]>:
         - inventory set d:<[target].inventory> o:<[value].get[inventory]>
         - narrate "<&a>Restored <[target].name>'s inventory<&co> <[value].get[cause]><&sp><[value].get[time].format>"
-        - run mod_message_discord_notification def:<player.uuid>|restored<&sp><[target].name><&sq>s<&sp>inventory<&co><&sp>`<[value].get[cause]><&sp><[value].get[time].format>`
+        - run mod_message_discord_notification def:<player.uuid>|restored<&sp>`<[target].name>`<&sq>s<&sp>inventory<&co><&sp>`<[value].get[cause]><&sp><[value].get[time].format>`
         - inventory close
 
 inventory_logger_view_inventory_single:
@@ -111,4 +111,4 @@ inventory_logger_view_inventory_single:
     - flag <[item]> run_script:!
     - flag <[item]> target:!
     - give <[item]> to:<player.inventory>
-    - run mod_message_discord_notification def:<player.uuid>|restored<&sp><[target].name><&sq>s<&sp>item<&co><&sp>`<[item]>`
+    - run mod_message_discord_notification def:<player.uuid>|restored<&sp>`<[target].name>`<&sq>s<&sp>item<&co><&sp>`<[item]>`
