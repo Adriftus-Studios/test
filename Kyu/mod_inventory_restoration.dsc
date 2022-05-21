@@ -70,7 +70,7 @@ inventory_logger_view_inventory:
     - define inventory <inventory[inventory_logger_inventory]>
     - foreach <[list]> as:map:
       - if <[map].get[uuid]> == <[uuid]>:
-        - inventory set o:<[map].get[inventory].parse_value_tag[<[parse_value].with_flag[run_script:inventory_logger_view_inventory_single]>]> d:<[inventory]>
+        - inventory set o:<[map].get[inventory].parse_value_tag[<[parse_value].with_flag[run_script:inventory_logger_view_inventory_single].with_flag[target:<[target]>]>]> d:<[inventory]>
         - define the_map <[map]>
 
     # Restore Inventory Button
@@ -97,7 +97,8 @@ inventory_logger_view_inventory_restore:
     - foreach <[target].flag[logged_inventories.<context.item.flag[cause]>]>:
       - if <[value].get[uuid]> == <[uuid]>:
         - inventory set d:<[target].inventory> o:<[value].get[inventory]>
-        - narrate "<&a>Inventory Restored."
+        - narrate "<&a>Restored <[target].name>'s inventory<&co> <[value].get[cause]><&sp><[value].get[time].format>"
+        - run mod_message_discord_notification def:<player.uuid>|restored<&sp>`<[target].name>`<&sq>s<&sp>inventory<&co><&sp>`<[value].get[cause]><&sp><[value].get[time].format>`
         - inventory close
 
 inventory_logger_view_inventory_single:
@@ -105,4 +106,9 @@ inventory_logger_view_inventory_single:
   debug: false
   definitions: target|uuid
   script:
-    - give <context.item> to:<player.inventory>
+    - define item <context.item>
+    - define target <context.item.flag[target]> if:<[target].exists.not>
+    - flag <[item]> run_script:!
+    - flag <[item]> target:!
+    - give <[item]> to:<player.inventory>
+    - run mod_message_discord_notification def:<player.uuid>|restored<&sp>`<[target].name>`<&sq>s<&sp>item<&co><&sp>`<[item]>`
