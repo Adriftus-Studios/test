@@ -3,8 +3,8 @@ crayon_brown:
     material: leather_horse_armor
     display name: Brown Crayon
     mechanisms:
-        custom_model_data: 11
-        color: blue
+        custom_model_data: 18
+        color: brown
     recipes:
         1:
             type: shapeless
@@ -26,12 +26,12 @@ crayon_:
                 - |brown_candle|
                 - ||
 
-crayon_Drawing:
+crayon_browndrawing:
     type: world
     events:
         on player right clicks block with:crayon_brown:
         - spawn item_frame <context.location> save:crayon_brown
         - adjust <entry[crayon_brown].spawned_entity> visible:false
-        - adjust <entry[crayon_brown].spawned_entity> color:blue
-        - adjust <entry[crayon_brown].spawned_entity> framed:<item[leather_horse_armor].with[custom_model_data=20]>|clockwise
+        - adjust <entry[crayon_brown].spawned_entity> framed:<item[leather_horse_armor].with[custom_model_data=20]>|color:blue
+
 
