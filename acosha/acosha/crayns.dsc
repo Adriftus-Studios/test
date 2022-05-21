@@ -1,7 +1,7 @@
-crayon_white:
+crayon_brown:
     type: item
     material: leather_horse_armor
-    display name: Crayon
+    display name: Brown Crayon
     mechanisms:
         custom_model_data: 11
     recipes:
@@ -9,14 +9,27 @@ crayon_white:
             type: shapeless
             input:
                 - ||
-                - |white_candle|
+                - |brown_candle|
+                - ||
+crayon_:
+    type: item
+    material: leather_horse_armor
+    display name: Brown Crayon
+    mechanisms:
+        custom_model_data: 12
+    recipes:
+        1:
+            type: shapeless
+            input:
+                - ||
+                - |brown_candle|
                 - ||
 
 crayon_Drawing:
     type: world
     events:
-        on player right clicks block with:crayon_white:
-        - spawn item_frame <context.location> save:crayon_white
-        - adjust <entry[crayon_white].spawned_entity> visible:false
-        - adjust <entry[crayon_white].spawned_entity> framed:arrow|clockwise
+        on player right clicks block with:crayon_brown:
+        - spawn item_frame <context.location> save:crayon_brown
+        - adjust <entry[crayon_brown].spawned_entity> visible:false
+        - adjust <entry[crayon_brown].spawned_entity> framed:arrow|clockwise
 
