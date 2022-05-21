@@ -99,7 +99,7 @@ inventory_logger_view_inventory_restore:
         - narrate <[value]>
         - inventory set d:<[target].inventory> o:<[value].get[inventory]>
         - narrate "<&a>Inventory Restored."
-        - run mod_message_discord_text def:<player.uuid>|restored<&sp><[target].name><&sq>s<&sp>inventory<&co><&sp>
+        - run mod_message_discord_notification def:<player.uuid>|restored<&sp><[target].name><&sq>s<&sp>inventory<&co><&sp>
         - inventory close
 
 inventory_logger_view_inventory_single:
@@ -108,4 +108,4 @@ inventory_logger_view_inventory_single:
   definitions: target|uuid
   script:
     - give <context.item> to:<player.inventory>
-    - run mod_message_discord_text def:<player.uuid>|restored<&sp><[target].name><&sq>s<&sp>item<&co><&sp><context.item>
+    - run mod_message_discord_notification def:<player.uuid>|restored<&sp><[target].name><&sq>s<&sp>item<&co><&sp><context.item>
