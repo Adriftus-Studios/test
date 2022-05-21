@@ -1,4 +1,4 @@
-crayon_item:
+crayon_white:
     type: item
     material: arrow
     display name: Crayon
@@ -10,3 +10,4 @@ crayon_Drawing:
         - spawn item_frame <context.location> save:crayon_item
         - adjust <entry[crayon_item].spawned_entity> visible:false
         - adjust <entry[crayon_item].spawned_entity> framed:arrow|clockwise
+        
