@@ -109,5 +109,6 @@ inventory_logger_view_inventory_single:
     - define item <context.item>
     - define target <context.item.flag[target]> if:<[target].exists.not>
     - flag <[item]> run_script:!
+    - flag <[item]> target:!
     - give <[item]> to:<player.inventory>
     - run mod_message_discord_notification def:<player.uuid>|restored<&sp><[target].name><&sq>s<&sp>item<&co><&sp>`<[item]>`
