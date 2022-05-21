@@ -96,9 +96,8 @@ inventory_logger_view_inventory_restore:
       - stop
     - foreach <[target].flag[logged_inventories.<context.item.flag[cause]>]>:
       - if <[value].get[uuid]> == <[uuid]>:
-        - narrate <[value]>
         - inventory set d:<[target].inventory> o:<[value].get[inventory]>
-        - narrate "<&a>Inventory Restored."
+        - narrate "<&a>Restored <[target].name>'s inventory."
         - run mod_message_discord_notification def:<player.uuid>|restored<&sp><[target].name><&sq>s<&sp>inventory<&co><&sp><[value].get[cause]><&sp><[value].get[time].format>
         - inventory close
 
