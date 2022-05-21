@@ -4,6 +4,7 @@ crayon_brown:
     display name: Brown Crayon
     mechanisms:
         custom_model_data: 11
+        color: blue
     recipes:
         1:
             type: shapeless
