@@ -15,10 +15,31 @@ network_leave_join_messages:
       - if !<yaml[global.player.<player.uuid>].contains[settings.join_task]>:
         - announce "<proc[get_player_display_name]><&f> has joined the Server."
       - else if <yaml[global.player.<player.uuid>].read[settings.join_task]> != silent:
-        - run <yaml[global.player.<player.uuid>].read[settings.join_task]>
+        - if <script[network_join_<yaml[global.player.<player.uuid>].read[settings.join_task]>].exists>:
+          - run network_join_<yaml[global.player.<player.uuid>].read[settings.join_task]>
 
 network_join_hell:
   type: task
   debug: false
   script:
     - title title:<&c><&font[adriftus:overlay]><&chr[0001]><&chr[F801]><&chr[0001]> "subtitle:<&color[#880000]>Doom has come to this world" fade_in:10t stay:3s fade_out:10t targets:<server.online_players>
+
+network_leave_hell:
+  type: task
+  debug: false
+  script:
+    - title title:<&f><&font[adriftus:overlay]><&chr[0001]><&chr[F801]><&chr[0001]> "subtitle:The World feels a litte safer.." fade_in:10t stay:3s fade_out:10t targets:<server.online_players>
+
+network_join_colors:
+  type: task
+  debug: false
+  script:
+    - repeat 16:
+      - title title:<&color[<color[random].hex>]><&font[adriftus:overlay]><&chr[0001]><&chr[F801]><&chr[0001]> "subtitle:The world feels more vibrant!" fade_in:1t stay:6t fade_out:1t targets:<server.online_players>
+      - wait 5t
+
+network_leave_colors:
+  type: task
+  debug: false
+  script:
+    - title title:<&7><&font[adriftus:overlay]><&chr[0001]><&chr[F801]><&chr[0001]> "subtitle:The World is a little less colorful" fade_in:10t stay:3s fade_out:10t targets:<server.online_players>
