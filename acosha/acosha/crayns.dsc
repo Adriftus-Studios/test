@@ -71,7 +71,8 @@ crayon_magenta:
 crayon_browndrawing:
     type: world
     events:
-        on player right clicks block with:crayon_brown:
-        - spawn item_frame <context.relative> save:crayon_brown
-        - adjust <entry[crayon_brown].spawned_entity> visible:false
-        - adjust <entry[crayon_brown].spawned_entity> framed:<item[leather_horse_armor].with[custom_model_data=20;color=brown]>
+        on player right clicks block with:crayon_*:
+        - spawn item_frame <context.relative> save:crayon
+        - adjust <entry[crayon].spawned_entity> visible:false
+        - define color <player.item_in_hand.color>
+        - adjust <entry[crayon].spawned_entity> framed:<item[leather_horse_armor].with[custom_model_data=20;color=brown]>
