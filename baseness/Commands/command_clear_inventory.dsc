@@ -18,4 +18,4 @@ clear_inventory:
         - if <context.args.size> == 1:
             - inventory clear destination:<context.args.get[1].inventory>
             - narrate "<yellow><bold><context.args.get[1]>'s inventory has been cleared."
-#Username case to be fixed
+#Username case to be fixed.
