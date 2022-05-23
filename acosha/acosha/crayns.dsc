@@ -32,6 +32,6 @@ crayon_browndrawing:
         on player right clicks block with:crayon_brown:
         - spawn item_frame <context.location> save:crayon_brown
         - adjust <entry[crayon_brown].spawned_entity> visible:false
-        - adjust <entry[crayon_brown].spawned_entity> framed:<item[leather_horse_armor].with[custom_model_data=20]>|color:blue
+        - adjust <entry[crayon_brown].spawned_entity> framed:<item[leather_horse_armor].with[custom_model_data=20;color=blue]>
 
 
