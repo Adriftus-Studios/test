@@ -18,6 +18,7 @@ crayon_white:
     display name: Yellow Crayon
     mechanisms:
         custom_model_data: 18
+        color: white
     recipes:
         1:
             type: shapeless
@@ -31,6 +32,7 @@ crayon_yellow:
     display name: Yellow Crayon
     mechanisms:
         custom_model_data: 18
+        color: yellow
     recipes:
         1:
             type: shapeless
@@ -44,6 +46,7 @@ crayon_orange:
     display name: Orange Crayon
     mechanisms:
         custom_model_data: 18
+        color: orange
     recipes:
         1:
             type: shapeless
@@ -57,6 +60,7 @@ crayon_magenta:
     display name: Magenta Crayon
     mechanisms:
         custom_model_data: 18
+        color: magenta
     recipes:
         1:
             type: shapeless
