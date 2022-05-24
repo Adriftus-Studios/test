@@ -258,6 +258,7 @@ crayon_drawing:
         - adjust <entry[crayon].spawned_entity> visible:false
         - define color <player.item_in_hand.color>
         - adjust <entry[crayon].spawned_entity> framed:<item[leather_horse_armor].with[custom_model_data=21;color=<[color]>]>
+        - flag <entry[crayon].spawned_entity> utility_crayon
         - define slot <player.held_item_slot>
         - if <context.hand> == offhand:
             - define slot 41
@@ -268,7 +269,7 @@ crayon_drawing:
 crayon_breaking:
     type: world
     events:
-        on player damages item_frame:
+        on player damages entity_flagged:utility_crayon:
             - if <context.entity> = framed:<item[leather_horse_armor].with[custom_model_data=21]> :
                 - determine passively cancelled 
                 - adjust <context.entity> framed:<item[air]>
