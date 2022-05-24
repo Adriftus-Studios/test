@@ -187,7 +187,7 @@ crayon_black:
     flags:
       custom_durability:
         max: 36
-        current: 36
+        current: 0
     mechanisms:
         custom_model_data: 18
         color: black
@@ -209,7 +209,7 @@ crayon_drawing:
         - define slot <player.held_item_slot>
         - if <context.hand> == offhand:
             - define slot 41
-        - define value 4
+        - define value 1
         - inject custom_durability_process_task
 
 crayon_breaking:
