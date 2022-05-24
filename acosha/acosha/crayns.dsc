@@ -2,6 +2,10 @@ crayon_brown:
     type: item
     material: leather_horse_armor
     display name: Brown Crayon
+    flags:
+      custom_durability:
+        max: 36
+        current: 0
     mechanisms:
         custom_model_data: 18
         color: brown
@@ -16,6 +20,10 @@ crayon_white:
     type: item
     material: leather_horse_armor
     display name: Yellow Crayon
+    flags:
+      custom_durability:
+        max: 36
+        current: 0
     mechanisms:
         custom_model_data: 18
         color: white
@@ -30,6 +38,10 @@ crayon_yellow:
     type: item
     material: leather_horse_armor
     display name: Yellow Crayon
+    flags:
+      custom_durability:
+        max: 36
+        current: 0
     mechanisms:
         custom_model_data: 18
         color: yellow
@@ -44,6 +56,10 @@ crayon_orange:
     type: item
     material: leather_horse_armor
     display name: Orange Crayon
+    flags:
+      custom_durability:
+        max: 36
+        current: 0
     mechanisms:
         custom_model_data: 18
         color: orange
@@ -58,6 +74,10 @@ crayon_Fuchsia:
     type: item
     material: leather_horse_armor
     display name: Magenta Crayon
+    flags:
+      custom_durability:
+        max: 36
+        current: 0
     mechanisms:
         custom_model_data: 18
         color: Fuchsia
@@ -72,6 +92,10 @@ crayon_light_blue:
     type: item
     material: leather_horse_armor
     display name: Light Blue Crayon
+    flags:
+      custom_durability:
+        max: 36
+        current: 0
     mechanisms:
         custom_model_data: 18
         color: aqua
@@ -86,6 +110,10 @@ crayon_lime:
     type: item
     material: leather_horse_armor
     display name: Lime Crayon
+    flags:
+      custom_durability:
+        max: 36
+        current: 0
     mechanisms:
         custom_model_data: 18
         color: Lime
@@ -100,6 +128,10 @@ crayon_pink:
     type: item
     material: leather_horse_armor
     display name: Pink Crayon
+    flags:
+      custom_durability:
+        max: 36
+        current: 0
     mechanisms:
         custom_model_data: 18
         color: Lime
@@ -114,6 +146,10 @@ crayon_Gray:
     type: item
     material: leather_horse_armor
     display name: Gray Crayon
+    flags:
+      custom_durability:
+        max: 36
+        current: 0
     mechanisms:
         custom_model_data: 18
         color: Gray
@@ -128,6 +164,10 @@ crayon_purple:
     type: item
     material: leather_horse_armor
     display name: Purple Crayon
+    flags:
+      custom_durability:
+        max: 36
+        current: 0
     mechanisms:
         custom_model_data: 18
         color: Purple
@@ -142,6 +182,10 @@ crayon_Blue:
     type: item
     material: leather_horse_armor
     display name: Blue Crayon
+    flags:
+      custom_durability:
+        max: 36
+        current: 0
     mechanisms:
         custom_model_data: 18
         color: blue
@@ -156,6 +200,10 @@ crayon_green:
     type: item
     material: leather_horse_armor
     display name: Green Crayon
+    flags:
+      custom_durability:
+        max: 36
+        current: 0
     mechanisms:
         custom_model_data: 18
         color: green
@@ -170,6 +218,10 @@ crayon_red:
     type: item
     material: leather_horse_armor
     display name: Red Crayon
+    flags:
+      custom_durability:
+        max: 36
+        current: 0
     mechanisms:
         custom_model_data: 18
         color: Red
