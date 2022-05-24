@@ -254,6 +254,7 @@ crayon_drawing:
     type: world
     events:
         on player right clicks block with:crayon_*:
+        - ratelimit <player> 2t
         - spawn item_frame <context.relative> save:crayon
         - adjust <entry[crayon].spawned_entity> visible:false
         - define color <player.item_in_hand.color>
