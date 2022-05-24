@@ -270,8 +270,9 @@ crayon_breaking:
     events:
         on player damages item_frame:
             - if <context.entity> = framed:<item[leather_horse_armor].with[custom_model_data=21]> :
-                - adjust item_frame framed:<item[air]>
-                - determine cancelled
+                - determine passively cancelled 
+                - adjust <context.entity> framed:<item[air]>
+                - remove <context.entity>
             - else:
                 - stop
 
