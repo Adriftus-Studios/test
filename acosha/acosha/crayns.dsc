@@ -205,13 +205,13 @@ crayon_drawing:
         - spawn item_frame <context.relative> save:crayon
         - adjust <entry[crayon].spawned_entity> visible:false
         - define color <player.item_in_hand.color>
-        - adjust <entry[crayon].spawned_entity> framed:<item[leather_horse_armor].with[custom_model_data=20;color=<[color]>]>
+        - adjust <entry[crayon].spawned_entity> framed:<item[leather_horse_armor].with[custom_model_data=21;color=<[color]>]>
 
 crayon_breaking:
     type: world
     events:
         on player damages item_frame:
-            - if <context.entity> = framed:<item[leather_horse_armor].with[custom_model_data=20]> :
+            - if <context.entity> = framed:<item[leather_horse_armor].with[custom_model_data=21]> :
                 - determine cancelled
             - else:
                 - stop
