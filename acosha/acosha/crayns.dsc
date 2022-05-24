@@ -202,6 +202,11 @@ crayon_drawing:
     type: world
     events:
         on player right clicks block with:crayon_*:
+        - define slot <player.held_item_slot>
+        - if <context.hand> == offhand:
+            - define slot 41
+        - define value 4
+        - inject custom_durability_process_task
         - spawn item_frame <context.relative> save:crayon
         - adjust <entry[crayon].spawned_entity> visible:false
         - define color <player.item_in_hand.color>
@@ -216,19 +221,3 @@ crayon_breaking:
             - else:
                 - stop
 
-custom_durability_process_task:
-  type: task
-  debug: false
-  script:
-      - define slot
-      - define value 4
-      - if !<player.inventory.slot[<[slot]>].has_flag[custom_durability.max]>:
-        - stop
-      - if <player.inventory.slot[<[slot]>].flag[custom_durability.current].add[<[value]>]> < <player.inventory.slot[<[slot]>].flag[custom_durability.max]>:
-        - inventory flag slot:<[slot]> custom_durability.current:<player.inventory.slot[<[slot]>].flag[custom_durability.current].add[<[value]>]>
-        - define percent <player.inventory.slot[<[slot]>].flag[custom_durability.current].div[<player.inventory.slot[<[slot]>].flag[custom_durability.max]>]>
-        - define current_dur <player.inventory.slot[<[slot]>].material.max_durability.mul[<[percent]>]>
-        - inventory adjust slot:<[slot]> durability:<[current_dur].round_up>
-      - else:
-        - take slot:<[slot]>
-        - playsound sound:item_shield_break <player>
