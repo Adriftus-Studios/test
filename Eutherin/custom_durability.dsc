@@ -17,6 +17,7 @@ custom_durability_process_task:
           - inventory adjust slot:<[slot]> hides:ITEM_DATA
         - define map <player.inventory.slot[<[slot]>].enchantment_map>
         - define enchant_lore:|:<player.inventory.slot[<[slot]>].enchantment_types.parse_tag[<[parse_value].full_name[<[map].get[<[parse_value].name>]>].replace_text[<&r>].with[]>]>
+        - define enchant_lore <[enchant_lore].insert[<&nl>].at[1]>
       - define item_lore <player.inventory.slot[<[slot]>].script.parsed_key[lore].if_null[<list[]>]>
       - define final_lore <[item_lore].include[<[enchant_lore].if_null[]>].include[<&nl>].include[<&f><[durability_lore]>]>
       - inventory adjust slot:<[slot]> lore:<[final_lore]>
