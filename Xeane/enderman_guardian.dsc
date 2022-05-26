@@ -8,7 +8,7 @@ enderman_guardian:
     has_ai: false
   flags:
     on_damaged: enderman_guardian_damaged
-    on_teleport: enderman_guard_teleport_cancel
+    on_teleport: enderman_guardian_teleport_cancel
 
 enderman_guardian_minion:
   type: entity
@@ -165,8 +165,11 @@ enderman_guardian_minion_expire:
     - repeat 5:
       - playeffect effect:DRAGON_BREATH at:<[entity].location.above> quantity:20 ofset:0.2,0.5,0.2 targets:<[all_players]>
       - wait 2t
+    - stop if:<[boss].is_spawned.not>
+    - stop if:<[entity].is_spawned.not>
     - define health <[entity].health>
     - remove <[entity]>
+    - stop if:<[boss].is_spawned.not>
     - foreach <[points]> as:point:
       - playeffect effect:DRAGON_BREATH at:<[point]> quantity:4 ofset:0.1 targets:<[all_players]>
       - wait 1t
