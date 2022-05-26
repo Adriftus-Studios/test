@@ -9,6 +9,7 @@ enderman_guardian:
   flags:
     on_damaged: enderman_guardian_damaged
     on_teleport: enderman_guardian_teleport_cancel
+    on_death: enderman_guardian_death
 
 enderman_guardian_minion:
   type: entity
@@ -33,10 +34,13 @@ enderman_guardian_start:
       - wait 1s
     - define loc_10 <[location].with_pose[45,0]>
     - define safety_dance_zone_10 <proc[define_cone1].context[<[loc_10]>|<[loc_10].above[15]>|20|1].parse[with_y[<[loc_10].y>]]>
+    - wait 1s
+    - define all_players <[location].find_players_within[100]>
     # Opening Animation
 
 
     # Start the Fight
+    - bossbar ender_guardian color:purple create progress:1 "title:<&d>Ender Guardian" players:<[all_players]>
     - define location <player.location> if:<[location].exists.not>
     - spawn enderman_guardian <[location]> save:boss
     - if <entry[boss].spawned_entity.exists>:
@@ -138,12 +142,28 @@ enderman_guardian_phase_2:
       - flag <[boss]> phase:1
       - run enderman_guardian_phase_1 def:<[boss]>
 
+
+enderman_guardian_phase_3:
+  type: task
+  debug: false
+  definitions: boss
+  script:
+    - while <[boss].is_spawned>:
+      - run enderman_guardian_phase_1 def:<[boss]>
+      - ~run enderman_guardian_phase_2 def:<[boss]>
+
 # Entity Task Scripts
 enderman_guardian_damaged:
   type: task
   debug: false
   script:
-    - narrate oof
+    - bossbar update ender_guardian progress:<context.entity.health_percentage.div[100]>
+
+enderman_guardian_death:
+  type: task
+  debug: false
+  script:
+    - bossbar remove ender_guardian
 
 enderman_guardian_teleport_cancel:
   type: task
@@ -174,8 +194,10 @@ enderman_guardian_minion_expire:
     - stop if:<[entity].is_spawned.not>
     - define health <[entity].health>
     - remove <[entity]>
+    - narrate "<&e>An Enderman gives his life to the Guardian." targets:<[all_players]>
     - stop if:<[boss].is_spawned.not>
     - foreach <[points]> as:point:
       - playeffect effect:DRAGON_BREATH at:<[point]> quantity:4 ofset:0.1 targets:<[all_players]>
       - wait 1t
     - heal <[health]> <[boss]>
+    - bossbar update ender_guardian progress:<[boss].health_percentage.div[100]>
