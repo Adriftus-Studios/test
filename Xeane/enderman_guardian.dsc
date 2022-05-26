@@ -52,29 +52,28 @@ enderman_guardian_phase_1:
   debug: false
   definitions: boss
   script:
-    - while <[boss].flag[phase]> == 1:
-      # Initialize Definitions
-      - define spawnable_blocks <[boss].location.find_spawnable_blocks_within[15]>
-      - define all_players <[boss].location.find_players_within[100]>
-      - define targets <[boss].location.find_players_within[6]>
-      # Knockback Explosion
-      - repeat 120:
-        - playeffect effect:DRAGON_BREATH at:<[boss].location.above[1.5]> offset:<[value].div[100]> quantity:<[value].div[10]> targets:<[all_players]>
-        - wait 1t if:<[value].mod[10].equals[0]>
-      - foreach <[targets]> as:target:
-        - adjust <[target]> velocity:<[target].location.sub[<[boss].location>].normalize.mul[5].with_y[1]>
-        - hurt 5
-      - wait 1s
-      # Spawn Adds
-      - repeat 5:
-        - repeat 8:
-          - stop if:<[boss].is_spawned.not>
-          - run enderman_guardian_spawn_enderman def:<[boss]>|<[spawnable_blocks].random>
-          - wait 2s
-        - wait 10s
-      - if <[boss].is_spawned> && <[boss].flag[phase]> != 3:
-        - flag <[boss]> phase:2
-        - run enderman_guardian_phase_2 def:<[boss]>
+    # Initialize Definitions
+    - define spawnable_blocks <[boss].location.find_spawnable_blocks_within[15]>
+    - define all_players <[boss].location.find_players_within[100]>
+    - define targets <[boss].location.find_players_within[6]>
+    # Knockback Explosion
+    - repeat 120:
+      - playeffect effect:DRAGON_BREATH at:<[boss].location.above[1.5]> offset:<[value].div[100]> quantity:<[value].div[10]> targets:<[all_players]>
+      - wait 1t if:<[value].mod[10].equals[0]>
+    - foreach <[targets]> as:target:
+      - adjust <[target]> velocity:<[target].location.sub[<[boss].location>].normalize.mul[5].with_y[1]>
+      - hurt 5
+    - wait 1s
+    # Spawn Adds
+    - repeat 5:
+      - repeat 8:
+        - stop if:<[boss].is_spawned.not>
+        - run enderman_guardian_spawn_enderman def:<[boss]>|<[spawnable_blocks].random>
+        - wait 2s
+      - wait 10s
+    - if <[boss].is_spawned> && <[boss].flag[phase]> != 3:
+      - flag <[boss]> phase:2
+      - run enderman_guardian_phase_2 def:<[boss]>
 
 enderman_guardian_spawn_enderman:
   type: task
