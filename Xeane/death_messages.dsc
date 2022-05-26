@@ -134,7 +134,7 @@ player_death_handler:
             - define message "<proc[get_player_display_name]><&e> froze to death"
       - determine passively <[message]>
       - wait 1t
-      - announce to_permission:adriftus.moderator "<element[<&d>Hoverable Moderation Message<&co> Death Information].on_hover[<script.parsed_key[data.death_info].separated_by[<&nl>]>].on_click[/dtd forward_portal coordinates <player.location.x> <player.location.y> <player.location.z>].type[RUN_COMMAND]>"
+      - announce to_permission:adriftus.moderator "<element[<&d>Interactable Moderation Message<&co><&6> Death Information].on_hover[<script.parsed_key[data.death_info].separated_by[<&nl>]>].on_click[/dtd forward_portal coordinates <player.location.x> <player.location.y> <player.location.z>].type[RUN_COMMAND]>"
       ##TODO - Discord Messages
       #- wait 1t
       #- if <yaml[chat_config].read[channels.server.integrations.Discord.<bungee.server>.active]>:
