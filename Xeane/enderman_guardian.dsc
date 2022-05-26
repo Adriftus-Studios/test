@@ -72,7 +72,7 @@ enderman_guardian_spawn_enderman:
     # Definitions
     - define all_players <[caster].location.find_players_within[100]>
     - define start <[caster].eye_location.below.forward[0.5]>
-    - define points <proc[define_curve1].context[<[start]>|<[destination]>|2|90|0.5]>
+    - define points <proc[define_curve1].context[<[start]>|<[destination]>|5|90|0.5]>
 
     # Play Arc Animation
     - foreach <[points]> as:point:
