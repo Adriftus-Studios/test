@@ -39,9 +39,10 @@ enderman_guardian_start:
       - repeat 9:
         - flag <entry[boss].spawned_entity> safety_dance.<[value]>.location:<[loc_<[value]>]>
         - flag <entry[boss].spawned_entity> safety_dance.<[value]>.zone:<[safety_dance_zone_<[value]>]>
-      - while <entry[boss].spawned_entity.is_spawned> && <entry[boss].spawned_entity.health_percentage> > 33:
-        - flag <entry[boss].spawned_entity> phase:1
-        - run enderman_guardian_phase_1 def:<entry[boss].spawned_entity>
+      #- while <entry[boss].spawned_entity.is_spawned> && <entry[boss].spawned_entity.health_percentage> > 33:
+      - flag <entry[boss].spawned_entity> phase:1
+      - run enderman_guardian_phase_1 def:<entry[boss].spawned_entity>
+        
 
 enderman_guardian_phase_1:
   type: task
@@ -60,6 +61,7 @@ enderman_guardian_phase_1:
       - foreach <[targets]> as:target:
         - adjust <[target]> velocity:<[target].location.sub[<[boss].location>].normalize.mul[5].with_y[1]>
         - hurt 5
+      - wait 1s
       # Spawn Adds
       - repeat 5:
         - repeat 5:
