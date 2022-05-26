@@ -199,7 +199,7 @@ enderman_guardian_minion_expire:
     - narrate "<&e>An Enderman gives his life to the Guardian." targets:<[all_players]>
     - stop if:<[boss].is_spawned.not>
     - foreach <[points]> as:point:
-      - playeffect effect:DRAGON_BREATH at:<[point]> quantity:4 ofset:0.1 targets:<[all_players]>
+      - playeffect effect:DRAGON_BREATH at:<[point]> quantity:4 offset:0.1 targets:<[all_players]>
       - wait 1t
     - heal <[health]> <[boss]>
     - bossbar update ender_guardian progress:<[boss].health_percentage.div[100]>
