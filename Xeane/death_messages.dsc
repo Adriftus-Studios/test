@@ -17,7 +17,7 @@ player_death_handler:
             - define message "<proc[get_player_display_name]><&e> died to a pointy object"
 
           # Entity Attack - Damage caused when an entity attacks another entity.
-          - case ENTITY_ATTACK|ENTITY_SWEEP_ATTACK:
+          - case ENTITY_ATTACK ENTITY_SWEEP_ATTACK:
             # Player vs Player
             - if <context.damager.entity_type> == PLAYER:
               - define item <context.damager.item_in_hand.display.if_null[<context.damager.item_in_hand.material.translated_name>]>
@@ -45,7 +45,7 @@ player_death_handler:
             - define message "<proc[get_player_display_name]><&e> died very quietly.... encased in blocks"
 
           # Fire Tick - Damage caused by direct exposure to fire
-          - case FIRE|FIRE_TICK:
+          - case FIRE FIRE_TICK:
             - define message "<proc[get_player_display_name]><&e> died a horrible, fiery death"
 
           # Melting - Damage caused due to a snowman melting
