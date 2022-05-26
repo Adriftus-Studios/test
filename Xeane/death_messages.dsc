@@ -2,7 +2,7 @@ player_death_handler:
   type: world
   debug: false
   events:
-    on player dies:
+    on player dies bukkit_priority:HIGHEST:
       # Check for Custom Damage Messages
       - if <context.cause> == CUSTOM:
         - define message "<proc[get_player_display_name]><&e> was killed by <player.flag[custom_damage]>"
