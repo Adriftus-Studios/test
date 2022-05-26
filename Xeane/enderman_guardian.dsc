@@ -37,6 +37,8 @@ enderman_guardian_start:
     - wait 1s
     - define all_players <[location].find_players_within[100]>
     # Opening Animation
+    - repeat 120:
+      - playeffect effect:DRAGON_BREATH at:<[location].above[1.5]> offset:0.2 data:0.2 quantity:<[value].div[10]> targets:<[all_players]>
 
 
     # Start the Fight
@@ -65,6 +67,7 @@ enderman_guardian_phase_1:
     - repeat 120:
       - playeffect effect:DRAGON_BREATH at:<[boss].location.above[1.5]> offset:<[value].div[100]> quantity:<[value].div[10]> targets:<[all_players]>
       - wait 1t if:<[value].mod[10].equals[0]>
+    - explode <[boss].location> power:5
     - foreach <[targets]> as:target:
       - adjust <[target]> velocity:<[target].location.sub[<[boss].location>].normalize.mul[5].with_y[1]>
       - hurt 5
