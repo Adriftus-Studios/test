@@ -165,7 +165,6 @@ enderman_guardian_minion_expire:
     - repeat 5:
       - playeffect effect:DRAGON_BREATH at:<[entity].location.above> quantity:20 ofset:0.2,0.5,0.2 targets:<[all_players]>
       - wait 2t
-    - stop if:<[boss].is_spawned.not>
     - stop if:<[entity].is_spawned.not>
     - define health <[entity].health>
     - remove <[entity]>
