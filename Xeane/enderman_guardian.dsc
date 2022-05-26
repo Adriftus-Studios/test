@@ -27,7 +27,7 @@ enderman_guardian_start:
     # Initial Calculations
     - repeat 9:
       - define loc_<[value]> <[location].with_pose[0,<[value].mul[40]>]>
-      - define safety_dance_zone_<[value]> <proc[define_cone1].context[<[loc]>|<[loc].forward[15]>|20|1].parse[with_y[<[loc].y>]]>
+      - define safety_dance_zone_<[value]> <proc[define_cone1].context[<[loc_<[value]>]>|<[loc_<[value]>].forward[15]>|20|1].parse[with_y[<[loc].y>]]>
       - wait 1s
     # Opening Animation
 
