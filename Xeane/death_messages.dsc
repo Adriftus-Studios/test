@@ -32,7 +32,7 @@ player_death_handler:
                 - define name <context.damager.custom_name>
               - else:
                 - define name <context.damager.translated_name>
-                - define message "<proc[get_player_display_name]><&e> was slain by <&c><[name]>"
+              - define message "<proc[get_player_display_name]><&e> was slain by <&c><[name]>"
           - case PROJECTILE:
             - define message "<proc[get_player_display_name]><&e> got shot in the face by <context.damager>"
 
