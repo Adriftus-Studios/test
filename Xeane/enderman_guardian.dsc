@@ -67,10 +67,11 @@ enderman_guardian_phase_1:
       # Spawn Adds
       - repeat 5:
         - repeat 8:
+          - stop if:<[boss].is_spawned.not>
           - run enderman_guardian_spawn_enderman def:<[boss]>|<[spawnable_blocks].random>
           - wait 2s
         - wait 10s
-      - if <[boss].flag[phase]> != 3:
+      - if <[boss].is_spawned> && <[boss].flag[phase]> != 3:
         - flag <[boss]> phase:2
         - run enderman_guardian_phase_2 def:<[boss]>
 
@@ -111,6 +112,7 @@ enderman_guardian_phase_2:
 
     # Safety Dance
     - repeat 15:
+      - stop if:<[boss].is_spawned.not>
       - define number <util.random.int[1].to[9]>
       - teleport <[boss]> <[boss].flag[safety_dance.<[number]>.location]>
       - wait 2s
@@ -125,7 +127,7 @@ enderman_guardian_phase_2:
           - hurt 4 <[all_players].filter_tag[<[boss].location.facing[<[filter_value].location>].degrees[25]>]>
           - wait 2t
       - wait 1s
-      - if <[boss].flag[phase]> != 3:
+      - if <[boss].is_spawned> && <[boss].flag[phase]> != 3:
         - flag <[boss]> phase:1
         - run enderman_guardian_phase_1 def:<[boss]>
 
