@@ -9,6 +9,16 @@ enderman_guardian:
   flags:
     on_damaged: enderman_guardian_damaged
 
+enderman_guardian_minion:
+  type: entity
+  entity_type: enderman
+  mechanisms:
+    custom_name: <&d>Enderman
+    custom_name_visible: true
+    health_data: 50/50
+  flags:
+    on_damaged: enderman_guardian_minion_damaged
+    
 
 enderman_guardian_start:
   type: task
@@ -62,7 +72,7 @@ enderman_guardian_spawn_enderman:
     # Definitions
     - define all_players <[caster].location.find_players_within[100]>
     - define start <[caster].eye_location.below.forward[0.5]>
-    - define points <proc[define_cruve1].context[<[start]>|<[destination]>|2|90|0.5]>
+    - define points <proc[define_curve1].context[<[start]>|<[destination]>|2|90|0.5]>
 
     # Play Arc Animation
     - foreach <[points]> as:point:
