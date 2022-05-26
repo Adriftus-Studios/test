@@ -134,8 +134,8 @@ player_death_handler:
           - case FREEZE:
             - define message "<proc[get_player_display_name]><&e> froze to death"
       - determine passively NO_MESSAGE
-      - define players_final "<&font[adriftus:chat]><&chr[1001]><&r> <&7><&lb><&4>DEATH<&7><&rb><&r><&nl>     <[message]>"
-      - define staff_final "<&font[adriftus:chat]><&chr[1001]><&r> <&7><&lb><&4>DEATH<&7><&rb><&r> - <element[<&7><&lb><&d>Moderation Information<&7><&rb>].on_hover[<script.parsed_key[data.death_info].separated_by[<&nl>]>].on_click[/dtd forward_portal coordinates <player.location.x> <player.location.y> <player.location.z>].type[RUN_COMMAND]><&nl>     <[message]>"
+      - define players_final "<&font[adriftus:chat]><&chr[2001]><&r> <&7><&lb><&4>DEATH<&7><&rb><&r><&nl>     <[message]>"
+      - define staff_final "<&font[adriftus:chat]><&chr[2001]><&r> <&7><&lb><&4>DEATH<&7><&rb><&r> - <element[<&7><&lb><&d>Moderation Information<&7><&rb>].on_hover[<script.parsed_key[data.death_info].separated_by[<&nl>]>].on_click[/dtd forward_portal coordinates <player.location.x> <player.location.y> <player.location.z>].type[RUN_COMMAND]><&nl>     <[message]>"
       - define staff <server.online_players.filter[has_permission[adriftus.staff]]>
       - define players <server.online_players.exclude[<[staff]>]>
       - narrate <[players_final]> targets:<[players]>
