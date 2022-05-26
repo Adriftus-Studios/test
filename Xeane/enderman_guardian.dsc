@@ -29,6 +29,8 @@ enderman_guardian_start:
       - define loc_<[value]> <[location].with_pose[0,<[value].mul[40]>]>
       - define safety_dance_zone_<[value]> <proc[define_cone1].context[<[loc_<[value]>]>|<[loc_<[value]>].forward[15]>|20|1].parse[with_y[<[loc_<[value]>].y>]]>
       - wait 1s
+    - define loc_10 <[location].with_pose[45,0]>
+    - define safety_dance_zone_10 <proc[define_cone1].context[<[loc_10]>|<[loc_10].above[15]>|20|1].parse[with_y[<[loc_10].y>]]>
     # Opening Animation
 
 
@@ -36,7 +38,7 @@ enderman_guardian_start:
     - define location <player.location> if:<[location].exists.not>
     - spawn enderman_guardian <[location]> save:boss
     - if <entry[boss].spawned_entity.exists>:
-      - repeat 9:
+      - repeat 10:
         - flag <entry[boss].spawned_entity> safety_dance.<[value]>.location:<[loc_<[value]>]>
         - flag <entry[boss].spawned_entity> safety_dance.<[value]>.zone:<[safety_dance_zone_<[value]>]>
       #- while <entry[boss].spawned_entity.is_spawned> && <entry[boss].spawned_entity.health_percentage> > 33:
@@ -64,21 +66,22 @@ enderman_guardian_phase_1:
       - wait 1s
       # Spawn Adds
       - repeat 5:
-        - repeat 5:
+        - repeat 8:
           - run enderman_guardian_spawn_enderman def:<[boss]>|<[spawnable_blocks].random>
-          - wait 1s
+          - wait 2s
         - wait 10s
-      - flag <[boss]> phase:2
-      - run enderman_guardian_phase_2 def:<[boss]>
+      - if <[boss].flag[phase]> != 3:
+        - flag <[boss]> phase:2
+        - run enderman_guardian_phase_2 def:<[boss]>
 
 enderman_guardian_spawn_enderman:
   type: task
   debug: false
-  definitions: caster|destination
+  definitions: boss|destination
   script:
     # Definitions
-    - define all_players <[caster].location.find_players_within[100]>
-    - define start <[caster].eye_location.below.forward[0.5]>
+    - define all_players <[boss].location.find_players_within[100]>
+    - define start <[boss].eye_location.below.forward[0.5]>
     - define points <proc[define_curve1].context[<[start]>|<[destination]>|5|90|0.5]>
 
     # Play Arc Animation
@@ -94,7 +97,7 @@ enderman_guardian_spawn_enderman:
     - spawn enderman_guardian_minion <[destination]> target:<[all_players].sort_by_number[distance[<[destination]>]].first> save:minion
     - wait 10s
     - if <entry[minion].spawned_entity.is_spawned>:
-      - run enderman_guardian_minion_expire def:<entry[minion].spawned_entity>
+      - run enderman_guardian_minion_expire def:<entry[minion].spawned_entity>|<[boss]>
     # Minion Flags
     ##TODO
 
@@ -111,9 +114,20 @@ enderman_guardian_phase_2:
       - define number <util.random.int[1].to[9]>
       - teleport <[boss]> <[boss].flag[safety_dance.<[number]>.location]>
       - wait 2s
-      - playeffect effect:DRAGON_BREATH at:<[boss].flag[safety_dance.<[number]>.zone]> quantity:1 velocity:0,0.2,0 targets:<[all_players]>
-      - hurt <[all_players].filter_tag[<[boss].location.facing[<[filter_value].location>].degrees[20]>]>
-      - wait 2s
+      - if <[number]> == 10:
+        - repeat 10:
+          - playeffect effect:DRAGON_BREATH at:<[boss].flag[safety_dance.<[number]>.zone]> quantity:1 velocity:0,0.2,0 targets:<[all_players]>
+          - hurt 4 <[boss].find_players_within[5]>
+          - wait 2t
+      - else:
+        - repeat 10:
+          - playeffect effect:DRAGON_BREATH at:<[boss].flag[safety_dance.<[number]>.zone]> quantity:1 velocity:0,0.2,0 targets:<[all_players]>
+          - hurt 4 <[all_players].filter_tag[<[boss].location.facing[<[filter_value].location>].degrees[25]>]>
+          - wait 2t
+      - wait 1s
+      - if <[boss].flag[phase]> != 3:
+        - flag <[boss]> phase:1
+        - run enderman_guardian_phase_1 def:<[boss]>
 
 # Entity Task Scripts
 enderman_guardian_damaged:
@@ -131,7 +145,20 @@ enderman_guardian_minion_damaged:
 enderman_guardian_minion_expire:
   type: task
   debug: false
-  definitions: entity
+  definitions: entity|boss
   script:
+    # Definitions
+    - define all_players <[boss].location.find_players_within[100]>
+    - define points <[entity].location.above.points_between[<[boss].eye_location>].distance[0.5]>
+
+    # Remove and Heal Boss
+    - adjust <[entity]> has_ai:false
+    - repeat 5:
+      - playeffect effect:DRAGON_BREATH at:<[entity].location.above> quantity:20 ofset:0.2,0.5,0.2 targets:<[all_players]>
+      - wait 2t
+    - define health <[entity].health>
     - remove <[entity]>
-    - narrate oof
+    - foreach <[points]> as:point:
+      - playeffect effect:DRAGON_BREATH at:<[point]> quantity:4 ofset:0.1 targets:<[all_players]>
+      - wait 1t
+    - heal <[health]> <[boss]>
