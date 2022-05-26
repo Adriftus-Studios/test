@@ -19,6 +19,7 @@ enderman_guardian_minion:
     health_data: 50/50
   flags:
     on_damaged: enderman_guardian_minion_damaged
+    on_teleport: enderman_guardian_teleport_cancel
 
 enderman_guardian_start:
   type: task
@@ -113,7 +114,11 @@ enderman_guardian_phase_2:
     # Safety Dance
     - repeat 15:
       - stop if:<[boss].is_spawned.not>
-      - define number <util.random.int[1].to[9]>
+      - define players_nearby <[boss].location.find_players_within[6]>
+      - if <[players_nearby].size> > 1:
+        - define number 10
+      - else:
+        - define number <util.random.int[1].to[9]>
       - teleport <[boss]> <[boss].flag[safety_dance.<[number]>.location]>
       - wait 2s
       - if <[number]> == 10:
@@ -126,10 +131,10 @@ enderman_guardian_phase_2:
           - playeffect effect:DRAGON_BREATH at:<[boss].flag[safety_dance.<[number]>.zone]> quantity:1 velocity:0,0.2,0 targets:<[all_players]>
           - hurt 4 <[all_players].filter_tag[<[boss].location.facing[<[filter_value].location>].degrees[25]>]>
           - wait 2t
-      - wait 1s
-      - if <[boss].is_spawned> && <[boss].flag[phase]> != 3:
-        - flag <[boss]> phase:1
-        - run enderman_guardian_phase_1 def:<[boss]>
+    - wait 1s
+    - if <[boss].is_spawned> && <[boss].flag[phase]> != 3:
+      - flag <[boss]> phase:1
+      - run enderman_guardian_phase_1 def:<[boss]>
 
 # Entity Task Scripts
 enderman_guardian_damaged:
