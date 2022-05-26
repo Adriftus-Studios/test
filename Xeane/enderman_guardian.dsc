@@ -66,7 +66,9 @@ enderman_guardian_phase_1:
       - hurt 5
     - wait 1s
     # Spawn Adds
+    ## Waves of Minions
     - repeat 5:
+      ## Minions Per Wave
       - repeat 8:
         - stop if:<[boss].is_spawned.not>
         - run enderman_guardian_spawn_enderman def:<[boss]>|<[spawnable_blocks].random>
