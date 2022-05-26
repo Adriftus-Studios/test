@@ -40,7 +40,13 @@ player_death_handler:
                 - define name <context.damager.entity_type.replace[_].with[<&sp>].to_titlecase>
               - define message "<proc[get_player_display_name]><&e> was slain by <&c><[name]>"
           - case PROJECTILE:
-            - define message "<proc[get_player_display_name]><&e> got shot in the face by <context.damager>"
+              - if !<context.damager.exists>:
+                - define name "a ranged attack"
+              - else if <context.damager.custom_name.exists>:
+                - define name <context.damager.custom_name>
+              - else:
+                - define name <context.damager.entity_type.replace[_].with[<&sp>].to_titlecase>
+              - define message "<proc[get_player_display_name]><&e> got shot in the face by <[name]>"
 
           # Fall - Damage caused when an entity falls a distance greater than 3 blocks
           - case FALL:
