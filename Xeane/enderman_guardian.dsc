@@ -8,6 +8,7 @@ enderman_guardian:
     has_ai: false
   flags:
     on_damaged: enderman_guardian_damaged
+    on_teleport: enderman_guard_teleport_cancel
 
 enderman_guardian_minion:
   type: entity
@@ -137,6 +138,12 @@ enderman_guardian_damaged:
   debug: false
   script:
     - narrate oof
+
+enderman_guardian_teleport_cancel:
+  type: task
+  debug: false
+  script:
+    - determine cancelled
 
 enderman_guardian_minion_damaged:
   type: task
