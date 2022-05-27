@@ -29,11 +29,11 @@ player_death_handler:
           # This is an example of a specific mob
           specific_mob:
             - "<[player]> got beaten up specifically by the specific_mob"
-        
+
         # Everything Else
         OTHER:
           - "<[player]><&e> was slain by <&c><[attacker]>"
-      
+
       # PROJECTILE - Damage caused when attacked by a projectile.
       # This category has an additional definition available
       # <[attacker]> - The name of the attacker - defaults to "a ranged attack", if no attacker can be found
@@ -145,9 +145,9 @@ player_death_handler:
       - else:
         - choose <context.cause>:
           - case BLOCK_EXPLOSION:
-            - define message <script.parsed_key[data.messsages.<context.cause>].random>
+            - define message <script.parsed_key[data.messages.<context.cause>].random>
           - case CONTACT:
-            - define message <script.parsed_key[data.messsages.<context.cause>].random>
+            - define message <script.parsed_key[data.messages.<context.cause>].random>
 
           # ENTITY ATTACK
           - case ENTITY_ATTACK ENTITY_SWEEP_ATTACK:
@@ -156,21 +156,21 @@ player_death_handler:
               - define item <context.damager.item_in_hand.display.if_null[<context.damager.item_in_hand.material.translated_name>]>
               - define item <[item].on_hover[<context.damager.item_in_hand>].type[SHOW_ITEM]>
               - define attacker <proc[get_player_display_name].context[<context.damager>]>
-              - define message <script.parsed_key[data.messsages.ENTITY_ATTACK.PVP].random>
+              - define message <script.parsed_key[data.messages.ENTITY_ATTACK.PVP].random>
             # Mythic Mob
             - else if <context.damager.is_mythicmob>:
               - define attacker <context.damager.mythicmob.display_name>
               - if <script.data_key[data.messages.MYTHIC_MOB.<context.damager.mythicmob.internal_name>].exists>:
-                - define message <script.parsed_key[data.messsages.ENTITY_ATTACK.MYTHIC_MOB.<context.damager.mythicmob.internal_name>].random>
+                - define message <script.parsed_key[data.messages.ENTITY_ATTACK.MYTHIC_MOB.<context.damager.mythicmob.internal_name>].random>
               - else:
-                - define message <script.parsed_key[data.messsages.ENTITY_ATTACK.MYTHIC_MOB.generic].random>
+                - define message <script.parsed_key[data.messages.ENTITY_ATTACK.MYTHIC_MOB.generic].random>
             # Everything Else
             - else:
               - if <context.damager.custom_name.exists>:
                 - define attacker <context.damager.custom_name>
               - else:
                 - define attacker <context.damager.entity_type.replace[_].with[<&sp>].to_titlecase>
-              - define message <script.parsed_key[data.messsages.ENTITY_ATTACK.OTHER].random>
+              - define message <script.parsed_key[data.messages.ENTITY_ATTACK.OTHER].random>
 
           # PROJECTILE
           - case PROJECTILE:
@@ -180,15 +180,15 @@ player_death_handler:
                 - define attacker <context.damager.custom_name>
               - else:
                 - define attacker <context.damager.entity_type.replace[_].with[<&sp>].to_titlecase>
-              - define message <script.parsed_key[data.messsages.<context.cause>].random>
+              - define message <script.parsed_key[data.messages.<context.cause>].random>
 
           # FIRE + FIRE TICK
           - case FIRE FIRE_TICK:
-              - define message <script.parsed_key[data.messsages.FIRE].random>
+              - define message <script.parsed_key[data.messages.FIRE].random>
 
           # EVERYTHING ELSE
           - default:
-              - define message <script.parsed_key[data.messsages.<context.cause>].random>
+              - define message <script.parsed_key[data.messages.<context.cause>].random>
 
       # PROCESSING STARTS
       - determine passively NO_MESSAGE
