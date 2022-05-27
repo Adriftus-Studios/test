@@ -4,7 +4,7 @@ network_leave_join_messages:
   events:
     on player joins:
       - determine NONE
-    on player quits:
+    on player quits bukkit_priority:LOW:
       - determine passively NONE
       - if <yaml[global.player.<player.uuid>].contains[settings.leave_task]> && <script[network_leave_<yaml[global.player.<player.uuid>].read[settings.leave_task]>].exists>:
         - run network_leave_<yaml[global.player.<player.uuid>].read[settings.leave_task]>
@@ -14,7 +14,7 @@ network_leave_join_messages:
       - else if <server.has_flag[leave_message]>:
         - define message <server.flag[leave_message].parsed>
       - else:
-        - define message "<proc[get_player_display_name]><&f> has left the Server."
+        - define message "<player.name><&f> has left the Server."
       - announce <[message]>
       - bungeerun relay Player_Leave_Message def:<list[<bungee.server>|<player.name>|<player.uuid>].include[<[message].strip_color>]>
 
@@ -27,7 +27,7 @@ network_leave_join_messages:
       - else if <server.has_flag[join_message]>:
         - define message <server.flag[join_message].parsed>
       - else:
-        - define message "<proc[get_player_display_name]><&f> has joined the Server."
+        - define message "<player.name><&f> has joined the Server."
       - announce <[message]>
       - bungeerun relay Player_Join_Message def:<list[<bungee.server>|<player.name>|<player.uuid>].include[<[message].strip_color>]>
 
