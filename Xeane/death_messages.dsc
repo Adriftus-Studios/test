@@ -13,15 +13,18 @@ player_death_handler:
       # Contact - Damage caused when an entity contacts a block such as a Cactus, Dripstone (Stalagmite) or Berry Bush.
       CONTACT:
         - "<[player]><&e> died to a pointy object"
+
       # Entity Attack - Damage caused when an entity attacks another entity.
       # This category has an additional definition available
       # <[attacker]> - The name of the attacker
       ENTITY_ATTACK:
+
         # PVP - This one has an additional definition available
         # <[item]> - The item used to kill the other player
         PVP:
           - "<[player]><&e> was slain by <[attacker]><&e> with <[item]>"
 
+        # When the attacker is a MythicMob
         MYTHIC_MOB:
           # generic - All mythic mobs next specifically set in this file will use this
           generic:
