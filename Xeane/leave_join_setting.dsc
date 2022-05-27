@@ -14,7 +14,7 @@ network_leave_join_messages:
       - else if <server.has_flag[leave_message]>:
         - define message <server.flag[leave_message].parsed>
       - else:
-        - define message "<proc[get_player_display_name]><&f> has leaveed the Server."
+        - define message "<proc[get_player_display_name]><&f> has left the Server."
       - announce <[message]>
       - bungeerun relay Player_Leave_Message def:<list[<bungee.server>|<player.name>|<player.uuid>].include[<[message].strip_color>]>
 
