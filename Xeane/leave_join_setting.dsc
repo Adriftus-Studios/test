@@ -6,17 +6,30 @@ network_leave_join_messages:
       - determine NONE
     on player quits:
       - determine passively NONE
-      - if !<yaml[global.player.<player.uuid>].contains[settings.leave_task]>:
-        - announce "<proc[get_player_display_name]><&f> has left the Server."
-      - else if <yaml[global.player.<player.uuid>].read[settings.leave_task]> != silent:
-        - run <yaml[global.player.<player.uuid>].read[settings.leave_task]>
+      - if <yaml[global.player.<player.uuid>].contains[settings.leave_task]> && <script[network_leave_<yaml[global.player.<player.uuid>].read[settings.leave_task]>].exists>:
+        - run network_leave_<yaml[global.player.<player.uuid>].read[settings.leave_task]>
+        - stop
+      - else if <yaml[global.player.<player.uuid>].contains[settings.leave_message]> && <script[network_leave_<yaml[global.player.<player.uuid>].read[settings.leave_message]>].exists>:
+        - define message <yaml[global.player.<player.uuid>].read[settings.leave_message]>
+      - else if <server.has_flag[leave_message]>:
+        - define message <server.flag[leave_message].parsed>
+      - else:
+        - define message "<proc[get_player_display_name]><&f> has leaveed the Server."
+      - announce <[message]>
+      - bungeerun relay Player_Leave_Message def:<list[<bungee.server>|<player.name>|<player.uuid>].include[<[message].strip_color>]>
 
     on custom event id:global_player_data_loaded:
-      - if !<yaml[global.player.<player.uuid>].contains[settings.join_task]>:
-        - announce "<proc[get_player_display_name]><&f> has joined the Server."
-      - else if <yaml[global.player.<player.uuid>].read[settings.join_task]> != silent:
-        - if <script[network_join_<yaml[global.player.<player.uuid>].read[settings.join_task]>].exists>:
-          - run network_join_<yaml[global.player.<player.uuid>].read[settings.join_task]>
+      - if <yaml[global.player.<player.uuid>].contains[settings.join_task]> && <script[network_join_<yaml[global.player.<player.uuid>].read[settings.join_task]>].exists>:
+        - run network_join_<yaml[global.player.<player.uuid>].read[settings.join_task]>
+        - stop
+      - else if <yaml[global.player.<player.uuid>].contains[settings.join_message]> && <script[network_join_<yaml[global.player.<player.uuid>].read[settings.join_message]>].exists>:
+        - define message <yaml[global.player.<player.uuid>].read[settings.join_message]>
+      - else if <server.has_flag[join_message]>:
+        - define message <server.flag[join_message].parsed>
+      - else:
+        - define message "<proc[get_player_display_name]><&f> has joined the Server."
+      - announce <[message]>
+      - bungeerun relay Player_Join_Message def:<list[<bungee.server>|<player.name>|<player.uuid>].include[<[message].strip_color>]>
 
 network_join_hell:
   type: task
