@@ -6,6 +6,8 @@ network_leave_join_messages:
       - determine NONE
     on player quits bukkit_priority:LOW:
       - determine passively NONE
+      - if <yaml[global.player.<player.uuid>].contains[settings.silent_leave]> && <yaml[global.player.<player.uuid>].read[settings.silent_leave]>:
+        - stop
       - if <yaml[global.player.<player.uuid>].contains[settings.leave_task]> && <script[network_leave_<yaml[global.player.<player.uuid>].read[settings.leave_task]>].exists>:
         - run network_leave_<yaml[global.player.<player.uuid>].read[settings.leave_task]>
         - stop
@@ -19,6 +21,8 @@ network_leave_join_messages:
       - bungeerun relay Player_Leave_Message def:<list[<bungee.server>|<player.name>|<player.uuid>].include[<[message].strip_color>]>
 
     on custom event id:global_player_data_loaded:
+      - if <yaml[global.player.<player.uuid>].contains[settings.silent_join]> && <yaml[global.player.<player.uuid>].read[settings.silent_join]>:
+        - stop
       - if <yaml[global.player.<player.uuid>].contains[settings.join_task]> && <script[network_join_<yaml[global.player.<player.uuid>].read[settings.join_task]>].exists>:
         - run network_join_<yaml[global.player.<player.uuid>].read[settings.join_task]>
         - stop
