@@ -14,46 +14,46 @@ player_death_handler:
         # PVP - This one has an additional definition available
         # <[item]> - The item used to kill the other player
         PVP:
-          - "<[player]><&e> was slain by <[attacker]><&e> with <[item]>"
+          - "<[player]><&e> was slain by <[attacker]><&e> with <[item]>."
 
         # When the attacker is a MythicMob
         MYTHIC_MOB:
           # generic - All mythic mobs next specifically set in this file will use this
           generic:
-            - "<[player]><&e> got mythically annihilated by <[attacker]>"
+            - "<[player]><&e> got mythically annihilated by <[attacker]>."
           # This is an example of a specific mob
           specific_mob:
-            - "<[player]> got beaten up specifically by the specific_mob"
+            - "<[player]> got beaten up specifically by the specific_mob."
 
         # Everything Else
         OTHER:
-          - "<[player]><&e> was slain by <&c><[attacker]>"
+          - "<[player]><&e> was slain by <&c><[attacker]>."
 
       # PROJECTILE - Damage caused when attacked by a projectile.
       # This category has an additional definition available
       # <[attacker]> - The name of the attacker - defaults to "a ranged attack", if no attacker can be found
       PROJECTILE:
-        - "<[player]><&e> got shot in the face by <[attacker]>"
+        - "<[player]><&e> got shot in the face by <[attacker]>."
 
       # Suffocation - Damage caused by being put in a block
       SUFFOCATION:
-        - "<[player]><&e> died very quietly.... encased in blocks"
+        - "<[player]><&e> died very quietly... encased in blocks."
 
       # Contact - Damage caused when an entity contacts a block such as a Cactus, Dripstone (Stalagmite) or Berry Bush.
       CONTACT:
-        - "<[player]><&e> died to a pointy object"
+        - "<[player]><&e> died to a pointy object."
 
       # Block Explosion - Damage caused by being in the area when a block explodes.
       BLOCK_EXPLOSION:
-        - "<[player]><&e> cut the wrong wire on the bomb"
+        - "<[player]><&e> cut the wrong wire on the bomb."
 
       # Fall - Damage caused when an entity falls a distance greater than 3 blocks
       FALL:
-        - "<[player]><&e> learned about gravity, the hard way"
+        - "<[player]><&e> learned about gravity, the hard way."
 
       # Fire Tick - Damage caused by direct exposure to fire
       FIRE:
-        - "<[player]><&e> died a horrible, fiery death"
+        - "<[player]><&e> died a horrible, fiery death."
 
       # Melting - Damage caused due to a snowman melting
       MELTING:
@@ -61,51 +61,51 @@ player_death_handler:
 
       # Lava - Damage caused by direct exposure to lava
       LAVA:
-        - "<[player]><&e> went swimming in lava without protection"
+        - "<[player]><&e> went swimming in lava without protection."
 
       # DROWNING - Damage caused by running out of air while in water
       DROWNING:
-        - "<[player]><&e> forgot they couldn't breathe underwater"
+        - "<[player]><&e> forgot they couldn't breathe underwater."
 
       # ENTITY_EXPLOSION - Damage caused by being in the area when an entity, such as a Creeper, explodes.
       ENTITY_EXPLOSION:
-        - "<[player]><&e> got a little bit exploded"
+        - "<[player]><&e> got a little bit exploded."
 
       # VOID - Damage caused by falling into the void
       VOID:
-        - "<[player]><&e> stared into the void, and the void stared back"
+        - "<[player]><&e> stared into the void, and the void stared back."
 
       # LIGHTNING - Damage caused by being struck by lightning
       LIGHTNING:
-        - "<[player]><&e> just had a... shocking moment"
+        - "<[player]><&e> just had a... shocking moment."
 
       # SUICIDE - Damage caused by committing suicide.
       SUICIDE:
-        - "<[player]><&e> made a poor life decision"
+        - "<[player]><&e> made a poor life decision."
 
       # STARVATION - Damage caused by starving due to having an empty hunger bar
       STARVATION:
-        - "<[player]><&e> starved to death"
+        - "<[player]><&e> starved to death."
 
       # POISON - Damage caused due to an ongoing poison effect
       POISON:
-        - "<[player]><&e> has succumb to fatal poisoning"
+        - "<[player]><&e> has succumb to fatal poisoning."
 
       # MAGIC - Damage caused by being hit by a damage potion or spell
       MAGIC:
-        - "<[player]><&e> was killed by mystical forces"
+        - "<[player]><&e> was killed by mystical forces."
 
       # WITHER - Damage caused by Wither potion effect
       WITHER:
-        - "<[player]><&e> withered away"
+        - "<[player]><&e> withered away."
 
       # FALLING_BLOCK - Damage caused by being hit by a falling block which deals damage
       FALLING_BLOCK:
-        - "<[player]><&e> got hit in the head by a large block"
+        - "<[player]><&e> got hit in the head by a large block."
 
       # FALLING_BLOCK - Damage caused in retaliation to another attack by the Thorns enchantment.
       THORNS:
-        - "<[player]><&e> died to their own wrath"
+        - "<[player]><&e> died to their own wrath."
 
       # DRAGON_BREATH - Damage caused by a dragon breathing fire.
       DRAGON_BREATH:
@@ -113,23 +113,23 @@ player_death_handler:
 
       # FLY_INTO_WALL - Damage caused when an entity runs into a wall.
       FLY_INTO_WALL:
-        - "<[player]><&e> got a crash course in inertia"
+        - "<[player]><&e> got a crash course in inertia."
 
       # HOT_FLOOR - Damage caused when an entity steps on MAGMA_BLOCK.
       HOT_FLOOR:
-        - "<[player]><&e> died due to excessive hot foot"
+        - "<[player]><&e> died due to excessive hot foot."
 
       # CRAMMING - Damage caused when an entity is colliding with too many entities due to the maxEntityCramming game rule.
       CRAMMING:
-        - "<[player]><&e> was squished to death in a pile of mobs"
+        - "<[player]><&e> was squished to death in a pile of mobs."
 
       # DRYOUT - Damage caused when an entity that should be in water is not.
       DRYOUT:
-        - "<[player]><&e> died due to being a fish out of water"
+        - "<[player]><&e> died due to being a fish out of water."
 
       # FREEZE - Damage caused from freezing.
       FREEZE:
-        - "<[player]><&e> froze to death"
+        - "<[player]><&e> froze to death."
 
     # Moderation Information
     death_info:
