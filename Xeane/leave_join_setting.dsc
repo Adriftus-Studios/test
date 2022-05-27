@@ -55,6 +55,16 @@ leave_join_command:
           leave_task: colors
           join_task: colors
 
+      syn:
+        settings:
+          leave_task: syn
+          join_task: syn
+
+      queen:
+        settings:
+          leave_task: queen
+          join_task: queen
+
       message:
         settings:
           leave_task: custom_message
