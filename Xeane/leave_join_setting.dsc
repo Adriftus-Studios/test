@@ -12,7 +12,7 @@ network_leave_join_messages:
         - define message <server.flag[leave_message].parsed>
       - else:
         - define message "<player.name><&f> has left the Server."
-      - announce <[message]>
+      - announce "<&font[adriftus:chat]><&chr[2003]><&r> <&7><&lb><&c>Player Leaves<&7><&rb><&r> - <proc[get_player_display_name]><&nl>     <[message]>"
       - bungeerun relay Player_Leave_Message def:<list[<bungee.server>|<player.name>|<player.uuid>].include[<[message].strip_color>]>
 
     on custom event id:global_player_data_loaded:
@@ -22,7 +22,7 @@ network_leave_join_messages:
         - define message <server.flag[join_message].parsed>
       - else:
         - define message "<player.name><&f> has joined the Server."
-      - announce <[message]>
+      - announce "<&font[adriftus:chat]><&chr[2002]><&r> <&7><&lb><&a>Player Joined<&7><&rb><&r> - <proc[get_player_display_name]><&nl>     <[message]>"
       - bungeerun relay Player_Join_Message def:<list[<bungee.server>|<player.name>|<player.uuid>].include[<[message].strip_color>]>
 
 leave_join_command:
