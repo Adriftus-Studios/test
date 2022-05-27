@@ -105,13 +105,13 @@ network_join_custom_message:
   type: task
   debug: false
   script:
-    - define message <>
+    - define message <yaml[global.player.<player.uuid>].read[settings.custom_join_message]>
 
 network_leave_custom_message:
   type: task
   debug: false
   script:
-    - stop
+    - define message <yaml[global.player.<player.uuid>].read[settings.custom_leave_message]>
 
 network_join_hell:
   type: task
