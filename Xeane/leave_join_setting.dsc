@@ -31,6 +31,7 @@ leave_join_command:
   name: leavejoin
   description: leave/join control
   usage: /leavejoin (option)
+  permission: adriftus.leavejoin
   data:
     maps:
       # root
