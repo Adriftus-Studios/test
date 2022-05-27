@@ -147,11 +147,6 @@ player_death_handler:
         - flag <context.entity> custom_damage:!
       - else:
         - choose <context.cause>:
-          - case BLOCK_EXPLOSION:
-            - define message <script.parsed_key[data.messages.<context.cause>].random>
-          - case CONTACT:
-            - define message <script.parsed_key[data.messages.<context.cause>].random>
-
           # ENTITY ATTACK
           - case ENTITY_ATTACK ENTITY_SWEEP_ATTACK:
             # Player vs Player
@@ -160,13 +155,20 @@ player_death_handler:
               - define item <[item].on_hover[<context.damager.item_in_hand>].type[SHOW_ITEM]>
               - define attacker <proc[get_player_display_name].context[<context.damager>]>
               - define message <script.parsed_key[data.messages.ENTITY_ATTACK.PVP].random>
+              - define player <context.entity.name>
+              - define attacker <context.damager.name>
+              - define discord_message <script.parsed_key[data.messages.ENTITY_ATTACK.PVP].random>
             # Mythic Mob
             - else if <context.damager.is_mythicmob>:
               - define attacker <context.damager.mythicmob.display_name>
               - if <script.data_key[data.messages.MYTHIC_MOB.<context.damager.mythicmob.internal_name>].exists>:
                 - define message <script.parsed_key[data.messages.ENTITY_ATTACK.MYTHIC_MOB.<context.damager.mythicmob.internal_name>].random>
+                - define player <player.name>
+                - define discord_message <script.parsed_key[data.messages.ENTITY_ATTACK.MYTHIC_MOB.<context.damager.mythicmob.internal_name>].random>
               - else:
                 - define message <script.parsed_key[data.messages.ENTITY_ATTACK.MYTHIC_MOB.generic].random>
+                - define player <player.name>
+                - define discord_message <script.parsed_key[data.messages.ENTITY_ATTACK.MYTHIC_MOB.generic].random>
             # Everything Else
             - else:
               - if <context.damager.custom_name.exists>:
@@ -174,6 +176,8 @@ player_death_handler:
               - else:
                 - define attacker <context.damager.entity_type.replace[_].with[<&sp>].to_titlecase>
               - define message <script.parsed_key[data.messages.ENTITY_ATTACK.OTHER].random>
+              - define player <player.name>
+              - define discord_message <script.parsed_key[data.messages.<context.cause>].random>
 
           # PROJECTILE
           - case PROJECTILE:
@@ -184,6 +188,8 @@ player_death_handler:
               - else:
                 - define attacker <context.damager.entity_type.replace[_].with[<&sp>].to_titlecase>
               - define message <script.parsed_key[data.messages.<context.cause>].random>
+              - define player <player.name>
+              - define discord_message <script.parsed_key[data.messages.<context.cause>].random>
 
           # FIRE + FIRE TICK
           - case FIRE FIRE_TICK:
