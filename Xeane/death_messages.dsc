@@ -6,14 +6,6 @@ player_death_handler:
     # Random Death Messages
     # <[player]> is available as the player's name
     messages:
-      # Block Explosion - Damage caused by being in the area when a block explodes.
-      BLOCK_EXPLOSION:
-        - "<[player]><&e> cut the wrong wire on the bomb"
-
-      # Contact - Damage caused when an entity contacts a block such as a Cactus, Dripstone (Stalagmite) or Berry Bush.
-      CONTACT:
-        - "<[player]><&e> died to a pointy object"
-
       # Entity Attack - Damage caused when an entity attacks another entity.
       # This category has an additional definition available
       # <[attacker]> - The name of the attacker
@@ -46,6 +38,14 @@ player_death_handler:
       # Suffocation - Damage caused by being put in a block
       SUFFOCATION:
         - "<[player]><&e> died very quietly.... encased in blocks"
+
+      # Contact - Damage caused when an entity contacts a block such as a Cactus, Dripstone (Stalagmite) or Berry Bush.
+      CONTACT:
+        - "<[player]><&e> died to a pointy object"
+
+      # Block Explosion - Damage caused by being in the area when a block explodes.
+      BLOCK_EXPLOSION:
+        - "<[player]><&e> cut the wrong wire on the bomb"
 
       # Fall - Damage caused when an entity falls a distance greater than 3 blocks
       FALL:
