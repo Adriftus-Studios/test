@@ -133,6 +133,7 @@ network_join_colors:
   script:
     - repeat 16:
       - title title:<&color[<color[random].hex>]><&font[adriftus:overlay]><&chr[0001]><&chr[F801]><&chr[0001]> "subtitle:The world feels more vibrant!" fade_in:1t stay:6t fade_out:1t targets:<server.online_players>
+      - wait 5t
     - stop
 
 network_leave_colors:
