@@ -117,6 +117,7 @@ network_join_silent:
   debug: false
   script:
     - narrate "<&a>You have silently joined the server."
+    - stop
 
 network_leave_silent:
   type: task
