@@ -140,7 +140,7 @@ player_death_handler:
 
       # Check for Custom Damage Messages
       - if <context.cause> == CUSTOM:
-        - define message "<proc[get_player_display_name]><&e> was killed by <player.flag[custom_damage]>"
+        - define message "<proc[get_player_display_name]><&e> was killed by <player.flag[custom_damage]>."
         - flag <context.entity> custom_damage:!
       - else:
         - choose <context.cause>:
