@@ -59,6 +59,11 @@ leave_join_command:
         settings:
           leave_task: custom_message
           join_task: custom_message
+
+      message_full:
+        settings:
+          leave_task: custom_message
+          join_task: custom_message
           custom_leave_message: <[leave]>
           custom_join_message: <[join]>
 
@@ -82,12 +87,20 @@ leave_join_command:
           - stop
         - run GLOBAL_PLAYER_DATA_MODIFY_MULTIPLE def:<player.uuid>|<script.data_key[data.maps.<context.args.get[2]>]>
       - case message:
+        - if !<yaml[global.player.<player.uuid>].contains[settings.join_message]> || !<yaml[global.player.<player.uuid>].contains[settings.leave_message]>:
+          - define has_customs false
+        - else:
+          - define has_customs true
         - if <context.args.size> < 3:
-          - narrate "<&c>Not Enough Arguments for MESSAGE input."
-          - stop
-        - define leave <context.args.get[2]>
-        - define join <context.args.get[3]>
-        - run GLOBAL_PLAYER_DATA_MODIFY_MULTIPLE def:<player.uuid>|<script.parsed_key[data.maps.<context.args.get[1]>]>
+          - if !<[has_customs]>:
+            - narrate "<&c>Not Enough Arguments for MESSAGE input."
+            - stop
+          - else:
+            - run GLOBAL_PLAYER_DATA_MODIFY_MULTIPLE def:<player.uuid>|<script.parsed_key[data.maps.message]>
+        - else:
+          - define leave <context.args.get[2]>
+          - define join <context.args.get[3]>
+          - run GLOBAL_PLAYER_DATA_MODIFY_MULTIPLE def:<player.uuid>|<script.parsed_key[data.maps.message_full]>
 
 network_join_silent:
   type: task
@@ -142,3 +155,17 @@ network_leave_colors:
   script:
     - title title:<&7><&font[adriftus:overlay]><&chr[0001]><&chr[F801]><&chr[0001]> "subtitle:The World is a little less colorful" fade_in:10t stay:3s fade_out:10t targets:<server.online_players>
     - stop
+
+network_join_queen:
+  type: task
+  debug: false
+  script:
+    - title title:<&6><&font[adriftus:overlay]><&chr[0001]><&chr[F801]><&chr[0001]> "subtitle:The Queen graces the land once more!" fade_in:1t stay:6t fade_out:1t targets:<server.online_players>
+    - define message "The Queen graces the land once more!"
+
+network_leave_queen:
+  type: task
+  debug: false
+  script:
+    - title title:<&e><&font[adriftus:overlay]><&chr[0001]><&chr[F801]><&chr[0001]> "subtitle:The Queen departs this world..." fade_in:10t stay:3s fade_out:10t targets:<server.online_players>
+    - define message "The Queen departs this world!"
