@@ -194,10 +194,14 @@ player_death_handler:
           # FIRE + FIRE TICK
           - case FIRE FIRE_TICK:
               - define message <script.parsed_key[data.messages.FIRE].random>
+              - define player <player.name>
+              - define discord_message <script.parsed_key[data.messages.FIRE].random>
 
           # EVERYTHING ELSE
           - default:
               - define message <script.parsed_key[data.messages.<context.cause>].random>
+              - define player <player.name>
+              - define discord_message <script.parsed_key[data.messages.<context.cause>].random>
 
       # PROCESSING STARTS
       - determine passively NO_MESSAGE
