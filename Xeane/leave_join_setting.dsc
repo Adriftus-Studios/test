@@ -118,12 +118,14 @@ network_join_hell:
   debug: false
   script:
     - title title:<&c><&font[adriftus:overlay]><&chr[0001]><&chr[F801]><&chr[0001]> "subtitle:<&color[#880000]>Doom has come to this world" fade_in:10t stay:3s fade_out:10t targets:<server.online_players>
+    - stop
 
 network_leave_hell:
   type: task
   debug: false
   script:
     - title title:<&f><&font[adriftus:overlay]><&chr[0001]><&chr[F801]><&chr[0001]> "subtitle:The World feels a litte safer.." fade_in:10t stay:3s fade_out:10t targets:<server.online_players>
+    - stop
 
 network_join_colors:
   type: task
@@ -131,6 +133,7 @@ network_join_colors:
   script:
     - repeat 16:
       - title title:<&color[<color[random].hex>]><&font[adriftus:overlay]><&chr[0001]><&chr[F801]><&chr[0001]> "subtitle:The world feels more vibrant!" fade_in:1t stay:6t fade_out:1t targets:<server.online_players>
+    - stop
       - wait 5t
 
 network_leave_colors:
@@ -138,3 +141,4 @@ network_leave_colors:
   debug: false
   script:
     - title title:<&7><&font[adriftus:overlay]><&chr[0001]><&chr[F801]><&chr[0001]> "subtitle:The World is a little less colorful" fade_in:10t stay:3s fade_out:10t targets:<server.online_players>
+    - stop
