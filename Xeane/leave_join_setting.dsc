@@ -87,7 +87,7 @@ leave_join_command:
           - stop
         - define leave <context.args.get[2]>
         - define join <context.args.get[3]>
-        - run GLOBAL_PLAYER_DATA_MODIFY_MULTIPLE def:<player.uuid>|<script.data_key[data.maps.<context.args.get[1]>]>
+        - run GLOBAL_PLAYER_DATA_MODIFY_MULTIPLE def:<player.uuid>|<script.parsed_key[data.maps.<context.args.get[1]>]>
 
 network_join_silent:
   type: task
