@@ -70,7 +70,7 @@ enderman_guardian_phase_1:
       - wait 1t if:<[value].mod[10].equals[0]>
     - foreach <[targets]> as:target:
       - adjust <[target]> velocity:<[target].location.sub[<[boss].location>].normalize.mul[5].with_y[1]>
-      - flag <[target]> "custom_damage:<&d>Ender Guardian Explosion"
+      - flag <[target]> "custom_damage.cause:<&d>Ender Guardian Explosion"
       - hurt 5 <[target]> cause:custom
     - wait 1s
     # Spawn Adds
@@ -133,14 +133,14 @@ enderman_guardian_phase_2:
         - repeat 10:
           - define targets <[boss].find_players_within[5]>
           - playeffect effect:DRAGON_BREATH at:<[boss].flag[safety_dance.<[number]>.zone]> quantity:1 velocity:0,0.2,0 targets:<[all_players]>
-          - flag <[targets]> "custom_damage:<&d>The Safety Dance"
+          - flag <[targets]> "custom_damage.cause:<&d>The Safety Dance"
           - hurt 8 <[targets]> cause:custom
           - wait 2t
       - else:
         - repeat 10:
           - define targets <[all_players].filter_tag[<[boss].location.facing[<[filter_value].location>].degrees[25]>]>
           - playeffect effect:DRAGON_BREATH at:<[boss].flag[safety_dance.<[number]>.zone]> quantity:1 velocity:0,0.2,0 targets:<[all_players]>
-          - flag <[targets]> "custom_damage:<&d>The Safety Dance"
+          - flag <[targets]> "custom_damage.cause:<&d>The Safety Dance"
           - hurt 8 <[targets]> cause:custom
           - wait 2t
     - wait 1s
