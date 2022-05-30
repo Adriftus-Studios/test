@@ -131,7 +131,7 @@ enderman_guardian_phase_2:
       - wait 2s
       - if <[number]> == 10:
         - repeat 10:
-          - define targets <[boss].find_players_within[5]>
+          - define targets <[boss].location.find_players_within[5]>
           - playeffect effect:DRAGON_BREATH at:<[boss].flag[safety_dance.<[number]>.zone]> quantity:1 velocity:0,0.2,0 targets:<[all_players]>
           - flag <[targets]> "custom_damage.cause:<&d>The Safety Dance"
           - hurt 8 <[targets]> cause:custom
