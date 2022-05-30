@@ -9,6 +9,7 @@ birds_eye:
     - flag <player> test_entity:<entry[ent].spawned_entity>
     - adjust <entry[ent].spawned_entity> velocity:0,1,0
     - spawn boat[gravity=false] <player.location.above[140]> save:boat
+    - mount <entry[boat].spawned_entity>|<player>
     - repeat 120:
       - adjust <entry[ent].spawned_entity> velocity:0,1,0
       - wait 1t
