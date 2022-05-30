@@ -15,6 +15,7 @@ birds_eye:
       - wait 1t
     - adjust <entry[ent].spawned_entity> gravity:false
     - repeat 120:
+      - narrate <entry[boat].spawned_entity.location.yaw>
       - adjust <entry[ent].spawned_entity> location:<player.location.above[120].with_yaw[<entry[boat].spawned_entity.location.yaw>]>
       - wait 1t
     - adjust <player> spectate:<player>
