@@ -3,6 +3,7 @@ birds_eye:
   debug: false
   script:
     - spawn armor_stand[visible=false] <player.location.with_pitch[90]> save:ent
+    - fakeequip <player> hand:feather[display=<&a>;custom_model_data=3] duration:8s
     - adjust <player> spectate:<entry[ent].spawned_entity>
     - repeat 120:
       - adjust <entry[ent].spawned_entity> velocity:0,1,0
