@@ -258,7 +258,7 @@ enderman_guardian_task_1:
         - wait 1t
       - wait 5s
 
-enderman_guardian_marker_2:
+enderman_guardian_task_2:
   type: task
   debug: false
   script:
@@ -274,7 +274,7 @@ enderman_guardian_marker_2:
         - wait 1t
       - wait 5s
 
-enderman_guardian_marker_3:
+enderman_guardian_task_3:
   type: task
   debug: false
   script:
