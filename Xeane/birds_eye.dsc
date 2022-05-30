@@ -18,5 +18,6 @@ birds_eye:
       - wait 1t
     - adjust <player> spectate:<player>
     - remove <entry[ent].spawned_entity>
+    - remove <entry[boat].spawned_entity>
     - flag <player> birds_eye:!
     - flag <player> test_entity:!
