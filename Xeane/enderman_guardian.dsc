@@ -85,6 +85,8 @@ enderman_guardian_phase_1:
     - if <[boss].is_spawned> && <[boss].flag[phase]> != 3:
       - flag <[boss]> phase:2
       - run enderman_guardian_phase_2 def:<[boss]>
+    - if !<[boss].is_spawned>:
+      - bossbar remove ender_guardian
 
 enderman_guardian_spawn_enderman:
   type: task
@@ -147,6 +149,8 @@ enderman_guardian_phase_2:
     - if <[boss].is_spawned> && <[boss].flag[phase]> != 3:
       - flag <[boss]> phase:1
       - run enderman_guardian_phase_1 def:<[boss]>
+    - if !<[boss].is_spawned>:
+      - bossbar remove ender_guardian
 
 
 enderman_guardian_phase_3:
