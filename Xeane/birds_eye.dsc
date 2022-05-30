@@ -11,9 +11,8 @@ birds_eye:
       - adjust <entry[ent].spawned_entity> velocity:0,1,0
       - wait 1t
     - adjust <entry[ent].spawned_entity> gravity:false
-    - repeat 40:
-      - teleport <entry[ent].spawned_entity> <entry[ent].spawned_entity.location.forward_flat[1200]>
-      - wait 4t
+    - teleport <entry[ent].spawned_entity> <entry[ent].spawned_entity.location.forward_flat[1200]>
+    - wait 5s
     - adjust <player> spectate:<player>
     - remove <entry[ent].spawned_entity>
     - flag <player> birds_eye:!
