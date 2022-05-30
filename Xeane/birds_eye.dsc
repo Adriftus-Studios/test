@@ -9,6 +9,8 @@ birds_eye:
       - adjust <entry[ent].spawned_entity> velocity:0,1,0
       - wait 1t
     - adjust <entry[ent].spawned_entity> gravity:false
-    - wait 5s
+    - repeat 120:
+      - adjust <entry[ent].spawned_entity> location:<player.location.above[120]>
+      - wait 1t
     - adjust <player> spectate:<player>
     - remove <entry[ent].spawned_entity>
