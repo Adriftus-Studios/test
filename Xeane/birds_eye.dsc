@@ -7,22 +7,16 @@ birds_eye:
     - adjust <player> spectate:<entry[ent].spawned_entity>
     - flag <player> birds_eye
     - flag <player> test_entity:<entry[ent].spawned_entity>
+    - adjust <entry[ent].spawned_entity> velocity:0,1,0
+    - spawn boat[gravity=false] <player.location.above[140]> save:boat
     - repeat 120:
       - adjust <entry[ent].spawned_entity> velocity:0,1,0
       - wait 1t
     - adjust <entry[ent].spawned_entity> gravity:false
     - repeat 120:
-      - adjust <entry[ent].spawned_entity> location:<player.location.above[120]>
+      - adjust <entry[ent].spawned_entity> location:<player.location.above[120].with_yaw[<entry[boat].spawned_entity.yaw>]>
       - wait 1t
     - adjust <player> spectate:<player>
     - remove <entry[ent].spawned_entity>
     - flag <player> birds_eye:!
     - flag <player> test_entity:!
-
-movement_test:
-  type: world
-  debug: false
-  events:
-    on player steers entity flagged:birds_eye:
-      - narrate FIRED<context.sideways>
-      - teleport <player.flag[test_entity]> <player.flag[test_entity].location.with_yaw[<player.flag[test_entity].location.yaw.add[<context.sideways.mul[10]>]>]>
