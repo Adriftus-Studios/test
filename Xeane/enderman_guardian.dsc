@@ -123,7 +123,7 @@ enderman_guardian_phase_2:
     - repeat 15:
       - stop if:<[boss].is_spawned.not>
       - define players_nearby <[boss].location.find_players_within[6]>
-      - if <[players_nearby].size> > 1:
+      - if <[players_nearby].size> > 1 && <util.random_chance[25]>:
         - define number 10
       - else:
         - define number <util.random.int[1].to[9]>
