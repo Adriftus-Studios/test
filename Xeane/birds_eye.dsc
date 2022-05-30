@@ -6,6 +6,7 @@ birds_eye:
     - fakeequip <player> hand:feather[display=<&a>;custom_model_data=3] duration:12s
     - adjust <player> spectate:<entry[ent].spawned_entity>
     - flag <player> birds_eye
+    - flag <player> test_entity:<entry[ent].spawned_entity>
     - repeat 120:
       - adjust <entry[ent].spawned_entity> velocity:0,1,0
       - wait 1t
@@ -16,6 +17,7 @@ birds_eye:
     - adjust <player> spectate:<player>
     - remove <entry[ent].spawned_entity>
     - flag <player> birds_eye:!
+    - flag <player> test_entity:!
 
 movement_test:
   type: world
