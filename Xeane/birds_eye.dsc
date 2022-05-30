@@ -15,7 +15,7 @@ birds_eye:
       - wait 1t
     - adjust <entry[ent].spawned_entity> gravity:false
     - repeat 120:
-      - teleport <entry[ent].spawned_entity> <entry[ent].spawned_entity.location.with_yaw[<entry[boat].spawned_entity.location.yaw>]>
+      - teleport <entry[ent].spawned_entity> <entry[boat].spawned_entity.location.with_y[<entry[ent].spawned_entity.location.y>]>
       - wait 1t
     - adjust <player> spectate:<player>
     - remove <entry[ent].spawned_entity>
