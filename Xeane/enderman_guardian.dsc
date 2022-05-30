@@ -172,6 +172,7 @@ enderman_guardian_death:
   debug: false
   script:
     - bossbar remove ender_guardian
+    - flag server enderman_guardian_defeated
 
 enderman_guardian_teleport_cancel:
   type: task
@@ -233,6 +234,14 @@ enderman_guardian_marker_3:
     marker: true
   flags:
     on_entity_added: enderman_guardian_task_3
+
+enderman_guardian_marker_4:
+  type: entity
+  entity_type: armor_stand
+  mechanisms:
+    gravity: false
+    visible: false
+    marker: true
 
 enderman_guardian_task_1:
   type: task
@@ -327,3 +336,4 @@ jungle_temple_lever_2:
     - define blocks <context.location.find_blocks_flagged[lever_disappear].within[7]>
     - if <[blocks].first.material.name> != air:
       - modifyblock <[blocks]> air
+    - run enderman_guardian_start def:<context.location.find_entities[enderman_guardian_marker_4].within[50].first.location>
