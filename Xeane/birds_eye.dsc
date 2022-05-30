@@ -14,6 +14,7 @@ birds_eye:
     - repeat 120:
       - adjust <entry[ent].spawned_entity> location:<player.location.above[120]>
       - wait 1t
+    - teleport <entry[ent].spawned_entity> <entry[ent].spawned_entity.location.forward_flat[100]>
     - adjust <player> spectate:<player>
     - remove <entry[ent].spawned_entity>
     - flag <player> birds_eye:!
