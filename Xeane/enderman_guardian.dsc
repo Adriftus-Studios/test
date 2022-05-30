@@ -273,6 +273,14 @@ enderman_guardian_task_2:
         - showfake <[blocks]> stone_bricks duration:5h players:<[value]>
         - wait 1t
       - wait 5s
+    - while <context.entity.is_spawned> && <server.has_flag[enderman_guardian_defeated]>:
+      - define targets <context.entity.location.find_players_within[120]>
+      - foreach <[targets]>:
+        - if !<[value].fake_block[<[blocks].first>].exists>:
+          - foreach next
+        - showfake <[blocks]> cancel players:<[value]>
+        - wait 1t
+      - wait 5s
 
 enderman_guardian_task_3:
   type: task
