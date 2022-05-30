@@ -21,6 +21,6 @@ movement_test:
   type: world
   debug: false
   events:
-    on player walks flagged:birds_eye:
+    on player steers vehicle flagged:birds_eye:
       - narrate <context.old_location>
       - narrate <context.new_location>
