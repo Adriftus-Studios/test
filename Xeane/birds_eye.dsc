@@ -22,4 +22,4 @@ movement_test:
   debug: false
   events:
     on player steers entity flagged:birds_eye:
-      - narrate <context.entity.location>
+      - teleport <player.flag[test_entity]> <player.flag[test_entity].location.with_yaw[<player.flag[test_entity].location.yaw.add[<context.sideways>]>]>
