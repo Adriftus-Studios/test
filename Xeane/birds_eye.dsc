@@ -10,7 +10,7 @@ birds_eye:
     - adjust <entry[ent].spawned_entity> velocity:0,1,0
     - spawn boat[gravity=false] <player.location> save:boat
     - mount <player>|<entry[boat].spawned_entity>
-    - repeat 40:
+    - repeat 30:
       - adjust <entry[ent].spawned_entity> velocity:0,1,0
       - wait 1t
     - adjust <entry[ent].spawned_entity> gravity:false
