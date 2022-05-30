@@ -22,6 +22,7 @@ enderman_guardian_minion:
     health_data: 50/50
   flags:
     on_teleport: enderman_guardian_teleport_cancel
+    on_death: enderman_guardian_drop_cancel
 
 enderman_guardian_start:
   type: task
@@ -46,6 +47,7 @@ enderman_guardian_start:
     - bossbar ender_guardian color:purple create progress:1 "title:<&d>Ender Guardian" players:<[all_players]>
     - define location <player.location> if:<[location].exists.not>
     - spawn enderman_guardian <[location]> save:boss
+    - flag server enderman_boss:<entry[boss].spawned_entity>
     - if <entry[boss].spawned_entity.exists>:
       - repeat 10:
         - flag <entry[boss].spawned_entity> safety_dance.<[value]>.location:<[loc_<[value]>]>
@@ -337,7 +339,16 @@ jungle_temple_lever_2:
   type: task
   debug: false
   script:
+    - ratelimit <context.location> 15s
+    - if <server.flag[enderman_boss].is_spawned.if_null[false]>:
+      - stop
     - define blocks <context.location.find_blocks_flagged[lever_disappear].within[7]>
     - if <[blocks].first.material.name> != air:
       - modifyblock <[blocks]> air
     - run enderman_guardian_start def:<context.location.find_entities[enderman_guardian_marker_4].within[50].first.location>
+
+enderman_guardian_drop_cancel:
+  type: task
+  debug: false
+  script:
+    - determine NO_DROPS
