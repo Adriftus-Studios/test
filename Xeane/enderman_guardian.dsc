@@ -210,8 +210,29 @@ enderman_guardian_marker_1:
   mechanisms:
     gravity: false
     visible: false
+    marker: true
   flags:
     on_entity_added: enderman_guardian_task_1
+
+enderman_guardian_marker_2:
+  type: entity
+  entity_type: armor_stand
+  mechanisms:
+    gravity: false
+    visible: false
+    marker: true
+  flags:
+    on_entity_added: enderman_guardian_task_2
+
+enderman_guardian_marker_3:
+  type: entity
+  entity_type: armor_stand
+  mechanisms:
+    gravity: false
+    visible: false
+    marker: true
+  flags:
+    on_entity_added: enderman_guardian_task_3
 
 enderman_guardian_task_1:
   type: task
@@ -290,3 +311,11 @@ jungle_temple_lever:
         - flag server enderman_boss_levers:-:1
       - if <server.flag[enderman_boss_levers]> == 8:
         - flag server enderman_guardian_active
+
+jungle_temple_lever_2:
+  type: task
+  debug: false
+  script:
+    - define blocks <context.location.find_blocks_flagged[lever_disappear].within[7]>
+    - if <[blocks].first.material.name> != air:
+      - modifyblock <[blocks]> air
