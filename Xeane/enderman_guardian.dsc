@@ -203,3 +203,90 @@ enderman_guardian_minion_expire:
       - wait 1t
     - heal <[health]> <[boss]>
     - bossbar update ender_guardian progress:<[boss].health_percentage.div[100]>
+
+enderman_guardian_marker_1:
+  type: entity
+  entity_type: armor_stand
+  mechanisms:
+    gravity: false
+    visible: false
+  flags:
+    on_entity_added: enderman_guardian_task_1
+
+enderman_guardian_task_1:
+  type: task
+  debug: false
+  script:
+    - wait 3s
+    - stop if:<context.entity.is_spawned.not>
+    - define blocks <context.entity.location.find_blocks[air|glass].within[7].filter[y.equals[114]]>
+    - while <context.entity.is_spawned> && !<server.has_flag[enderman_guardian_active]>:
+      - define targets <context.entity.location.find_players_within[120]>
+      - foreach <[targets]>:
+        - if <[value].fake_block[<[blocks].first>].exists>:
+          - foreach next
+        - showfake <[blocks]> stone_bricks duration:5h players:<[value]>
+        - wait 1t
+      - wait 5s
+    - while <context.entity.is_spawned> && <server.has_flag[enderman_guardian_active]>:
+      - define targets <context.entity.location.find_players_within[120]>
+      - foreach <[targets]>:
+        - if !<[value].fake_block[<[blocks].first>].exists>:
+          - foreach next
+        - showfake <[blocks]> cancel players:<[value]>
+        - wait 1t
+      - wait 5s
+
+enderman_guardian_marker_2:
+  type: task
+  debug: false
+  script:
+    - wait 3s
+    - stop if:<context.entity.is_spawned.not>
+    - define blocks <context.entity.location.find_blocks[air|stone_brick_stairs].within[7].filter[y.equals[51]]>
+    - while <context.entity.is_spawned> && !<server.has_flag[enderman_guardian_defeated]>:
+      - define targets <context.entity.location.find_players_within[120]>
+      - foreach <[targets]>:
+        - if <[value].fake_block[<[blocks].first>].exists>:
+          - foreach next
+        - showfake <[blocks]> stone_bricks duration:5h players:<[value]>
+        - wait 1t
+      - wait 5s
+
+enderman_guardian_marker_3:
+  type: task
+  debug: false
+  script:
+    - wait 3s
+    - stop if:<context.entity.is_spawned.not>
+    - while <context.entity.is_spawned>:
+      - define targets <context.entity.location.find_players_within[140]>
+      - foreach <[targets]>:
+        - if <[value].gamemode> == adventure:
+          - foreach next
+        - adjust <[value]> gamemode:adventure
+        - flag server gamemode_changer.<context.entity.uuid>:->:<[value]>
+        - wait 1t
+      - foreach <server.flag[gamemode_changer.<context.entity.uuid>].exclude[<[targets]>].if_null[<list>]>:
+        - adjust <[value]> gamemode:survival
+        - flag server gamemode_changer.<context.entity.uuid>:<-:<[value]>
+        - wait 1t
+      - wait 5s
+    - foreach <server.flag[gamemode_changer.<context.entity.uuid>].exclude[<[targets]>].if_null[<list>]>:
+      - adjust <[value]> gamemode:survival
+      - wait 1t
+    - flag server gamemode_changer.<context.entity.uuid>:!
+
+jungle_temple_lever:
+  type: task
+  debug: false
+  script:
+    - wait 1t
+    - stop if:<server.has_flag[enderman_guardian_active]>
+    - if <context.location.material.name> == lever:
+      - if <context.location.switched>:
+        - flag server enderman_boss_levers:+:1
+      - else:
+        - flag server enderman_boss_levers:-:1
+      - if <server.flag[enderman_boss_levers]> == 8:
+        - flag server enderman_guardian_active
