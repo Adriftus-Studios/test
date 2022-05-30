@@ -21,5 +21,5 @@ movement_test:
   type: world
   debug: false
   events:
-    on player steers vehicle flagged:birds_eye:
+    on player steers entity flagged:birds_eye:
       - narrate <context.entity.location>
