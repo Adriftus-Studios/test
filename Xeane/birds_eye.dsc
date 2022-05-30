@@ -12,7 +12,7 @@ birds_eye:
       - wait 1t
     - adjust <entry[ent].spawned_entity> gravity:false
     - repeat 40:
-      - teleport <entry[ent].spawned_entity> <entry[ent].spawned_entity.location.forward_flat[120]>
+      - teleport <entry[ent].spawned_entity> <entry[ent].spawned_entity.location.forward_flat[1200]>
       - wait 4t
     - adjust <player> spectate:<player>
     - remove <entry[ent].spawned_entity>
