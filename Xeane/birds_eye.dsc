@@ -2,7 +2,7 @@ birds_eye:
   type: task
   debug: false
   script:
-    - spawn armor_stand[visible=false] <player.location.with_pitch[90]> save:ent
+    - spawn armor_stand[visible=false] <player.location.with_pitch[75]> save:ent
     - fakeequip <player> hand:feather[display=<&a>;custom_model_data=3] duration:12s
     - adjust <player> spectate:<entry[ent].spawned_entity>
     - flag <player> birds_eye
