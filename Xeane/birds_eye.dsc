@@ -22,5 +22,4 @@ movement_test:
   debug: false
   events:
     on player steers vehicle flagged:birds_eye:
-      - narrate <context.old_location>
-      - narrate <context.new_location>
+      - narrate <context.entity.location>
