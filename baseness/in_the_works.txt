@@ -13,6 +13,7 @@ Can be made -
     12. Set gamerule command
     13. Sit command
     14. Death logger?
+    15. Trade command inventory with logger
 
 Prolly not possible - 
     1. Supply crates
