@@ -5,7 +5,7 @@ enderman_guardian:
   mechanisms:
     custom_name: <&d>Ender Guardian
     custom_name_visible: true
-    health_data: 1000/1000
+    health_data: 2000/2000
     has_ai: false
   flags:
     on_damaged: enderman_guardian_damaged
@@ -22,6 +22,7 @@ enderman_guardian_minion:
     health_data: 50/50
   flags:
     on_teleport: enderman_guardian_teleport_cancel
+    on_death: enderman_guardian_drop_cancel
 
 enderman_guardian_start:
   type: task
@@ -46,6 +47,7 @@ enderman_guardian_start:
     - bossbar ender_guardian color:purple create progress:1 "title:<&d>Ender Guardian" players:<[all_players]>
     - define location <player.location> if:<[location].exists.not>
     - spawn enderman_guardian <[location]> save:boss
+    - flag server enderman_boss:<entry[boss].spawned_entity>
     - if <entry[boss].spawned_entity.exists>:
       - repeat 10:
         - flag <entry[boss].spawned_entity> safety_dance.<[value]>.location:<[loc_<[value]>]>
@@ -61,7 +63,7 @@ enderman_guardian_phase_1:
   definitions: boss
   script:
     # Initialize Definitions
-    - define spawnable_blocks <[boss].location.find_spawnable_blocks_within[15]>
+    - define spawnable_blocks <[boss].filter[y.equals[52]]>
     - define all_players <[boss].location.find_players_within[100]>
     - define targets <[boss].location.find_players_within[6]>
     # Knockback Explosion
@@ -73,11 +75,15 @@ enderman_guardian_phase_1:
       - flag <[target]> "custom_damage.cause:<&d>Ender Guardian Explosion"
       - hurt 5 <[target]> cause:custom
     - wait 1s
+    - if <[all_players].filter[gamemode.equals[adventure]].size> < 4:
+      - define spawns_per_wave 8
+    - else:
+      - define spawns_per_wave <[all_players].filter[gamemode.equals[adventure]].size.mul[2]>
     # Spawn Adds
     ## Waves of Minions
     - repeat 5:
       ## Minions Per Wave
-      - repeat 8:
+      - repeat <[spawns_per_wave]>:
         - stop if:<[boss].is_spawned.not>
         - run enderman_guardian_spawn_enderman def:<[boss]>|<[spawnable_blocks].random>
         - wait 2s
@@ -85,6 +91,8 @@ enderman_guardian_phase_1:
     - if <[boss].is_spawned> && <[boss].flag[phase]> != 3:
       - flag <[boss]> phase:2
       - run enderman_guardian_phase_2 def:<[boss]>
+    - if !<[boss].is_spawned>:
+      - bossbar remove ender_guardian
 
 enderman_guardian_spawn_enderman:
   type: task
@@ -123,7 +131,7 @@ enderman_guardian_phase_2:
     - repeat 15:
       - stop if:<[boss].is_spawned.not>
       - define players_nearby <[boss].location.find_players_within[6]>
-      - if <[players_nearby].size> > 1:
+      - if <[players_nearby].size> > 1 && <util.random_chance[25]>:
         - define number 10
       - else:
         - define number <util.random.int[1].to[9]>
@@ -131,7 +139,7 @@ enderman_guardian_phase_2:
       - wait 2s
       - if <[number]> == 10:
         - repeat 10:
-          - define targets <[boss].find_players_within[5]>
+          - define targets <[boss].location.find_players_within[5]>
           - playeffect effect:DRAGON_BREATH at:<[boss].flag[safety_dance.<[number]>.zone]> quantity:1 velocity:0,0.2,0 targets:<[all_players]>
           - flag <[targets]> "custom_damage.cause:<&d>The Safety Dance"
           - hurt 8 <[targets]> cause:custom
@@ -147,6 +155,8 @@ enderman_guardian_phase_2:
     - if <[boss].is_spawned> && <[boss].flag[phase]> != 3:
       - flag <[boss]> phase:1
       - run enderman_guardian_phase_1 def:<[boss]>
+    - if !<[boss].is_spawned>:
+      - bossbar remove ender_guardian
 
 
 enderman_guardian_phase_3:
@@ -172,6 +182,7 @@ enderman_guardian_death:
   debug: false
   script:
     - bossbar remove ender_guardian
+    - flag server enderman_guardian_defeated
 
 enderman_guardian_teleport_cancel:
   type: task
@@ -194,7 +205,7 @@ enderman_guardian_minion_expire:
       - playeffect effect:DRAGON_BREATH at:<[entity].location.above> quantity:20 ofset:0.2,0.5,0.2 targets:<[all_players]>
       - wait 2t
     - stop if:<[entity].is_spawned.not>
-    - define health <[entity].health>
+    - define health <[entity].health.mul[<[all_players].filter[gamemode.equals[adventure]].size>]>
     - remove <[entity]>
     - narrate "<&e>An Enderman gives his life to the Guardian." targets:<[all_players]>
     - stop if:<[boss].is_spawned.not>
@@ -233,6 +244,14 @@ enderman_guardian_marker_3:
     marker: true
   flags:
     on_entity_added: enderman_guardian_task_3
+
+enderman_guardian_marker_4:
+  type: entity
+  entity_type: armor_stand
+  mechanisms:
+    gravity: false
+    visible: false
+    marker: true
 
 enderman_guardian_task_1:
   type: task
@@ -291,13 +310,15 @@ enderman_guardian_task_3:
     - while <context.entity.is_spawned>:
       - define targets <context.entity.location.find_players_within[140]>
       - foreach <[targets]>:
-        - if <[value].gamemode> == adventure:
+        - if <list[adventure|spectator].contains[<[value].gamemode>]>:
           - foreach next
         - adjust <[value]> gamemode:adventure
+        - flag <[value]> on_death:keep_inventory
         - flag server gamemode_changer.<context.entity.uuid>:->:<[value]>
         - wait 1t
       - foreach <server.flag[gamemode_changer.<context.entity.uuid>].exclude[<[targets]>].if_null[<list>]>:
         - adjust <[value]> gamemode:survival
+        - flag <[value]> on_death:!
         - flag server gamemode_changer.<context.entity.uuid>:<-:<[value]>
         - wait 1t
       - wait 5s
@@ -324,6 +345,16 @@ jungle_temple_lever_2:
   type: task
   debug: false
   script:
+    - ratelimit <context.location> 15s
+    - if <server.flag[enderman_boss].is_spawned.if_null[false]>:
+      - stop
     - define blocks <context.location.find_blocks_flagged[lever_disappear].within[7]>
     - if <[blocks].first.material.name> != air:
       - modifyblock <[blocks]> air
+    - run enderman_guardian_start def:<context.location.find_entities[enderman_guardian_marker_4].within[50].first.location>
+
+enderman_guardian_drop_cancel:
+  type: task
+  debug: false
+  script:
+    - determine NO_DROPS
