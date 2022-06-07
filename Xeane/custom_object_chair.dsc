@@ -34,7 +34,7 @@ chair_place:
   debug: false
   script:
     - ratelimit <player> 2t
-    - spawn oak_chair_entity <context.location.center.above[0.7]> save:entity
+    - spawn oak_chair_entity <context.location.center.above[0.5]> save:entity
     - modifyblock <context.location.above>|<context.location.above[2]> barrier
     - run custom_object_handler def:<entry[entity].spawned_entity>
     - take iteminhand quantity:1
@@ -44,7 +44,5 @@ chair_use:
   debug: false
   script:
     - determine passively cancelled
-    - teleport <player> <context.entity.location.above[0.3]>
+    - teleport <player> <context.entity.location.above[0.1]>
     - animate <player> sit
-
-    
