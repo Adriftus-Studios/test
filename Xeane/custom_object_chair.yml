@@ -8,7 +8,7 @@ custom_object_oak_chair:
 
 oak_chair:
   type: item
-  material: feather
+  material: stick
   display name: <&6>Chair
   mechanisms:
     custom_model_data: 9001
@@ -24,7 +24,7 @@ oak_chair_entity:
     visible: false
     gravity: false
     equipment:
-      helmet: feather[custom_model_data=9001]
+      helmet: stick[custom_model_data=9001]
   flags:
     right_click_script: chair_use
     on_entity_added: custom_object_handler
