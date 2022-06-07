@@ -13,6 +13,7 @@ custom_object_handler:
             - foreach next
           - define targets <[object].location.find_players_within[30].filter_tag[<[filter_value].fake_block[<[object].location>].exists.not>]>
           - if <[targets].size> == 0:
+            - wait 1t
             - foreach next
           - showfake <[object].location>|<[object].location.above> air players:<[targets]>
           - wait 1t

@@ -35,6 +35,7 @@ chair_place:
   script:
     - ratelimit <player> 2t
     - if <list[<context.location.above>|<context.location.above[2]>].filter[material.name.advanced_matches[air|cave_air]].size> != 2:
+      - narrate "<&c>Not enough room."
       - stop
     - define yaw <player.location.yaw.round_to_precision[90]>
     - spawn oak_chair_entity <context.location.center.above[0.7].with_yaw[<[yaw]>]> save:entity
