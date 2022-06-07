@@ -59,6 +59,6 @@ chair_interact:
       - modifyblock <context.entity.location>|<context.entity.location.above> air
       - remove <context.entity>
       - stop
-    - teleport <player> <context.entity.location.above[0.4]>
+    - teleport <player> <context.entity.location.above[0.22]>
     - animate <player> animation:sit
     - flag player on_dismount:->:chair_stop_sit
