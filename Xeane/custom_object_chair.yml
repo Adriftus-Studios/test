@@ -1,0 +1,48 @@
+custom_object_oak_chair:
+  type: data
+  item: oak_chair
+  primary:
+    entity: oak_chair_entity
+    location: <context.location.center.above[0.7]>
+  
+
+oak_chair:
+  type: item
+  material: feather
+  display name: <&6>Chair
+  mechanisms:
+    custom_model_data: 9001
+  flags:
+    right_click_script: chair_place
+
+oak_chair_entity:
+  type: entity
+  debug: false
+  entity_type: armor_stand
+  mechanisms:
+    custom_name_visible: false
+    visible: false
+    gravity: false
+    equipment:
+      helmet: feather[custom_model_data=9001]
+  flags:
+    right_click_script: chair_use
+    on_entity_added: custom_object_handler
+
+chair_place:
+  type: task
+  debug: false
+  script:
+    - spawn oak_chair_entity <context.location.center.above[0.7]> save:entity
+    - modifyblock <context.location.above>|<context.location.above[2]> barrier
+    - run custom_object_handler def:<entry[entity].spawned_entity>
+
+chair_use:
+  type: task
+  debug: false
+  script:
+    - determine passively cancelled
+    - teleport <player> <context.entity.location.above[0.3]>
+    - animate <player> sit
+
+    

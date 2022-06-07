@@ -18,7 +18,7 @@ waystone_entity:
       helmet: feather[custom_model_data=20]
   flags:
     right_click_script: waystone_use
-    on_entity_added: waystone_active_start
+    on_entity_added: custom_object_handler
 
 waystone_place:
   type: task
@@ -71,19 +71,6 @@ waystone_use:
       - flag <player> waystones.<context.entity.flag[town]>.location:<context.entity.location.simple>
       - flag <player> waystones.<context.entity.flag[town]>.entity_uuid:<context.entity.uuid>
       - flag <context.entity> unlocked_players:->:<player>
-
-waystone_active:
-  type: task
-  debug: false
-  definitions: entity
-  script:
-    - while <[entity].is_spawned>:
-      - foreach <[entity].location.find_players_within[30]>:
-        - if <[value].fake_block[<[entity].location>].exists>:
-          - foreach next
-        - showfake <[entity].location> air duration:9999m players:<[value]>
-        - showfake <[entity].location.above> air duration:9999m players:<[value]>
-      - wait 5s
 
 waystone_remove:
   type: task
