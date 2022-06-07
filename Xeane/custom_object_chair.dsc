@@ -46,7 +46,7 @@ chair_interact:
     - determine passively cancelled
     - if <player.is_sneaking>:
       - drop <context.entity.equipment_map.get[helmet]> <context.entity.location>
-      - modifyblock <context.entity.location.above>|<context.entity.location.above[2]> air
+      - modifyblock <context.entity.location>|<context.entity.location.above> air
       - remove <context.entity>
       - stop
     - teleport <player> <context.entity.location.above[0.4]>
