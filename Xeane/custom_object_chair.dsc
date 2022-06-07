@@ -40,10 +40,19 @@ chair_place:
     - run custom_object_handler def:<entry[entity].spawned_entity>
     - take iteminhand quantity:1
 
+chair_stop_sit:
+  type: task
+  debug: false
+  script:
+    - ratelimit <player> 2t
+    - animate <player> animation:stop_sitting
+    - flag player on_dismount:<-:chair_stop_sit
+
 chair_interact:
   type: task
   debug: false
   script:
+    - ratelimit <player> 2t
     - determine passively cancelled
     - if <player.is_sneaking>:
       - drop <context.entity.equipment_map.get[helmet]> <context.entity.location>
@@ -51,4 +60,5 @@ chair_interact:
       - remove <context.entity>
       - stop
     - teleport <player> <context.entity.location.above[0.4]>
-    - animate <player> sit
+    - animate <player> animation:sit
+    - flag player on_dismount:->:chair_stop_sit
