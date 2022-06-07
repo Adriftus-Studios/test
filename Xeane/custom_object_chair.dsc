@@ -34,6 +34,7 @@ chair_place:
   debug: false
   script:
     - ratelimit <player> 2t
+    - define yaw <player.location.yaw.round_to_precision[90]>
     - spawn oak_chair_entity <context.location.center.above[0.7]> save:entity
     - modifyblock <context.location.above>|<context.location.above[2]> barrier
     - run custom_object_handler def:<entry[entity].spawned_entity>
