@@ -4,7 +4,6 @@ custom_object_oak_chair:
   primary:
     entity: oak_chair_entity
     location: <context.location.center.above[0.7]>
-  
 
 oak_chair:
   type: item
@@ -24,9 +23,9 @@ oak_chair_entity:
     visible: false
     gravity: false
     equipment:
-      helmet: stick[custom_model_data=9001]
+      helmet: oak_chair
   flags:
-    right_click_script: chair_use
+    right_click_script: chair_interact
     on_entity_added: custom_object_handler
 
 chair_place:
@@ -34,15 +33,19 @@ chair_place:
   debug: false
   script:
     - ratelimit <player> 2t
-    - spawn oak_chair_entity <context.location.center.above[0.5]> save:entity
+    - spawn oak_chair_entity <context.location.center.above[0.4]> save:entity
     - modifyblock <context.location.above>|<context.location.above[2]> barrier
     - run custom_object_handler def:<entry[entity].spawned_entity>
     - take iteminhand quantity:1
 
-chair_use:
+chair_interact:
   type: task
   debug: false
   script:
     - determine passively cancelled
+    - if <player.is_sneaking>:
+      - drop <context.entity.equipment_map.get[helmet]>
+      - remove <context.entity>
+      - stop
     - teleport <player> <context.entity.location.above[0.1]>
     - animate <player> sit
