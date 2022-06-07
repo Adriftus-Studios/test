@@ -5,7 +5,7 @@ custom_object_handler:
   script:
     - define object <context.entity> if:<[object].exists.not>
     - flag server custom_objects.active:->:<[object]>
-    - if <server.has_flag[custom_objects.active].size> == 1:
+    - if <server.flag[custom_objects.active].size> == 1:
       - while <server.has_flag[custom_objects.active]>:
         - foreach <server.flag[custom_objects.active]> as:object:
           - if !<[object].is_spawned>:
