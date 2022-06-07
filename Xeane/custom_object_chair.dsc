@@ -22,6 +22,7 @@ oak_chair_entity:
     custom_name_visible: false
     visible: false
     gravity: false
+    is_small: true
     equipment:
       helmet: oak_chair
   flags:
@@ -45,7 +46,8 @@ chair_interact:
     - determine passively cancelled
     - if <player.is_sneaking>:
       - drop <context.entity.equipment_map.get[helmet]> <context.entity.location>
+      - modifyblock <context.location.above>|<context.location.above[2]> air
       - remove <context.entity>
       - stop
-    - teleport <player> <context.entity.location.above[0.1]>
+    - teleport <player> <context.entity.location.above[0.4]>
     - animate <player> sit
