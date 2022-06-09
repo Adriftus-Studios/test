@@ -49,6 +49,7 @@ chair_stop_sit:
   script:
     - ratelimit <player> 2t
     - animate <player> animation:stop_sitting
+    - flag player no_suffocate:!
     - flag player on_dismount:<-:chair_stop_sit
 
 chair_interact:
@@ -64,4 +65,5 @@ chair_interact:
       - stop
     - teleport <player> <context.entity.location.above[0.22]>
     - animate <player> animation:sit
+    - flag player no_suffocate
     - flag player on_dismount:->:chair_stop_sit
