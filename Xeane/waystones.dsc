@@ -48,15 +48,7 @@ waystone_place:
     - flag <entry[waystone].spawned_entity> town:<context.location.town>
     - showfake <[barrier_blocks]> air duration:9999m players:<context.location.find_players_within[30]>
     - take iteminhand
-    - run waystone_active def:<entry[waystone].spawned_entity>
-
-waystone_active_start:
-  type: task
-  debug: false
-  script:
-    - wait 1t
-    - define entity <context.entity>
-    - run waystone_active def:<[entity]>
+    - run custom_object_handler def:<entry[waystone].spawned_entity>
 
 waystone_use:
   type: task

@@ -32,22 +32,8 @@ gravestone_entity:
       helmet: feather[custom_model_data=<list[300|301|302|303].random>]
   flags:
     right_click_script: gravestone_use
-    on_entity_added: gravestone_active
+    on_entity_added: custom_object_handler
 
-
-gravestone_active:
-  type: task
-  debug: false
-  definitions: entity
-  script:
-    - define entity <context.entity> if:<[entity].exists.not>
-    - while <[entity].is_spawned>:
-      - foreach <[entity].location.find_players_within[30]>:
-        - if <[value].fake_block[<[entity].location>].exists>:
-          - foreach next
-        - showfake <[entity].location> air duration:9999m players:<[value]>
-        - showfake <[entity].location.above> air duration:9999m players:<[value]>
-      - wait 5s
 
 gravestone_place:
   type: task
@@ -76,7 +62,7 @@ gravestone_place:
     - flag <entry[grave].spawned_entity> last_used:<util.time_now>
     - showfake <[barrier_blocks]> air duration:9999m players:<context.location.find_players_within[30]>
     - take iteminhand
-    - run gravestone_active def:<entry[grave].spawned_entity>
+    - run custom_object_handler def:<entry[grave].spawned_entity>
 
 gravestone_use:
   type: task
