@@ -49,8 +49,9 @@ chair_stop_sit:
   script:
     - ratelimit <player> 2t
     - animate <player> animation:stop_sitting
-    - flag player no_suffocate:!
     - flag player on_dismount:<-:chair_stop_sit
+    - wait 5t
+    - flag player no_suffocate:!
 
 chair_interact:
   type: task
