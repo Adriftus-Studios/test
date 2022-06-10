@@ -3,4 +3,4 @@ prevent_suffocation_handler:
   debug: false
   events:
     on player damaged by SUFFOCATION:
-      - determine cancelled if:<player.fake_block[<player.location.above>].equals[air]>
+      - determine cancelled if:<player.fake_block[<player.location.above>].name.equals[air]>
