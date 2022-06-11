@@ -22,3 +22,9 @@ custom_object_handler:
           - wait 1t
         - wait 1t
 
+custom_bject_handler_cleanup:
+  type: world
+  debug: false
+  events:
+    on server start:
+      - flag server custom_objects.active:!
