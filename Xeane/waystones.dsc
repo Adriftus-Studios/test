@@ -46,7 +46,6 @@ waystone_place:
     - if <list[town|server|wild].contains[<context.item.flag[type]>]>:
       - inject waystone_place_<context.item.flag[type]>
       - flag <entry[waystone].spawned_entity> type:<context.item.flag[type]>
-      - define barrier_blocks <list[<entry[waystone].spawned_entity.location>|<entry[waystone].spawned_entity.location.above>]>
       - modifyblock <[barrier_blocks]> barrier
       - showfake <[barrier_blocks]> air duration:9999m players:<context.location.find_players_within[50]>
       - take iteminhand
@@ -71,6 +70,7 @@ waystone_place_town:
     - if !<entry[waystone].spawned_entity.is_spawned>:
       - narrate "<&c>ERROR - Report Me - Error Code<&co> WaystoneNotSpawning"
       - stop
+    - define barrier_blocks <list[<entry[waystone].spawned_entity.location>|<entry[waystone].spawned_entity.location.above>]>
     - flag <[town]> waystone.entity:<entry[waystone].spawned_entity>
     - flag <[town]> waystone.location:<entry[waystone].spawned_entity.location.simple>
     - flag <[town]> waystone.blocks:|:<[barrier_blocks]>
