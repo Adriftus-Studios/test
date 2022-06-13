@@ -103,7 +103,7 @@ waystone_remove:
       - flag <[value]> waystones.<[town]>:!
     - flag <[town]> waystone:!
     - inventory close
-    - give waystone to:<player.inventory>
+    - give waystone_<context.item.flag[type]> to:<player.inventory>
 
 waystone_gui_item:
   type: item
@@ -154,6 +154,6 @@ waystone_open_teleport_main_menu:
     # For Mayor only
     # Revert Waystone to item form
     - if <player> == <context.entity.flag[town].mayor>:
-      - inventory set slot:50 o:waystone_remove_item[flag=town:<context.entity.flag[town]>] d:<[inventory]>
+      - inventory set slot:50 o:waystone_remove_item[flag=type:<context.entity.flag[type]>;flag=town:<context.entity.flag[town]>] d:<[inventory]>
 
     - inventory open d:<[inventory]>
