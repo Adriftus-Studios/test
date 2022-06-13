@@ -37,7 +37,7 @@ chair_place:
     - if <list[<context.location.above>|<context.location.above[2]>].filter[material.name.advanced_matches[air|cave_air]].size> != 2:
       - narrate "<&c>Not enough room."
       - stop
-    - if !<context.location.below.material.is_solid> && <context.location.below.material.name> != barrier:
+    - if !<context.location.below.material.is_solid> || <context.location.below.material.name> == barrier:
       - narrate "<&c>Must be placed on solid ground"
       - stop
     - define yaw <player.location.yaw.round_to_precision[90]>
