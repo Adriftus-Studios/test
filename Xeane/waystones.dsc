@@ -1,10 +1,29 @@
-waystone:
+waystone_town:
   type: item
   material: feather
   mechanisms:
     custom_model_data: 20
   flags:
     right_click_script: waystone_place
+    type: town
+
+waystone_wild:
+  type: item
+  material: feather
+  mechanisms:
+    custom_model_data: 20
+  flags:
+    right_click_script: waystone_place
+    type: wild
+
+waystone_server:
+  type: item
+  material: feather
+  mechanisms:
+    custom_model_data: 20
+  flags:
+    right_click_script: waystone_place
+    type: server
 
 waystone_entity:
   type: entity
@@ -24,6 +43,19 @@ waystone_place:
   type: task
   debug: false
   script:
+    - if <list[town|server|wild].contains[<context.item.flag[type]>]>:
+      - inject waystone_place_<context.item.flag[type]>
+      - flag <entry[waystone].spawned_entity> type:<context.item.flag[type]>
+      - define barrier_blocks <list[<entry[waystone].spawned_entity.location>|<entry[waystone].spawned_entity.location.above>]>
+      - modifyblock <[barrier_blocks]> barrier
+      - showfake <[barrier_blocks]> air duration:9999m players:<context.location.find_players_within[50]>
+      - take iteminhand
+      - run custom_object_handler def:<entry[waystone].spawned_entity>
+
+waystone_place_town:
+  type: task
+  debug: false
+  script:
     - ratelimit <player> 1t
     - if !<context.location.town.exists>:
       - narrate "<&c>Waystones must be placed in a town."
@@ -39,16 +71,11 @@ waystone_place:
     - if !<entry[waystone].spawned_entity.is_spawned>:
       - narrate "<&c>ERROR - Report Me - Error Code<&co> WaystoneNotSpawning"
       - stop
-    - define barrier_blocks <list[<entry[waystone].spawned_entity.location>|<entry[waystone].spawned_entity.location.above>]>
-    - modifyblock <[barrier_blocks]> barrier
     - flag <[town]> waystone.entity:<entry[waystone].spawned_entity>
     - flag <[town]> waystone.location:<entry[waystone].spawned_entity.location.simple>
     - flag <[town]> waystone.blocks:|:<[barrier_blocks]>
     - flag <[town]> waystone.tp_location:<player.location.with_pose[0,<player.location.yaw.sub[180]>]>
     - flag <entry[waystone].spawned_entity> town:<context.location.town>
-    - showfake <[barrier_blocks]> air duration:9999m players:<context.location.find_players_within[30]>
-    - take iteminhand
-    - run custom_object_handler def:<entry[waystone].spawned_entity>
 
 waystone_use:
   type: task
@@ -56,7 +83,7 @@ waystone_use:
   script:
     - determine passively cancelled
     - if <player.has_flag[waystones.<context.entity.flag[town]>]>:
-      - inject waystone_open_teleport_menu
+      - inject waystone_open_teleport_main_menu
     - else:
       - run totem_test def:2
       - title "title:<&a>Waystone Unlocked!" fade_in:1s stay:1s fade_out:1s
@@ -108,7 +135,7 @@ waystone_remove_item:
   flags:
     run_script: waystone_remove
 
-waystone_open_teleport_menu:
+waystone_open_teleport_main_menu:
   type: task
   debug: false
   script:

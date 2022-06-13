@@ -43,6 +43,7 @@ chair_place:
     - define yaw <player.location.yaw.round_to_precision[90]>
     - spawn oak_chair_entity <context.location.center.above[0.7].with_yaw[<[yaw]>]> save:entity
     - modifyblock <context.location.above>|<context.location.above[2]> barrier
+    - showfake <context.location.above>|<context.location.above[2]> air duration:9999m players:<context.location.find_players_within[50]>
     - run custom_object_handler def:<entry[entity].spawned_entity>
     - take iteminhand quantity:1
 
