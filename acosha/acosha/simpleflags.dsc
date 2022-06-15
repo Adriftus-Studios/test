@@ -14,7 +14,7 @@ flagremover:
          - if <[player]> = null:
             - narrate "<red><bold>Please Use A Name That's Online"
             - stop
-         - else if <[flag]> == <player.list_flags> :
+         - if <[flag]> == <player.list_flags>):
             - flag <[player]> <[flag]>:!
             - narrate "<green><[flag]> Was Removed From <[player].name>"
          - else:
