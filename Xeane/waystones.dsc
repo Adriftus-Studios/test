@@ -184,7 +184,7 @@ waystone_teleport_menu:
   type: inventory
   inventory: chest
   size: 54
-  title: <&a>Available Waystones
+  title: <&a>Waystones
   gui: true
 
 waystone_remove_item:
@@ -231,14 +231,10 @@ waystone_open_teleport_main_menu:
   debug: false
   script:
     - define inventory <inventory[waystone_teleport_menu]>
-    - choose <context.entity.flag[type]>:
-      - case town:
-        - give waystone_submenu_item[flag=type:<context.entity.flag[type]>] to:<[inventory]>
-        - if <player> == <context.entity.flag[town].mayor>:
-          - inventory set slot:50 o:waystone_remove_item[flag=type:<context.entity.flag[type]>;flag=town:<context.entity.flag[town]>] d:<[inventory]>
-      - case server:
-        - give waystone_submenu_item[flag=type:<context.entity.flag[type]>] to:<[inventory]>
-      - case wild:
-        - give waystone_submenu_item[flag=type:<context.entity.flag[type]>] to:<[inventory]>
+    - give waystone_submenu_item[display=<context.entity.flag[type]>;flag=type:<context.entity.flag[type]>] to:<[inventory]>
+    - give waystone_submenu_item[display=<context.entity.flag[type]>;flag=type:<context.entity.flag[type]>] to:<[inventory]>
+    - give waystone_submenu_item[display=<context.entity.flag[type]>;flag=type:<context.entity.flag[type]>] to:<[inventory]>
+    - if <context.entity.flag[type]> == town && <player> == <context.entity.flag[town].mayor>:
+      - inventory set slot:50 o:waystone_remove_item[flag=type:<context.entity.flag[type]>;flag=town:<context.entity.flag[town]>] d:<[inventory]>
 
     - inventory open d:<[inventory]>
