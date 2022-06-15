@@ -231,9 +231,9 @@ waystone_open_teleport_main_menu:
   debug: false
   script:
     - define inventory <inventory[waystone_teleport_menu]>
-    - give waystone_submenu_item[display=<context.entity.flag[type]>;flag=type:<context.entity.flag[type]>] to:<[inventory]>
-    - give waystone_submenu_item[display=<context.entity.flag[type]>;flag=type:<context.entity.flag[type]>] to:<[inventory]>
-    - give waystone_submenu_item[display=<context.entity.flag[type]>;flag=type:<context.entity.flag[type]>] to:<[inventory]>
+    - give waystone_submenu_item[display=Towns;flag=type:town] to:<[inventory]>
+    - give waystone_submenu_item[display=Server;flag=type:server] to:<[inventory]>
+    - give waystone_submenu_item[display=Wild;flag=type:wild] to:<[inventory]>
     - if <context.entity.flag[type]> == town && <player> == <context.entity.flag[town].mayor>:
       - inventory set slot:50 o:waystone_remove_item[flag=type:<context.entity.flag[type]>;flag=town:<context.entity.flag[town]>] d:<[inventory]>
 
