@@ -54,7 +54,7 @@ flaglist:
             - narrate "<red><bold>Please Use A Name That's Online"
             - stop
          - else:
-            - narrate "<player.list_flags> "
+            - narrate "<player.list_flags.formatted> "
 
 
 
