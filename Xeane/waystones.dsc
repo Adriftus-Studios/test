@@ -63,8 +63,8 @@ waystone_place_wild:
     - if !<entry[waystone].spawned_entity.is_spawned>:
       - narrate "<&c>ERROR - Report Me - Error Code<&co> WaystoneNotSpawning"
       - stop
-    - flag server waystones.server.<entry[waystone].spawned_entity.uuid>.location:<player.location.with_pose[0,<player.location.yaw.sub[180]>]>
-    - flag server waystones.server.<entry[waystone].spawned_entity.uuid>.name:<entry[waystone].spawned_entity.uuid>
+    - flag server waystones.wild.<entry[waystone].spawned_entity.uuid>.location:<player.location.with_pose[0,<player.location.yaw.sub[180]>]>
+    - flag server waystones.wild.<entry[waystone].spawned_entity.uuid>.name:<entry[waystone].spawned_entity.uuid>
     - define barrier_blocks <list[<entry[waystone].spawned_entity.location>|<entry[waystone].spawned_entity.location.above>]>
 
 
