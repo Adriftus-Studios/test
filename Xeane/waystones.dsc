@@ -159,11 +159,26 @@ waystone_gui_item:
   flags:
     run_script: waystone_teleport
 
+waystone_submenu_item:
+  type: item
+  material: feather
+  display name: <&c>PLACEHOLDER
+  mechanisms:
+    custom_model_data: 3
+  flags:
+    run_script: waystone_open_teleport_submenu
+
 waystone_teleport:
   type: task
   debug: false
   script:
     - run teleportation_animation_run def:<context.item.flag[location]>
+
+waystone_open_teleport_submenu:
+  type: task
+  debug: false
+  script:
+    - run waystone_open_teleport_<context.item.flag[type]>_menu
 
 waystone_teleport_menu:
   type: inventory
@@ -218,11 +233,12 @@ waystone_open_teleport_main_menu:
     - narrate test
     - choose <context.entity.flag[type]>:
       - case town:
+        - give waystone_submenu_item[flag=type:<context.entity.flag[type]>] to:<[inventory]>
         - if <player> == <context.entity.flag[town].mayor>:
           - inventory set slot:50 o:waystone_remove_item[flag=type:<context.entity.flag[type]>;flag=town:<context.entity.flag[town]>] d:<[inventory]>
       - case server:
-        - give waystone_gui_item[flag=type:<context.entity.flag[type]>] to:<[inventory]>
+        - give waystone_submenu_item[flag=type:<context.entity.flag[type]>] to:<[inventory]>
       - case wild:
-        - give waystone_gui_item[flag=type:<context.entity.flag[type]>] to:<[inventory]>
+        - give waystone_submenu_item[flag=type:<context.entity.flag[type]>] to:<[inventory]>
 
     - inventory open d:<[inventory]>
