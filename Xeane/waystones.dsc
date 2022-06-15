@@ -209,6 +209,7 @@ waystone_open_teleport_town_menu:
         - flag <player> waystones.town.<[town]>:!
         - foreach next
       - give waystone_gui_item[flag=location:<[town].flag[waystone.tp_location]>;display=<town[<[town]>].name>] to:<[inventory]>
+    - inventory open d:<[inventory]>
 
 waystone_open_teleport_server_menu:
   type: task
@@ -217,6 +218,7 @@ waystone_open_teleport_server_menu:
     - define inventory <inventory[waystone_teleport_menu]>
     - foreach <server.flag[waystones.server]> as:data_map:
       - give waystone_gui_item[flag=location:<[data_map].get[location]>;display=<[data_map].get[name]>] to:<[inventory]>
+    - inventory open d:<[inventory]>
 
 waystone_open_teleport_wild_menu:
   type: task
@@ -225,6 +227,7 @@ waystone_open_teleport_wild_menu:
     - define inventory <inventory[waystone_teleport_menu]>
     - foreach <server.flag[waystones.wild]> as:data_map:
       - give waystone_gui_item[flag=location:<[data_map].get[location]>;display=<[data_map].get[name]>] to:<[inventory]>
+    - inventory open d:<[inventory]>
 
 waystone_open_teleport_main_menu:
   type: task
