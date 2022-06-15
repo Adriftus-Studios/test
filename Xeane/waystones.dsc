@@ -230,7 +230,7 @@ waystone_open_teleport_main_menu:
   type: task
   debug: false
   script:
-    - narrate test
+    - define inventory <inventory[waystone_teleport_menu]>
     - choose <context.entity.flag[type]>:
       - case town:
         - give waystone_submenu_item[flag=type:<context.entity.flag[type]>] to:<[inventory]>
