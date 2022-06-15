@@ -51,6 +51,39 @@ waystone_place:
       - take iteminhand
       - run custom_object_handler def:<entry[waystone].spawned_entity>
 
+waystone_place_wild:
+  type: task
+  debug: false
+  script:
+    - ratelimit <player> 1t
+    - if !<player.has_permission[adriftus.waystone.wild]>:
+      - narrate "<&c>You lack the permission to place a wild waystone."
+      - stop
+    - spawn "waystone_entity[custom_name=<&a>Wild Waystone]" <context.location.above.center.below[0.49]> save:waystone
+    - if !<entry[waystone].spawned_entity.is_spawned>:
+      - narrate "<&c>ERROR - Report Me - Error Code<&co> WaystoneNotSpawning"
+      - stop
+    - flag server waystones.server.<entry[waystone].spawned_entity.uuid>.location:<player.location.with_pose[0,<player.location.yaw.sub[180]>]>
+    - flag server waystones.server.<entry[waystone].spawned_entity.uuid>.name:<entry[waystone].spawned_entity.uuid>
+    - define barrier_blocks <list[<entry[waystone].spawned_entity.location>|<entry[waystone].spawned_entity.location.above>]>
+
+
+waystone_place_server:
+  type: task
+  debug: false
+  script:
+    - ratelimit <player> 1t
+    - if !<player.has_permission[adriftus.waystone.server]>:
+      - narrate "<&c>You lack the permission to place a server waystone."
+      - stop
+    - spawn "waystone_entity[custom_name=<&6>Server Waystone]" <context.location.above.center.below[0.49]> save:waystone
+    - if !<entry[waystone].spawned_entity.is_spawned>:
+      - narrate "<&c>ERROR - Report Me - Error Code<&co> WaystoneNotSpawning"
+      - stop
+    - flag server waystones.server.<entry[waystone].spawned_entity.uuid>.location:<player.location.with_pose[0,<player.location.yaw.sub[180]>]>
+    - flag server waystones.server.<entry[waystone].spawned_entity.uuid>.name:<entry[waystone].spawned_entity.uuid>
+    - define barrier_blocks <list[<entry[waystone].spawned_entity.location>|<entry[waystone].spawned_entity.location.above>]>
+
 waystone_place_town:
   type: task
   debug: false
@@ -82,14 +115,26 @@ waystone_use:
   debug: false
   script:
     - determine passively cancelled
-    - if <player.has_flag[waystones.<context.entity.flag[town]>]>:
-      - inject waystone_open_teleport_main_menu
-    - else:
-      - run totem_test def:2
-      - title "title:<&a>Waystone Unlocked!" fade_in:1s stay:1s fade_out:1s
-      - flag <player> waystones.<context.entity.flag[town]>.location:<context.entity.location.simple>
-      - flag <player> waystones.<context.entity.flag[town]>.entity_uuid:<context.entity.uuid>
-      - flag <context.entity> unlocked_players:->:<player>
+    - choose <context.entity.flag[type]>:
+      - case town:
+        - if <player.has_flag[waystones.town.<context.entity.flag[town]>]>:
+          - inject waystone_open_teleport_main_menu
+        - else:
+          - run totem_test def:2
+          - title "title:<&a>Waystone Unlocked!" fade_in:1s stay:1s fade_out:1s
+          - flag <player> waystones.town.<context.entity.flag[town]>.location:<context.entity.location.simple>
+          - flag <player> waystones.town.<context.entity.flag[town]>.entity_uuid:<context.entity.uuid>
+          - flag <context.entity> unlocked_players:->:<player>
+      - case server:
+        - inject waystone_open_teleport_main_menu
+      - case wild:
+        - if <player.has_flag[waystones.wild.<context.entity.uuid>]>:
+          - inject waystone_open_teleport_main_menu
+        - else:
+          - run totem_test def:2
+          - title "title:<&a>Waystone Unlocked!" fade_in:1s stay:1s fade_out:1s
+          - flag <player> waystones.wild.<context.entity.uuid>.location:<context.entity.location.simple>
+          - flag <context.entity> unlocked_players:->:<player>
 
 waystone_remove:
   type: task
@@ -118,8 +163,7 @@ waystone_teleport:
   type: task
   debug: false
   script:
-    - define town <context.item.flag[town]>
-    - run teleportation_animation_run def:<[town].flag[waystone.tp_location]>
+    - run teleportation_animation_run def:<context.item.flag[location]>
 
 waystone_teleport_menu:
   type: inventory
@@ -135,25 +179,50 @@ waystone_remove_item:
   flags:
     run_script: waystone_remove
 
-waystone_open_teleport_main_menu:
+waystone_open_teleport_town_menu:
   type: task
   debug: false
   script:
     - define inventory <inventory[waystone_teleport_menu]>
-    - foreach <player.flag[waystones]> key:town as:value:
+    - foreach <player.flag[waystones.town]> key:town as:value:
       - if <[loop_index].mod[45]> == 0:
         - foreach stop
       - if !<town[<[town]>].exists>:
-        - flag <player> waystones.<[town]>:!
+        - flag <player> waystones.town.<[town]>:!
         - foreach next
-      - if <player.flag[waystones.<[town]>.location]> != <town[<[town]>].flag[waystone.location]>:
-        - flag <player> waystones.<[town]>:!
+      - if <player.flag[waystones.town.<[town]>.location]> != <town[<[town]>].flag[waystone.location]>:
+        - flag <player> waystones.town.<[town]>:!
         - foreach next
-      - give waystone_gui_item[flag=town:<town[<[town]>]>;display=<town[<[town]>].name>] to:<[inventory]>
+      - give waystone_gui_item[flag=location:<[town].flag[waystone.tp_location]>;display=<town[<[town]>].name>] to:<[inventory]>
 
-    # For Mayor only
-    # Revert Waystone to item form
-    - if <player> == <context.entity.flag[town].mayor>:
-      - inventory set slot:50 o:waystone_remove_item[flag=type:<context.entity.flag[type]>;flag=town:<context.entity.flag[town]>] d:<[inventory]>
+waystone_open_teleport_server_menu:
+  type: task
+  debug: false
+  script:
+    - define inventory <inventory[waystone_teleport_menu]>
+    - foreach <server.flag[waystones.server]> as:data_map:
+      - give waystone_gui_item[flag=location:<[data_map].get[location]>;display=<[data_map].get[name]>] to:<[inventory]>
+
+waystone_open_teleport_wild_menu:
+  type: task
+  debug: false
+  script:
+    - define inventory <inventory[waystone_teleport_menu]>
+    - foreach <server.flag[waystones.wild]> as:data_map:
+      - give waystone_gui_item[flag=location:<[data_map].get[location]>;display=<[data_map].get[name]>] to:<[inventory]>
+
+waystone_open_teleport_main_menu:
+  type: task
+  debug: false
+  script:
+    - narrate test
+    - choose <context.entity.flag[type]>:
+      - case town:
+        - if <player> == <context.entity.flag[town].mayor>:
+          - inventory set slot:50 o:waystone_remove_item[flag=type:<context.entity.flag[type]>;flag=town:<context.entity.flag[town]>] d:<[inventory]>
+      - case server:
+        - give waystone_gui_item[flag=type:<context.entity.flag[type]>] to:<[inventory]>
+      - case wild:
+        - give waystone_gui_item[flag=type:<context.entity.flag[type]>] to:<[inventory]>
 
     - inventory open d:<[inventory]>
