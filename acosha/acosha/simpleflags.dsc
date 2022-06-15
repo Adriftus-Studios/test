@@ -16,7 +16,7 @@ flagremover:
             - stop
          - if <player.has_flag[<[flag]>]>:
             - flag <[player]> <[flag]>:!
-            - narrate "<green><[flag]> Was Removed From <[player].name>"
+            - narrate "<green><[flag].to_uppercase> Was Removed From <[player].name>"
          - else:
             - narrate "<red>Use a real flag"
             - stop
@@ -40,7 +40,7 @@ flagplayer:
             - stop
          - else:
             - flag <[player]> <[flag]>
-            - narrate "<green><[flag]> Was added to  <[player].name>"
+            - narrate "<green><[flag].to_uppercase> Was Added To <[player].name>"
 
 flaglist:
     type: command
