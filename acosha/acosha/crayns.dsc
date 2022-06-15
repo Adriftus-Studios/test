@@ -265,7 +265,7 @@ crayon_drawing:
             - define slot 41
         - define value 1
         - inject custom_durability_process_task
-        - inventory adjust slot:<[slot]> custom_model_data:17
+        - if <[durability].mod[4]> == 0:
 
 crayon_breaking:
     type: task
