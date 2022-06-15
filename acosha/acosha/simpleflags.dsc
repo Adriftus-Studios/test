@@ -54,7 +54,7 @@ flaglist:
             - narrate "<red><bold>Please Use A Name That's Online"
             - stop
          - else:
-            - narrate "<aqua>Here are <[player].name>'s flags" "<green><player.list_flags.formatted> "
+            - narrate "<aqua>Here are <[player].name>'s flags""<green><player.list_flags.formatted> "
 
 
 
