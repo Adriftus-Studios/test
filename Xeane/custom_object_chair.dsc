@@ -38,7 +38,7 @@ chair_place:
       - narrate "<&c>Not enough room."
       - stop
     - if !<context.location.below.material.is_solid> || <context.location.below.material.name> == barrier:
-      - narrate "<&c>Must be placed on solid ground"
+      - narrate "<&c>Must be placed on solid ground."
       - stop
     - define yaw <player.location.yaw.round_to_precision[90]>
     - spawn oak_chair_entity <context.location.center.above[0.7].with_yaw[<[yaw]>]> save:entity
