@@ -14,11 +14,11 @@ flagremover:
          - if <[player]> = null:
             - narrate "<red><bold>Please Use A Name That's Online"
             - stop
-         - if <[flag]> == <player.list_flags>):
+         - if <[flag]> == <player.has_flag[<[flag]>]>:
             - flag <[player]> <[flag]>:!
             - narrate "<green><[flag]> Was Removed From <[player].name>"
          - else:
-            - narrate "Use a real flag"
+            - narrate "<red>Use a real flag"
             - stop
             
 
