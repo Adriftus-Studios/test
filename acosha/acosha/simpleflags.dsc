@@ -18,7 +18,9 @@ flagremover:
             - flag <[player]> <[flag]>:!
             - narrate "<green><[flag]> Was Removed From <[player].name>"
          - else:
+            - narrate "Use a real flag"
             - stop
+            
 
 flagplayer:
     type: command
