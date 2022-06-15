@@ -46,7 +46,7 @@ flaglist:
     permmision: *
     script:
      - if <context.args.size> < 1:
-         - narrate "<red>No flag or name choosen"
+        - narrate "<aqua>Here are <player.name>'s flags<green> <player.list_flags.formatted> "
          - stop
      - else:
          - define player <server.match_player[<context.args.get[1]>].if_null[null]>
@@ -54,7 +54,7 @@ flaglist:
             - narrate "<red><bold>Please Use A Name That's Online"
             - stop
          - else:
-            - narrate "<aqua>Here are <[player].name>'s flags""<green><player.list_flags.formatted> "
+            - narrate "<aqua>Here are <[player].name>'s flags<green> <player.list_flags.formatted> "
 
 
 
