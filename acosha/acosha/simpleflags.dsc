@@ -14,9 +14,11 @@ flagremover:
          - if <[player]> = null:
             - narrate "<red><bold>Please Use A Name That's Online"
             - stop
-         - else:
+         - else if <[flag]> == <player.list_flags> :
             - flag <[player]> <[flag]>:!
             - narrate "<green><[flag]> Was Removed From <[player].name>"
+         - else:
+            - stop
 
 flagplayer:
     type: command
@@ -47,7 +49,7 @@ flaglist:
     script:
      - if <context.args.size> < 1:
         - narrate "<aqua>Here are <player.name>'s flags<green> <player.list_flags.formatted> "
-         - stop
+        - stop
      - else:
          - define player <server.match_player[<context.args.get[1]>].if_null[null]>
          - if <[player]> = null:
