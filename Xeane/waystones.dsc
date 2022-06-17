@@ -37,6 +37,7 @@ custom_object_waystone_wild:
 waystone_town:
   type: item
   material: feather
+  display name: <&e>Town Waystone
   mechanisms:
     custom_model_data: 20
   flags:
@@ -48,6 +49,7 @@ waystone_town:
 waystone_wild:
   type: item
   material: feather
+  display name: <&a>Wild Waystone
   mechanisms:
     custom_model_data: 20
   flags:
@@ -59,6 +61,7 @@ waystone_wild:
 waystone_server:
   type: item
   material: feather
+  display name: <&6>Server Waystone
   mechanisms:
     custom_model_data: 20
   flags:
