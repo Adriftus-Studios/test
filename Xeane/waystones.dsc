@@ -270,7 +270,7 @@ waystone_open_teleport_server_menu:
   debug: false
   script:
     - define inventory <inventory[waystone_teleport_menu]>
-    - foreach <server.flag[waystones.server]> as:data_map:
+    - foreach <server.flag[waystones.server].if_null[<list>]> as:data_map:
       - give waystone_gui_item[flag=location:<[data_map].get[location]>;display=<[data_map].get[name]>] to:<[inventory]>
     - inventory open d:<[inventory]>
 
@@ -279,7 +279,8 @@ waystone_open_teleport_wild_menu:
   debug: false
   script:
     - define inventory <inventory[waystone_teleport_menu]>
-    - foreach <server.flag[waystones.wild]> as:data_map:
+    - foreach <server.flag[waystones.wild].if_null[<list>]> key:uuid as:data_map:
+      - if !<player.has_flag[waystones.wild.<[uuid]>]>
       - give waystone_gui_item[flag=location:<[data_map].get[location]>;display=<[data_map].get[name]>] to:<[inventory]>
     - inventory open d:<[inventory]>
 
