@@ -139,6 +139,7 @@ waystone_after_place_town:
     - flag <[town]> waystone.tp_location:<player.location.with_pose[0,<player.location.yaw.sub[180]>]>
     - flag <[entity]> town:<context.location.town>
     - flag <[entity]> type:town
+    - adjust <[entity]> "custom_name:<[location].town.name> Waystone"
 
 waystone_use:
   type: task
