@@ -43,6 +43,7 @@ waystone_town:
     right_click_script: custom_object_place
     custom_object: waystone_town
     type: town
+    unique: <server.current_time_millis>
 
 waystone_wild:
   type: item
@@ -53,6 +54,7 @@ waystone_wild:
     right_click_script: custom_object_place
     custom_object: waystone_wild
     type: wild
+    unique: <server.current_time_millis>
 
 waystone_server:
   type: item
@@ -63,6 +65,7 @@ waystone_server:
     right_click_script: custom_object_place
     custom_object: waystone_server
     type: server
+    unique: <server.current_time_millis>
 
 waystone_entity:
   type: entity

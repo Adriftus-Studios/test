@@ -17,6 +17,7 @@ oak_chair:
   flags:
     right_click_script: custom_object_place
     custom_object: oak_chair
+    unique: <server.current_time_millis>
 
 oak_chair_entity:
   type: entity
