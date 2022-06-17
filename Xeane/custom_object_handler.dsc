@@ -30,20 +30,26 @@ custom_object_place:
     - if <[barriers].filter[material.name.contains_text[air].not].size> >= 1:
       - narrate "<&c>Not enough room."
       - stop
+
+    # Custom Object Checks
+    - inject <[script].data_key[place_checks_task]>
       
       # Continue with defines
     - define interaction <[script].parsed_key[interaction]>
-    - define entity <[script].parsed_key[entity]>
+    - define entity_type <[script].parsed_key[entity]>
     - define item <[script].parsed_key[item]>
     - define place <[script].parsed_key[on_place_task].if_null[null]>
     - define remove <[script].parsed_key[on_remove_task].if_null[null]>
-    - spawn <[entity]> <[location]> save:object
+    - spawn <[entity_type]> <[location]> save:object
+    - define entity <entry[object].spawned_entity>
     - modifyblock <[barriers]> barrier
     - flag <[barriers]> on_right_click:<[interaction]>
     - flag <[barriers]> custom_object:<entry[object].spawned_entity>
     - flag <entry[object].spawned_entity> barriers:<[barriers]>
     - flag <entry[object].spawned_entity> item:<[item]>
     - take iteminhand quantity:1
+    # Custom Object Checks
+    - inject <[script].data_key[after_place_task]>
 
 custom_object_remove:
   type: task
