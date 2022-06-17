@@ -65,12 +65,13 @@ chair_interact:
   script:
     - ratelimit <player> 2t
     - determine passively cancelled
+    - define entity <context.location.flag[custom_object]>
     - if <player.is_sneaking>:
-      - drop <context.entity.equipment_map.get[helmet]> <context.entity.location>
-      - modifyblock <context.entity.location>|<context.entity.location.above> air
-      - remove <context.entity>
+      - drop <[entity].equipment_map.get[helmet]> <[entity].location>
+      - modifyblock <[entity].location>|<[entity].location.above> air
+      - remove <[entity]>
       - stop
-    - teleport <player> <context.entity.location.above[0.22]>
+    - teleport <player> <[entity].location.above[0.22]>
     - animate <player> animation:sit
     - flag player no_suffocate
     - flag player on_dismount:->:chair_stop_sit
