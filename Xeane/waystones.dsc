@@ -143,7 +143,7 @@ waystone_use:
   definitions: entity
   script:
     - determine passively cancelled
-    - define entity <context.entity> if:<[entity].exists.not>
+    - define entity <context.location.flag[custom_object]> if:<[entity].exists.not>
     - choose <[entity].flag[type]>:
       - case town:
         - if <player.has_flag[waystones.town.<[entity].flag[town]>]>:
