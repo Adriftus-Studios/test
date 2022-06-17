@@ -48,7 +48,6 @@ waystone_place:
       - flag <entry[waystone].spawned_entity> type:<context.item.flag[type]>
       - flag <entry[waystone].spawned_entity> barriers:|:<[barrier_blocks]>
       - modifyblock <[barrier_blocks]> barrier
-      - showfake <[barrier_blocks]> air duration:9999m players:<context.location.find_players_within[50]>
       - take iteminhand
       - run custom_object_handler def:<entry[waystone].spawned_entity>
 
@@ -145,7 +144,6 @@ waystone_remove:
       - case town:
         - define town <context.item.flag[town]>
         - modifyblock <[town].flag[waystone.blocks]> air
-        - showfake cancel <[town].flag[waystone.blocks]>
         - foreach <[town].flag[waystone.entity].flag[unlocked_players]>:
           - flag <[value]> waystones.town.<[town]>:!
         - remove <[town].flag[waystone.entity]>
