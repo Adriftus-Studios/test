@@ -237,7 +237,7 @@ waystone_remove_item:
 
 waystone_rename_item:
   type: item
-  material: barrier
+  material: name_tag
   display name: <&b>Rename Waystone
   flags:
     run_script: waystone_rename
