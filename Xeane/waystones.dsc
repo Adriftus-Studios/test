@@ -272,14 +272,16 @@ waystone_open_teleport_wild_menu:
 waystone_open_teleport_main_menu:
   type: task
   debug: false
+  definitions: entity
   script:
+    - define entity <context.location.flag[entity]> if:<[entity].exists.not>
     - define inventory <inventory[waystone_teleport_menu]>
     - give waystone_submenu_item[display=Towns;flag=type:town] to:<[inventory]>
     - give waystone_submenu_item[display=Server;flag=type:server] to:<[inventory]>
     - give waystone_submenu_item[display=Wild;flag=type:wild] to:<[inventory]>
-    - if <context.entity.flag[type]> == town && <player> == <context.entity.flag[town].mayor>:
-      - inventory set slot:50 o:waystone_remove_item[flag=type:<context.entity.flag[type]>;flag=town:<context.entity.flag[town]>;flag=entity:<context.entity>] d:<[inventory]>
-    - else if <player.has_permission[adriftus.waystone.<context.entity.flag[type]>.remove]>:
-      - inventory set slot:50 o:waystone_remove_item[flag=type:<context.entity.flag[type]>;flag=entity:<context.entity>] d:<[inventory]>
+    - if <[entity].flag[type]> == town && <player> == <[entity].flag[town].mayor>:
+      - inventory set slot:50 o:waystone_remove_item[flag=type:<[entity].flag[type]>;flag=town:<[entity].flag[town]>;flag=entity:<[entity]>] d:<[inventory]>
+    - else if <player.has_permission[adriftus.waystone.<[entity].flag[type]>.remove]>:
+      - inventory set slot:50 o:waystone_remove_item[flag=type:<[entity].flag[type]>;flag=entity:<[entity]>] d:<[inventory]>
 
     - inventory open d:<[inventory]>
