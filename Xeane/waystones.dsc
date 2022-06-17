@@ -172,7 +172,7 @@ waystone_use:
         - else:
           - run totem_test def:2
           - title "title:<&a>Waystone Unlocked!" fade_in:1s stay:1s fade_out:1s
-          - flag <player> waystones.wild.<[entity].uuid>.location:<[entity].location.simple>
+          - flag <player> waystones.wild.<[entity].uuid>
           - flag <[entity]> unlocked_players:->:<player>
 
 waystone_remove:
@@ -279,8 +279,8 @@ waystone_open_teleport_wild_menu:
   debug: false
   script:
     - define inventory <inventory[waystone_teleport_menu]>
-    - foreach <server.flag[waystones.wild].if_null[<list>]> key:uuid as:data_map:
-      - if !<player.has_flag[waystones.wild.<[uuid]>]>
+    - foreach <player.flag[waystones.wild].if_null[<list>]> as:waystone_uuid:
+      - define data_map <server.flag[waystones.wild.<[waystone_uuid]>]>
       - give waystone_gui_item[flag=location:<[data_map].get[location]>;display=<[data_map].get[name]>] to:<[inventory]>
     - inventory open d:<[inventory]>
 
