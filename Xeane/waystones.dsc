@@ -141,7 +141,6 @@ waystone_remove:
   type: task
   debug: false
   script:
-    - modifyblock <[entity].flag[barriers]> air
     - choose <context.item.flag[type]>:
       - case town:
         - define town <context.item.flag[town]>
@@ -153,10 +152,12 @@ waystone_remove:
         - flag <[town]> waystone:!
       - case server:
         - define entity <context.item.flag[entity]>
+        - modifyblock <[entity].flag[barriers]> air
         - remove <[entity]>
         - flag server waystones.server.<[entity].uuid>:!
       - case wild:
         - define entity <context.item.flag[entity]>
+        - modifyblock <[entity].flag[barriers]> air
         - remove <[entity]>
         - foreach <[entity].flag[unlocked_players]>:
           - flag <[value]> waystones.wild.<context.entity.uuid>:!
