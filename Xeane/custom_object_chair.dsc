@@ -1,9 +1,11 @@
 custom_object_oak_chair:
   type: data
   item: oak_chair
-  primary:
-    entity: oak_chair_entity
-    location: <context.location.center.above[0.7]>
+  entity: oak_chair_entity
+  interaction: chair_interact
+  barrier_locations:
+    - <[location]>
+    - <[location].above>
 
 oak_chair:
   type: item
@@ -12,7 +14,8 @@ oak_chair:
   mechanisms:
     custom_model_data: 9001
   flags:
-    right_click_script: chair_place
+    right_click_script: custom_object_place
+    custom_object: oak_chair
 
 oak_chair_entity:
   type: entity
@@ -26,8 +29,7 @@ oak_chair_entity:
     equipment:
       helmet: oak_chair
   flags:
-    right_click_script: chair_interact
-    on_entity_added: custom_object_handler
+    on_entity_added: custom_object_update
 
 chair_place:
   type: task
