@@ -3,6 +3,7 @@ custom_object_oak_chair:
   item: oak_chair
   entity: oak_chair_entity
   interaction: chair_interact
+  place_checks_task: chair_place_check
   barrier_locations:
     - <[location]>
     - <[location].above>
@@ -31,23 +32,13 @@ oak_chair_entity:
   flags:
     on_entity_added: custom_object_update
 
-chair_place:
+chair_place_check:
   type: task
   debug: false
   script:
-    - ratelimit <player> 2t
-    - if <list[<context.location.above>|<context.location.above[2]>].filter[material.name.advanced_matches[air|cave_air]].size> != 2:
-      - narrate "<&c>Not enough room."
+    - if <[location].has_town> && !<player.can_build[<[location]>]>:
+      - narrate "<&c>You dont no have build permissions here"
       - stop
-    - if !<context.location.material.is_solid> || <context.location.material.name> == barrier:
-      - narrate "<&c>Must be placed on solid ground."
-      - stop
-    - define yaw <player.location.yaw.round_to_precision[90]>
-    - spawn oak_chair_entity <context.location.center.above[0.7].with_yaw[<[yaw]>]> save:entity
-    - modifyblock <context.location.above>|<context.location.above[2]> barrier
-    - flag <entry[entity].spawned_entity> barriers:|:<context.location.above>|<context.location.above[2]>
-    - run custom_object_handler def:<entry[entity].spawned_entity>
-    - take iteminhand quantity:1
 
 chair_stop_sit:
   type: task
@@ -69,6 +60,9 @@ chair_interact:
     - determine passively cancelled
     - define entity <context.location.flag[custom_object]>
     - if <player.is_sneaking>:
+      - if <[entity].location.has_town> && !<player.can_build[<[entity].location>]>:
+        - narrate "<&c>You dont no have build permissions here"
+        - stop
       - run custom_object_remove def:<[entity]>
       - stop
     - teleport <player> <[entity].location.above[0.22]>

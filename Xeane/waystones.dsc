@@ -1,10 +1,47 @@
+custom_object_waystone_town:
+  type: data
+  item: waystone_town
+  entity: waystone_entity
+  interaction: waystone_use
+  place_checks_task: waystone_place_town_checks
+  after_place_task: waystone_after_place_town
+  remove_task: waystone_remove
+  barrier_locations:
+    - <[location]>
+    - <[location].above>
+
+custom_object_waystone_server:
+  type: data
+  item: waystone_server
+  entity: waystone_entity
+  interaction: waystone_use
+  place_checks_task: waystone_place_server_checks
+  after_place_task: waystone_after_place_server
+  remove_task: waystone_remove
+  barrier_locations:
+    - <[location]>
+    - <[location].above>
+
+custom_object_waystone_wild:
+  type: data
+  item: waystone_wild
+  entity: waystone_entity
+  interaction: waystone_use
+  place_checks_task: waystone_place_wild_checks
+  after_place_task: waystone_after_place_wild
+  remove_task: waystone_remove
+  barrier_locations:
+    - <[location]>
+    - <[location].above>
+
 waystone_town:
   type: item
   material: feather
   mechanisms:
     custom_model_data: 20
   flags:
-    right_click_script: waystone_place
+    right_click_script: custom_object_place
+    custom_object: waystone_town
     type: town
 
 waystone_wild:
@@ -13,7 +50,8 @@ waystone_wild:
   mechanisms:
     custom_model_data: 20
   flags:
-    right_click_script: waystone_place
+    right_click_script: custom_object_place
+    custom_object: waystone_wild
     type: wild
 
 waystone_server:
@@ -22,7 +60,8 @@ waystone_server:
   mechanisms:
     custom_model_data: 20
   flags:
-    right_click_script: waystone_place
+    right_click_script: custom_object_place
+    custom_object: waystone_server
     type: server
 
 waystone_entity:
@@ -36,22 +75,9 @@ waystone_entity:
     equipment:
       helmet: feather[custom_model_data=20]
   flags:
-    right_click_script: waystone_use
-    on_entity_added: custom_object_handler
+    on_entity_added: custom_object_update
 
-waystone_place:
-  type: task
-  debug: false
-  script:
-    - if <list[town|server|wild].contains[<context.item.flag[type]>]>:
-      - inject waystone_place_<context.item.flag[type]>
-      - flag <entry[waystone].spawned_entity> type:<context.item.flag[type]>
-      - flag <entry[waystone].spawned_entity> barriers:|:<[barrier_blocks]>
-      - modifyblock <[barrier_blocks]> barrier
-      - take iteminhand
-      - run custom_object_handler def:<entry[waystone].spawned_entity>
-
-waystone_place_wild:
+waystone_place_wild_checks:
   type: task
   debug: false
   script:
@@ -59,16 +85,16 @@ waystone_place_wild:
     - if !<player.has_permission[adriftus.waystone.wild.place]>:
       - narrate "<&c>You lack the permission to place a wild waystone."
       - stop
-    - spawn "waystone_entity[custom_name=<&a>Wild Waystone]" <context.location.above.center.below[0.49]> save:waystone
-    - if !<entry[waystone].spawned_entity.is_spawned>:
-      - narrate "<&c>ERROR - Report Me - Error Code<&co> WaystoneNotSpawning"
-      - stop
-    - flag server waystones.wild.<entry[waystone].spawned_entity.uuid>.location:<player.location.with_pose[0,<player.location.yaw.sub[180]>]>
-    - flag server waystones.wild.<entry[waystone].spawned_entity.uuid>.name:<entry[waystone].spawned_entity.uuid>
-    - define barrier_blocks <list[<entry[waystone].spawned_entity.location>|<entry[waystone].spawned_entity.location.above>]>
 
+waystone_after_place_wild:
+  type: task
+  debug: false
+  definitions: entity
+  script:
+    - flag server waystones.wild.<[entity].uuid>.location:<player.location.with_pose[0,<player.location.yaw.sub[180]>]>
+    - flag server waystones.wild.<[entity].uuid>.name:<[entity].uuid>
 
-waystone_place_server:
+waystone_place_server_checks:
   type: task
   debug: false
   script:
@@ -76,65 +102,67 @@ waystone_place_server:
     - if !<player.has_permission[adriftus.waystone.server.place]>:
       - narrate "<&c>You lack the permission to place a server waystone."
       - stop
-    - spawn "waystone_entity[custom_name=<&6>Server Waystone]" <context.location.above.center.below[0.49]> save:waystone
-    - if !<entry[waystone].spawned_entity.is_spawned>:
-      - narrate "<&c>ERROR - Report Me - Error Code<&co> WaystoneNotSpawning"
-      - stop
-    - flag server waystones.server.<entry[waystone].spawned_entity.uuid>.location:<player.location.with_pose[0,<player.location.yaw.sub[180]>]>
-    - flag server waystones.server.<entry[waystone].spawned_entity.uuid>.name:<entry[waystone].spawned_entity.uuid>
-    - define barrier_blocks <list[<entry[waystone].spawned_entity.location>|<entry[waystone].spawned_entity.location.above>]>
 
-waystone_place_town:
+waystone_after_place_server:
+  type: task
+  debug: false
+  definitions: entity
+  script:
+    - flag server waystones.server.<[entity].uuid>.location:<player.location.with_pose[0,<player.location.yaw.sub[180]>]>
+    - flag server waystones.server.<[entity].uuid>.name:<[entity].uuid>
+
+waystone_place_town_checks:
   type: task
   debug: false
   script:
     - ratelimit <player> 1t
-    - if !<context.location.town.exists>:
+    - if !<[location].town.exists>:
       - narrate "<&c>Waystones must be placed in a town."
       - stop
-    - if <player> != <context.location.town.mayor>:
+    - if <player> != <[location].town.mayor>:
       - narrate "<&c>Waystones must be placed by the Mayor."
       - stop
-    - if <context.location.town.has_flag[waystone]>:
+    - if <[location].town.has_flag[waystone]>:
       - narrate "<&c>You can only have one waystone in your Town"
       - stop
-    - define town <context.location.town>
-    - spawn "waystone_entity[custom_name=<&6><context.location.town.name> Waystone]" <context.location.above.center.below[0.49]> save:waystone
-    - if !<entry[waystone].spawned_entity.is_spawned>:
-      - narrate "<&c>ERROR - Report Me - Error Code<&co> WaystoneNotSpawning"
-      - stop
-    - define barrier_blocks <list[<entry[waystone].spawned_entity.location>|<entry[waystone].spawned_entity.location.above>]>
-    - flag <[town]> waystone.entity:<entry[waystone].spawned_entity>
-    - flag <[town]> waystone.location:<entry[waystone].spawned_entity.location.simple>
-    - flag <[town]> waystone.blocks:|:<[barrier_blocks]>
+
+waystone_after_place_town:
+  type: task
+  debug: false
+  definitions: entity
+  script:
+    - define town <[location].town>
+    - flag <[town]> waystone.entity:<[entity]>
+    - flag <[town]> waystone.location:<[entity].location.simple>
     - flag <[town]> waystone.tp_location:<player.location.with_pose[0,<player.location.yaw.sub[180]>]>
-    - flag <entry[waystone].spawned_entity> town:<context.location.town>
+    - flag <[entity]> town:<context.location.town>
 
 waystone_use:
   type: task
   debug: false
+  definitions: entity
   script:
     - determine passively cancelled
-    - choose <context.entity.flag[type]>:
+    - choose <[entity].flag[type]>:
       - case town:
-        - if <player.has_flag[waystones.town.<context.entity.flag[town]>]>:
+        - if <player.has_flag[waystones.town.<[entity].flag[town]>]>:
           - inject waystone_open_teleport_main_menu
         - else:
           - run totem_test def:2
           - title "title:<&a>Waystone Unlocked!" fade_in:1s stay:1s fade_out:1s
-          - flag <player> waystones.town.<context.entity.flag[town]>.location:<context.entity.location.simple>
-          - flag <player> waystones.town.<context.entity.flag[town]>.entity_uuid:<context.entity.uuid>
-          - flag <context.entity> unlocked_players:->:<player>
+          - flag <player> waystones.town.<[entity].flag[town]>.location:<[entity].location.simple>
+          - flag <player> waystones.town.<[entity].flag[town]>.entity_uuid:<[entity].uuid>
+          - flag <[entity]> unlocked_players:->:<player>
       - case server:
         - inject waystone_open_teleport_main_menu
       - case wild:
-        - if <player.has_flag[waystones.wild.<context.entity.uuid>]>:
+        - if <player.has_flag[waystones.wild.<[entity].uuid>]>:
           - inject waystone_open_teleport_main_menu
         - else:
           - run totem_test def:2
           - title "title:<&a>Waystone Unlocked!" fade_in:1s stay:1s fade_out:1s
-          - flag <player> waystones.wild.<context.entity.uuid>.location:<context.entity.location.simple>
-          - flag <context.entity> unlocked_players:->:<player>
+          - flag <player> waystones.wild.<[entity].uuid>.location:<[entity].location.simple>
+          - flag <[entity]> unlocked_players:->:<player>
 
 waystone_remove:
   type: task
@@ -143,25 +171,18 @@ waystone_remove:
     - choose <context.item.flag[type]>:
       - case town:
         - define town <context.item.flag[town]>
-        - modifyblock <[town].flag[waystone.blocks]> air
         - foreach <[town].flag[waystone.entity].flag[unlocked_players]>:
           - flag <[value]> waystones.town.<[town]>:!
-        - remove <[town].flag[waystone.entity]>
         - flag <[town]> waystone:!
       - case server:
         - define entity <context.item.flag[entity]>
-        - modifyblock <[entity].flag[barriers]> air
-        - remove <[entity]>
         - flag server waystones.server.<[entity].uuid>:!
       - case wild:
         - define entity <context.item.flag[entity]>
-        - modifyblock <[entity].flag[barriers]> air
-        - remove <[entity]>
         - foreach <[entity].flag[unlocked_players]>:
-          - flag <[value]> waystones.wild.<context.entity.uuid>:!
+          - flag <[value]> waystones.wild.<[entity].uuid>:!
         - flag server waystones.wild.<[entity].uuid>:!
     - inventory close
-    - give waystone_<context.item.flag[type]> to:<player.inventory>
 
 waystone_gui_item:
   type: item

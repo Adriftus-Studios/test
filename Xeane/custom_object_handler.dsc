@@ -35,6 +35,8 @@ custom_object_place:
     - define interaction <[script].parsed_key[interaction]>
     - define entity <[script].parsed_key[entity]>
     - define item <[script].parsed_key[item]>
+    - define place <[script].parsed_key[on_place_task].if_null[null]>
+    - define remove <[script].parsed_key[on_remove_task].if_null[null]>
     - spawn <[entity]> <[location]> save:object
     - modifyblock <[barriers]> barrier
     - flag <[barriers]> on_right_click:<[interaction]>
