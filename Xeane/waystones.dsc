@@ -252,6 +252,6 @@ waystone_open_teleport_main_menu:
     - if <context.entity.flag[type]> == town && <player> == <context.entity.flag[town].mayor>:
       - inventory set slot:50 o:waystone_remove_item[flag=type:<context.entity.flag[type]>;flag=town:<context.entity.flag[town]>] d:<[inventory]>
     - else if <player.has_permission[adriftus.waystone.<context.entity.flag[type]>.remove]>:
-      - inventory set slot:50 o:waystone_remove_item[flag=type:<context.entity.flag[type]>;flag=uuid:<context.entity.uuid>] d:<[inventory]>
+      - inventory set slot:50 o:waystone_remove_item[flag=type:<context.entity.flag[type]>;flag=entity:<context.entity>] d:<[inventory]>
 
     - inventory open d:<[inventory]>
