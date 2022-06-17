@@ -148,8 +148,8 @@ waystone_remove:
         - showfake cancel <[town].flag[waystone.blocks]>
         - foreach <[town].flag[waystone.entity].flag[unlocked_players]>:
           - flag <[value]> waystones.town.<[town]>:!
-        - flag <[town]> waystone:!
         - remove <[town].flag[waystone.entity]>
+        - flag <[town]> waystone:!
       - case server:
         - define entity <context.item.flag[entity]>
         - modifyblock <[entity].flag[barriers]> air
