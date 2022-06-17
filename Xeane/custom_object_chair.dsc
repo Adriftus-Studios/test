@@ -57,8 +57,8 @@ chair_interact:
   type: task
   debug: false
   script:
-    - ratelimit <player> 2t
     - determine passively cancelled
+    - ratelimit <player> 2t
     - define entity <context.location.flag[custom_object]>
     - if <player.is_sneaking>:
       - if <[entity].location.has_town> && !<player.can_build[<[entity].location>]>:

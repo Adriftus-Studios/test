@@ -24,7 +24,7 @@ custom_object_place:
     - if !<script[custom_object_<[type]>].exists>:
       - narrate "<&c>This item seems to be broken? Please report this and turn the item over to moderation."
       - stop
-    
+
     - define script <script[custom_object_<[type]>]>
     - define barriers <[script].parsed_key[barrier_locations]>
 
@@ -35,7 +35,7 @@ custom_object_place:
 
     # Custom Object Checks
     - inject <[script].data_key[place_checks_task]>
-      
+
       # Continue with defines
     - define interaction <[script].parsed_key[interaction]>
     - define entity_type <[script].parsed_key[entity]>
