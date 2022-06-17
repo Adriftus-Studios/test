@@ -46,8 +46,9 @@ custom_object_place:
 custom_object_remove:
   type: task
   debug: false
+  definitions: object
   script:
-    - define object <context.item.flag[entity]>
+    - define object <context.item.flag[entity]> if:<[object].exists.not>
     - flag <[object].flag[barriers]> on_right_click:!
     - flag <[object].flag[barriers]> custom_object:!
     - modifyblock <[object].flag[barriers]> air

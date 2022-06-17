@@ -56,6 +56,8 @@ chair_stop_sit:
     - ratelimit <player> 2t
     - animate <player> animation:stop_sitting
     - flag player on_dismount:<-:chair_stop_sit
+    - showfake <player.flag[chair].flag[barriers]> cancel
+    - flag player chair:!
     - wait 5t
     - flag player no_suffocate:!
 
@@ -67,11 +69,11 @@ chair_interact:
     - determine passively cancelled
     - define entity <context.location.flag[custom_object]>
     - if <player.is_sneaking>:
-      - drop <[entity].equipment_map.get[helmet]> <[entity].location>
-      - modifyblock <[entity].location>|<[entity].location.above> air
-      - remove <[entity]>
+      - run custom_object_remove def:<[entity]>
       - stop
     - teleport <player> <[entity].location.above[0.22]>
     - animate <player> animation:sit
+    - showfake <[entity].flag[barriers]> air duration:999h
     - flag player no_suffocate
+    - flag player chair:<[entity]>
     - flag player on_dismount:->:chair_stop_sit
