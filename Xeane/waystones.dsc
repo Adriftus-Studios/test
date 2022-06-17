@@ -293,9 +293,7 @@ waystone_open_teleport_main_menu:
     - else if <player.has_permission[adriftus.waystone.<[entity].flag[type]>.remove]>:
       - inventory set slot:50 o:waystone_remove_item[flag=type:<[entity].flag[type]>;flag=entity:<[entity]>] d:<[inventory]>
     # Rename Waystone Button
-    - if <[entity].flag[type]> == town && <player> == <[entity].flag[town].mayor>:
-      - inventory set slot:49 o:waystone_rename_item[flag=type:<[entity].flag[type]>;flag=town:<[entity].flag[town]>;flag=entity:<[entity]>] d:<[inventory]>
-    - else if <player.has_permission[adriftus.waystone.<[entity].flag[type]>.remove]>:
+    - if <[entity].flag[type]> != town && <player.has_permission[adriftus.waystone.<[entity].flag[type]>.rename]>:
       - inventory set slot:49 o:waystone_rename_item[flag=type:<[entity].flag[type]>;flag=entity:<[entity]>] d:<[inventory]>
 
     - inventory open d:<[inventory]>
@@ -313,3 +311,4 @@ waystone_rename_callback:
   definitions: text_input
   script:
     - adjust <player.flag[waystone_rename]> custom_name:<[text_input]>
+    - flag server waystones.server.<player.flag[waystone_rename].flag[type]>.<player.flag[waystone_rename].uuid>.name:<[text_input]>
