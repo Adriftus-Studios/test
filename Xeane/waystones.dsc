@@ -171,6 +171,7 @@ waystone_remove:
     - choose <context.item.flag[type]>:
       - case town:
         - define town <context.item.flag[town]>
+        - define entity <context.item.flag[entity]>
         - foreach <[town].flag[waystone.entity].flag[unlocked_players]>:
           - flag <[value]> waystones.town.<[town]>:!
         - flag <[town]> waystone:!
@@ -182,6 +183,7 @@ waystone_remove:
         - foreach <[entity].flag[unlocked_players]>:
           - flag <[value]> waystones.wild.<[entity].uuid>:!
         - flag server waystones.wild.<[entity].uuid>:!
+    - run custom_object_remove def:<[entity]>
     - inventory close
 
 waystone_gui_item:
@@ -272,7 +274,7 @@ waystone_open_teleport_main_menu:
     - give waystone_submenu_item[display=Server;flag=type:server] to:<[inventory]>
     - give waystone_submenu_item[display=Wild;flag=type:wild] to:<[inventory]>
     - if <context.entity.flag[type]> == town && <player> == <context.entity.flag[town].mayor>:
-      - inventory set slot:50 o:waystone_remove_item[flag=type:<context.entity.flag[type]>;flag=town:<context.entity.flag[town]>] d:<[inventory]>
+      - inventory set slot:50 o:waystone_remove_item[flag=type:<context.entity.flag[type]>;flag=town:<context.entity.flag[town]>;flag=entity:<context.entity>] d:<[inventory]>
     - else if <player.has_permission[adriftus.waystone.<context.entity.flag[type]>.remove]>:
       - inventory set slot:50 o:waystone_remove_item[flag=type:<context.entity.flag[type]>;flag=entity:<context.entity>] d:<[inventory]>
 
