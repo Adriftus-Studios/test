@@ -14,6 +14,8 @@ custom_object_place:
   script:
     - determine passively cancelled
     - ratelimit <player> 5t
+    - if !<context.location.exists> && !<[location].exists>:
+      - stop
     - define type <context.item.flag[custom_object]> if:<[type].exists.not>
     - define location <context.location.center.above[0.51].with_yaw[<player.location.yaw.round_to_precision[90]>]> if:<[location].exists.not>
     # Solid ground check
