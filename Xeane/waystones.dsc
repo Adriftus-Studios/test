@@ -310,5 +310,5 @@ waystone_rename_callback:
   debug: false
   definitions: text_input
   script:
-    - adjust <player.flag[waystone_rename]> custom_name:<[text_input]>
-    - flag server waystones.server.<player.flag[waystone_rename].flag[type]>.<player.flag[waystone_rename].uuid>.name:<[text_input]>
+    - adjust <player.flag[waystone_rename]> custom_name:<[text_input].parse_color>
+    - flag server waystones.server.<player.flag[waystone_rename].flag[type]>.<player.flag[waystone_rename].uuid>.name:<[text_input].parse_color>
