@@ -93,6 +93,7 @@ waystone_after_place_wild:
   script:
     - flag server waystones.wild.<[entity].uuid>.location:<player.location.with_pose[0,<player.location.yaw.sub[180]>]>
     - flag server waystones.wild.<[entity].uuid>.name:<[entity].uuid>
+    - flag <[entity]> type:wild
 
 waystone_place_server_checks:
   type: task
@@ -110,6 +111,7 @@ waystone_after_place_server:
   script:
     - flag server waystones.server.<[entity].uuid>.location:<player.location.with_pose[0,<player.location.yaw.sub[180]>]>
     - flag server waystones.server.<[entity].uuid>.name:<[entity].uuid>
+    - flag <[entity]> type:server
 
 waystone_place_town_checks:
   type: task
@@ -136,6 +138,7 @@ waystone_after_place_town:
     - flag <[town]> waystone.location:<[entity].location.simple>
     - flag <[town]> waystone.tp_location:<player.location.with_pose[0,<player.location.yaw.sub[180]>]>
     - flag <[entity]> town:<context.location.town>
+    - flag <[entity]> type:town
 
 waystone_use:
   type: task
