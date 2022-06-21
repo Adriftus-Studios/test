@@ -14,7 +14,27 @@ admin_shop_data:
 
       # All items in here
       items:
+        custom_banner_arconia: $60
+        custom_banner_zolta: $60
+        custom_banner_dragon_cyan: $60
+        custom_banner_country_uk: $60
+        custom_banner_greyhawk: $60
+        custom_banner_pride_pansexual: $60
+        custom_banner_pride_lesbian: $60
+        custom_banner_pride_bi: $60
+        custom_banner_fox: $60
+        custom_banner_pokemon_pikachu: $60
+        custom_banner_pride_nonbinary: $60
+        custom_banner_pokemon_pokeball: $60
+        custom_banner_pride_trans: $60
+        custom_banner_country_usa: $60
+        custom_banner_pride_asexual: $60
+        custom_banner_pepe: $60
+        custom_banner_country_india: $60
         custom_banner_pride_rainbow: $60
+        custom_banner_cat: $60
+        custom_banner_mace: $60
+        custom_banner_ducky: $60
 
 admin_shop_assignment:
   type: assignment
