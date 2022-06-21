@@ -3,7 +3,7 @@ admin_shop_data:
   formatting:
     price_lore:
       - "<&e>"
-      - "<&e>Price<&co> <[price]>"
+      - "<&e>Price<&co><&a> <[price]>"
 
   # Individual Shops
   shops:
@@ -74,7 +74,7 @@ admin_shop_open:
       - else:
         - define lore <[data_script].parsed_key[formatting.price_lore]>
       - define this_item <[itemTag].with[lore=<[lore]>;flag=price:<[price]>;flag=run_script:admin_shop_choose_item]>
-      - inventory set slot:<[loop_index]> o:<[this_item]> d:<[inventory]>
+      - inventory set slot:<[slots].get[<[loop_index]>]> o:<[this_item]> d:<[inventory]>
 
     # Player Info Head
     - define lore <list[<&color[#010000]>Placeholder]>
