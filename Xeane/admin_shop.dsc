@@ -53,17 +53,17 @@ admin_shop_open:
     selected_slot: 41
     buy_button: 50
   script:
-    - stop if:<script[admin_shop_data].data_key[<[shop_name]>].exists.not>
+    - stop if:<script[admin_shop_data].data_key[shops.<[shop_name]>].exists.not>
     - define inventory <inventory[admin_shop_inventory]>
     - define data_script <script[admin_shop_data]>
 
     # Define our initialization data
     - define page 1 if:<[page].exists.not>
-    - define title <[data_script].parsed_key[<[shop_name]>.custom_title].if_null[null]>
+    - define title <[data_script].parsed_key[shops.<[shop_name]>.custom_title].if_null[null]>
     - define slots <list[<script.data_key[data.item_slots]>]>
     - define start <[page].sub[1].mul[<[slots].size>].add[1]>
     - define end <[slots].size.mul[<[page]>]>
-    - define items <[data_script].data_key[<[shop_name]>.items]>
+    - define items <[data_script].data_key[shops.<[shop_name]>.items]>
 
     # Build and Set items in Inventory
     - foreach <[items]> key:item as:price:
