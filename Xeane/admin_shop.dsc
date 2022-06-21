@@ -37,7 +37,7 @@ admin_shop_inventory:
   type: inventory
   debug: false
   inventory: chest
-  title: <&color[000001]>Placeholder Title!
+  title: <&color[#000001]>Placeholder Title!
   size: 54
   gui: true
 
@@ -68,7 +68,7 @@ admin_shop_open:
     # Build and Set items in Inventory
     - foreach <[items]> key:item as:price:
       - define lore <[item].lore.include[<&e>|<[data_script].parsed_key[formatting.price_lore]>]>
-      - define this_item <[item].with[lore=<[lore]>;flag=price:<[price]>;flag=run_script:admin_shop_choose_item]>
+      - define this_item <item[<[item]>].with[lore=<[lore]>;flag=price:<[price]>;flag=run_script:admin_shop_choose_item]>
       - inventory set slot:<[loop_index]> o:<[this_item]> d:<[inventory]>
 
     # Player Info Head
