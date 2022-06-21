@@ -2,6 +2,7 @@ admin_shop_data:
   type: data
   formatting:
     price_lore:
+      - "<&e>"
       - "<&e>Price<&co> <[price]>"
 
   # Individual Shops
@@ -69,7 +70,7 @@ admin_shop_open:
     - foreach <[items]> key:item as:price:
       - define itemTag <item[<[item]>]>
       - if <[itemTag].lore.exists>:
-        - define lore <[itemTag].lore.include[<&e>|<[data_script].parsed_key[formatting.price_lore]>]>
+        - define lore <[itemTag].lore.include[<[data_script].parsed_key[formatting.price_lore]>]>
       - else:
         - define lore <[data_script].parsed_key[formatting.price_lore]>
       - define this_item <[itemTag].with[lore=<[lore]>;flag=price:<[price]>;flag=run_script:admin_shop_choose_item]>
