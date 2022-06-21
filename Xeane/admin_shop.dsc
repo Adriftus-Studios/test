@@ -67,8 +67,12 @@ admin_shop_open:
 
     # Build and Set items in Inventory
     - foreach <[items]> key:item as:price:
-      - define lore <[item].lore.include[<&e>|<[data_script].parsed_key[formatting.price_lore]>]>
-      - define this_item <item[<[item]>].with[lore=<[lore]>;flag=price:<[price]>;flag=run_script:admin_shop_choose_item]>
+      - define itemTag <item[<[item]>]>
+      - if <[itemTag].lore.exists>:
+        - define lore <[item].lore.include[<&e>|<[data_script].parsed_key[formatting.price_lore]>]>
+      - else:
+        - define lore <[data_script].parsed_key[formatting.price_lore]>
+      - define this_item <[itemTag].with[lore=<[lore]>;flag=price:<[price]>;flag=run_script:admin_shop_choose_item]>
       - inventory set slot:<[loop_index]> o:<[this_item]> d:<[inventory]>
 
     # Player Info Head
