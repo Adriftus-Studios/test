@@ -115,7 +115,7 @@ admin_shop_choose_item:
   debug: false
   script:
     - define stable_item <context.item.script.if_null[<context.item.material.name>]>
-    - inventory set slot:<script[admin_shop_open].data_key[selected_slot]> o:<context.item.with[flag=item:<[stable_item]>]> d:<context.inventory>
+    - inventory set slot:<script[admin_shop_open].data_key[data.selected_slot]> o:<context.item.with[flag=item:<[stable_item]>]> d:<context.inventory>
 
 admin_shop_buy:
   type: task
