@@ -4,7 +4,7 @@ bucket_testing_events:
   events:
     on player right clicks cow with:bucket_wood|bucket_*_milk_half:
       - determine passively cancelled
-      - ratelimit <player> 5t
+      - ratelimit <player> 2t
       - narrate "Test"
       - give <item[bucket].with[custom_model_data=12]>
 
