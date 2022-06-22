@@ -254,7 +254,7 @@ crayon_drawing:
         - define slot 41
       - define value 1
       - inject custom_durability_process_task
-      - if <[durability].mod[4]> == 0:
+      - if <[durability].mod[4].if_null[10]> == 0:
         - take iteminhand
 
 crayon_breaking:
