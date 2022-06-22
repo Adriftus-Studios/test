@@ -240,7 +240,7 @@ crayon_black:
 
 crayon_drawing:
     type: task
-    debug: false
+    debug: true
     script:
       - ratelimit <player> 2t
       - stop if:<context.location.material.is_solid.not>
