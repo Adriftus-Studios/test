@@ -64,6 +64,11 @@ trade_inventory:
       #54: trade_player_2_slot
       #Middle Column
       5: cancel
+      14: cancel
+      23: cancel
+      32: cancel
+      41: cancel
+      50: cancel
     on_close: trade_inventory_cancel
     on_drag: cancel
     any_click: trade_sanitize
