@@ -102,13 +102,13 @@ trade_player_1_slot:
   type: task
   debug: false
   script:
-    - narrate <context.inventory>
+    - announce <context.inventory>
 
 trade_player_2_slot:
   type: task
   debug: false
   script:
-    - narrate <context.inventory>
+    - announce <context.inventory>
 
 trade_inventory_cancel:
   type: task
