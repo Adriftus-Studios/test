@@ -5,6 +5,11 @@ trade_inventory:
   size: 54
   gui: true
   data:
+    item_slots:
+      player_1_head: 1
+      player_2_head: 9
+      player_1_confirm: 40
+      player_2_confirm: 54
     click_script_slots:
       # Player 1 Trade Slots
       #1: trade_player_1_slot
@@ -56,6 +61,7 @@ trade_inventory:
       52: trade_player_2_slot
       53: trade_player_2_slot
       #54: trade_player_2_slot
+    on_close: trade_inventory_cancel
 
 trade_confirm_button:
   type: item
@@ -81,11 +87,12 @@ trade_open:
   debug: false
   definitions: target
   script:
-    - note <inventory[trade_inventory]> as:trade_<player.uuid>_<[target].uuid>
-    - inventory set slot:1 o:player_head[skull_skin=<player.skull_skin>;display=<&a><player.name>;custom_model_data=100] d:trade_<player.uuid>_<[target].uuid>
-    - inventory set slot:9 o:player_head[skull_skin=<[target].skull_skin>;display=<&a><[target].name>;custom_model_data=101] d:trade_<player.uuid>_<[target].uuid>
-    - inventory set slot:40 o:trade_confirm_button[flag=player:1] d:trade_<player.uuid>_<[target].uuid>
-    - inventory set slot:54 o:trade_confirm_button[flag=player:2] d:trade_<player.uuid>_<[target].uuid>
+    - note <inventory[trade_inventory]> as:trade_<player.uuid>/<[target].uuid>
+    - define inv_script <inventory[trade_inventory]>
+    - inventory set slot:<[inv_script].data_key[data.item_slots.player_1_head]> o:player_head[skull_skin=<player.skull_skin>;display=<&a><player.name>;custom_model_data=100;flag=uuid:<player.uuid>] d:trade_<player.uuid>_<[target].uuid>
+    - inventory set slot:<[inv_script].data_key[data.item_slots.player_2_head]> o:player_head[skull_skin=<[target].skull_skin>;display=<&a><[target].name>;custom_model_data=101;flag=uuid:<[target].uuid>] d:trade_<player.uuid>_<[target].uuid>
+    - inventory set slot:<[inv_script].data_key[data.item_slots.player_1_confirm]> o:trade_confirm_button[flag=player:1] d:trade_<player.uuid>_<[target].uuid>
+    - inventory set slot:<[inv_script].data_key[data.item_slots.player_2_confirm]> o:trade_confirm_button[flag=player:2] d:trade_<player.uuid>_<[target].uuid>
     - inventory open d:trade_<player.uuid>_<[target].uuid>
     - inventory open d:trade_<player.uuid>_<[target].uuid> player:<[target]>
 
@@ -100,3 +107,19 @@ trade_player_2_slot:
   debug: false
   script:
     - narrate <context.inventory>
+
+trade_inventory_cancel:
+  type: task
+  debug: false
+  script:
+    - define player.1 <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_1_head]>].flag[uuid]>
+    - define player.2 <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_2_head]>].flag[uuid]>
+    - inventory close player:<[player.1]>
+    - inventory close player:<[player.2]>
+    - define inv_script <context.inventory.script>
+    - foreach <context.inventory.map_slots> key:slot as:item:
+      - if <[inv_script].data_key[data.click_script_slots.<[slot]>].exists>:
+        - define number <[inv_script].data_key[data.click_script_slots.<[slot]>].substring[14,14]>
+        - define target <[player.<[number]>]>
+        - give <[item]> to:<player[<[player.<[number]>]>].inventory>
+    - note remove as:<context.inventory.note_name>
