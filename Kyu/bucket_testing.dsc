@@ -7,10 +7,10 @@ bucket_testing_events:
       - narrate "Test"
 
     on player fills bucket:
-      - determine passively cancelled
+      - determine cancelled
 
     on player empties bucket:
-      - determine passively cancelled
+      - determine cancelled
 
 bucket_wood:
   type: item
