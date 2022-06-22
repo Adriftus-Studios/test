@@ -35,7 +35,7 @@ trade_inventory:
       38: cancel
       39: cancel
       40: cancel
-      #46: trade_player_1_slot
+      46: cancel
       47: cancel
       #48: trade_player_1_slot
       #49: trade_player_1_slot
@@ -63,7 +63,7 @@ trade_inventory:
       #51: trade_player_2_slot
       #52: trade_player_2_slot
       53: cancel
-      #54: trade_player_2_slot
+      54: cancel
       #Middle Column
       5: cancel
       14: cancel
