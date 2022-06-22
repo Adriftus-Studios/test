@@ -159,6 +159,7 @@ trade_inventory_complete:
   type: task
   debug: false
   script:
+    - ratelimit <context.inventory> 2t
     - define player.1 <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_1_head]>].flag[uuid].as_player>
     - define player.2 <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_2_head]>].flag[uuid].as_player>
     - define inv_script <context.inventory.script>
@@ -168,7 +169,7 @@ trade_inventory_complete:
         - define number <[inverse].get[<[inv_script].data_key[data.click_script_slots.<[slot]>].substring[14,14]>]>
         - define target <[player.<[number]>]>
         - give <[item]> to:<player[<[player.<[number]>]>].inventory>
-    - inventory set slot:<context.inventory.script.data_key[data.item_slots.player_1_head]> o:air d:<context.inventory>
+    - inventory set slot:<context.inventory.script.data_key[data.item_slots.player_1_confirm]> o:air d:<context.inventory>
     - inventory close
 
 trade_inventory_cancel:
@@ -177,8 +178,8 @@ trade_inventory_cancel:
   script:
     - define player.1 <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_1_head]>].flag[uuid].as_player>
     - define player.2 <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_2_head]>].flag[uuid].as_player>
-    - if <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_1_head]>].material.name> == air:
-      - inventory set slot:<context.inventory.script.data_key[data.item_slots.player_1_head]> o:air d:<context.inventory>
+    - if <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_1_confirm]>].material.name> != air:
+      - inventory set slot:<context.inventory.script.data_key[data.item_slots.player_1_confirm]> o:air d:<context.inventory>
       - define inv_script <context.inventory.script>
       - foreach <context.inventory.map_slots> key:slot as:item:
         - if <[inv_script].data_key[data.click_script_slots.<[slot]>].exists> && <[inv_script].data_key[data.click_script_slots.<[slot]>].starts_with[trade_player]>:
