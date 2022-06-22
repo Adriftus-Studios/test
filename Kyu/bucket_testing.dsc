@@ -27,3 +27,11 @@ bucket_wood:
       input:
         - oak_planks/spruce_planks/birch_planks/jungle_planks/acacia_planks/dark_oak_planks/mangrove_planks/crimson_planks/warped_planks|air|oak_planks/spruce_planks/birch_planks/jungle_planks/acacia_planks/dark_oak_planks/mangrove_planks/crimson_planks/warped_planks
         - air|oak_planks/spruce_planks/birch_planks/jungle_planks/acacia_planks/dark_oak_planks/mangrove_planks/crimson_planks/warped_planks|air
+
+# -- BUCKETS CONFIG
+buckets_config:
+  type: data
+  wood: 1
+  iron: 2
+  diamond: 3
+  netherite: 5
