@@ -267,7 +267,7 @@ crayon_drawing:
       - define value 1
       - inject custom_durability_process_task
       - narrate <[current_dur]>
-      - if <player.item_in_hand.script.name.starts_with[crayon].if_null[false]> && <[current_dur].mod[4]> == 0:
+      - if <player.item_in_hand.script.name.starts_with[crayon].if_null[false]> && <context.item.flag[custom_durability.current].mod[4]> == 0:
         - inventory adjust slot:<player.held_item_slot> custom_model_data:<player.item_in_hand.custom_model_data.sub[1]>
 
 crayon_breaking:
