@@ -3,9 +3,7 @@ bucket_testing_events:
   debug: false
   events:
     on player fills bucket:
-      - define item <context.item>
       - narrate "Item<&co> <context.item>"
-      - narrate "Script<&co> <[item].script>"
       - narrate "Location<&co> <context.location>"
       - narrate "<context.material>"
 
