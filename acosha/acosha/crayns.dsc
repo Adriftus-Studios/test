@@ -255,7 +255,7 @@ crayon_drawing:
       - stop if:<context.location.material.is_solid.not>
       - stop if:<context.location.material.name.equals[barrier]>
       - define differential <context.relative.sub[<context.location>]>
-      - define occupied <context.location.add[<[differential].mul[0.5]>].find_entities[crayon_frame].within[0.2]>
+      - define occupied <context.location.center.add[<[differential].mul[0.5]>].find_entities[crayon_frame].within[0.2]>
       - if <[occupied].size> > 0:
         - stop
       - spawn crayon_frame[rotation=<[differential].vector_to_face>] <context.relative> save:crayon
