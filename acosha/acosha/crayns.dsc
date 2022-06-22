@@ -244,6 +244,7 @@ crayon_drawing:
     script:
       - ratelimit <player> 2t
       - narrate <context.location.material.name>
+      - narrate <context.relative.material.name>
       - stop if:<context.location.material.is_solid.not>
       - spawn item_frame <context.relative> save:crayon
       - adjust <entry[crayon].spawned_entity> visible:false
