@@ -8,7 +8,7 @@ trade_inventory:
     item_slots:
       player_1_head: 1
       player_2_head: 9
-      player_1_confirm: 40
+      player_1_confirm: 46
       player_2_confirm: 54
     click_script_slots:
       # Player 1 Trade Slots
@@ -31,8 +31,8 @@ trade_inventory:
       37: trade_player_1_slot
       38: trade_player_1_slot
       39: trade_player_1_slot
-      #40: trade_player_1_slot
-      46: trade_player_1_slot
+      40: trade_player_1_slot
+      #46: trade_player_1_slot
       47: trade_player_1_slot
       48: trade_player_1_slot
       49: trade_player_1_slot
