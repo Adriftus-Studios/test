@@ -22,7 +22,7 @@ Survival_crayon_craft_event:
     On crayon_survival recipe formed:
       - if <context.inventory.list_contents.get[1].has_script> || <context.inventory.list_contents.size> > 1:
         - stop
-      - determine passively <context.item.with[color=<context.inventory.list_contents.get[1].material.name.before[_candle]>
+      - determine passively <context.item.with[color=<context.inventory.list_contents.get[1].material.name.before[_candle]>]>
 
 
 crayon_frame:
