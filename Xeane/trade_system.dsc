@@ -135,8 +135,8 @@ trade_player_confirm:
   type: task
   debug: false
   script:
-    - ratelimit <player> 2t
     - determine passively cancelled
+    - ratelimit <player> 2t
     - define number <context.item.flag[player]>
     - stop if:<context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_<[number]>_head]>].flag[uuid].equals[<player.uuid>].not>
     - inventory set slot:<context.slot> o:trade_cancel_confirm_button[flag=player:<[number]>] d:<context.inventory>
@@ -147,8 +147,8 @@ trade_player_cancel_confirm:
   type: task
   debug: false
   script:
-    - ratelimit <player> 2t
     - determine passively cancelled
+    - ratelimit <player> 2t
     - define number <context.item.flag[player]>
     - stop if:<context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_<[number]>_head]>].flag[uuid].equals[<player.uuid>].not>
     - inventory set slot:<context.slot> o:trade_confirm_button[flag=player:<[number]>] d:<context.inventory>
