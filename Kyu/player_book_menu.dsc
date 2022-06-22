@@ -6,7 +6,7 @@ player_book_menu:
     author: Adriftus Studios
     signed: true
     text:
-      - <&f><&font[adriftus:mod_tools]><&chr[F808]><&chr[1001]><p>test<p>test test test<p>test test<p>test<p>test
+      - <&f><&font[adriftus:mod_tools]><&chr[F808]><&chr[1001]><n>test<p>test test test<p>test test<p>test<p>test
 
 player_book_menu_item:
   type: item
