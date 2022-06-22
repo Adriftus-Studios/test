@@ -6,8 +6,8 @@ trade_inventory:
   size: 54
   data:
     item_slots:
-      player_1_head: 46
-      player_2_head: 54
+      player_1_head: 5
+      player_2_head: 14
       player_1_confirm: 48|49
       player_2_confirm: 51|52
     click_script_slots:
