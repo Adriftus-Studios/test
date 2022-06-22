@@ -27,7 +27,7 @@ bucket_wood_display:
   material: bucket
   display name: <&f>Wooden Bucket
   lore:
-    - "<&e><&o><script[buckets_flavor_text].data_key[wood]>"
+    - "<&6><&o><script[buckets_flavor_text].data_key[wood]>"
     - "<&6>Capacity: <&e><script[buckets_config].data_key[wood]>"
   mechanisms:
     custom_model_data: 1
@@ -48,7 +48,7 @@ bucket_wood_milk:
   material: milk_bucket
   display name: <&f>Wooden Bucket of Milk
   lore:
-    - "<&e><&o><script[buckets_flavor_text].data_key[wood]>"
+    - "<&6><&o><script[buckets_flavor_text].data_key[wood]>"
     - "<&6>Capacity: <&e><script[buckets_config].data_key[wood]>"
   mechanisms:
     custom_model_data: 1
