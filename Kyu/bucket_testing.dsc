@@ -9,7 +9,7 @@ bucket_testing_events:
       - if <[item].script.name> == bucket_wood:
         - inventory set slot:<player.held_item_slot> o:<item[bucket_wood_milk]> d:<player.inventory>
       # Empty Bucket -> Replace with partially/half filled bucket
-      - else if <[item].script.advanced_matches[!bucket_*_milk_half|bucket_*]>:
+      - else if <[item].script.name.advanced_matches[!bucket_*_milk_half|bucket_*]>:
         - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk_half]> d:<player.inventory>
       # Partially filled Bucket -> Do logic
       - else:
@@ -19,6 +19,10 @@ bucket_testing_events:
         # Replace with filled bucket
         - else:
           - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk]> d:<player.inventory>
+      - determine cancelled
+    on player fills bucket:
+      - determine cancelled
+    on player empties bucket:
       - determine cancelled
 
 bucket_wood:
