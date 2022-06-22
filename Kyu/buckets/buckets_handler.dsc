@@ -27,9 +27,12 @@ buckets_handler:
         # Replace with filled bucket
         - else:
           - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk]> d:<player.inventory>
+        # Play sound to mimic milking with empty bucket
+        - playsound <player> sound:ENTITY_COW_MILK
       - determine cancelled
 
     on player consumes bucket_*_milk*:
+      - define item <context.item>
       - determine cancelled
 
 
