@@ -90,10 +90,10 @@ trade_open:
   script:
     - note <inventory[trade_inventory]> as:trade_<player.uuid>/<[target].uuid>
     - define inv_script <inventory[trade_inventory]>
-    - inventory set slot:<[inv_script].data_key[data.item_slots.player_1_head]> o:player_head[skull_skin=<player.skull_skin>;display=<&a><player.name>;custom_model_data=100;flag=uuid:<player.uuid>] d:trade_<player.uuid>_<[target].uuid>
-    - inventory set slot:<[inv_script].data_key[data.item_slots.player_2_head]> o:player_head[skull_skin=<[target].skull_skin>;display=<&a><[target].name>;custom_model_data=101;flag=uuid:<[target].uuid>] d:trade_<player.uuid>_<[target].uuid>
-    - inventory set slot:<[inv_script].data_key[data.item_slots.player_1_confirm]> o:trade_confirm_button[flag=player:1] d:trade_<player.uuid>_<[target].uuid>
-    - inventory set slot:<[inv_script].data_key[data.item_slots.player_2_confirm]> o:trade_confirm_button[flag=player:2] d:trade_<player.uuid>_<[target].uuid>
+    - inventory set slot:<[inv_script].data_key[data.item_slots.player_1_head]> o:player_head[skull_skin=<player.skull_skin>;display=<&a><player.name>;custom_model_data=100;flag=uuid:<player.uuid>] d:trade_<player.uuid>/<[target].uuid>
+    - inventory set slot:<[inv_script].data_key[data.item_slots.player_2_head]> o:player_head[skull_skin=<[target].skull_skin>;display=<&a><[target].name>;custom_model_data=101;flag=uuid:<[target].uuid>] d:trade_<player.uuid>/<[target].uuid>
+    - inventory set slot:<[inv_script].data_key[data.item_slots.player_1_confirm]> o:trade_confirm_button[flag=player:1] d:trade_<player.uuid>/<[target].uuid>
+    - inventory set slot:<[inv_script].data_key[data.item_slots.player_2_confirm]> o:trade_confirm_button[flag=player:2] d:trade_<player.uuid>/<[target].uuid>
     - inventory open d:trade_<player.uuid>/<[target].uuid>
     - inventory open d:trade_<player.uuid>/<[target].uuid> player:<[target]>
 
