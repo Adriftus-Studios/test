@@ -65,6 +65,7 @@ trade_inventory:
       #Middle Column
       5: cancel
     on_close: trade_inventory_cancel
+    on_drag: cancel
 
 trade_confirm_button:
   type: item
