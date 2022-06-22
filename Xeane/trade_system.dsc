@@ -31,12 +31,12 @@ trade_inventory:
       29: trade_player_1_slot
       30: trade_player_1_slot
       31: trade_player_1_slot
-      37: trade_player_1_slot
-      38: trade_player_1_slot
-      39: trade_player_1_slot
-      40: trade_player_1_slot
+      37: cancel
+      38: cancel
+      39: cancel
+      40: cancel
       #46: trade_player_1_slot
-      47: trade_player_1_slot
+      47: cancel
       #48: trade_player_1_slot
       #49: trade_player_1_slot
       # Player 2 Trade Slots
@@ -56,13 +56,13 @@ trade_inventory:
       34: trade_player_2_slot
       35: trade_player_2_slot
       36: trade_player_2_slot
-      42: trade_player_2_slot
-      43: trade_player_2_slot
-      44: trade_player_2_slot
-      45: trade_player_2_slot
+      42: cancel
+      43: cancel
+      44: cancel
+      45: cancel
       #51: trade_player_2_slot
       #52: trade_player_2_slot
-      53: trade_player_2_slot
+      53: cancel
       #54: trade_player_2_slot
       #Middle Column
       5: cancel
