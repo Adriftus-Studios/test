@@ -29,6 +29,9 @@ buckets_handler:
           - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk]> d:<player.inventory>
       - determine cancelled
 
+    on player consumes bucket_*_milk*:
+      - determine cancelled
+
 
 # -- BUCKETS CONFIG
 buckets_config:

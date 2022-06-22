@@ -43,12 +43,12 @@ bucket_wood_display:
 bucket_wood_milk:
   type: item
   debug: false
-  material: bucket
+  material: milk_bucket
   display name: <&f>Wooden Bucket of Milk
   lore:
     - "<&6>Capacity: <&e><script[buckets_config].data_key[wood]>"
   mechanisms:
-    custom_model_data: 12
+    custom_model_data: 1
   flags:
     material: wood
     contents: milk

@@ -22,13 +22,13 @@ bucket_iron:
 bucket_iron_milk:
   type: item
   debug: false
-  material: bucket
+  material: milk_bucket
   display name: <&f>Iron Bucket of Milk
   lore:
     - "<&6>Quantity: <&e><script[buckets_config].data_key[iron]>"
     - "<&6>Capacity: <&e><script[buckets_config].data_key[iron]>"
   mechanisms:
-    custom_model_data: 22
+    custom_model_data: 2
   flags:
     material: iron
     contents: milk
@@ -37,13 +37,13 @@ bucket_iron_milk:
 bucket_iron_milk_half:
   type: item
   debug: false
-  material: bucket
+  material: milk_bucket
   display name: <&f>Iron Bucket of Milk
   lore:
     - "<&6>Quantity: <&e>1"
     - "<&6>Capacity: <&e><script[buckets_config].data_key[iron]>"
   mechanisms:
-    custom_model_data: 22
+    custom_model_data: 2
   flags:
     material: iron
     contents: milk
