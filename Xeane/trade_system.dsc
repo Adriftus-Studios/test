@@ -2,7 +2,7 @@ trade_inventory:
   type: inventory
   debug: false
   title: <&a>Trading!
-  slots: 54
+  size: 54
   gui: true
   data:
     click_script_slots:
