@@ -2,7 +2,7 @@ trade_inventory:
   type: inventory
   debug: false
   inventory: chest
-  title: <&f><&font[adriftus:guis]><&chr[F803]><&chr[6932]>
+  title: <&f><&font[adriftus:guis]><&chr[F808]><&chr[6932]>
   size: 54
   data:
     item_slots:
