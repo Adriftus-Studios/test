@@ -6,7 +6,7 @@ player_book_menu:
     author: Adriftus Studios
     signed: true
     text:
-      - <&f><&font[adriftus:mod_tools]><&chr[F80B]><&chr[1001]><n><&c><player.name><p><player.flag[amp].get[name]><p><&e><&l><&n>Trade with Player<p>test test test<p>test test<p>test<p>test
+      - <&f><&font[adriftus:mod_tools]><&chr[F80B]><&chr[1001]><n><&c><player.name><p><player.flag[amp].get[name]><p><&e><&l><&n>Trade with Player<p>test test test<p>test test<n>test<n>test
 
 player_book_menu_item:
   type: item
