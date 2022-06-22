@@ -7,4 +7,4 @@ player_book_menu:
   author: Adriftus Studios
   signed: true
   text:
-    - <&f>Font GUI Here<&r><n><player.flag[amp].get[name]><p><&hover[<&e>Click to Trade with <&b><player.flag[amp].get[name]>]><&click[/mod <player.flag[amp].get[name]>]><&e><&l><&n>Trade<&end_click><&end_hover>
+    - <&f><&font[adriftus:mod_tools]><&chr[F80A]><&chr[1001]><&r><player.flag[amp].get[name]><p><&hover[<&e>Click to Trade with <&b><player.flag[amp].get[name]>]><&click[/mod <player.flag[amp].get[name]>]><&e><&l><&n>Trade<&end_click><&end_hover>
