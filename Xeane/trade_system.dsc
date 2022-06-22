@@ -102,13 +102,15 @@ trade_player_1_slot:
   type: task
   debug: false
   script:
-    - announce <context.inventory>
+    - if <player.uuid> == <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_1_head]>].flag[uuid]>:
+      - determine cancelled:false
 
 trade_player_2_slot:
   type: task
   debug: false
   script:
-    - announce <context.inventory>
+    - if <player.uuid> == <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_2_head]>].flag[uuid]>:
+      - determine cancelled:false
 
 trade_inventory_cancel:
   type: task
