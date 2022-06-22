@@ -66,6 +66,7 @@ trade_inventory:
       5: cancel
     on_close: trade_inventory_cancel
     on_drag: cancel
+    any_click: trade_sanitize
 
 trade_confirm_button:
   type: item
@@ -185,3 +186,10 @@ trade_inventory_cancel:
       - inventory close player:<[player.2]>
     - announce "<context.inventory.note_name> deleted"
     - note remove as:<context.inventory.note_name>
+
+trade_sanitize:
+  type: task
+  debug: false
+  script:
+    - if !<list[LEFT|RIGHT].contains[<context.click>]>:
+      - determine cancelled
