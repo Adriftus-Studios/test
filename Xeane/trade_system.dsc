@@ -123,4 +123,5 @@ trade_inventory_cancel:
         - define number <[inv_script].data_key[data.click_script_slots.<[slot]>].substring[14,14]>
         - define target <[player.<[number]>]>
         - give <[item]> to:<player[<[player.<[number]>]>].inventory>
+    - announce "<context.inventory.note_name> deleted"
     - note remove as:<context.inventory.note_name>
