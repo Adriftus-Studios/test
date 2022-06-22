@@ -3,7 +3,6 @@ bucket_testing_events:
   debug: false
   events:
     on player right clicks cow with:bucket_wood|bucket_*_milk_half:
-      - determine passively cancelled
       - ratelimit <player> 2t
       - define item <context.item>
       # Empty Wooden Bucket -> Replace with filled bucket
@@ -20,6 +19,7 @@ bucket_testing_events:
         # Replace with filled bucket
         - else:
           - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk]> d:<player.inventory>
+      - determine cancelled
 
 bucket_wood:
   type: item
@@ -51,6 +51,37 @@ bucket_wood_milk:
     material: wood
     contents: milk
     quantity: 1
+
+bucket_iron:
+  type: item
+  debug: false
+  material: bucket
+  display name: <&f>Iron Bucket
+  lore:
+    - "<&6>Capacity: <&e><script[buckets_config].data_key[iron]>"
+  mechanisms:
+    custom_model_data: 2
+  recipes:
+    1:
+      type: shaped
+      input:
+        - iron_ingot|bucket_wood|iron_ingot
+        - air|iron_ingot|air
+
+bucket_iron_milk:
+  type: item
+  debug: false
+  material: bucket
+  display name: Iron Bucket of Milk
+  lore:
+    - "<&6>Quantity: <&e><script.flag[quantity]>"
+    - "<&6>Capacity: <&e><script[buckets_config].data_key[iron]>"
+  mechanisms:
+    custom_model_data: 22
+  flags:
+    material: iron
+    contents: milk
+    quantity: 2
 
 bucket_iron_milk_half:
   type: item
