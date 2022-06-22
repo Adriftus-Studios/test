@@ -139,7 +139,6 @@ trade_player_confirm:
     - determine passively cancelled
     - define number <context.item.flag[player]>
     - stop if:<context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_<[number]>_head]>].flag[uuid].equals[<player.uuid>].not>
-    - announce <[number]>
     - inventory set slot:<context.slot> o:trade_cancel_confirm_button[flag=player:<[number]>] d:<context.inventory>
     - if <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_2_confirm]>].script.name> == trade_cancel_confirm_button && <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_1_confirm]>].script.name> == trade_cancel_confirm_button:
       - inject trade_inventory_complete
@@ -152,7 +151,6 @@ trade_player_cancel_confirm:
     - determine passively cancelled
     - define number <context.item.flag[player]>
     - stop if:<context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_<[number]>_head]>].flag[uuid].equals[<player.uuid>].not>
-    - announce <[number]>
     - inventory set slot:<context.slot> o:trade_confirm_button[flag=player:<[number]>] d:<context.inventory>
 
 trade_inventory_complete:
@@ -192,7 +190,6 @@ trade_inventory_cancel:
           - define number <[inv_script].data_key[data.click_script_slots.<[slot]>].substring[14,14]>
           - define target <[player.<[number]>]>
           - give <[item]> to:<player[<[player.<[number]>]>].inventory>
-    - announce "<context.inventory.note_name> deleted"
     - note remove as:<context.inventory.note_name>
 
 trade_sanitize:
