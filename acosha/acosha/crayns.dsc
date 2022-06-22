@@ -4,7 +4,6 @@ crayon_brown:
     display name: Brown Crayon
     flags:
       right_click_script: crayon_drawing
-      right_click_script: crayon_drawing
       custom_durability:
         max: 36
         current: 0
@@ -21,7 +20,6 @@ crayon_white:
     material: leather_horse_armor
     display name: Yellow Crayon
     flags:
-      right_click_script: crayon_drawing
       right_click_script: crayon_drawing
       custom_durability:
         max: 36
@@ -261,19 +259,15 @@ crayon_drawing:
       - define color <player.item_in_hand.color>
       - adjust <entry[crayon].spawned_entity> framed:<item[leather_horse_armor].with[custom_model_data=21;color=<[color]>]>
       - flag <entry[crayon].spawned_entity> on_damaged:crayon_breaking
-      - define slot <player.held_item_slot>
-      - if <context.hand> == offhand:
-        - define slot 41
-      - define value 1
       - inject custom_durability_process_task
-      - narrate <context.item.flag[custom_durability.current]>
-      - if <player.item_in_hand.script.name.starts_with[crayon].if_null[false]> && <context.item.flag[custom_durability.current].mod[4]> == 0:
+      - narrate <player.item_in_hand.flag[custom_durability.current]>
+      - if <player.item_in_hand.script.name.starts_with[crayon].if_null[false]> && <player.item_in_hand.flag[custom_durability.current].mod[4]> == 0:
         - inventory adjust slot:<player.held_item_slot> custom_model_data:<player.item_in_hand.custom_model_data.sub[1]>
 
 crayon_breaking:
     type: task
     script:
-        - determine passively cancelled 
+        - determine passively cancelled
         - adjust <context.entity> framed:<item[air]>
         - remove <context.entity>
 
