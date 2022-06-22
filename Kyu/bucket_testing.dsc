@@ -9,7 +9,7 @@ bucket_testing_events:
       - if <[item].script.name> == bucket_wood:
         - inventory set slot:<player.held_item_slot> o:<item[bucket_wood_milk]> d:<player.inventory>
       # Empty Bucket -> Replace with partially/half filled bucket
-      - else if <[item].script.name.advanced_matches[!bucket_*_milk_half|bucket_*]>:
+      - else if <list[bucket_iron|bucket_diamond|bucket_netherite].contains[<[item].script.name>]>:
         - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk_half]> d:<player.inventory>
       # Partially filled Bucket -> Do logic
       - else:
