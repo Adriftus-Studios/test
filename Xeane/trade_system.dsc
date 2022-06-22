@@ -73,6 +73,8 @@ trade_confirm_button:
     - "<&a>Accept the trade"
   mechanisms:
     custom_model_data: 3
+  flags:
+    run_script: trade_player_confirm
 
 trade_cancel_confirm_button:
   type: item
@@ -82,6 +84,8 @@ trade_cancel_confirm_button:
   lore:
     - "<&a>Cancel the confirmation"
     - "<&e>Allows further changes"
+  flags:
+    run_script: trade_player_cancel_confirm
 
 trade_open:
   type: task
@@ -110,7 +114,27 @@ trade_player_2_slot:
   debug: false
   script:
     - if <player.uuid> == <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_2_head]>].flag[uuid]>:
-      - determine cancelled:false
+      - determine passively cancelled:false
+    - else:
+      - stop
+    - if <player.item_on_cursor.material.name> == air && !<context.item.exists>:
+      - stop
+
+trade_player_confirm:
+  type: task
+  debug: false
+  script:
+    - define number <context.item.flag[player]>
+    - announce <[number]>
+    - inventory set slot:<context.slot> o:trade_player_cancel_confirm[flag=player:<[number]>] d:<context.inventory>
+
+trade_player_cancel_confirm:
+  type: task
+  debug: false
+  script:
+    - define number <context.item.flag[player]>
+    - announce <[number]>
+    - inventory set slot:<context.slot> o:trade_player_confirm[flag=player:<[number]>] d:<context.inventory>
 
 trade_inventory_cancel:
   type: task
