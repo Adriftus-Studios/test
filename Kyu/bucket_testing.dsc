@@ -2,7 +2,7 @@ bucket_testing_events:
   type: world
   debug: false
   events:
-    on player right clicks cow with:bucket_wood|bucket_*_milk_half:
+    on player right clicks cow with:bucket_*_milk_half|!bucket_*_*|bucket_*:
       - ratelimit <player> 2t
       - define item <context.item>
       # Empty Wooden Bucket -> Replace with filled bucket
