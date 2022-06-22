@@ -46,8 +46,7 @@ buckets_handler:
       - else:
         - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>]> d:<player.inventory>
       # Remove status effects to mimic drinking milk bucket
-      - foreach <player.effects_data> as:effect:
-        - cast <[effect].get[type]> remove
+      - adjust <player> remove_effects
       - determine cancelled
 
 
