@@ -244,7 +244,7 @@ crayon_drawing:
     script:
       - ratelimit <player> 2t
       - stop if:<context.location.material.is_solid.not>
-      - spawn item_frame <context.location.add[<context.relative>]> save:crayon
+      - spawn item_frame <context.relative> save:crayon
       - adjust <entry[crayon].spawned_entity> visible:false
       - define color <player.item_in_hand.color>
       - adjust <entry[crayon].spawned_entity> framed:<item[leather_horse_armor].with[custom_model_data=21;color=<[color]>]>
