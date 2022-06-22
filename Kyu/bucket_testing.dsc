@@ -84,7 +84,7 @@ bucket_iron_milk:
   material: bucket
   display name: Iron Bucket of Milk
   lore:
-    - "<&6>Quantity: <&e><item.flag[quantity]>"
+    - "<&6>Quantity: <&e><script.data_key[quantity]>"
     - "<&6>Capacity: <&e><script[buckets_config].data_key[iron]>"
   mechanisms:
     custom_model_data: 22
@@ -99,7 +99,7 @@ bucket_iron_milk_half:
   material: bucket
   display name: Iron Bucket of Milk
   lore:
-    - "<&6>Quantity: <&e><item.flag[quantity]>"
+    - "<&6>Quantity: <&e><script.data_key[quantity]>"
     - "<&6>Capacity: <&e><script[buckets_config].data_key[iron]>"
   mechanisms:
     custom_model_data: 22
