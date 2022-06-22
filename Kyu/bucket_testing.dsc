@@ -2,15 +2,29 @@ bucket_testing_events:
   type: world
   debug: false
   events:
-    on player fills bucket:
+    on player fills bucket_wood:
       - narrate "Item<&co> <context.item>"
       - narrate "Location<&co> <context.location>"
       - narrate "<context.material>"
+      - choose <context.item>:
+        - case water_bucket:
+          - narrate "Water"
+        - case milk_bucket:
+          - narrate "Milk"
+        - case lava_bucket:
+          - narrate "Begone, bucket!"
 
     on player empties bucket:
       - narrate "Item<&co> <context.item>"
       - narrate "Location<&co> <context.location>"
       - narrate "Relative<&co> <context.relative>"
+      - choose <context.item>:
+        - case water_bucket:
+          - narrate "Water"
+        - case milk_bucket:
+          - narrate "Milk"
+        - case lava_bucket:
+          - narrate "Begone, bucket!"
 
 bucket_wood:
   type: item
