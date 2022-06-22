@@ -238,6 +238,13 @@ crayon_black:
             type: shapeless
             input: black_candle
 
+crayon_frame:
+  type: entity
+  debug: false
+  entity_type: item_frame
+  mechanisms:
+    visible: false
+
 crayon_drawing:
     type: task
     debug: true
@@ -246,7 +253,12 @@ crayon_drawing:
       - narrate <context.location.material.name>
       - narrate <context.relative.material.name>
       - stop if:<context.location.material.is_solid.not>
-      - spawn item_frame <context.relative> save:crayon
+      - stop if:<context.location.material.name.equals[barrier]>
+      - define differential <context.relative.sub[<context.location>]>
+      - define occupied <context.location.add[<[differential].mul[0.5]>].find_entities[crayon_frame].within[0.2]>
+      - if <[occupied].size> > 0:
+        - stop
+      - spawn crayon_frame[rotation=<[differential].direction>] <context.relative> save:crayon
       - adjust <entry[crayon].spawned_entity> visible:false
       - define color <player.item_in_hand.color>
       - adjust <entry[crayon].spawned_entity> framed:<item[leather_horse_armor].with[custom_model_data=21;color=<[color]>]>
