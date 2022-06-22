@@ -4,7 +4,6 @@ trade_inventory:
   inventory: chest
   title: <&a>Trading!
   size: 54
-  gui: true
   data:
     item_slots:
       player_1_head: 1
