@@ -2,21 +2,15 @@ bucket_testing_events:
   type: world
   debug: false
   events:
-    on player right clicks cow with:bucket_wood:
+    on player right clicks cow with:bucket_wood|bucket_*_milk_half:
+      - ratelimit <player> 1s
       - narrate "Test"
-      - determine cancelled
+
+    on player fills bucket:
+      - determine passively cancelled
 
     on player empties bucket:
-      - narrate "Item<&co> <context.item>"
-      - narrate "Location<&co> <context.location>"
-      - narrate "Relative<&co> <context.relative>"
-      - choose <context.item>:
-        - case water_bucket:
-          - narrate "Water"
-        - case milk_bucket:
-          - narrate "Milk"
-        - case lava_bucket:
-          - narrate "Begone, bucket!"
+      - determine passively cancelled
 
 bucket_wood:
   type: item
