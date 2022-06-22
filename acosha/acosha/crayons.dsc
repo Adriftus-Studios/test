@@ -1,4 +1,4 @@
-crayon:
+crayon_survival:
     type: item
     material: leather_horse_armor
     display name: <&f>Survival Crayon
@@ -14,6 +14,16 @@ crayon:
         1:
             type: shapeless
             input: black_candle/red_candle/green_candle/blue_candle/purple_candle/gray_candle/pink_candle/lime_candle/light_blue_candle/magenta_candle/orange_candle/brown_candle/white_candle/yellow_candle
+
+Survival_crayon_craft_event:
+  Type: world
+  Debug: true
+  Events:
+    On crayon_survival recipe formed:
+      - if <context.inventory.list_contents.get[1].has_script> || <context.inventory.list_contents.size> > 1:
+        - stop
+      - determine passively <context.item.with[color=<context.inventory.list_contents.get[1].material.name.before[candle]>
+
 
 crayon_frame:
   type: entity
