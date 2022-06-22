@@ -15,7 +15,7 @@ bucket_testing_events:
       - else:
         # Add 1 to quantity if less than maximum capacity
         - if <[item].flag[quantity].add[1]> < <script[buckets_config].data_key[<[item].flag[material]>]>:
-          - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk].with_flag[quantity:<[item].flag[quantity].add[1]>]> d:<player.inventory>
+          - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk].with_flag[quantity:+:1]> d:<player.inventory>
         # Replace with filled bucket
         - else:
           - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk]> d:<player.inventory>
