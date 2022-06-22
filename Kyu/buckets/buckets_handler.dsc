@@ -16,6 +16,9 @@ buckets_handler:
       # Empty Wooden Bucket -> Replace with filled bucket
       - if <[item].script.name> == bucket_wood:
         - inventory set slot:<player.held_item_slot> o:<item[bucket_wood_milk]> d:<player.inventory>
+      # Filled Bucket -> Cancel milking
+      - else if <[item].script.name.advanced_matches[bucket_*_milk]>:
+        - determine cancelled
       # Empty Bucket -> Replace with partially/half filled bucket
       - else if <[item].flag[quantity]> == 0:
         - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk_half]> d:<player.inventory>
