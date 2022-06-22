@@ -177,6 +177,7 @@ trade_inventory_cancel:
   debug: false
   script:
     - ratelimit <context.inventory> 2t
+    - stop if:<context.inventory.equals[<player.inventory>]>
     - define player.1 <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_1_head]>].flag[uuid].as_player>
     - define player.2 <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_2_head]>].flag[uuid].as_player>
     - if <[player.1].open_inventory.note_name.if_null[null]> == trade_<[player.1].uuid>/<[player.2].uuid> && <player> != <[player.1]>:
