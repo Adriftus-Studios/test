@@ -19,6 +19,7 @@ bucket_testing_events:
         # Replace with filled bucket
         - else:
           - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk]> d:<player.inventory>
+      - determine cancelled
     on player fills bucket priority:10:
       - determine cancelled
     on player empties bucket priority:10:
