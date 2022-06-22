@@ -2,17 +2,9 @@ bucket_testing_events:
   type: world
   debug: false
   events:
-    on player fills bucket_wood:
-      - narrate "Item<&co> <context.item>"
-      - narrate "Location<&co> <context.location>"
-      - narrate "<context.material>"
-      - choose <context.item>:
-        - case water_bucket:
-          - narrate "Water"
-        - case milk_bucket:
-          - narrate "Milk"
-        - case lava_bucket:
-          - narrate "Begone, bucket!"
+    on player right clicks cow with:bucket_wood:
+      - narrate "Test"
+      - determine cancelled
 
     on player empties bucket:
       - narrate "Item<&co> <context.item>"
