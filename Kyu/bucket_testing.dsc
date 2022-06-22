@@ -3,14 +3,10 @@ bucket_testing_events:
   debug: false
   events:
     on player right clicks cow with:bucket_wood|bucket_*_milk_half:
+      - determine passively cancelled
       - ratelimit <player> 1s
       - narrate "Test"
-
-    on player fills bucket:
-      - determine cancelled
-
-    on player empties bucket:
-      - determine cancelled
+      - give <item[bucket].with[custom_model_data=13]>
 
 bucket_wood:
   type: item
