@@ -5,8 +5,15 @@ bucket_testing_events:
     on player right clicks cow with:bucket_wood|bucket_*_milk_half:
       - determine passively cancelled
       - ratelimit <player> 2t
-      - narrate "Test"
-      - give <item[bucket].with[custom_model_data=12]>
+      - narrate <context.item.script>
+      # Add 1 to quantity if less than maximum capacity
+      - if <context.item.script.advanced_matches[bucket_*_milk_half]>:
+        - if <context.item.flag[quantity].add[1]> == <script[buckets_config].data_key[<context.item.script.after[_].before[_]>]>:
+          - narrate replace
+        - else:
+          - narrate increment
+      - else:
+        - give <item[bucket].with[custom_model_data=12]>
 
 bucket_wood:
   type: item
@@ -21,6 +28,7 @@ bucket_wood:
     1:
       type: shaped
       input:
+        - stick|stick|stick
         - oak_planks/spruce_planks/birch_planks/jungle_planks/acacia_planks/dark_oak_planks/mangrove_planks/crimson_planks/warped_planks|air|oak_planks/spruce_planks/birch_planks/jungle_planks/acacia_planks/dark_oak_planks/mangrove_planks/crimson_planks/warped_planks
         - air|oak_planks/spruce_planks/birch_planks/jungle_planks/acacia_planks/dark_oak_planks/mangrove_planks/crimson_planks/warped_planks|air
 
