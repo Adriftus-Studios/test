@@ -60,13 +60,17 @@ trade_inventory:
 trade_confirm_button:
   type: item
   debug: false
+  material: paper
   display name: <&a>Confirm Trade
   lore:
     - "<&a>Accept the trade"
+  mechanisms:
+    custom_model_data: 3
 
 trade_cancel_confirm_button:
   type: item
   debug: false
+  material: barrier
   display name: <&a>Cancel Confirm
   lore:
     - "<&a>Cancel the confirmation"
