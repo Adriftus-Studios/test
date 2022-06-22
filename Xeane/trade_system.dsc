@@ -201,7 +201,7 @@ trade_inventory_cancel:
       - inventory close player:<[player.1]>
     - if <[player.2].open_inventory.note_name.if_null[null]> == trade_<[player.1].uuid>/<[player.2].uuid> && <player> != <[player.2]>:
       - inventory close player:<[player.2]>
-    - if <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_1_confirm]>].material.name> != air:
+    - if <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_1_confirm].before[|]>].material.name> != air:
       - inventory set slot:<context.inventory.script.data_key[data.item_slots.player_1_confirm].before[|]> o:air d:<context.inventory>
       - define inv_script <context.inventory.script>
       - foreach <context.inventory.map_slots> key:slot as:item:
