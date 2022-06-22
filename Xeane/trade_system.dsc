@@ -6,10 +6,10 @@ trade_inventory:
   size: 54
   data:
     item_slots:
-      player_1_head: 1
-      player_2_head: 9
-      player_1_confirm: 46
-      player_2_confirm: 54
+      player_1_head: 46
+      player_2_head: 54
+      player_1_confirm: 48|49
+      player_2_confirm: 51|52
     click_script_slots:
       # Player Heads
       1: cancel
@@ -76,7 +76,7 @@ trade_inventory:
 trade_confirm_button:
   type: item
   debug: false
-  material: paper
+  material: feather
   display name: <&a>Confirm Trade
   lore:
     - "<&a>Accept the trade"
@@ -88,13 +88,15 @@ trade_confirm_button:
 trade_cancel_confirm_button:
   type: item
   debug: false
-  material: barrier
+  material: feather
   display name: <&a>Cancel Confirm
   lore:
     - "<&a>Cancel the confirmation"
     - "<&e>Allows further changes"
   flags:
     run_script: trade_player_cancel_confirm
+  mechanisms:
+    custom_model_data: 3
 
 trade_open:
   type: task
@@ -106,8 +108,10 @@ trade_open:
     - define inv_script <inventory[trade_inventory].script>
     - inventory set slot:<[inv_script].data_key[data.item_slots.player_1_head]> o:player_head[skull_skin=<[player1].skull_skin>;display=<&a><[player1].name>;custom_model_data=100;flag=uuid:<[player1].uuid>] d:trade_<[player1].uuid>/<[player2].uuid>
     - inventory set slot:<[inv_script].data_key[data.item_slots.player_2_head]> o:player_head[skull_skin=<[player2].skull_skin>;display=<&a><[player2].name>;custom_model_data=101;flag=uuid:<[player2].uuid>] d:trade_<[player1].uuid>/<[player2].uuid>
-    - inventory set slot:<[inv_script].data_key[data.item_slots.player_1_confirm]> o:trade_confirm_button[flag=player:1] d:trade_<[player1].uuid>/<[player2].uuid>
-    - inventory set slot:<[inv_script].data_key[data.item_slots.player_2_confirm]> o:trade_confirm_button[flag=player:2] d:trade_<[player1].uuid>/<[player2].uuid>
+    - foreach <[inv_script].data_key[data.item_slots.player_1_confirm]>:
+      - inventory set slot:<[value]> o:trade_confirm_button[flag=player:1] d:trade_<[player1].uuid>/<[player2].uuid>
+    - foreach <[inv_script].data_key[data.item_slots.player_2_confirm]>:
+      - inventory set slot:<[value]> o:trade_confirm_button[flag=player:2] d:trade_<[player1].uuid>/<[player2].uuid>
     - inventory open d:trade_<[player1].uuid>/<[player2].uuid>
     - inventory open d:trade_<[player1].uuid>/<[player2].uuid> player:<[player2]>
 
@@ -119,10 +123,12 @@ trade_player_1_slot:
       - determine cancelled
     - if <player.item_on_cursor.material.name> == air && !<context.item.exists>:
       - stop
-    - if <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_1_confirm]>].script.name> == trade_cancel_confirm_button:
-      - inventory set slot:<context.inventory.script.data_key[data.item_slots.player_1_confirm]> o:trade_confirm_button[flag=player:1] d:<context.inventory>
-    - if <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_2_confirm]>].script.name> == trade_cancel_confirm_button:
-      - inventory set slot:<context.inventory.script.data_key[data.item_slots.player_2_confirm]> o:trade_confirm_button[flag=player:2] d:<context.inventory>
+    - if <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_1_confirm].before[|]>].script.name> == trade_cancel_confirm_button:
+      - foreach <context.inventory.script.data_key[data.item_slots.player_1_confirm]>:
+        - inventory set slot:<[value]> o:trade_confirm_button[flag=player:1] d:<context.inventory>
+    - if <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_2_confirm].before[|]>].script.name> == trade_cancel_confirm_button:
+      - foreach <context.inventory.script.data_key[data.item_slots.player_2_confirm]>:
+        - inventory set slot:<[value]> o:trade_confirm_button[flag=player:2] d:<context.inventory>
 
 trade_player_2_slot:
   type: task
@@ -132,10 +138,12 @@ trade_player_2_slot:
       - determine cancelled
     - if <player.item_on_cursor.material.name> == air && !<context.item.exists>:
       - stop
-    - if <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_1_confirm]>].script.name> == trade_cancel_confirm_button:
-      - inventory set slot:<context.inventory.script.data_key[data.item_slots.player_1_confirm]> o:trade_confirm_button[flag=player:1] d:<context.inventory>
-    - if <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_2_confirm]>].script.name> == trade_cancel_confirm_button:
-      - inventory set slot:<context.inventory.script.data_key[data.item_slots.player_2_confirm]> o:trade_confirm_button[flag=player:2] d:<context.inventory>
+    - if <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_1_confirm].before[|]>].script.name> == trade_cancel_confirm_button:
+      - foreach <context.inventory.script.data_key[data.item_slots.player_1_confirm]>:
+        - inventory set slot:<[value]> o:trade_confirm_button[flag=player:1] d:<context.inventory>
+    - if <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_2_confirm].before[|]>].script.name> == trade_cancel_confirm_button:
+      - foreach <context.inventory.script.data_key[data.item_slots.player_2_confirm]>:
+        - inventory set slot:<[value]> o:trade_confirm_button[flag=player:2] d:<context.inventory>
 
 trade_player_confirm:
   type: task
@@ -146,7 +154,7 @@ trade_player_confirm:
     - define number <context.item.flag[player]>
     - stop if:<context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_<[number]>_head]>].flag[uuid].equals[<player.uuid>].not>
     - inventory set slot:<context.slot> o:trade_cancel_confirm_button[flag=player:<[number]>] d:<context.inventory>
-    - if <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_2_confirm]>].script.name> == trade_cancel_confirm_button && <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_1_confirm]>].script.name> == trade_cancel_confirm_button:
+    - if <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_2_confirm].before[|]>].script.name> == trade_cancel_confirm_button && <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_1_confirm].before[|]>].script.name> == trade_cancel_confirm_button:
       - inject trade_inventory_complete
 
 trade_player_cancel_confirm:
@@ -190,7 +198,7 @@ trade_inventory_cancel:
     - if <[player.2].open_inventory.note_name.if_null[null]> == trade_<[player.1].uuid>/<[player.2].uuid> && <player> != <[player.2]>:
       - inventory close player:<[player.2]>
     - if <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_1_confirm]>].material.name> != air:
-      - inventory set slot:<context.inventory.script.data_key[data.item_slots.player_1_confirm]> o:air d:<context.inventory>
+      - inventory set slot:<context.inventory.script.data_key[data.item_slots.player_1_confirm].before[|]> o:air d:<context.inventory>
       - define inv_script <context.inventory.script>
       - foreach <context.inventory.map_slots> key:slot as:item:
         - if <[inv_script].data_key[data.click_script_slots.<[slot]>].exists> && <[inv_script].data_key[data.click_script_slots.<[slot]>].starts_with[trade_player]>:
