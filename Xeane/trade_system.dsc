@@ -117,6 +117,12 @@ trade_player_1_slot:
   script:
     - if <player.uuid> != <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_1_head]>].flag[uuid]>:
       - determine cancelled
+    - if <player.item_on_cursor.material.name> == air && !<context.item.exists>:
+      - stop
+    - if <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_1_confirm]>].script.name> == trade_cancel_confirm_button:
+      - inventory set slot:<context.inventory.script.data_key[data.item_slots.player_1_confirm]> o:trade_confirm_button[flag=player:1] d:<context.inventory>
+    - if <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_2_confirm]>].script.name> == trade_cancel_confirm_button:
+      - inventory set slot:<context.inventory.script.data_key[data.item_slots.player_2_confirm]> o:trade_confirm_button[flag=player:1] d:<context.inventory>
 
 trade_player_2_slot:
   type: task
@@ -152,6 +158,7 @@ trade_player_cancel_confirm:
     - define number <context.item.flag[player]>
     - stop if:<context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_<[number]>_head]>].flag[uuid].equals[<player.uuid>].not>
     - inventory set slot:<context.slot> o:trade_confirm_button[flag=player:<[number]>] d:<context.inventory>
+
 
 trade_inventory_complete:
   type: task
