@@ -15,7 +15,7 @@ bucket_testing_events:
       - else:
         # Add 1 to quantity if less than maximum capacity
         - if <[item].flag[quantity].add[1]> < <script[buckets_config].data_key[<[item].flag[material]>]>:
-          - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk].with_flag[quantity:+:1]> d:<player.inventory>
+          - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk].with[lore=<&6>Quantity<&co><&sp><&e><[item].flag[quantity].add[1]>|<&6>Capacity<&co><&sp><&e><script[buckets_config].data_key[<[item].flag[material]>]>].with_flag[quantity:<[item].flag[quantity].add[1]>]> d:<player.inventory>
         # Replace with filled bucket
         - else:
           - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk]> d:<player.inventory>
@@ -84,7 +84,7 @@ bucket_iron_milk:
   material: bucket
   display name: Iron Bucket of Milk
   lore:
-    - "<&6>Quantity: <&e><script.data_key[quantity]>"
+    - "<&6>Quantity: <&e><script[buckets_config].data_key[iron]>"
     - "<&6>Capacity: <&e><script[buckets_config].data_key[iron]>"
   mechanisms:
     custom_model_data: 22
@@ -99,7 +99,7 @@ bucket_iron_milk_half:
   material: bucket
   display name: Iron Bucket of Milk
   lore:
-    - "<&6>Quantity: <&e><script.data_key[quantity]>"
+    - "<&6>Quantity: <&e>1"
     - "<&6>Capacity: <&e><script[buckets_config].data_key[iron]>"
   mechanisms:
     custom_model_data: 22
