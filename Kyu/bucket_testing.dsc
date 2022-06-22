@@ -34,6 +34,9 @@ bucket_wood:
     - "<&6>Capacity: <&e><script[buckets_config].data_key[wood]>"
   mechanisms:
     custom_model_data: 1
+  flags:
+    material: wood
+    quantity: 0
   recipes:
     1:
       type: shaped
@@ -65,6 +68,9 @@ bucket_iron:
     - "<&6>Capacity: <&e><script[buckets_config].data_key[iron]>"
   mechanisms:
     custom_model_data: 2
+  flags:
+    material: iron
+    quantity: 0
   recipes:
     1:
       type: shaped
