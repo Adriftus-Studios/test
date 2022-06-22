@@ -122,7 +122,7 @@ trade_player_1_slot:
     - if <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_1_confirm]>].script.name> == trade_cancel_confirm_button:
       - inventory set slot:<context.inventory.script.data_key[data.item_slots.player_1_confirm]> o:trade_confirm_button[flag=player:1] d:<context.inventory>
     - if <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_2_confirm]>].script.name> == trade_cancel_confirm_button:
-      - inventory set slot:<context.inventory.script.data_key[data.item_slots.player_2_confirm]> o:trade_confirm_button[flag=player:1] d:<context.inventory>
+      - inventory set slot:<context.inventory.script.data_key[data.item_slots.player_2_confirm]> o:trade_confirm_button[flag=player:2] d:<context.inventory>
 
 trade_player_2_slot:
   type: task
@@ -135,7 +135,7 @@ trade_player_2_slot:
     - if <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_1_confirm]>].script.name> == trade_cancel_confirm_button:
       - inventory set slot:<context.inventory.script.data_key[data.item_slots.player_1_confirm]> o:trade_confirm_button[flag=player:1] d:<context.inventory>
     - if <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_2_confirm]>].script.name> == trade_cancel_confirm_button:
-      - inventory set slot:<context.inventory.script.data_key[data.item_slots.player_2_confirm]> o:trade_confirm_button[flag=player:1] d:<context.inventory>
+      - inventory set slot:<context.inventory.script.data_key[data.item_slots.player_2_confirm]> o:trade_confirm_button[flag=player:2] d:<context.inventory>
 
 trade_player_confirm:
   type: task
