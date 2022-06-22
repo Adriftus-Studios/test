@@ -2,11 +2,11 @@
 player_book_menu:
     type: book
     debug: false
-    title: <&f><&font[adriftus:mod_tools]><&chr[F808]><&chr[1001]>
+    title: Player Menu
     author: Adriftus Studios
     signed: true
     text:
-      - test<p>test test test<p>test test<p>test<p>test
+      - <&f><&font[adriftus:mod_tools]><&chr[F808]><&chr[1001]>test<p>test test test<p>test test<p>test<p>test
 
 player_book_menu_item:
   type: item
