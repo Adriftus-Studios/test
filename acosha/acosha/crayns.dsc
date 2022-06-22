@@ -258,7 +258,7 @@ crayon_drawing:
       - define occupied <context.location.add[<[differential].mul[0.5]>].find_entities[crayon_frame].within[0.2]>
       - if <[occupied].size> > 0:
         - stop
-      - spawn crayon_frame[rotation=<context.location.direction[<context.relative>]>] <context.relative> save:crayon
+      - spawn crayon_frame[rotation=<[differential].vector_to_face>] <context.relative> save:crayon
       - adjust <entry[crayon].spawned_entity> visible:false
       - define color <player.item_in_hand.color>
       - adjust <entry[crayon].spawned_entity> framed:<item[leather_horse_armor].with[custom_model_data=21;color=<[color]>]>
