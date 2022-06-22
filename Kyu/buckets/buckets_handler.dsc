@@ -9,8 +9,8 @@ buckets_handler:
     on player empties bucket priority:10:
       - determine cancelled
 
-    # Milk Bucket
-    on player right clicks cow with:bucket_*_milk_half|!bucket_*_*|bucket_*:
+    # Milking Cows, Mooshrooms, and Goats
+    on player right clicks cow|mushroom_cow|goat with:bucket_*_milk_half|!bucket_*_*|bucket_*:
       - ratelimit <player> 2t
       - define item <context.item>
       # Empty Wooden Bucket -> Replace with filled bucket
@@ -28,11 +28,23 @@ buckets_handler:
         - else:
           - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk]> d:<player.inventory>
         # Play sound to mimic milking with empty bucket
-        - playsound <player> sound:ENTITY_COW_MILK
+        - choose <context.entity.entity_type>:
+          - case cow goat:
+            - playsound <player> sound:ENTITY_<context.entity.entity_type>_MILK
+          - case mushroom_cow:
+            - playsound <player> sound:ENTITY_MOOSHROOM_MILK
       - determine cancelled
-
+    # Drinking Milk
     on player consumes bucket_*_milk*:
       - define item <context.item>
+      # Subtract 1 to quantity if bucket has quantity
+      - if <[item].flag[quantity].sub[1]> > 0:
+        - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk].with[lore=<&6>Quantity<&co><&sp><&e><[item].flag[quantity].sub[1]>|<&6>Capacity<&co><&sp><&e><script[buckets_config].data_key[<[item].flag[material]>]>].with_flag[quantity:<[item].flag[quantity].sub[1]>]> d:<player.inventory>
+      - else:
+        - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>]> d:<player.inventory>
+      # Remove status effects to mimic drinking milk bucket
+      - foreach <player.effects_data> as:effect:
+        - cast <[effect].get[type]> remove
       - determine cancelled
 
 
