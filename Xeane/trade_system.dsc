@@ -1,6 +1,7 @@
 trade_inventory:
   type: inventory
   debug: false
+  inventory: chest
   title: <&a>Trading!
   size: 54
   gui: true
