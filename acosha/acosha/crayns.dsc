@@ -5,7 +5,7 @@ crayon_brown:
     flags:
       right_click_script: crayon_drawing
       custom_durability:
-        max: 36
+        max: 32
         current: 0
     mechanisms:
         custom_model_data: 18
@@ -22,7 +22,7 @@ crayon_white:
     flags:
       right_click_script: crayon_drawing
       custom_durability:
-        max: 36
+        max: 32
         current: 0
     mechanisms:
         custom_model_data: 18
@@ -39,7 +39,7 @@ crayon_yellow:
     flags:
       right_click_script: crayon_drawing
       custom_durability:
-        max: 36
+        max: 32
         current: 0
     mechanisms:
         custom_model_data: 18
@@ -56,7 +56,7 @@ crayon_orange:
     flags:
       right_click_script: crayon_drawing
       custom_durability:
-        max: 36
+        max: 32
         current: 0
     mechanisms:
         custom_model_data: 18
@@ -73,7 +73,7 @@ crayon_Fuchsia:
     flags:
       right_click_script: crayon_drawing
       custom_durability:
-        max: 36
+        max: 32
         current: 0
     mechanisms:
         custom_model_data: 18
@@ -90,7 +90,7 @@ crayon_light_blue:
     flags:
       right_click_script: crayon_drawing
       custom_durability:
-        max: 36
+        max: 32
         current: 0
     mechanisms:
         custom_model_data: 18
@@ -107,7 +107,7 @@ crayon_lime:
     flags:
       right_click_script: crayon_drawing
       custom_durability:
-        max: 36
+        max: 32
         current: 0
     mechanisms:
         custom_model_data: 18
@@ -124,7 +124,7 @@ crayon_pink:
     flags:
       right_click_script: crayon_drawing
       custom_durability:
-        max: 36
+        max: 32
         current: 0
     mechanisms:
         custom_model_data: 18
@@ -141,7 +141,7 @@ crayon_Gray:
     flags:
       right_click_script: crayon_drawing
       custom_durability:
-        max: 36
+        max: 32
         current: 0
     mechanisms:
         custom_model_data: 18
@@ -158,7 +158,7 @@ crayon_purple:
     flags:
       right_click_script: crayon_drawing
       custom_durability:
-        max: 36
+        max: 32
         current: 0
     mechanisms:
         custom_model_data: 18
@@ -175,7 +175,7 @@ crayon_Blue:
     flags:
       right_click_script: crayon_drawing
       custom_durability:
-        max: 36
+        max: 32
         current: 0
     mechanisms:
         custom_model_data: 18
@@ -192,7 +192,7 @@ crayon_green:
     flags:
       right_click_script: crayon_drawing
       custom_durability:
-        max: 36
+        max: 32
         current: 0
     mechanisms:
         custom_model_data: 18
@@ -209,7 +209,7 @@ crayon_red:
     flags:
       right_click_script: crayon_drawing
       custom_durability:
-        max: 36
+        max: 32
         current: 0
     mechanisms:
         custom_model_data: 18
@@ -226,7 +226,7 @@ crayon_black:
     flags:
       right_click_script: crayon_drawing
       custom_durability:
-        max: 36
+        max: 32
         current: 0
     mechanisms:
         custom_model_data: 18
