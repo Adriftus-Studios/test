@@ -12,9 +12,10 @@ trade_inventory:
       player_2_confirm: 51|52
     click_script_slots:
       # Player Heads
-      1: cancel
-      9: cancel
+      #1: cancel
+      #9: cancel
       # Player 1 Trade Slots
+      1: trade_player_1_slot
       2: trade_player_1_slot
       3: trade_player_1_slot
       4: trade_player_1_slot
@@ -36,12 +37,13 @@ trade_inventory:
       40: trade_player_1_slot
       #46: trade_player_1_slot
       47: trade_player_1_slot
-      48: trade_player_1_slot
-      49: trade_player_1_slot
+      #48: trade_player_1_slot
+      #49: trade_player_1_slot
       # Player 2 Trade Slots
       6: trade_player_2_slot
       7: trade_player_2_slot
       8: trade_player_2_slot
+      9: trade_player_2_slot
       15: trade_player_2_slot
       16: trade_player_2_slot
       17: trade_player_2_slot
@@ -58,8 +60,8 @@ trade_inventory:
       43: trade_player_2_slot
       44: trade_player_2_slot
       45: trade_player_2_slot
-      51: trade_player_2_slot
-      52: trade_player_2_slot
+      #51: trade_player_2_slot
+      #52: trade_player_2_slot
       53: trade_player_2_slot
       #54: trade_player_2_slot
       #Middle Column
