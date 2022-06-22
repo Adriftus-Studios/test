@@ -125,6 +125,7 @@ trade_player_confirm:
   debug: false
   script:
     - define number <context.item.flag[player]>
+    - determine cancelled if:<context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_<[number]>_head]>].flag[uuid].equals[<player.uuid>].not>
     - announce <[number]>
     - inventory set slot:<context.slot> o:trade_cancel_confirm_button[flag=player:<[number]>] d:<context.inventory>
 
@@ -133,6 +134,7 @@ trade_player_cancel_confirm:
   debug: false
   script:
     - define number <context.item.flag[player]>
+    - determine cancelled if:<context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_<[number]>_head]>].flag[uuid].equals[<player.uuid>].not>
     - announce <[number]>
     - inventory set slot:<context.slot> o:trade_confirm_button[flag=player:<[number]>] d:<context.inventory>
 
