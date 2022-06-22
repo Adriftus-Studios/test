@@ -6,13 +6,13 @@ bucket_testing_events:
       - determine passively cancelled
       - ratelimit <player> 1s
       - narrate "Test"
-      - give <item[bucket].with[custom_model_data=13]>
+      - give <item[bucket].with[custom_model_data=12]>
 
 bucket_wood:
   type: item
   debug: false
   material: bucket
-  display name: Wooden Bucket
+  display name: <&f>Wooden Bucket
   lore:
     - "<&6>Capacity: <&e><script[buckets_config].data_key[wood]>"
   mechanisms:
