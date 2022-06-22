@@ -165,7 +165,7 @@ trade_inventory_complete:
     - define inv_script <context.inventory.script>
     - define inverse <list[2|1]>
     - foreach <context.inventory.map_slots> key:slot as:item:
-      - if <[inv_script].data_key[data.click_script_slots.<[slot]>].exists> && <[inv_script].data_key[data.click_script_slots.<[slot]>].starts_with[trade_player]>::
+      - if <[inv_script].data_key[data.click_script_slots.<[slot]>].exists> && <[inv_script].data_key[data.click_script_slots.<[slot]>].starts_with[trade_player]>:
         - define number <[inverse].get[<[inv_script].data_key[data.click_script_slots.<[slot]>].substring[14,14]>]>
         - define target <[player.<[number]>]>
         - give <[item]> to:<player[<[player.<[number]>]>].inventory>
