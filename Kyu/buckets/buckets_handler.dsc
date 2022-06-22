@@ -26,7 +26,7 @@ buckets_handler:
       - else:
         # Add 1 to quantity if less than maximum capacity
         - if <[item].flag[quantity].add[1]> < <script[buckets_config].data_key[<[item].flag[material]>]>:
-          - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk].with[lore=<&6>Quantity<&co><&sp><&e><[item].flag[quantity].add[1]>|<&6>Capacity<&co><&sp><&e><script[buckets_config].data_key[<[item].flag[material]>]>].with_flag[quantity:<[item].flag[quantity].add[1]>]> d:<player.inventory>
+          - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk].with[lore=<&e><&o><script[buckets_flavor_text].data_key[<[item].flag[material]>]>|<&6>Quantity<&co><&sp><&e><[item].flag[quantity].add[1]>|<&6>Capacity<&co><&sp><&e><script[buckets_config].data_key[<[item].flag[material]>]>].with_flag[quantity:<[item].flag[quantity].add[1]>]> d:<player.inventory>
         # Replace with filled bucket
         - else:
           - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk]> d:<player.inventory>
@@ -42,7 +42,7 @@ buckets_handler:
       - define item <context.item>
       # Subtract 1 to quantity if bucket has quantity
       - if <[item].flag[quantity].sub[1]> > 0:
-        - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk].with[lore=<&6>Quantity<&co><&sp><&e><[item].flag[quantity].sub[1]>|<&6>Capacity<&co><&sp><&e><script[buckets_config].data_key[<[item].flag[material]>]>].with_flag[quantity:<[item].flag[quantity].sub[1]>]> d:<player.inventory>
+        - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk].with[lore=<&e><&o><script[buckets_flavor_text].data_key[<[item].flag[material]>]>|<&6>Quantity<&co><&sp><&e><[item].flag[quantity].sub[1]>|<&6>Capacity<&co><&sp><&e><script[buckets_config].data_key[<[item].flag[material]>]>].with_flag[quantity:<[item].flag[quantity].sub[1]>]> d:<player.inventory>
       - else:
         - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>]> d:<player.inventory>
       # Remove status effects to mimic drinking milk bucket
@@ -58,3 +58,10 @@ buckets_config:
   iron: 2
   diamond: 3
   netherite: 5
+
+buckets_flavor_text:
+  type: data
+  wood: A small wooden bucket.
+  iron: A sturdy iron bucket.
+  diamond: A big, sparkly diamond bucket.
+  netherite: A massive netherite tub.
