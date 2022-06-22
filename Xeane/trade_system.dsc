@@ -178,6 +178,10 @@ trade_inventory_cancel:
   script:
     - define player.1 <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_1_head]>].flag[uuid].as_player>
     - define player.2 <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_2_head]>].flag[uuid].as_player>
+    - if <[player.1].open_inventory.note_name> == trade_<[player.1].uuid>/<[player.2].uuid> && <player> != <[player.1]>:
+      - inventory close player:<[player.1]>
+    - if <[player.2].open_inventory.note_name> == trade_<[player.1].uuid>/<[player.2].uuid> && <player> != <[player.2]>:
+      - inventory close player:<[player.2]>
     - if <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_1_confirm]>].material.name> != air:
       - inventory set slot:<context.inventory.script.data_key[data.item_slots.player_1_confirm]> o:air d:<context.inventory>
       - define inv_script <context.inventory.script>
@@ -186,10 +190,8 @@ trade_inventory_cancel:
           - define number <[inv_script].data_key[data.click_script_slots.<[slot]>].substring[14,14]>
           - define target <[player.<[number]>]>
           - give <[item]> to:<player[<[player.<[number]>]>].inventory>
-    - if <[player.1].open_inventory.note_name> == trade_<[player.1].uuid>/<[player.2].uuid> && <player> != <[player.1]>:
-      - inventory close player:<[player.1]>
-    - if <[player.2].open_inventory.note_name> == trade_<[player.1].uuid>/<[player.2].uuid> && <player> != <[player.2]>:
-      - inventory close player:<[player.2]>
+    - else:
+      - stop
     - announce "<context.inventory.note_name> deleted"
     - note remove as:<context.inventory.note_name>
 
