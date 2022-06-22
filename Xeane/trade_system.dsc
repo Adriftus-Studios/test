@@ -86,16 +86,17 @@ trade_cancel_confirm_button:
 trade_open:
   type: task
   debug: false
-  definitions: target
+  definitions: player2|player1
   script:
-    - note <inventory[trade_inventory]> as:trade_<player.uuid>/<[target].uuid>
+    - define player1 <player> if:<[player1].exists.not>
+    - note <inventory[trade_inventory]> as:trade_<player.uuid>/<[player2].uuid>
     - define inv_script <inventory[trade_inventory].script>
-    - inventory set slot:<[inv_script].data_key[data.item_slots.player_1_head]> o:player_head[skull_skin=<player.skull_skin>;display=<&a><player.name>;custom_model_data=100;flag=uuid:<player.uuid>] d:trade_<player.uuid>/<[target].uuid>
-    - inventory set slot:<[inv_script].data_key[data.item_slots.player_2_head]> o:player_head[skull_skin=<[target].skull_skin>;display=<&a><[target].name>;custom_model_data=101;flag=uuid:<[target].uuid>] d:trade_<player.uuid>/<[target].uuid>
-    - inventory set slot:<[inv_script].data_key[data.item_slots.player_1_confirm]> o:trade_confirm_button[flag=player:1] d:trade_<player.uuid>/<[target].uuid>
-    - inventory set slot:<[inv_script].data_key[data.item_slots.player_2_confirm]> o:trade_confirm_button[flag=player:2] d:trade_<player.uuid>/<[target].uuid>
-    - inventory open d:trade_<player.uuid>/<[target].uuid>
-    - inventory open d:trade_<player.uuid>/<[target].uuid> player:<[target]>
+    - inventory set slot:<[inv_script].data_key[data.item_slots.player_1_head]> o:player_head[skull_skin=<player.skull_skin>;display=<&a><player.name>;custom_model_data=100;flag=uuid:<player.uuid>] d:trade_<player.uuid>/<[player2].uuid>
+    - inventory set slot:<[inv_script].data_key[data.item_slots.player_2_head]> o:player_head[skull_skin=<[player2].skull_skin>;display=<&a><[player2].name>;custom_model_data=101;flag=uuid:<[player2].uuid>] d:trade_<player.uuid>/<[player2].uuid>
+    - inventory set slot:<[inv_script].data_key[data.item_slots.player_1_confirm]> o:trade_confirm_button[flag=player:1] d:trade_<player.uuid>/<[player2].uuid>
+    - inventory set slot:<[inv_script].data_key[data.item_slots.player_2_confirm]> o:trade_confirm_button[flag=player:2] d:trade_<player.uuid>/<[player2].uuid>
+    - inventory open d:trade_<player.uuid>/<[player2].uuid>
+    - inventory open d:trade_<[player1].uuid>/<[player2].uuid> player:<[player2]>
 
 trade_player_1_slot:
   type: task
