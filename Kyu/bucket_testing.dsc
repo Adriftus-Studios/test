@@ -5,15 +5,21 @@ bucket_testing_events:
     on player right clicks cow with:bucket_wood|bucket_*_milk_half:
       - determine passively cancelled
       - ratelimit <player> 2t
-      - narrate <context.item.script>
-      # Add 1 to quantity if less than maximum capacity
-      - if <context.item.script.advanced_matches[bucket_*_milk_half]>:
-        - if <context.item.flag[quantity].add[1]> == <script[buckets_config].data_key[<context.item.script.after[_].before[_]>]>:
-          - narrate replace
-        - else:
-          - narrate increment
+      - define item <context.item>
+      # Empty Wooden Bucket -> Replace with filled bucket
+      - if <[item].script.name> == bucket_wood:
+        - inventory set slot:<player.held_item_slot> o:<item[bucket_wood_milk]> d:<player.inventory>
+      # Empty Bucket -> Replace with partially/half filled bucket
+      - else if <[item].script.advanced_matches[!bucket_*_milk_half|bucket_*]>:
+        - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk_half]> d:<player.inventory>
+      # Partially filled Bucket -> Do logic
       - else:
-        - give <item[bucket].with[custom_model_data=12]>
+        # Add 1 to quantity if less than maximum capacity
+        - if <[item].flag[quantity].add[1]> < <script[buckets_config].data_key[<[item].flag[material]>]>:
+          - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk].with_flag[quantity:<[item].flag[quantity].add[1]>]> d:<player.inventory>
+        # Replace with filled bucket
+        - else:
+          - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk]> d:<player.inventory>
 
 bucket_wood:
   type: item
@@ -31,6 +37,35 @@ bucket_wood:
         - stick|stick|stick
         - oak_planks/spruce_planks/birch_planks/jungle_planks/acacia_planks/dark_oak_planks/crimson_planks/warped_planks|air|oak_planks/spruce_planks/birch_planks/jungle_planks/acacia_planks/dark_oak_planks/crimson_planks/warped_planks
         - air|oak_planks/spruce_planks/birch_planks/jungle_planks/acacia_planks/dark_oak_planks/crimson_planks/warped_planks|air
+
+bucket_wood_milk:
+  type: item
+  debug: false
+  material: bucket
+  display name: Wooden Bucket of Milk
+  lore:
+    - "<&6>Capacity: <&e><script[buckets_config].data_key[wood]>"
+  mechanisms:
+    custom_model_data: 12
+  flags:
+    material: wood
+    contents: milk
+    quantity: 1
+
+bucket_iron_milk_half:
+  type: item
+  debug: false
+  material: bucket
+  display name: Iron Bucket of Milk
+  lore:
+    - "<&6>Quantity: <&e><script.flag[quantity]>"
+    - "<&6>Capacity: <&e><script[buckets_config].data_key[iron]>"
+  mechanisms:
+    custom_model_data: 22
+  flags:
+    material: iron
+    contents: milk
+    quantity: 1
 
 # -- BUCKETS CONFIG
 buckets_config:
