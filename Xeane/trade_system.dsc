@@ -113,15 +113,19 @@ trade_inventory_cancel:
   type: task
   debug: false
   script:
+    - stop if:<context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_1_head]>].material.name.equals[air]>
     - define player.1 <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_1_head]>].flag[uuid]>
     - define player.2 <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_2_head]>].flag[uuid]>
+    - inventory set slot:<context.inventory.script.data_key[data.item_slots.player_1_head]> air
     - define inv_script <context.inventory.script>
     - foreach <context.inventory.map_slots> key:slot as:item:
       - if <[inv_script].data_key[data.click_script_slots.<[slot]>].exists>:
         - define number <[inv_script].data_key[data.click_script_slots.<[slot]>].substring[14,14]>
         - define target <[player.<[number]>]>
         - give <[item]> to:<player[<[player.<[number]>]>].inventory>
-    - inventory close player:<[player.1]>
-    - inventory close player:<[player.2]>
+    - if <[player.1].open_inventory.note_name> == trade_<[player.1]>/<[player.2]>:
+      - inventory close player:<[player.1]>
+    - if <[player.2].open_inventory.note_name> == trade_<[player.1]>/<[player.2]>:
+      - inventory close player:<[player.2]>
     - announce "<context.inventory.note_name> deleted"
     - note remove as:<context.inventory.note_name>
