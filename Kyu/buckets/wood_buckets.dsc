@@ -4,7 +4,7 @@ bucket_wood:
   material: bucket
   display name: <&f>Wooden Bucket
   lore:
-    - "<&e><script[buckets_flavor_text].data_key[wood]>"
+    - "<&6><script[buckets_flavor_text].data_key[wood]>"
     - ""
     - "<&6>Capacity: <&e><script[buckets_config].data_key[wood]>"
   mechanisms:
