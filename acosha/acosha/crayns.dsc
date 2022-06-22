@@ -250,8 +250,6 @@ crayon_drawing:
     debug: true
     script:
       - ratelimit <player> 2t
-      - narrate <context.location.material.name>
-      - narrate <context.relative.material.name>
       - stop if:<context.location.material.is_solid.not>
       - stop if:<context.location.material.name.equals[barrier]>
       - define differential <context.relative.sub[<context.location>]>
@@ -268,8 +266,8 @@ crayon_drawing:
         - define slot 41
       - define value 1
       - inject custom_durability_process_task
-      - if <[durability].mod[4].if_null[10]> == 0:
-        - take iteminhand
+      - if <player.item_in_hand.script.name.starts_with[crayon].if_null[false]> && <[current_dur].mod[4]> == 0:
+        - inventory adjust slot:<player.held_item_slot> custom_model_data:<player.item_in_hand.custom_model_data.sub[1]>
 
 crayon_breaking:
     type: task
