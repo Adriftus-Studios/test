@@ -66,6 +66,7 @@ buckets_startup:
     after player clicks bucket_* in inventory with:bucket_*:
       - inventory adjust slot:<context.slot> quantity:1 d:<context.clicked_inventory>
       - adjust <context.cursor_item> quantity:1
+      - determine cancelled
 
 # -- BUCKETS CONFIGS
 buckets_config:
