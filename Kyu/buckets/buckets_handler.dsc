@@ -64,6 +64,7 @@ buckets_startup:
       - adjust <material[bucket]> max_stack_size:1
 
     after player clicks !bucket_*_*|bucket_* in inventory:
+      - narrate <context.action>
       - inventory adjust slot:<context.slot> quantity:1 d:<context.clicked_inventory>
 
     on player clicks !bucket_*_*|bucket_* in inventory with:!bucket_*_*|bucket_* action:place_*:
