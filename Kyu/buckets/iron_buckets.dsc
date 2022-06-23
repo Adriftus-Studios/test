@@ -19,6 +19,13 @@ bucket_iron:
       input:
         - iron_ingot|bucket_wood|iron_ingot
         - air|iron_ingot|air
+        - air|air|air
+    2:
+      type: shaped
+      input:
+        - air|air|air
+        - iron_ingot|bucket_wood|iron_ingot
+        - air|iron_ingot|air
 
 bucket_iron_milk:
   type: item
