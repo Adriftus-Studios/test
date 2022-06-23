@@ -77,6 +77,22 @@ trade_inventory:
     on_drag: cancel
     any_click: trade_sanitize
 
+trade_data_initialize:
+  type: world
+  debug: false
+  init:
+    - flag server trade_slots:!
+    - foreach <script[trade_inventory].data_key[data.click_script_slots]> key:slot as:script:
+      - if !<[script].starts_with[trade_player_]>:
+        - foreach next
+      - define number <[script].substring[14,14]>
+      - flag server trade_slots.<[number]>:->:<[slot]>
+  events:
+    on server start:
+      - inject locally path:init
+    on script reload:
+      - inject locally path:init
+
 trade_confirm_button:
   type: item
   debug: false
@@ -257,4 +273,14 @@ trade_sanitize:
   debug: false
   script:
     - if !<list[LEFT|RIGHT].contains[<context.click>]>:
+      - if !<context.is_shift_click>:
+        - determine cancelled
+      - if <context.inventory.slot[<script[trade_inventory].data_key[data.player_1_head]>].flag[uuid]> == <player.uuid>:
+        - define number 1
+      - else:
+        - define number 2
+      - foreach <server.flag[trade_slots.<[number]>]>:
+        - if <context.inventory.slot[<[value]>].material.name> == air:
+          - inventory set slot:<[value]> o:<context.item> d:<context.inventory>
+          - determine air
       - determine cancelled
