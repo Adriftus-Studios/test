@@ -55,6 +55,15 @@ buckets_handler:
       - determine cancelled
 
 
+# -- Any Planks
+any_planks:
+  type: item
+  debug: false
+  material: oak_planks
+  display name: <&f>Any Planks
+  lore:
+    - "<&e>You can use any kind of planks in this recipe."
+
 # -- Configure max stack size for bucket.
 buckets_startup:
   type: world
