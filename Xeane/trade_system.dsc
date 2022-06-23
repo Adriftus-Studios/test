@@ -275,7 +275,7 @@ trade_sanitize:
     - if !<list[LEFT|RIGHT].contains[<context.click>]>:
       - if !<context.is_shift_click>:
         - determine cancelled
-      - if <context.inventory.slot[<script[trade_inventory].data_key[data.player_1_head]>].flag[uuid]> == <player.uuid>:
+      - if <context.inventory.slot[<script[trade_inventory].data_key[data.item_slots.player_1_head]>].flag[uuid]> == <player.uuid>:
         - define number 1
       - else:
         - define number 2
