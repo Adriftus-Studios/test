@@ -64,7 +64,9 @@ buckets_startup:
       - adjust <material[bucket]> max_stack_size:1
 
     after player clicks item_flagged:unique in inventory:
-      - adjust <context.item.material> max_stack_size:1
+      - define item <context.item>
+      - adjust <[item].material> max_stack_size:1
+      - adjust <player> item_on_cursor:<[item]>
       - inventory update d:<context.clicked_inventory>
 
 # -- BUCKETS CONFIGS
