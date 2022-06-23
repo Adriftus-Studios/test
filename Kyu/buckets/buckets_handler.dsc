@@ -1,7 +1,7 @@
 # -- BUCKETS
 buckets_handler:
   type: world
-  debug: false
+  debug: true
   events:
     # General
     on player fills bucket priority:10:
@@ -26,7 +26,7 @@ buckets_handler:
       - else:
         # Add 1 to quantity if less than maximum capacity
         - if <[item].flag[quantity].add[1]> < <script[buckets_config].data_key[<[item].flag[material]>]>:
-          - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk].with[lore=<&e><script[buckets_flavor_text].data_key[<[item].flag[material]>]><&nl>|<&6>Quantity<&co><&sp><&e><[item].flag[quantity].add[1]><&6><&fs><&e><script[buckets_config].data_key[<[item].flag[material]>]>].with_flag[quantity:<[item].flag[quantity].add[1]>]> d:<player.inventory>
+          - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk_half].with[lore=<&e><script[buckets_flavor_text].data_key[<[item].flag[material]>]><&nl>|<&6>Quantity<&co><&sp><&e><[item].flag[quantity].add[1]><&6>/<&e><script[buckets_config].data_key[<[item].flag[material]>]>].with_flag[quantity:<[item].flag[quantity].add[1]>]> d:<player.inventory>
         # Replace with filled bucket
         - else:
           - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk]> d:<player.inventory>
@@ -40,17 +40,29 @@ buckets_handler:
     # Drinking Milk
     on player consumes bucket_*_milk*:
       - define item <context.item>
+      # Offhand slot is 41
+      - if <player.item_in_offhand> == <context.item>:
+        - define slot 41
+      - else:
+        - define slot <player.held_item_slot>
       # Subtract 1 to quantity if bucket has quantity
       - if <[item].flag[quantity].sub[1]> > 0:
-        - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk_half].with[lore=<&e><script[buckets_flavor_text].data_key[<[item].flag[material]>]><&nl>|<&6>Quantity<&co><&sp><&e><[item].flag[quantity].sub[1]><&6><&fs><&e><script[buckets_config].data_key[<[item].flag[material]>]>].with_flag[quantity:<[item].flag[quantity].sub[1]>]> d:<player.inventory>
+        - inventory set slot:<[slot]> o:<item[bucket_<[item].flag[material]>_milk_half].with[lore=<&e><script[buckets_flavor_text].data_key[<[item].flag[material]>]><&nl>|<&6>Quantity<&co><&sp><&e><[item].flag[quantity].sub[1]><&6>/<&e><script[buckets_config].data_key[<[item].flag[material]>]>].with_flag[quantity:<[item].flag[quantity].sub[1]>]> d:<player.inventory>
       - else:
-        - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>]> d:<player.inventory>
+        - inventory set slot:<[slot]> o:<item[bucket_<[item].flag[material]>]> d:<player.inventory>
       # Remove status effects to mimic drinking milk bucket
       - adjust <player> remove_effects
       - determine cancelled
 
+# -- Configure max stack size for bucket.
+buckets_startup:
+  type: world
+  debug: false
+  events:
+    after server start:
+      - adjust <material[bucket]> max_stack_size:1
 
-# -- BUCKETS CONFIG
+# -- BUCKETS CONFIGS
 buckets_config:
   type: data
   wood: 1
