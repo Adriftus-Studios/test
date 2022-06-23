@@ -118,7 +118,7 @@ trade_cancel_confirm_button12:
 trade_cancel_confirm_button21:
   type: item
   debug: false
-  material: feather
+  material: paper
   display name: <&a>Cancel Confirm
   lore:
     - "<&a>Cancel the confirmation"
@@ -131,7 +131,7 @@ trade_cancel_confirm_button21:
 trade_cancel_confirm_button22:
   type: item
   debug: false
-  material: feather
+  material: paper
   display name: <&a>Cancel Confirm
   lore:
     - "<&a>Cancel the confirmation"
