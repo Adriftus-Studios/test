@@ -13,8 +13,7 @@ buckets_handler:
     on player right clicks cow|mushroom_cow|goat with:bucket_*_milk_half|!bucket_*_*|bucket_*:
       - ratelimit <player> 2t
       - define item <context.item>
-      - if <context.hand> == offhand:
-        # Offhand slot is 41
+      - if <player.item_in_offhand> == <context.item>:
         - define slot 41
       - else:
         - define slot <player.held_item_slot>
