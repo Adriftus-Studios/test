@@ -6,7 +6,7 @@ bucket_iron:
   lore:
     - "<&6><script[buckets_flavor_text].data_key[iron]>"
     - ""
-    - "<&6>Capacity: <&e><script[buckets_config].data_key[iron]>"
+    - "<&6>Capacity: <&e>0<&6>/<&e><script[buckets_config].data_key[iron]>"
   mechanisms:
     custom_model_data: 2
   data:
@@ -29,8 +29,7 @@ bucket_iron_milk:
   lore:
     - "<&6><script[buckets_flavor_text].data_key[iron]>"
     - ""
-    - "<&6>Quantity: <&e><script[buckets_config].data_key[iron]>"
-    - "<&6>Capacity: <&e><script[buckets_config].data_key[iron]>"
+    - "<&6>Quantity: <&e><script[buckets_config].data_key[iron]><&6>/<&e><script[buckets_config].data_key[iron]>"
   mechanisms:
     custom_model_data: 2
   flags:
@@ -46,8 +45,7 @@ bucket_iron_milk_half:
   lore:
     - "<&6><script[buckets_flavor_text].data_key[iron]>"
     - ""
-    - "<&6>Quantity: <&e>1"
-    - "<&6>Capacity: <&e><script[buckets_config].data_key[iron]>"
+    - "<&6>Quantity: <&e>1<&6>/<&e><script[buckets_config].data_key[iron]>"
   mechanisms:
     custom_model_data: 2
   flags:
