@@ -14,6 +14,7 @@ bucket_iron:
   flags:
     material: iron
     quantity: 0
+    unique: <server.current_time_millis>
   recipes:
     1:
       type: shaped
@@ -36,6 +37,7 @@ bucket_iron_milk:
     material: iron
     contents: milk
     quantity: 2
+    unique: <server.current_time_millis>
 
 bucket_iron_milk_half:
   type: item
@@ -52,3 +54,4 @@ bucket_iron_milk_half:
     material: iron
     contents: milk
     quantity: 1
+    unique: <server.current_time_millis>
