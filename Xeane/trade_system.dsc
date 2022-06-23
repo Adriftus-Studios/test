@@ -288,6 +288,7 @@ trade_sanitize:
   type: task
   debug: false
   script:
+    - ratelimit <player> 1t
     - if !<list[LEFT|RIGHT].contains[<context.click>]>:
       - if <context.clicked_inventory> == <context.inventory>:
         - stop
