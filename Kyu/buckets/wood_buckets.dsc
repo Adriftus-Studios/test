@@ -12,6 +12,7 @@ bucket_wood:
   flags:
     material: wood
     quantity: 0
+    unique: <server.current_time_millis>
   recipes:
     1:
       type: shaped
@@ -59,3 +60,4 @@ bucket_wood_milk:
     material: wood
     contents: milk
     quantity: 1
+    unique: <server.current_time_millis>
