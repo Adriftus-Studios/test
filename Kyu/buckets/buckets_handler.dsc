@@ -63,10 +63,10 @@ buckets_startup:
     after server start:
       - adjust <material[bucket]> max_stack_size:1
 
-    after player clicks !bucket_*_*|bucket_* in inventory priority:10:
+    after player clicks !bucket_*_*|bucket_* in inventory:
       - inventory adjust slot:<context.slot> quantity:1 d:<context.clicked_inventory>
 
-    after player clicks !bucket_*_*|bucket_* in inventory with:!bucket_*_*|bucket_*:
+    on player clicks !bucket_*_*|bucket_* in inventory with:!bucket_*_*|bucket_* action:place_*:
       - determine cancelled
 
 # -- BUCKETS CONFIGS
