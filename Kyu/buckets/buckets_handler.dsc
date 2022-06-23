@@ -66,6 +66,9 @@ buckets_startup:
     after player clicks !bucket_*_*|bucket_* in inventory:
       - inventory adjust slot:<context.slot> quantity:1 d:<context.clicked_inventory>
 
+    on player clicks !bucket_*_*|bucket_* in inventory with:!bucket_*_*|bucket_*:
+      - determine cancelled
+
 # -- BUCKETS CONFIGS
 buckets_config:
   type: data
