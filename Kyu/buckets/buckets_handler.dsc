@@ -63,11 +63,11 @@ buckets_startup:
     after server start:
       - adjust <material[bucket]> max_stack_size:1
 
-    after player clicks bucket in inventory:
+    after player clicks bucket_* in inventory:
       - narrate <context.action>
       - inventory adjust slot:<context.slot> quantity:1 d:<context.clicked_inventory>
 
-    on player clicks bucket in inventory with:bucket action:place_*:
+    on player clicks bucket_* in inventory with:bucket_* action:place_*:
       - determine cancelled
 
 # -- BUCKETS CONFIGS
