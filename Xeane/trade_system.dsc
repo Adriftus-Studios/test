@@ -12,6 +12,8 @@ trade_inventory:
       player_1_confirm2: 49
       player_2_confirm: 52
       player_2_confirm2: 51
+      player_1_currency_button: 39
+      player_2_currency_button: 43
     click_script_slots:
       # Player Heads
       #1: cancel
@@ -157,6 +159,18 @@ trade_cancel_confirm_button22:
   mechanisms:
     custom_model_data: 1102
 
+trade_currency_button:
+  type: item
+  debug: false
+  material: feather
+  display name: <&a>Currency
+  lore:
+    - "<&c>Unavailable"
+  flags:
+    run_script: cancel
+  mechanisms:
+    custom_model_data: 3
+
 trade_open:
   type: task
   debug: false
@@ -171,6 +185,8 @@ trade_open:
       - inventory set slot:<[value]> o:trade_confirm_button[flag=player:1] d:trade_<[player1].uuid>/<[player2].uuid>
     - foreach <[inv_script].data_key[data.item_slots.player_2_confirm]>|<[inv_script].data_key[data.item_slots.player_2_confirm2]>:
       - inventory set slot:<[value]> o:trade_confirm_button[flag=player:2] d:trade_<[player1].uuid>/<[player2].uuid>
+    - inventory set slot:<[inv_script].data_key[data.item_slots.player_1_currency_button]> o:trade_currency_button[flag=player:1] d:trade_<[player1].uuid>/<[player2].uuid>
+    - inventory set slot:<[inv_script].data_key[data.item_slots.player_2_currency_button]> o:trade_currency_button[flag=player:2] d:trade_<[player1].uuid>/<[player2].uuid>
     - inventory open d:trade_<[player1].uuid>/<[player2].uuid>
     - inventory open d:trade_<[player1].uuid>/<[player2].uuid> player:<[player2]>
 
