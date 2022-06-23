@@ -212,7 +212,7 @@ trade_player_confirm:
     - ratelimit <player> 2t
     - define number <context.item.flag[player]>
     - stop if:<context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_<[number]>_head]>].flag[uuid].equals[<player.uuid>].not>
-    - if <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_2_confirm]>].script.name> == trade_cancel_confirm_button && <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_1_confirm]>].script.name> == trade_cancel_confirm_button:
+    - if <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_2_confirm]>].script.name> == trade_cancel_confirm_button21 && <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_1_confirm]>].script.name> == trade_cancel_confirm_button11:
       - inject trade_inventory_complete
     - foreach <context.inventory.script.data_key[data.item_slots.player_<[number]>_confirm]>|<context.inventory.script.data_key[data.item_slots.player_<[number]>_confirm2]>:
       - inventory set slot:<[value]> o:trade_cancel_confirm_button<[number]><[loop_index]>[flag=player:<[number]>] d:<context.inventory>
