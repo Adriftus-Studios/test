@@ -63,10 +63,8 @@ buckets_startup:
     after server start:
       - adjust <material[bucket]> max_stack_size:1
 
-    after player clicks item_flagged:unique in inventory:
-      - determine passively cancelled
-      - wait 1t
-      - inventory update d:<player.inventory>
+    after player clicks !bucket_*_*|bucket_* in inventory:
+      - inventory adjust slot:<context.slot> quantity:1 d:<context.clicked_inventory>
 
 # -- BUCKETS CONFIGS
 buckets_config:
