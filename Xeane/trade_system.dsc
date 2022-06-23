@@ -126,7 +126,7 @@ trade_cancel_confirm_button21:
   flags:
     run_script: trade_player_cancel_confirm
   mechanisms:
-    custom_model_data: 1102
+    custom_model_data: 1103
 
 trade_cancel_confirm_button22:
   type: item
@@ -139,7 +139,7 @@ trade_cancel_confirm_button22:
   flags:
     run_script: trade_player_cancel_confirm
   mechanisms:
-    custom_model_data: 1103
+    custom_model_data: 1102
 
 trade_open:
   type: task
