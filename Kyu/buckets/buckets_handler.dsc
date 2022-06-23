@@ -64,6 +64,7 @@ buckets_startup:
       - adjust <material[bucket]> max_stack_size:1
 
     after player clicks bucket_* in inventory with:bucket_*:
+      - inventory adjust slot:<context.slot> quantity:1 d:<context.clicked_inventory>
       - adjust <context.cursor_item> quantity:1
 
 # -- BUCKETS CONFIGS
