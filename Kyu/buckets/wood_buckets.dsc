@@ -4,7 +4,7 @@ bucket_wood:
   material: bucket
   display name: <&f>Wooden Bucket
   lore:
-    - "<&6><script[buckets_flavor_text].data_key[wood]>"
+    - "<&e><script[buckets_flavor_text].data_key[wood]>"
     - ""
     - "<&6>Quantity: <&e>0<&6>/<&e>1"
   mechanisms:
@@ -28,7 +28,7 @@ bucket_wood_display:
   material: bucket
   display name: <&f>Wooden Bucket
   lore:
-    - "<&6><script[buckets_flavor_text].data_key[wood]>"
+    - "<&e><script[buckets_flavor_text].data_key[wood]>"
     - ""
     - "<&6>Quantity: <&e>0<&6>/<&e>1"
   mechanisms:
@@ -50,7 +50,7 @@ bucket_wood_milk:
   material: milk_bucket
   display name: <&f>Wooden Bucket of Milk
   lore:
-    - "<&6><script[buckets_flavor_text].data_key[wood]>"
+    - "<&e><script[buckets_flavor_text].data_key[wood]>"
     - ""
     - "<&6>Quantity: <&e>1<&6>/<&e>1"
   mechanisms:
