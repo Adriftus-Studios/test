@@ -4,7 +4,7 @@ bucket_iron:
   material: bucket
   display name: <&f>Iron Bucket
   lore:
-    - "<&6><script[buckets_flavor_text].data_key[iron]>"
+    - "<&e><script[buckets_flavor_text].data_key[iron]>"
     - ""
     - "<&6>Capacity: <&e>0<&6>/<&e><script[buckets_config].data_key[iron]>"
   mechanisms:
@@ -27,7 +27,7 @@ bucket_iron_milk:
   material: milk_bucket
   display name: <&f>Iron Bucket of Milk
   lore:
-    - "<&6><script[buckets_flavor_text].data_key[iron]>"
+    - "<&e><script[buckets_flavor_text].data_key[iron]>"
     - ""
     - "<&6>Quantity: <&e><script[buckets_config].data_key[iron]><&6>/<&e><script[buckets_config].data_key[iron]>"
   mechanisms:
@@ -43,7 +43,7 @@ bucket_iron_milk_half:
   material: milk_bucket
   display name: <&f>Iron Bucket of Milk
   lore:
-    - "<&6><script[buckets_flavor_text].data_key[iron]>"
+    - "<&e><script[buckets_flavor_text].data_key[iron]>"
     - ""
     - "<&6>Quantity: <&e>1<&6>/<&e><script[buckets_config].data_key[iron]>"
   mechanisms:
