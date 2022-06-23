@@ -64,6 +64,7 @@ buckets_startup:
       - adjust <material[bucket]> max_stack_size:1
 
     after player clicks item_flagged:unique in inventory:
+      - determine passively cancelled
       - inventory update d:<player.inventory>
 
 # -- BUCKETS CONFIGS
