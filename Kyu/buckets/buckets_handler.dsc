@@ -55,7 +55,18 @@ buckets_handler:
       - determine cancelled
 
 
-# -- BUCKETS CONFIG
+# -- Configure max stack size for bucket.
+buckets_startup:
+  type: world
+  debug: false
+  events:
+    after server start:
+      - adjust <material[bucket]> max_stack_size:1
+
+    after player clicks item_flagged:unique in inventory:
+      - inventory update d:<player.inventory>
+
+# -- BUCKETS CONFIGS
 buckets_config:
   type: data
   wood: 1
