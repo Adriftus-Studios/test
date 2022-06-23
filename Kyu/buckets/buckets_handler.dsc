@@ -13,11 +13,11 @@ buckets_handler:
     on player right clicks cow|mushroom_cow|goat with:bucket_*_milk_half|!bucket_*_*|bucket_*:
       - ratelimit <player> 2t
       - define item <context.item>
-      - if <context.hand> == mainhand:
-        - define slot <player.held_item_slot>
-      - else:
+      - if <context.hand> == offhand:
         # Offhand slot is 41
         - define slot 41
+      - else:
+        - define slot <player.held_item_slot>
       # Empty Wooden Bucket -> Replace with filled bucket
       - if <[item].script.name> == bucket_wood:
         - inventory set slot:<[slot]> o:<item[bucket_wood_milk]> d:<player.inventory>
