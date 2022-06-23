@@ -6,7 +6,7 @@ bucket_diamond:
   lore:
     - "<&e><script[buckets_flavor_text].data_key[diamond]>"
     - ""
-    - "<&6>Capacity: <&e>0<&6>/<&e><script[buckets_config].data_key[diamond]>"
+    - "<&6>Quantity: <&e>0<&6>/<&e><script[buckets_config].data_key[diamond]>"
   mechanisms:
     custom_model_data: 3
   data:
