@@ -273,6 +273,8 @@ trade_sanitize:
   debug: false
   script:
     - if !<list[LEFT|RIGHT].contains[<context.click>]>:
+      - if <context.clicked_inventory> == <context.inventory>:
+        - stop
       - if !<context.is_shift_click>:
         - determine cancelled
       - if <context.inventory.slot[<script[trade_inventory].data_key[data.item_slots.player_1_head]>].flag[uuid]> == <player.uuid>:
