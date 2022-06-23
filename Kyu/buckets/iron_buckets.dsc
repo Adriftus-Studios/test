@@ -20,26 +20,6 @@ bucket_iron:
         - iron_ingot|bucket_wood|iron_ingot
         - air|iron_ingot|air
 
-bucket_iron_display:
-  type: item
-  debug: false
-  material: bucket
-  display name: <&f>Iron Bucket
-  lore:
-    - "<&e><script[buckets_flavor_text].data_key[iron]>"
-    - ""
-    - "<&6>Quantity: <&e>0<&6>/<&e><script[buckets_config].data_key[iron]>"
-  mechanisms:
-    custom_model_data: 2
-  data:
-    recipe_book_category: misc
-  recipes:
-    1:
-      type: shaped
-      input:
-        - iron_ingot|bucket_wood_display|iron_ingot
-        - air|iron_ingot|air
-
 bucket_iron_milk:
   type: item
   debug: false
