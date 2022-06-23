@@ -23,28 +23,6 @@ bucket_wood:
 
 # oak_planks/spruce_planks/birch_planks/jungle_planks/acacia_planks/dark_oak_planks/mangrove_planks/crimson_planks/warped_planks
 
-bucket_wood_display:
-  type: item
-  debug: false
-  material: bucket
-  display name: <&f>Wooden Bucket
-  lore:
-    - "<&e><script[buckets_flavor_text].data_key[wood]>"
-    - ""
-    - "<&6>Quantity: <&e>0<&6>/<&e>1"
-  mechanisms:
-    custom_model_data: 1
-  data:
-    recipe_book_category: misc
-  recipes:
-    1:
-      type: shaped
-      input:
-        - stick|stick|stick
-        - any_planks|air|any_planks
-        - air|any_planks|air
-
-
 bucket_wood_milk:
   type: item
   debug: false
