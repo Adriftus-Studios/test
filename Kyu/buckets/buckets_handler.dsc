@@ -1,7 +1,7 @@
 # -- BUCKETS
 buckets_handler:
   type: world
-  debug: false
+  debug: true
   events:
     # General
     on player fills bucket priority:10:
