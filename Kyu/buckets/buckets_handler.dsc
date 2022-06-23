@@ -64,6 +64,7 @@ buckets_startup:
       - adjust <material[bucket]> max_stack_size:1
 
     after player clicks bucket_* in inventory with:bucket_*:
+      - determine passively cancelled
       - inventory adjust slot:<context.slot> quantity:1 d:<context.clicked_inventory>
       - adjust <player> item_on_cursor:<context.cursor_item.with[quantity:1]>
 
