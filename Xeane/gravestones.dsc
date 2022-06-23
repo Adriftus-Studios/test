@@ -31,6 +31,7 @@ gravestone:
         - air|double_compressed_stone|air
   flags:
     right_click_script: custom_object_place
+    custom_object: gravestone
   mechanisms:
     custom_model_data: 300
 
