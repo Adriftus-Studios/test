@@ -9,8 +9,6 @@ bucket_netherite:
     - "<&6>Quantity: <&e>0<&6>/<&e><script[buckets_config].data_key[netherite]>"
   mechanisms:
     custom_model_data: 4
-  data:
-    recipe_book_category: misc
   flags:
     material: netherite
     quantity: 0
