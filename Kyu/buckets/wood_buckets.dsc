@@ -6,7 +6,7 @@ bucket_wood:
   lore:
     - "<&6><script[buckets_flavor_text].data_key[wood]>"
     - ""
-    - "<&6>Capacity: <&e>0<&6>/<&e>1"
+    - "<&6>Quantity: <&e>0<&6>/<&e>1"
   mechanisms:
     custom_model_data: 1
   flags:
@@ -30,7 +30,7 @@ bucket_wood_display:
   lore:
     - "<&6><script[buckets_flavor_text].data_key[wood]>"
     - ""
-    - "<&6>Capacity: <&e>0<&6>/<&e>1"
+    - "<&6>Quantity: <&e>0<&6>/<&e>1"
   mechanisms:
     custom_model_data: 1
   data:
@@ -52,7 +52,7 @@ bucket_wood_milk:
   lore:
     - "<&6><script[buckets_flavor_text].data_key[wood]>"
     - ""
-    - "<&6>Capacity: <&e>1<&6>/<&e>1"
+    - "<&6>Quantity: <&e>1<&6>/<&e>1"
   mechanisms:
     custom_model_data: 1
   flags:
