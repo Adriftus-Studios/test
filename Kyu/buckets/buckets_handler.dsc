@@ -15,21 +15,21 @@ buckets_handler:
       - define item <context.item>
       # Empty Wooden Bucket -> Replace with filled bucket
       - if <[item].script.name> == bucket_wood:
-        - inventory set slot:<[slot]> o:<item[bucket_wood_milk]> d:<player.inventory>
+        - inventory set slot:<player.held_item_slot> o:<item[bucket_wood_milk]> d:<player.inventory>
       # Filled Bucket -> Cancel milking
       - else if <[item].script.name.advanced_matches[bucket_*_milk]>:
         - determine cancelled
       # Empty Bucket -> Replace with partially/half filled bucket
       - else if <[item].flag[quantity]> == 0:
-        - inventory set slot:<[slot]> o:<item[bucket_<[item].flag[material]>_milk_half]> d:<player.inventory>
+        - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk_half]> d:<player.inventory>
       # Partially filled Bucket -> Do logic
       - else:
         # Add 1 to quantity if less than maximum capacity
         - if <[item].flag[quantity].add[1]> < <script[buckets_config].data_key[<[item].flag[material]>]>:
-          - inventory set slot:<[slot]> o:<item[bucket_<[item].flag[material]>_milk].with[lore=<&e><script[buckets_flavor_text].data_key[<[item].flag[material]>]><&nl>|<&6>Quantity<&co><&sp><&e><[item].flag[quantity].add[1]><&6><&fs><&e><script[buckets_config].data_key[<[item].flag[material]>]>].with_flag[quantity:<[item].flag[quantity].add[1]>]> d:<player.inventory>
+          - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk].with[lore=<&e><script[buckets_flavor_text].data_key[<[item].flag[material]>]><&nl>|<&6>Quantity<&co><&sp><&e><[item].flag[quantity].add[1]><&6><&fs><&e><script[buckets_config].data_key[<[item].flag[material]>]>].with_flag[quantity:<[item].flag[quantity].add[1]>]> d:<player.inventory>
         # Replace with filled bucket
         - else:
-          - inventory set slot:<[slot]> o:<item[bucket_<[item].flag[material]>_milk]> d:<player.inventory>
+          - inventory set slot:<player.held_item_slot> o:<item[bucket_<[item].flag[material]>_milk]> d:<player.inventory>
         # Play sound to mimic milking with empty bucket
         - choose <context.entity.entity_type>:
           - case cow goat:
