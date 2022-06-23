@@ -1,3 +1,16 @@
+custom_object_gravestone:
+  type: data
+  item: gravestone
+  entity: gravestone_entity
+  interaction: gravestone_use
+  place_checks_task: gravestone_place
+  after_place_task: waystone_after_place_town
+  remove_task: gravestone_remove
+  barrier_locations:
+    - <[location]>
+    - <[location].above>
+
+
 gravestone:
   type: item
   material: feather
@@ -32,7 +45,7 @@ gravestone_entity:
       helmet: feather[custom_model_data=<list[300|301|302|303].random>]
   flags:
     right_click_script: gravestone_use
-    on_entity_added: custom_object_handler
+    on_entity_added: custom_object_update
 
 
 gravestone_place:
@@ -53,16 +66,17 @@ gravestone_place:
     - if !<entry[grave].spawned_entity.is_spawned>:
       - narrate "<&c>ERROR - Report Me - Error Code<&co> GraveNotSpawning"
       - stop
+
+gravestone_after_place:
+  type: task
+  debug: false
+  definitions: entity
+  script:
     - define town <context.location.town>
-    - define barrier_blocks <list[<entry[grave].spawned_entity.location>|<entry[grave].spawned_entity.location.above>]>
-    - modifyblock <[barrier_blocks]> barrier
-    - flag <entry[grave].spawned_entity> grave.blocks:|:<[barrier_blocks]>
-    - flag <entry[grave].spawned_entity> town:<context.location.town>
-    - flag <[town]> graves:->:<entry[grave].spawned_entity>
-    - flag <entry[grave].spawned_entity> last_used:<util.time_now>
-    - showfake <[barrier_blocks]> air duration:9999m players:<context.location.find_players_within[30]>
+    - flag <[entity]> town:<context.location.town>
+    - flag <[town]> graves:->:<[entity]>
+    - flag <[entity]> last_used:<util.time_now>
     - take iteminhand
-    - run custom_object_handler def:<entry[grave].spawned_entity>
 
 gravestone_use:
   type: task
@@ -97,11 +111,7 @@ gravestone_remove:
   definitions: entity
   script:
     - define town <[entity].flag[town]>
-    - modifyblock <[entity].flag[grave.blocks]> air
-    - showfake cancel <[entity].flag[grave.blocks]>
     - flag <[town]> graves:<-:<[entity]>
-    - remove <[entity]>
-    - give gravestone to:<player.inventory>
 
 graves_player_death_handler:
   type: world

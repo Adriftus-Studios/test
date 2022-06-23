@@ -67,9 +67,17 @@ custom_object_remove:
     - give <[object].flag[item]>
     - remove <[object]>
 
-custom_bject_handler_cleanup:
+custom_object_handler_cleanup:
   type: world
   debug: false
   events:
     on server start:
       - flag server custom_objects.active:!
+
+custom_object_update:
+  type: task
+  debug: false
+  definitions: object
+  script:
+    - wait 1t
+    - announce to_console "Custom Object<&co> <context.entity> (<context.entity.script.name>) added to world"
