@@ -152,7 +152,7 @@ trade_open:
     - inventory set slot:<[inv_script].data_key[data.item_slots.player_1_head]> o:player_head[skull_skin=<[player1].skull_skin>;display=<&a><[player1].name>;custom_model_data=100;flag=uuid:<[player1].uuid>] d:trade_<[player1].uuid>/<[player2].uuid>
     - inventory set slot:<[inv_script].data_key[data.item_slots.player_2_head]> o:player_head[skull_skin=<[player2].skull_skin>;display=<&a><[player2].name>;custom_model_data=101;flag=uuid:<[player2].uuid>] d:trade_<[player1].uuid>/<[player2].uuid>
     - foreach <[inv_script].data_key[data.item_slots.player_1_confirm]>|<[inv_script].data_key[data.item_slots.player_1_confirm2]>:
-      - inventory set slot:<[inv_script].data_key[data.item_slots.player_1_confirm]> o:trade_confirm_button[flag=player:1] d:trade_<[player1].uuid>/<[player2].uuid>
+      - inventory set slot:<[value]> o:trade_confirm_button[flag=player:1] d:trade_<[player1].uuid>/<[player2].uuid>
     - foreach <[inv_script].data_key[data.item_slots.player_2_confirm]>|<[inv_script].data_key[data.item_slots.player_2_confirm2]>:
       - inventory set slot:<[value]> o:trade_confirm_button[flag=player:2] d:trade_<[player1].uuid>/<[player2].uuid>
     - inventory open d:trade_<[player1].uuid>/<[player2].uuid>
