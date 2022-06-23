@@ -82,13 +82,15 @@ gravestone_after_place:
 gravestone_use:
   type: task
   debug: false
+  definitions: entity
   script:
     - ratelimit <player> 1t
+    - define entity <context.location.flag[custom_object]>
     - determine passively cancelled
-    - if <player.is_sneaking> && <context.entity.flag[town].mayor> == <player>:
-      - run gravestone_remove def:<context.entity>
+    - if <player.is_sneaking> && <[entity].flag[town].mayor> == <player>:
+      - run gravestone_remove def:<[entity]>
       - stop
-    - if <player.has_town> && <context.entity.flag[town]> != <player.town>:
+    - if <player.has_town> && <[entity].flag[town]> != <player.town>:
       - narrate "<&c>You can only use your own Town's Gravestone"
       - stop
     - if !<player.has_flag[logged_inventories.death]>:
@@ -97,14 +99,14 @@ gravestone_use:
     - if !<player.has_flag[graves.drops]>:
       - narrate "<&c>You have already claimed your most recent death"
       - stop
-    - if <context.entity.has_flag[last_used]> && <util.time_now.duration_since[<context.entity.flag[last_used]>].in_minutes> < 15:
+    - if <[entity].has_flag[last_used]> && <util.time_now.duration_since[<[entity].flag[last_used]>].in_minutes> < 15:
       - narrate "<&c>The Gravestone is still recharging"
-      - narrate "<&c>Time Remaining<&co> <&e><duration[15m].sub[<util.time_now.duration_since[<context.entity.flag[last_used]>]>].formatted>"
+      - narrate "<&c>Time Remaining<&co> <&e><duration[15m].sub[<util.time_now.duration_since[<[entity].flag[last_used]>]>].formatted>"
       - stop
     - give <player.flag[graves.drops]> to:<player.inventory>
     - flag player graves.drops:!
     - narrate "<&a>You have reclaimed your lost items."
-    - flag <context.entity> last_used:<util.time_now>
+    - flag <[entity]> last_used:<util.time_now>
 
 gravestone_remove:
   type: task
