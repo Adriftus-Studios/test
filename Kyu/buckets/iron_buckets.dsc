@@ -6,7 +6,7 @@ bucket_iron:
   lore:
     - "<&e><script[buckets_flavor_text].data_key[iron]>"
     - ""
-    - "<&6>Capacity: <&e>0<&6>/<&e><script[buckets_config].data_key[iron]>"
+    - "<&6>Quantity: <&e>0<&6>/<&e><script[buckets_config].data_key[iron]>"
   mechanisms:
     custom_model_data: 2
   data:
