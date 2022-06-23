@@ -65,6 +65,7 @@ buckets_startup:
 
     after player clicks item_flagged:unique in inventory:
       - determine passively cancelled
+      - wait 1t
       - inventory update d:<player.inventory>
 
 # -- BUCKETS CONFIGS
