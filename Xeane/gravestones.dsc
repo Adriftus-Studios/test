@@ -30,7 +30,7 @@ gravestone:
         - double_compressed_stone|double_compressed_stone|double_compressed_stone
         - air|double_compressed_stone|air
   flags:
-    right_click_script: gravestone_place
+    right_click_script: custom_object_place
   mechanisms:
     custom_model_data: 300
 
