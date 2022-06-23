@@ -19,6 +19,13 @@ bucket_diamond:
       input:
         - diamond|bucket_iron|diamond
         - air|diamond|air
+        - air|air|air
+    2:
+      type: shaped
+      input:
+        - air|air|air
+        - diamond|bucket_iron|diamond
+        - air|diamond|air
 
 bucket_diamond_milk:
   type: item
