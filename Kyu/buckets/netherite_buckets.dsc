@@ -19,6 +19,13 @@ bucket_netherite:
       input:
         - netherite_ingot|bucket_diamond|netherite_ingot
         - air|netherite_ingot|air
+        - air|air|air
+    2:
+      type: shaped
+      input:
+        - air|air|air
+        - netherite_ingot|bucket_diamond|netherite_ingot
+        - air|netherite_ingot|air
 
 bucket_netherite_milk:
   type: item
