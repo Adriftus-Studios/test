@@ -284,5 +284,11 @@ trade_sanitize:
       - foreach <server.flag[trade_slots.<[number]>]>:
         - if <context.inventory.slot[<[value]>].material.name> == air:
           - inventory set slot:<[value]> o:<context.item> d:<context.inventory>
+          - if <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_1_confirm]>].script.name> == trade_cancel_confirm_button11:
+            - foreach <context.inventory.script.data_key[data.item_slots.player_1_confirm]>|<context.inventory.script.data_key[data.item_slots.player_1_confirm2]>:
+              - inventory set slot:<[value]> o:trade_confirm_button[flag=player:1] d:<context.inventory>
+          - if <context.inventory.slot[<context.inventory.script.data_key[data.item_slots.player_2_confirm]>].script.name> == trade_cancel_confirm_button21:
+            - foreach <context.inventory.script.data_key[data.item_slots.player_2_confirm]>|<context.inventory.script.data_key[data.item_slots.player_2_confirm2]>:
+              - inventory set slot:<[value]> o:trade_confirm_button[flag=player:2] d:<context.inventory>
           - determine air
       - determine cancelled
