@@ -63,12 +63,6 @@ buckets_startup:
     after server start:
       - adjust <material[bucket]> max_stack_size:1
 
-    after player clicks item_flagged:unique in inventory:
-      - define item <context.item>
-      - adjust <[item].material> max_stack_size:1
-      - inventory set slot:<context.slot> o:<[item]> d:<context.clicked_inventory>
-      - inventory update d:<context.clicked_inventory>
-      - determine cancelled
     after player drags item_flagged:unique in inventory:
       - define item <context.item>
       - adjust <[item].material> max_stack_size:1
