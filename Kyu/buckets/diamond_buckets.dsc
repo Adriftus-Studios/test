@@ -9,8 +9,6 @@ bucket_diamond:
     - "<&6>Quantity: <&e>0<&6>/<&e><script[buckets_config].data_key[diamond]>"
   mechanisms:
     custom_model_data: 3
-  data:
-    recipe_book_category: misc
   flags:
     material: diamond
     quantity: 0
