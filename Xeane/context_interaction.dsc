@@ -15,7 +15,8 @@ open_context_menu:
     - define options <list[trade]>
     - define points <list[<player.eye_location.forward[1].up[0.2]>]>
     - foreach <[options].get[1].to[<[points].size>]>:
-      - fakespawn context_menu_<[value]>[flag=target:<[target]>] <[points].get[<[loop_index]>]> duration:10s save:option
+      - fakespawn context_menu_<[value]> <[points].get[<[loop_index]>]> duration:10s save:option
+      - flag <entry[option].faked_entity> target:<context.entity>
 
 context_menu_trade:
   type: entity
