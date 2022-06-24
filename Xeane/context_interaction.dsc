@@ -2,7 +2,7 @@ context_menu_events:
   type: world
   debug: false
   events:
-    on player right clicks player with:air:
+    on player right clicks entity with:air:
       - ratelimit <player> 1t
       - if <player.is_sneaking>:
         - inject open_context_menu
@@ -10,10 +10,13 @@ context_menu_events:
 open_context_menu:
   type: task
   debug: false
+  data:
+    points:
+      - <player.eye_location.forward[1].up[0.1]>
   script:
     - define target <context.entity>
     - define options <list[trade]>
-    - define points <list[<player.eye_location.forward[2].up[0.1]>]>
+    - define points <script.parsed_key[data.points]>
     - foreach <[options].get[1].to[<[points].size>]>:
       - fakespawn context_menu_<[value]> <[points].get[<[loop_index]>]> duration:10s save:option
       - flag <entry[option].faked_entity> target:<context.entity>
