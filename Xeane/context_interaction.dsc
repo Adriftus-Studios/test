@@ -13,7 +13,7 @@ open_context_menu:
   script:
     - define target <context.entity>
     - define options <list[trade]>
-    - define points <list[<player.eye_location.forward[1].up[0.5]>]>
+    - define points <list[<player.eye_location.forward[1].up[0.2]>]>
     - foreach <[options].get[1].to[<[points].size>]>:
       - fakespawn context_menu_<[value]>[flag=target:<[target]>] <[points].get[<[loop_index]>]> duration:10s save:option
 
@@ -23,7 +23,7 @@ context_menu_trade:
   entity_type: armor_stand
   mechanisms:
     equipment:
-      head: feather[custom_model_data=1]
+      helmet: feather[custom_model_data=1]
     visible: false
     custom_name: <&a>Trade
     custom_name_visible: true
