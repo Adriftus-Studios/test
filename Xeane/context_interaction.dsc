@@ -12,7 +12,7 @@ open_context_menu:
   debug: false
   data:
     points:
-      - <player.eye_location.forward[1].up[0.1]>
+      - <player.eye_location.below[0.3].forward[1].up[0.1]>
   script:
     - define target <context.entity>
     - define options <list[trade]>
