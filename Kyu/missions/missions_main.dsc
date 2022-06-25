@@ -6,7 +6,7 @@ missions_command:
   name: missions
   description: Towny Missions
   usage: /missions
-  # Tab Complete for daily/weekly/monthly
+  # Tab Complete for daily/weekly/monthly.
   script:
     - foreach <player.flag[missions.active.daily]> key:ctm as:id:
       - define path missions.active.daily.<[ctm]>.<[id]>
@@ -25,17 +25,20 @@ missions_generate:
   debug: false
   definitions: timeframe
   script:
-    # Define config and missions list
+    # Define config and missions list.
     - define config <script[missions_config]>
     - define missions <[config].data_key[missions]>
     # Prevent duplicate missions.
     - define list <list>
     - while <[list].size> < <[config].data_key[<[timeframe]>]>:
       - define mission <[missions].random>
-      # Skip if mission is already added
+      # Skip if mission is already added.
       - if <[list].contains[<[mission]>]>:
         - while next
       - define list:->:<[mission]>
+    # Assign missions.
+    - foreach <[list]> as:mission:
+      - run <script[mission_<[mission]>].data_key[assignment]> def:<[timeframe]>
 
 # Give Mission
 missions_give:
@@ -43,13 +46,13 @@ missions_give:
   debug: false
   definitions: timeframe|map
   script:
-    # Stop if definitions are not set
+    # Stop if definitions are not set.
     - stop if:<[timeframe].exists.not>
     - stop if:<[map].exists.not>
     - stop if:<[map].is_empty>
     - narrate <[timeframe]>
     - narrate <[map]>
-    # Define unique identifier and mission ID
+    # Define unique identifier and mission ID.
     - define ctm <server.current_time_millis>
     - define id <[map].get[id]>
     - define path missions.active.<[timeframe]>.<[ctm]>.<[id]>
@@ -69,18 +72,18 @@ missions_update_progress:
     - stop if:<[action].exists.not>
     - stop if:<[path].exists.not>
     - stop if:<[x].exists.not>
-    # Get definitions from path
+    # Get definitions from path.
     - define id <player.flag[<[path]>].get[id]>
     - define max <player.flag[<[path]>].get[max]>
     # Update with generated name later.
     - define name <script[mission_<[id]>].data_key[name]>
     - define milestones <script[mission_<[id]>].data_key[milestones]>
-    # Add / Set new progress
+    # Add / Set new progress.
     - if <[action]> == add:
       - flag <player> <[path]>.progress:+:<[x]>
     - else if <[action]> == set:
       - flag <player> <[path]>.progress:<[x]>
-    # Check for mission milestones in mission config id
+    # Check for mission milestones in mission config ID.
     - define y <player.flag[<[path]>].get[progress]>
     - if <[y]> >= <[max]>:
       - flag <player> <[path]>.done:true
