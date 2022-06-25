@@ -1,4 +1,9 @@
 # -- MISSIONS
+# -- NOTES:
+# -- Make standardized procedures for replacing text in mission names and descriptions.
+# -- Test out colours and switch name and description from .data_key to .parsed_key.
+# -- Switch from narrate to bossbar notification in missions_update_progress.
+
 # Missions Command
 missions_command:
   type: command
