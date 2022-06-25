@@ -8,8 +8,8 @@ missions_command:
   usage: /missions
   # Tab Complete for daily/weekly/monthly.
   script:
-    - foreach <player.flag[missions.active.daily]> key:ctm as:map:
-      - define id <[map].get[id]>
+    - foreach <player.flag[missions.active.daily]> key:ctm:
+      - define id <[value].get[id]>
       - define path missions.active.daily.<[ctm]>.<[id]>
       - narrate <[ctm]>
       - narrate <[id]>
@@ -107,8 +107,8 @@ missions_get:
   script:
     - define missions <list>
     - foreach daily|weekly|monthly as:timeframe:
-      - foreach <player.flag[missions.active.<[timeframe]>]> key:ctm as:map:
-        - if <player.flag[missions.active.<[timeframe]>.<[ctm]>].contains[<[map]>]>:
-          - define id <[map].get[id]>
+      - foreach <player.flag[missions.active.<[timeframe]>]> key:ctm:
+        - if <player.flag[missions.active.<[timeframe]>.<[ctm]>].contains[<[value]>]>:
+          - define id <[value].get[id]>
           - define missions:->:missions.active.<[timeframe]>.<[ctm]>.<[id]>
     - determine <[missions]>
