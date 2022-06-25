@@ -15,7 +15,7 @@ missions_command:
       - define path missions.active.daily.<[ctm]>.<[id]>
       # Update with generated name/description later.
       - narrate <script[mission_<[id]>].data_key[name]>
-      - narrate <script[mission_<[id]>].data_key[description]>
+      - narrate <script[mission_<[id]>].data_key[description].separated_by[<&nl>]>
       - narrate "(<player.flag[<[path]>].get[progress]> / <player.flag[<[path]>].get[max]>)"
       - narrate "Completed: <player.flag[<[path]>].get[done].to_titlecase>"
 
@@ -108,7 +108,7 @@ missions_get:
     - define missions <list>
     - foreach daily|weekly|monthly as:timeframe:
       - foreach <player.flag[missions.active.<[timeframe]>]> key:ctm:
-        - if <player.flag[missions.active.<[timeframe]>.<[ctm]>].contains[<[value]>]>:
-          - define id <[value].get[id]>
+        - define id <[value].keys.first>
+        - if <player.flag[missions.active.<[timeframe]>.<[ctm]>].contains[<[id]>]>:
           - define missions:->:missions.active.<[timeframe]>.<[ctm]>.<[id]>
     - determine <[missions]>
