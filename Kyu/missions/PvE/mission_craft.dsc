@@ -54,7 +54,7 @@ mission_craft_complete:
 # Events
 mission_craft_events:
   type: world
-  debug: false
+  debug: true
   events:
     on player crafts item flagged:missions.active.*.*.craft:
       # Add missions with ID craft to a list.
