@@ -55,12 +55,13 @@ mission_craft_assignment:
     - define config <script[mission_craft]>
     # Generate random item and amount from config.
     - define item <[config].data_key[items].keys.random>
+    - define name <[item].as_item.display.if_null[<[item].as_item.material.name.replace[_].with[<&sp>].to_titlecase>]>
     - define map <map.with[id].as[<[config].data_key[id]>]>
     - define map <[map].with[timeframe].as[<[timeframe]>]>
     - define map <[map].with[item].as[<[item]>]>
     - define map <[map].with[max].as[<[config].data_key[items.<[item]>].random>]>
-    - define map <[map].with[name].as[<[config].data_key[name].replace[X].with[<[map].get[max]>].replace[items].with[<[item].as_item.display>]>]>
-    - define map <[map].with[description].as[<[config].data_key[description].replace[Items].with[<[item].as_item.display>]>]>
+    - define map <[map].with[name].as[<[config].data_key[name].replace[X].with[<[map].get[max]>].replace[items].with[<[name]>]>]>
+    - define map <[map].with[description].as[<[config].data_key[description].replace[Items].with[<[name]>]>]>
     - define map <[map].with[done].as[false]>
     # Add generated name/description later.
     # Give mission
