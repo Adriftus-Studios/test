@@ -93,6 +93,7 @@ missions_update_progress:
     # Check for mission milestones in mission config ID.
     - define y <player.flag[<[path]>].get[progress]>
     - if <[y]> >= <[max]>:
+      - flag <player> <[path]>.progress:<[max]>
       - flag <player> <[path]>.done:true
       - run <script[mission_<[id]>].data_key[milestones.max]>
       - narrate "<[name]> / Progress (<[max]>/<[max]>)"

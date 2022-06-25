@@ -10,19 +10,40 @@ mission_craft:
   milestones:
     max: mission_craft_complete
   items:
-    - oak_planks
-    - spruce_planks
-    - birch_planks
-    - jungle_planks
-    - acacia_planks
-    - dark_oak_planks
-    - stone_bricks
-  amounts:
-    - 1
-    - 5
-    - 10
-    - 12
-    - 16
+    oak_planks:
+      - 8
+      - 16
+      - 32
+      - 64
+    spruce_planks:
+      - 8
+      - 16
+      - 32
+      - 64
+    birch_planks:
+      - 8
+      - 16
+      - 32
+      - 64
+    jungle_planks:
+      - 8
+      - 16
+      - 32
+      - 64
+    acacia_planks:
+      - 8
+      - 16
+      - 32
+      - 64
+    dark_oak_planks:
+      - 8
+      - 16
+      - 32
+      - 64
+    stone_bricks:
+      - 32
+      - 48
+      - 64
 
 # Assignment Task
 mission_craft_assignment:
@@ -33,10 +54,13 @@ mission_craft_assignment:
     - stop if:<[timeframe].exists.not>
     - define config <script[mission_craft]>
     # Generate random item and amount from config.
+    - define item <[config].data_key[items].random>
     - define map <map.with[id].as[<[config].data_key[id]>]>
     - define map <[map].with[timeframe].as[<[timeframe]>]>
-    - define map <[map].with[item].as[<[config].data_key[items].random>]>
-    - define map <[map].with[max].as[<[config].data_key[amounts].random>]>
+    - define map <[map].with[item].as[<[item]>]>
+    - define map <[map].with[max].as[<[config].data_key[items.<[item]>].random>]>
+    - define map <[map].with[name].as[<[config].data_key[name].replace[X].with[<[map].get[max]>].replace[items].with[<[item].as_item.display>]>]>
+    - define map <[map].with[description].as[<[config].data_key[description].replace[Items].with[<[item].as_item.display>]>]>
     - define map <[map].with[done].as[false]>
     # Add generated name/description later.
     # Give mission
