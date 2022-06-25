@@ -11,6 +11,8 @@ missions_command:
     - foreach <player.flag[missions.active.daily]> key:ctm as:map:
       - define id <[map].get[id]>
       - define path missions.active.daily.<[ctm]>.<[id]>
+      - narrate <[ctm]>
+      - narrate <[id]>
       # Update with generated name/description later.
       - narrate <script[mission_<[id]>].data_key[name]>
       - narrate <script[mission_<[id]>].data_key[description]>
