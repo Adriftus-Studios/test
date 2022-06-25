@@ -19,9 +19,9 @@ missions_command:
       - narrate <[ctm]>
       - define path missions.active.<[id]>.<[ctm]>
       # Update with generated name/description later.
-      - narrate <script[mission_<[id]>].data_key[name]>
-      - narrate <script[mission_<[id]>].data_key[description].separated_by[<&nl>]>
-      - narrate <script[mission_<[id]>].data_key[timeframe]>
+      - narrate <player.flag[<[path]>].get[name]>
+      - narrate <player.flag[<[path]>].get[description].separated_by[<&nl>]>
+      - narrate <player.flag[<[path]>].get[timeframe]>
       - narrate "(<player.flag[<[path]>].get[progress]> / <player.flag[<[path]>].get[max]>)"
       - narrate "Completed: <player.flag[<[path]>].get[done].to_titlecase>"
 
