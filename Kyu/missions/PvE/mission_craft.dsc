@@ -61,7 +61,7 @@ mission_craft_assignment:
     - define map <[map].with[item].as[<[item]>]>
     - define map <[map].with[max].as[<[config].data_key[items.<[item]>].random>]>
     - define map <[map].with[name].as[<[config].data_key[name].replace[X].with[<[map].get[max]>].replace[items].with[<[name]>]>]>
-    - define map <[map].with[description].as[<[config].data_key[description].replace[Items].with[<[name]>]>]>
+    - define map <[map].with[description].as[<[config].data_key[description].first.replace[Items].with[<[name]>]>]>
     - define map <[map].with[done].as[false]>
     # Give mission
     - run missions_give def:<[map]>
