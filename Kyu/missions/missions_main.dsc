@@ -19,7 +19,7 @@ missions_command:
       - narrate <[ctm]>
       - define path missions.active.<[id]>.<[ctm]>
       - narrate <player.flag[<[path]>].get[name]>
-      - narrate <player.flag[<[path]>].get[description].separated_by[<&nl>]>
+      - narrate <player.flag[<[path]>].get[description]>
       - narrate <player.flag[<[path]>].get[timeframe]>
       - narrate "(<player.flag[<[path]>].get[progress]> / <player.flag[<[path]>].get[max]>)"
       - narrate "Completed: <player.flag[<[path]>].get[done].to_titlecase>"
