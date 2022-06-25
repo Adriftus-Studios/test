@@ -8,10 +8,10 @@ missions_command:
   usage: /missions
   # Tab Complete for daily/weekly/monthly.
   script:
-    # <[filter_key]> == ID
+    # <[filter_key]> == CTM
     # <[filter_value]> == Map of CTM
     # - define timeframe <context.args.first>
-    # <player.flag[missions.active].filter_tag[<[filter_value].get[timeframe].equals[<[timeframe]>]>]>
+    # <player.flag[missions.active.<[id]>].filter_tag[<[filter_value].get[timeframe].equals[<[timeframe]>]>]>
     - foreach <player.flag[missions.active]> key:id:
       - narrate <[id]>
       - narrate <[value]>
@@ -21,7 +21,7 @@ missions_command:
       - narrate <player.flag[<[path]>].get[name]>
       - narrate <player.flag[<[path]>].get[description]>
       - narrate <player.flag[<[path]>].get[timeframe]>
-      - narrate "(<player.flag[<[path]>].get[progress]> / <player.flag[<[path]>].get[max]>)"
+      - narrate "Progress: (<player.flag[<[path]>].get[progress]> / <player.flag[<[path]>].get[max]>)"
       - narrate "Completed: <player.flag[<[path]>].get[done].to_titlecase>"
 
 
