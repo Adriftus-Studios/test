@@ -54,7 +54,7 @@ mission_craft_assignment:
     - stop if:<[timeframe].exists.not>
     - define config <script[mission_craft]>
     # Generate random item and amount from config.
-    - define item <[config].data_key[items].random>
+    - define item <[config].data_key[items].keys.random>
     - define map <map.with[id].as[<[config].data_key[id]>]>
     - define map <[map].with[timeframe].as[<[timeframe]>]>
     - define map <[map].with[item].as[<[item]>]>
