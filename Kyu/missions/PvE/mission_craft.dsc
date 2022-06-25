@@ -16,9 +16,6 @@ mission_craft:
     - jungle_planks
     - acacia_planks
     - dark_oak_planks
-    - coal_block
-    - iron_block
-    - gold_block
     - stone_bricks
   amounts:
     - 1
