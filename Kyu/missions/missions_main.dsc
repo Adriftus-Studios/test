@@ -16,6 +16,7 @@ missions_command:
       - narrate <script[mission_<[id]>].data_key[name]>
       - narrate <script[mission_<[id]>].data_key[description]>
       - narrate "(<player.flag[<[path]>].get[progress]> / <player.flag[<[path]>].get[max]>)"
+      - narrate "Completed: <player.flag[<[path]>].get[done].to_titlecase>"
 
 
 # Generate Missions
@@ -82,6 +83,7 @@ missions_update_progress:
     # Check for mission milestones in mission config id
     - define y <player.flag[<[path]>].get[progress]>
     - if <[y]> >= <[max]>:
+      - flag <player> <[path]>.done:true
       - run <script[mission_<[id]>].data_key[milestones.max]>
       - narrate "<[name]> / Progress (<[max]>/<[max]>)"
     - else if <[milestones].contains[<[y]>]>:

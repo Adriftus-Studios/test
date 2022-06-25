@@ -39,6 +39,7 @@ mission_craft_assignment:
     - define map <map.with[id].as[<[config].data_key[id]>]>
     - define map <[map].with[item].as[<[config].data_key[items].random>]>
     - define map <[map].with[max].as[<[config].data_key[amounts].random>]>
+    - define map <[map].with[done].as[false]>
     # Add generated name/description later.
     # Give mission
     - run missions_give def:<[timeframe]>|<[map]>
