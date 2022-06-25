@@ -108,7 +108,6 @@ missions_get:
     - define missions <list>
     - foreach daily|weekly|monthly as:timeframe:
       - foreach <player.flag[missions.active.<[timeframe]>]> key:ctm:
-        - define id <[value].keys.first>
-        - if <player.flag[missions.active.<[timeframe]>.<[ctm]>].contains[<[id]>]>:
+        - if <[value].keys.first> == <[id]>:
           - define missions:->:missions.active.<[timeframe]>.<[ctm]>.<[id]>
     - determine <[missions]>
