@@ -83,6 +83,8 @@ mission_craft_events:
       - define missions <proc[missions_get].context[craft]>
       # Check each mission if their item matches the item.
       - foreach <[missions]> as:mission:
+        - if <player.flag[<[mission]>].get[done]>:
+          - foreach next
         - define item <context.item.script.name.if_null[<context.item.material.name>]>
         - if <player.flag[<[mission]>].get[item]> == <[item]>:
           - run missions_update_progress def:add|<[mission]>|<context.amount>
