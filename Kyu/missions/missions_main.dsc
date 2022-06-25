@@ -25,6 +25,8 @@ missions_generate:
   debug: false
   definitions: timeframe
   script:
+    # Stop if timeframe is not set.
+    - stop if:<[timeframe].exists.not>
     # Define config and missions list.
     - define config <script[missions_config]>
     - define missions <[config].data_key[missions]>
