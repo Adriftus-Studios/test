@@ -8,14 +8,20 @@ missions_command:
   usage: /missions
   # Tab Complete for daily/weekly/monthly.
   script:
-    - foreach <player.flag[missions.active.daily]> key:ctm:
-      - narrate <[ctm]>
+    # <[filter_key]> == ID
+    # <[filter_value]> == Map of CTM
+    # - define timeframe <context.args.first>
+    # <player.flag[missions.active].filter_tag[<[filter_value].get[timeframe].equals[<[timeframe]>]>]>
+    - foreach <player.flag[missions.active]> key:id:
+      - narrate <[id]>
       - narrate <[value]>
-      - define id <[value].keys.first>
-      - define path missions.active.daily.<[ctm]>.<[id]>
+      - define ctm <[value].keys.first>
+      - narrate <[ctm]>
+      - define path missions.active.<[id]>.<[ctm]>
       # Update with generated name/description later.
       - narrate <script[mission_<[id]>].data_key[name]>
       - narrate <script[mission_<[id]>].data_key[description].separated_by[<&nl>]>
+      - narrate <script[mission_<[id]>].data_key[timeframe]>
       - narrate "(<player.flag[<[path]>].get[progress]> / <player.flag[<[path]>].get[max]>)"
       - narrate "Completed: <player.flag[<[path]>].get[done].to_titlecase>"
 
@@ -47,18 +53,16 @@ missions_generate:
 missions_give:
   type: task
   debug: false
-  definitions: timeframe|map
+  definitions: map
   script:
     # Stop if definitions are not set.
-    - stop if:<[timeframe].exists.not>
     - stop if:<[map].exists.not>
     - stop if:<[map].is_empty>
-    - narrate <[timeframe]>
     - narrate <[map]>
-    # Define unique identifier and mission ID.
-    - define ctm <server.current_time_millis>
+    # Define mission ID and unique identifier.
     - define id <[map].get[id]>
-    - define path missions.active.<[timeframe]>.<[ctm]>.<[id]>
+    - define ctm <server.current_time_millis>
+    - define path missions.active.<[id]>.<[ctm]>
     - foreach <[map]>:
       - flag <player> <[path]>.<[key]>:<[value]>
       - narrate "<[key]>: <[value]>"
@@ -105,9 +109,8 @@ missions_get:
   debug: false
   definitions: id
   script:
+    - stop if:<[id].exists.not>
     - define missions <list>
-    - foreach daily|weekly|monthly as:timeframe:
-      - foreach <player.flag[missions.active.<[timeframe]>]> key:ctm:
-        - if <[value].keys.first> == <[id]>:
-          - define missions:->:missions.active.<[timeframe]>.<[ctm]>.<[id]>
+    - foreach <player.flag[missions.active.<[id]>]> key:ctm:
+      - define missions:->:missions.active.<[id]>.<[ctm]>
     - determine <[missions]>

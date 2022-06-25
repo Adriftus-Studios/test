@@ -30,10 +30,11 @@ mission_craft_assignment:
   debug: false
   definitions: timeframe
   script:
-    - define timeframe daily if:<[timeframe].exists.not>
+    - stop if:<[timeframe].exists.not>
     - define config <script[mission_craft]>
     # Generate random item and amount from config.
     - define map <map.with[id].as[<[config].data_key[id]>]>
+    - define map <map.with[timeframe].as[<[timeframe]>]>
     - define map <[map].with[item].as[<[config].data_key[items].random>]>
     - define map <[map].with[max].as[<[config].data_key[amounts].random>]>
     - define map <[map].with[done].as[false]>
@@ -53,7 +54,7 @@ mission_craft_events:
   type: world
   debug: true
   events:
-    on player crafts item flagged:missions.active.*.*.craft:
+    on player crafts item flagged:missions.active.craft:
       # Add missions with ID craft to a list.
       - define missions <proc[missions_get].context[craft]>
       # Check each mission if their item matches the item.
