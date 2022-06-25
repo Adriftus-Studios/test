@@ -9,10 +9,10 @@ missions_command:
   # Tab Complete for daily/weekly/monthly.
   script:
     - foreach <player.flag[missions.active.daily]> key:ctm:
+      - narrate <[ctm]>
+      - narrate <[value]>
       - define id <[value].get[id]>
       - define path missions.active.daily.<[ctm]>.<[id]>
-      - narrate <[ctm]>
-      - narrate <[id]>
       # Update with generated name/description later.
       - narrate <script[mission_<[id]>].data_key[name]>
       - narrate <script[mission_<[id]>].data_key[description]>
