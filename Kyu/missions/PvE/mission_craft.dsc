@@ -40,7 +40,7 @@ mission_craft_assignment:
     - define map <[map].with[done].as[false]>
     # Add generated name/description later.
     # Give mission
-    - run missions_give def:<[timeframe]>|<[map]>
+    - run missions_give def:<[map]>
 
 # Completion Task
 mission_craft_complete:
