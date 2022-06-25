@@ -63,7 +63,6 @@ mission_craft_assignment:
     - define map <[map].with[name].as[<[config].data_key[name].replace[X].with[<[map].get[max]>].replace[items].with[<[name]>]>]>
     - define map <[map].with[description].as[<[config].data_key[description].replace[Items].with[<[name]>]>]>
     - define map <[map].with[done].as[false]>
-    # Add generated name/description later.
     # Give mission
     - run missions_give def:<[map]>
 

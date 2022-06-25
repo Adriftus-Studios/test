@@ -18,7 +18,6 @@ missions_command:
       - define ctm <[value].keys.first>
       - narrate <[ctm]>
       - define path missions.active.<[id]>.<[ctm]>
-      # Update with generated name/description later.
       - narrate <player.flag[<[path]>].get[name]>
       - narrate <player.flag[<[path]>].get[description].separated_by[<&nl>]>
       - narrate <player.flag[<[path]>].get[timeframe]>
@@ -82,8 +81,7 @@ missions_update_progress:
     # Get definitions from path.
     - define id <player.flag[<[path]>].get[id]>
     - define max <player.flag[<[path]>].get[max]>
-    # Update with generated name later.
-    - define name <script[mission_<[id]>].data_key[name]>
+    - define name <player.flag[<[path]>].get[name]>
     - define milestones <script[mission_<[id]>].data_key[milestones]>
     # Add / Set new progress.
     - if <[action]> == add:
