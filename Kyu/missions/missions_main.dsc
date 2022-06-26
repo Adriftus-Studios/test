@@ -76,6 +76,19 @@ missions_give:
     - run missions_update_progress def:set|<[path]>|0
 
 
+# Get Missions with ID
+missions_get:
+  type: procedure
+  debug: false
+  definitions: id
+  script:
+    - stop if:<[id].exists.not>
+    - define missions <list>
+    - foreach <player.flag[missions.active.<[id]>]> key:ctm:
+      - define missions:->:missions.active.<[id]>.<[ctm]>
+    - determine <[missions]>
+
+
 # Update Mission Progress
 missions_update_progress:
   type: task
@@ -103,21 +116,9 @@ missions_update_progress:
       - flag <player> <[path]>.done:true
       - run <script[mission_<[id]>].data_key[milestones.max]>
       - narrate "<[name]> / Progress (<[max]>/<[max]>)"
+      - stop
     - else if <[milestones].contains[<[y]>]>:
       - run <script[mission_<[id]>].data_key[milestones.<[y]>]>
-      - narrate "<[name]> / Progress (<[y]>/<[max]>)"
-    - else:
-      - narrate "<[name]> / Progress (<[y]>/<[max]>)"
+    # On non-max milestones and progress in-between milestones, show progress.
+    - narrate "<[name]> / Progress (<[y]>/<[max]>)"
 
-
-# Get Missions with ID
-missions_get:
-  type: procedure
-  debug: false
-  definitions: id
-  script:
-    - stop if:<[id].exists.not>
-    - define missions <list>
-    - foreach <player.flag[missions.active.<[id]>]> key:ctm:
-      - define missions:->:missions.active.<[id]>.<[ctm]>
-    - determine <[missions]>

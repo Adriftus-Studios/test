@@ -20,7 +20,7 @@ missions_replace_name:
 # Replace text in description
 missions_replace_description:
   type: procedure
-  debug: true
+  debug: false
   definitions: description|map
   script:
     - stop if:<[description].exists.not>
