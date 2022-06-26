@@ -23,7 +23,7 @@ missions_bossbar:
     # Set progress, color, and style
     - if <server.current_bossbars.contains[<[path]>].not>:
       - bossbar create <[path]> progress:<[x].div[<[y]>]> color:<[color]> style:SEGMENTED_10
-      - flag <player> bossbar:->:bossbar.<[path]>
+      - flag <player> bossbar:|:bossbar.<[path]>
     - else:
       - bossbar update <[path]> progress:<[x].div[<[y]>]> color:<[color]> style:SEGMENTED_10
     # Mission Completed
@@ -53,7 +53,7 @@ missions_bossbar_create:
           - define ctm <player.flag[<[mission].keys.first>]>
           - if <player.flag[missions.<[lifespan]>.<[id]>.<[ctm]>].get[done].not>:
             - bossbar create missions.<[lifespan]>.<[id]>.<[ctm]>
-            - flag <player> bossbar:->:bossbar.missions.<[lifespan]>.<[id]>.<[ctm]>
+            - flag <player> bossbar:|:bossbar.missions.<[lifespan]>.<[id]>.<[ctm]>
 
 
 # Remove bossbars on logout
