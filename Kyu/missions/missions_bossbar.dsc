@@ -10,6 +10,9 @@ missions_bossbar:
     - define name <player.flag[<[path]>].get[name]>
     - define x <player.flag[<[path]>].get[progress]>
     - define y <player.flag[<[path]>].get[max]>
+    - narrate <[x]>
+    - narrate <[y]>
+    - narrate <[x].div[<[y]>]>
     # Determine colour
     - choose <script[mission_<[id]>].data_key[category]>:
       - case PvE:
