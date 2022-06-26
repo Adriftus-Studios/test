@@ -15,7 +15,7 @@ missions_replace_name:
     - narrate <[map]>
     - stop if:<[name].exists.not>
     - stop if:<[map].exists.not>
-    - foreach <[map]>:
+    - foreach <[map].unescaped>:
       - define name <[name].replace[<script[missions_replace_text].data_key[<[key]>]>].with[<[value]>]>
     - determine <[name]>
 
@@ -29,7 +29,6 @@ missions_replace_description:
     - stop if:<[map].exists.not>
     - narrate <[description]>
     - narrate <[map]>
-    - define description <[description].escaped>
-    - foreach <[map]>:
+    - foreach <[map].unescaped>:
       - define description <[description].replace[<script[missions_replace_text].data_key[<[key]>]>].with[<[value]>]>
     - determine <[description].unescaped>
