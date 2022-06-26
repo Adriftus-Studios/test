@@ -5,7 +5,7 @@ mission_craft:
   category: PvE
   name: Craft -items-
   description:
-  - "Craft -max- -items-."
+    - "Craft -max- -items-."
   assignment: mission_craft_assignment
   milestones:
     max: mission_craft_complete

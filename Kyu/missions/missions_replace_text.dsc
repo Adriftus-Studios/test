@@ -25,10 +25,10 @@ missions_replace_description:
   debug: true
   definitions: description|map
   script:
-    - narrate <[description]>
-    - narrate <[map]>
     - stop if:<[description].exists.not>
     - stop if:<[map].exists.not>
+    - narrate <[description]>
+    - narrate <[map]>
     - define description <[description].escaped>
     - foreach <[map]>:
       - define description <[description].replace[<script[missions_replace_text].data_key[<[key]>]>].with[<[value]>]>
