@@ -30,6 +30,7 @@ missions_replace_description:
     - stop if:<[description].exists.not>
     - stop if:<[map].exists.not>
     - foreach <[description]>:
+      - define index <[loop_index]>
       - foreach <[map]>:
-        - define description[<[loop_index]>] <[description].get[<[loop_index]>].replace[<script[missions_replace_text].data_key[<[key]>]>].with[<[value]>]>
+        - define description[<[index]>] <[description].get[<[index]>].replace[<script[missions_replace_text].data_key[<[key]>]>].with[<[value]>]>
     - determine <[description]>
