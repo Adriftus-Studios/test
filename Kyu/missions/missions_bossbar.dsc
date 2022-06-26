@@ -1,7 +1,7 @@
 # -- MISSIONS BOSSBAR PROGRESS NOTIFICATIONS
 missions_bossbar:
   type: task
-  debug: true
+  debug: false
   definitions: path
   script:
     - stop if:<[path].exists.not>
@@ -10,9 +10,6 @@ missions_bossbar:
     - define name <player.flag[<[path]>].get[name]>
     - define x <player.flag[<[path]>].get[progress]>
     - define y <player.flag[<[path]>].get[max]>
-    - narrate <[x]>
-    - narrate <[y]>
-    - narrate <[x].div[<[y]>]>
     # Determine colour
     - choose <script[mission_<[id]>].data_key[category]>:
       - case PvE:
@@ -50,10 +47,13 @@ missions_bossbar_create:
       - foreach active|persistent as:lifespan:
         - if <player.has_flag[missions.<[lifespan]>].not>:
           - foreach next
-        - foreach <player.flag[missions.<[lifespan]>]> key:id:
-          - define ctm <player.flag[<[value].keys.first>]>
-          - bossbar create missions.<[lifespan]>.<[id]>.<[ctm]>
-          - flag <player> bossbar:->:bossbar.missions.<[lifespan]>.<[id]>.<[ctm]>
+        - foreach <player.flag[missions.<[lifespan]>]> key:id as:mission:
+          - if <player.has_flag[missions.<[lifespan]>.<[id]>].not>:
+            - foreach next
+          - define ctm <player.flag[<[mission].keys.first>]>
+          - if <player.flag[missions.<[lifespan]>.<[id]>.<[ctm]>].get[done].not>:
+            - bossbar create missions.<[lifespan]>.<[id]>.<[ctm]>
+            - flag <player> bossbar:->:bossbar.missions.<[lifespan]>.<[id]>.<[ctm]>
 
 
 # Remove bossbars on logout

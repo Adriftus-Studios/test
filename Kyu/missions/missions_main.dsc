@@ -62,7 +62,6 @@ missions_give:
     # Stop if definitions are not set.
     - stop if:<[map].exists.not>
     - stop if:<[map].is_empty>
-    - narrate <[map]>
     # Define mission ID and unique identifier.
     - define id <[map].get[id]>
     - define ctm <server.current_time_millis>
