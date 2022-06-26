@@ -44,6 +44,8 @@ missions_bossbar_create:
   events:
     on player joins:
       - foreach active|persistent as:lifespan:
+        - if <player.has_flag[missions.<[lifespan]>].not>:
+          - foreach next
         - foreach <player.flag[missions.<[lifespan]>]> key:id:
           - define ctm <player.flag[<[value].keys.first>]>
           - bossbar create missions.<[lifespan]>.<[id]>.<[ctm]>
