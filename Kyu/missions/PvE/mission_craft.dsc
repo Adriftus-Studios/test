@@ -3,9 +3,9 @@ mission_craft:
   type: data
   id: craft
   category: PvE
-  name: <&e>Craft <&6>-items-
+  name: <&a>Craft <&2>-items-
   description:
-    - "<&e>Craft <&b>-max- <&6>-items-<&e>."
+    - "<&a>Craft <&b>-max- <&2>-items-<&a>."
   assignment: mission_craft_assignment
   milestones:
     max: mission_craft_complete
