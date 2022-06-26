@@ -29,8 +29,7 @@ missions_replace_description:
     - narrate <[map]>
     - stop if:<[description].exists.not>
     - stop if:<[map].exists.not>
-    - foreach <[description]> as:line:
-      - define index <[loop_index]>
-      - foreach <[map]>:
-        - define description[<[index]>] <[line].replace[<script[missions_replace_text].data_key[<[key]>]>].with[<[value]>]>
-    - determine <[description]>
+    - define description <[description].escaped>
+    - foreach <[map]>:
+      - define description <[description].replace[<script[missions_replace_text].data_key[<[key]>]>].with[<[value]>]>
+    - determine <[description].unescaped>
