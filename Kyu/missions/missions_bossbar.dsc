@@ -24,7 +24,10 @@ missions_bossbar:
       - default:
         - define color PURPLE
     # Set progress, color, and style
-    - bossbar update <[path]> progress:<[x].div[<[y]>]> color:<[color]> style:SEGMENTED_10
+    - if <server.current_bossbars.contains[<[path]>].not>:
+      - bossbar create <[path]> progress:<[x].div[<[y]>]> color:<[color]> style:SEGMENTED_10
+    - else:
+      - bossbar update <[path]> progress:<[x].div[<[y]>]> color:<[color]> style:SEGMENTED_10
     # Mission Completed
     - if <[x]> == <[y]>:
       - bossbar update <[path]> "title:<[name]> <&f>(<&b>Completed<&f>)"
