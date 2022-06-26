@@ -3,8 +3,9 @@ mission_craft:
   type: data
   id: craft
   category: PvE
-  name: Craft Items
-  description: Craft X items.
+  name: Craft -items-
+  description:
+  - "Craft -max- -items-."
   assignment: mission_craft_assignment
   milestones:
     max: mission_craft_complete
@@ -55,12 +56,14 @@ mission_craft_assignment:
     # Generate random item and amount from config.
     - define item <[config].data_key[items].keys.random>
     - define name <[item].as_item.display.if_null[<[item].as_item.material.name.replace[_].with[<&sp>].to_titlecase>]>
+    - define max <[config].data_key[items.<[item]>].random>
+    # Define map
     - define map <map.with[id].as[<[config].data_key[id]>]>
     - define map <[map].with[timeframe].as[<[timeframe]>]>
     - define map <[map].with[item].as[<[item]>]>
-    - define map <[map].with[max].as[<[config].data_key[items.<[item]>].random>]>
-    - define map <[map].with[name].as[<[config].data_key[name].replace[Items].with[<[name]>]>]>
-    - define map <[map].with[description].as[<[config].data_key[description].replace[X].with[<[map].get[max]>].replace[items].with[<[name]>]>]>
+    - define map <[map].with[max].as[<[max]>]>
+    - define map <[map].with[name].as[<proc[missions_replace_name].context[<[config].data_key[name]>|<map[items=<[name]>]>]>]>
+    - define map <[map].with[description].as[<proc[missions_replace_description].context[<[config].data_key[description]>|<map[items=<[name]>;max=<[max]>]>]>]>
     - define map <[map].with[done].as[false]>
     # Give mission
     - run missions_give def:<[map]>
