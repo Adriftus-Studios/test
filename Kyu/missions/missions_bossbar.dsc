@@ -1,7 +1,7 @@
 # -- MISSIONS BOSSBAR PROGRESS NOTIFICATIONS
 missions_bossbar:
   type: task
-  debug: false
+  debug: true
   definitions: path
   script:
     - stop if:<[path].exists.not>
