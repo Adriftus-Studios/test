@@ -26,6 +26,7 @@ missions_bossbar:
     # Set progress, color, and style
     - if <server.current_bossbars.contains[<[path]>].not>:
       - bossbar create <[path]> progress:<[x].div[<[y]>]> color:<[color]> style:SEGMENTED_10
+      - flag <player> bossbar:->:bossbar.<[path]>
     - else:
       - bossbar update <[path]> progress:<[x].div[<[y]>]> color:<[color]> style:SEGMENTED_10
     # Mission Completed
