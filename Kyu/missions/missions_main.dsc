@@ -1,7 +1,5 @@
 # -- MISSIONS
 # -- NOTES:
-# -- Make standardized procedures for replacing text in mission names and descriptions.
-# -- Test out colours and switch name and description from .data_key to .parsed_key.
 # -- Switch from narrate to bossbar notification in missions_update_progress.
 
 # Missions Command
@@ -31,7 +29,6 @@ missions_command:
       - narrate <player.flag[<[path]>].get[timeframe]>
       - narrate "Progress: (<player.flag[<[path]>].get[progress]> / <player.flag[<[path]>].get[max]>)"
       - narrate "Completed: <player.flag[<[path]>].get[done].to_titlecase>"
-
 
 # Generate Missions
 missions_generate:
@@ -75,7 +72,6 @@ missions_give:
       - narrate "<[key]>: <[value]>"
     - run missions_update_progress def:set|<[path]>|0
 
-
 # Get Missions with ID
 missions_get:
   type: procedure
@@ -87,7 +83,6 @@ missions_get:
     - foreach <player.flag[missions.active.<[id]>]> key:ctm:
       - define missions:->:missions.active.<[id]>.<[ctm]>
     - determine <[missions]>
-
 
 # Update Mission Progress
 missions_update_progress:
@@ -102,7 +97,6 @@ missions_update_progress:
     # Get definitions from path.
     - define id <player.flag[<[path]>].get[id]>
     - define max <player.flag[<[path]>].get[max]>
-    - define name <player.flag[<[path]>].get[name]>
     - define milestones <script[mission_<[id]>].data_key[milestones]>
     # Add / Set new progress.
     - if <[action]> == add:
@@ -115,10 +109,7 @@ missions_update_progress:
       - flag <player> <[path]>.progress:<[max]>
       - flag <player> <[path]>.done:true
       - run <script[mission_<[id]>].data_key[milestones.max]>
-      - narrate "<[name]> / Progress (<[max]>/<[max]>)"
-      - stop
     - else if <[milestones].contains[<[y]>]>:
       - run <script[mission_<[id]>].data_key[milestones.<[y]>]>
-    # On non-max milestones and progress in-between milestones, show progress.
-    - narrate "<[name]> / Progress (<[y]>/<[max]>)"
+    - run missions_bossbar def:<[path]>
 
