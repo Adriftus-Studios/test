@@ -299,6 +299,7 @@ waystone_open_teleport_town_menu:
   debug: false
   script:
     - define inventory <inventory[waystone_town_teleport_menu]>
+    - define slots <list[<[inventory].script.data_key[data.slots]>]>
     - foreach <player.flag[waystones.town]> key:town as:value:
       - if <[loop_index].mod[45]> == 0:
         - foreach stop
@@ -308,7 +309,8 @@ waystone_open_teleport_town_menu:
       - if <player.flag[waystones.town.<[town]>.location]> != <town[<[town]>].flag[waystone.location]>:
         - flag <player> waystones.town.<[town]>:!
         - foreach next
-      - give waystone_gui_item[flag=location:<[town].flag[waystone.tp_location]>;display=<town[<[town]>].name>] to:<[inventory]>
+      - inventory set slot:<[slots].get[<[loop_index]>]> o:waystone_gui_item[flag=location:<[town].flag[waystone.tp_location]>;display=<town[<[town]>].name>] d:<[inventory]>
+    - inventory set slot:<[inventory].script.data_key[data.back]> o:waystone_back_to_main[flag=entity:<context.item.flag[entity]>] d:<[inventory]>
     - inventory open d:<[inventory]>
 
 waystone_open_teleport_server_menu:
@@ -327,9 +329,11 @@ waystone_open_teleport_wild_menu:
   debug: false
   script:
     - define inventory <inventory[waystone_wild_teleport_menu]>
+    - define slots <list[<[inventory].script.data_key[data.slots]>]>
     - foreach <player.flag[waystones.wild].if_null[<list>].keys> as:waystone_uuid:
       - define data_map <server.flag[waystones.wild.<[waystone_uuid]>]>
-      - give waystone_gui_item[flag=location:<[data_map].get[location]>;display=<[data_map].get[name]>] to:<[inventory]>
+      - inventory set slot: waystone_gui_item[flag=location:<[data_map].get[location]>;display=<[data_map].get[name]>] d:<[inventory]>
+    - inventory set slot:<[slots].get[<[loop_index]>]> o:<[inventory].script.data_key[data.back]> o:waystone_back_to_main[flag=entity:<context.item.flag[entity]>] d:<[inventory]>
     - inventory open d:<[inventory]>
 
 waystone_open_teleport_main_menu:
