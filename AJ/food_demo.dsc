@@ -49,10 +49,11 @@ dough_press_item_events:
     after player crafts item:
     - stop if:<context.is_cancelled>
     - stop if:<context.recipe_id.starts_with[denizen:tortilla_recipe].not.if_null[true]>
-    - define slot <context.inventory.find_item[dough_press_item]>
-    - define item <context.inventory.slot[<[slot]>]>
-    - wait 1t
-    - inventory set d:<context.inventory> slot:<[slot]> o:<[item]>
+    - if <context.inventory.find_item[dough_press_item]> != -1:
+      - define slot <context.inventory.find_item[dough_press_item]>
+      - define item <context.inventory.slot[<[slot]>]>
+      - wait 1t
+      - inventory set d:<context.inventory> slot:<[slot]> o:<[item]>
 
 tortilla_item:
   type: item
