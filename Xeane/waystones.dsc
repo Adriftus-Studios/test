@@ -230,7 +230,7 @@ waystone_open_teleport_submenu:
 waystone_teleport_menu:
   type: inventory
   inventory: chest
-  size: 54
+  size: 45
   title: <&f><&font[adriftus:travel_menu]><&chr[F808]><&chr[1005]>
   gui: true
 
