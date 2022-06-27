@@ -233,6 +233,11 @@ waystone_teleport_menu:
   size: 45
   title: <&f><&font[adriftus:travel_menu]><&chr[F808]><&chr[1005]>
   gui: true
+  data:
+    slots:
+      server: 13|14|15
+      town: 22|23|24
+      wild: 31|32|33
 
 waystone_server_teleport_menu:
   type: inventory
@@ -313,9 +318,12 @@ waystone_open_teleport_main_menu:
     - define entity <context.location.flag[entity]> if:<[entity].exists.not>
     - define inventory <inventory[waystone_teleport_menu]>
     - adjust <[inventory]> title:<&f><&font[adriftus:travel_menu]><&chr[F808]><&chr[1005]>
-    - give waystone_submenu_item[display=Towns;flag=type:town] to:<[inventory]>
-    - give waystone_submenu_item[display=Server;flag=type:server] to:<[inventory]>
-    - give waystone_submenu_item[display=Wild;flag=type:wild] to:<[inventory]>
+    - foreach <[inventory].script.data_key[data.slots]> key:type as:slots:
+      - foreach <[slots]> as:slot:
+        - inventory set:<[slot]> o:waystone_submenu_item[display=<[type].to_titlecase>;flag=type:<[type]>] d:<[inventory]>
+    #- give waystone_submenu_item[display=Towns;flag=type:town] to:<[inventory]>
+    #- give waystone_submenu_item[display=Server;flag=type:server] to:<[inventory]>
+    #- give waystone_submenu_item[display=Wild;flag=type:wild] to:<[inventory]>
     # Remove Waystone Button
     - if <[entity].flag[type]> == town && <player> == <[entity].flag[town].mayor>:
       - inventory set slot:50 o:waystone_remove_item[flag=type:<[entity].flag[type]>;flag=town:<[entity].flag[town]>;flag=entity:<[entity]>] d:<[inventory]>
