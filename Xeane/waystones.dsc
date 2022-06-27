@@ -225,7 +225,7 @@ waystone_open_teleport_submenu:
   type: task
   debug: false
   script:
-    - run waystone_open_teleport_<context.item.flag[type]>_menu
+    - inject waystone_open_teleport_<context.item.flag[type]>_menu
 
 waystone_teleport_menu:
   type: inventory
