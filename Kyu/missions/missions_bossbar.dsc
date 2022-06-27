@@ -20,6 +20,16 @@ missions_bossbar:
         - define color RED
       - default:
         - define color PURPLE
+    # Determine type
+    - choose <player.flag[<[path]>].get[timeframe]>:
+      - case daily:
+        - define prefix <&a>Daily
+      - case weekly:
+        - define prefix <&e>Weekly
+      - case monthly:
+        - define <&6>Monthly
+      - default:
+        - define prefix <&b>HeroCraft
     # Set progress, color, and style
     - if <server.current_bossbars.contains[<[path]>].not>:
       - bossbar create <[path]> progress:<[x].div[<[y]>]> color:<[color]> style:SEGMENTED_10
@@ -27,10 +37,10 @@ missions_bossbar:
       - bossbar update <[path]> progress:<[x].div[<[y]>]> color:<[color]> style:SEGMENTED_10
     # Mission Completed
     - if <[x]> == <[y]>:
-      - bossbar update <[path]> "title:<[name]> <&f>(<&b>Completed<&f>)"
+      - bossbar update <[path]> "title:<[prefix]><&f><&co> <[name]> <&f>(<&color[#010000]>Completed<&f>)"
     # Mission Progressed
     - else:
-      - bossbar update <[path]> "title:<[name]> <&f>(<&b><[x]><&f>/<&b><[y]><&f>)"
+      - bossbar update <[path]> "title:<[prefix]><&f><&co> <[name]> <&f>(<&b><[x]><&f>/<&b><[y]><&f>)"
     # 4t * 15 = 60t = 3s
     - repeat 15:
       - bossbar update <[path]> players:<player>
