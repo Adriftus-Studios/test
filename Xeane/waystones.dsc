@@ -332,7 +332,7 @@ waystone_open_teleport_wild_menu:
     - define slots <list[<[inventory].script.data_key[data.slots]>]>
     - foreach <player.flag[waystones.wild].if_null[<list>].keys> as:waystone_uuid:
       - define data_map <server.flag[waystones.wild.<[waystone_uuid]>]>
-      - inventory set slot:<[slots].get[<[loop_index]>]> waystone_gui_item[flag=location:<[data_map].get[location]>;display=<[data_map].get[name]>] d:<[inventory]>
+      - inventory set slot:<[slots].get[<[loop_index]>]> o:waystone_gui_item[flag=location:<[data_map].get[location]>;display=<[data_map].get[name]>] d:<[inventory]>
     - inventory set slot:<[inventory].script.data_key[data.back]> o:waystone_back_to_main[flag=entity:<context.item.flag[entity]>] d:<[inventory]>
     - inventory open d:<[inventory]>
 
