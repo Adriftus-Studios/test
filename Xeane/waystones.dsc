@@ -242,21 +242,21 @@ waystone_teleport_menu:
 waystone_server_teleport_menu:
   type: inventory
   inventory: chest
-  size: 54
+  size: 45
   title: <&f><&font[adriftus:travel_menu]><&chr[F808]><&chr[1006]>
   gui: true
 
 waystone_wild_teleport_menu:
   type: inventory
   inventory: chest
-  size: 54
+  size: 45
   title: <&f><&font[adriftus:travel_menu]><&chr[F808]><&chr[1008]>
   gui: true
 
 waystone_town_teleport_menu:
   type: inventory
   inventory: chest
-  size: 54
+  size: 45
   title: <&f><&font[adriftus:travel_menu]><&chr[F808]><&chr[1007]>
   gui: true
 
