@@ -238,6 +238,8 @@ waystone_teleport_menu:
       server: 13|14|15
       town: 22|23|24
       wild: 31|32|33
+    rename: 38
+    remove: 39
 
 waystone_server_teleport_menu:
   type: inventory
@@ -248,8 +250,6 @@ waystone_server_teleport_menu:
   data:
     slots: 11|12|13|14|15|16|17|20|21|22|23|24|25|26|29|30|31|32|33|34|35
     back: 37
-    rename: 38
-    remove: 39
 
 waystone_wild_teleport_menu:
   type: inventory
