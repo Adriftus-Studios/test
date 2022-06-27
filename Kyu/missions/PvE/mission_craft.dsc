@@ -80,8 +80,9 @@ mission_craft_events:
   type: world
   debug: false
   events:
-    after player crafts item flagged:missions.active.craft:
-      - narrate <context.inventory.map_slots>
+    on player crafts item flagged:missions.active.craft:
+      - if <context.click_type> == NUMBER_KEY:
+        - stop
       # Add missions with ID craft to a list.
       - define missions <proc[missions_get].context[craft]>
       # Check each mission if their item matches the item.
