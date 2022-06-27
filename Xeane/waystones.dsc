@@ -319,8 +319,9 @@ waystone_open_teleport_main_menu:
     - define inventory <inventory[waystone_teleport_menu]>
     - adjust <[inventory]> title:<&f><&font[adriftus:travel_menu]><&chr[F808]><&chr[1005]>
     - foreach <[inventory].script.data_key[data.slots]> key:type as:slots:
+      - define color_code <list[<&b>|<&e>|<&a>].get[<[loop_index]>]>
       - foreach <[slots]> as:slot:
-        - inventory set slot:<[slot]> o:waystone_submenu_item[display=<[type].to_titlecase>;flag=type:<[type]>] d:<[inventory]>
+        - inventory set slot:<[slot]> o:waystone_submenu_item[display=<[color_code]><[type].to_titlecase>;flag=type:<[type]>] d:<[inventory]>
     #- give waystone_submenu_item[display=Towns;flag=type:town] to:<[inventory]>
     #- give waystone_submenu_item[display=Server;flag=type:server] to:<[inventory]>
     #- give waystone_submenu_item[display=Wild;flag=type:wild] to:<[inventory]>
