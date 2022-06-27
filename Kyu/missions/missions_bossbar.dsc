@@ -44,7 +44,7 @@ missions_bossbar_remove:
   events:
     on player quits:
       - foreach <server.current_bossbars>:
-        - bossbar remove players:<[value]>
+        - bossbar remove <[value]> players:<player>
 
     on server start:
       - foreach <server.current_bossbars>:
