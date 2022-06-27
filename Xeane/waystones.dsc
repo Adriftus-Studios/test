@@ -247,6 +247,7 @@ waystone_server_teleport_menu:
   gui: true
   data:
     slots: 11|12|13|14|15|16|17|20|21|22|23|24|25|26|29|30|31|32|33|34|35
+    back: 37
 
 waystone_wild_teleport_menu:
   type: inventory
@@ -255,7 +256,8 @@ waystone_wild_teleport_menu:
   title: <&f><&font[adriftus:travel_menu]><&chr[F808]><&chr[1008]>
   gui: true
   data:
-    slots:
+    slots: 11|12|13|14|15|16|17|20|21|22|23|24|25|26|29|30|31|32|33|34|35
+    back: 37
 
 waystone_town_teleport_menu:
   type: inventory
@@ -264,7 +266,17 @@ waystone_town_teleport_menu:
   title: <&f><&font[adriftus:travel_menu]><&chr[F808]><&chr[1007]>
   gui: true
   data:
-    slots:
+    slots: 11|12|13|14|15|16|17|20|21|22|23|24|25|26|29|30|31|32|33|34|35
+    back: 37
+
+waystone_back_to_main:
+  type: item
+  material: feather
+  display name: <&c>Back
+  flags:
+    run_script: waystone_open_teleport_main_menu
+  mechanisms:
+    custom_model_data: 3
 
 waystone_remove_item:
   type: item
@@ -305,6 +317,7 @@ waystone_open_teleport_server_menu:
     - define slots <list[<[inventory].script.data_key[data.slots]>]>
     - foreach <server.flag[waystones.server].if_null[<list>]> as:data_map:
       - inventory set slot:<[slots].get[<[loop_index]>]> o:waystone_gui_item[flag=location:<[data_map].get[location]>;display=<[data_map].get[name]>] d:<[inventory]>
+    - inventory set slot:<[inventory].script.data_key[data.back]> o:waystone_back_to_main[flag=entity:<context.item.flag[entity]>] d:<[inventory]>
     - inventory open d:<[inventory]>
 
 waystone_open_teleport_wild_menu:
@@ -322,13 +335,14 @@ waystone_open_teleport_main_menu:
   debug: false
   definitions: entity
   script:
-    - define entity <context.location.flag[entity]> if:<[entity].exists.not>
+    - define entity <context.location.flag[entity].if_null[null]> if:<[entity].exists.not>
+    - define entity <context.item.flag[entity]> if:<[entity].equals[null]>
     - define inventory <inventory[waystone_teleport_menu]>
     - adjust <[inventory]> title:<&f><&font[adriftus:travel_menu]><&chr[F808]><&chr[1005]>
     - foreach <[inventory].script.data_key[data.slots]> key:type as:slots:
       - define color_code <list[<&b>|<&e>|<&a>].get[<[loop_index]>]>
       - foreach <[slots]> as:slot:
-        - inventory set slot:<[slot]> o:waystone_submenu_item[display=<[color_code]><[type].to_titlecase>;flag=type:<[type]>] d:<[inventory]>
+        - inventory set slot:<[slot]> o:waystone_submenu_item[display=<[color_code]><[type].to_titlecase>;flag=type:<[type]>;flag=entity:<[entity]>] d:<[inventory]>
     #- give waystone_submenu_item[display=Towns;flag=type:town] to:<[inventory]>
     #- give waystone_submenu_item[display=Server;flag=type:server] to:<[inventory]>
     #- give waystone_submenu_item[display=Wild;flag=type:wild] to:<[inventory]>
