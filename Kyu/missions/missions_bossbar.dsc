@@ -47,18 +47,12 @@ missions_bossbar_create:
       - foreach active|persistent as:lifespan:
         - if <player.has_flag[missions.<[lifespan]>].not>:
           - foreach next
-        - narrate <[lifespan]>
         - foreach <player.flag[missions.<[lifespan]>]> key:id as:mission:
-          - narrate <[id]>
-          - narrate <[mission]>
           - if <player.has_flag[missions.<[lifespan]>.<[id]>].not>:
             - foreach next
           - define ctm <player.flag[<[mission].keys.first>]>
-          - narrate <[ctm]>
-          - narrate <player.flag[missions.<[lifespan]>.<[id]>.<[ctm]>].get[done].not>
           - if <player.flag[missions.<[lifespan]>.<[id]>.<[ctm]>].get[done].not>:
             - bossbar create missions.<[lifespan]>.<[id]>.<[ctm]>
-            - flag <player> bossbar:|:bossbar.missions.<[lifespan]>.<[id]>.<[ctm]>
 
 
 # Remove bossbars on logout
