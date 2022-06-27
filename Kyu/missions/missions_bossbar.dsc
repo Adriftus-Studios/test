@@ -23,7 +23,6 @@ missions_bossbar:
     # Set progress, color, and style
     - if <server.current_bossbars.contains[<[path]>].not>:
       - bossbar create <[path]> progress:<[x].div[<[y]>]> color:<[color]> style:SEGMENTED_10
-      - flag <player> bossbar:|:bossbar.<[path]>
     - else:
       - bossbar update <[path]> progress:<[x].div[<[y]>]> color:<[color]> style:SEGMENTED_10
     # Mission Completed
@@ -38,29 +37,11 @@ missions_bossbar:
       - wait 4t
     - bossbar remove <[path]> players:<player>
 
-# Create bossbars on login
-missions_bossbar_create:
-  type: world
-  debug: false
-  events:
-    on player joins:
-      - foreach active|persistent as:lifespan:
-        - if <player.has_flag[missions.<[lifespan]>].not>:
-          - foreach next
-        - foreach <player.flag[missions.<[lifespan]>]> key:id as:mission:
-          - if <player.has_flag[missions.<[lifespan]>.<[id]>].not>:
-            - foreach next
-          - define ctm <player.flag[<[mission].keys.first>]>
-          - if <player.flag[missions.<[lifespan]>.<[id]>.<[ctm]>].get[done].not>:
-            - bossbar create missions.<[lifespan]>.<[id]>.<[ctm]>
-
-
 # Remove bossbars on logout
 missions_bossbar_remove:
   type: world
   debug: false
   events:
     on player quits:
-      - foreach <player.flag[bossbar]> as:bar:
-        - bossbar remove <[bar]>
-      - flag <player> bossbar:!
+      - foreach <server.current_bossbars>:
+        - bossbar remove <[value]>
