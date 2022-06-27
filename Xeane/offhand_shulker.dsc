@@ -1,7 +1,7 @@
 offhand_shulker:
-  type: task
+  type: world
   debug: true
-  script:
+  events:
     on player picks up item:
       - if <player.item_in_offhand.inventory_contents.exists>:
         - define inv <inventory[offhand_shulker_dummy_inventory].with[contents=<player.item_in_offhand.inventory_contents>]>
