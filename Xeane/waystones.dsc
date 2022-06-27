@@ -245,6 +245,8 @@ waystone_server_teleport_menu:
   size: 45
   title: <&f><&font[adriftus:travel_menu]><&chr[F808]><&chr[1006]>
   gui: true
+  data:
+    slots: 11|12|13|14|15|16|17|21|22|23|24|25|26|31|32|33|34|35
 
 waystone_wild_teleport_menu:
   type: inventory
@@ -252,6 +254,8 @@ waystone_wild_teleport_menu:
   size: 45
   title: <&f><&font[adriftus:travel_menu]><&chr[F808]><&chr[1008]>
   gui: true
+  data:
+    slots:
 
 waystone_town_teleport_menu:
   type: inventory
@@ -259,6 +263,8 @@ waystone_town_teleport_menu:
   size: 45
   title: <&f><&font[adriftus:travel_menu]><&chr[F808]><&chr[1007]>
   gui: true
+  data:
+    slots:
 
 waystone_remove_item:
   type: item
@@ -296,8 +302,9 @@ waystone_open_teleport_server_menu:
   debug: false
   script:
     - define inventory <inventory[waystone_server_teleport_menu]>
+    - define slots <[inventory].data_key[data.slots]>
     - foreach <server.flag[waystones.server].if_null[<list>]> as:data_map:
-      - give waystone_gui_item[flag=location:<[data_map].get[location]>;display=<[data_map].get[name]>] to:<[inventory]>
+      - inventory set slot:<[slots].get[<[loop_index]>]> o:waystone_gui_item[flag=location:<[data_map].get[location]>;display=<[data_map].get[name]>] d:<[inventory]>
     - inventory open d:<[inventory]>
 
 waystone_open_teleport_wild_menu:
