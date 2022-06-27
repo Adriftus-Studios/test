@@ -4,10 +4,10 @@ buckets_handler:
   debug: true
   events:
     # General
-    on player fills bucket priority:10:
-      - determine cancelled
-    on player empties bucket priority:10:
-      - determine cancelled
+    #on player fills bucket priority:10:
+      #- determine cancelled
+    #on player empties bucket priority:10:
+      #- determine cancelled
 
     # Milking Cows, Mooshrooms, and Goats
     on player right clicks cow|mushroom_cow|goat with:bucket_*_milk_half|!bucket_*_*|bucket_*:
