@@ -231,7 +231,28 @@ waystone_teleport_menu:
   type: inventory
   inventory: chest
   size: 54
-  title: <&a>Waystones
+  title: <&f><&font[adriftus:travel_menu]><&chr[F808]><&chr[1005]>
+  gui: true
+
+waystone_server_teleport_menu:
+  type: inventory
+  inventory: chest
+  size: 54
+  title: <&f><&font[adriftus:travel_menu]><&chr[F808]><&chr[1006]>
+  gui: true
+
+waystone_wild_teleport_menu:
+  type: inventory
+  inventory: chest
+  size: 54
+  title: <&f><&font[adriftus:travel_menu]><&chr[F808]><&chr[1008]>
+  gui: true
+
+waystone_town_teleport_menu:
+  type: inventory
+  inventory: chest
+  size: 54
+  title: <&f><&font[adriftus:travel_menu]><&chr[F808]><&chr[1007]>
   gui: true
 
 waystone_remove_item:
@@ -252,7 +273,7 @@ waystone_open_teleport_town_menu:
   type: task
   debug: false
   script:
-    - define inventory <inventory[waystone_teleport_menu]>
+    - define inventory <inventory[waystone_town_teleport_menu]>
     - foreach <player.flag[waystones.town]> key:town as:value:
       - if <[loop_index].mod[45]> == 0:
         - foreach stop
@@ -269,7 +290,7 @@ waystone_open_teleport_server_menu:
   type: task
   debug: false
   script:
-    - define inventory <inventory[waystone_teleport_menu]>
+    - define inventory <inventory[waystone_server_teleport_menu]>
     - foreach <server.flag[waystones.server].if_null[<list>]> as:data_map:
       - give waystone_gui_item[flag=location:<[data_map].get[location]>;display=<[data_map].get[name]>] to:<[inventory]>
     - inventory open d:<[inventory]>
@@ -278,7 +299,7 @@ waystone_open_teleport_wild_menu:
   type: task
   debug: false
   script:
-    - define inventory <inventory[waystone_teleport_menu]>
+    - define inventory <inventory[waystone_wild_teleport_menu]>
     - foreach <player.flag[waystones.wild].if_null[<list>].keys> as:waystone_uuid:
       - define data_map <server.flag[waystones.wild.<[waystone_uuid]>]>
       - give waystone_gui_item[flag=location:<[data_map].get[location]>;display=<[data_map].get[name]>] to:<[inventory]>
@@ -291,6 +312,7 @@ waystone_open_teleport_main_menu:
   script:
     - define entity <context.location.flag[entity]> if:<[entity].exists.not>
     - define inventory <inventory[waystone_teleport_menu]>
+    - adjust <[inventory]> title:<&f><&font[adriftus:travel_menu]><&chr[F808]><&chr[1005]>
     - give waystone_submenu_item[display=Towns;flag=type:town] to:<[inventory]>
     - give waystone_submenu_item[display=Server;flag=type:server] to:<[inventory]>
     - give waystone_submenu_item[display=Wild;flag=type:wild] to:<[inventory]>
