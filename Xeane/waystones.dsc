@@ -302,7 +302,7 @@ waystone_open_teleport_server_menu:
   debug: false
   script:
     - define inventory <inventory[waystone_server_teleport_menu]>
-    - define slots <list[<[inventory].data_key[data.slots]>]>
+    - define slots <list[<[inventory].script.data_key[data.slots]>]>
     - foreach <server.flag[waystones.server].if_null[<list>]> as:data_map:
       - inventory set slot:<[slots].get[<[loop_index]>]> o:waystone_gui_item[flag=location:<[data_map].get[location]>;display=<[data_map].get[name]>] d:<[inventory]>
     - inventory open d:<[inventory]>
