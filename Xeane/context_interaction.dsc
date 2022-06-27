@@ -5,7 +5,7 @@ context_menu_events:
     on player right clicks entity with:air:
       - ratelimit <player> 1t
       - if <player.is_sneaking>:
-        - inject open_context_menu
+        - run trade_open def:<context.entity>
 
 open_context_menu:
   type: task
