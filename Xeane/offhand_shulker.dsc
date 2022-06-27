@@ -9,11 +9,8 @@ offhand_shulker:
         - if <[inv].can_fit[<context.item>]>:
           - give <context.item> to:<[inv]>
           - inventory adjust slot:offhand inventory_contents:<[inv].list_contents>
-          - determine passively cancelled
-          - adjust <context.entity> fake_pickup:<player>
-          - adjust <context.entity> pickup_delay:99m
-          - wait 5t
           - remove <context.entity>
+          - determine cancelled
 
 offhand_shulker_dummy_inventory:
   type: inventory
