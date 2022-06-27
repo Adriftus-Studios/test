@@ -81,7 +81,7 @@ mission_craft_events:
   debug: false
   events:
     after player crafts item flagged:missions.active.craft:
-      - narrate <context.inventory>
+      - narrate <context.inventory.map_slots>
       # Add missions with ID craft to a list.
       - define missions <proc[missions_get].context[craft]>
       # Check each mission if their item matches the item.
