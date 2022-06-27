@@ -8,7 +8,8 @@ offhand_shulker:
         - if <[inv].can_fit[<context.item>]>:
           - give <context.item> to:<[inv]>
           - inventory adjust slot:offhand inventory_contents:<[inv].list_contents>
-          - determine ITEM:air
+          - remove <context.entity>
+          - determine cancelled
 
 offhand_shulker_dummy_inventory:
   type: inventory
