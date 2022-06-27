@@ -1,6 +1,6 @@
 offhand_shulker:
   type: task
-  debug: false
+  debug: true
   script:
     on player picks up item:
       - if <player.item_in_offhand.inventory_contents.exists>:
