@@ -248,6 +248,8 @@ waystone_server_teleport_menu:
   data:
     slots: 11|12|13|14|15|16|17|20|21|22|23|24|25|26|29|30|31|32|33|34|35
     back: 37
+    rename: 38
+    remove: 39
 
 waystone_wild_teleport_menu:
   type: inventory
@@ -348,12 +350,12 @@ waystone_open_teleport_main_menu:
     #- give waystone_submenu_item[display=Wild;flag=type:wild] to:<[inventory]>
     # Remove Waystone Button
     - if <[entity].flag[type]> == town && <player> == <[entity].flag[town].mayor>:
-      - inventory set slot:50 o:waystone_remove_item[flag=type:<[entity].flag[type]>;flag=town:<[entity].flag[town]>;flag=entity:<[entity]>] d:<[inventory]>
+      - inventory set slot:<[inventory].script.data_key[data.remove]> o:waystone_remove_item[flag=type:<[entity].flag[type]>;flag=town:<[entity].flag[town]>;flag=entity:<[entity]>] d:<[inventory]>
     - else if <player.has_permission[adriftus.waystone.<[entity].flag[type]>.remove]>:
-      - inventory set slot:50 o:waystone_remove_item[flag=type:<[entity].flag[type]>;flag=entity:<[entity]>] d:<[inventory]>
+      - inventory set slot:<[inventory].script.data_key[data.remove]> o:waystone_remove_item[flag=type:<[entity].flag[type]>;flag=entity:<[entity]>] d:<[inventory]>
     # Rename Waystone Button
     - if <[entity].flag[type]> != town && <player.has_permission[adriftus.waystone.<[entity].flag[type]>.rename]>:
-      - inventory set slot:49 o:waystone_rename_item[flag=type:<[entity].flag[type]>;flag=entity:<[entity]>] d:<[inventory]>
+      - inventory set slot:<[inventory].script.data_key[data.rename]> o:waystone_rename_item[flag=type:<[entity].flag[type]>;flag=entity:<[entity]>] d:<[inventory]>
 
     - inventory open d:<[inventory]>
 
