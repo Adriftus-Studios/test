@@ -62,7 +62,10 @@ mission_kill_events:
   type: world
   debug: true
   events:
-    on entity dies by:player flagged:missions.active.kill:
+    on entity dies by:player:
+      # Check for flag
+      - if <context.damager.has_flag[missions.active.kill].not>:
+        - stop
       # Add missions with ID kill to a list.
       - define missions <proc[missions_get].context[kill]>
       # Check each mission if the slain mob matches the mob.
