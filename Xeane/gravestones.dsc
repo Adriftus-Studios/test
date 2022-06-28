@@ -1,3 +1,16 @@
+custom_object_gravestone:
+  type: data
+  item: gravestone
+  entity: gravestone_entity
+  interaction: gravestone_use
+  place_checks_task: gravestone_place
+  after_place_task: waystone_after_place_town
+  remove_task: gravestone_remove
+  barrier_locations:
+    - <[location]>
+    - <[location].above>
+
+
 gravestone:
   type: item
   material: feather
@@ -17,7 +30,8 @@ gravestone:
         - double_compressed_stone|double_compressed_stone|double_compressed_stone
         - air|double_compressed_stone|air
   flags:
-    right_click_script: gravestone_place
+    right_click_script: custom_object_place
+    custom_object: gravestone
   mechanisms:
     custom_model_data: 300
 
@@ -32,22 +46,8 @@ gravestone_entity:
       helmet: feather[custom_model_data=<list[300|301|302|303].random>]
   flags:
     right_click_script: gravestone_use
-    on_entity_added: gravestone_active
+    on_entity_added: custom_object_update
 
-
-gravestone_active:
-  type: task
-  debug: false
-  definitions: entity
-  script:
-    - define entity <context.entity> if:<[entity].exists.not>
-    - while <[entity].is_spawned>:
-      - foreach <[entity].location.find_players_within[30]>:
-        - if <[value].fake_block[<[entity].location>].exists>:
-          - foreach next
-        - showfake <[entity].location> air duration:9999m players:<[value]>
-        - showfake <[entity].location.above> air duration:9999m players:<[value]>
-      - wait 5s
 
 gravestone_place:
   type: task
@@ -67,27 +67,30 @@ gravestone_place:
     - if !<entry[grave].spawned_entity.is_spawned>:
       - narrate "<&c>ERROR - Report Me - Error Code<&co> GraveNotSpawning"
       - stop
+
+gravestone_after_place:
+  type: task
+  debug: false
+  definitions: entity
+  script:
     - define town <context.location.town>
-    - define barrier_blocks <list[<entry[grave].spawned_entity.location>|<entry[grave].spawned_entity.location.above>]>
-    - modifyblock <[barrier_blocks]> barrier
-    - flag <entry[grave].spawned_entity> grave.blocks:|:<[barrier_blocks]>
-    - flag <entry[grave].spawned_entity> town:<context.location.town>
-    - flag <[town]> graves:->:<entry[grave].spawned_entity>
-    - flag <entry[grave].spawned_entity> last_used:<util.time_now>
-    - showfake <[barrier_blocks]> air duration:9999m players:<context.location.find_players_within[30]>
+    - flag <[entity]> town:<context.location.town>
+    - flag <[town]> graves:->:<[entity]>
+    - flag <[entity]> last_used:<util.time_now>
     - take iteminhand
-    - run gravestone_active def:<entry[grave].spawned_entity>
 
 gravestone_use:
   type: task
   debug: false
+  definitions: entity
   script:
     - ratelimit <player> 1t
+    - define entity <context.location.flag[custom_object]>
     - determine passively cancelled
-    - if <player.is_sneaking> && <context.entity.flag[town].mayor> == <player>:
-      - run gravestone_remove def:<context.entity>
+    - if <player.is_sneaking> && <[entity].flag[town].mayor> == <player>:
+      - run gravestone_remove def:<[entity]>
       - stop
-    - if <player.has_town> && <context.entity.flag[town]> != <player.town>:
+    - if <player.has_town> && <[entity].flag[town]> != <player.town>:
       - narrate "<&c>You can only use your own Town's Gravestone"
       - stop
     - if !<player.has_flag[logged_inventories.death]>:
@@ -96,14 +99,14 @@ gravestone_use:
     - if !<player.has_flag[graves.drops]>:
       - narrate "<&c>You have already claimed your most recent death"
       - stop
-    - if <context.entity.has_flag[last_used]> && <util.time_now.duration_since[<context.entity.flag[last_used]>].in_minutes> < 15:
+    - if <[entity].has_flag[last_used]> && <util.time_now.duration_since[<[entity].flag[last_used]>].in_minutes> < 15:
       - narrate "<&c>The Gravestone is still recharging"
-      - narrate "<&c>Time Remaining<&co> <&e><duration[15m].sub[<util.time_now.duration_since[<context.entity.flag[last_used]>]>].formatted>"
+      - narrate "<&c>Time Remaining<&co> <&e><duration[15m].sub[<util.time_now.duration_since[<[entity].flag[last_used]>]>].formatted>"
       - stop
     - give <player.flag[graves.drops]> to:<player.inventory>
     - flag player graves.drops:!
     - narrate "<&a>You have reclaimed your lost items."
-    - flag <context.entity> last_used:<util.time_now>
+    - flag <[entity]> last_used:<util.time_now>
 
 gravestone_remove:
   type: task
@@ -111,11 +114,7 @@ gravestone_remove:
   definitions: entity
   script:
     - define town <[entity].flag[town]>
-    - modifyblock <[entity].flag[grave.blocks]> air
-    - showfake cancel <[entity].flag[grave.blocks]>
     - flag <[town]> graves:<-:<[entity]>
-    - remove <[entity]>
-    - give gravestone to:<player.inventory>
 
 graves_player_death_handler:
   type: world
