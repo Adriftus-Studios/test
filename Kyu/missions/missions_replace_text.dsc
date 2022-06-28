@@ -3,6 +3,7 @@
 missions_replace_text:
   type: data
   items: -items-
+  mobs: -mobs-
   max: -max-
 
 # Replace text in name
