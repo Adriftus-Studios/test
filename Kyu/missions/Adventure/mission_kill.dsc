@@ -62,9 +62,7 @@ mission_kill_events:
   type: world
   debug: true
   events:
-    on entity killed by entity_flagged:missions.active.kill:
-      - if <context.damager.entity_type> != PLAYER:
-        - stop
+    on entity dies by:player flagged:missions.active.kill:
       - define __player <context.damager>
       # Add missions with ID kill to a list.
       - define missions <proc[missions_get].context[kill]>
