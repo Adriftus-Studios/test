@@ -6,4 +6,5 @@ spawn_Command:
     usage: /spawn
     script:
         - teleport <context.player> spawn_location
+        # spawn_location flag needs to be set somewhere
 #Approved
