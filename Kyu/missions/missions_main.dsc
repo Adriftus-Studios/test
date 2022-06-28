@@ -64,7 +64,7 @@ missions_give:
     - stop if:<[map].is_empty>
     # Define mission ID and unique identifier.
     - define id <[map].get[id]>
-    - define ctm <server.current_time_millis>
+    - define ctm <util.current_time_millis>
     - define path missions.active.<[id]>.<[ctm]>
     - foreach <[map]>:
       - flag <player> <[path]>.<[key]>:<[value]>
