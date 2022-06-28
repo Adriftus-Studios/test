@@ -225,14 +225,60 @@ waystone_open_teleport_submenu:
   type: task
   debug: false
   script:
-    - run waystone_open_teleport_<context.item.flag[type]>_menu
+    - inject waystone_open_teleport_<context.item.flag[type]>_menu
 
 waystone_teleport_menu:
   type: inventory
   inventory: chest
-  size: 54
-  title: <&a>Waystones
+  size: 45
+  title: <&f><&font[adriftus:travel_menu]><&chr[F808]><&chr[1005]>
   gui: true
+  data:
+    slots:
+      server: 13|14|15
+      town: 22|23|24
+      wild: 31|32|33
+    rename: 38
+    remove: 39
+
+waystone_server_teleport_menu:
+  type: inventory
+  inventory: chest
+  size: 45
+  title: <&f><&font[adriftus:travel_menu]><&chr[F808]><&chr[1006]>
+  gui: true
+  data:
+    slots: 11|12|13|14|15|16|17|20|21|22|23|24|25|26|29|30|31|32|33|34|35
+    back: 37
+
+waystone_wild_teleport_menu:
+  type: inventory
+  inventory: chest
+  size: 45
+  title: <&f><&font[adriftus:travel_menu]><&chr[F808]><&chr[1008]>
+  gui: true
+  data:
+    slots: 11|12|13|14|15|16|17|20|21|22|23|24|25|26|29|30|31|32|33|34|35
+    back: 37
+
+waystone_town_teleport_menu:
+  type: inventory
+  inventory: chest
+  size: 45
+  title: <&f><&font[adriftus:travel_menu]><&chr[F808]><&chr[1007]>
+  gui: true
+  data:
+    slots: 11|12|13|14|15|16|17|20|21|22|23|24|25|26|29|30|31|32|33|34|35
+    back: 37
+
+waystone_back_to_main:
+  type: item
+  material: feather
+  display name: <&c>Back
+  flags:
+    run_script: waystone_open_teleport_main_menu
+  mechanisms:
+    custom_model_data: 3
 
 waystone_remove_item:
   type: item
@@ -252,7 +298,8 @@ waystone_open_teleport_town_menu:
   type: task
   debug: false
   script:
-    - define inventory <inventory[waystone_teleport_menu]>
+    - define inventory <inventory[waystone_town_teleport_menu]>
+    - define slots <list[<[inventory].script.data_key[data.slots]>]>
     - foreach <player.flag[waystones.town]> key:town as:value:
       - if <[loop_index].mod[45]> == 0:
         - foreach stop
@@ -262,26 +309,31 @@ waystone_open_teleport_town_menu:
       - if <player.flag[waystones.town.<[town]>.location]> != <town[<[town]>].flag[waystone.location]>:
         - flag <player> waystones.town.<[town]>:!
         - foreach next
-      - give waystone_gui_item[flag=location:<[town].flag[waystone.tp_location]>;display=<town[<[town]>].name>] to:<[inventory]>
+      - inventory set slot:<[slots].get[<[loop_index]>]> o:waystone_gui_item[flag=location:<[town].flag[waystone.tp_location]>;display=<town[<[town]>].name>] d:<[inventory]>
+    - inventory set slot:<[inventory].script.data_key[data.back]> o:waystone_back_to_main[flag=entity:<context.item.flag[entity]>] d:<[inventory]>
     - inventory open d:<[inventory]>
 
 waystone_open_teleport_server_menu:
   type: task
   debug: false
   script:
-    - define inventory <inventory[waystone_teleport_menu]>
+    - define inventory <inventory[waystone_server_teleport_menu]>
+    - define slots <list[<[inventory].script.data_key[data.slots]>]>
     - foreach <server.flag[waystones.server].if_null[<list>]> as:data_map:
-      - give waystone_gui_item[flag=location:<[data_map].get[location]>;display=<[data_map].get[name]>] to:<[inventory]>
+      - inventory set slot:<[slots].get[<[loop_index]>]> o:waystone_gui_item[flag=location:<[data_map].get[location]>;display=<[data_map].get[name]>] d:<[inventory]>
+    - inventory set slot:<[inventory].script.data_key[data.back]> o:waystone_back_to_main[flag=entity:<context.item.flag[entity]>] d:<[inventory]>
     - inventory open d:<[inventory]>
 
 waystone_open_teleport_wild_menu:
   type: task
   debug: false
   script:
-    - define inventory <inventory[waystone_teleport_menu]>
+    - define inventory <inventory[waystone_wild_teleport_menu]>
+    - define slots <list[<[inventory].script.data_key[data.slots]>]>
     - foreach <player.flag[waystones.wild].if_null[<list>].keys> as:waystone_uuid:
       - define data_map <server.flag[waystones.wild.<[waystone_uuid]>]>
-      - give waystone_gui_item[flag=location:<[data_map].get[location]>;display=<[data_map].get[name]>] to:<[inventory]>
+      - inventory set slot:<[slots].get[<[loop_index]>]> o:waystone_gui_item[flag=location:<[data_map].get[location]>;display=<[data_map].get[name]>] d:<[inventory]>
+    - inventory set slot:<[inventory].script.data_key[data.back]> o:waystone_back_to_main[flag=entity:<context.item.flag[entity]>] d:<[inventory]>
     - inventory open d:<[inventory]>
 
 waystone_open_teleport_main_menu:
@@ -289,19 +341,25 @@ waystone_open_teleport_main_menu:
   debug: false
   definitions: entity
   script:
-    - define entity <context.location.flag[entity]> if:<[entity].exists.not>
+    - define entity <context.location.flag[entity].if_null[null]> if:<[entity].exists.not>
+    - define entity <context.item.flag[entity]> if:<[entity].equals[null]>
     - define inventory <inventory[waystone_teleport_menu]>
-    - give waystone_submenu_item[display=Towns;flag=type:town] to:<[inventory]>
-    - give waystone_submenu_item[display=Server;flag=type:server] to:<[inventory]>
-    - give waystone_submenu_item[display=Wild;flag=type:wild] to:<[inventory]>
+    - adjust <[inventory]> title:<&f><&font[adriftus:travel_menu]><&chr[F808]><&chr[1005]>
+    - foreach <[inventory].script.data_key[data.slots]> key:type as:slots:
+      - define color_code <list[<&b>|<&e>|<&a>].get[<[loop_index]>]>
+      - foreach <[slots]> as:slot:
+        - inventory set slot:<[slot]> o:waystone_submenu_item[display=<[color_code]><[type].to_titlecase>;flag=type:<[type]>;flag=entity:<[entity]>] d:<[inventory]>
+    #- give waystone_submenu_item[display=Towns;flag=type:town] to:<[inventory]>
+    #- give waystone_submenu_item[display=Server;flag=type:server] to:<[inventory]>
+    #- give waystone_submenu_item[display=Wild;flag=type:wild] to:<[inventory]>
     # Remove Waystone Button
     - if <[entity].flag[type]> == town && <player> == <[entity].flag[town].mayor>:
-      - inventory set slot:50 o:waystone_remove_item[flag=type:<[entity].flag[type]>;flag=town:<[entity].flag[town]>;flag=entity:<[entity]>] d:<[inventory]>
+      - inventory set slot:<[inventory].script.data_key[data.remove]> o:waystone_remove_item[flag=type:<[entity].flag[type]>;flag=town:<[entity].flag[town]>;flag=entity:<[entity]>] d:<[inventory]>
     - else if <player.has_permission[adriftus.waystone.<[entity].flag[type]>.remove]>:
-      - inventory set slot:50 o:waystone_remove_item[flag=type:<[entity].flag[type]>;flag=entity:<[entity]>] d:<[inventory]>
+      - inventory set slot:<[inventory].script.data_key[data.remove]> o:waystone_remove_item[flag=type:<[entity].flag[type]>;flag=entity:<[entity]>] d:<[inventory]>
     # Rename Waystone Button
     - if <[entity].flag[type]> != town && <player.has_permission[adriftus.waystone.<[entity].flag[type]>.rename]>:
-      - inventory set slot:49 o:waystone_rename_item[flag=type:<[entity].flag[type]>;flag=entity:<[entity]>] d:<[inventory]>
+      - inventory set slot:<[inventory].script.data_key[data.rename]> o:waystone_rename_item[flag=type:<[entity].flag[type]>;flag=entity:<[entity]>] d:<[inventory]>
 
     - inventory open d:<[inventory]>
 
