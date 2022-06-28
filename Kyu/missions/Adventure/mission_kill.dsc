@@ -60,7 +60,7 @@ mission_kill_complete:
 # Events
 mission_kill_events:
   type: world
-  debug: false
+  debug: true
   events:
     on entity dies by:player flagged:missions.active.kill:
       # Add missions with ID kill to a list.
