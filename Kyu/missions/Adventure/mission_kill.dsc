@@ -2,10 +2,10 @@
 mission_kill:
   type: data
   id: kill
-  category: PvE
-  name: <&a>Kill <&2>-mobs-
+  category: Adventure
+  name: <&e>Kill <&6>-mobs-
   description:
-    - "<&a>Kill <&b>-max- <&2>-mobs-<&a>."
+    - "<&e>Kill <&b>-max- <&7>-mobs-<&e>."
   assignment: mission_kill_assignment
   milestones:
     max: mission_kill_complete
