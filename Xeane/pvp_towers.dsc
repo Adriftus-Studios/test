@@ -107,7 +107,7 @@ PvP_tower_capture:
   script:
     - announce "<[tower_id]> has been captured by <[town].name>"
     - inventory clear d:pvp_tower_<[tower_id]>
-    - flag server pvp_towers.towers.<[tower_id]>.reset
+    - flag server pvp_towers.towers.<[tower_id]>.reset:true
     - flag server pvp_towers.gathering:->:<[tower_id]>
     - bossbar update pvp_tower_<[tower_id]> "title:<&a>Owned<&co> <[town].name>" progress:1
 
