@@ -43,7 +43,9 @@ PvP_tower_loop:
       - define entity <server.flag[pvp_towers.towers.<[tower_id]>.entity]>
     - define tower_id <[entity].flag[tower_id]> if:<[tower_id].exists.not>
     - if <server.flag[pvp_towers.towers.<[tower_id]>.progress]> != 1:
-      - bossbar create pvp_tower_<[tower_id]> progress:<server.flag[pvp_towers.towers.<[tower_id]>.progress]> "title:<&a>Capturing<&co> <server.flag[pvp_towers.towers.<[tower_id]>.owner].name.if_null[<&7>Neutral]>" players:<[entity].location.find_players_within[120]>
+      - bossbar create pvp_tower_<[tower_id]> progress:<server.flag[pvp_towers.towers.<[tower_id]>.progress]> "title:<&a>Capturing<&co> <server.flag[pvp_towers.towers.<[tower_id]>.owner].name>" players:<[entity].location.find_players_within[120]>
+    - else if <server.flag[pvp_towers.towers.<[tower_id]>.progress]> == 0:
+      - bossbar create pvp_tower_<[tower_id]> progress:<server.flag[pvp_towers.towers.<[tower_id]>.progress]> title:<&7>NEUTRAL players:<[entity].location.find_players_within[120]>
     - else:
       - bossbar create pvp_tower_<[tower_id]> progress:1 "title:<&a>Owned<&co> <server.flag[pvp_towers.towers.<[tower_id]>.owner].name>" players:<[entity].location.find_players_within[120]>
     - define range <server.flag[pvp_towers.towers.<[tower_id]>.range]>
@@ -77,7 +79,7 @@ PvP_tower_increment:
       - define new_progress <[progress].sub[0.01]>
       - if <[new_progress]> <= 0:
         - run PvP_tower_neutralize def:<[tower_id]>|<[town]>
-    - else if <[progress]> <= 1:
+    - else if <[progress]> >= 1:
       - define new_progress <[progress].add[0.01]>
       - run PvP_tower_capture def:<[tower_id]>|<[town]>
     - define final_progress <[new_progress].max[0].min[1]>
