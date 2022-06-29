@@ -13,7 +13,7 @@ hat_wear_events:
   initialize:
     - flag server hats:!
     - foreach <server.scripts.filter[name.starts_with[hat_]].filter[container_type.equals[DATA]]>:
-      - flag server hats.ids.<[value].data_key[hats.id]>:<[value]>
+      - flag server hats.ids.<[value].data_key[hats.id]>.<[value].data_key[hat_data.id]>:<[value]>
   events:
     on player joins:
       - foreach <server.flag[hats]> key:target as:hat:
