@@ -43,9 +43,9 @@ PvP_tower_loop:
       - define entity <server.flag[pvp_towers.towers.<[tower_id]>.entity]>
     - define tower_id <[entity].flag[tower_id]> if:<[tower_id].exists.not>
     - if <server.flag[pvp_towers.towers.<[tower_id]>.progress]> != 1:
-      - bossbar create pvp_tower_<[tower_id]> progress:<server.flag[pvp_towers.towers.<[tower_id]>.progress]> "title:<&a>Capturing<&co> <server.flag[pvp_towers.towers.<[tower_id]>.owner].name.if_null[<&7>Neutral]>"
+      - bossbar create pvp_tower_<[tower_id]> progress:<server.flag[pvp_towers.towers.<[tower_id]>.progress]> "title:<&a>Capturing<&co> <server.flag[pvp_towers.towers.<[tower_id]>.owner].name.if_null[<&7>Neutral]>" players:<[entity].location.find_players_within[120]>
     - else:
-      - bossbar create pvp_tower_<[tower_id]> progress:1 "title:<&a>Owned<&co> <server.flag[pvp_towers.towers.<[tower_id]>.owner].name>"
+      - bossbar create pvp_tower_<[tower_id]> progress:1 "title:<&a>Owned<&co> <server.flag[pvp_towers.towers.<[tower_id]>.owner].name>" players:<[entity].location.find_players_within[120]>
     - define range <server.flag[pvp_towers.towers.<[tower_id]>.range]>
     - wait 1t
     - while <[entity].is_spawned>:
