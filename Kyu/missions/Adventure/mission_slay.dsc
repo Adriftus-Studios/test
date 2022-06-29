@@ -1,14 +1,15 @@
-# -- PvE Mission - Kill Mobs
-mission_kill:
+# -- Adventure Mission - Slay Mobs
+mission_slay:
   type: data
-  id: kill
+  id: slay
   category: Adventure
-  name: <&e>Kill <&6>-mobs-
+  name: <&e>Slay <&6>-mobs-
   description:
-    - "<&e>Kill <&b>-max- <&7>-mobs-<&e>."
-  assignment: mission_kill_assignment
+    - "<&e>Slay <&b>-max- <&7>-mobs-<&e>."
+    - "<&e>Complete this by slaying monsters."
+  assignment: mission_slay_assignment
   milestones:
-    max: mission_kill_complete
+    max: mission_slay_complete
   mobs:
     zombie:
       - 2
@@ -28,13 +29,13 @@ mission_kill:
 
 
 # Assignment Task
-mission_kill_assignment:
+mission_slay_assignment:
   type: task
   debug: false
   definitions: timeframe
   script:
     - stop if:<[timeframe].exists.not>
-    - define config <script[mission_kill]>
+    - define config <script[mission_slay]>
     # Generate random entity and amount from config.
     - define mob <[config].data_key[mobs].keys.random>
     - define name <[mob].as_entity.name.replace[_].with[<&sp>].to_titlecase.if_null[<[mob].as_entity.entity_type.replace[_].with[<&sp>].to_titlecase>]>
@@ -51,23 +52,23 @@ mission_kill_assignment:
     - run missions_give def:<[map]>
 
 # Completion Task
-mission_kill_complete:
+mission_slay_complete:
   type: task
   debug: false
   script:
-    - narrate "You are killing, kid!"
+    - narrate "You are slaying, kid!"
 
 # Events
-mission_kill_events:
+mission_slay_events:
   type: world
   debug: false
   events:
-    on entity killed by entity_flagged:missions.active.kill:
+    on entity killed by entity_flagged:missions.active.slay:
       - if <context.damager.entity_type> != PLAYER:
         - stop
       - define __player <context.damager>
-      # Add missions with ID kill to a list.
-      - define missions <proc[missions_get].context[kill]>
+      # Add missions with ID slay to a list.
+      - define missions <proc[missions_get].context[slay]>
       # Check each mission if the slain mob matches the mob.
       - foreach <[missions]> as:mission:
         - if <player.flag[<[mission]>].get[done]>:

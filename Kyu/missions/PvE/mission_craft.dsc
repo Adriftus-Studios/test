@@ -6,6 +6,7 @@ mission_craft:
   name: <&a>Craft <&2>-items-
   description:
     - "<&a>Craft <&b>-max- <&2>-items-<&a>."
+    - "<&a>Complete this by crafting items."
   assignment: mission_craft_assignment
   milestones:
     max: mission_craft_complete

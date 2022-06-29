@@ -6,6 +6,7 @@ mission_cook:
   name: <&a>Cook <&2>-items-
   description:
     - "<&a>Cook <&b>-max- <&2>-items-<&a>."
+    - "<&a>Complete this by cooking food."
   assignment: mission_cook_assignment
   milestones:
     max: mission_cook_complete

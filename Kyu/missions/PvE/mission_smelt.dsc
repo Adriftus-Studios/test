@@ -6,6 +6,7 @@ mission_smelt:
   name: <&a>Smelt <&2>-items-
   description:
     - "<&a>Smelt <&b>-max- <&2>-items-<&a>."
+    - "<&a>Complete this by smelting ores."
   assignment: mission_smelt_assignment
   milestones:
     max: mission_smelt_complete

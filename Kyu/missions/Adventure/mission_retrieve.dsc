@@ -1,47 +1,45 @@
-# -- PvE Mission - Fishing
-mission_fish:
+# -- Adventure Mission - Retrieve Mob Drops
+mission_retrieve:
   type: data
-  id: fish
-  category: PvE
-  name: <&a>Fish <&2>-items-
+  id: retrieve
+  category: Adventure
+  name: <&e>Retrieve <&6>-items-
   description:
-    - "<&a>Fish <&b>-max- <&2>-items-<&a>."
-    - "<&a>Complete this by catching fish."
-  assignment: mission_fish_assignment
+    - "<&e>Retrieve <&b>-max- <&7>-items-<&e>."
+    - "<&e>Complete this by slaying monsters."
+  assignment: mission_retrieve_assignment
   milestones:
-    max: mission_fish_complete
+    max: mission_retrieve_complete
   items:
-    cod:
+    leather:
       - 2
       - 4
-      - 6
-      - 8
-    salmon:
+    beef:
       - 2
       - 4
-      - 6
-      - 8
-    tropical_fish:
+    feather:
       - 2
       - 4
-      - 6
-      - 8
-    pufferfish:
+    porkchop:
       - 2
       - 4
-      - 6
-      - 8
+    rabbit:
+      - 2
+      - 4
+    rabbit_hide:
+      - 2
+      - 4
 
 
 # Assignment Task
-mission_fish_assignment:
+mission_retrieve_assignment:
   type: task
   debug: false
   definitions: timeframe
   script:
     - stop if:<[timeframe].exists.not>
-    - define config <script[mission_fish]>
-    # Generate random item and amount from config.
+    - define config <script[mission_retrieve]>
+    # Generate random entity and amount from config.
     - define item <[config].data_key[items].keys.random>
     - define name <[item].as_item.display.if_null[<[item].as_item.material.name.replace[_].with[<&sp>].to_titlecase>]>
     - define max <[config].data_key[items.<[item]>].random>
@@ -57,24 +55,29 @@ mission_fish_assignment:
     - run missions_give def:<[map]>
 
 # Completion Task
-mission_fish_complete:
+mission_retrieve_complete:
   type: task
   debug: false
   script:
-    - narrate "You are fishing, kid!"
+    - narrate "You are retrieving, kid!"
 
 # Events
-mission_fish_events:
+mission_retrieve_events:
   type: world
   debug: false
   events:
-    on player fishes item while caught_fish flagged:missions.active.fish:
-      # Add missions with ID fish to a list.
-      - define missions <proc[missions_get].context[fish]>
-      # Check each mission if their item matches the item.
+    on entity dies by:player:
+      - if <context.damager.has_flag[missions.active.retrieve].not>:
+        - stop
+      - define __player <context.damager>
+      - narrate <context.drops.if_null[<list[]>]>
+      # Add missions with ID retrieve to a list.
+      - define missions <proc[missions_get].context[retrieve]>
+      # Check each mission if the slain mob's drops matches the item.
       - foreach <[missions]> as:mission:
         - if <player.flag[<[mission]>].get[done]>:
           - foreach next
-        - define item <context.item.script.name.if_null[<context.item.material.name>]>
-        - if <player.flag[<[mission]>].get[item]> == <[item]>:
-          - run missions_update_progress def:add|<[mission]>|<context.item.quantity>
+        - define items <context.drops.if_null[<list[]>]>
+        - foreach <[items]> as:item:
+          - if <player.flag[<[mission]>].get[item]> == <[item]>:
+            - run missions_update_progress def:add|<[mission]>|1

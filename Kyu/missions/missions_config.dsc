@@ -11,5 +11,6 @@ missions_config:
     #- fish
     #- smelt
     #- cook
-    - kill
+    - slay
+    - retrieve
 
