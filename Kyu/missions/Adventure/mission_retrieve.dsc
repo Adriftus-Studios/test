@@ -64,7 +64,7 @@ mission_retrieve_complete:
 # Events
 mission_retrieve_events:
   type: world
-  debug: false
+  debug: true
   events:
     on entity dies by:player:
       - if <context.damager.has_flag[missions.active.retrieve].not>:
