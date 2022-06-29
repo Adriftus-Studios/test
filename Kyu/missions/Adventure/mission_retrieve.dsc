@@ -26,9 +26,6 @@ mission_retrieve:
     rabbit:
       - 2
       - 4
-    rabbit_hide:
-      - 2
-      - 4
 
 
 # Assignment Task
