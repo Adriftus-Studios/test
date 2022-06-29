@@ -1,61 +1,46 @@
-# -- PvE Mission - Crafting
-mission_craft:
+# -- Adventure Mission - Retrieve Mob Drops
+mission_retrieve:
   type: data
-  id: craft
-  category: PvE
-  name: <&a>Craft <&2>-items-
+  id: retrieve
+  category: Adventure
+  name: <&e>Retrieve <&6>-items-
   description:
-    - "<&a>Craft <&b>-max- <&2>-items-<&a>."
-    - "<&a>Complete this by crafting items."
-  assignment: mission_craft_assignment
+    - "<&e>Retrieve <&b>-max- <&7>-items-<&e>."
+    - "<&e>Complete this by slaying monsters."
+  assignment: mission_retrieve_assignment
   milestones:
-    max: mission_craft_complete
+    max: mission_retrieve_complete
   items:
-    oak_planks:
+    leather:
+      - 4
       - 8
       - 16
-      - 32
-      - 64
-    spruce_planks:
+    beef:
+      - 4
       - 8
       - 16
-      - 32
-      - 64
-    birch_planks:
+    feather:
+      - 4
       - 8
       - 16
-      - 32
-      - 64
-    jungle_planks:
+    porkchop:
+      - 4
       - 8
       - 16
-      - 32
-      - 64
-    acacia_planks:
-      - 8
-      - 16
-      - 32
-      - 64
-    dark_oak_planks:
-      - 8
-      - 16
-      - 32
-      - 64
-    stone_bricks:
-      - 32
-      - 48
-      - 64
+    rabbit:
+      - 2
+      - 4
 
 
 # Assignment Task
-mission_craft_assignment:
+mission_retrieve_assignment:
   type: task
   debug: false
   definitions: timeframe
   script:
     - stop if:<[timeframe].exists.not>
-    - define config <script[mission_craft]>
-    # Generate random item and amount from config.
+    - define config <script[mission_retrieve]>
+    # Generate random entity and amount from config.
     - define item <[config].data_key[items].keys.random>
     - define name <[item].as_item.display.if_null[<[item].as_item.material.name.replace[_].with[<&sp>].to_titlecase>]>
     - define max <[config].data_key[items.<[item]>].random>
@@ -71,26 +56,28 @@ mission_craft_assignment:
     - run missions_give def:<[map]>
 
 # Completion Task
-mission_craft_complete:
+mission_retrieve_complete:
   type: task
   debug: false
   script:
-    - narrate "You are crafting, kid!"
+    - narrate "You are retrieving, kid!"
 
 # Events
-mission_craft_events:
+mission_retrieve_events:
   type: world
   debug: false
   events:
-    on player crafts item flagged:missions.active.craft:
-      - if <context.click_type> == NUMBER_KEY:
+    on entity dies by:player:
+      - if <context.damager.has_flag[missions.active.retrieve].not>:
         - stop
-      # Add missions with ID craft to a list.
-      - define missions <proc[missions_get].context[craft]>
-      # Check each mission if their item matches the item.
+      - define __player <context.damager>
+      # Add missions with ID retrieve to a list.
+      - define missions <proc[missions_get].context[retrieve]>
+      # Check each mission if the slain mob's drops matches the item.
       - foreach <[missions]> as:mission:
         - if <player.flag[<[mission]>].get[done]>:
           - foreach next
-        - define item <context.item.script.name.if_null[<context.item.material.name>]>
-        - if <player.flag[<[mission]>].get[item]> == <[item]>:
-          - run missions_update_progress def:add|<[mission]>|<context.amount>
+        - define items <context.drops.if_null[<list[]>]>
+        - foreach <[items]> as:item:
+          - if <player.flag[<[mission]>].get[item].as_item.script.name.if_null[<player.flag[<[mission]>].get[item].as_item.material.name>]> == <[item].as_item.script.name.if_null[<[item].as_item.material.name>]>:
+            - run missions_update_progress def:add|<[mission]>|<[item].as_item.quantity>

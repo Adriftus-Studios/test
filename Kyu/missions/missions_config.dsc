@@ -7,5 +7,11 @@ missions_config:
   monthly: 0
   # List of Mission IDs. NOT a list of mission paths.
   missions:
-    - craft
+    #- craft
+    #- fish
+    #- smelt
+    #- cook
+    #- slay
+    #- retrieve
+    - pvp_zanzabar
 

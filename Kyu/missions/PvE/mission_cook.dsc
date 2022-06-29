@@ -1,60 +1,34 @@
-# -- PvE Mission - Crafting
-mission_craft:
+# -- PvE Mission - Cooking
+mission_cook:
   type: data
-  id: craft
+  id: cook
   category: PvE
-  name: <&a>Craft <&2>-items-
+  name: <&a>Cook <&2>-items-
   description:
-    - "<&a>Craft <&b>-max- <&2>-items-<&a>."
-    - "<&a>Complete this by crafting items."
-  assignment: mission_craft_assignment
+    - "<&a>Cook <&b>-max- <&2>-items-<&a>."
+    - "<&a>Complete this by cooking food."
+  assignment: mission_cook_assignment
   milestones:
-    max: mission_craft_complete
+    max: mission_cook_complete
   items:
-    oak_planks:
+    cooked_cod:
       - 8
+      - 12
       - 16
-      - 32
-      - 64
-    spruce_planks:
+    cooked_salmon:
       - 8
+      - 12
       - 16
-      - 32
-      - 64
-    birch_planks:
-      - 8
-      - 16
-      - 32
-      - 64
-    jungle_planks:
-      - 8
-      - 16
-      - 32
-      - 64
-    acacia_planks:
-      - 8
-      - 16
-      - 32
-      - 64
-    dark_oak_planks:
-      - 8
-      - 16
-      - 32
-      - 64
-    stone_bricks:
-      - 32
-      - 48
-      - 64
 
 
 # Assignment Task
-mission_craft_assignment:
+mission_cook_assignment:
   type: task
   debug: false
   definitions: timeframe
   script:
     - stop if:<[timeframe].exists.not>
-    - define config <script[mission_craft]>
+    - define config <script[mission_cook]>
     # Generate random item and amount from config.
     - define item <[config].data_key[items].keys.random>
     - define name <[item].as_item.display.if_null[<[item].as_item.material.name.replace[_].with[<&sp>].to_titlecase>]>
@@ -71,26 +45,24 @@ mission_craft_assignment:
     - run missions_give def:<[map]>
 
 # Completion Task
-mission_craft_complete:
+mission_cook_complete:
   type: task
   debug: false
   script:
-    - narrate "You are crafting, kid!"
+    - narrate "You are cooking, kid!"
 
 # Events
-mission_craft_events:
+mission_cook_events:
   type: world
   debug: false
   events:
-    on player crafts item flagged:missions.active.craft:
-      - if <context.click_type> == NUMBER_KEY:
-        - stop
-      # Add missions with ID craft to a list.
-      - define missions <proc[missions_get].context[craft]>
+    on player takes item from furnace flagged:missions.active.cook:
+      # Add missions with ID cook to a list.
+      - define missions <proc[missions_get].context[cook]>
       # Check each mission if their item matches the item.
       - foreach <[missions]> as:mission:
         - if <player.flag[<[mission]>].get[done]>:
           - foreach next
         - define item <context.item.script.name.if_null[<context.item.material.name>]>
         - if <player.flag[<[mission]>].get[item]> == <[item]>:
-          - run missions_update_progress def:add|<[mission]>|<context.amount>
+          - run missions_update_progress def:add|<[mission]>|<context.item.quantity>

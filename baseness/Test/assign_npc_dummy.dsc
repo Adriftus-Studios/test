@@ -6,5 +6,6 @@ npc_dummy:
             - vulnerable state:true
         after damage:
             - chat <context.damage> targets:<player>
+            - ratelimit <player> 5s
             - heal <npc>
 #To be tested
