@@ -65,13 +65,12 @@ mission_retrieve_complete:
 # Events
 mission_retrieve_events:
   type: world
-  debug: true
+  debug: false
   events:
     on entity dies by:player:
       - if <context.damager.has_flag[missions.active.retrieve].not>:
         - stop
       - define __player <context.damager>
-      - narrate <context.drops.if_null[<list[]>]>
       # Add missions with ID retrieve to a list.
       - define missions <proc[missions_get].context[retrieve]>
       # Check each mission if the slain mob's drops matches the item.
