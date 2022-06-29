@@ -1,4 +1,4 @@
-Chocolate_cake_placer:
+Custom_Cake_placer:
   type: world
   debug: false
   events:
@@ -29,7 +29,7 @@ Chocolate_cake_placer:
         - if <context.location.material.type> == top:
           - define location <context.location.block.center.above[0.58]>
       - if <[location].exists>:
-        - spawn armor_stand[equipment=air|air|air|cake[custom_model_data=<[CMD]>];visible=false] <[location]> save:cake_entity
+        - spawn armor_stand[equipment=air|air|air|cake[custom_model_data=<[CMD]>];visible=false;gravity=false] <[location]> save:cake_entity
         - flag <entry[cake_entity].spawned_entity> cake_type:<[type]>
         - flag <entry[cake_entity].spawned_entity> servings:<[servings]>
         - flag <entry[cake_entity].spawned_entity> amount:<[amount]>
