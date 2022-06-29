@@ -2,7 +2,8 @@ crayon_survival:
     type: item
     material: leather_horse_armor
     display name: <&f>Survival Crayon
-    Lore: <&6>Not for human consumption.
+    Lore:
+      - <&6>Not for human consumption.
     flags:
       right_click_script: crayon_drawing
       custom_durability:
