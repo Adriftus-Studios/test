@@ -86,8 +86,6 @@ PvP_tower_increment:
     - define final_progress <[new_progress].max[0].min[1]>
     - bossbar PvP_tower_<[tower_id]> update progress:<[final_progress]>
     - flag server pvp_towers.towers.<[tower_id]>.progress:<[final_progress]>
-    - if <[final_progress]> == 1:
-      - run pvp_tower_capture def:<[tower_id]>|<[town]>
 
 PvP_tower_neutralize:
   type: task
