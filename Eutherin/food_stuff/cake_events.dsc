@@ -1,4 +1,4 @@
-Chocolate_cake_placer:
+Custom_Cake_placer:
   type: world
   debug: false
   events:
