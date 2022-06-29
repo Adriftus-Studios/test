@@ -61,6 +61,9 @@ hat_wear:
       - run global_player_data_modify def:<player.uuid>|hats.current|<[script].parsed_key[hat_data]>
       - fakeequip <player> head:<[script].parsed_key[hat_data.item]> for:<server.online_players>
       - flag server hats.<player>:<[script].parsed_key[hat_data.item]>
+      - if <context.inventory.exists>:
+        - define info_item <context.inventory.slot[<script[cosmetic_selection_inventory_open].data_key[data.slot_data.remove_slot]>]>
+        - run cosmetic_selection_inventory_open def:<[info_item].flag[type]>|<[info_item].flag[page]>
 
 hat_remove:
   type: task
