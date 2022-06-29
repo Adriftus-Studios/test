@@ -11,9 +11,9 @@ mission_pvp_zanzabar:
   milestones:
     max: mission_pvp_zanzabar_complete
   players:
-    - 1
     - 2
     - 3
+    - 4
 
 
 # Assignment Task
