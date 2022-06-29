@@ -42,6 +42,10 @@ PvP_tower_loop:
     - else:
       - define entity <server.flag[pvp_towers.towers.<[tower_id]>.entity]>
     - define tower_id <[entity].flag[tower_id]> if:<[tower_id].exists.not>
+    - if <server.flag[pvp_towers.towers.<[tower_id]>.progress]> != 1:
+      - bossbar create pvp_tower_<[tower_id]> progress:<server.flag[pvp_towers.towers.<[tower_id]>.progress]> title:"title:<&a>Capturing<&co> <server.flag[pvp_towers.towers.<[tower_id]>.owner].name>"
+    - else:
+      - bossbar create pvp_tower_<[tower_id]> progress:1 "title:<&a>Owned<&co> <server.flag[pvp_towers.towers.<[tower_id]>.owner].name>"
     - define range <server.flag[pvp_towers.towers.<[tower_id]>.range]>
     - wait 1t
     - while <[entity].is_spawned>:
@@ -101,7 +105,7 @@ PvP_tower_capture:
     - flag server pvp_towers.towers.<[tower_id]>.owner:<[town]>
     - inventory clear d:pvp_tower_<[tower_id]>
     - flag server pvp_towers.gathering:->:<[tower_id]>
-    - bossbar update pvp_tower_<[tower_id]> title:<&a>Owned<&co> <[town].name> progress:1
+    - bossbar update pvp_tower_<[tower_id]> "title:<&a>Owned<&co> <[town].name>" progress:1
 
 pvp_tower_periodic_gather:
   type: world
