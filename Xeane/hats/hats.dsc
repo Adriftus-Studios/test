@@ -53,7 +53,6 @@ hat_wear:
       - if !<script[hat_<[hat_id]>].exists>:
         - debug error "UNKNOWN hat<&co> <[hat_id]>"
         - stop
-      - inventory close
       - wait 1t
       - define script <script[hat_<[hat_id]>]>
       - if <[script].data_key[hat_data.permission].exists> && !<player.has_permission[<[script].data_key[hat_data.permission]>]>:
@@ -73,3 +72,6 @@ hat_remove:
     - run global_player_data_modify def:<player.uuid>|hats.current|!
     - fakeequip reset <player>
     - flag server hats.<player>:!
+    - if <context.inventory.exists>:
+      - define info_item <context.inventory.slot[<script[cosmetic_selection_inventory_open].data_key[data.slot_data.remove_slot]>]>
+      - run cosmetic_selection_inventory_open def:<[info_item].flag[type]>|<[info_item].flag[page]>
