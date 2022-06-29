@@ -79,5 +79,5 @@ mission_retrieve_events:
           - foreach next
         - define items <context.drops.if_null[<list[]>]>
         - foreach <[items]> as:item:
-          - if <player.flag[<[mission]>].get[item]> == <[item]>:
-            - run missions_update_progress def:add|<[mission]>|1
+          - if <player.flag[<[mission]>].get[item].as_item> == <[item]>:
+            - run missions_update_progress def:add|<[mission]>|<[item].quantity>
