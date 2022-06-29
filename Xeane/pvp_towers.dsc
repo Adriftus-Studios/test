@@ -51,7 +51,7 @@ PvP_tower_loop:
     - while <[entity].is_spawned>:
       - if <[loop_index].mod[5]> == 0:
         - define bossbar_players <[entity].location.find_players_within[100]>
-        - bossbar update players:<[bossbar_players]>
+        - bossbar pvp_tower_<[tower_id]> update players:<[bossbar_players]>
       - define players <[entity].location.find_players_within[<[range]>]>
       - define towns <[players].filter[has_town].parse[town]>
       - if <[towns].size> == 1:
