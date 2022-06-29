@@ -2,7 +2,7 @@ context_menu_events:
   type: world
   debug: false
   events:
-    on player right clicks entity with:air:
+    on player right clicks player with:air:
       - ratelimit <player> 1t
       - if <player.is_sneaking>:
         - run trade_open def:<context.entity>
