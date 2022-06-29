@@ -79,11 +79,10 @@ PvP_tower_increment:
       - define new_progress <[progress].sub[0.01]>
       - if <[new_progress]> <= 0:
         - run PvP_tower_neutralize def:<[tower_id]>|<[town]>
-    - else if <[progress]> >= 1:
-      - define new_progress <[progress].add[0.01]>
-      - run PvP_tower_capture def:<[tower_id]>|<[town]>
     - else:
       - define new_progress <[progress].add[0.01]>
+      - if <[new_progress]> >= 1 && !<server.has_flag[pvp_towers.tower.<[tower_id]>.reset]>:
+        - run PvP_tower_capture def:<[tower_id]>|<[town]>
     - define final_progress <[new_progress].max[0].min[1]>
     - bossbar PvP_tower_<[tower_id]> update progress:<[final_progress]>
     - flag server pvp_towers.towers.<[tower_id]>.progress:<[final_progress]>
@@ -97,6 +96,7 @@ PvP_tower_neutralize:
   script:
     - announce "<[tower_id]> has been nautralized by <[town].name>"
     - flag server pvp_towers.towers.<[tower_id]>.owner:neutral
+    - flag server pvp_towers.towers.<[tower_id]>.reset:!
     - flag server pvp_towers.gathering:<-:<[tower_id]>
     - bossbar update pvp_tower_<[tower_id]> title:<&7>Neutral progress:0
 
@@ -106,8 +106,8 @@ PvP_tower_capture:
   definitions: tower_id|town
   script:
     - announce "<[tower_id]> has been captured by <[town].name>"
-    - flag server pvp_towers.towers.<[tower_id]>.owner:<[town]>
     - inventory clear d:pvp_tower_<[tower_id]>
+    - flag server pvp_towers.towers.<[tower_id]>.reset
     - flag server pvp_towers.gathering:->:<[tower_id]>
     - bossbar update pvp_tower_<[tower_id]> "title:<&a>Owned<&co> <[town].name>" progress:1
 
