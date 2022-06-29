@@ -27,6 +27,7 @@ PvP_Tower_Marker:
     custom_name: PvP_tower_marker
     custom_name_visible: false
     marker: true
+    visible: false
     gravity: false
   flags:
     on_entity_added: PvP_tower_loop
@@ -44,8 +45,10 @@ PvP_tower_loop:
     - define range <server.flag[pvp_towers.towers.<[tower_id]>.range]>
     - wait 1t
     - while <[entity].is_spawned>:
+      - if <[loop_index].mod[5]> == 0:
+        - define bossbar_players <[entity].location.find_players_within[100]>
+        - bossbar update players:<[bossbar_players]>
       - define players <[entity].location.find_players_within[<[range]>]>
-      - bossbar update players:<[players]>
       - define towns <[players].filter[has_town].parse[town]>
       - if <[towns].size> == 1:
         - run PvP_tower_increment def:<[tower_id]>|<[towns].first>
