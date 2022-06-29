@@ -12,17 +12,21 @@ mission_retrieve:
     max: mission_retrieve_complete
   items:
     leather:
-      - 2
       - 4
+      - 8
+      - 16
     beef:
-      - 2
       - 4
+      - 8
+      - 16
     feather:
-      - 2
       - 4
+      - 8
+      - 16
     porkchop:
-      - 2
       - 4
+      - 8
+      - 16
     rabbit:
       - 2
       - 4
