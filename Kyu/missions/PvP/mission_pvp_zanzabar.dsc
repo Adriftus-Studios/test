@@ -13,7 +13,6 @@ mission_pvp_zanzabar:
   players:
     - 2
     - 3
-    - 4
 
 
 # Assignment Task
