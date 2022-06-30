@@ -84,7 +84,7 @@ mission_retrieve_events:
           - define item <[value].as_item.script.name.if_null[<[value].as_item.material.name>]>
           - if <[retrieve]> == <[item]>:
             - drop <[item]> <context.entity.location> quantity:<[value].as_item.quantity> save:dropped
-            - flag <entry[dropped].dropped_entity> on_item_pickup:mission_retrieve_task
+            - flag <entry[dropped].dropped_entities> on_item_pickup:mission_retrieve_task
           - else:
             - drop <[item]> <context.entity.location> quantity:<[value].as_item.quantity>
 
@@ -99,4 +99,4 @@ mission_retrieve_task:
     - foreach <[missions]> as:mission:
       - if <player.flag[<[mission]>].get[done]>:
         - foreach next
-      - run missions_update_progress def:add|<[mission]>|<context.item.quantity>
+      - run missions_update_progress def:add|<[mission]>|1
