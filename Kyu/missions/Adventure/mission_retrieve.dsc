@@ -86,7 +86,7 @@ mission_retrieve_events:
           - if <[retrieve]> == <[item]>:
             # Progress mission if player inventory can fit item.
             - if <player.inventory.can_fit[<[value].as_item>].quantity[<[value].as_item.quantity>]>:
-              - drop <[item]> <player.location> quantity:<[value].as_item.quantity>
+              - give <[item]> quantity:<[value].as_item.quantity> to:<player.inventory>
               - run missions_update_progress def:add|<[mission]>|<[value].as_item.quantity>
             # Otherwise, notify player that their inventory is full.
             - else:
