@@ -3,7 +3,9 @@ nuketest:
     debug: false
     events:
          on player right clicks block with:nuke:
-         - explode breakblocks power:50
+            - repeat 999
+            - spawn PRIMED_TNT <player.location>
+            - wait 1t
 
 nuke_item:
     type: item
