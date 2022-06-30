@@ -96,10 +96,6 @@ admin_shop_open:
       - define this_item <[itemTag].with[lore=<[lore]>;flag=price:<[price]>;flag=run_script:admin_shop_choose_item]>
       - inventory set slot:<[slots].get[<[loop_index]>]> o:<[this_item]> d:<[inventory]>
 
-    # Player Info Head
-    - define lore <list[<&color[#010000]>Placeholder]>
-    - inventory set slot:<script.data_key[data.player_head]> o:player_head[skull_skin=<player.skull_skin>;flag=shop_name:<[shop_name]>;flag=page:<[page]>;display=<&e><player.name>;lore=<[lore]>]
-
     # Selected Item
     - if <[selected_item].exists>:
       - inventory set slot:<script.data_key[data.selected_item]> o:<[selected_item]> d:<[inventory]>
