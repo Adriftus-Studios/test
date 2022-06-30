@@ -77,7 +77,7 @@ mission_retrieve_events:
       - foreach <[missions]> as:mission:
         - if <player.flag[<[mission]>].get[done]>:
           - foreach next
-        - flag <player> on_item_pickup:mission_retrieve_task
+        - flag <player> on_item_pickup:->:mission_retrieve_task
 
 # Task
 mission_retrieve_task:
