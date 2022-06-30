@@ -82,21 +82,15 @@ mission_retrieve_events:
           - determine passively NO_DROPS
           - define retrieve <player.flag[<[mission]>].get[item].as_item.script.name.if_null[<player.flag[<[mission]>].get[item].as_item.material.name>]>
           - define item <[value].as_item.script.name.if_null[<[value].as_item.material.name>]>
+          # Drop item
           - if <[retrieve]> == <[item]>:
-            - drop <[item]> <context.entity.location> quantity:<[value].as_item.quantity> save:dropped
-            - flag <entry[dropped].dropped_entities> on_item_pickup:mission_retrieve_task
+            # Progress mission if player inventory can fit item.
+            - if <player.inventory.can_fit[<[value].as_item>].quantity[<[value].as_item.quantity>]>:
+              - drop <[item]> <player.location> quantity:<[value].as_item.quantity>
+              - run missions_update_progress def:add|<[mission]>|<[value].as_item.quantity>
+            # Otherwise, notify player that their inventory is full.
+            - else:
+              - narrate "<&c>You cannot retrieve items right now! Your inventory is full."
           - else:
             - drop <[item]> <context.entity.location> quantity:<[value].as_item.quantity>
 
-# Task
-mission_retrieve_task:
-  type: task
-  debug: true
-  script:
-    # Add missions with ID retrieve to a list.
-    - define missions <proc[missions_get].context[retrieve]>
-    # Check each mission if the slain mob's drops matches the item.
-    - foreach <[missions]> as:mission:
-      - if <player.flag[<[mission]>].get[done]>:
-        - foreach next
-      - run missions_update_progress def:add|<[mission]>|<context.item.quantity>
