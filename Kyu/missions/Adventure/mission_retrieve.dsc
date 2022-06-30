@@ -91,7 +91,7 @@ mission_retrieve_events:
 # Task
 mission_retrieve_task:
   type: task
-  debug: false
+  debug: true
   script:
     # Add missions with ID retrieve to a list.
     - define missions <proc[missions_get].context[retrieve]>
