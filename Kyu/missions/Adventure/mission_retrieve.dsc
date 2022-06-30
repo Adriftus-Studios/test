@@ -99,4 +99,7 @@ mission_retrieve_task:
     - foreach <[missions]> as:mission:
       - if <player.flag[<[mission]>].get[done]>:
         - foreach next
-      - run missions_update_progress def:add|<[mission]>|1
+      - define retrieve <player.flag[<[mission]>].get[item].as_item.script.name.if_null[<player.flag[<[mission]>].get[item].as_item.material.name>]>
+      - define item <context.item.script.name.if_null[<context.item.material.name>]>
+      - if <[retrieve]> == <[item]>:
+        - run missions_update_progress def:add|<[mission]>|<context.item.quantity>
