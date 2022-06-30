@@ -78,6 +78,24 @@ mission_retrieve_events:
         - if <player.flag[<[mission]>].get[done]>:
           - foreach next
         - define items <context.drops.if_null[<list[]>]>
-        - foreach <[items]> as:item:
-          - if <player.flag[<[mission]>].get[item].as_item.script.name.if_null[<player.flag[<[mission]>].get[item].as_item.material.name>]> == <[item].as_item.script.name.if_null[<[item].as_item.material.name>]>:
-            - run missions_update_progress def:add|<[mission]>|<[item].as_item.quantity>
+        - foreach <[items]>:
+          - determine passively NO_DROPS
+          - define retrieve <player.flag[<[mission]>].get[item].as_item.script.name.if_null[<player.flag[<[mission]>].get[item].as_item.material.name>]>
+          - define item <[value].as_item.script.name.if_null[<[value].as_item.material.name>]>
+          - if <[retrieve]> == <[item]>:
+            - drop <[item].with_flag[on_item_pickup:mission_retrieve_task]> quantity:<[value].as_item.quantity>
+            - foreach next
+          - drop <[item]> quantity:<[value].as_item.quantity>
+
+# Task
+mission_retrieve_task:
+  type: task
+  debug: false
+  script:
+    # Add missions with ID retrieve to a list.
+    - define missions <proc[missions_get].context[retrieve]>
+    # Check each mission if the slain mob's drops matches the item.
+    - foreach <[missions]> as:mission:
+      - if <player.flag[<[mission]>].get[done]>:
+        - foreach next
+      - run missions_update_progress def:add|<[mission]>|<context.item.quantity>
