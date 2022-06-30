@@ -12,6 +12,6 @@ missions_config:
     #- smelt
     #- cook
     #- slay
-    #- retrieve
-    - pvp_zanzabar
+    - retrieve
+    #- pvp_zanzabar
 
