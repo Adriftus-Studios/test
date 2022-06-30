@@ -68,7 +68,7 @@ admin_shop_open:
   definitions: shop_name|page|selected_item
   data:
     player_head: 5
-    item_slots: 11|12|13|14|15|16|17|20|21|22|23|24|25|26|29|30|31|32|33|34|35
+    item_slots: 2|3|4|5|6|7|8|11|12|13|14|15|16|17|20|21|22|23|24|25|26
     next_page: 54
     previous_page: 46
     selected_slot: 41
@@ -145,15 +145,16 @@ admin_shop_buy:
     - define item <context.inventory.slot[<script[admin_shop_open].data_key[selected_slot]>]>
     - define price <[item].flag[price]>
     # Server Currency Purchase
-    - if <[price].starts_with[$]>:
-      - if <player.money> >= <[price]>:
-        - narrate "<&a>Yay, Purchased!"
+    - choose <[price].substring[1,1]>:
+      - case $:
+        - if <player.money> >= <[price]>:
+          - narrate "<&a>Yay, Purchased!"
+        - else:
+          - narrate "<&c>Insufficient Funds!"
+        - stop
       - else:
-        - narrate "<&c>Insufficient Funds!"
-      - stop
-    - else:
-      - if 0 >= <[price]>:
-        - narrate "<&a>Yay, Purchased!"
-      - else:
-        - narrate "<&c>Insufficient Funds!"
-      - stop
+        - if 0 >= <[price]>:
+          - narrate "<&a>Yay, Purchased!"
+        - else:
+          - narrate "<&c>Insufficient Funds!"
+        - stop
