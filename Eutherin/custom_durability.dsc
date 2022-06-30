@@ -1,7 +1,10 @@
 custom_durability_process_task:
   type: task
   debug: false
+  definitions: slot|value
   script:
+      - define slot <player.held_item_slot> if:<[slot].exists.not>
+      - define value 1 if:<[value].exists.not>
       - if !<player.inventory.slot[<[slot]>].has_flag[custom_durability.max]>:
         - stop
       - if <player.inventory.slot[<[slot]>].flag[custom_durability.current].add[<[value]>]> < <player.inventory.slot[<[slot]>].flag[custom_durability.max]>:

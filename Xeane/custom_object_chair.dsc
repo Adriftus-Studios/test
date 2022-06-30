@@ -1,9 +1,12 @@
 custom_object_oak_chair:
   type: data
   item: oak_chair
-  primary:
-    entity: oak_chair_entity
-    location: <context.location.center.above[0.7]>
+  entity: oak_chair_entity
+  interaction: chair_interact
+  place_checks_task: chair_place_check
+  barrier_locations:
+    - <[location]>
+    - <[location].above>
 
 oak_chair:
   type: item
@@ -12,7 +15,9 @@ oak_chair:
   mechanisms:
     custom_model_data: 9001
   flags:
-    right_click_script: chair_place
+    right_click_script: custom_object_place
+    custom_object: oak_chair
+    unique: <server.current_time_millis>
 
 oak_chair_entity:
   type: entity
@@ -26,26 +31,15 @@ oak_chair_entity:
     equipment:
       helmet: oak_chair
   flags:
-    right_click_script: chair_interact
-    on_entity_added: custom_object_handler
+    on_entity_added: custom_object_update
 
-chair_place:
+chair_place_check:
   type: task
   debug: false
   script:
-    - ratelimit <player> 2t
-    - if <list[<context.location.above>|<context.location.above[2]>].filter[material.name.advanced_matches[air|cave_air]].size> != 2:
-      - narrate "<&c>Not enough room."
+    - if <[location].has_town> && !<player.can_build[<[location]>]>:
+      - narrate "<&c>You dont no have build permissions here"
       - stop
-    - if !<context.location.below.material.is_solid> || <context.location.below.material.name> == barrier:
-      - narrate "<&c>Must be placed on solid ground."
-      - stop
-    - define yaw <player.location.yaw.round_to_precision[90]>
-    - spawn oak_chair_entity <context.location.center.above[0.7].with_yaw[<[yaw]>]> save:entity
-    - modifyblock <context.location.above>|<context.location.above[2]> barrier
-    - showfake <context.location.above>|<context.location.above[2]> air duration:9999m players:<context.location.find_players_within[50]>
-    - run custom_object_handler def:<entry[entity].spawned_entity>
-    - take iteminhand quantity:1
 
 chair_stop_sit:
   type: task
@@ -54,6 +48,8 @@ chair_stop_sit:
     - ratelimit <player> 2t
     - animate <player> animation:stop_sitting
     - flag player on_dismount:<-:chair_stop_sit
+    - showfake <player.flag[chair].flag[barriers]> cancel
+    - flag player chair:!
     - wait 5t
     - flag player no_suffocate:!
 
@@ -61,14 +57,18 @@ chair_interact:
   type: task
   debug: false
   script:
-    - ratelimit <player> 2t
     - determine passively cancelled
+    - ratelimit <player> 2t
+    - define entity <context.location.flag[custom_object]>
     - if <player.is_sneaking>:
-      - drop <context.entity.equipment_map.get[helmet]> <context.entity.location>
-      - modifyblock <context.entity.location>|<context.entity.location.above> air
-      - remove <context.entity>
+      - if <[entity].location.has_town> && !<player.can_build[<[entity].location>]>:
+        - narrate "<&c>You dont no have build permissions here"
+        - stop
+      - run custom_object_remove def:<[entity]>
       - stop
-    - teleport <player> <context.entity.location.above[0.22]>
+    - teleport <player> <[entity].location.above[0.22]>
     - animate <player> animation:sit
+    - showfake <[entity].flag[barriers]> air duration:999h
     - flag player no_suffocate
+    - flag player chair:<[entity]>
     - flag player on_dismount:->:chair_stop_sit
