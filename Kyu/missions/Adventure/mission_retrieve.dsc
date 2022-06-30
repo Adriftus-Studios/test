@@ -83,7 +83,7 @@ mission_retrieve_events:
           - define retrieve <player.flag[<[mission]>].get[item].as_item.script.name.if_null[<player.flag[<[mission]>].get[item].as_item.material.name>]>
           - define item <[value].as_item.script.name.if_null[<[value].as_item.material.name>]>
           - if <[retrieve]> == <[item]>:
-            - define item <[item].with_flag[on_item_pickup:mission_retrieve_task]>
+            - flag <[item]> on_item_pickup:mission_retrieve_task
           - drop <[item]> <context.entity.location> quantity:<[value].as_item.quantity>
 
 # Task
