@@ -82,7 +82,7 @@ mission_retrieve_events:
 # Task
 mission_retrieve_task:
   type: task
-  debug: false
+  debug: true
   script:
     - if <context.entity.has_flag[missions.active.retrieve].not>:
       - stop
