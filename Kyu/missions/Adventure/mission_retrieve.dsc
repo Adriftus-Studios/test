@@ -79,12 +79,10 @@ mission_retrieve_events:
           - foreach next
         - define items <context.drops.if_null[<list[]>]>
         - foreach <[items]>:
-          - determine passively NO_DROPS
           - define retrieve <player.flag[<[mission]>].get[item].as_item.script.name.if_null[<player.flag[<[mission]>].get[item].as_item.material.name>]>
           - define item <[value].as_item.script.name.if_null[<[value].as_item.material.name>]>
           - if <[retrieve]> == <[item]>:
-            - flag <[item]> on_item_pickup:mission_retrieve_task
-          - drop <[item]> <context.entity.location> quantity:<[value].as_item.quantity>
+            - flag <player> on_item_pickup:mission_retrieve_task
 
 # Task
 mission_retrieve_task:
