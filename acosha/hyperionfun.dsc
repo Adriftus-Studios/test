@@ -8,4 +8,4 @@ hyperionteleport:
     events:
         on player right clicks block with:hyperion:
             - teleport <player> <player.location.forward[5]>
-            - explode power:3
+            - explode power:3 
