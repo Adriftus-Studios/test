@@ -63,10 +63,11 @@ missions_reset:
     - define missions <[config].data_key[missions]>
     # Loop over mission IDs
     - foreach <[missions]> as:id:
+      # Loop over missions
       - foreach <player.flag[missions.active.<[id]>].keys> as:ctm:
-        - define compare <player.flag[missions.active.<[id]>.<[ctm]>].get[timeframe]>
-        - if <[compare]> == <[timeframe]>:
-          - narrate <player.flag[missions.active.<[id]>.<[ctm]>].get[name]>
+        # Remove if same timeframe
+        - if <player.flag[missions.active.<[id]>.<[ctm]>].get[timeframe]> == <[timeframe]>:
+          - flag <player> missions.active.<[id]>.<[ctm]>:!
 
 # Give Mission
 missions_give:
