@@ -2,16 +2,16 @@
 missions_config:
   type: data
   # Number of missions to generate per-player.
-  daily: 1
-  weekly: 0
-  monthly: 0
+  daily: 3
+  weekly: 3
+  monthly: 3
   # List of Mission IDs. NOT a list of mission paths.
   missions:
-    #- craft
-    #- fish
-    #- smelt
-    #- cook
-    #- slay
+    - craft
+    - fish
+    - smelt
+    - cook
+    - slay
     - retrieve
     - pvp_zanzabar
 
