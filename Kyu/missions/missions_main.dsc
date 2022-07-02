@@ -61,16 +61,19 @@ missions_reset:
     # Define config and missions list.
     - define config <script[missions_config]>
     - define missions <[config].data_key[missions]>
-    # Loop over mission IDs
+    # Loop over mission IDs.
     - foreach <[missions]> as:id:
-      # Skip if player does not have any missions with ID
-      - if <player.has_flag[missions.active.<[id]>].not>:
+      # Skip if player does not have any missions with ID.
+      - if <player.has_flag[missions.active.<[id]>].not> || <player.flag[missions.active.<[id]>]> == <map>:
         - foreach next
-      # Loop over missions
+      # Loop over missions.
       - foreach <player.flag[missions.active.<[id]>].keys> as:ctm:
-        # Remove if same timeframe
+        # Remove if same timeframe.
         - if <player.flag[missions.active.<[id]>.<[ctm]>].get[timeframe]> == <[timeframe]>:
           - flag <player> missions.active.<[id]>.<[ctm]>:!
+      # Remove if mission ID is now empty.
+      - if <player.flag[missions.active.<[id]>]> == <map>:
+        - flag <player> missions.active.<[id]>:!
 
 # Give Mission
 missions_give:
