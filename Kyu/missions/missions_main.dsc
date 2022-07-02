@@ -15,7 +15,7 @@ missions_command:
     # <[filter_value]> == Map of CTM
     # - define timeframe <context.args.first>
     # <player.flag[missions.active.<[id]>].filter_tag[<[filter_value].get[timeframe].equals[<[timeframe]>]>]>
-    - if <player.has_flag[missions.active].not>:
+    - if <player.has_flag[missions.active].not> || <player.flag[missions.active].if_null[<map>]> == <map>:
       - narrate "You do not have any active missions."
       - stop
     - foreach <player.flag[missions.active]> key:id:
