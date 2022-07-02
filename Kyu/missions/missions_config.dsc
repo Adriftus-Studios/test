@@ -2,9 +2,9 @@
 missions_config:
   type: data
   # Number of missions to generate per-player.
-  daily: 3
-  weekly: 3
-  monthly: 3
+  daily: 1
+  weekly: 0
+  monthly: 0
   # List of Mission IDs. NOT a list of mission paths.
   missions:
     - craft
