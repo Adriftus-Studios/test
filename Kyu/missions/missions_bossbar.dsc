@@ -27,7 +27,7 @@ missions_bossbar:
       - case weekly:
         - define prefix <&e>Weekly
       - case monthly:
-        - define <&6>Monthly
+        - define prefix <&6>Monthly
       - default:
         - define prefix <&b>HeroCraft
     # Set progress, color, and style
