@@ -64,7 +64,7 @@ missions_reset:
     # Loop over mission IDs.
     - foreach <[missions]> as:id:
       # Skip if player does not have any missions with ID.
-      - if <player.has_flag[missions.active.<[id]>].not> || <player.flag[missions.active.<[id]>]> == <map>:
+      - if <player.has_flag[missions.active.<[id]>].not> || <player.flag[missions.active.<[id]>].if_null[<map>]> == <map>:
         - foreach next
       # Loop over missions.
       - foreach <player.flag[missions.active.<[id]>].keys> as:ctm:
@@ -72,7 +72,7 @@ missions_reset:
         - if <player.flag[missions.active.<[id]>.<[ctm]>].get[timeframe]> == <[timeframe]>:
           - flag <player> missions.active.<[id]>.<[ctm]>:!
       # Remove if mission ID is now empty.
-      - if <player.flag[missions.active.<[id]>]> == <map>:
+      - if <player.flag[missions.active.<[id]>].if_null[<map>]> == <map>:
         - flag <player> missions.active.<[id]>:!
 
 # Give Mission
