@@ -63,6 +63,9 @@ missions_reset:
     - define missions <[config].data_key[missions]>
     # Loop over mission IDs
     - foreach <[missions]> as:id:
+      # Skip if player does not have any missions with ID
+      - if <player.has_flag[missions.active.<[id]>].not>:
+        - foreach next
       # Loop over missions
       - foreach <player.flag[missions.active.<[id]>].keys> as:ctm:
         # Remove if same timeframe
