@@ -50,6 +50,22 @@ missions_generate:
     - foreach <[list]> as:mission:
       - run <script[mission_<[mission]>].data_key[assignment]> def:<[timeframe]>
 
+# Reset Missions
+missions_reset:
+  type: task
+  debug: false
+  definitions: timeframe
+  script:
+    # Stop if timeframe is not set.
+    - stop if:<[timeframe].exists.not>
+    # Define config and missions list.
+    - define config <script[missions_config]>
+    - define missions <[config].data_key[missions]>
+    # Loop over mission IDs
+    - foreach <[missions]> as:id:
+      - foreach <player.flag[missions.active.<[id]>].keys> as:ctm:
+        - narrate <player.flag[missions.active.<[id]>.<[ctm]>].get[timeframe]>
+
 # Give Mission
 missions_give:
   type: task
