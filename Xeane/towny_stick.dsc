@@ -65,6 +65,7 @@ towny_stick_nomad:
   type: inventory
   debug: false
   inventory: chest
+  title: <&6>Nomad
   gui: true
   size: 54
   data:
@@ -108,3 +109,11 @@ towny_stick_start_town_callback:
   definitions: text_input
   script:
     - execute as_player "t new <[text_input]>"
+
+
+## Towny Stick Mayor
+
+towny_stick_mayor:
+  type: inventory
+  inventory: chest
+  ti
