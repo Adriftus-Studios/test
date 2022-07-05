@@ -1,5 +1,6 @@
 dummy_economy:
   type: economy
+  debug: false
   priority: normal
   name single: dollar
   name plural: dollars
