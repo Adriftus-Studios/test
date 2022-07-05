@@ -15,8 +15,9 @@ hat_wear_events:
     - foreach <server.scripts.filter[name.starts_with[hat_]].filter[container_type.equals[DATA]]>:
       - flag server hats.ids.<[value].data_key[hat_data.id]>:<[value]>
   events:
-    on player joins:
+    after player joins:
       - foreach <server.flag[hats]> key:target as:hat:
+        - foreach next if:<[target].equals[ids]>
         - fakeequip <[target]> head:<[hat]> for:<player>
     on custom event id:global_player_data_loaded:
       - if !<player.is_online>:
