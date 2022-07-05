@@ -95,7 +95,7 @@ towny_stick_start_town_task:
   type: task
   debug: false
   script:
-    - run anvil_gui_callback_example "def:<&color[#000001]>Name Your Town!|<&6>Name your Town|towny_stick_start_town_callback"
+    - run anvil_gui_text_input "def:<&color[#000001]>Name Your Town!|<&6>Name your Town|towny_stick_start_town_callback"
 
 towny_stick_start_town_callback:
   type: task
