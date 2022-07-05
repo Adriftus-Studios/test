@@ -82,13 +82,14 @@ towny_stick_nomad_open:
     - inventory set o:feather[custom_model_data=3;display=<&6>Nomad]
     # Start Town Icon
     - if !<player.location.town.exists>:
-      - inventory set o:towny_stick_nomad_start_town slot:<[info_script].data_key[data.slots.start_town]>
+      - inventory set o:towny_stick_nomad_start_town d:<[inventory]> slot:<[info_script].data_key[data.slots.start_town]>
     - else:
-      - inventory set o:towny_stick_nomad_start_town_info slot:<[info_script].data_key[data.slots.start_town]>
+      - inventory set o:towny_stick_nomad_start_town_info d:<[inventory]> slot:<[info_script].data_key[data.slots.start_town]>
     - if <player.location.town.exists>:
-      - inventory set o:towny_stick_nomad_join_town slot:<[info_script].data_key[data.slots.join_town]>
+      - inventory set o:towny_stick_nomad_join_town d:<[inventory]> slot:<[info_script].data_key[data.slots.join_town]>
     - else:
-      - inventory set o:towny_stick_nomad_join_town_info slot:<[info_script].data_key[data.slots.join_town]>
+      - inventory set o:towny_stick_nomad_join_town_info d:<[inventory]> slot:<[info_script].data_key[data.slots.join_town]>
+    - inventory open d:<[inventory]>
 
 towny_stick_start_town_task:
   type: task
