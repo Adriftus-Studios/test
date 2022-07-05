@@ -79,7 +79,7 @@ towny_stick_nomad_open:
   script:
     - define inventory <inventory[towny_stick_nomad]>
     - define info_script <script[towny_stick_nomad]>
-    - inventory set o:feather[custom_model_data=3;display=<&6>Nomad]
+    - inventory set o:feather[custom_model_data=3;display=<&6>Nomad] d:<[inventory]>
     # Start Town Icon
     - if !<player.location.town.exists>:
       - inventory set o:towny_stick_nomad_start_town d:<[inventory]> slot:<[info_script].data_key[data.slots.start_town]>
