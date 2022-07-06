@@ -5,9 +5,11 @@ mission_smelt:
   category: PvE
   name: <&a>Smelt <&2>-items-
   description:
-    - "<&a>Smelt <&b>-max- <&2>-items-<&a>."
-    - "<&a>Complete this by smelting ores."
+    - <&a>Smelt <&b>-max- <&2>-items-<&a>.
+    - <&a>Complete this by smelting ores.
   assignment: mission_smelt_assignment
+  icon: blast_furnace
+  cmd: 0
   milestones:
     max: mission_smelt_complete
   items:

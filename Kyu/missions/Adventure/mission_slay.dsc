@@ -5,9 +5,11 @@ mission_slay:
   category: Adventure
   name: <&e>Slay <&6>-mobs-
   description:
-    - "<&e>Slay <&b>-max- <&7>-mobs-<&e>."
-    - "<&e>Complete this by slaying monsters."
+    - <&e>Slay <&b>-max- <&7>-mobs-<&e>.
+    - <&e>Complete this by slaying monsters.
   assignment: mission_slay_assignment
+  icon: diamond_sword
+  cmd: 0
   milestones:
     max: mission_slay_complete
   mobs:

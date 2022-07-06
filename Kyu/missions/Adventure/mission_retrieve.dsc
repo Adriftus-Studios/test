@@ -5,9 +5,11 @@ mission_retrieve:
   category: Adventure
   name: <&e>Retrieve <&6>-items-
   description:
-    - "<&e>Retrieve <&b>-max- <&7>-items-<&e>."
-    - "<&e>Complete this by slaying monsters."
+    - <&e>Retrieve <&b>-max- <&7>-items-<&e>.
+    - <&e>Complete this by slaying monsters.
   assignment: mission_retrieve_assignment
+  icon: shulker_box
+  cmd: 0
   milestones:
     max: mission_retrieve_complete
   items:

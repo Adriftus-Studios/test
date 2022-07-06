@@ -5,9 +5,11 @@ mission_cook:
   category: PvE
   name: <&a>Cook <&2>-items-
   description:
-    - "<&a>Cook <&b>-max- <&2>-items-<&a>."
-    - "<&a>Complete this by cooking food."
+    - <&a>Cook <&b>-max- <&2>-items-<&a>.
+    - <&a>Complete this by cooking food.
   assignment: mission_cook_assignment
+  icon: smoker
+  cmd: 0
   milestones:
     max: mission_cook_complete
   items:
