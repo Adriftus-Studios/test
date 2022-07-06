@@ -22,7 +22,7 @@ missions_inv:
 
 missions_inv_open:
   type: task
-  debug: false
+  debug: true
   definitions: timeframe
   data:
     slot_data:
@@ -48,6 +48,7 @@ missions_inv_open:
       - define item <item[<[material]>].with[display_name=<[name]><&sp><[progress]>;lore=<[description].separated_by[<&nl>]>;custom_model_data=<[cmd]>]>
       # Add item to list
       - define items:->:<[item]>
+      - narrate <[item]>
     - foreach <[items]> as:item:
       - inventory set slot:<[slots].get[<[loop_index]>]> o:<[item]> d:<[inventory]>
     # Pagination Item
@@ -57,10 +58,10 @@ missions_inv_open:
 
 missions_inv_change:
   type: task
-  debug: false
+  debug: true
   script:
     - define page_item <context.inventory.slot[<script[mod_online_inv_open].data_key[data.slot_data.page]>]>
-    - run missions_inv_open def:<[page_item].flag[page]>
+    - run missions_inv_open def:<[page_item].flag[timeframe]>
 
 missions_inv_events:
   type: world
