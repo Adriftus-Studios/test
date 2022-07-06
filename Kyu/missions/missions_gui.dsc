@@ -47,7 +47,6 @@ missions_inv_open:
       - define item <item[<[material]>].with[display_name=<[name]><&sp><[progress]>;lore=<[description].separated_by[<&nl>]>;custom_model_data=<[cmd]>;hides=ALL]>
       # Add item to list
       - define items:->:<[item]>
-      - narrate <[item]>
     - foreach <[items]> as:item:
       - inventory set slot:<[slots].get[<[loop_index]>]> o:<[item]> d:<[inventory]>
     # Open inventory
