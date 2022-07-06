@@ -22,7 +22,7 @@ missions_inv:
 
 missions_inv_open:
   type: task
-  debug: true
+  debug: false
   definitions: timeframe
   data:
     slot_data:
@@ -44,7 +44,7 @@ missions_inv_open:
       - define material <script[mission_<[id]>].data_key[icon]>
       - define cmd <script[mission_<[id]>].data_key[cmd]>
       # Build the final item
-      - define item <item[<[material]>].with[display_name=<[name]><&sp><[progress]>;lore=<[description].separated_by[<&nl>]>;custom_model_data=<[cmd]>]>
+      - define item <item[<[material]>].with[display_name=<[name]><&sp><[progress]>;lore=<[description].separated_by[<&nl>]>;custom_model_data=<[cmd]>;hides=ALL]>
       # Add item to list
       - define items:->:<[item]>
       - narrate <[item]>
