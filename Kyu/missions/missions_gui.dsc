@@ -41,8 +41,14 @@ missions_inv_open:
       - define name <player.flag[<[mission]>].get[name]>
       - define description <player.flag[<[mission]>].get[description]>
       - define progress <&f>(<&b><player.flag[<[mission]>].get[progress]><&f>/<&f><&b><player.flag[<[mission]>].get[max]>)
-      - define material <script[mission_<[id]>].data_key[icon]>
-      - define cmd <script[mission_<[id]>].data_key[cmd]>
+      # Mission is not complete
+      - if <player.flag[<[mission]>].get[done].not>:
+        - define material <script[mission_<[id]>].data_key[icon]>
+        - define cmd <script[mission_<[id]>].data_key[cmd]>
+      # Mission is complete
+      - else:
+        - define material paper
+        - define cmd 1
       # Build the final item
       - define item <item[<[material]>].with[display_name=<[name]><&sp><[progress]>;lore=<[description].separated_by[<&nl>]>;custom_model_data=<[cmd]>;hides=ALL]>
       # Add item to list
