@@ -105,6 +105,29 @@ missions_get:
       - define missions:->:missions.active.<[id]>.<[ctm]>
     - determine <[missions]>
 
+# Get missions with timeframe
+missions_get_timeframe:
+  type: procedure
+  debug: false
+  definitions: timeframe
+  script:
+    - stop if:<[timeframe].exists.not>
+    - define missions <list>
+    # Define config and missions list.
+    - define config <script[missions_config]>
+    - define ids <[config].data_key[missions]>
+    # Loop over mission IDs.
+    - foreach <[ids]> as:id:
+      # Skip if player does not have any missions with ID.
+      - if <player.has_flag[missions.active.<[id]>].not> || <player.flag[missions.active.<[id]>].if_null[<map>]> == <map>:
+        - foreach next
+      # Loop over missions.
+      - foreach <player.flag[missions.active.<[id]>].keys> as:ctm:
+        # Add to list if same timeframe
+        - if <player.flag[missions.active.<[id]>.<[ctm]>].get[timeframe]> == <[timeframe]>:
+          - define missions:->:missions.active.<[id]>.<[ctm]>
+    - determine <[missions]>
+
 # Update Mission Progress
 missions_update_progress:
   type: task
