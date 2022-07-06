@@ -26,7 +26,7 @@ missions_inv_open:
   definitions: timeframe
   data:
     slot_data:
-      slots: 20|21|22|23|24|25|26
+      slots_used: 20|21|22|23|24|25|26
       page: 37
   script:
     # Set definitions
