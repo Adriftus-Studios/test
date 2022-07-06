@@ -9,23 +9,8 @@ missions_command:
   name: missions
   description: Towny Missions
   usage: /missions
-  # Tab Complete for daily/weekly/monthly.
   script:
-    # <[filter_key]> == CTM
-    # <[filter_value]> == Map of CTM
-    # - define timeframe <context.args.first>
-    # <player.flag[missions.active.<[id]>].filter_tag[<[filter_value].get[timeframe].equals[<[timeframe]>]>]>
-    - if <player.has_flag[missions.active].not> || <player.flag[missions.active].if_null[<map>]> == <map>:
-      - narrate "You do not have any active missions."
-      - stop
-    - foreach <player.flag[missions.active]> key:id:
-      - define ctm <[value].keys.first>
-      - define path missions.active.<[id]>.<[ctm]>
-      - narrate <player.flag[<[path]>].get[name]>
-      - narrate <player.flag[<[path]>].get[description].separated_by[<&nl>]>
-      - narrate <player.flag[<[path]>].get[timeframe]>
-      - narrate "Progress: (<player.flag[<[path]>].get[progress]> / <player.flag[<[path]>].get[max]>)"
-      - narrate "Completed: <player.flag[<[path]>].get[done].to_titlecase>"
+    - run missions_inv_open
 
 # Generate Missions
 missions_generate:
