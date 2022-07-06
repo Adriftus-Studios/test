@@ -5,7 +5,6 @@ mission_pvp_zanzabar:
   category: PvP
   name: <&c>Kill <&4>Players
   description:
-    - <&c>Kill <&b>-max- <&4>Players.
     - <&e>Complete this by killing other players in Zanzabar.
   assignment: mission_pvp_zanzabar_assignment
   icon: player_head

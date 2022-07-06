@@ -5,7 +5,6 @@ mission_fish:
   category: PvE
   name: <&a>Fish <&2>-items-
   description:
-    - <&a>Fish <&b>-max- <&2>-items-<&a>.
     - <&a>Complete this by catching fish.
   assignment: mission_fish_assignment
   icon: tropical_fish

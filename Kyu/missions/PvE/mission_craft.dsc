@@ -5,7 +5,6 @@ mission_craft:
   category: PvE
   name: <&a>Craft <&2>-items-
   description:
-    - <&a>Craft <&b>-max- <&2>-items-<&a>.
     - <&a>Complete this by crafting items.
   assignment: mission_craft_assignment
   icon: crafting_table
