@@ -27,7 +27,6 @@ missions_inv_open:
   data:
     slot_data:
       slots_used: 20|21|22|23|24|25|26
-      page: 37
   script:
     # Set definitions
     - define timeframe daily if:<[timeframe].exists.not>
@@ -51,21 +50,15 @@ missions_inv_open:
       - narrate <[item]>
     - foreach <[items]> as:item:
       - inventory set slot:<[slots].get[<[loop_index]>]> o:<[item]> d:<[inventory]>
-    # Pagination Item
-    - inventory set slot:<script.data_key[data.slot_data.page]> o:<item[red_stained_glass_pane].with[display_name=<&c><&l>χ<&sp>Close;flag=page:<[timeframe]>]> d:<[inventory]>
     # Open inventory
     - inventory open d:<[inventory]>
-
-missions_inv_change:
-  type: task
-  debug: true
-  script:
-    - define page_item <context.inventory.slot[<script[mod_online_inv_open].data_key[data.slot_data.page]>]>
-    - run missions_inv_open def:<[page_item].flag[timeframe]>
 
 missions_inv_events:
   type: world
   debug: false
   events:
+    on player clicks stone in missions_inv:
+      - run missions_inv_open def:<context.item.flag[timeframe]>
+
     on player clicks red_stained_glass_pane in missions_inv:
       - inventory close
