@@ -1,6 +1,6 @@
 # -- MISSIONS
 # -- NOTES:
-# -- Switch from narrate to bossbar notification in missions_update_progress.
+# -- Create mission files for missing missions.
 
 # Missions Command
 missions_command:
