@@ -48,6 +48,8 @@ missions_inv_open:
       - define item <item[<[material]>].with[display_name=<[name]><&sp><[progress]>;lore=<[description].separated_by[<&nl>]>;custom_model_data=<[cmd]>]>
       # Add item to list
       - define items:->:<[item]>
+    - foreach <[items]> as:item:
+      - inventory set slot:<[slots].get[<[loop_index]>]> o:<[item]> d:<[inventory]>
     # Pagination Item
     - inventory set slot:<script.data_key[data.slot_data.page]> o:<item[red_stained_glass_pane].with[display_name=<&c><&l>χ<&sp>Close;flag=page:<[timeframe]>]> d:<[inventory]>
     # Open inventory
