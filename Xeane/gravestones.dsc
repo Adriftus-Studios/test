@@ -41,7 +41,6 @@ gravestone_entity:
   mechanisms:
     visible: false
     gravity: false
-    is_small: true
     equipment:
       helmet: feather[custom_model_data=<list[300|301|302|303].random>]
   flags:
