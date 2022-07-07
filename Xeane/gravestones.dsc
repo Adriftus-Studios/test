@@ -47,6 +47,7 @@ gravestone_entity:
   flags:
     right_click_script: gravestone_use
     on_entity_added: custom_object_update
+    custom_object_type: gravestone
 
 
 gravestone_place:
@@ -111,6 +112,7 @@ gravestone_remove:
   script:
     - define town <[entity].flag[town]>
     - flag <[town]> graves:<-:<[entity]>
+    - run custom_object_remove def:<[entity]>
 
 graves_player_death_handler:
   type: world
