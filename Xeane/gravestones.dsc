@@ -42,7 +42,7 @@ gravestone_entity:
     visible: false
     gravity: false
     equipment:
-      helmet: feather[custom_model_data=<list[300|301|302|303].random>]
+      helmet: feather[custom_model_data=<list[300|302|304|306].random>]
   flags:
     right_click_script: gravestone_use
     on_entity_added: custom_object_update
