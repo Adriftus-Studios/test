@@ -13,7 +13,7 @@ towny_stick_use:
   debug: false
   script:
     - if <player.has_town>:
-      - if <player.town.mayor> == <player>:
+      - if <player.has_permission[towny.command.plot.asmayor]>:
         - inject towny_stick_mayor_open
       - else:
         - inject towny_stick_resident_open
@@ -113,7 +113,103 @@ towny_stick_start_town_callback:
 
 ## Towny Stick Mayor
 
+towny_stick_mayor_unclaim:
+  type: item
+  debug: false
+  material: barrier
+  display name: <&c>Unclaim Chunk
+
+towny_stick_mayor_claim:
+  type: item
+  debug: false
+  material: green_wool
+  display name: <&a>Claim Chunk
+  lore:
+    - "<&4>Claim This Chunk."
+
+towny_stick_mayor_claim_no_border:
+  type: item
+  debug: false
+  material: green_wool
+  display name: <&c>Unclaim Chunk
+  lore:
+    - "<&4>Unable to Claim."
+    - "<&c>Town Must Border Chunk"
+
+
 towny_stick_mayor:
   type: inventory
+  debug: false
   inventory: chest
-  ti
+  title: <&6>Mayor
+  gui: true
+  size: 54
+  data:
+    slots:
+      chunk_status: 1
+      change_owner: 3
+      change_plot_type: 4
+      toggle_hud: 5
+      town_settings: 6
+      town_costs: 7
+      town_taxes: 8
+      residents: 9
+      diplomacy: 10
+      plot_perms: 11
+
+towny_stick_mayor_open:
+  type: task
+  debug: false
+  script:
+    - define inventory <inventory[towny_stick_mayor]>
+    - define info_script <script[towny_stick_mayor]>
+    - if <player.location.town.exists> && <player.location.town> == <player.town>:
+      - inventory set o:towny_stick_mayor_unclaim d:<[inventory]> slot:<[info_script].data_key[data.slots.chunk_status]>
+      - inventory set o:towny_stick_mayor_change_plot_owner_open d:<[inventory]> slot:<[info_script].data_key[data.slots.change_owner]>
+      - inventory set o:towny_stick_mayor_change_plot_type d:<[inventory]> slot:<[info_script].data_key[data.slots.change_plot_type]>
+      - inventory set o:towny_stick_mayor_toggle_hud d:<[inventory]> slot:<[info_script].data_key[data.slots.toggle_hud]>
+      - inventory set o:towny_stick_mayor_town_settings d:<[inventory]> slot:<[info_script].data_key[data.slots.town_settings]>
+      - inventory set o:towny_stick_mayor_town_costs d:<[inventory]> slot:<[info_script].data_key[data.slots.town_costs]>
+      - inventory set o:towny_stick_mayor_town_taxes d:<[inventory]> slot:<[info_script].data_key[data.slots.town_taxes]>
+      - inventory set o:towny_stick_mayor_residents d:<[inventory]> slot:<[info_script].data_key[data.slots.residents]>
+      - inventory set o:towny_stick_mayor_diplomacy d:<[inventory]> slot:<[info_script].data_key[data.slots.diplomacy]>
+      - inventory set o:towny_stick_mayor_outlaw d:<[inventory]> slot:<[info_script].data_key[data.slots.outlaws]>
+      - inventory set o:towny_stick_mayor_change_plot_perms d:<[inventory]> slot:<[info_script].data_key[data.slots.change_plot_perms]>
+    - else if !<player.location.town.exists>:
+      - define chunk <player.location.chunk>
+      - define surround <list[<[chunk].add[-1,0]>|<[chunk].add[0,-1]>|<[chunk].add[1,0]>|<[chunk].add[0,1]>]>
+      - define borders_town <[surround].parse[cuboid.center.has_town].exclude[false].size>
+      - if <[borders_town].size> > 0:
+        - inventory set o:towny_stick_mayor_claim d:<[inventory]> slot:<[info_script].data_key[data.slots.chunk_status]>
+      - else:
+        - inventory set o:towny_stick_mayor_claim_no_border d:<[inventory]> slot:<[info_script].data_key[data.slots.chunk_status]>
+
+towny_stick_mayor_change_plot_owner_evict:
+  type: item
+  debug: false
+  material: barrier
+  display name: <&[Deny]>Evict Player
+
+towny_stick_mayor_change_plot_owner_set:
+  type: item
+  debug: false
+  material: player_head
+
+towny_stick_mayor_change_plot_owner:
+  type: inventory
+  debug: false
+  inventory: chest
+  size: 54
+  gui: true
+  data:
+    slots:
+      evict: 50
+      residents: 1|2|3|4|5|6|7|8|9
+      back: 46
+
+
+towny_stick_mayor_change_plot_owner_open:
+  type: task
+  debug: false
+  script:
+    - 
