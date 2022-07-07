@@ -142,6 +142,6 @@ missions_update_progress:
       - run <script[mission_<[id]>].data_key[milestones.max]>
     - else if <[milestones].contains[<[y]>]>:
       - run <script[mission_<[id]>].data_key[milestones.<[y]>]>
-    - if <[x]> != 0:
+    - if <[y]> != 0:
       - run missions_bossbar def:<[path]>
 
