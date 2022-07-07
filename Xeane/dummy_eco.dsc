@@ -10,7 +10,10 @@ dummy_economy:
   has: <player.flag[money].is[or_more].than[<[amount]>].if_null[<server.flag[money.<[player]>]>]>
   withdraw:
     - if <player.exists>:
-      - flag <player> money:-:<[amount]>
+      - if <script.parsed_key[has]>:
+        - flag <player> money:-:<[amount]>
+      - else:
+        - determine "<&c>Insufficient Funds"
     - else:
       - flag server money.<[player]>:-:<[amount]>
   deposit:
