@@ -34,6 +34,7 @@ missions_generate:
     # Assign missions.
     - foreach <[list]> as:mission:
       - run <script[mission_<[mission]>].data_key[assignment]> def:<[timeframe]>
+    - flag <player> missions_<[timeframe]>:true
 
 # Reset Missions
 missions_reset:
@@ -59,6 +60,7 @@ missions_reset:
       # Remove if mission ID is now empty.
       - if <player.flag[missions.active.<[id]>].if_null[<map>]> == <map>:
         - flag <player> missions.active.<[id]>:!
+    - flag <player> missions_<[timeframe]>:!
 
 # Give Mission
 missions_give:
