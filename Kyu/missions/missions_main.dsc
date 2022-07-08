@@ -34,6 +34,7 @@ missions_generate:
     # Assign missions.
     - foreach <[list]> as:mission:
       - run <script[mission_<[mission]>].data_key[assignment]> def:<[timeframe]>
+    - flag <player> missions_<[timeframe]>:true
 
 # Reset Missions
 missions_reset:
@@ -59,6 +60,7 @@ missions_reset:
       # Remove if mission ID is now empty.
       - if <player.flag[missions.active.<[id]>].if_null[<map>]> == <map>:
         - flag <player> missions.active.<[id]>:!
+    - flag <player> missions_<[timeframe]>:!
 
 # Give Mission
 missions_give:
@@ -71,7 +73,7 @@ missions_give:
     - stop if:<[map].is_empty>
     # Define mission ID and unique identifier.
     - define id <[map].get[id]>
-    - define ctm <util.current_time_millis.if_null[<server.current_time_millis>]>
+    - define ctm <util.current_time_millis>
     - define path missions.active.<[id]>.<[ctm]>
     - foreach <[map]>:
       - flag <player> <[path]>.<[key]>:<[value]>
@@ -140,5 +142,6 @@ missions_update_progress:
       - run <script[mission_<[id]>].data_key[milestones.max]>
     - else if <[milestones].contains[<[y]>]>:
       - run <script[mission_<[id]>].data_key[milestones.<[y]>]>
-    - run missions_bossbar def:<[path]>
+    - if <[y]> != 0:
+      - run missions_bossbar def:<[path]>
 
