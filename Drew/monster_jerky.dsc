@@ -10,10 +10,10 @@ monster_jerky:
     1:
       type: smoker
       cook_time: 2s
-      experience: 2
+      experience: 0.5
       input: rotten_flesh
     2:
       type: furnace
       cook_time: 5s
-      experience: 2
+      experience: 0.4
       input: rotten_flesh
