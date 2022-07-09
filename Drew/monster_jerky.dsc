@@ -2,8 +2,8 @@ food_monster_jerky:
   type: item
   material: dried_kelp
   display name: <&7>Monster Jerky
-  data:
-    recipe_book_category:  food.monster_jerky
+  #data:
+    #recipe_book_category:  food.monster_jerky
   mechanisms:
     custom_model_data: 10
   recipes:
