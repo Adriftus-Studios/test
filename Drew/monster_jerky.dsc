@@ -9,6 +9,6 @@ food_monster_jerky:
   recipes:
     1:
       type: smoker
-	  cook_time: 2s
-	  experience: 2
-	  input: rotten_flesh
+      cook_time: 2s
+      experience: 2
+      input: rotten_flesh
