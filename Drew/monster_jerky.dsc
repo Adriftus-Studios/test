@@ -1,4 +1,4 @@
-food_monster_jerky:
+monster_jerky:
   type: item
   material: dried_kelp
   display name: <&7>Monster Jerky
@@ -10,5 +10,10 @@ food_monster_jerky:
     1:
       type: smoker
       cook_time: 2s
+      experience: 2
+      input: rotten_flesh
+    2:
+      type: furnace
+      cook_time: 5s
       experience: 2
       input: rotten_flesh
