@@ -10,7 +10,7 @@ location_tnt_trap:
   debug: false
   script:
     - determine passively cancelled
-    - repeat 4 as:nope:
+    - repeat 4 as:distance:
       - repeat 12:
-        - spawn primed_tnt <context.location.rotate_yaw[<context.location.yaw.add[<[value].mul[30]>]>].forward_flat[3]>
-      - wait 5t
+        - spawn primed_tnt <context.location.rotate_yaw[<context.location.yaw.add[<[value].mul[30]>]>].forward_flat[<[distance].add[3]>]>
+        - wait 1t
