@@ -43,7 +43,15 @@ mission_pvp_zanzar_complete:
   type: task
   debug: false
   script:
-    - narrate "You are an assassin, kid!"
+    - define config <script[mission_pvp_zanzar]>
+    - define missions <proc[missions_get].context[pvp_zanzar]>
+    # Check each mission if their item matches the item.
+    - foreach <[missions]> as:mission:
+      - if <player.flag[<[mission]>].get[done]> && <player.flag[<[mission]>].get[rewarded].not>:
+        - define quantity <[config].data_key[scale].mul[<[config].data_key[players].find[<player.flag[<[mission]>].get[max]>]>]>
+        - money give quantity:<[quantity]>
+        - flag <player> <[mission]>.rewarded:true
+        - narrate "<&b>Mission completed! <&a>+<[quantity]>"
 
 # Events
 mission_pvp_zanzar_events:

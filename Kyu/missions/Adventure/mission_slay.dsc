@@ -59,7 +59,16 @@ mission_slay_complete:
   type: task
   debug: false
   script:
-    - narrate "You are slaying, kid!"
+    - define config <script[mission_slay]>
+    - define missions <proc[missions_get].context[slay]>
+    # Check each mission if their item matches the item.
+    - foreach <[missions]> as:mission:
+      - if <player.flag[<[mission]>].get[done]> && <player.flag[<[mission]>].get[rewarded].not>:
+        - define mob <player.flag[<[mission]>].get[mob]>
+        - define quantity <[config].data_key[scale].mul[<[config].data_key[mobs.<[mob]>].find[<player.flag[<[mission]>].get[max]>]>]>
+        - money give quantity:<[quantity]>
+        - flag <player> <[mission]>.rewarded:true
+        - narrate "<&b>Mission completed! <&a>+<[quantity]>"
 
 # Events
 mission_slay_events:

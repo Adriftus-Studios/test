@@ -52,7 +52,16 @@ mission_cook_complete:
   type: task
   debug: false
   script:
-    - narrate "You are cooking, kid!"
+    - define config <script[mission_cook]>
+    - define missions <proc[missions_get].context[cook]>
+    # Check each mission if their item matches the item.
+    - foreach <[missions]> as:mission:
+      - if <player.flag[<[mission]>].get[done]> && <player.flag[<[mission]>].get[rewarded].not>:
+        - define item <player.flag[<[mission]>].get[item]>
+        - define quantity <[config].data_key[scale].mul[<[config].data_key[items.<[item]>].find[<player.flag[<[mission]>].get[max]>]>]>
+        - money give quantity:<[quantity]>
+        - flag <player> <[mission]>.rewarded:true
+        - narrate "<&b>Mission completed! <&a>+<[quantity]>"
 
 # Events
 mission_cook_events:

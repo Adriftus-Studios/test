@@ -84,9 +84,10 @@ mission_craft_complete:
     - foreach <[missions]> as:mission:
       - if <player.flag[<[mission]>].get[done]> && <player.flag[<[mission]>].get[rewarded].not>:
         - define item <player.flag[<[mission]>].get[item]>
-        - money give quantity:<[config].data_key[scale].mul[<[config].data_key[items.<[item]>].find[<player.flag[<[mission]>].get[max]>]>]>
+        - define quantity <[config].data_key[scale].mul[<[config].data_key[items.<[item]>].find[<player.flag[<[mission]>].get[max]>]>]>
+        - money give quantity:<[quantity]>
         - flag <player> <[mission]>.rewarded:true
-    - narrate "You are crafting, kid!"
+        - narrate "<&b>Mission completed! <&a>+<[quantity]>"
 
 # Events
 mission_craft_events:
