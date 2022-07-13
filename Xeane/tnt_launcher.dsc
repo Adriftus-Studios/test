@@ -10,4 +10,4 @@ location_tnt_trap:
   debug: false
   script:
     - repeat 12:
-      - spawn primed_tnt <context.location.rotate_yaw[<context.location.yaw.add[<[value].mul[30]>]>].forward_flat>
+      - spawn primed_tnt <context.location.rotate_yaw[<context.location.yaw.add[<[value].mul[30]>]>].forward_flat[3]>
