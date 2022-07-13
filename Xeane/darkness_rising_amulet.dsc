@@ -95,7 +95,7 @@ darkness_rising_amulet_summon:
     - adjust <entry[skele].spawned_entity> has_ai:false
     - flag <entry[skele].spawned_entity> owner:<player>
     - repeat 10:
-      - playeffect at:<[loc]> effect:redstone special_data:5|black quantity:20 offset:1,0.5,1 targets:targets
+      - playeffect at:<[loc]> effect:redstone special_data:5|black quantity:20 offset:1,0.5,1 targets:<[targets]>
       - teleport <entry[skele].spawned_entity> <entry[skele].spawned_entity.location.above[0.2]>
       - wait 1t
     - adjust <entry[skele].spawned_entity> has_ai:true
