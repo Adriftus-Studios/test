@@ -149,7 +149,7 @@ darkness_rising_skeleton_attack:
     - wait 1t
     - while <[entity].is_spawned>:
       - if !<[entity].target.exists>:
-        - define target <[entity].find_entities.within[30].exclude[<[entity].flag[owner]>].first>
+        - define target <[entity].location.find_entities.within[30].exclude[<[entity].flag[owner]>].first>
         - if <[target].exists>:
           - attack <[entity]> target:<[target]>
       - wait 5s
