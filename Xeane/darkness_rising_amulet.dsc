@@ -79,7 +79,7 @@ darkness_rising_amulet:
 
 darkness_rising_amulet_summon:
   type: task
-  debug: false
+  debug: true
   script:
     - ratelimit <player> 1s
     - if <player.has_flag[darkness_amulet_used]>:
