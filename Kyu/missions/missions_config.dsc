@@ -13,5 +13,5 @@ missions_config:
     - cook
     - slay
     - retrieve
-    - pvp_zanzabar
+    - pvp_zanzar
 
