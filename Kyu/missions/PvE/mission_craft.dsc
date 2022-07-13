@@ -82,9 +82,9 @@ mission_craft_complete:
     - define missions <proc[missions_get].context[craft]>
     # Check each mission if their item matches the item.
     - foreach <[missions]> as:mission:
-      - if <player.flag[<[mission]>].get[rewarded].not>:
+      - if <player.flag[<[mission]>].get[done]> && <player.flag[<[mission]>].get[rewarded].not>:
         - define item <player.flag[<[mission]>].get[item]>
-        - money give quantity:<[config].data_key[scale].mul[<[config].data_key[items.<[item]>].find[<player.flag[<[mission]>].get[max]>]>]> players:<player>
+        - money give quantity:<[config].data_key[scale].mul[<[config].data_key[items.<[item]>].find[<player.flag[<[mission]>].get[max]>]>]>
         - flag <player> <[mission]>.rewarded:true
     - narrate "You are crafting, kid!"
 
