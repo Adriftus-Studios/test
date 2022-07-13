@@ -146,6 +146,7 @@ darkness_rising_skeleton_attack:
   debug: false
   definitions: entity
   script:
+    - wait 1t
     - while <[entity].is_spawned>:
       - if !<[entity].target.exists>:
         - define target <[entity].find_entities.within[30].exclude[<[entity].flag[owner]>].first>
