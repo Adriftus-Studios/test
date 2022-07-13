@@ -16,5 +16,5 @@ location_tnt_trap:
       - wait 10t
     - repeat 3 as:distance:
       - repeat 12:
-        - shoot primed_tnt height:5 o:<context.location.above> destination:<context.location.rotate_yaw[<context.location.yaw.add[<[value].mul[30]>]>].forward_flat[<[distance].mul[4]>]>
+        - shoot primed_tnt height:5 o:<context.location.center.above[0.25]> destination:<context.location.rotate_yaw[<context.location.yaw.add[<[value].mul[30]>]>].forward_flat[<[distance].mul[4]>]>
         - wait 1t
