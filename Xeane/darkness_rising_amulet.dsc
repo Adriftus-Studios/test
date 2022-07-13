@@ -116,6 +116,7 @@ darkness_rising_skeleton:
     on_target: darkness_rising_skeleton_target
     on_damaged: darkness_rising_skeleton_damaged
     on_death: darkness_rising_skeleton_death
+    on_combust: cancel
 
 darkness_rising_skeleton_target:
   type: task
