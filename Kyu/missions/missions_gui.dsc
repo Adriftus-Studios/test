@@ -65,8 +65,9 @@ missions_inv_events:
   type: world
   debug: false
   events:
-    on player clicks stone in missions_inv:
-      - run missions_inv_open def:<context.item.flag[timeframe]>
+    on player clicks *_block in missions_inv:
+      - if <context.item.has_flag[timeframe]>:
+        - run missions_inv_open def:<context.item.flag[timeframe]>
 
     on player clicks red_stained_glass_pane in missions_inv:
       - inventory close
