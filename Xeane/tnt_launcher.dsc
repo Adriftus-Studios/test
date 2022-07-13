@@ -13,6 +13,7 @@ location_tnt_trap:
     - determine passively cancelled
     - if <context.location.material.name> == chest:
       - animatechest <context.location> open
+      - wait 10t
     - repeat 3 as:distance:
       - repeat 12:
         - shoot primed_tnt height:5 o:<context.location.above> destination:<context.location.rotate_yaw[<context.location.yaw.add[<[value].mul[30]>]>].forward_flat[<[distance].mul[4]>]>
