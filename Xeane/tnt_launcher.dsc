@@ -9,5 +9,6 @@ location_tnt_trap:
   type: task
   debug: false
   script:
+    - determine passively cancelled
     - repeat 12:
       - spawn primed_tnt <context.location.rotate_yaw[<context.location.yaw.add[<[value].mul[30]>]>].forward_flat[3]>
