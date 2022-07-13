@@ -176,6 +176,7 @@ darkness_rising_chest:
     8: eighth_piece_of_nine
     9: final_piece_of_nine
   script:
+    - determine passively cancelled
     - define chest_id <context.location.flag[darkness_rising_chest]>
     - stop if:<player.has_flag[darkness_rising_chest.<[chest_id]>]>
     - define inv <inventory[darkness_rising_inventory]>
