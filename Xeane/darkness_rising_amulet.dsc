@@ -100,6 +100,7 @@ darkness_rising_amulet_summon:
       - wait 1t
     - adjust <entry[skele].spawned_entity> has_ai:true
     - flag player darkness_amulet_used expire:1m
+    - run darkness_rising_skeleton_attack def:<entry[skele].spawned_entity>
 
 darkness_rising_amulet_recipe_formed:
   type: task
@@ -112,6 +113,8 @@ darkness_rising_skeleton:
   entity_type: skeleton
   mechanisms:
     health_data: 100/100
+    custom_name: <&c>Dark Skeleton
+    custom_name_visible: true
   flags:
     on_target: darkness_rising_skeleton_target
     on_damaged: darkness_rising_skeleton_damaged
@@ -137,3 +140,47 @@ darkness_rising_skeleton_death:
   script:
     - determine passively NO_DROPS
     - determine NO_XP
+
+darkness_rising_skeleton_attack:
+  type: task
+  debug: false
+  definitions: entity
+  script:
+    - while <[entity].is_spawned>:
+      - if !<[entity].target.exists>:
+        - define target <[entity].find_entities.within[30].exclude[<[entity].flag[owner]>].first>
+        - if <[target].exists>:
+          - attack <[entity]> target:<[target]>
+      - wait 5s
+    - if <[entity].is_spawned>:
+      - run darkness_rising_skeleton_attack def:<[entity]>
+
+darkness_rising_inventory:
+  type: inventory
+  inventory: chest
+  title: <&c>Darkness Chest
+  size: 9
+
+darkness_rising_chest:
+  type: task
+  debug: false
+  data:
+    1: first_piece_of_nine
+    2: second_piece_of_nine
+    3: third_piece_of_nine
+    4: fourth_piece_of_nine
+    5: fifth_piece_of_nine
+    6: sixth_piece_of_nine
+    7: seventh_piece_of_nine
+    8: eighth_piece_of_nine
+    9: final_piece_of_nine
+  script:
+    - define chest_id <context.location.flag[darkness_rising_chest]>
+    - stop if:<player.has_flag[darkness_rising_chest.<[chest_id]>]>
+    - define inv <inventory[darkness_rising_inventory]>
+    - give <script.data_key[data.<[chest_id]>]> to:<[inv]>
+    - give tpa_crystal quantity to:<[inv]>
+    - give back_crystal quantity to:<[inv]>
+    - give grappling_hook_basic to:<[inv]> if:<[chest_id].equals[9]>
+    - inventory open d:<[inv]>
+    - flag player darkness_rising_chest.<[chest_id]>
