@@ -77,7 +77,6 @@ missions_give:
     - define path missions.active.<[id]>.<[ctm]>
     - foreach <[map]>:
       - flag <player> <[path]>.<[key]>:<[value]>
-      - narrate "<[key]>: <[value]>"
     - run missions_update_progress def:set|<[path]>|0
 
 # Get Missions with ID

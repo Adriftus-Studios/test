@@ -7,10 +7,10 @@ missions_inv:
   gui: true
   size: 45
   definitions:
-    daily: <item[stone].with[display_name=<&a>Daily;flag=timeframe:daily]>
-    weekly: <item[stone].with[display_name=<&e>Weekly;flag=timeframe:weekly]>
-    monthly: <item[stone].with[display_name=<&6>Monthly;flag=timeframe:monthly]>
-    herocraft: <item[stone].with[display_name=<&b>HeroCraft;flag=timeframe:persistent]>
+    daily: <item[copper_block].with[display_name=<&a>Daily;flag=timeframe:daily]>
+    weekly: <item[iron_block].with[display_name=<&e>Weekly;flag=timeframe:weekly]>
+    monthly: <item[gold_block].with[display_name=<&6>Monthly;flag=timeframe:monthly]>
+    herocraft: <item[diamond_block].with[display_name=<&b>HeroCraft;flag=timeframe:persistent]>
     none: <item[barrier].with[display_name=<&c>No<&sp>Missions]>
     close: <item[red_stained_glass_pane].with[display_name=<&c><&l>χ<&sp>Close]>
   slots:
@@ -55,6 +55,9 @@ missions_inv_open:
       - define items:->:<[item]>
     - foreach <[items]> as:item:
       - inventory set slot:<[slots].get[<[loop_index]>]> o:<[item]> d:<[inventory]>
+    # Add Reset Missions button if weekly/monthly
+    - if <list[weekly|monthly].contains[<[timeframe]>]>:
+      - inventory set slot:45 o:<item[lime_stained_glass_pane].with[display_name=<&a><&l>Reset<&sp>Missions;flag=timeframe:<[timeframe]>]> d:<[inventory]>
     # Open inventory
     - inventory open d:<[inventory]>
 
@@ -67,3 +70,19 @@ missions_inv_events:
 
     on player clicks red_stained_glass_pane in missions_inv:
       - inventory close
+
+    on player clicks lime_stained_glass_pane in missions_inv:
+      - define timeframe <context.item.flag[timeframe]>
+      - define required <script[missions_config].data_key[<[timeframe]>]>
+      - define missions <proc[missions_get_timeframe].context[<[timeframe]>]>
+      - define completed 0
+      # Loop over missions with the currently viewed timeframe
+      - foreach <[missions]> as:mission:
+        - if <player.flag[<[mission]>].get[done]>:
+          - define completed:+:1
+      - if <[completed]> == <[required]>:
+        - run missions_reset def:<[timeframe]>
+        - run missions_generate def:<[timeframe]>
+        - narrate "<&a>Your <[timeframe]> missions have been reset."
+      - else:
+        - narrate "<&c>You must complete your <[timeframe]> missions before you can reset them."
