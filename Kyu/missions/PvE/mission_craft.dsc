@@ -76,7 +76,7 @@ mission_craft_assignment:
 # Completion Task
 mission_craft_complete:
   type: task
-  debug: false
+  debug: true
   script:
     - define config <script[mission_craft]>
     - define missions <proc[missions_get].context[craft]>
