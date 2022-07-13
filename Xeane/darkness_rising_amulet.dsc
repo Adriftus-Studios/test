@@ -4,6 +4,7 @@ first_piece_of_nine:
   display name: <&e>First Piece of Nine
   lore:
     - "<&e>A fractured symbol..."
+    - "<&b>Craft all 9 together"
 
 second_piece_of_nine:
   type: item
@@ -11,6 +12,7 @@ second_piece_of_nine:
   display name: <&e>Second Piece of Nine
   lore:
     - "<&e>A fractured symbol..."
+    - "<&b>Craft all 9 together"
 
 third_piece_of_nine:
   type: item
@@ -18,6 +20,7 @@ third_piece_of_nine:
   display name: <&e>Third Piece of Nine
   lore:
     - "<&e>A fractured symbol..."
+    - "<&b>Craft all 9 together"
 
 fourth_piece_of_nine:
   type: item
@@ -25,6 +28,7 @@ fourth_piece_of_nine:
   display name: <&e>Fourth Piece of Nine
   lore:
     - "<&e>A fractured symbol..."
+    - "<&b>Craft all 9 together"
 
 fifth_piece_of_nine:
   type: item
@@ -32,6 +36,7 @@ fifth_piece_of_nine:
   display name: <&e>Fifth Piece of Nine
   lore:
     - "<&e>A fractured symbol..."
+    - "<&b>Craft all 9 together"
 
 Sixth_piece_of_nine:
   type: item
@@ -39,6 +44,7 @@ Sixth_piece_of_nine:
   display name: <&e>Sixth Piece of Nine
   lore:
     - "<&e>A fractured symbol..."
+    - "<&b>Craft all 9 together"
 
 seventh_piece_of_nine:
   type: item
@@ -46,6 +52,7 @@ seventh_piece_of_nine:
   display name: <&e>Seventh Piece of Nine
   lore:
     - "<&e>A fractured symbol..."
+    - "<&b>Craft all 9 together"
 
 eighth_piece_of_nine:
   type: item
@@ -53,6 +60,7 @@ eighth_piece_of_nine:
   display name: <&e>Eighth Piece of Nine
   lore:
     - "<&e>A fractured symbol..."
+    - "<&b>Craft all 9 together"
 
 final_piece_of_nine:
   type: item
@@ -60,6 +68,7 @@ final_piece_of_nine:
   display name: <&e>Final Piece of Nine
   lore:
     - "<&e>A fractured symbol..."
+    - "<&b>Craft all 9 together"
 
 darkness_rising_amulet:
   type: item
