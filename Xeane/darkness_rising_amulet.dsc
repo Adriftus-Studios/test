@@ -114,6 +114,8 @@ darkness_rising_skeleton:
     health_data: 100/100
   flags:
     on_target: darkness_rising_skeleton_target
+    on_damaged: darkness_rising_skeleton_damaged
+    on_death: darkness_rising_skeleton_death
 
 darkness_rising_skeleton_target:
   type: task
@@ -121,3 +123,16 @@ darkness_rising_skeleton_target:
   script:
     - if <context.target> == <context.entity.flag[owner]>:
       - determine cancelled
+
+darkness_rising_skeleton_damaged:
+  type: task
+  debug: false
+  script:
+    - determine cancelled if:<list[FIRE|FIRE_TICK].contains[<context.cause>]>
+
+darkness_rising_skeleton_death:
+  type: task
+  debug: false
+  script:
+    - determine passively NO_DROPS
+    - determine NO_XP
