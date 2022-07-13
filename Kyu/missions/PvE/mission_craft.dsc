@@ -9,6 +9,7 @@ mission_craft:
   assignment: mission_craft_assignment
   icon: crafting_table
   cmd: 0
+  scale: 100
   milestones:
     max: mission_craft_complete
   items:
@@ -67,6 +68,7 @@ mission_craft_assignment:
     - define map <[map].with[max].as[<[max]>]>
     - define map <[map].with[name].as[<proc[missions_replace_name].context[<[config].parsed_key[name]>|<map[items=<[name]>].escaped>]>]>
     - define map <[map].with[description].as[<proc[missions_replace_description].context[<[config].parsed_key[description].escaped>|<map[items=<[name]>;max=<[max]>].escaped>]>]>
+    - define map <[map].with[rewarded].as[false]>
     - define map <[map].with[done].as[false]>
     # Give mission
     - run missions_give def:<[map]>
@@ -76,6 +78,14 @@ mission_craft_complete:
   type: task
   debug: false
   script:
+    - define config <script[mission_craft]>
+    - define missions <proc[missions_get].context[craft]>
+    # Check each mission if their item matches the item.
+    - foreach <[missions]> as:mission:
+      - if <player.flag[<[mission]>].get[rewarded].not>:
+        - define item <player.flag[<[mission]>].get[item]>
+        - money give quantity:<[config].data_key[scale].mul[<[config].data_key[items.<[item]>].find[<player.flag[<[mission]>].get[max]>]>]> players:<player>
+        - flag <player> <[mission]>.rewarded:true
     - narrate "You are crafting, kid!"
 
 # Events

@@ -9,6 +9,7 @@ mission_retrieve:
   assignment: mission_retrieve_assignment
   icon: shulker_box
   cmd: 0
+  scale: 150
   milestones:
     max: mission_retrieve_complete
   items:
@@ -52,6 +53,7 @@ mission_retrieve_assignment:
     - define map <[map].with[max].as[<[max]>]>
     - define map <[map].with[name].as[<proc[missions_replace_name].context[<[config].parsed_key[name]>|<map[items=<[name]>].escaped>]>]>
     - define map <[map].with[description].as[<proc[missions_replace_description].context[<[config].parsed_key[description].escaped>|<map[items=<[name]>;max=<[max]>].escaped>]>]>
+    - define map <[map].with[rewarded].as[false]>
     - define map <[map].with[done].as[false]>
     # Give mission
     - run missions_give def:<[map]>

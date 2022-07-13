@@ -9,6 +9,7 @@ mission_fish:
   assignment: mission_fish_assignment
   icon: tropical_fish
   cmd: 0
+  scale: 100
   milestones:
     max: mission_fish_complete
   items:
@@ -53,6 +54,7 @@ mission_fish_assignment:
     - define map <[map].with[max].as[<[max]>]>
     - define map <[map].with[name].as[<proc[missions_replace_name].context[<[config].parsed_key[name]>|<map[items=<[name]>].escaped>]>]>
     - define map <[map].with[description].as[<proc[missions_replace_description].context[<[config].parsed_key[description].escaped>|<map[items=<[name]>;max=<[max]>].escaped>]>]>
+    - define map <[map].with[rewarded].as[false]>
     - define map <[map].with[done].as[false]>
     # Give mission
     - run missions_give def:<[map]>

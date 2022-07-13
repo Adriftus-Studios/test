@@ -9,6 +9,7 @@ mission_pvp_zanzar:
   assignment: mission_pvp_zanzar_assignment
   icon: player_head
   cmd: 0
+  scale: 200
   milestones:
     max: mission_pvp_zanzar_complete
   players:
@@ -32,6 +33,7 @@ mission_pvp_zanzar_assignment:
     - define map <[map].with[max].as[<[max]>]>
     - define map <[map].with[name].as[<[config].parsed_key[name]>]>
     - define map <[map].with[description].as[<proc[missions_replace_description].context[<[config].parsed_key[description].escaped>|<map[max=<[max]>].escaped>]>]>
+    - define map <[map].with[rewarded].as[false]>
     - define map <[map].with[done].as[false]>
     # Give mission
     - run missions_give def:<[map]>

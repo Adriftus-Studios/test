@@ -9,6 +9,7 @@ mission_slay:
   assignment: mission_slay_assignment
   icon: diamond_sword
   cmd: 0
+  scale: 150
   milestones:
     max: mission_slay_complete
   mobs:
@@ -48,6 +49,7 @@ mission_slay_assignment:
     - define map <[map].with[max].as[<[max]>]>
     - define map <[map].with[name].as[<proc[missions_replace_name].context[<[config].parsed_key[name]>|<map[mobs=<[name]>].escaped>]>]>
     - define map <[map].with[description].as[<proc[missions_replace_description].context[<[config].parsed_key[description].escaped>|<map[mobs=<[name]>;max=<[max]>].escaped>]>]>
+    - define map <[map].with[rewarded].as[false]>
     - define map <[map].with[done].as[false]>
     # Give mission
     - run missions_give def:<[map]>

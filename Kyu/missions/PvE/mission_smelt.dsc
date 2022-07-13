@@ -9,6 +9,7 @@ mission_smelt:
   assignment: mission_smelt_assignment
   icon: blast_furnace
   cmd: 0
+  scale: 100
   milestones:
     max: mission_smelt_complete
   items:
@@ -51,6 +52,7 @@ mission_smelt_assignment:
     - define map <[map].with[max].as[<[max]>]>
     - define map <[map].with[name].as[<proc[missions_replace_name].context[<[config].parsed_key[name]>|<map[items=<[name]>].escaped>]>]>
     - define map <[map].with[description].as[<proc[missions_replace_description].context[<[config].parsed_key[description].escaped>|<map[items=<[name]>;max=<[max]>].escaped>]>]>
+    - define map <[map].with[rewarded].as[false]>
     - define map <[map].with[done].as[false]>
     # Give mission
     - run missions_give def:<[map]>
