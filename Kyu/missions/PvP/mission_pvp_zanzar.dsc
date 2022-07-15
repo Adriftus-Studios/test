@@ -13,6 +13,7 @@ mission_pvp_zanzar:
   milestones:
     max: mission_pvp_zanzar_complete
   players:
+    - 1
     - 2
     - 3
 
