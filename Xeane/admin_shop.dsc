@@ -142,13 +142,17 @@ admin_shop_buy:
     - choose <[price].substring[1,1]>:
       - case $:
         - if <player.money> >= <[price].substring[2]>:
-          - narrate "<&a>Yay, Purchased!"
+          - money take quantity:<[price].substring[2]>
+          - give item:<[item].flag[stable_item]>
+          - narrate "<&a>You have purchased<&co> <[item].flag[stable_item].as_item.display.if_null[<[item].flag[stable_item].as_item.formatted>]>"
         - else:
           - narrate "<&c>Insufficient Funds!"
         - stop
       - else:
         - if 0 >= <[price]>:
           - narrate "<&a>Yay, Purchased!"
+          - money take quantity:<[price].substring[2]>
+          - give item:<[item].flag[stable_item]>
         - else:
           - narrate "<&c>Insufficient Funds!"
         - stop
