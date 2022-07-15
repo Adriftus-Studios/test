@@ -9,9 +9,12 @@ mission_retrieve:
   assignment: mission_retrieve_assignment
   icon: shulker_box
   cmd: 0
-  scale: 150
   milestones:
     max: mission_retrieve_complete
+  rewards:
+    daily: 150
+    weekly: 175
+    monthly: 200
   items:
     leather:
       - 4

@@ -9,9 +9,12 @@ mission_smelt:
   assignment: mission_smelt_assignment
   icon: blast_furnace
   cmd: 0
-  scale: 100
   milestones:
     max: mission_smelt_complete
+  rewards:
+    daily: 100
+    weekly: 125
+    monthly: 150
   items:
     iron_ingot:
       - 16

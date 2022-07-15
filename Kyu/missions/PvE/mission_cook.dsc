@@ -9,9 +9,12 @@ mission_cook:
   assignment: mission_cook_assignment
   icon: smoker
   cmd: 0
-  scale: 100
   milestones:
     max: mission_cook_complete
+  rewards:
+    daily: 100
+    weekly: 125
+    monthly: 150
   items:
     cooked_cod:
       - 8

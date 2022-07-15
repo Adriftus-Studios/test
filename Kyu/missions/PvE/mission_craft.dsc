@@ -9,9 +9,12 @@ mission_craft:
   assignment: mission_craft_assignment
   icon: crafting_table
   cmd: 0
-  scale: 100
   milestones:
     max: mission_craft_complete
+  rewards:
+    daily: 100
+    weekly: 125
+    monthly: 150
   items:
     oak_planks:
       - 8

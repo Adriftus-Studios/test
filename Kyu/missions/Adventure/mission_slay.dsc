@@ -12,6 +12,10 @@ mission_slay:
   scale: 150
   milestones:
     max: mission_slay_complete
+  rewards:
+    daily: 100
+    weekly: 125
+    monthly: 150
   mobs:
     zombie:
       - 2

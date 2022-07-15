@@ -9,9 +9,12 @@ mission_fish:
   assignment: mission_fish_assignment
   icon: tropical_fish
   cmd: 0
-  scale: 100
   milestones:
     max: mission_fish_complete
+  rewards:
+    daily: 100
+    weekly: 125
+    monthly: 150
   items:
     cod:
       - 2
