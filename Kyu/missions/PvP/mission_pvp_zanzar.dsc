@@ -9,9 +9,12 @@ mission_pvp_zanzar:
   assignment: mission_pvp_zanzar_assignment
   icon: player_head
   cmd: 0
-  scale: 200
   milestones:
     max: mission_pvp_zanzar_complete
+  rewards:
+    daily: 200
+    weekly: 225
+    monthly: 250
   players:
     - 1
     - 2
@@ -49,7 +52,8 @@ mission_pvp_zanzar_complete:
     # Check each mission if their item matches the item.
     - foreach <[missions]> as:mission:
       - if <player.flag[<[mission]>].get[done]> && <player.flag[<[mission]>].get[rewarded].not>:
-        - define quantity <[config].data_key[scale].mul[<[config].data_key[players].find[<player.flag[<[mission]>].get[max]>]>]>
+        - define timeframe <player.flag[<[mission]>].get[timeframe]>
+        - define quantity <[config].data_key[rewards.<[timeframe]>].mul[<[config].data_key[players].find[<player.flag[<[mission]>].get[max]>]>]>
         - money give quantity:<[quantity]>
         - flag <player> <[mission]>.rewarded:true
         - narrate "<&b>Mission completed! <&a>+<[quantity]>"

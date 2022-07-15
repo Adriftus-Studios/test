@@ -86,8 +86,9 @@ mission_craft_complete:
     # Check each mission if their item matches the item.
     - foreach <[missions]> as:mission:
       - if <player.flag[<[mission]>].get[done]> && <player.flag[<[mission]>].get[rewarded].not>:
+        - define timeframe <player.flag[<[mission]>].get[timeframe]>
         - define item <player.flag[<[mission]>].get[item]>
-        - define quantity <[config].data_key[scale].mul[<[config].data_key[items.<[item]>].find[<player.flag[<[mission]>].get[max]>]>]>
+        - define quantity <[config].data_key[rewards.<[timeframe]>].mul[<[config].data_key[items.<[item]>].find[<player.flag[<[mission]>].get[max]>]>]>
         - money give quantity:<[quantity]>
         - flag <player> <[mission]>.rewarded:true
         - narrate "<&b>Mission completed! <&a>+<[quantity]>"

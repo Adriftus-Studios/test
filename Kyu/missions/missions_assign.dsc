@@ -1,7 +1,7 @@
 # -- MISSIONS ASSIGN ON JOIN
 missions_assign:
   type: world
-  debug: true
+  debug: false
   events:
     on player joins:
       # Daily

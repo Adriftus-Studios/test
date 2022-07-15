@@ -9,13 +9,12 @@ mission_slay:
   assignment: mission_slay_assignment
   icon: diamond_sword
   cmd: 0
-  scale: 150
   milestones:
     max: mission_slay_complete
   rewards:
-    daily: 100
-    weekly: 125
-    monthly: 150
+    daily: 150
+    weekly: 175
+    monthly: 200
   mobs:
     zombie:
       - 2
@@ -68,8 +67,9 @@ mission_slay_complete:
     # Check each mission if their item matches the item.
     - foreach <[missions]> as:mission:
       - if <player.flag[<[mission]>].get[done]> && <player.flag[<[mission]>].get[rewarded].not>:
+        - define timeframe <player.flag[<[mission]>].get[timeframe]>
         - define mob <player.flag[<[mission]>].get[mob]>
-        - define quantity <[config].data_key[scale].mul[<[config].data_key[mobs.<[mob]>].find[<player.flag[<[mission]>].get[max]>]>]>
+        - define quantity <[config].data_key[rewards.<[timeframe]>].mul[<[config].data_key[mobs.<[mob]>].find[<player.flag[<[mission]>].get[max]>]>]>
         - money give quantity:<[quantity]>
         - flag <player> <[mission]>.rewarded:true
         - narrate "<&b>Mission completed! <&a>+<[quantity]>"
