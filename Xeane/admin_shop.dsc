@@ -74,6 +74,7 @@ admin_shop_open:
   script:
     - stop if:<script[admin_shop_data].data_key[shops.<[shop_name]>].exists.not>
     - define inventory <inventory[admin_shop_inventory]>
+    - adjust
     - define data_script <script[admin_shop_data]>
 
     # Define our initialization data
@@ -141,7 +142,7 @@ admin_shop_buy:
     # Server Currency Purchase
     - choose <[price].substring[1,1]>:
       - case $:
-        - if <player.money> >= <[price]>:
+        - if <player.money> >= <[price].substring[2]>:
           - narrate "<&a>Yay, Purchased!"
         - else:
           - narrate "<&c>Insufficient Funds!"

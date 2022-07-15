@@ -12,7 +12,7 @@ location_tnt_trap:
     - ratelimit <context.location> 10s
     - determine passively cancelled
     - if <context.location.material.name> == chest:
-      - animatechest <context.location> open
+      - animatechest <context.location> open <context.location.find_players_within[120]>
       - wait 10t
     - repeat 3 as:distance:
       - repeat 12:
