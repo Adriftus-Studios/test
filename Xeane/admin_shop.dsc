@@ -74,7 +74,6 @@ admin_shop_open:
   script:
     - stop if:<script[admin_shop_data].data_key[shops.<[shop_name]>].exists.not>
     - define inventory <inventory[admin_shop_inventory]>
-    - adjust
     - define data_script <script[admin_shop_data]>
 
     # Define our initialization data
@@ -116,14 +115,14 @@ admin_shop_next_page:
   debug: false
   script:
     - define info_item <context.inventory.slot[<script[admin_shop_open].data_key[data.player_head]>]>
-    - run admin_shop_open def:<[info_item].flag[shop_name]>|<[info_item].flag[page].add[1]>|<context.inventory.slot[<script[admin_shop_open].data_key[selected_slot]>]>
+    - run admin_shop_open def:<[info_item].flag[shop_name]>|<[info_item].flag[page].add[1]>|<context.inventory.slot[<script[admin_shop_open].data_key[data.selected_slot]>]>
 
 admin_shop_previous_page:
   type: task
   debug: false
   script:
     - define info_item <context.inventory.slot[<script[admin_shop_open].data_key[data.player_head]>]>
-    - run admin_shop_open def:<[info_item].flag[shop_name]>|<[info_item].flag[page].sub[1]>|<context.inventory.slot[<script[admin_shop_open].data_key[selected_slot]>]>
+    - run admin_shop_open def:<[info_item].flag[shop_name]>|<[info_item].flag[page].sub[1]>|<context.inventory.slot[<script[admin_shop_open].data_key[data.selected_slot]>]>
 
 admin_shop_choose_item:
   type: task
@@ -137,7 +136,7 @@ admin_shop_buy:
   type: task
   debug: false
   script:
-    - define item <context.inventory.slot[<script[admin_shop_open].data_key[selected_slot]>]>
+    - define item <context.inventory.slot[<script[admin_shop_open].data_key[data.selected_slot]>]>
     - define price <[item].flag[price]>
     # Server Currency Purchase
     - choose <[price].substring[1,1]>:
