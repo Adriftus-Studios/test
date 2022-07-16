@@ -14,4 +14,4 @@ bal_command:
     - stop
   - else:
     - if <Player.has_permission[adriftus.staff]>:
-      - narrate "<player.name> has <[player].money>"
+      - narrate "<[player].name> has <[player].money>"
