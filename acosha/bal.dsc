@@ -7,3 +7,5 @@ bal_command:
   script:
     - if <context.args.size> < 1 && !<Player.has_permission[adriftus.staff.gms]>:
         - narrate "Player has <player.money>"
+    - else
+        - narrate "Player has <player.money>"
