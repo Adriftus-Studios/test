@@ -5,13 +5,14 @@ bal_command:
   usage: /bal (Name)
   debug: false
   script:
-  - if <context.args.size> < 1:
+  - if !<player.has_permission[adriftus.staff]> || <context.args.is_empty>:
         - narrate "<Player.name> has <player.money>"
         - stop
-  - define player <server.match_player[<context.args.get[1]>].if_null[null]>
-  - if <[player]> = null:
+  - else:
+        - define player <server.match_player[<context.args.first>].if_null[null]>
+        - narrate "<[Player].name> has <[player].money>"
+        - stop
+  - if <[player]> == null:
     - narrate "<red><bold>Please Use A Name Who is Online"
     - stop
-  - else:
-    - if <Player.has_permission[adriftus.staff]>:
-      - narrate "<[player].name> has <[player].money>"
+
