@@ -4,7 +4,8 @@ bal_command:
   description: Used to change gamemode adventure
   usage: /balence (Name)
   debug: false
-  allias: bal
+  aliases:
+  - bal
   script:
   - if !<player.has_permission[adriftus.staff]> || <context.args.is_empty>:
         - narrate "<Player.name> has <player.money>"
