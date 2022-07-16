@@ -11,7 +11,7 @@ bal_command:
         - narrate "<green>You have <player.money> coins"
         - stop
   - define player <server.match_player[<context.args.first>].if_null[null]>
-  - else if <[player]> == null::
+  - else if <[player]> == null:
         - narrate "<red><bold>Please Use A Name Who is Online"
         - stop
   - else
