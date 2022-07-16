@@ -6,7 +6,7 @@ bal_command:
   debug: false
   script:
   - if <context.args.size> < 1:
-        - narrate "<Player> has <player.money>"
+        - narrate "<Player.name> has <player.money>"
         - stop
   - define player <server.match_player[<context.args.get[1]>].if_null[null]>
   - if <[player]> = null:
@@ -14,4 +14,4 @@ bal_command:
     - stop
   - else:
     - if <Player.has_permission[adriftus.staff]>:
-      - narrate "<player> has <[player].money>"
+      - narrate "<player.name> has <[player].money>"
