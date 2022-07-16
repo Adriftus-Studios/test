@@ -23,6 +23,8 @@ missions_generate:
     # Define config and missions list.
     - define config <script[missions_config]>
     - define missions <[config].data_key[missions]>
+    # Stop if timeframe is not in config.
+    - stop if:<script[missions_config].list_keys.contains[<[timeframe]>].not>
     # Prevent duplicate missions.
     - define list <list>
     - while <[list].size> < <[config].data_key[<[timeframe]>]>:

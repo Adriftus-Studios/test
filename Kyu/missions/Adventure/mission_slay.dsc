@@ -72,7 +72,7 @@ mission_slay_complete:
         - define quantity <[config].data_key[rewards.<[timeframe]>].mul[<[config].data_key[mobs.<[mob]>].find[<player.flag[<[mission]>].get[max]>]>]>
         - money give quantity:<[quantity]>
         - flag <player> <[mission]>.rewarded:true
-        - narrate "<&b>Mission completed! <&a>+<[quantity]>"
+        - narrate "<&b>Mission completed! <&a>+$<[quantity]>"
 
 # Events
 mission_slay_events:
