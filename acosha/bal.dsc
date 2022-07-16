@@ -12,7 +12,6 @@ bal_command:
         - narrate "<red><bold>Please Use A Name Who is Online"
   - else !<player.has_permission[adriftus.staff]> || <context.args.is_empty>:
         - narrate "<green>You have <player.money> coins"
-        - stop
   - else
         - narrate "<green><[Player].name.to_uppercase> has <[player].money> coins"
         - stop
