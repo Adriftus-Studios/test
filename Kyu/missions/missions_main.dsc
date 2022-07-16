@@ -25,6 +25,9 @@ missions_generate:
     - define missions <[config].data_key[missions]>
     # Stop if timeframe is not in config.
     - stop if:<script[missions_config].list_keys.contains[<[timeframe]>].not>
+    # Reset missions if player already has missions in that timeframe.
+    - if <player.has_flag[missions_<[timeframe]>]>:
+      - run missions_reset def:<[timeframe]>
     # Prevent duplicate missions.
     - define list <list>
     - while <[list].size> < <[config].data_key[<[timeframe]>]>:
