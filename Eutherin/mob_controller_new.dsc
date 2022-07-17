@@ -37,7 +37,7 @@ buttons:
       - mythicspawn <[location]> <player.flag[debug.entity]> level:<player.flag[debug.level]>
 
     on player clicks mangrove_button location_flagged:equip:
-      - foreach 37|38|39|40 as:slot:
+      - foreach <list[37|38|39|40]> as:slot:
         - if <player.inventory.slot[<[slot]>].material.name> == air:
           - equip <script.data_key[test_equipment.<[slot]>].before[/]>:<script.data_key[test_equipment.<[slot]>].after[/]>
         - else:
