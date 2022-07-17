@@ -298,4 +298,4 @@ shield_damage_reducer:
         - case netherite_shield:
           - define dr 0.9
 
-      - determine <context.final_damage.mul[dr]>
+      - determine <context.final_damage.mul[<[dr]>]>
