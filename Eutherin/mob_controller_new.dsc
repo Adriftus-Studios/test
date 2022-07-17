@@ -13,7 +13,7 @@ buttons:
     39: chestplate/test_shirt
     40: helmet/test_helmet
   events:
-    on player clicks warped_button:
+    on player clicks mangrove_button location_flagged:level:
       - if <context.location.above.material.name> == warped_wall_sign:
         - define level <context.location.above.sign_contents.first>
         - flag player debug.level:<[level]>
@@ -31,12 +31,12 @@ buttons:
             - flag player debug.entity:<[entity].to_uppercase>1
             - narrate "Entity set to <[entity].to_uppercase>1"
             - stop
-    on player clicks crimson_button:
+    on player clicks mangrove_button location_flagged:spawn:
       - define location <location[7,10,77,<player.world.name>]>
       - narrate "Spawning a Lv <player.flag[debug.level]> <player.flag[debug.entity]> on the gold platform"
       - mythicspawn <[location]> <player.flag[debug.entity]> level:<player.flag[debug.level]>
 
-    on player clicks birch_button:
+    on player clicks mangrove_button location_flagged:equip:
       - foreach 37|38|39|40 as:slot:
         - if <player.inventory.slot[<[slot]>].material.name> == air:
           - equip <script.data_key[test_equipment.<[slot]>].before[/]>:<script.data_key[test_equipment.<[slot]>].after[/]>
@@ -46,12 +46,9 @@ buttons:
       - give test_axe
       - give golden_apple quantity:10
 
-    on player clicks stone_button:
+    on player clicks mangrove_button location_flagged:heal:
       - heal
       - feed
-
-    on player clicks acacia_button:
-      - give <proc[get_random_soul].context[1|<player.flag[debug.level]>]>
 
 test_sword:
   type: item
