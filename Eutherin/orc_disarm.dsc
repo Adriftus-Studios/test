@@ -5,7 +5,7 @@ orc_disarm_command:
   description: drops the players held item
   Permission: adriftus.admin
   script:
-    - define player <context.arguments.get[1]>
+    - define player <context.args.get[1]>
     - if <[player]||null> != null && <[player].item_in_hand||null> != null:
       - define item <[player].item_in_hand>
       - take <[item]> from:<[player].inventory>
