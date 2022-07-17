@@ -275,3 +275,27 @@ shield_replacer:
       - determine wooden_shield
     on shield recipe formed:
       - determine wooden_shield
+
+
+shield_damage_reducer:
+  type: world
+  debug: false
+  events:
+    on player damaged:
+      - define offhand_item <player.inventory.slot[41].script.name>
+      - define mainhand_item <player.item_in_hand.script.name>
+      - if <list[diamond_shield|amethyst_shield|netherite_shield].contains_any[<[mainhand_item]>]>:
+        - define item <[mainhand_item]>
+      - if <list[diamond_shield|amethyst_shield|netherite_shield].contains_any[<[offhand_item]>]> && !<[item].exists>:
+        - define item <[offhand_item]>
+      - stop if:<[item].exists.not>
+
+      - choose <[item]>:
+        - case diamond_shield:
+          - define dr 0.95
+        - case amethyst_shield:
+          - define dr 0.95
+        - case netherite_shield:
+          - define dr 0.9
+
+      - determine <context.final_damage.mul[dr]>
