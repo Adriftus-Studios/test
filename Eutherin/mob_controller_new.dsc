@@ -1,4 +1,4 @@
-buttons:
+test_mob_buttons:
   type: world
   definitions: value
   level:
@@ -39,7 +39,7 @@ buttons:
     on player clicks mangrove_button location_flagged:equip:
       - foreach <list[37|38|39|40]> as:slot:
         - if <player.inventory.slot[<[slot]>].material.name> == air:
-          - equip <script.data_key[test_equipment.<[slot]>].before[/]>:<script.data_key[test_equipment.<[slot]>].after[/]>
+          - equip <script[test_mob_buttons].data_key[test_equipment.<[slot]>].before[/]>:<script[test_mob_buttons].data_key[test_equipment.<[slot]>].after[/]>
         - else:
           - inventory adjust slot:<[slot]> durability:0
       - give test_sword

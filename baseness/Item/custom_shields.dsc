@@ -282,8 +282,8 @@ shield_damage_reducer:
   debug: false
   events:
     on player damaged:
-      - define offhand_item <player.inventory.slot[41].script.name>
-      - define mainhand_item <player.item_in_hand.script.name>
+      - define offhand_item <player.inventory.slot[41].script.name.if_null[air]>
+      - define mainhand_item <player.item_in_hand.script.name.if_null[air]>
       - if <list[diamond_shield|amethyst_shield|netherite_shield].contains_any[<[mainhand_item]>]>:
         - define item <[mainhand_item]>
       - if <list[diamond_shield|amethyst_shield|netherite_shield].contains_any[<[offhand_item]>]> && !<[item].exists>:
