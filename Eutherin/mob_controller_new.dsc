@@ -31,7 +31,7 @@ test_mob_buttons:
             - flag player debug.entity:<[entity]>
             - narrate "Entity set to <[entity]>"
             - stop
-    on player clicks warped_sign location_flagged:entity:
+    on player clicks warped_wall_sign location_flagged:entity:
       - if <player.flag[debug.entity_location]> != <context.location>:
         - flag <player> debug.entity_increment:0
       - define entity <context.location.sign_contents.get[<player.flag[debug.entity_increment].add[1]>]>
