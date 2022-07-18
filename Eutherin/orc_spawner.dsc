@@ -14,5 +14,5 @@ Orc_spawn_task:
              # - define type Orc
           #  - case default:
           - define type Orc
-          - mythicspawn <[type]>PartyPlaceholder <[poor_soul].location.with_pose[0,<util.random.int[0].to[359]>].forward[20].find_spawnable_blocks_within[10].random>
-      
+          - mythicspawn <[type]>Party <[poor_soul].location.with_pose[0,<util.random.int[0].to[359]>].forward[20].find_spawnable_blocks_within[10].random>
+
