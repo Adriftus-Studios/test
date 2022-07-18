@@ -41,7 +41,7 @@ test_mob_buttons:
       - narrate "Entity set to <[entity]>"
       - stop
     on player clicks mangrove_button location_flagged:spawn:
-      - define location <cuboid[-33,119,-2246,<player.world.name>,-31,118,-2256<player.world.name>].random>
+      - define location <cuboid[<player.world.name>,-33,119,-2246,-31,118,-2256].random>
       - narrate "Spawning a <player.flag[debug.entity]> on the gold platform"
       - mythicspawn <[location]> <player.flag[debug.entity]>
 
