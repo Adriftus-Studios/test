@@ -31,6 +31,14 @@ test_mob_buttons:
             - flag player debug.entity:<[entity]>
             - narrate "Entity set to <[entity]>"
             - stop
+    on player clicks warped_sign location_flagged:entity:
+      - if <player.flag[debug.entity_location]> != <context.location>:
+        - flag <player> debug.entity_increment:0
+      - define entity <context.location.sign_contents.get[<player.flag[debug.entity_increment].add[1]>]>
+      - flag player debug.entity:<[entity]>
+      - flag player debug.entity_increment:<player.flag[debug.entity_increment].add[1].if_null[0]>
+      - narrate "Entity set to <[entity]>"
+      - stop
     on player clicks mangrove_button location_flagged:spawn:
       - define location <location[-32,118,-2251,<player.world.name>]>
       - narrate "Spawning a <player.flag[debug.entity]> on the gold platform"
