@@ -35,7 +35,7 @@ test_mob_buttons:
       - if <player.flag[debug.entity_location]> != <context.location.simple> || <player.flag[debug.entity_increment]> > 3:
         - flag <player> debug.entity_increment:0
         - flag <player> debug.entity_location:<context.location.simple>
-      - define entity <context.location.sign_contents.get[<player.flag[debug.entity_increment].add[1]>]>
+      - define entity <context.location.sign_contents.get[<player.flag[debug.entity_increment].add[1]>].remove[<&sp>]>
       - flag player debug.entity:<[entity]>
       - flag player debug.entity_increment:<player.flag[debug.entity_increment].add[1].if_null[0]>
       - narrate "Entity set to <[entity]>"
