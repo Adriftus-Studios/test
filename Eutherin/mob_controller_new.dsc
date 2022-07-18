@@ -24,12 +24,12 @@ test_mob_buttons:
         - flag player debug.level:<[level]>
         - narrate "Level set to <[level]>"
         - stop
-      - else:
+    on player clicks mangrove_button location_flagged:entity:
         - repeat 4 as:i:
           - if <context.location.below[<[i]>].material.name> == warped_wall_sign:
             - define entity <context.location.below[<[i]>].sign_contents.get[<element[5].sub[<[i]>]>]>
-            - flag player debug.entity:<[entity].to_uppercase>1
-            - narrate "Entity set to <[entity].to_uppercase>1"
+            - flag player debug.entity:<[entity].remove[<&sp>]>
+            - narrate "Entity set to <[entity].remove[<&sp>]>"
             - stop
     on player clicks mangrove_button location_flagged:spawn:
       - define location <location[7,10,77,<player.world.name>]>
