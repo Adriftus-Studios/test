@@ -148,7 +148,14 @@ admin_shop_buy:
         - else:
           - narrate "<&c>Insufficient Funds!"
         - stop
-      - else:
+      - case A:
+        - if <player.proc[premium_currency_can_afford].context[<[price].substring[2]>]>:
+          - run premium_currency_remove def:<player>|<[price].substring[2]>|Purchased <[item].flag[stable_item]>
+          - give item:<[item].flag[stable_item]>
+          - narrate "<&a>You have purchased<&co> <[item].flag[stable_item].as_item.display.if_null[<[item].flag[stable_item].as_item.formatted>]>"
+        - else:
+          - narrate "<&c>Insufficient Funds!"
+      - default:
         - if 0 >= <[price]>:
           - narrate "<&a>Yay, Purchased!"
           - money take quantity:<[price].substring[2]>
