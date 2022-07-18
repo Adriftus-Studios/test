@@ -28,13 +28,13 @@ test_mob_buttons:
         - repeat 4 as:i:
           - if <context.location.below[<[i]>].material.name> == warped_wall_sign:
             - define entity <context.location.below[<[i]>].sign_contents.get[<element[5].sub[<[i]>]>]>
-            - flag player debug.entity:<[entity].remove[<&sp>]>
-            - narrate "Entity set to <[entity].remove[<&sp>]>"
+            - flag player debug.entity:<[entity]>
+            - narrate "Entity set to <[entity]>"
             - stop
     on player clicks mangrove_button location_flagged:spawn:
-      - define location <location[7,10,77,<player.world.name>]>
-      - narrate "Spawning a Lv <player.flag[debug.level]> <player.flag[debug.entity]> on the gold platform"
-      - mythicspawn <[location]> <player.flag[debug.entity]> level:<player.flag[debug.level]>
+      - define location <location[-32,118,-2251,<player.world.name>]>
+      - narrate "Spawning a <player.flag[debug.entity]> on the gold platform"
+      - mythicspawn <[location]> <player.flag[debug.entity]>
 
     on player clicks mangrove_button location_flagged:equip:
       - foreach <list[37|38|39|40]> as:slot:
