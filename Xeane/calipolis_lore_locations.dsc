@@ -28,7 +28,7 @@ calipolis_lore_locations_next_page_button:
   display name: <&a>Next Page
   mechanisms:
     color: <color[#55FF55]>
-    custom_model_data: 7
+    custom_model_data: 1001
   flags:
     run_script: calipolis_lore_locations_next_page
 
@@ -39,7 +39,7 @@ calipolis_lore_locations_previous_page_button:
   display name: <&a>Previous Page
   mechanisms:
     color: <color[#55FF55]>
-    custom_model_data: 6
+    custom_model_data: 1000
   flags:
     run_script: calipolis_lore_locations_prev_page
 
