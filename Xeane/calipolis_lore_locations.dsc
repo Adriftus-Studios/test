@@ -25,17 +25,21 @@ calipolis_lore_locations_next_page_button:
   type: item
   debug: false
   material: feather
-  display name: <&c>Back To Travel Menu
+  display name: <&a>Next Page
   mechanisms:
     custom_model_data: 3
+  flags:
+    run_script: calipolis_lore_locations_next_page
 
 calipolis_lore_locations_previous_page_button:
   type: item
   debug: false
   material: feather
-  display name: <&c>Back To Travel Menu
+  display name: <&a>Previous Page
   mechanisms:
     custom_model_data: 3
+  flags:
+    run_script: calipolis_lore_locations_prev_page
 
 calipolis_lore_locations_back_button:
   type: item
@@ -132,13 +136,25 @@ calipolis_lore_locations_open:
 
     # Next Page
     - if <[locations].size> > <[page].mul[8]>:
-      - inventory set slot:<script.data_key[data.slot_map.next_page]> o:calipolis_lore_locations_next_page_button d:<[inventory]>
+      - inventory set slot:<script.data_key[data.slot_map.next_page]> o:calipolis_lore_locations_next_page_button[flag=page:<[page]>] d:<[inventory]>
 
     # Previous Page
     - if <[page]> > 1:
-      - inventory set slot:<script.data_key[data.slot_map.last_page]> o:calipolis_lore_locations_previous_page_button d:<[inventory]>
+      - inventory set slot:<script.data_key[data.slot_map.last_page]> o:calipolis_lore_locations_previous_page_button[flag=page:<[page]>] d:<[inventory]>
 
     # Back Button
     - inventory set slot:<script.data_key[data.slot_map.back]> o:calipolis_lore_locations_back_button d:<[inventory]>
 
     - inventory open d:<[inventory]>
+
+calipolis_lore_locations_next_page:
+  type: task
+  debug: false
+  script:
+    - run calipolis_lore_locations_open def:<context.item.flag[page].add[1]>
+
+calipolis_lore_locations_prev_page:
+  type: task
+  debug: false
+  script:
+    - run calipolis_lore_locations_open def:<context.item.flag[page].sub[1]>
