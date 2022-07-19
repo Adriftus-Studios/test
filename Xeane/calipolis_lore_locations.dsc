@@ -30,14 +30,14 @@ calipolis_lore_locations_open:
       KaluPalu:
         name: <&6>Kalu Palu
         lore:
-        - <&e>One of the last remnants of an era long passed
-        - <&e>Though once said to be an ancient people that thrived off the land
-        - <&e>only their ruins remain.
+          - <&e>One of the last remnants of an era long passed
+          - <&e>Though once said to be an ancient people that thrived off the land
+          - <&e>only their ruins remain.
       LibraryOfCal:
         name: <&6>Library of Calexandria
         lore:
-        - <&e>Knowledge and revelations are abound amongst these shelves
-        - <&e>If ever you need answers this is the place to start
+          - <&e>Knowledge and revelations are abound amongst these shelves
+          - <&e>If ever you need answers this is the place to start
     slot_map:
       back: 49
       next_page: 9
