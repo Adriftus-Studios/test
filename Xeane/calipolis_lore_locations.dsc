@@ -45,12 +45,12 @@ calipolis_lore_locations_open:
       slots:
       - 10
       - 15
-      - 20
-      - 25
-      - 30
-      - 35
-      - 40
-      - 45
+      - 19
+      - 24
+      - 29
+      - 34
+      - 39
+      - 44
   definitions: page
   script:
     - define page 1 if:<[page].exists.not>
@@ -71,7 +71,7 @@ calipolis_lore_locations_open:
     - define slots <script.data_key[data.slot_map.slots]>
     - foreach <script.data_key[data.locations].get[<[page].sub[1].mul[8].add[1]>].to[<[page].mul[8]>]>:
       - if <script.data_key[data.location_data.<[value]>].exists>:
-        - define display <script.data_key[data.location_data.<[value]>.name]>
+        - define display <script.parsed_key[data.location_data.<[value]>.name]>
         - define lore <script.parsed_key[data.location_data.<[value]>.lore]>
         - define item calipolis_lore_location_tp[display=<[display]>;lore=<[lore]>;flag=target:<[value]>]
       - else:
