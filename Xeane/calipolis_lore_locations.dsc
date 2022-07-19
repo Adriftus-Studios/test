@@ -47,10 +47,10 @@ calipolis_lore_locations_open:
       - 15
       - 19
       - 24
-      - 29
-      - 34
-      - 39
-      - 44
+      - 28
+      - 33
+      - 37
+      - 42
   definitions: page
   script:
     - define page 1 if:<[page].exists.not>
