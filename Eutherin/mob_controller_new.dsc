@@ -24,17 +24,26 @@ test_mob_buttons:
         - flag player debug.level:<[level]>
         - narrate "Level set to <[level]>"
         - stop
-      - else:
+    on player clicks mangrove_button location_flagged:entity:
         - repeat 4 as:i:
           - if <context.location.below[<[i]>].material.name> == warped_wall_sign:
             - define entity <context.location.below[<[i]>].sign_contents.get[<element[5].sub[<[i]>]>]>
-            - flag player debug.entity:<[entity].to_uppercase>1
-            - narrate "Entity set to <[entity].to_uppercase>1"
+            - flag player debug.entity:<[entity]>
+            - narrate "Entity set to <[entity]>"
             - stop
+    on player clicks warped_wall_sign location_flagged:entity:
+      - if <player.flag[debug.entity_location]> != <context.location.simple> || <player.flag[debug.entity_increment]> > 3:
+        - flag <player> debug.entity_increment:0
+        - flag <player> debug.entity_location:<context.location.simple>
+      - define entity <context.location.sign_contents.get[<player.flag[debug.entity_increment].add[1]>]>
+      - flag player debug.entity:<[entity]>
+      - flag player debug.entity_increment:<player.flag[debug.entity_increment].add[1].if_null[0]>
+      - narrate "Entity set to <[entity]>"
+      - stop
     on player clicks mangrove_button location_flagged:spawn:
-      - define location <location[7,10,77,<player.world.name>]>
-      - narrate "Spawning a Lv <player.flag[debug.level]> <player.flag[debug.entity]> on the gold platform"
-      - mythicspawn <[location]> <player.flag[debug.entity]> level:<player.flag[debug.level]>
+      - define location <cuboid[<player.world.name>,-33,119,-2246,-31,119,-2256].random.center>
+      - narrate "Spawning a <player.flag[debug.entity]> on the gold platform"
+      - mythicspawn <[location]> <player.flag[debug.entity]>
 
     on player clicks mangrove_button location_flagged:equip:
       - foreach <list[37|38|39|40]> as:slot:
