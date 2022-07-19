@@ -69,13 +69,16 @@ calipolis_lore_locations_open:
       - define title_string:|:<&chr[F702]><&chr[2103]><&chr[F801]><&chr[2003]><&chr[F601]><&chr[2104]><&chr[F801]><&chr[2004]>
       - define title_string:|:<&chr[F702]><&chr[2105]><&chr[F801]><&chr[2005]><&chr[F601]><&chr[2106]><&chr[F801]><&chr[2006]>
       - define title_string:|:<&chr[F702]><&chr[2107]><&chr[F801]><&chr[2007]><&chr[F601]><&chr[2108]><&chr[F801]><&chr[2008]>
-      - adjust <[inventory]> title:<&f><&font[adriftus:travel_menu]><[title_string].unseparated>
     - else if <[page]> == 2:
       - define title_string:|:<&chr[F701]><&chr[2109]><&chr[F801]><&chr[2009]><&chr[F601]><&chr[2110]><&chr[F801]><&chr[2010]>
       - define title_string:|:<&chr[F702]><&chr[2111]><&chr[F801]><&chr[2011]><&chr[F601]><&chr[2112]><&chr[F801]><&chr[2012]>
       - define title_string:|:<&chr[F702]><&chr[2113]><&chr[F801]><&chr[2013]><&chr[F601]><&chr[2114]><&chr[F801]><&chr[2014]>
       - define title_string:|:<&chr[F702]><&chr[2115]><&chr[F801]><&chr[2015]><&chr[F601]><&chr[2116]><&chr[F801]><&chr[2016]>
-      - adjust <[inventory]> title:<&f><&font[adriftus:travel_menu]><[title_string].unseparated>
+    - else if <[page]> == 3:
+      - define title_string:|:<&chr[F701]><&chr[2117]><&chr[F801]><&chr[2017]><&chr[F601]><&chr[2118]><&chr[F801]><&chr[2018]>
+      - define title_string:|:<&chr[F702]><&chr[2119]><&chr[F801]><&chr[2019]><&chr[F601]><&chr[2120]><&chr[F801]><&chr[2020]>
+      - define title_string:|:<&chr[F702]><&chr[2121]><&chr[F801]><&chr[2021]>
+    - adjust <[inventory]> title:<&f><&font[adriftus:travel_menu]><[title_string].unseparated>
     - define slots <script.data_key[data.slot_map.slots]>
     - define locations <script.data_key[data.locations]>
     - foreach <[locations].get[<[page].sub[1].mul[8].add[1]>].to[<[page].mul[8]>]>:
