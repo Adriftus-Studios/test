@@ -38,7 +38,7 @@ calipolis_lore_locations_previous_page_button:
   material: leather_horse_armor
   display name: <&a>Previous Page
   mechanisms:
-    color: <color[#55F55]>
+    color: <color[#55FF55]>
     custom_model_data: 6
   flags:
     run_script: calipolis_lore_locations_prev_page
