@@ -4,7 +4,7 @@ calipolis_lore_locations_inventory:
   inventory: chest
   size: 54
   title: Placeholder
-  #gui: true
+  gui: true
 
 calipolis_lore_location_tp:
   type: item
