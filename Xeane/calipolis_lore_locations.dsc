@@ -27,7 +27,7 @@ calipolis_lore_locations_next_page_button:
   material: leather_horse_armor
   display name: <&a>Next Page
   mechanisms:
-    color: <color[#1a4c23]>
+    color: <color[#FFFFFF]>
     custom_model_data: 7
   flags:
     run_script: calipolis_lore_locations_next_page
@@ -38,7 +38,7 @@ calipolis_lore_locations_previous_page_button:
   material: leather_horse_armor
   display name: <&a>Previous Page
   mechanisms:
-    color: <color[#1a4c23]>
+    color: <color[#FFFFFF]>
     custom_model_data: 6
   flags:
     run_script: calipolis_lore_locations_prev_page
