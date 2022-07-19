@@ -67,7 +67,7 @@ calipolis_lore_locations_open:
       - define title_string:|:<&chr[F702]><&chr[2105]><&chr[F801]><&chr[2005]><&chr[F601]><&chr[2106]><&chr[F801]><&chr[2006]>
       - define title_string:|:<&chr[F702]><&chr[2107]><&chr[F801]><&chr[2007]><&chr[F601]><&chr[2108]><&chr[F801]><&chr[2008]>
       - adjust <[inventory]> title:<&f><&font[adriftus:travel_menu]><[title_string].unseparated>
-    - define slots <script.data_key[data.slots]>
+    - define slots <script.data_key[data.slot_map.slots]>
     - foreach <script.data_key[data.locations].get[<[page].sub[1].mul[8].add[1]>].to[<[page].mul[8]>]>:
       - if <script.data_key[data.location_data.<[value]>].exists>:
         - define display <script.data_key[data.location_data.<[value]>.name]>
