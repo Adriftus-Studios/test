@@ -53,9 +53,10 @@ calipolis_lore_locations_open:
       - 45
   definitions: page
   script:
+    - define page 1 if:<[page].exists.not>
     - define inventory <inventory[calipolis_lore_locations_inventory]>
     - define title_string:|:<&chr[F808]><&chr[2000]>
-    - if !<[page].exists> || <[page]> == 1:
+    - if <[page]> == 1:
       - define title_string:|:<&chr[F701]><&chr[2101]><&chr[F801]><&chr[2001]><&chr[F601]><&chr[2102]><&chr[F801]><&chr[2002]>
       - define title_string:|:<&chr[F702]><&chr[2103]><&chr[F801]><&chr[2003]><&chr[F601]><&chr[2104]><&chr[F801]><&chr[2004]>
       - define title_string:|:<&chr[F702]><&chr[2105]><&chr[F801]><&chr[2005]><&chr[F601]><&chr[2106]><&chr[F801]><&chr[2006]>
