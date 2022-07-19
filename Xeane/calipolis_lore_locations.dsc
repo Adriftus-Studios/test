@@ -16,5 +16,7 @@ calipolis_lore_locations_open:
       - TheCalony
   script:
     - define inventory <inventory[calipolis_lore_locations_inventory]>
-    - adjust <[inventory]> title:<&f><&font[adriftus:travel_menu]><&chr[F808]><&chr[2000]><&chr[F701]><&chr[2101]><&chr[2001]><&chr[F601]><&chr[2102]><&chr[2002]><&chr[F702]><&chr[2103]><&chr[2003]>
+    - define title_string:|:<&chr[F808]><&chr[2000]>
+    - define title_string:|:<&chr[F701]><&chr[2101]><&chr[F802]><&chr[2001]><&chr[F601]><&chr[2102]><&chr[F802]><&chr[2002]><&chr[F702]><&chr[2103]><&chr[2003]>
+    - adjust <[inventory]> title:<&f><&font[adriftus:travel_menu]><[title_string].unseparated>
     - inventory open d:<[inventory]>
