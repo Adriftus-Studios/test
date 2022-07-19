@@ -73,8 +73,8 @@ calipolis_lore_locations_open:
       - if <script.data_key[data.location_data.<[value]>].exists>:
         - define display <script.data_key[data.location_data.<[value]>.name]>
         - define lore <script.parsed_key[data.location_data.<[value]>.lore]>
-        - define item calipolis_lore_location_tp[display=<[display]>;lore=<[lore]>;flags=target:<[value]>]
+        - define item calipolis_lore_location_tp[display=<[display]>;lore=<[lore]>;flag=target:<[value]>]
       - else:
-        - define item calipolis_lore_location_tp[display=PLACEHOLDER;lore=PLACEHOLDER;flags=target:<[value]>]
+        - define item calipolis_lore_location_tp[display=PLACEHOLDER;lore=PLACEHOLDER;flag=target:<[value]>]
       - inventory set slot:<[slots].get[<[loop_index]>]> o:<[item]> d:<[inventory]>
     - inventory open d:<[inventory]>
