@@ -26,6 +26,7 @@ calipolis_lore_locations_open:
   debug: false
   data:
     locations:
+      # Page 1
       - KaluPalu
       - OctoberBay
       - TheCalony
@@ -34,6 +35,21 @@ calipolis_lore_locations_open:
       - SecretSoupSociety
       - CoronationHall
       - ThundersnowPalace
+      # Page 2
+      - FreedomWingsBase
+      - Olympics
+      - Courthhouse
+      - Cathedral
+      - IrohFuneralSite
+      - Masquerade
+      - SASWarcore
+      - ThroneRoom
+      # Page 3
+      - Airship
+      - KalliopeTomb
+      - CloningFacility
+      - FinalBattle
+      - CalipolisCouncil
     location_data:
       KaluPalu:
         name: <&6>Kalu Palu
