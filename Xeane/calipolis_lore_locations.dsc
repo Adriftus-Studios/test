@@ -87,7 +87,7 @@ calipolis_lore_locations_open:
           - <&e>Knowledge and revelations are abound amongst these shelves
           - <&e>If ever you need answers this is the place to start
     slot_map:
-      back: 49
+      back: 46
       next_page: 9
       last_page: 1
       slots:
@@ -132,11 +132,11 @@ calipolis_lore_locations_open:
 
     # Next Page
     - if <[locations].size> > <[page].mul[8]>:
-      - inventory set slot:<script.data_key[data.slot_map.back]> o:calipolis_lore_locations_next_page_button d:<[inventory]>
+      - inventory set slot:<script.data_key[data.slot_map.next_page]> o:calipolis_lore_locations_next_page_button d:<[inventory]>
 
     # Previous Page
     - if <[page]> > 1:
-      - inventory set slot:<script.data_key[data.slot_map.back]> o:calipolis_lore_locations_previous_page_button d:<[inventory]>
+      - inventory set slot:<script.data_key[data.slot_map.last_page]> o:calipolis_lore_locations_previous_page_button d:<[inventory]>
 
     # Back Button
     - inventory set slot:<script.data_key[data.slot_map.back]> o:calipolis_lore_locations_back_button d:<[inventory]>
