@@ -24,20 +24,22 @@ calipolis_lore_locations_back_button:
 calipolis_lore_locations_next_page_button:
   type: item
   debug: false
-  material: feather
+  material: leather_horse_armor
   display name: <&a>Next Page
   mechanisms:
-    custom_model_data: 3
+    color: #ffc000
+    custom_model_data: 4
   flags:
     run_script: calipolis_lore_locations_next_page
 
 calipolis_lore_locations_previous_page_button:
   type: item
   debug: false
-  material: feather
+  material: leather_horse_armor
   display name: <&a>Previous Page
   mechanisms:
-    custom_model_data: 3
+    color: #ffc000
+    custom_model_data: 6
   flags:
     run_script: calipolis_lore_locations_prev_page
 
