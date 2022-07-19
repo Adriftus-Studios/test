@@ -14,7 +14,31 @@ calipolis_lore_location_tp:
     custom_model_data: 3
 
 calipolis_lore_locations_back_button:
-  type: task
+  type: item
+  debug: false
+  material: feather
+  display name: <&c>Back To Travel Menu
+  mechanisms:
+    custom_model_data: 3
+
+calipolis_lore_locations_next_page_button:
+  type: item
+  debug: false
+  material: feather
+  display name: <&c>Back To Travel Menu
+  mechanisms:
+    custom_model_data: 3
+
+calipolis_lore_locations_previous_page_button:
+  type: item
+  debug: false
+  material: feather
+  display name: <&c>Back To Travel Menu
+  mechanisms:
+    custom_model_data: 3
+
+calipolis_lore_locations_back_button:
+  type: item
   debug: false
   material: feather
   display name: <&c>Back To Travel Menu
