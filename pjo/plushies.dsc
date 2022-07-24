@@ -3,6 +3,8 @@ plush_creeper:
   display_data:
     category: chibi.creeper
     display_name: <&color[#e52f88]>Creeper Plush
+    description: "A plush creeper"
+    material: bone_meal[custom_model_data=10001]
     lore: "lorem ipsum"
   plush_data:
     model_id: 10001
