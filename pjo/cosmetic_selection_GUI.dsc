@@ -14,7 +14,7 @@ cosmetic_plushies_info:
 
 cosmetic_selection_inventory_open2:
   type: task
-  debug: false
+  debug: true
   definitions: type|page
   gui: true
   data:
