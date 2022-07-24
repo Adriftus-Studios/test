@@ -29,7 +29,7 @@ cosmetic_selection_inventory_open2:
       material: <server.flag[plushies.ids.<[cosmetic]>].parsed_key[display_data.material]>
       display_name: <server.flag[plushies.ids.<[cosmetic]>].parsed_key[display_data.display_name]>
       description: <server.flag[plushies.ids.<[cosmetic]>].parsed_key[display_data.description]> #this might have to be lore as the key
-      preview: "<&e>Plush<&co> <&r><server.flag[plushies.ids.<[cosmetic]>].parsed_key[plushies.display_name]>"
+      preview: "<&e>Plush<&co> <&r><server.flag[plushies.ids.<[cosmetic]>].parsed_key[display_data.display_name]>"
       # current: <yaml[global.player.<player.uuid>].read[plushies.current.id].if_null[default]>
       equip_task: plushies_equip
       remove_task: plushies_remove
@@ -38,7 +38,7 @@ cosmetic_selection_inventory_open2:
       material: <server.flag[toys.ids.<[cosmetic]>].parsed_key[display_data.material]>
       display_name: <server.flag[toys.ids.<[cosmetic]>].parsed_key[display_data.display_name]>
       description: <server.flag[toys.ids.<[cosmetic]>].parsed_key[display_data.description]>
-      preview: "<&e>Toy<&co> <&r><server.flag[toys.ids.<[cosmetic]>].parsed_key[toy.display_name]>"
+      preview: "<&e>Toy<&co> <&r><server.flag[toys.ids.<[cosmetic]>].parsed_key[display_data.display_name]>"
       current: <yaml[global.player.<player.uuid>].read[toys.current.id].if_null[default]>
       equip_task: toy_equip
       remove_task: toy_remove
