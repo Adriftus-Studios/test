@@ -1,3 +1,11 @@
+test_plush_script:
+  type: task
+  script:
+  - define m <map>
+  - foreach creeper|drowned|husk|piglin|piglin_brute|zombie_pigman|skeleton|stray as:mob:
+    - define m <[m].with[mob].as[<script[plush_<[mob]>]>]>
+  - flag server plushies.ids:<[m]>
+
 plush_creeper:
   type: data
   display_data:
