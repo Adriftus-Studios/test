@@ -3,9 +3,9 @@ plush_creeper:
   display_data:
     category: chibi.creeper
     display_name: <&color[#e52f88]>Creeper Plush
+    lore: "lorem ipsum"
     description: "A plush creeper"
     material: bone_meal[custom_model_data=10001]
-    lore: "lorem ipsum"
   plush_data:
     model_id: 10001
 
@@ -15,6 +15,8 @@ plush_drowned:
     category: chibi.drowned
     display_name: <&color[#e52f88]>Drowned Plush
     lore: "lorem ipsum"
+    description: "A plush drowned"
+    material: bone_meal[custom_model_data=10002]
   plush_data:
     model_id: 10002
 
@@ -24,6 +26,8 @@ plush_husk:
     category: chibi.husk
     display_name: <&color[#e52f88]>Husk Plush
     lore: "lorem ipsum"
+    description: "A plush husk"
+    material: bone_meal[custom_model_data=10003]
   plush_data:
     model_id: 10003
 
@@ -33,6 +37,8 @@ plush_piglin:
     category: chibi.piglin
     display_name: <&color[#e52f88]>Piglin Plush
     lore: "lorem ipsum"
+    description: "A plush piglin"
+    material: bone_meal[custom_model_data=10004]
   plush_data:
     model_id: 10004
 
@@ -42,6 +48,8 @@ plush_piglin_brute:
     category: chibi.piglin_brute
     display_name: <&color[#e52f88]>Piglin Brute Plush
     lore: "lorem ipsum"
+    description: "A plush piglin brute"
+    material: bone_meal[custom_model_data=10005]
   plush_data:
     model_id: 10005
 
@@ -51,6 +59,8 @@ plush_zombie_pigman:
     category: chibi.zombie_pigman
     display_name: <&color[#e52f88]>Zombie Pigman Plush
     lore: "lorem ipsum"
+    description: "A plush zombie pigman"
+    material: bone_meal[custom_model_data=10006]
   plush_data:
     model_id: 10006
 
@@ -60,6 +70,8 @@ plush_skeleton:
     category: chibi.skeleton
     display_name: <&color[#e52f88]>Skeleton Plush
     lore: "lorem ipsum"
+    description: "A plush skeleton"
+    material: bone_meal[custom_model_data=10008]
   plush_data:
     model_id: 10008
 
@@ -69,6 +81,8 @@ plush_stray:
     category: chibi.stray
     display_name: <&color[#e52f88]>Stray Plush
     lore: "lorem ipsum"
+    description: "A plush stray"
+    material: bone_meal[custom_model_data=10009]
   plush_data:
     model_id: 10009
 
