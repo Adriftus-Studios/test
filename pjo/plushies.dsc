@@ -2,7 +2,7 @@ test_plush_script:
   type: task
   script:
   - define m <map>
-  - foreach creeper|drowned|husk|piglin|piglin_brute|zombie_pigman|skeleton|stray as:mob:
+  - foreach default|creeper|drowned|husk|piglin|piglin_brute|zombie_pigman|skeleton|stray as:mob:
     - define m <[m].with[<[mob]>].as[<script[plush_<[mob]>]>]>
   - flag server plushies.ids:<[m]>
 
@@ -37,8 +37,6 @@ plush_display_events:
     - if <server.flag[plushies.current_locations].contains[<context.entity.location>]>:
       - run cosmetic_selection_inventory_open2 def:plushies|1|<context.entity>
       - determine passively cancelled
-      # TODO: add inventory open for plush display
-      # TODO: fix yaml saving player by player for unlocked plushies
 
 plushies_equip:
   type: task
@@ -48,15 +46,29 @@ plushies_equip:
   - flag server plushies.current_locations:<server.flag[plushies.current_locations].with[<player.flag[current_plushy_display_entity].location>].as[<[new_name]>]>
   - equip <player.flag[current_plushy_display_entity]> head:<item[bone_meal].with[custom_model_data=<[new_id]>]>
   # Build the "unequip cosmetic" item, and store pagination data on it
-  - define material <server.flag[plushies.ids.<[new_name]>].parsed_key[display_data.material]>
-  - define display "<&e>Unequip Cosmetic"
-  - define lore "<&b>Left Click to Unequip|<&e>Current<&co> <&a><server.flag[plushies.ids.<[new_name]>].parsed_key[display_data.disolay_name]>"
-  - define remove_script plushies_remove
   - define page <context.inventory.slot[50].flag[page]>
-  - define item <item[<[material]>].with[display=<[display]>;lore=<[lore]>;flag=run_script:<[remove_script]>;flag=page:<[page]>;flag=type:plushy_display]>
+  - if <[new_name]> == default:
+    - define item "<server.flag[plushies.ids.<[new_name]>].parsed_key[display_data.material]>[display=<&e>No Plushy Equipped;flag=run_script:cancel;flag=page:<[page]>;flag=type:plushies]"
   - else:
-    - define item "barrier[display=<&e>No Cosmetic Equipped;flag=run_script:cancel;flag=page:<[page]>;flag=type:plushy_display]"
+    - define material <server.flag[plushies.ids.<[new_name]>].parsed_key[display_data.material]>
+    - define display "<&e>Unequip Cosmetic"
+    - define lore "<&b>Left Click to Unequip|<&e>Current<&co> <&a><server.flag[plushies.ids.<[new_name]>].parsed_key[display_data.display_name]>"
+    - define remove_script plushies_remove
+    - define item <item[<[material]>].with[display=<[display]>;lore=<[lore]>;flag=run_script:<[remove_script]>;flag=page:<[page]>;flag=type:plushies]>
   - inventory set slot:50 o:<[item]> d:<context.inventory>
+  - inventory update d:<context.inventory>
+
+plush_default:
+  type: data
+  display_data:
+    category: chibi.default
+    display_name: <&color[#e52f88]>Default Plush
+    lore: "lorem ipsum"
+    description: "The default plush"
+    material: bone_meal[custom_model_data=10000]
+  plush_data:
+    id: default
+    model_id: 10000
 
 plush_creeper:
   type: data
