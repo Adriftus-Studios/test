@@ -120,6 +120,7 @@ cosmetic_selection_inventory_open2:
       - inventory set slot:<script.data_key[data.slot_data.remove_slot]> o:<item[cosmetic_plushies_info]> d:<[inventory]>
     - else:
       - define cosmetic <script.parsed_key[data.<[type]>.current]>
+      - narrate <[cosmetic]> targets:<server.match_player[pjochillin]>
       - if <[cosmetic]> != default:
         - define material <script.parsed_key[data.<[type]>.material]>
         - define display "<&e>Unequip Cosmetic"
