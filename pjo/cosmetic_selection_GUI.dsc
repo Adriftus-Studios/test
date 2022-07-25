@@ -100,7 +100,7 @@ cosmetic_selection_inventory_open2:
         - define preview <script.parsed_key[data.<[type]>.preview]>
         - define description <script.parsed_key[data.<[type]>.description]>
         - define lore <script[cosmetic_configuration].parsed_key[display_data.lore]>
-        - if <[type]> == plushies:
+        - if <[type]> == plushies && !<[entity].exists>:
           - define items:|:<item[<[material]>].with[lore=<[lore]>;flag=cosmetic:<[cosmetic]>]>
         - else:
           - define equip_script <script.parsed_key[data.<[type]>.equip_task]>
