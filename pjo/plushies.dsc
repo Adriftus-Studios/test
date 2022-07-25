@@ -6,6 +6,13 @@ test_plush_script:
     - define m <[m].with[<[mob]>].as[<script[plush_<[mob]>]>]>
   - flag server plushies.ids:<[m]>
 
+plush_display_item:
+  type: item
+  material: bone_meal
+  display name: <&color[#e52f88]>Plush Display
+  mechanisms:
+    custom_model_data: 10000
+
 plush_creeper:
   type: data
   display_data:
