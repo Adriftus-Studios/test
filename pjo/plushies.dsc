@@ -19,8 +19,13 @@ plush_display_events:
     on player right clicks block with:plush_display_item:
     - determine passively cancelled
     - if <context.relative.material.name> == air:
-      - spawn armor_stand[is_small=true] <context.relative.center.relative[0,-0.5,0].with_yaw[]> save:stand
+      - spawn armor_stand[is_small=true] <context.relative.center.relative[0,-0.5,0]> save:stand
+      - narrate <context.relative.center.relative[0,-0.5,0]> targets:<player>
       - equip <entry[stand].spawned_entity> head:<item[bone_meal].with[custom_model_data=10000]>
+      - flag <context.relative.center.relative[0,-0.5,0]> plush_current:10000
+
+      # on player right clicks armor_stand:
+      # - determine passively cancelled
 
 
 plush_creeper:
