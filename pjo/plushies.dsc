@@ -13,6 +13,12 @@ plush_display_item:
   mechanisms:
     custom_model_data: 10000
 
+plush_display_events:
+  type: world
+  events:
+    on player right clicks block with:plush_display_item:
+    - narrate <context.location.xyz> targets:<player>
+
 plush_creeper:
   type: data
   display_data:
