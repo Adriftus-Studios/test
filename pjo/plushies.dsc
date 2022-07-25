@@ -17,7 +17,11 @@ plush_display_events:
   type: world
   events:
     on player right clicks block with:plush_display_item:
-    - narrate <context.location.xyz> targets:<player>
+    - determine passively cancelled
+    - if <context.relative.material.name> == air:
+      - spawn armor_stand[visible=false;is_small=true] <context.relative> persistent save:stand
+      - equip <entry[stand]> head:<item[bone_meal].with[custom_model_data=10000]>
+
 
 plush_creeper:
   type: data
