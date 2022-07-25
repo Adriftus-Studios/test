@@ -48,7 +48,7 @@ plushies_equip:
   # Build the "unequip cosmetic" item, and store pagination data on it
   - define page <context.inventory.slot[50].flag[page]>
   - if <[new_name]> == default:
-    - define item "<server.flag[plushies.ids.<[new_name]>].parsed_key[display_data.material]>[display=<&e>No Plushy Equipped;flag=run_script:cancel;flag=page:<[page]>;flag=type:plushies]"
+    - define item "<item[<server.flag[plushies.ids.<[new_name]>].parsed_key[display_data.material]>].with[display=<&e>No Plushy Equipped;flag=run_script:cancel;flag=page:<[page]>;flag=type:plushies]>"
   - else:
     - define material <server.flag[plushies.ids.<[new_name]>].parsed_key[display_data.material]>
     - define display "<&e>Unequip Cosmetic"
