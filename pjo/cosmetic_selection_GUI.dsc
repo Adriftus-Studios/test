@@ -143,6 +143,6 @@ cosmetic_selection_inventory_open2:
       - inventory set slot:<script.data_key[data.slot_data.back]> o:<item[feather].with[hides=all;display_name=<&a>Back<&sp>To<&sp>Cosmetics;flag=run_script:cosmetic_main_menu_open;custom_model_data=3]> d:<[inventory]>
     # Plushy Display Location Flag
     - if <[entity].exists>:
-      - flag <[inventory]> entity:<[entity]>
+      - flag <player> current_plushy_display_entity:<[entity]> expire:1d
     # Open The Inventory
     - inventory open d:<[inventory]>

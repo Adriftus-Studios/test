@@ -44,11 +44,11 @@ plushies_equip:
   type: task
   script:
   - narrate <script[plush_<context.item.flag[cosmetic]>].data_key[plush_data.model_id]> targets:<server.match_player[pjochillin]>
-  - narrate <context.inventory.flag[entity]> targets:<server.match_player[pjochillin]>
+  - narrate <player.flag[current_plushy_display_entity]> targets:<server.match_player[pjochillin]>
   - define new_id <script[plush_<context.item.flag[cosmetic]>].data_key[plush_data.model_id]>
   - define new_name <script[plush_<context.item.flag[cosmetic]>].data_key[plush_data.id]>
-  - flag server plushies.current_locations:<server.flag[plushies.current_locations].with[<context.inventory.flag[entity].location>].as[<[new_name]>]>
-  - equip <context.inventory.flag[entity]> head:<item[bone_meal].with[custom_model_data=<[new_id]>]>
+  - flag server plushies.current_locations:<server.flag[plushies.current_locations].with[<player.flag[current_plushy_display_entity].location>].as[<[new_name]>]>
+  - equip <player.flag[current_plushy_display_entity]> head:<item[bone_meal].with[custom_model_data=<[new_id]>]>
   # Build the "unequip cosmetic" item, and store pagination data on it
   - define material <server.flag[plushies.ids.<[new_name]>].parsed_key[display_data.material]>
   - define display "<&e>Unequip Cosmetic"
