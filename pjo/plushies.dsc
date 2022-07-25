@@ -24,7 +24,8 @@ plush_display_events:
       - equip <entry[stand].spawned_entity> head:<item[bone_meal].with[custom_model_data=10000]>
       - flag <context.relative.center.relative[0,-0.5,0]> plush_current:10000
 
-      # on player right clicks armor_stand:
+      on player right clicks armor_stand:
+      - narrate <context.entity.location> targets:<player>
       # - determine passively cancelled
 
 
