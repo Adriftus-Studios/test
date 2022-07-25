@@ -30,7 +30,7 @@ cosmetic_selection_inventory_open2:
       display_name: <server.flag[plushies.ids.<[cosmetic]>].parsed_key[display_data.display_name]>
       description: <server.flag[plushies.ids.<[cosmetic]>].parsed_key[display_data.description]> #this might have to be lore as the key
       preview: "<&e>Plush<&co> <&r><server.flag[plushies.ids.<[cosmetic]>].parsed_key[display_data.display_name]>"
-      current: <server.flag[plushies.current_locations].get[<[location]>]>
+      current: <server.flag[plushies.current_locations].get[<[entity].location>]>
       equip_task: plushies_equip
       remove_task: plushies_remove
     toys:
@@ -120,7 +120,6 @@ cosmetic_selection_inventory_open2:
       - inventory set slot:<script.data_key[data.slot_data.remove_slot]> o:<item[cosmetic_plushies_info]> d:<[inventory]>
     - else:
       - define cosmetic <script.parsed_key[data.<[type]>.current]>
-      - narrate <[cosmetic]> targets:<server.match_player[pjochillin]>
       - if <[cosmetic]> != default:
         - define material <script.parsed_key[data.<[type]>.material]>
         - define display "<&e>Unequip Cosmetic"
