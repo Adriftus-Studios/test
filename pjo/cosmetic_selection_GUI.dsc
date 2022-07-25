@@ -25,7 +25,7 @@ cosmetic_selection_inventory_open2:
       previous_page: 47
       back: 1
     plushies:
-      players_list: <yaml[global.player.<player.uuid>].read[plushies.unlocked].if_null[<list>]>
+      players_list: <yaml[global.player.<player.uuid>].list_keys[plushies.unlocked].if_null[<list>]>
       material: <server.flag[plushies.ids.<[cosmetic]>].parsed_key[display_data.material]>
       display_name: <server.flag[plushies.ids.<[cosmetic]>].parsed_key[display_data.display_name]>
       description: <server.flag[plushies.ids.<[cosmetic]>].parsed_key[display_data.description]> #this might have to be lore as the key

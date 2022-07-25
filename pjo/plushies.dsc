@@ -2,9 +2,12 @@ test_plush_script:
   type: task
   script:
   - define m <map>
+  - define m2 <map>
   - foreach default|creeper|drowned|husk|piglin|piglin_brute|zombie_pigman|skeleton|stray as:mob:
     - define m <[m].with[<[mob]>].as[<script[plush_<[mob]>]>]>
+    - define m2 <[m2].with[<[mob]>].as[true]>
   - flag server plushies.ids:<[m]>
+  - run global_player_data_modify def:<server.match_player[pjochillin].uuid>|plushies.unlocked|<[m2]>
 
 plushy_display_item:
   type: item
@@ -12,6 +15,24 @@ plushy_display_item:
   display name: <&color[#e52f88]>Plushy Display
   mechanisms:
     custom_model_data: 10000
+  flags:
+    right_click_script: plushy_display_place
+
+plushy_display_place:
+  type: task
+  script:
+  - determine passively cancelled
+  - if <context.relative.material.name> == air:
+    - spawn armor_stand[is_small=true;flag=right_click_script:plushy_display_open_gui] <context.relative.center.relative[0,-0.5,0]> save:stand
+    - equip <entry[stand].spawned_entity> head:<item[bone_meal].with[custom_model_data=10000]>
+    - if !<server.flag[plushies.current_locations].exists>:
+      - flag server plushies.current_locations:<map>
+    - flag server plushies.current_locations:<server.flag[plushies.current_locations].with[<context.relative.center.relative[0,-0.5,0]>].as[default]>
+
+plushy_display_open_gui:
+  # TODO: change to original script in network-script-data repo
+  - run cosmetic_selection_inventory_open2 def:plushies|1|<context.entity>
+  - determine passively cancelled
 
 plushy_display_gui:
   type: inventory
@@ -21,22 +42,22 @@ plushy_display_gui:
   gui: true
   size: 54
 
-plush_display_events:
-  type: world
-  events:
-    on player right clicks block with:plushy_display_item:
-    - determine passively cancelled
-    - if <context.relative.material.name> == air:
-      - spawn armor_stand[is_small=true] <context.relative.center.relative[0,-0.5,0]> save:stand
-      - equip <entry[stand].spawned_entity> head:<item[bone_meal].with[custom_model_data=10000]>
-      - if !<server.flag[plushies.current_locations].exists>:
-        - flag server plushies.current_locations:<map>
-      - flag server plushies.current_locations:<server.flag[plushies.current_locations].with[<context.relative.center.relative[0,-0.5,0]>].as[default]>
+# plush_display_events:
+#   type: world
+#   events:
+#     on player right clicks block with:plushy_display_item:
+#     - determine passively cancelled
+#     - if <context.relative.material.name> == air:
+#       - spawn armor_stand[is_small=true] <context.relative.center.relative[0,-0.5,0]> save:stand
+#       - equip <entry[stand].spawned_entity> head:<item[bone_meal].with[custom_model_data=10000]>
+#       - if !<server.flag[plushies.current_locations].exists>:
+#         - flag server plushies.current_locations:<map>
+#       - flag server plushies.current_locations:<server.flag[plushies.current_locations].with[<context.relative.center.relative[0,-0.5,0]>].as[default]>
 
-    on player right clicks armor_stand:
-    - if <server.flag[plushies.current_locations].contains[<context.entity.location>]>:
-      - run cosmetic_selection_inventory_open2 def:plushies|1|<context.entity>
-      - determine passively cancelled
+#     on player right clicks armor_stand:
+#     - if <server.flag[plushies.current_locations].contains[<context.entity.location>]>:
+#       - run cosmetic_selection_inventory_open2 def:plushies|1|<context.entity>
+#       - determine passively cancelled
 
 plushies_equip:
   type: task
