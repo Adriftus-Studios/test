@@ -31,6 +31,8 @@ plushy_display_place:
     - flag server plushies.current_locations:<server.flag[plushies.current_locations].with[<context.relative.center.relative[0,-0.5,0]>].as[default]>
 
 plushy_display_open_gui:
+  type: task
+  script:
   # TODO: change to original script in network-script-data repo
   - run cosmetic_selection_inventory_open2 def:plushies|1|<context.entity>
   - determine passively cancelled
