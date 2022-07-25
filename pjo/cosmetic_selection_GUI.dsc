@@ -1,6 +1,6 @@
 cosmetic_selection_plushies_menu:
   type: inventory
-  # debug: false
+  debug: false
   inventory: chest
   title: <&f><&font[adriftus:cosmetics_guis]><&chr[F808]><&chr[1010]>
   gui: true
@@ -15,7 +15,7 @@ cosmetic_plushies_info:
 cosmetic_selection_inventory_open2:
   type: task
   debug: true
-  definitions: type|page
+  definitions: type|page|entity
   gui: true
   data:
     slot_data:
@@ -30,7 +30,7 @@ cosmetic_selection_inventory_open2:
       display_name: <server.flag[plushies.ids.<[cosmetic]>].parsed_key[display_data.display_name]>
       description: <server.flag[plushies.ids.<[cosmetic]>].parsed_key[display_data.description]> #this might have to be lore as the key
       preview: "<&e>Plush<&co> <&r><server.flag[plushies.ids.<[cosmetic]>].parsed_key[display_data.display_name]>"
-      # current: <yaml[global.player.<player.uuid>].read[plushies.current.id].if_null[default]>
+      current: <server.flag[plushies.current_locations].get[<[location]>]>
       equip_task: plushies_equip
       remove_task: plushies_remove
     toys:
@@ -113,7 +113,7 @@ cosmetic_selection_inventory_open2:
         - inventory set slot:<[slots].get[<[loop_index]>]> o:<[value].with[display=<&6>]> d:<[inventory]>
 
     # Build the "unequip cosmetic" item, and store pagination data on it
-    - if <[type]> == plushies:
+    - if <[type]> == plushies && !<[entity].exists>:
       - inventory set slot:<script.data_key[data.slot_data.remove_slot]> o:<item[cosmetic_plushies_info]> d:<[inventory]>
     - else:
       - define cosmetic <script.parsed_key[data.<[type]>.current]>
@@ -137,5 +137,8 @@ cosmetic_selection_inventory_open2:
 
     # Back to Cosmetics
     - inventory set slot:<script.data_key[data.slot_data.back]> o:<item[feather].with[hides=all;display_name=<&a>Back<&sp>To<&sp>Cosmetics;flag=run_script:cosmetic_main_menu_open;custom_model_data=3]> d:<[inventory]>
+    # Plushy Display Location Flag
+    - if <[entity].exists>:
+      - flag <[inventory]> entity:<[entity]>
     # Open The Inventory
     - inventory open d:<[inventory]>

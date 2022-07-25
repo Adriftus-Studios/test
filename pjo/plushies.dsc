@@ -6,28 +6,56 @@ test_plush_script:
     - define m <[m].with[<[mob]>].as[<script[plush_<[mob]>]>]>
   - flag server plushies.ids:<[m]>
 
-plush_display_item:
+plushy_display_item:
   type: item
   material: bone_meal
-  display name: <&color[#e52f88]>Plush Display
+  display name: <&color[#e52f88]>Plushy Display
   mechanisms:
     custom_model_data: 10000
+
+plushy_display_gui:
+  type: inventory
+  debug: false
+  inventory: chest
+  title: <&f><&font[adriftus:cosmetics_guis]><&chr[F808]><&chr[2000]>
+  gui: true
+  size: 54
 
 plush_display_events:
   type: world
   events:
-    on player right clicks block with:plush_display_item:
+    on player right clicks block with:plushy_display_item:
     - determine passively cancelled
     - if <context.relative.material.name> == air:
       - spawn armor_stand[is_small=true] <context.relative.center.relative[0,-0.5,0]> save:stand
-      - narrate <context.relative.center.relative[0,-0.5,0]> targets:<player>
       - equip <entry[stand].spawned_entity> head:<item[bone_meal].with[custom_model_data=10000]>
-      - flag <context.relative.center.relative[0,-0.5,0]> plush_current:10000
+      - if !<server.flag[plushies.current_locations].exists>:
+        - flag server plushies.current_locations:<map>
+      - flag server plushies.current_locations:<server.flag[plushies.current_locations].with[<context.relative.center.relative[0,-0.5,0]>].as[default]>
 
     on player right clicks armor_stand:
-    - narrate <context.entity.location> targets:<player>
-    # - determine passively cancelled
+    - if <server.flag[plushies.current_locations].contains[<context.entity.location>]>:
+      - run cosmetic_selection_inventory_open2 def:plushies|1|<context.entity>
+      - determine passively cancelled
+      # TODO: add inventory open for plush display
 
+plushies_equip:
+  type: task
+  script:
+  - define new_id <context.item.script.data_key[plush_data.model_id]>
+  - define new_name <context.item.script.data_key[plush_data.id]>
+  - flag server plushies.current_locations:<server.flag[plushies.current_locations].with[<context.inventory.flag[entity].location>].as[<[new_name]>]>
+  - equip <context.inventory.flag[entity]> head:<item[bone_meal].with[custom_model_data=<[new_id]>]>
+  # Build the "unequip cosmetic" item, and store pagination data on it
+  - define material <server.flag[plushies.ids.<[new_name]>].parsed_key[display_data.material]>
+  - define display "<&e>Unequip Cosmetic"
+  - define lore "<&b>Left Click to Unequip|<&e>Current<&co> <&a><server.flag[plushies.ids.<[new_name]>].parsed_key[display_data.disolay_name]>"
+  - define remove_script plushies_remove
+  - define page <context.inventory.slot[50].flag[page]>
+  - define item <item[<[material]>].with[display=<[display]>;lore=<[lore]>;flag=run_script:<[remove_script]>;flag=page:<[page]>;flag=type:plushy_display]>
+  - else:
+    - define item "barrier[display=<&e>No Cosmetic Equipped;flag=run_script:cancel;flag=page:<[page]>;flag=type:plushy_display]"
+  - inventory set slot:50 o:<[item]> d:<context.inventory>
 
 plush_creeper:
   type: data
@@ -38,6 +66,7 @@ plush_creeper:
     description: "A plush creeper"
     material: bone_meal[custom_model_data=10001]
   plush_data:
+    id: creeper
     model_id: 10001
 
 plush_drowned:
@@ -49,6 +78,7 @@ plush_drowned:
     description: "A plush drowned"
     material: bone_meal[custom_model_data=10002]
   plush_data:
+    id: drowned
     model_id: 10002
 
 plush_husk:
@@ -60,6 +90,7 @@ plush_husk:
     description: "A plush husk"
     material: bone_meal[custom_model_data=10003]
   plush_data:
+    id: husk
     model_id: 10003
 
 plush_piglin:
@@ -71,6 +102,7 @@ plush_piglin:
     description: "A plush piglin"
     material: bone_meal[custom_model_data=10004]
   plush_data:
+    id: piglin
     model_id: 10004
 
 plush_piglin_brute:
@@ -82,6 +114,7 @@ plush_piglin_brute:
     description: "A plush piglin brute"
     material: bone_meal[custom_model_data=10005]
   plush_data:
+    id: piglin_brute
     model_id: 10005
 
 plush_zombie_pigman:
@@ -93,6 +126,7 @@ plush_zombie_pigman:
     description: "A plush zombie pigman"
     material: bone_meal[custom_model_data=10006]
   plush_data:
+    id: zombie_pigman
     model_id: 10006
 
 plush_skeleton:
@@ -104,6 +138,7 @@ plush_skeleton:
     description: "A plush skeleton"
     material: bone_meal[custom_model_data=10008]
   plush_data:
+    id: skeleton
     model_id: 10008
 
 plush_stray:
@@ -115,24 +150,5 @@ plush_stray:
     description: "A plush stray"
     material: bone_meal[custom_model_data=10009]
   plush_data:
+    id: stray
     model_id: 10009
-
-plushies_equip:
-    type: task
-    # debug: false
-    definitions: plush_id
-    script:
-    - determine passively cancelled
-    - define plush_id <context.item.flag[cosmetic].if_null[default]> if:<[plush_id].exists.not>
-    - if !<script[mask_<[plush_id]>].exists>:
-        - debug error "UNKNOWN PLUSH<&co> <[plush_id]>"
-        - stop
-    - inventory close
-    - wait 1t
-    - define script <script[plush_<[plush_id]>]>
-    # potential permissions for plushies?
-    # - if <[script].data_key[mask_data.permission].exists> && !<player.has_permission[<[script].data_key[mask_data.permission]>]>:
-    #     - narrate "<&c>You lack the permission for this mask."
-    #     - stop
-    - run global_player_data_modify def:<player.uuid>|plushies.current|<[script]>
-    # TODO: add more to this code
