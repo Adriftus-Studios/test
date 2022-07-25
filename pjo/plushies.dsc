@@ -23,8 +23,9 @@ plushy_display_place:
   script:
   - determine passively cancelled
   - if <context.relative.material.name> == air:
-    - spawn armor_stand[is_small=true;flag=right_click_script:plushy_display_open_gui] <context.relative.center.relative[0,-0.5,0]> save:stand
+    - spawn armor_stand[is_small=true] <context.relative.center.relative[0,-0.5,0]> save:stand
     - equip <entry[stand].spawned_entity> head:<item[bone_meal].with[custom_model_data=10000]>
+    - flag <entry[stand].spawned_entity> right_click_script:plushy_display_open_gui
     - if !<server.flag[plushies.current_locations].exists>:
       - flag server plushies.current_locations:<map>
     - flag server plushies.current_locations:<server.flag[plushies.current_locations].with[<context.relative.center.relative[0,-0.5,0]>].as[default]>
