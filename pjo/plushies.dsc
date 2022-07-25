@@ -19,7 +19,7 @@ plush_display_events:
     on player right clicks block with:plush_display_item:
     - determine passively cancelled
     - if <context.relative.material.name> == air:
-      - spawn armor_stand[visible=false;is_small=true] <context.relative> persistent save:stand
+      - spawn armor_stand[visible=false;is_small=true] <context.relative.above[1]> save:stand
       - equip <entry[stand]> head:<item[bone_meal].with[custom_model_data=10000]>
 
 
