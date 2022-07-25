@@ -26,9 +26,15 @@ plushy_display_place:
     - spawn armor_stand[is_small=true] <context.relative.center.relative[0,-0.5,0]> save:stand
     - equip <entry[stand].spawned_entity> head:<item[bone_meal].with[custom_model_data=10000]>
     - flag <entry[stand].spawned_entity> right_click_script:plushy_display_open_gui
+    - flag <entry[stand].spawned_entity> on_death:plushy_display_flag_remove
     - if !<server.flag[plushies.current_locations].exists>:
       - flag server plushies.current_locations:<map>
     - flag server plushies.current_locations:<server.flag[plushies.current_locations].with[<context.relative.center.relative[0,-0.5,0]>].as[default]>
+
+plushy_display_flag_remove:
+  type: task
+  script:
+  - flag server plushies.current_locations:<server.flag[plushies.current_locations].exclude[<context.entity.location>]>
 
 plushy_display_open_gui:
   type: task
@@ -90,12 +96,6 @@ plushies_remove:
   - define item "<item[<server.flag[plushies.ids.default].parsed_key[display_data.material]>].with[display=<&e>No Plushy Equipped;flag=run_script:cancel;flag=page:<[page]>;flag=type:plushies]>"
   - inventory set slot:50 o:<[item]> d:<context.inventory>
   - inventory update d:<context.inventory>
-
-plushies_events:
-  type: world
-  events:
-    on armor_stand killed by player:
-    - flag server plushies.current_locations:<server.flag[plushies.current_locations].exclude[<context.entity.location>]>
 
 plush_default:
   type: data
