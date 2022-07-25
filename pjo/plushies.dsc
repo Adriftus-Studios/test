@@ -43,7 +43,8 @@ plush_display_events:
 plushies_equip:
   type: task
   script:
-  - narrate <context.item> targets:<server.match_player[pjochillin]>
+  - narrate <script[plush_<context.item.flag[cosmetic]>].data_key[plush_data.model_id]> targets:<server.match_player[pjochillin]>
+  - narrate <context.inventory.flag[entity]> targets:<server.match_player[pjochillin]>
   - define new_id <script[plush_<context.item.flag[cosmetic]>].data_key[plush_data.model_id]>
   - define new_name <script[plush_<context.item.flag[cosmetic]>].data_key[plush_data.id]>
   - flag server plushies.current_locations:<server.flag[plushies.current_locations].with[<context.inventory.flag[entity].location>].as[<[new_name]>]>
