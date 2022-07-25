@@ -38,6 +38,7 @@ plush_display_events:
       - run cosmetic_selection_inventory_open2 def:plushies|1|<context.entity>
       - determine passively cancelled
       # TODO: add inventory open for plush display
+      # TODO: fix yaml saving player by player for unlocked plushies
 
 plushies_equip:
   type: task

@@ -105,7 +105,10 @@ cosmetic_selection_inventory_open2:
         - else:
           - define equip_script <script.parsed_key[data.<[type]>.equip_task]>
           - define items:|:<item[<[material]>].with[lore=<[lore]>;flag=run_script:<[equip_script]>;flag=cosmetic:<[cosmetic]>]>
-    - define inventory <inventory[cosmetic_selection_<[type]>_menu]>
+    - if <[entity].exists>:
+      - define inventory <inventory[plushy_display_gui]>
+    - else:
+      - define inventory <inventory[cosmetic_selection_<[type]>_menu]>
 
     # Put the items into the new inventory
     - if <[items].exists>:
