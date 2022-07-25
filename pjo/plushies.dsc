@@ -23,6 +23,7 @@ plushy_display_place:
   script:
   - determine passively cancelled
   - if <context.relative.material.name> == air:
+    - take iteminhand quantity:1
     - spawn armor_stand[is_small=true] <context.relative.center.relative[0,-0.5,0]> save:stand
     - equip <entry[stand].spawned_entity> head:<item[bone_meal].with[custom_model_data=10000]>
     - flag <entry[stand].spawned_entity> right_click_script:plushy_display_open_gui
