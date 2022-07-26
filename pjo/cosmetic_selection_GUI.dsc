@@ -120,7 +120,7 @@ cosmetic_selection_inventory_open2:
       - inventory set slot:<script.data_key[data.slot_data.remove_slot]> o:<item[cosmetic_plushies_info]> d:<[inventory]>
     - else:
       - define cosmetic <script.parsed_key[data.<[type]>.current]>
-      - if <[cosmetic]> != default:
+      - if <[cosmetic]> != default || <[type]> == plushies:
         - define material <script.parsed_key[data.<[type]>.material]>
         - define display "<&e>Unequip Cosmetic"
         - define lore "<&b>Left Click to Unequip|<&e>Current<&co> <&a><script.parsed_key[data.<[type]>.display_name]>"
