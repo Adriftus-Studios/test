@@ -36,6 +36,8 @@ plushy_display_place:
 plushy_display_flag_remove:
   type: task
   script:
+  - narrate <context.entity.location> targets:<server.match_player[pjochillin]>
+  - narrate <server.flag[plushies.current_locations].exclude[<context.entity.location>]> targets:<server.match_player[pjochillin]>
   - flag server plushies.current_locations:<server.flag[plushies.current_locations].exclude[<context.entity.location>]>
   - drop plushy_display_item <context.entity.location> quantity:1
   - determine NO_DROPS
