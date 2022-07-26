@@ -31,7 +31,7 @@ plushy_display_place:
     - flag <entry[stand].spawned_entity> on_death:plushy_display_flag_remove
     - if !<server.flag[plushies.current_locations].exists>:
       - flag server plushies.current_locations:<map>
-    - flag server plushies.current_locations:<server.flag[plushies.current_locations].with[<context.relative.center.relative[0,-0.5,0]>].as[default]>
+    - flag server plushies.current_locations:<server.flag[plushies.current_locations].with[<entry[stand].spawned_entity.location>].as[default]>
 
 plushy_display_flag_remove:
   type: task
