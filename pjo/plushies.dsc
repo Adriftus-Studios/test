@@ -31,7 +31,7 @@ plushy_display_place:
   type: task
   script:
   - determine passively cancelled
-  - if <context.relative.material.name> == air && !<server.flag[plushies.current_locations].contains[<context.relative.center.relative[0,-0.5,0]>]>:
+  - if <context.relative.material.name> == air && !<server.flag[plushies.xyz_locations].contains[<context.relative.center.relative[0,-0.5,0].simple>]>:
     - take iteminhand quantity:1
     - spawn armor_stand[is_small=true;visible=false;invulnerable=false;marker=false] <context.relative.center.relative[0,-0.5,0]> save:stand
     - equip <entry[stand].spawned_entity> head:<item[bone_meal].with[custom_model_data=10000]>
@@ -41,6 +41,7 @@ plushy_display_place:
     - if !<server.flag[plushies.current_locations].exists>:
       - flag server plushies.current_locations:<map>
     - flag server plushies.current_locations:<server.flag[plushies.current_locations].with[<entry[stand].spawned_entity.location>].as[default]>
+    - flag server plushies.xyz_locations:<server.flag[plushies.xyz_locations].with[<entry[stand].spawned_entity.location.simple>].as[true]>
     - flag server plushies.supporting_blocks:<server.flag[plushies.supporting_blocks].with[<entry[stand].spawned_entity.location.below[1].block>].as[<entry[stand].spawned_entity>]>
     - flag <entry[stand].spawned_entity.location.below[1].block> on_break:plushy_display_flag_remove
 
@@ -51,11 +52,13 @@ plushy_display_flag_remove:
     - flag server plushies.current_locations:<server.flag[plushies.current_locations].exclude[<server.flag[plushies.supporting_blocks].get[<context.location>].location>]>
     - remove <server.flag[plushies.supporting_blocks].get[<context.location>]>
     - flag server plushies.supporting_blocks:<server.flag[plushies.supporting_blocks].exclude[<context.location>]>
+    - flag server plushies.xyz_locations:<server.flag[plushies.xyz_locations].exclude[<context.location.simple>]>
     - flag <context.location> on_break:!
     - drop plushy_display_item <context.location.above[1]> quantity:1
   - else:
     - flag server plushies.current_locations:<server.flag[plushies.current_locations].exclude[<player.flag[current_plushy_display_entity].location>]>
     - flag server plushies.supporting_blocks:<server.flag[plushies.supporting_blocks].exclude[<player.flag[current_plushy_display_entity].location.below[1].block>]>
+    - flag server plushies.xyz_locations:<server.flag[plushies.xyz_locations].exclude[<player.flag[current_plushy_display_entity].location.simple>]>
     - flag <player.flag[current_plushy_display_entity].location.below[1].block> on_break:!
     - drop plushy_display_item <player.flag[current_plushy_display_entity].location> quantity:1
     - remove <player.flag[current_plushy_display_entity]>
