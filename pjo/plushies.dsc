@@ -22,7 +22,7 @@ plushy_display_place:
   type: task
   script:
   - determine passively cancelled
-  - if <context.relative.material.name> == air:
+  - if <context.relative.material.name> == air && !<server.flag[plushies.current_locations].contains[<context.relative.center.relative[0,-0.5,0]>]>:
     - take iteminhand quantity:1
     - spawn armor_stand[is_small=true] <context.relative.center.relative[0,-0.5,0]> save:stand
     - equip <entry[stand].spawned_entity> head:<item[bone_meal].with[custom_model_data=10000]>
