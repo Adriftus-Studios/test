@@ -18,6 +18,15 @@ plushy_display_item:
   flags:
     right_click_script: plushy_display_place
 
+plushy_display_remove_item:
+  type: item
+  material: bone_meal
+  display name: <&color[#e52f88]>Pickup Display
+  mechanisms:
+    custom_model_data: 10000
+  flags:
+    run_script: plushy_display_flag_remove
+
 plushy_display_place:
   type: task
   script:
@@ -28,7 +37,7 @@ plushy_display_place:
     - equip <entry[stand].spawned_entity> head:<item[bone_meal].with[custom_model_data=10000]>
     - look <entry[stand].spawned_entity> <player.location>
     - flag <entry[stand].spawned_entity> right_click_script:plushy_display_open_gui
-    - flag <entry[stand].spawned_entity> on_damaged:plushy_display_flag_remove
+    - flag <entry[stand].spawned_entity> owner:<player.uuid>
     - if !<server.flag[plushies.current_locations].exists>:
       - flag server plushies.current_locations:<map>
     - flag server plushies.current_locations:<server.flag[plushies.current_locations].with[<entry[stand].spawned_entity.location>].as[default]>
@@ -39,7 +48,6 @@ plushy_display_flag_remove:
   type: task
   script:
   - if <context.location.exists>:
-    - flag <server.flag[plushies.supporting_blocks].get[<context.location>]> on_damaged:!
     - flag server plushies.current_locations:<server.flag[plushies.current_locations].exclude[<server.flag[plushies.supporting_blocks].get[<context.location>].location>]>
     - remove <server.flag[plushies.supporting_blocks].get[<context.location>]>
     - flag server plushies.supporting_blocks:<server.flag[plushies.supporting_blocks].exclude[<context.location>]>
@@ -49,7 +57,6 @@ plushy_display_flag_remove:
     - flag server plushies.current_locations:<server.flag[plushies.current_locations].exclude[<context.entity.location>]>
     - flag server plushies.supporting_blocks:<server.flag[plushies.supporting_blocks].exclude[<context.entity.location.below[1].block>]>
     - flag <context.entity.location.below[1].block> on_break:!
-    - flag <context.entity> on_damaged:!
     - drop plushy_display_item <context.entity.location> quantity:1
     - remove <context.entity>
 
@@ -57,7 +64,7 @@ plushy_display_open_gui:
   type: task
   script:
   # TODO: change to original script in network-script-data repo
-  - if <player.is_sneaking>:
+  - if <player.is_sneaking> && <context.entity.flag[owner]> == <player.uuid>:
     - run cosmetic_selection_inventory_open2 def:plushies|1|<context.entity>
     - determine passively cancelled
 
