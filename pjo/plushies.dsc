@@ -49,6 +49,7 @@ plushy_display_flag_remove:
     - flag server plushies.current_locations:<server.flag[plushies.current_locations].exclude[<context.entity.location>]>
     - flag server plushies.supporting_blocks:<server.flag[plushies.supporting_blocks].exclude[<context.entity.location.below[1].block>]>
     - flag <context.entity.location.below[1].block> on_break:!
+    - flag <context.entity> on_damaged:!
     - drop plushy_display_item <context.entity.location> quantity:1
     - remove <context.entity>
 
