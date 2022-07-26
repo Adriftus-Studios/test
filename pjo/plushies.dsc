@@ -60,6 +60,7 @@ plushy_display_flag_remove:
     - drop plushy_display_item <player.flag[current_plushy_display_entity].location> quantity:1
     - remove <player.flag[current_plushy_display_entity]>
     - flag player current_plushy_display_entity:!
+    - inventory close d:<context.inventory>
 
 plushy_display_open_gui:
   type: task
