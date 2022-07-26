@@ -55,6 +55,13 @@ plushy_display_gui:
   gui: true
   size: 54
 
+plushies_unlock:
+  type: task
+  definitions: id
+  script:
+  - if <server.has_flag[plushies.ids.<[id]>]> && !<yaml[global.player.<player.uuid>].contains[plushies.unlocked.<[id]>]||false>:
+    - run global_player_data_modify def:<player.uuid>|plushies.unlocked.<[id]>|true
+
 plushies_equip:
   type: task
   script:
