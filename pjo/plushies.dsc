@@ -50,7 +50,7 @@ plushy_display_flag_remove:
     - flag server plushies.supporting_blocks:<server.flag[plushies.supporting_blocks].exclude[<context.entity.location.below[1].block>]>
     - flag <context.entity.location.below[1].block> on_break:!
     - drop plushy_display_item <context.entity.location> quantity:1
-    - determine NO_DROPS
+    - remove <context.entity>
 
 plushy_display_open_gui:
   type: task
