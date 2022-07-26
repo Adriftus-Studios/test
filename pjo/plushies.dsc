@@ -54,11 +54,12 @@ plushy_display_flag_remove:
     - flag <context.location> on_break:!
     - drop plushy_display_item <context.location.above[1]> quantity:1
   - else:
-    - flag server plushies.current_locations:<server.flag[plushies.current_locations].exclude[<context.entity.location>]>
-    - flag server plushies.supporting_blocks:<server.flag[plushies.supporting_blocks].exclude[<context.entity.location.below[1].block>]>
-    - flag <context.entity.location.below[1].block> on_break:!
-    - drop plushy_display_item <context.entity.location> quantity:1
-    - remove <context.entity>
+    - flag server plushies.current_locations:<server.flag[plushies.current_locations].exclude[<player.flag[current_plushy_display_entity].location>]>
+    - flag server plushies.supporting_blocks:<server.flag[plushies.supporting_blocks].exclude[<player.flag[current_plushy_display_entity].location.below[1].block>]>
+    - flag <player.flag[current_plushy_display_entity].location.below[1].block> on_break:!
+    - drop plushy_display_item <player.flag[current_plushy_display_entity].location> quantity:1
+    - remove <player.flag[current_plushy_display_entity]>
+    - flag player current_plushy_display_entity:!
 
 plushy_display_open_gui:
   type: task
