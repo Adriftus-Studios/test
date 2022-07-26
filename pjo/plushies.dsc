@@ -32,13 +32,25 @@ plushy_display_place:
     - if !<server.flag[plushies.current_locations].exists>:
       - flag server plushies.current_locations:<map>
     - flag server plushies.current_locations:<server.flag[plushies.current_locations].with[<entry[stand].spawned_entity.location>].as[default]>
+    - flag server plushies.supporting_blocks:<server.flag[plushies.supporting_blocks].with[<entry[stand].spawned_entity.location.below[1].block>].as[<entry[stand].spawned_entity>]>
+    - flag <entry[stand].spawned_entity.location.below[1].block> on_break:plushy_display_flag_remove
 
 plushy_display_flag_remove:
   type: task
   script:
-  - flag server plushies.current_locations:<server.flag[plushies.current_locations].exclude[<context.entity.location>]>
-  - drop plushy_display_item <context.entity.location> quantity:1
-  - determine NO_DROPS
+  - if <context.location.exists>:
+    - flag <server.flag[plushies.supporting_blocks].get[<context.location>]> on_death:!
+    - kill <server.flag[plushies.supporting_blocks].get[<context.location>]>
+    - flag server plushies.current_locations:<server.flag[plushies.current_locations].exclude[<server.flag[plushies.supporting_blocks].get[<context.location>].location>]>
+    - flag server plushies.supporting_blocks:<server.flag[plushies.supporting_blocks].exclude[<context.location>]>
+    - flag <context.location> on_break:!
+    - drop plushy_display_item <context.location.above[1]> quantity:1
+  - else:
+    - flag server plushies.current_locations:<server.flag[plushies.current_locations].exclude[<context.entity.location>]>
+    - flag server plushies.supporting_blocks:<server.flag[plushies.supporting_blocks].exclude[<context.entity.location.below[1].block>]>
+    - flag <context.entity.location.below[1].block> on_break:!
+    - drop plushy_display_item <context.entity.location> quantity:1
+    - determine NO_DROPS
 
 plushy_display_open_gui:
   type: task
