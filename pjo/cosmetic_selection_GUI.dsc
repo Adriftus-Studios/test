@@ -120,14 +120,17 @@ cosmetic_selection_inventory_open2:
       - inventory set slot:<script.data_key[data.slot_data.remove_slot]> o:<item[cosmetic_plushies_info]> d:<[inventory]>
     - else:
       - define cosmetic <script.parsed_key[data.<[type]>.current]>
-      - if <[cosmetic]> != default || <[type]> == plushies:
+      - if <[cosmetic]> != default:
         - define material <script.parsed_key[data.<[type]>.material]>
         - define display "<&e>Unequip Cosmetic"
         - define lore "<&b>Left Click to Unequip|<&e>Current<&co> <&a><script.parsed_key[data.<[type]>.display_name]>"
         - define remove_script <script.parsed_key[data.<[type]>.remove_task]>
         - define item <item[<[material]>].with[display=<[display]>;lore=<[lore]>;flag=run_script:<[remove_script]>;flag=page:<[page]>;flag=type:<[type]>]>
       - else:
-        - define item "barrier[display=<&e>No Cosmetic Equipped;flag=run_script:cancel;flag=page:<[page]>;flag=type:<[type]>]"
+        - if <[type]> == plushies:
+          - define item "bone_meal[display=<&e>No Cosmetic Equipped;flag=run_script:cancel;flag=page:<[page]>;flag=type:<[type]>;custom_model_data=10000]"
+        - else:
+          - define item "barrier[display=<&e>No Cosmetic Equipped;flag=run_script:cancel;flag=page:<[page]>;flag=type:<[type]>]"
       - inventory set slot:<script.data_key[data.slot_data.remove_slot]> o:<[item]> d:<[inventory]>
 
     # Next Page Button
