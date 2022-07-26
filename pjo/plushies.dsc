@@ -38,6 +38,7 @@ plushy_display_flag_remove:
   script:
   - flag server plushies.current_locations:<server.flag[plushies.current_locations].exclude[<context.entity.location>]>
   - drop plushy_display_item <context.entity.location> quantity:1
+  - determine NO_DROPS
 
 plushy_display_open_gui:
   type: task
