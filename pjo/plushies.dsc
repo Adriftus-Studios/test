@@ -28,7 +28,7 @@ plushy_display_place:
     - equip <entry[stand].spawned_entity> head:<item[bone_meal].with[custom_model_data=10000]>
     - look <entry[stand].spawned_entity> <player.location>
     - flag <entry[stand].spawned_entity> right_click_script:plushy_display_open_gui
-    - flag <entry[stand].spawned_entity> on_damage:plushy_display_flag_remove
+    - flag <entry[stand].spawned_entity> on_damaged:plushy_display_flag_remove
     - if !<server.flag[plushies.current_locations].exists>:
       - flag server plushies.current_locations:<map>
     - flag server plushies.current_locations:<server.flag[plushies.current_locations].with[<entry[stand].spawned_entity.location>].as[default]>
@@ -39,7 +39,7 @@ plushy_display_flag_remove:
   type: task
   script:
   - if <context.location.exists>:
-    - flag <server.flag[plushies.supporting_blocks].get[<context.location>]> on_damage:!
+    - flag <server.flag[plushies.supporting_blocks].get[<context.location>]> on_damaged:!
     - flag server plushies.current_locations:<server.flag[plushies.current_locations].exclude[<server.flag[plushies.supporting_blocks].get[<context.location>].location>]>
     - remove <server.flag[plushies.supporting_blocks].get[<context.location>]>
     - flag server plushies.supporting_blocks:<server.flag[plushies.supporting_blocks].exclude[<context.location>]>
