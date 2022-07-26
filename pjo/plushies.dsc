@@ -40,8 +40,8 @@ plushy_display_flag_remove:
   script:
   - if <context.location.exists>:
     - flag <server.flag[plushies.supporting_blocks].get[<context.location>]> on_death:!
-    - kill <server.flag[plushies.supporting_blocks].get[<context.location>]>
     - flag server plushies.current_locations:<server.flag[plushies.current_locations].exclude[<server.flag[plushies.supporting_blocks].get[<context.location>].location>]>
+    - kill <server.flag[plushies.supporting_blocks].get[<context.location>]>
     - flag server plushies.supporting_blocks:<server.flag[plushies.supporting_blocks].exclude[<context.location>]>
     - flag <context.location> on_break:!
     - drop plushy_display_item <context.location.above[1]> quantity:1
