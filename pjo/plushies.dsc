@@ -52,7 +52,7 @@ plushy_display_flag_remove:
     - flag server plushies.current_locations:<server.flag[plushies.current_locations].exclude[<server.flag[plushies.supporting_blocks].get[<context.location>].location>]>
     - remove <server.flag[plushies.supporting_blocks].get[<context.location>]>
     - flag server plushies.supporting_blocks:<server.flag[plushies.supporting_blocks].exclude[<context.location>]>
-    - flag server plushies.xyz_locations:<server.flag[plushies.xyz_locations].exclude[<context.location.simple>]>
+    - flag server plushies.xyz_locations:<server.flag[plushies.xyz_locations].exclude[<context.location.above[1].simple>]>
     - flag <context.location> on_break:!
     - drop plushy_display_item <context.location.above[1]> quantity:1
   - else:
