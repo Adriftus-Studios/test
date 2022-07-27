@@ -33,17 +33,20 @@ plushy_display_place:
   - determine passively cancelled
   - if <context.relative.material.name> == air && !<server.flag[plushies.xyz_locations].contains[<context.relative.center.relative[0,-0.5,0].simple>]>:
     - take iteminhand quantity:1
-    - spawn armor_stand[is_small=true;visible=false;invulnerable=false;marker=false] <context.relative.center.relative[0,-0.5,0]> save:stand
+    - spawn armor_stand[is_small=true;visible=false;invulnerable=false;marker=false] <context.relative.center.relative[0,-0.5,0]> persistent save:stand
     - equip <entry[stand].spawned_entity> head:<item[bone_meal].with[custom_model_data=10000]>
     - look <entry[stand].spawned_entity> <player.location>
     - flag <entry[stand].spawned_entity> right_click_script:plushy_display_open_gui
     - flag <entry[stand].spawned_entity> owner:<player.uuid>
+    - foreach on_combust|on_damaged|on_death|on_explode as:action:
+      - flag <entry[stand].spawned_entity> <[action]>:plushy_display_flag_remove
     - if !<server.flag[plushies.current_locations].exists>:
       - flag server plushies.current_locations:<map>
     - flag server plushies.current_locations:<server.flag[plushies.current_locations].with[<entry[stand].spawned_entity.location>].as[default]>
     - flag server plushies.xyz_locations:<server.flag[plushies.xyz_locations].with[<entry[stand].spawned_entity.location.simple>].as[true]>
     - flag server plushies.supporting_blocks:<server.flag[plushies.supporting_blocks].with[<entry[stand].spawned_entity.location.below[1].block>].as[<entry[stand].spawned_entity>]>
-    - flag <entry[stand].spawned_entity.location.below[1].block> on_break:plushy_display_flag_remove
+    - foreach on_break|on_explodes|on_pistoned|on_physics as:action:
+      - flag <entry[stand].spawned_entity.location.below[1].block> <[action]>:plushy_display_flag_remove
 
 plushy_display_flag_remove:
   type: task
@@ -64,6 +67,8 @@ plushy_display_flag_remove:
     - remove <player.flag[current_plushy_display_entity]>
     - flag player current_plushy_display_entity:!
     - inventory close d:<context.inventory>
+  - if <context.drops.exists>:
+    - determine NO_DROPS
 
 plushy_display_open_gui:
   type: task
