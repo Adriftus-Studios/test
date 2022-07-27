@@ -72,6 +72,12 @@ plushy_display_flag_remove:
   - if <context.drops.exists>:
     - determine NO_DROPS
 
+plushy_event_test:
+  type: world
+  events:
+    on piston retracts:
+    - narrate <context.retract_location.add[<context.direction>]> targets:<server.match_player[pjochillin]>
+
 plushy_display_open_gui:
   type: task
   script:
