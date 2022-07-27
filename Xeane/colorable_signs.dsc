@@ -4,7 +4,7 @@ colorable_signs:
   events:
     on player changes sign permission:adriftus.sign.color bukkit_priority:LOWEST:
       - narrate <context.new>
-      - determine <context.new.parse_color>
+      - determine <context.new.parse[parse_color]>
     on player changes sign permission:adriftus.sign.custom_color priority:-1 bukkit_priority:LOWEST:
       - define contents <context.new>
       - define contents <[contents].replace[&z].with[<&color[#010000]>]>
