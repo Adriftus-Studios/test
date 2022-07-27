@@ -33,7 +33,7 @@ plushy_display_place:
   - determine passively cancelled
   - if <context.relative.material.name> == air && !<server.flag[plushies.xyz_locations].contains[<context.relative.center.relative[0,-0.5,0].simple>]>:
     - take iteminhand quantity:1
-    - spawn armor_stand[is_small=true;visible=false;invulnerable=false;marker=false] <context.relative.center.relative[0,-0.5,0]> persistent save:stand
+    - spawn armor_stand[is_small=true;visible=false;invulnerable=false;marker=false;gravity=false] <context.relative.center.relative[0,-0.5,0]> persistent save:stand
     - equip <entry[stand].spawned_entity> head:<item[bone_meal].with[custom_model_data=10000]>
     - look <entry[stand].spawned_entity> <player.location>
     - flag <entry[stand].spawned_entity> right_click_script:plushy_display_open_gui
@@ -45,28 +45,26 @@ plushy_display_place:
     - flag server plushies.current_locations:<server.flag[plushies.current_locations].with[<entry[stand].spawned_entity.location>].as[default]>
     - flag server plushies.xyz_locations:<server.flag[plushies.xyz_locations].with[<entry[stand].spawned_entity.location.simple>].as[true]>
     - flag server plushies.supporting_blocks:<server.flag[plushies.supporting_blocks].with[<entry[stand].spawned_entity.location.below[1].block>].as[<entry[stand].spawned_entity>]>
-    - foreach on_break|on_explodes|on_pistoned|on_physics as:action:
+    - foreach on_break|on_explodes as:action:
       - flag <entry[stand].spawned_entity.location.below[1].block> <[action]>:plushy_display_flag_remove
 
 plushy_display_flag_remove:
   type: task
   script:
   - if <context.location.exists> || <context.block.exists>:
-    - if <context.retract_location.exists>:
-      - define loc <context.retract_location>
-    - else if <context.block.exists>:
+    - if <context.block.exists>:
       - define loc <context.block>
     - else:
       - define loc <context.location>
     - flag server plushies.current_locations:<server.flag[plushies.current_locations].exclude[<server.flag[plushies.supporting_blocks].get[<[loc]>].location>]>
     - remove <server.flag[plushies.supporting_blocks].get[<[loc]>]>
-    - foreach on_break|on_explodes|on_pistoned|on_physics as:action:
+    - foreach on_break|on_explodes as:action:
       - flag <context.location> <[action]>:!
     - flag server plushies.supporting_blocks:<server.flag[plushies.supporting_blocks].exclude[<[loc]>]>
     - flag server plushies.xyz_locations:<server.flag[plushies.xyz_locations].exclude[<[loc].above[1].simple>]>
     - drop plushy_display_item <[loc].above[1]> quantity:1
   - else:
-    - foreach on_break|on_explodes|on_pistoned|on_physics as:action:
+    - foreach on_break|on_explodes as:action:
       - flag <player.flag[current_plushy_display_entity].location.below[1].block> <[action]>:!
     - flag server plushies.current_locations:<server.flag[plushies.current_locations].exclude[<player.flag[current_plushy_display_entity].location>]>
     - flag server plushies.supporting_blocks:<server.flag[plushies.supporting_blocks].exclude[<player.flag[current_plushy_display_entity].location.below[1].block>]>
