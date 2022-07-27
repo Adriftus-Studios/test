@@ -51,14 +51,20 @@ plushy_display_place:
 plushy_display_flag_remove:
   type: task
   script:
-  - if <context.location.exists>:
-    - flag server plushies.current_locations:<server.flag[plushies.current_locations].exclude[<server.flag[plushies.supporting_blocks].get[<context.location>].location>]>
-    - remove <server.flag[plushies.supporting_blocks].get[<context.location>]>
+  - if <context.location.exists> || <context.block.exists>:
+    - if <context.retract_location.exists>:
+      - define loc <context.retract_location>
+    - else if <context.block.exists>:
+      - define loc <context.block>
+    - else:
+      - define loc <context.location>
+    - flag server plushies.current_locations:<server.flag[plushies.current_locations].exclude[<server.flag[plushies.supporting_blocks].get[<[loc]>].location>]>
+    - remove <server.flag[plushies.supporting_blocks].get[<[loc]>]>
     - foreach on_break|on_explodes|on_pistoned|on_physics as:action:
       - flag <context.location> <[action]>:!
-    - flag server plushies.supporting_blocks:<server.flag[plushies.supporting_blocks].exclude[<context.location>]>
-    - flag server plushies.xyz_locations:<server.flag[plushies.xyz_locations].exclude[<context.location.above[1].simple>]>
-    - drop plushy_display_item <context.location.above[1]> quantity:1
+    - flag server plushies.supporting_blocks:<server.flag[plushies.supporting_blocks].exclude[<[loc]>]>
+    - flag server plushies.xyz_locations:<server.flag[plushies.xyz_locations].exclude[<[loc].above[1].simple>]>
+    - drop plushy_display_item <[loc].above[1]> quantity:1
   - else:
     - foreach on_break|on_explodes|on_pistoned|on_physics as:action:
       - flag <player.flag[current_plushy_display_entity].location.below[1].block> <[action]>:!
@@ -71,14 +77,6 @@ plushy_display_flag_remove:
     - inventory close d:<context.inventory>
   - if <context.drops.exists>:
     - determine NO_DROPS
-
-plushy_event_test:
-  type: world
-  events:
-    on piston retracts:
-    - narrate <context.retract_location> targets:<server.match_player[pjochillin]>
-    - narrate <context.direction> targets:<server.match_player[pjochillin]>
-    - narrate <context.retract_location.add[<context.direction>]> targets:<server.match_player[pjochillin]>
 
 plushy_display_open_gui:
   type: task
