@@ -3,7 +3,7 @@ offhand_shulker:
   debug: true
   events:
     on player picks up item:
-      - if <player.item_in_offhand.inventory_contents.exists>:
+      - if <player.item_in_offhand.has_flag[offhand_shulker]>:
         - define inv <inventory[offhand_shulker_dummy_inventory]>
         - give <player.item_in_offhand.inventory_contents> to:<[inv]>
         - if <[inv].can_fit[<context.item>]>:

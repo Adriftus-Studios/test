@@ -4,7 +4,7 @@ custom_object_gravestone:
   entity: gravestone_entity
   interaction: gravestone_use
   place_checks_task: gravestone_place
-  after_place_task: waystone_after_place_town
+  after_place_task: gravestone_after_place
   remove_task: gravestone_remove
   barrier_locations:
     - <[location]>
@@ -41,12 +41,12 @@ gravestone_entity:
   mechanisms:
     visible: false
     gravity: false
-    is_small: true
     equipment:
-      helmet: feather[custom_model_data=<list[300|301|302|303].random>]
+      helmet: feather[custom_model_data=<list[300|302|304|306].random>]
   flags:
     right_click_script: gravestone_use
     on_entity_added: custom_object_update
+    custom_object_type: gravestone
 
 
 gravestone_place:
@@ -62,10 +62,6 @@ gravestone_place:
       - stop
     - if <context.location.town.has_flag[gravestones]> && <context.location.town.flag[gravestones].size> < <element[3].add[<context.location.town.plots.size.div[200].round_down>]>:
       - narrate "<&c>Too Many Gravestones, 3 + 1 Gravestone per 200 plots claimed"
-      - stop
-    - spawn gravestone_entity <context.location.above.center.below[0.49]> save:grave
-    - if !<entry[grave].spawned_entity.is_spawned>:
-      - narrate "<&c>ERROR - Report Me - Error Code<&co> GraveNotSpawning"
       - stop
 
 gravestone_after_place:
@@ -87,7 +83,7 @@ gravestone_use:
     - ratelimit <player> 1t
     - define entity <context.location.flag[custom_object]>
     - determine passively cancelled
-    - if <player.is_sneaking> && <[entity].flag[town].mayor> == <player>:
+    - if <player.is_sneaking> && <[entity].flag[town]> == <player.town> && <player.has_permission[towny.command.plot.asmayor]>:
       - run gravestone_remove def:<[entity]>
       - stop
     - if <player.has_town> && <[entity].flag[town]> != <player.town>:
@@ -115,6 +111,7 @@ gravestone_remove:
   script:
     - define town <[entity].flag[town]>
     - flag <[town]> graves:<-:<[entity]>
+    - run custom_object_remove def:<[entity]>
 
 graves_player_death_handler:
   type: world

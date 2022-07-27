@@ -1,17 +1,15 @@
 admin_shop_data:
   type: data
-  formatting:
-    price_lore:
-      - "<&e>"
-      - "<&e>Price<&co><&a> <[price]>"
 
   # Individual Shops
   shops:
     # Shop Name (used in flag after NPC assignment)
     banner_shop:
-      # Optional field
-      #custom_title: none
-
+      # Lore Formatting
+      formatting:
+        lore:
+          - "<&e>"
+          - "<&e>Price<&co><&a> <[price]>"
       # All items in here
       items:
         custom_banner_arconia: $60
@@ -68,7 +66,7 @@ admin_shop_open:
   definitions: shop_name|page|selected_item
   data:
     player_head: 5
-    item_slots: 11|12|13|14|15|16|17|20|21|22|23|24|25|26|29|30|31|32|33|34|35
+    item_slots: 2|3|4|5|6|7|8|11|12|13|14|15|16|17|20|21|22|23|24|25|26
     next_page: 54
     previous_page: 46
     selected_slot: 41
@@ -90,15 +88,11 @@ admin_shop_open:
     - foreach <[items]> key:item as:price:
       - define itemTag <item[<[item]>]>
       - if <[itemTag].lore.exists>:
-        - define lore <[itemTag].lore.include[<[data_script].parsed_key[formatting.price_lore]>]>
+        - define lore <[itemTag].lore.include[<[data_script].parsed_key[shops.<[shop_name]>.formatting.lore]>]>
       - else:
-        - define lore <[data_script].parsed_key[formatting.price_lore]>
+        - define lore <[data_script].parsed_key[shops.<[shop_name]>.formatting.lore]>
       - define this_item <[itemTag].with[lore=<[lore]>;flag=price:<[price]>;flag=run_script:admin_shop_choose_item]>
       - inventory set slot:<[slots].get[<[loop_index]>]> o:<[this_item]> d:<[inventory]>
-
-    # Player Info Head
-    - define lore <list[<&color[#010000]>Placeholder]>
-    - inventory set slot:<script.data_key[data.player_head]> o:player_head[skull_skin=<player.skull_skin>;flag=shop_name:<[shop_name]>;flag=page:<[page]>;display=<&e><player.name>;lore=<[lore]>]
 
     # Selected Item
     - if <[selected_item].exists>:
@@ -121,14 +115,14 @@ admin_shop_next_page:
   debug: false
   script:
     - define info_item <context.inventory.slot[<script[admin_shop_open].data_key[data.player_head]>]>
-    - run admin_shop_open def:<[info_item].flag[shop_name]>|<[info_item].flag[page].add[1]>|<context.inventory.slot[<script[admin_shop_open].data_key[selected_slot]>]>
+    - run admin_shop_open def:<[info_item].flag[shop_name]>|<[info_item].flag[page].add[1]>|<context.inventory.slot[<script[admin_shop_open].data_key[data.selected_slot]>]>
 
 admin_shop_previous_page:
   type: task
   debug: false
   script:
     - define info_item <context.inventory.slot[<script[admin_shop_open].data_key[data.player_head]>]>
-    - run admin_shop_open def:<[info_item].flag[shop_name]>|<[info_item].flag[page].sub[1]>|<context.inventory.slot[<script[admin_shop_open].data_key[selected_slot]>]>
+    - run admin_shop_open def:<[info_item].flag[shop_name]>|<[info_item].flag[page].sub[1]>|<context.inventory.slot[<script[admin_shop_open].data_key[data.selected_slot]>]>
 
 admin_shop_choose_item:
   type: task
@@ -142,18 +136,30 @@ admin_shop_buy:
   type: task
   debug: false
   script:
-    - define item <context.inventory.slot[<script[admin_shop_open].data_key[selected_slot]>]>
+    - define item <context.inventory.slot[<script[admin_shop_open].data_key[data.selected_slot]>]>
     - define price <[item].flag[price]>
     # Server Currency Purchase
-    - if <[price].starts_with[$]>:
-      - if <player.money> >= <[price]>:
-        - narrate "<&a>Yay, Purchased!"
-      - else:
-        - narrate "<&c>Insufficient Funds!"
-      - stop
-    - else:
-      - if 0 >= <[price]>:
-        - narrate "<&a>Yay, Purchased!"
-      - else:
-        - narrate "<&c>Insufficient Funds!"
-      - stop
+    - choose <[price].substring[1,1]>:
+      - case $:
+        - if <player.money> >= <[price].substring[2]>:
+          - money take quantity:<[price].substring[2]>
+          - give item:<[item].flag[stable_item]>
+          - narrate "<&a>You have purchased<&co> <[item].flag[stable_item].as_item.display.if_null[<[item].flag[stable_item].as_item.formatted>]>"
+        - else:
+          - narrate "<&c>Insufficient Funds!"
+        - stop
+      - case A:
+        - if <player.proc[premium_currency_can_afford].context[<[price].substring[2]>]>:
+          - run premium_currency_remove def:<player>|<[price].substring[2]>|Purchased <[item].flag[stable_item]>
+          - give item:<[item].flag[stable_item]>
+          - narrate "<&a>You have purchased<&co> <[item].flag[stable_item].as_item.display.if_null[<[item].flag[stable_item].as_item.formatted>]>"
+        - else:
+          - narrate "<&c>Insufficient Funds!"
+      - default:
+        - if 0 >= <[price]>:
+          - narrate "<&a>Yay, Purchased!"
+          - money take quantity:<[price].substring[2]>
+          - give item:<[item].flag[stable_item]>
+        - else:
+          - narrate "<&c>Insufficient Funds!"
+        - stop
