@@ -6,7 +6,7 @@ colorable_signs:
       - determine <context.new.parse[parse_color]>
     on player changes sign permission:adriftus.sign.custom_color bukkit_priority:LOWEST:
       - define contents <context.new>
-      - define contents <[contents].replace[&z].with[<&color[#010000]>]>
-      - define contents <[contents].replace[&y].with[<&color[#000001]>]>
-      - define contents <[contents].replace[&x].with[<&color[#000100]>]>
+      - define contents <[contents].parse[replace[&z].with[<&color[#010000]>]]>
+      - define contents <[contents].parse[replace[&y].with[<&color[#000001]>]]>
+      - define contents <[contents].parse[replace[&x].with[<&color[#000100]>]]>
       - determine <[contents]>
