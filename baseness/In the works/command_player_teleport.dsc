@@ -24,8 +24,8 @@ player_teleport:
         ## = Executions = ##
         # - /tp player player BUT WHY THO - #
         - if (<context.args.get[1]> == <player.name> && <context.args.get[2]> == <player.name>) || <context.args.get[1]> == <player.name>:
-            - narrate "<bold><red>Did you just teleport to yourself."
-            - stop
+            - narrate "<bold><red>bro u just teleported to yourself"
+            - teleport <player> location:<player.location>
         # - /tp other_player - #
         - if <context.args.size> == 1:
             - define player <server.match_player[<context.args.get[1]>]>
