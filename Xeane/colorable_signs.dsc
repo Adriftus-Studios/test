@@ -1,6 +1,6 @@
 colorable_signs:
   type: world
-  debug: false
+  debug: true
   events:
     on player changes sign permission:adriftus.sign.color bukkit_priority:LOWEST:
       - determine <context.new.parse_color>
