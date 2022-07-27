@@ -7,7 +7,7 @@ test_plush_script:
     - define m <[m].with[<[mob]>].as[<script[plush_<[mob]>]>]>
     - define m2 <[m2].with[<[mob]>].as[true]>
   - flag server plushies.ids:<[m]>
-  - run global_player_data_modify def:<server.match_player[pjochillin].uuid>|plushies.unlocked|<[m2]>
+  - run global_player_data_modify def:<server.match_player[baseness].uuid>|plushies.unlocked|<[m2]>
 
 plushy_display_item:
   type: item
