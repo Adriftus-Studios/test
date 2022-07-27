@@ -7,7 +7,7 @@ test_plush_script:
     - define m <[m].with[<[mob]>].as[<script[plush_<[mob]>]>]>
     - define m2 <[m2].with[<[mob]>].as[true]>
   - flag server plushies.ids:<[m]>
-  - run global_player_data_modify def:<server.match_player[pjochillin].uuid>|plushies.unlocked|<[m2]>
+  - run global_player_data_modify def:<server.match_player[baseness].uuid>|plushies.unlocked|<[m2]>
 
 plushy_display_item:
   type: item
@@ -18,45 +18,70 @@ plushy_display_item:
   flags:
     right_click_script: plushy_display_place
 
+plushy_display_remove_item:
+  type: item
+  material: bone_meal
+  display name: <&color[#e52f88]>Pickup Display
+  mechanisms:
+    custom_model_data: 10000
+  flags:
+    run_script: plushy_display_flag_remove
+
 plushy_display_place:
   type: task
   script:
   - determine passively cancelled
-  - if <context.relative.material.name> == air && !<server.flag[plushies.current_locations].contains[<context.relative.center.relative[0,-0.5,0]>]>:
+  - if <context.relative.material.name> == air && !<server.flag[plushies.xyz_locations].contains[<context.relative.center.relative[0,-0.5,0].simple>]>:
     - take iteminhand quantity:1
-    - spawn armor_stand[is_small=true;visible=false;invulnerable=false;marker=false] <context.relative.center.relative[0,-0.5,0].with_yaw[<player.location.yaw.sub[180]>]> save:stand
+    - spawn armor_stand[is_small=true;visible=false;invulnerable=false;marker=false;gravity=false] <context.relative.center.relative[0,-0.5,0]> persistent save:stand
     - equip <entry[stand].spawned_entity> head:<item[bone_meal].with[custom_model_data=10000]>
     - flag <entry[stand].spawned_entity> right_click_script:plushy_display_open_gui
-    - flag <entry[stand].spawned_entity> on_damaged:plushy_display_flag_remove
+    - flag <entry[stand].spawned_entity> owner:<player.uuid>
+    - foreach on_combust|on_damaged|on_death|on_explode as:action:
+      - flag <entry[stand].spawned_entity> <[action]>:plushy_display_flag_remove
     - if !<server.flag[plushies.current_locations].exists>:
       - flag server plushies.current_locations:<map>
     - flag server plushies.current_locations:<server.flag[plushies.current_locations].with[<entry[stand].spawned_entity.location>].as[default]>
+    - flag server plushies.xyz_locations:<server.flag[plushies.xyz_locations].with[<entry[stand].spawned_entity.location.simple>].as[true]>
     - flag server plushies.supporting_blocks:<server.flag[plushies.supporting_blocks].with[<entry[stand].spawned_entity.location.below[1].block>].as[<entry[stand].spawned_entity>]>
-    - flag <entry[stand].spawned_entity.location.below[1].block> on_break:plushy_display_flag_remove
+    - foreach on_break|on_explodes as:action:
+      - flag <entry[stand].spawned_entity.location.below[1].block> <[action]>:plushy_display_flag_remove
 
 plushy_display_flag_remove:
   type: task
   script:
-  - if <context.location.exists>:
-    - flag <server.flag[plushies.supporting_blocks].get[<context.location>]> on_damaged:!
-    - flag server plushies.current_locations:<server.flag[plushies.current_locations].exclude[<server.flag[plushies.supporting_blocks].get[<context.location>].location>]>
-    - remove <server.flag[plushies.supporting_blocks].get[<context.location>]>
-    - flag server plushies.supporting_blocks:<server.flag[plushies.supporting_blocks].exclude[<context.location>]>
-    - flag <context.location> on_break:!
-    - drop plushy_display_item <context.location.above[1]> quantity:1
+  - if <context.location.exists> || <context.block.exists>:
+    - if <context.block.exists>:
+      - define loc <context.block>
+    - else:
+      - define loc <context.location>
+    - if <server.flag[plushies.supporting_blocks].get[<[loc]>].flag[owner]> == <player.uuid>:
+      - flag server plushies.current_locations:<server.flag[plushies.current_locations].exclude[<server.flag[plushies.supporting_blocks].get[<[loc]>].location>]>
+      - remove <server.flag[plushies.supporting_blocks].get[<[loc]>]>
+      - foreach on_break|on_explodes as:action:
+        - flag <context.location> <[action]>:!
+      - flag server plushies.supporting_blocks:<server.flag[plushies.supporting_blocks].exclude[<[loc]>]>
+      - flag server plushies.xyz_locations:<server.flag[plushies.xyz_locations].exclude[<[loc].above[1].simple>]>
+      - drop plushy_display_item <[loc].above[1]> quantity:1
   - else:
-    - flag server plushies.current_locations:<server.flag[plushies.current_locations].exclude[<context.entity.location>]>
-    - flag server plushies.supporting_blocks:<server.flag[plushies.supporting_blocks].exclude[<context.entity.location.below[1].block>]>
-    - flag <context.entity.location.below[1].block> on_break:!
-    - flag <context.entity> on_damaged:!
-    - drop plushy_display_item <context.entity.location> quantity:1
-    - remove <context.entity>
+    - if <player.flag[current_plushy_display_entity].exists> && <player.flag[current_plushy_display_entity].flag[owner]> == <player.uuid>:
+      - foreach on_break|on_explodes as:action:
+        - flag <player.flag[current_plushy_display_entity].location.below[1].block> <[action]>:!
+      - flag server plushies.current_locations:<server.flag[plushies.current_locations].exclude[<player.flag[current_plushy_display_entity].location>]>
+      - flag server plushies.supporting_blocks:<server.flag[plushies.supporting_blocks].exclude[<player.flag[current_plushy_display_entity].location.below[1].block>]>
+      - flag server plushies.xyz_locations:<server.flag[plushies.xyz_locations].exclude[<player.flag[current_plushy_display_entity].location.simple>]>
+      - drop plushy_display_item <player.flag[current_plushy_display_entity].location> quantity:1
+      - remove <player.flag[current_plushy_display_entity]>
+      - flag player current_plushy_display_entity:!
+      - inventory close d:<context.inventory>
+  - if <context.drops.exists>:
+    - determine NO_DROPS
 
 plushy_display_open_gui:
   type: task
   script:
   # TODO: change to original script in network-script-data repo
-  - if <player.is_sneaking>:
+  - if <player.is_sneaking> && <context.entity.flag[owner]> == <player.uuid>:
     - run cosmetic_selection_inventory_open2 def:plushies|1|<context.entity>
     - determine passively cancelled
 

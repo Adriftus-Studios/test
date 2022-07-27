@@ -23,6 +23,7 @@ cosmetic_selection_inventory_open2:
       remove_slot: 50
       next_page: 53
       previous_page: 47
+      plushy_pickup: 54
       back: 1
     plushies:
       players_list: <yaml[global.player.<player.uuid>].list_keys[plushies.unlocked].if_null[<list>]>
@@ -144,8 +145,9 @@ cosmetic_selection_inventory_open2:
     # Back to Cosmetics
     - if !<[entity].exists>:
       - inventory set slot:<script.data_key[data.slot_data.back]> o:<item[feather].with[hides=all;display_name=<&a>Back<&sp>To<&sp>Cosmetics;flag=run_script:cosmetic_main_menu_open;custom_model_data=3]> d:<[inventory]>
-    # Plushy Display Location Flag
+    # Plushy Display Location Flag and Pickup Button
     - if <[entity].exists>:
       - flag <player> current_plushy_display_entity:<[entity]> expire:1d
+      - inventory set slot:<script.data_key[data.slot_data.plushy_pickup]> o:plushy_display_remove_item d:<[inventory]>
     # Open The Inventory
     - inventory open d:<[inventory]>
