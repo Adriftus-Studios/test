@@ -65,7 +65,7 @@ plushy_display_flag_remove:
       - flag server plushies.xyz_locations:<server.flag[plushies.xyz_locations].exclude[<[loc].above[1].simple>]>
       - drop plushy_display_item <[loc].above[1]> quantity:1
   - else:
-    - if <player.flag[current_plushy_display_entity].exists> && <player.flag[current_plushy_display_entity].owner> == <player.uuid>:
+    - if <player.flag[current_plushy_display_entity].exists> && <player.flag[current_plushy_display_entity].flag[owner]> == <player.uuid>:
       - foreach on_break|on_explodes as:action:
         - flag <player.flag[current_plushy_display_entity].location.below[1].block> <[action]>:!
       - flag server plushies.current_locations:<server.flag[plushies.current_locations].exclude[<player.flag[current_plushy_display_entity].location>]>
