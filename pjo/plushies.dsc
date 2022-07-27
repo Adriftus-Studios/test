@@ -31,7 +31,7 @@ plushy_display_place:
   type: task
   script:
   - determine passively cancelled
-  - if <context.relative.material.name> == air && !<server.flag[plushies.xyz_locations].contains[<context.relative.center.relative[0,-0.5,0].simple>]>:
+  - if <context.relative.material.name> == air && !<server.flag[plushies.xyz_locations].contains[<context.relative.center.relative[0,-0.5,0].simple>]> && <context.relative.center.below[0,-1,0].material.is_solid>:
     - take iteminhand quantity:1
     - spawn armor_stand[is_small=true;visible=false;invulnerable=false;marker=false;gravity=false] <context.relative.center.relative[0,-0.5,0]> persistent save:stand
     - equip <entry[stand].spawned_entity> head:<item[bone_meal].with[custom_model_data=10000]>
