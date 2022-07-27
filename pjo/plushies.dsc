@@ -56,23 +56,25 @@ plushy_display_flag_remove:
       - define loc <context.block>
     - else:
       - define loc <context.location>
-    - flag server plushies.current_locations:<server.flag[plushies.current_locations].exclude[<server.flag[plushies.supporting_blocks].get[<[loc]>].location>]>
-    - remove <server.flag[plushies.supporting_blocks].get[<[loc]>]>
-    - foreach on_break|on_explodes as:action:
-      - flag <context.location> <[action]>:!
-    - flag server plushies.supporting_blocks:<server.flag[plushies.supporting_blocks].exclude[<[loc]>]>
-    - flag server plushies.xyz_locations:<server.flag[plushies.xyz_locations].exclude[<[loc].above[1].simple>]>
-    - drop plushy_display_item <[loc].above[1]> quantity:1
+    - if <server.flag[plushies.supporting_blocks].get[<[loc]>].flag[owner]> == <player.uuid>:
+      - flag server plushies.current_locations:<server.flag[plushies.current_locations].exclude[<server.flag[plushies.supporting_blocks].get[<[loc]>].location>]>
+      - remove <server.flag[plushies.supporting_blocks].get[<[loc]>]>
+      - foreach on_break|on_explodes as:action:
+        - flag <context.location> <[action]>:!
+      - flag server plushies.supporting_blocks:<server.flag[plushies.supporting_blocks].exclude[<[loc]>]>
+      - flag server plushies.xyz_locations:<server.flag[plushies.xyz_locations].exclude[<[loc].above[1].simple>]>
+      - drop plushy_display_item <[loc].above[1]> quantity:1
   - else:
-    - foreach on_break|on_explodes as:action:
-      - flag <player.flag[current_plushy_display_entity].location.below[1].block> <[action]>:!
-    - flag server plushies.current_locations:<server.flag[plushies.current_locations].exclude[<player.flag[current_plushy_display_entity].location>]>
-    - flag server plushies.supporting_blocks:<server.flag[plushies.supporting_blocks].exclude[<player.flag[current_plushy_display_entity].location.below[1].block>]>
-    - flag server plushies.xyz_locations:<server.flag[plushies.xyz_locations].exclude[<player.flag[current_plushy_display_entity].location.simple>]>
-    - drop plushy_display_item <player.flag[current_plushy_display_entity].location> quantity:1
-    - remove <player.flag[current_plushy_display_entity]>
-    - flag player current_plushy_display_entity:!
-    - inventory close d:<context.inventory>
+    - if <player.flag[current_plushy_display_entity].exists> && <player.flag[current_plushy_display_entity].owner> == <player.uuid>:
+      - foreach on_break|on_explodes as:action:
+        - flag <player.flag[current_plushy_display_entity].location.below[1].block> <[action]>:!
+      - flag server plushies.current_locations:<server.flag[plushies.current_locations].exclude[<player.flag[current_plushy_display_entity].location>]>
+      - flag server plushies.supporting_blocks:<server.flag[plushies.supporting_blocks].exclude[<player.flag[current_plushy_display_entity].location.below[1].block>]>
+      - flag server plushies.xyz_locations:<server.flag[plushies.xyz_locations].exclude[<player.flag[current_plushy_display_entity].location.simple>]>
+      - drop plushy_display_item <player.flag[current_plushy_display_entity].location> quantity:1
+      - remove <player.flag[current_plushy_display_entity]>
+      - flag player current_plushy_display_entity:!
+      - inventory close d:<context.inventory>
   - if <context.drops.exists>:
     - determine NO_DROPS
 
