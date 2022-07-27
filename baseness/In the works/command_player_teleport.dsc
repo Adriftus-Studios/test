@@ -3,7 +3,7 @@ player_teleport:
     debug: false
     name: Teleport
     description: Teleport.
-    usage: /teleport
+    usage: /teleport (player | player) / (coordinates | x | y | z)
     aliases:
         - tp
     tab completions:
@@ -12,6 +12,7 @@ player_teleport:
     script:
         ## = Cache = ##
         - define everyplayerever <bungee.server.list_players.parse[name]>
+        - define player <context.args.get[1]>
 
         ## = Exclusions = ##
         # - No arguments - #
@@ -23,9 +24,11 @@ player_teleport:
 
         ## = Executions = ##
         # - /tp player player BUT WHY THO - #
+        - if !<[player].is_online>:
+            - teleport <player> location:<[player].location>
         - if (<context.args.get[1]> == <player.name> && <context.args.get[2]> == <player.name>) || <context.args.get[1]> == <player.name>:
-            - narrate "<bold><red>Did you just teleport to yourself."
-            - stop
+            - narrate "<bold><red>bro u just teleported to yourself"
+            - teleport <player> location:<player.location>
         # - /tp other_player - #
         - if <context.args.size> == 1:
             - define player <server.match_player[<context.args.get[1]>]>
