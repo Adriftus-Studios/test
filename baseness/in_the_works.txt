@@ -3,21 +3,19 @@ Can be made -
     2. Player AFK/Idle handler
     3. Scramble text minigame
     4. Trash-can inventory command
-    5. Fly command
+    5. Game mode selector menu in text
     6. NPC Dummy
-    7. Sentry-like NPC behaviour
+    7. Chest lock system
     8. Feed command
     9. Give gear command
     10. Player teleport command
     11. See inventory command
     12. Set gamerule command
     13. Sit command
-    14. Death logger?
+    14. NPC Controller
     15. Trade command inventory with logger
-    16. Chest lock system
-    17. NPC Controller
-    18. Game mode selector menu in text
-    19. 
+    16. Player protection NPC
+    17. Find player flags
 
 Prolly not possible - 
     1. Supply crates
