@@ -5,7 +5,7 @@ spawn_sheep_command:
     description: Spawns a sheep at your location.
     usage: /spawnsheep
     script:
-    - run confirm_Script_Text def:spawnSheep
+    - run confirm_script_text def:spawn_sheep
 # It works
 spawn_sheep:
     type: task
