@@ -34,6 +34,12 @@ give_player_armor:
         2: wear
     #permission: adriftus.give.armor
     script:
+        #Cache
+        - define material <context.args.get[1]>
+        - define chest <[material]>_chestplate
+        - define head <[material]>_helmet
+        - define legs <[material]>_leggings
+        - define boots <[material]>_boots
         #Exclusion
         - if !(<context.args.get[1]> == <script[gears_list].data_key[armors]>) | <context.args.size> == 0 | <context.args.size> > 1:
             - narrate "<red>Invalid argument!"
@@ -42,11 +48,6 @@ give_player_armor:
             - narrate "<red>You must be unarmored to be able to wear the selected armor!"
             - stop
         #Execution
-        - define material <context.args.get[1]>
-        - define chest <[material]>_chestplate
-        - define head <[material]>_helmet
-        - define legs <[material]>_leggings
-        - define boots <[material]>_boots
         #Choice to equip
         - if !(<context.args.get[2]> == wear):
             - give <[chest]>|<[legs]>|<[head]>|<[boots]>
