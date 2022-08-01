@@ -5,7 +5,7 @@ darkborne_helmet:
   lore:
     - Let's Fuckin Go!
   mechanisms:
-    custom_model_data: 2
+    custom_model_data: 3
     color: <color[#0203FF]>
 
 darkborne_chestplate:
@@ -15,7 +15,7 @@ darkborne_chestplate:
   lore:
     - Let's Fuckin Go!
   mechanisms:
-    custom_model_data: 2
+    custom_model_data: 3
     color: <color[#0203FF]>
 
 darkborne_leggings:
@@ -25,7 +25,7 @@ darkborne_leggings:
   lore:
     - Let's Fuckin Go!
   mechanisms:
-    custom_model_data: 2
+    custom_model_data: 3
     color: <color[#0203FF]>
 
 darkborne_boots:
@@ -35,5 +35,5 @@ darkborne_boots:
   lore:
     - Let's Fuckin Go!
   mechanisms:
-    custom_model_data: 2
+    custom_model_data: 3
     color: <color[#0203FF]>
