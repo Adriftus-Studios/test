@@ -36,4 +36,4 @@ noble_boots:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 2
-    color: #0303FF
+    color: <color[#0303FF]>
