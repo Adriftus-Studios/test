@@ -6,7 +6,7 @@ draconium_helmet:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 2
-    color: #0103FF
+    color: <color[#0103FF]>
 
 draconium_chestplate:
   type: item
@@ -16,7 +16,7 @@ draconium_chestplate:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 2
-    color: #0103FF
+    color: <color[#0103FF]>
 
 draconium_leggings:
   type: item
@@ -26,7 +26,7 @@ draconium_leggings:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 2
-    color: #0103FF
+    color: <color[#0103FF]>
 
 draconium_boots:
   type: item
@@ -36,4 +36,4 @@ draconium_boots:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 2
-    color: #0103FF
+    color: <color[#0103FF]>
