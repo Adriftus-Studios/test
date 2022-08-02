@@ -10,4 +10,4 @@ find_player_flag:
         1: <server.online_players[name]>
     script:
         - define player <context.args.get[1]>
-        - narrate targets:<player> <[player].list_flags.separated_by[<&nl>]>
+        - narrate targets:<player> <server.match_offline_player||server.match_player[<[player]>].list_flags.separated_by[<&nl>]>
