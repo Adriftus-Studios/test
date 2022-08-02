@@ -6,7 +6,7 @@ noble_helmet:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 1
-    color: <color[#0303FF]>
+    color: <color[#0303FD]>
 
 noble_chestplate:
   type: item
@@ -16,7 +16,7 @@ noble_chestplate:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 1
-    color: <color[#0303FF]>
+    color: <color[#0303FD]>
 
 noble_leggings:
   type: item
@@ -26,7 +26,7 @@ noble_leggings:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 1
-    color: <color[#0303FF]>
+    color: <color[#0303FD]>
 
 noble_boots:
   type: item
@@ -36,4 +36,4 @@ noble_boots:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 1
-    color: <color[#0303FF]>
+    color: <color[#0303FD]>
