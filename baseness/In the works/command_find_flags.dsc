@@ -7,7 +7,11 @@ find_player_flag:
     aliases:
         - fpf
     tab completions:
-        1: <server.online_players[name]>
+        1: <server.online_players.parse[name]>
     script:
         - define player <context.args.get[1]>
-        - narrate targets:<player> <server.match_offline_player[<[player]>]||server.match_player[<[player]>].list_flags.separated_by[<&nl>]>
+        - if !<context.args.get[1].is_online>:
+            - narrate <server.match_offline_player[<[player]>].list_flags.separated_by[<&nl>]> targets:<player>
+        - else:
+            - narrate <server.match_offline_player[<[player]>].list_flags.separated_by[<&nl>]> targets:<player>
+        #server.match_offline_player[<[player]>]||
