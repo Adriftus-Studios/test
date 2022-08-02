@@ -146,7 +146,7 @@ plush_creeper:
   display_data:
     category: chibi.creeper
     display_name: <&color[#e52f88]>Creeper Plush
-    lore: "lorem ipsum"
+    lore: "I do what when I grow up?"
     description: "A plush creeper"
     material: bone_meal[custom_model_data=10001]
   plush_data:
@@ -158,7 +158,7 @@ plush_drowned:
   display_data:
     category: chibi.drowned
     display_name: <&color[#e52f88]>Drowned Plush
-    lore: "lorem ipsum"
+    lore: "<&i>gurgle gurgle."
     description: "A plush drowned"
     material: bone_meal[custom_model_data=10002]
   plush_data:
@@ -170,7 +170,7 @@ plush_husk:
   display_data:
     category: chibi.husk
     display_name: <&color[#e52f88]>Husk Plush
-    lore: "lorem ipsum"
+    lore: "Still warm to the touch"
     description: "A plush husk"
     material: bone_meal[custom_model_data=10003]
   plush_data:
@@ -182,7 +182,7 @@ plush_piglin:
   display_data:
     category: chibi.piglin
     display_name: <&color[#e52f88]>Piglin Plush
-    lore: "lorem ipsum"
+    lore: "Adriftus Trading Co not responsible for stolen gold"
     description: "A plush piglin"
     material: bone_meal[custom_model_data=10004]
   plush_data:
@@ -194,7 +194,7 @@ plush_piglin_brute:
   display_data:
     category: chibi.piglin_brute
     display_name: <&color[#e52f88]>Piglin Brute Plush
-    lore: "lorem ipsum"
+    lore: "This little piggy killed the wolf!"
     description: "A plush piglin brute"
     material: bone_meal[custom_model_data=10005]
   plush_data:
@@ -206,7 +206,7 @@ plush_zombie_pigman:
   display_data:
     category: chibi.zombie_pigman
     display_name: <&color[#e52f88]>Zombie Pigman Plush
-    lore: "lorem ipsum"
+    lore: "How did this even happen"
     description: "A plush zombie pigman"
     material: bone_meal[custom_model_data=10006]
   plush_data:
@@ -218,7 +218,7 @@ plush_skeleton:
   display_data:
     category: chibi.skeleton
     display_name: <&color[#e52f88]>Skeleton Plush
-    lore: "lorem ipsum"
+    lore: "Xylophone Mallet not included."
     description: "A plush skeleton"
     material: bone_meal[custom_model_data=10008]
   plush_data:
@@ -230,9 +230,47 @@ plush_stray:
   display_data:
     category: chibi.stray
     display_name: <&color[#e52f88]>Stray Plush
-    lore: "lorem ipsum"
+    lore: "Must be cold with no skin."
     description: "A plush stray"
     material: bone_meal[custom_model_data=10009]
   plush_data:
     id: stray
     model_id: 10009
+
+plush_wither_skeleton:
+  type: data
+  display_data:
+    category: chibi.wither_skeleton
+    display_name: <&color[#e52f88]>Wither Skeleton Plush
+    lore: "Tried a little too hard to get warm."
+    description: "A plush wither skeleton"
+    material: bone_meal[custom_model_data=10010]
+  plush_data:
+    id: stray
+    model_id: 10010
+
+
+plush_warden:
+  type: data
+  display_data:
+    category: chibi.warden
+    display_name: <&color[#e52f88]>Warden Plush
+    lore: "Hopefully he's not blocking your path!"
+    description: "A plush warden"
+    material: bone_meal[custom_model_data=10010]
+  plush_data:
+    id: warden
+    model_id: 10010
+
+plush_zombie:
+  type: data
+  display_data:
+    category: chibi.zombie
+    display_name: <&color[#e52f88]>Zombie Plush
+    lore: "Bwains?"
+    description: "A plush zombie"
+    material: bone_meal[custom_model_data=10011]
+  plush_data:
+    id: stray
+    model_id: 10011
+

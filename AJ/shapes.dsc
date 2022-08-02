@@ -13,38 +13,49 @@ test_effects_command:
   script:
   - define particle <context.args.get[2]||spell_witch>
   - if <context.args.get[1]> == zigzag:
-    - define points <proc[define_zigzag].context[<player.location>|<player.location.forward[20]>|2]>
+    - define start <player.location>
+    - define end <player.location.forward[20]>
+    - define points 5
+    - define points <proc[define_zigzag].context[<[start]>|<[end]>|<[points]>]>
     - foreach <[points]>:
       - playeffect <[particle]> at:<[value]> quantity:5 offset:0 visibility:100
       - wait 1t
   - if <context.args.get[1]> == curve1:
     - define start <player.location>
     - define end <player.location.forward[20]>
+    - define severity 5
+    - define between 1
     - repeat 90:
-      - define points <proc[define_curve1].context[<[start]>|<[end]>|5|<[value].mul[4]>|1]>
+      - define angle <[value].mul[4]>
+      - define points <proc[define_curve1].context[<[start]>|<[end]>|<[severity]>|<[angle]>|<[between]>]>
       - playeffect <[particle]> at:<[points]> quantity:5 offset:0 visibility:100
       - wait 1t
-  - if <context.args.get[1]> == curve2:
-    - define start <player.location>
-    - define end <player.location.forward[20]>
-    - narrate "not done yet"
   - if <context.args.get[1]> == star1:
-    - define points <proc[define_star].context[<player.location.forward[4]>|3|90|5]>
-    - repeat <[points].size>:
-      - playeffect <[particle]> at:<[points].get[<[value]>]> quantity:5 offset:0 visibility:100
+    - define location <player.location.forward[4]>
+    - define radius 3
+    - define points 5
+    - define drawn <proc[define_star].context[<[location]>|<[radius]>|90|<[points]>]>
+    - foreach <[drawn]> as:point:
+      - playeffect <[particle]> at:<[point]> quantity:5 offset:0 visibility:100
       - wait 1t
-  - if <context.args.get[1]> == star2:
-    - define num 5
-    - define points <proc[define_star2].context[<player.location.forward[4]>|3|90|<[num]>]>
-    - repeat <[points].size.div[<[num]>]>:
-      - repeat <[num]>:
-        - playeffect <[particle]> at:<[points].get[<[value].mul[<[num]>].add[<[value]>]>]> quantity:5 offset:0 visibility:100
-      - wait 1t
+  # - if <context.args.get[1]> == star2:
+  #   - define num 5
+  #   - define points <proc[define_star2].context[<player.location.forward[4]>|3|90|<[num]>]>
+  #   - repeat <[points].size.div[<[num]>]>:
+  #     - repeat <[num]>:
+  #       - playeffect <[particle]> at:<[points].get[<[value].mul[<[num]>].add[<[value]>]>]> quantity:5 offset:0 visibility:100
+  #     - wait 1t
   - if <context.args.get[1]> == sphere1:
-    - define points <proc[define_sphere1].context[<player.location.forward[4]>|2|0.5]>
+    - define location <player.location.forward[4]>
+    - define radius 2
+    - define between 0.5
+    - define points <proc[define_sphere1].context[<[location]>|<[radius]>|<[between]>]>
     - playeffect redstone <[points]> offset:0 visibility:300 quantity:1 special_data:1|<color[255,0,0]>
   - if <context.args.get[1]> == sphere2:
-    - define layers <proc[define_sphere2].context[<player.location.above>|2|0.5]>
+    - define location <player.location.above>
+    - define radius 2
+    - define between 0.5
+    - define layers <proc[define_sphere2].context[<[location]>|<[radius]>|<[between]>]>
     - define center <player.location>
     - repeat 5:
       - repeat <[layers].size>:
@@ -54,27 +65,37 @@ test_effects_command:
         - playeffect redstone at:<[points].parse[sub[<[offset]>]]> quantity:1 offset:0 visibility:100 special_data:1|<color[91,225,245]>
         - wait 2t
   - if <context.args.get[1]> == circle:
-    - define points <proc[define_circle].context[<player.location.forward[4]>|3]>
+    - define location <player.location.forward[4]>
+    - define radius 2
+    - define points <proc[define_circle].context[<[location]>|<[radius]>]>
     - foreach <[points]>:
       - playeffect <[particle]> at:<[value]> quantity:5 offset:0 visibility:100
       - wait 1t
   - if <context.args.get[1]> == spiral:
-    - define points <proc[define_spiral].context[<player.location>|<player.location.forward[20]>|0.5|0]>
+    - define start <player.location>
+    - define end <player.location.forward[20]>
+    - define radius 0.5
+    - define angle_offset 0
+    - define points <proc[define_spiral].context[<[start]>|<[end]>|<[radius]>|<[angle_offset]>]>
     - foreach <[points]> as:point:
       - playeffect <[particle]> at:<[point]> quantity:5 offset:0 visibility:100
       - wait 1t
   - if <context.args.get[1]> == cone1:
-    - define start <player.location>
+    - define start <player.location.above>
     - define end <player.location.forward[20]>
-    - define points <proc[define_cone1].context[<[start].above>|<[end]>|20|1]>
+    - define angle 20
+    - define between 1
+    - define points <proc[define_cone1].context[<[start]>|<[end]>|<[angle]>|<[between]>]>
     - narrate <[points].size>
     - repeat 1:
       - playeffect <[particle]> at:<[points]> quantity:5 offset:0 visibility:100
       - wait 1t
   - if <context.args.get[1]> == cone2:
-    - define start <player.location>
+    - define start <player.location.above>
     - define end <player.location.forward[20]>
-    - define layers <proc[define_cone2].context[<[start].above>|<[end]>|20|1]>
+    - define angle 20
+    - define between 1
+    - define layers <proc[define_cone2].context[<[start]>|<[end]>|<[angle]>|<[between]>]>
     - narrate <[layers].size>
     - foreach <[layers]> as:layer:
       - playeffect <[particle]> at:<[layer]> quantity:5 offset:0 visibility:100
