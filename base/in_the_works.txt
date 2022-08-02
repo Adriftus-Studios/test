@@ -16,6 +16,9 @@ Can be made -
     15. Trade command inventory with logger
     16. Player protection NPC
     17. Find player flags
+    18. Cross-server private messaging for friends
+    19. Friends list
+    20. Private messaging for players in the same server
 
 Prolly not possible - 
     1. Supply crates
