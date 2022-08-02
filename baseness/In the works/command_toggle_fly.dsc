@@ -11,7 +11,7 @@ noncreative_flying:
         - else:
             - run noncreative_flying_task
 
-noncreative_flying_task:
+ncf_task:
     type: task
     debug: false
     script:
@@ -27,3 +27,12 @@ noncreative_flying_task:
         - adjust <player> can_fly:true
         - flag <player> noncreative_flying
         - narrate "<bold><yellow>You can now fly outside Creative Mode."
+
+ncf_login:
+    type: world
+    debug: false
+    events:
+        on player login flagged:noncreative_flying:
+            - adjust <player> can_fly:true
+
+#Should be able to fly after logging back in
