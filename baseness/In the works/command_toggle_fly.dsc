@@ -34,3 +34,5 @@ ncf_login:
     events:
         on player login flagged:noncreative_flying:
             - adjust <player> can_fly:true
+
+#Should be able to fly after logging back in
