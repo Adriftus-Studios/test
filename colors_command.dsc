@@ -1,4 +1,7 @@
-CColors_Command:
+## Credit to: Behr
+## link: https://forum.denizenscript.com/threads/behrs-interactive-color-palette-command.228/#post-818
+
+Colors_Command:
     type: command
     name: colors
     debug: false
