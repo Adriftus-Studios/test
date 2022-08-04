@@ -15,7 +15,7 @@ Colors_Command:
 
         #@ Create color lists
         - define Colors <list[&0|&1|&2|&3|&4|&5|&6|&7|&8|&9|&a|&b|&c|&d|&e|&f|<&color[#010000]>&z|<&color[#000001]>&y|<&color[#000100]>&x]>
-        - foreach <list[1|2]> as:Line:
+        - foreach <list[1|2|3]> as:Line:
             - define Math1 <[Loop_Index].add[<[Loop_Index].sub[1].mul[7]>]>
             - define Math2 <[Loop_Index].add[<[Loop_Index].sub[1].mul[8]>].add[7]>
             - foreach <[Colors].get[<[Math1]>].to[<[Math2]>]> as:Color:
