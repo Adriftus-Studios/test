@@ -14,8 +14,8 @@ Colors_Command:
             - stop
 
         #@ Create color lists
-        - define Colors <list[&0|&1|&2|&3|&4|&5|&6|&7|&8|&9|&a|&b|&c|&d|&e|&f|<&color[#010000]>&z|<&color[#000001]>&y|<&color[#000100]>&x]>
-        - foreach <list[1|2|3]> as:Line:
+        - define Colors <list[&0|&1|&2|&3|&4|&5|&6|&7|&8|&9|&a|&b|&c|&d|&e|&f]>
+        - foreach <list[1|2]> as:Line:
             - define Math1 <[Loop_Index].add[<[Loop_Index].sub[1].mul[7]>]>
             - define Math2 <[Loop_Index].add[<[Loop_Index].sub[1].mul[8]>].add[7]>
             - foreach <[Colors].get[<[Math1]>].to[<[Math2]>]> as:Color:
@@ -41,4 +41,7 @@ Colors_Command:
         - narrate "<&2>+<element[<&a>Shift-Click To Insert].pad_left[28].with[-]><&2>-----+"
         - repeat 5:
             - narrate <&sp><&sp><[List<[Value]>].separated_by[<&sp><&sp>]>
+        - foreach <map[&z=<&color[#010000]>;&y=<&color[#000001]>&x=<&color[#000100]>]> key:code as:color:
+          - define "special_codes:->:<&sp><&sp><&sp><element[<[color]><[code]>].on_hover[<&a>Shift<&2>-<&a>Click to Insert<&2>:<[color]>This Color!].with_insertion[<[code]>]>"
+        - narrate <&sp><&sp><[special_codes].separated_by[<&sp><&sp>]>
         - narrate "<&8>[<&7>Note<&8>]<&7>: Color before Formats!<&nl><&2>+<element[].pad_left[22].with[-]><&2>-----+"
