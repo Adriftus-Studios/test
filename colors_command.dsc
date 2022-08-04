@@ -44,4 +44,4 @@ Colors_Command:
         - foreach <map[&x=<&color[#000100]>;&y=<&color[#000001]>;&z=<&color[#010000]>]> key:code as:color:
           - define "special_codes:->:<&sp><&sp><&sp><element[<[color]><[code]>].on_hover[<&a>Shift<&2>-<&a>Click to Insert<&2>:<&nl><[color]>This Color!].with_insertion[<[code]>]>"
         - narrate "<&8>[<&7>Note<&8>]<&7>: Color before Formats!<&nl><&2>+<element[].pad_left[22].with[-]><&2>-----+"
-        - narrate <&sp><&sp><[special_codes].separated_by[<&sp><&sp>]><&2>+----------------------------+
+        - narrate <&sp><&sp><[special_codes].separated_by[<&sp><&sp>]><&nl><&2>+----------------------------+
