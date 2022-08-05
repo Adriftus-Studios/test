@@ -21,7 +21,7 @@ multitool_events:
           - inventory adjust slot:<player.held_item_slot> material:netherite_hoe
         - default:
           - stop
-    
+
     on player damages entity with:multitool permission:morphtool.morph:
           - inventory adjust slot:<player.held_item_slot> material:netherite_sword
 
