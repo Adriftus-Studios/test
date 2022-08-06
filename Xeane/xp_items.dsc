@@ -69,6 +69,7 @@ xp_item_consume:
     20: 551
     30: 1396
   script:
+    - determine passively cancelled
     - ratelimit <player> 1t
     - take iteminhand
     - experience give <script.data_key[data.<context.item.flag[xp_levels]>]>
