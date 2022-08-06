@@ -1,9 +1,10 @@
 xp_item_10:
   type: item
+  debug: false
   material: feather
   display name: <&a>10 Levels of XP
   data:
-    recipe_book_category: misc.xp10
+    recipe_book_category: misc.xp1
   lore:
     - <&a>Right Click to Consume
   flags:
@@ -16,10 +17,11 @@ xp_item_10:
 
 xp_item_20:
   type: item
+  debug: false
   material: feather
   display name: <&a>20 Levels of XP
   data:
-    recipe_book_category: misc.xp20
+    recipe_book_category: misc.xp2
   lore:
     - <&a>Right Click to Consume
   flags:
@@ -32,10 +34,11 @@ xp_item_20:
 
 xp_item_30:
   type: item
+  debug: false
   material: feather
   display name: <&a>30 Levels of XP
   data:
-    recipe_book_category: misc.xp30
+    recipe_book_category: misc.xp3
   lore:
     - <&a>Right Click to Consume
   flags:
