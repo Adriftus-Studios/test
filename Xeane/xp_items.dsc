@@ -71,13 +71,13 @@ xp_item_consume:
   script:
     - ratelimit <player> 1t
     - take iteminhand
-    - experience give <script.data_key[<context.item.flag[xp_levels]>]>
+    - experience give <script.data_key[data.<context.item.flag[xp_levels]>]>
 
 xp_item_craft_requirement:
   type: task
   debug: false
   script:
-    - define xp_needed <script[xp_item_consume].data_key[<context.item.flag[xp_levels]>]>
+    - define xp_needed <script[xp_item_consume].data_key[data.<context.item.flag[xp_levels]>]>
     - if <player.calculate_xp> < <[xp_needed]>:
       - determine cancelled
 
@@ -85,5 +85,5 @@ xp_item_take_xp:
   type: task
   debug: false
   script:
-    - define xp_needed <script[xp_item_consume].data_key[<context.item.flag[xp_levels]>]>
+    - define xp_needed <script[xp_item_consume].data_key[data.<context.item.flag[xp_levels]>]>
     - experience take <[xp_needed]>
