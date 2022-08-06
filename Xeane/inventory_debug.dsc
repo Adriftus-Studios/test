@@ -8,6 +8,7 @@ inventory_debug:
       - narrate "context.clicked_inventory<&co> <context.clicked_inventory>"
       - narrate "context.cursor_item<&co> <context.cursor_item>"
       - narrate "context.slot_type<&co> <context.slot_type>"
+      - narrate "context.click<&co> <context.click>"
       - narrate "context.slot<&co> <context.slot>"
       - narrate "context.raw_slot<&co> <context.raw_slot>"
       - narrate "context.action<&co> <context.action>"
