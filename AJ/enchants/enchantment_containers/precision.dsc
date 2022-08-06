@@ -18,4 +18,4 @@ Precision_enchantment:
   is_tradable: false
   can_enchant: <context.item.advanced_matches[shears]>
 ##  is_compatible: <context.enchantment_key.advanced_matches_text[minecraft:fortune].not>
-  treasure_only: true
+  treasure_only: false

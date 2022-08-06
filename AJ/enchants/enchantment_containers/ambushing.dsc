@@ -17,7 +17,7 @@ ambushing_enchantment:
   full_name: <&7>Ambushing <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3
-  treasure_only: true
+  treasure_only: false
   is_tradable: false
   can_enchant: <context.item.advanced_matches[*_sword|*_axe]>
   after attack:

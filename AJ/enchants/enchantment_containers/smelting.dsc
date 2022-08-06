@@ -20,7 +20,7 @@ smelting_enchantment:
   is_tradable: false
   can_enchant: <context.item.advanced_matches[*_pickaxe]>
   is_compatible: <context.enchantment_key.advanced_matches_text[minecraft:fortune].not>
-  treasure_only: true
+  treasure_only: false
 
 smelting_enchant_handler:
   type: world

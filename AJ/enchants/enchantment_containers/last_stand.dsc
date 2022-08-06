@@ -18,7 +18,7 @@ last_Stand_enchantment:
   full_name: <&7>Last Stand <context.level.to_roman_numerals>
   min_level: 1
   max_level: 3
-  treasure_only: true
+  treasure_only: false
   is_curse: false
   is_tradable: false
   is_discoverable: true

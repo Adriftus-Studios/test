@@ -20,7 +20,7 @@ Crystallizing_enchantment:
   is_tradable: false
   can_enchant: <context.item.advanced_matches[*_pickaxe]>
   is_compatible: <context.enchantment_key.advanced_matches_text[minecraft:fortune|minecraft:silk_touch].not>
-  treasure_only: true
+  treasure_only: false
 
 crystallizing_enchant_handler:
   type: world
