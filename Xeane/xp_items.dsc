@@ -14,6 +14,10 @@ xp_item_10:
     on_craft: xp_item_take_xp
   mechanisms:
     custom_model_data: 0
+  recipes:
+    1:
+      type: shapeless
+      input: WRITABLE_BOOK|GLOW_INK_SAC|COPPER_BLOCK
 
 xp_item_20:
   type: item
@@ -31,6 +35,10 @@ xp_item_20:
     on_craft: xp_item_take_xp
   mechanisms:
     custom_model_data: 0
+  recipes:
+    1:
+      type: shapeless
+      input: WRITABLE_BOOK|GLOW_INK_SAC|DIAMOND_BLOCK
 
 xp_item_30:
   type: item
@@ -48,6 +56,10 @@ xp_item_30:
     on_craft: xp_item_take_xp
   mechanisms:
     custom_model_data: 0
+  recipes:
+    1:
+      type: shapeless
+      input: WRITABLE_BOOK|GLOW_INK_SAC|NETHERITE_BLOCK
 
 xp_item_consume:
   type: task
