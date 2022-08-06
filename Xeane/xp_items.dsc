@@ -2,6 +2,8 @@ xp_item_10:
   type: item
   material: feather
   display name: <&a>10 Levels of XP
+  data:
+    recipe_book_category: misc.xp10
   lore:
     - <&a>Right Click to Consume
   flags:
@@ -16,6 +18,8 @@ xp_item_20:
   type: item
   material: feather
   display name: <&a>20 Levels of XP
+  data:
+    recipe_book_category: misc.xp20
   lore:
     - <&a>Right Click to Consume
   flags:
@@ -30,6 +34,8 @@ xp_item_30:
   type: item
   material: feather
   display name: <&a>30 Levels of XP
+  data:
+    recipe_book_category: misc.xp30
   lore:
     - <&a>Right Click to Consume
   flags:
