@@ -1,7 +1,7 @@
 xp_item_10:
   type: item
   debug: false
-  material: feather
+  material: experience_bottle
   display name: <&a>10 Levels of XP
   data:
     recipe_book_category: misc.xp1
@@ -13,40 +13,19 @@ xp_item_10:
     on_recipe_formed: xp_item_craft_requirement
     on_craft: xp_item_take_xp
   mechanisms:
-    custom_model_data: 0
+    custom_model_data: 1
   recipes:
     1:
       type: shapeless
       input: WRITABLE_BOOK|GLOW_INK_SAC|COPPER_BLOCK
 
-xp_item_20:
-  type: item
-  debug: false
-  material: feather
-  display name: <&a>20 Levels of XP
-  data:
-    recipe_book_category: misc.xp2
-  lore:
-    - <&a>Right Click to Consume
-  flags:
-    right_click_script: xp_item_consume
-    xp_levels: 20
-    on_recipe_formed: xp_item_craft_requirement
-    on_craft: xp_item_take_xp
-  mechanisms:
-    custom_model_data: 0
-  recipes:
-    1:
-      type: shapeless
-      input: WRITABLE_BOOK|GLOW_INK_SAC|DIAMOND_BLOCK
-
 xp_item_30:
   type: item
   debug: false
-  material: feather
+  material: experience_bottle
   display name: <&a>30 Levels of XP
   data:
-    recipe_book_category: misc.xp3
+    recipe_book_category: misc.xp2
   lore:
     - <&a>Right Click to Consume
   flags:
@@ -55,7 +34,28 @@ xp_item_30:
     on_recipe_formed: xp_item_craft_requirement
     on_craft: xp_item_take_xp
   mechanisms:
-    custom_model_data: 0
+    custom_model_data: 2
+  recipes:
+    1:
+      type: shapeless
+      input: WRITABLE_BOOK|GLOW_INK_SAC|DIAMOND_BLOCK
+
+xp_item_50:
+  type: item
+  debug: false
+  material: experience_bottle
+  display name: <&a>50 Levels of XP
+  data:
+    recipe_book_category: misc.xp3
+  lore:
+    - <&a>Right Click to Consume
+  flags:
+    right_click_script: xp_item_consume
+    xp_levels: 50
+    on_recipe_formed: xp_item_craft_requirement
+    on_craft: xp_item_take_xp
+  mechanisms:
+    custom_model_data: 3
   recipes:
     1:
       type: shapeless
@@ -66,8 +66,8 @@ xp_item_consume:
   debug: false
   data:
     10: 160
-    20: 551
     30: 1396
+    50: 5345
   script:
     - determine passively cancelled
     - ratelimit <player> 1t
