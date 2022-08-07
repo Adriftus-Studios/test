@@ -7,6 +7,7 @@ xp_item_10:
     recipe_book_category: misc.xp1
   lore:
     - <&a>Right Click to Consume
+    - <&c>Requires the XP to Craft
   flags:
     right_click_script: xp_item_consume
     xp_levels: 10
@@ -28,6 +29,7 @@ xp_item_30:
     recipe_book_category: misc.xp2
   lore:
     - <&a>Right Click to Consume
+    - <&c>Requires the XP to Craft
   flags:
     right_click_script: xp_item_consume
     xp_levels: 30
@@ -49,6 +51,7 @@ xp_item_50:
     recipe_book_category: misc.xp3
   lore:
     - <&a>Right Click to Consume
+    - <&c>Requires the XP to Craft
   flags:
     right_click_script: xp_item_consume
     xp_levels: 50
