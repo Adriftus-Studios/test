@@ -51,7 +51,7 @@ purchase_bank_note:
   debug: false
   material: paper
   flags:
-    run_script: purchase_bank_note_tasl
+    run_script: purchase_bank_note_task
 
 purchase_bank_note_task:
   type: task
