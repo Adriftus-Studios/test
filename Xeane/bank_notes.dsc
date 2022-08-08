@@ -82,6 +82,12 @@ bank_npc_assignment:
           - narrate "<&a>You have exchanged your bank note!"
           - narrate "<&a>Your Balance<&co> <player.formatted_money>"
         - else:
-          - narrate "<&c>This Bank Note is a Forgery!!!"
+          - title "title:<&c>This Bank Note is a Forgery!!!" fade_in:1t stay:4s fade_out:1t
+          - wait 3s
+          - repeat 5:
+            - title title:<&1><&font[adriftus:overlay]><&chr[1001]><&chr[F802]><&chr[1001]> "subtitle:The Police Have Been Alerted" fade_in:1t stay:1.5s fade_out:1t
+            - wait 1s
+            - title title:<&4><&font[adriftus:overlay]><&chr[1001]><&chr[F802]><&chr[1001]> "subtitle:The Police Have Been Alerted" fade_in:1t stay:1.5s fade_out:1t
+            - wait 1s
       - else:
         - inventory open d:bank_npc_inventory
