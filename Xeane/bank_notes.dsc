@@ -84,10 +84,10 @@ bank_npc_assignment:
         - else:
           - title "title:<&c>This Bank Note is a Forgery!!!" fade_in:1t stay:4s fade_out:1t
           - wait 3s
-          - repeat 5:
-            - title title:<&1><&font[adriftus:overlay]><&chr[1001]><&chr[F802]><&chr[1001]> "subtitle:The Police Have Been Alerted" fade_in:1t stay:1.5s fade_out:1t
+          - repeat 3:
+            - title title:<&1><&font[adriftus:overlay]><&chr[1004]><&chr[F802]><&chr[1004]> "subtitle:The Police Have Been Alerted" fade_in:1t stay:1.5s fade_out:1t
             - wait 1s
-            - title title:<&4><&font[adriftus:overlay]><&chr[1001]><&chr[F802]><&chr[1001]> "subtitle:The Police Have Been Alerted" fade_in:1t stay:1.5s fade_out:1t
+            - title title:<&4><&font[adriftus:overlay]><&chr[1004]><&chr[F802]><&chr[1004]> "subtitle:The Police Have Been Alerted" fade_in:1t stay:1.5s fade_out:1t
             - wait 1s
       - else:
         - inventory open d:bank_npc_inventory
