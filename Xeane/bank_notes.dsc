@@ -53,10 +53,11 @@ purchase_bank_note:
   flags:
     run_script: purchase_bank_note_tasl
 
-purchase_bank_note_tasl:
+purchase_bank_note_task:
   type: task
   debug: false
   script:
+    - determine passively cancelled
     - if <player.money> >= <context.item.flag[worth]>:
       - money take <context.item.flag[worth]>
       - define uuid <util.random_uuid>
