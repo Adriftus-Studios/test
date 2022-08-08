@@ -76,9 +76,9 @@ bank_npc_assignment:
     on click:
       - if <player.item_in_hand.has_flag[bank_note]>:
         - if <server.has_flag[bank_notes.<player.item_in_hand.flag[uuid]>]>:
-          - take iteminhand quantity:1
           - money give quantity:<context.item.flag[worth]>
           - flag server bank_notes.<context.item.flag[uuid]>:!
+          - take iteminhand quantity:1
           - narrate "<&a>You have exchanged your bank note!"
           - narrate "<&a>Your Balance<&co> <player.formatted_money>"
         - else:
