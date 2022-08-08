@@ -8,7 +8,7 @@
     - <&a>Worth $100
   flags:
     worth: 100
-    item_type: bank_note
+    bank_note: true
 
 1000_bank_note:
   type: item
@@ -20,7 +20,7 @@
     - <&a>Worth $1,000
   flags:
     worth: 1000
-    item_type: bank_note
+    bank_note: true
 
 10000_bank_note:
   type: item
@@ -32,7 +32,7 @@
     - <&a>Worth $10,000
   flags:
     worth: 10000
-    item_type: bank_note
+    bank_note: true
 
 bank_npc_inventory:
   type: inventory
