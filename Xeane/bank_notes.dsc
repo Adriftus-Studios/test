@@ -9,6 +9,8 @@
   flags:
     worth: 100
     bank_note: true
+  mechanisms:
+    custom_model_data: 600
 
 1000_bank_note:
   type: item
@@ -21,6 +23,8 @@
   flags:
     worth: 1000
     bank_note: true
+  mechanisms:
+    custom_model_data: 601
 
 10000_bank_note:
   type: item
@@ -33,6 +37,8 @@
   flags:
     worth: 10000
     bank_note: true
+  mechanisms:
+    custom_model_data: 602
 
 bank_npc_inventory:
   type: inventory
