@@ -65,7 +65,7 @@ purchase_bank_note_task:
   script:
     - determine passively cancelled
     - if <player.money> >= <context.item.flag[worth]>:
-      - money take <context.item.flag[worth]>
+      - money take quantity:<context.item.flag[worth]>
       - define uuid <util.random_uuid>
       - flag server bank_notes.<[uuid]>:<context.item.flag[worth]>
       - give <item[<context.item.flag[worth]>_bank_note].with[flag=uuid:<[uuid]>]>
