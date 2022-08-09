@@ -55,7 +55,7 @@ bank_npc_inventory:
 purchase_bank_note:
   type: item
   debug: false
-  material: paper
+  material: feather
   flags:
     run_script: purchase_bank_note_task
 
