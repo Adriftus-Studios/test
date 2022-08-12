@@ -5,7 +5,7 @@ temp_tp:
   usage: /temptp
   script:
     - flag player packet_debug
-    - teleport <player.location>
+    - execute as_player "minecraft:tp Xeane ~ ~ ~ ~ 10"
     - flag player packet_debug:!
 
 temptp_capture:
