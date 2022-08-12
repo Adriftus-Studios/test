@@ -13,6 +13,11 @@ temp_tp:
 temptp_capture:
   type: world
   debug: false
+  data:
+    blacklist:
+      ClientboundSystemChatPacket: true
+      PacketPlayOutSetSlot: true
+      PacketPlayOutCloseWindow: true
   events:
     on player receives packet flagged:packet_debug:
-      - narrate <context.class> if:<context.class.equals[ClientboundSystemChatPacket].not>
+      - narrate <context.reflected_class.interpret> if:<script.data_key[data.blacklist.<context.class>].exists.not>
