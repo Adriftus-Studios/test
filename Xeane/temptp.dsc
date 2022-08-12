@@ -12,5 +12,5 @@ temptp_capture:
   type: world
   debug: false
   events:
-    on player receives packet class:PacketPlayOutPosition flagged:packet_debug:
+    on player receives packet flagged:packet_debug:
       - narrate <context.class>
