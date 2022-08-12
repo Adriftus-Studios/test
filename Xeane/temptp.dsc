@@ -19,4 +19,5 @@ temptp_capture:
       PacketPlayOutCloseWindow: true
   events:
     on player receives packet class:PacketPlayOutPosition flagged:recoil:
+        - narrate <context.reflect_packet.reflect_field[h].to_string>
         - reflectionset object:<context.reflect_packet> field:f "value:X, Y, Z, X, Y_ROT"
