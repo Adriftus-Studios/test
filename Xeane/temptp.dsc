@@ -22,5 +22,5 @@ temptp_capture:
   events:
     on player receives packet flagged:packet_debug:
       - stop if:<script.data_key[data.blacklist.<context.class>].exists>
-      - foreach <list[a|b|c|d|e|h]>:
+      - foreach <context.reflect_packet.field_names>:
         - narrate "<[value]><&co> <context.reflect_packet.read_field[<[value]>]>"
