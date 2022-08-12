@@ -3,14 +3,14 @@ temp_tp:
   debug: false
   name: temptp
   usage: /temptp
+  definitions: pitch
   script:
-    - flag player packet_debug
-    - narrate "<&color[#010000]>Vanilla TP"
-    - execute as_player "minecraft:tp Xeane ~ ~ ~ ~ 10"
-    - narrate "<&color[#010000]>Denizen TP"
-    - teleport <player.location.with_pitch[10]>
-    - flag player packet_debug:!
+    - flag player recoil
+    - narrate "<&color[#010000]>Denizen Relative TP"
+    - teleport <location[0,0,0,0,<[pitch]>,<player.location.world>]>
+    - flag player recoil:!
 
+##PacketPlayOutPosition
 temptp_capture:
   type: world
   debug: false
@@ -20,7 +20,5 @@ temptp_capture:
       PacketPlayOutSetSlot: true
       PacketPlayOutCloseWindow: true
   events:
-    on player receives packet flagged:packet_debug:
-      - stop if:<script.data_key[data.blacklist.<context.class>].exists>
-      - foreach <context.reflect_packet.field_names>:
-        - narrate "<[value]><&co> <context.reflect_packet.read_field[<[value]>]>"
+    on player receives packet class:PacketPlayOutPosition flagged:recoil:
+        - reflectionset object:<context.reflect_packet> field:f value:<list[X|Y|Z|X|Y_ROT]>
