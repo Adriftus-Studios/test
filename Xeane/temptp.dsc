@@ -20,4 +20,4 @@ temptp_capture:
       PacketPlayOutCloseWindow: true
   events:
     on player receives packet flagged:packet_debug:
-      - narrate <context.reflected_class.interpret> if:<script.data_key[data.blacklist.<context.class>].exists.not>
+      - narrate <context.reflect_packet.interpret> if:<script.data_key[data.blacklist.<context.class>].exists.not>
