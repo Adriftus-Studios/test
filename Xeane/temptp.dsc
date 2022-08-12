@@ -13,4 +13,4 @@ temptp_capture:
   debug: false
   events:
     on player receives packet flagged:packet_debug:
-      - narrate <context.class>
+      - narrate <context.class> if:<context.class.equals[ClientboundSystemChatPacket].not>
