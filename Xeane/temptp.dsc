@@ -1,8 +1,6 @@
 temp_tp:
-  type: command
+  type: task
   debug: false
-  name: temptp
-  usage: /temptp
   definitions: pitch
   script:
     - flag player recoil
