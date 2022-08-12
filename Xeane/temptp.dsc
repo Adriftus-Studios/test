@@ -6,6 +6,8 @@ temp_tp:
   script:
     - flag player packet_debug
     - execute as_player "minecraft:tp Xeane ~ ~ ~ ~ 10"
+    - narrate "Denizen TP"
+    - teleport <player.location.with_pitch[10]>
     - flag player packet_debug:!
 
 temptp_capture:
