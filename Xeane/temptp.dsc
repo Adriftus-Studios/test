@@ -20,4 +20,4 @@ temptp_capture:
   events:
     on player receives packet class:PacketPlayOutPosition flagged:recoil:
         - narrate <context.reflect_packet.reflect_field[f].to_string>
-        - reflectionset object:<context.reflect_packet> field:f "value:X, Y, Z, X, Y_ROT"
+        - reflectionset object:<context.reflect_packet> field:f value:[X,Y,Z,X,Y_ROT]
