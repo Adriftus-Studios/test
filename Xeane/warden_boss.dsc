@@ -51,3 +51,10 @@ warden_boss_infect:
         - else:
           - modifyblock <[value]> sculk
       - wait 10t
+
+
+warden_debug:
+  type: task
+  debug: false
+  script:
+    - announce test
