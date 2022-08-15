@@ -27,7 +27,7 @@ warden_test:
       - wait 1t
       - define target <context.entity.location.find_spawnable_blocks_within[20].random>
       - if <context.entity.is_spawned> && <[target].exists> && <[target].find_blocks[sculk_sensor].within[5].size> < 2:
-        - define points <proc[define_curve1].context[<context.entity.eye_location>|<[target]>|90|3|1]>
+        - define points <proc[define_curve1].context[<context.entity.eye_location>|<[target]>|5|90|0.5]>
         - foreach <[points]> as:point:
           - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5|black targets:<[players_in_range]>
           - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.75|black targets:<[players_in_range]>
