@@ -46,6 +46,7 @@ warden_boss_infect:
     - foreach <[loc].find.surface_blocks.within[6].include[<[loc].below>]>:
       - if <list[sand|grass_block|dirt|stone|grass|sandstone].contains[<[value].material.name>]>:
         - if <[value].material.name> == grass:
+          - modifyblock <[value]> air
           - modifyblock <[value].below> sculk
         - else:
           - modifyblock <[value]> sculk
