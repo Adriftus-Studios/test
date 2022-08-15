@@ -43,10 +43,10 @@ warden_boss_infect:
   debug: false
   definitions: loc
   script:
-    - foreach <[loc].find.surface_blocks.within[3].include[<[loc].below>]>:
+    - foreach <[loc].find.surface_blocks.within[6].include[<[loc].below>]>:
       - if <list[sand|grass_block|dirt|stone|grass|sandstone].contains[<[value].material.name>]>:
         - if <[value].material.name> == grass:
           - modifyblock <[value].below> sculk
         - else:
           - modifyblock <[value]> sculk
-      - wait 5t
+      - wait 10t
