@@ -33,10 +33,15 @@ warden_test:
           - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.75|black targets:<[players_in_range]>
           - wait 2t
         - modifyblock <[target]> sculk_sensor
+        - run warden_boss_infect def:<[target]>
       - wait 10s
 
-warden_debug:
+warden_boss_infect:
   type: task
   debug: false
+  definitions: loc
   script:
-    - announce target<&co><context.target>
+    - foreach <[loc].find.surface_blocks.within[3]>:
+      - if <list[sand|grass_block|dirt|stone].contains[<[value].material.name>]>:
+        - modifyblock <[value]> sculk
+      - wait 5t
