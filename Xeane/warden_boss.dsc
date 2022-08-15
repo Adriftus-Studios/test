@@ -81,7 +81,7 @@ boss_warden_bossbar_handler:
           - bossbar world_boss_warden remove
       - wait 5s
 
-boss_warden_bossbar_update:
+warden_boss_bossbar_update:
   type: task
   debug: false
   script:
