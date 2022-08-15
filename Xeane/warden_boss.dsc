@@ -71,7 +71,7 @@ boss_warden_bossbar_handler:
   script:
     - while <[boss].is_spawned>:
       - define targets <[boss].location.find_players_within[50]>
-      - if <[targets].size> > 1:
+      - if <[targets].size> > 0:
         - if <server.current_bossbars.contains[world_boss_warden]>:
           - bossbar world_boss_warden update players:<[targets]>
         - else:
