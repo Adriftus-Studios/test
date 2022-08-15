@@ -36,6 +36,7 @@ warden_boss_run:
           - wait 2t
         - modifyblock <[target]> sculk_sensor
         - run warden_boss_infect def:<[target]>
+        - define last_location:<context.entity.location>
       - wait 10s
 
 warden_boss_infect:
@@ -56,4 +57,4 @@ warden_boss_flag:
   type: task
   debug: false
   script:
-    - announce "<&font[adriftus:chat]><&chr[2001]><&r> <&7><&l><&lb><&4><&l>The Boss Warden has been defeated!<&7><&l><&rb><&r><&nl>     Mobs grow weaker in his absence"
+    - announce "<&font[adriftus:chat]><&chr[2001]><&r> <&7><&l><&lb><&4><&l>The Boss Warden has been defeated!<&7><&l><&rb><&r><&nl>     <&6>Mobs grow weaker in his absence"
