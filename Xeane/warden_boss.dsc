@@ -86,4 +86,5 @@ boss_warden_bossbar_update:
   debug: false
   script:
     - wait 1t
-    - bossbar world_boss_warden update progress:<context.entity.health_percentage.div[100]>
+    - if <context.entity.is_spawned>:
+      - bossbar world_boss_warden update progress:<context.entity.health_percentage.div[100]>
