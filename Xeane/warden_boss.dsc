@@ -22,7 +22,7 @@ warden_boss_run:
       - wait 1t
       - cast darkness duration:60s <[need_darkness]>
       - wait 1t
-      - bossbar players:<[players_in_range]> update
+      - bossbar world_boss_warden players:<[players_in_range]> update
       #- foreach <[players_in_range]>:
         #- flag <[value]> on_death:->:boss_warden_remove_bar if:<player.flag[on_death].contains[boss_warden_remove_bar].not.if_null[false]>
       - wait 1t
