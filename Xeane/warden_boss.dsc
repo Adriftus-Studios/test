@@ -3,15 +3,17 @@ warden_boss:
   debug: false
   entity_type: warden
   flags:
-    on_spawn: warden_test
+    on_spawn: warden_boss_run
+    on_entity_added: warden_boss_run
     on_target: warden_debug
   mechanisms:
     health_data: 1000/1000
 
-warden_test:
+warden_boss_run:
   type: task
   debug: false
   script:
+    - wait 1t
     - while <context.entity.is_spawned>:
       - define players_in_range <context.entity.location.find_players_within[30]>
       - define need_darkness <[players_in_range].filter[has_effect[darkness].not]>
@@ -41,7 +43,7 @@ warden_boss_infect:
   debug: false
   definitions: loc
   script:
-    - foreach <[loc].find.surface_blocks.within[3]>:
+    - foreach <[loc].find.surface_blocks.within[3].include[<[loc].below>]>:
       - if <list[sand|grass_block|dirt|stone].contains[<[value].material.name>]>:
         - modifyblock <[value]> sculk
       - wait 5t
