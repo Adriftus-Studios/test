@@ -5,7 +5,7 @@ warden_boss:
   flags:
     on_spawn: warden_boss_run
     on_entity_added: warden_boss_run
-    on_target: warden_debug
+    on_death: warden_boss_flag
   mechanisms:
     health_data: 1000/1000
 
@@ -52,9 +52,8 @@ warden_boss_infect:
           - modifyblock <[value]> sculk
       - wait 10t
 
-
-warden_debug:
+warden_boss_flag:
   type: task
   debug: false
   script:
-    - announce test
+    - announce "<&font[adriftus:chat]><&chr[2001]><&r> <&7><&l><&lb><&4><&l>The Boss Warden has been defeated!<&7><&l><&rb><&r><&nl>     Mobs grow weaker in his absence"
