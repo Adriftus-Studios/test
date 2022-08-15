@@ -16,7 +16,7 @@ warden_test:
       - define players_in_range <context.entity.location.find_players_within[30]>
       - define players_visible <[players_in_range].filter[can_see[<context.entity>]]>
       - wait 1t
-      - cast darkness duration:20s <[players_visible]>
+      - cast darkness duration:30s <[players_visible]>
       - wait 1t
       - if <[last_location].exists> && <[last_location].distance[<context.entity.location>]> < 1 && <[players_visible].size> > 1:
         - repeat 20:
@@ -25,8 +25,8 @@ warden_test:
           - stop if:<context.entity.is_spawned.not>
         - teleport <context.entity> <[players_visible].random.location.backward_flat[2]>
       - wait 1t
+    - define targets <context.entity.location.find_spawnable_blocks_within[12]>
       - if <context.entity.is_spawned> && <[targets].size> > 1:
-        - define targets <context.entity.location.find_spawnable_blocks_within[12]>
         - shoot falling_block[fallingblock_type=sculk_sensor;fallingblock_drop_item=false] destination:<[targets].random.center> origin:<context.entity.eye_location> save:block
       - wait 10s
 
