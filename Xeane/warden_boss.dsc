@@ -50,7 +50,7 @@ warden_boss_infect:
   definitions: loc
   script:
     - foreach <[loc].find.surface_blocks.within[6].include[<[loc].below>]>:
-      - if <list[sand|grass_block|dirt|stone|grass|sandstone|snow_block].contains[<[value].material.name>]>:
+      - if <list[sand|grass_block|dirt|stone|grass|sandstone|snow_block|snow].contains[<[value].material.name>]>:
         - if <[value].material.name> == grass:
           - modifyblock <[value]> air
           - modifyblock <[value].below> sculk
@@ -75,7 +75,7 @@ boss_warden_bossbar_handler:
         - if <server.current_bossbars.contains[world_boss_warden]>:
           - bossbar world_boss_warden update players:<[targets]>
         - else:
-          - bossbar create world_boss_warden "title:<&6>Warden Boss" progress:1 style:SOLID options:CREATE_FOG|DARKEN_SKY|PLAY_BOSS_MUSIC players:<[targets]>
+          - bossbar create world_boss_warden "title:<&3>Warden Boss" progress:1 style:SOLID options:CREATE_FOG|DARKEN_SKY|PLAY_BOSS_MUSIC players:<[targets]>
       - else:
         - if <server.current_bossbars.contains[world_boss_warden]>:
           - bossbar world_boss_warden remove
