@@ -25,7 +25,7 @@ warden_boss_run:
       #- foreach <[players_in_range]>:
         #- flag <[value]> on_death:->:boss_warden_remove_bar if:<player.flag[on_death].contains[boss_warden_remove_bar].not.if_null[false]>
       - wait 1t
-      - if <[last_location].exists> && <[last_location].distance[<context.entity.location>]> < 1 && <[players_visible].size> > 1:
+      - if <[last_location].exists> && <[last_location].distance[<context.entity.location>]> < 1 && <[players_in_range].size> > 1:
         - repeat 20:
           - playeffect effect:redstone special_data:5|black quantity:20 offset:1,2,1 at:<context.entity.location.above>
           - wait 2t
