@@ -85,4 +85,5 @@ boss_warden_bossbar_update:
   type: task
   debug: false
   script:
-        - bossbar world_boss_warden update progress:<context.entity.health_percentage.div[100]>
+    - wait 1t
+    - bossbar world_boss_warden update progress:<context.entity.health_percentage.div[100]>
