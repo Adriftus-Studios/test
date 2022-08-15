@@ -15,14 +15,13 @@ warden_boss_run:
   debug: false
   script:
     - wait 1t
-    - bossbar create world_boss_warden "title:<&6>Warden Boss" progress:1 style:SOLID options:CREATE_FOG|DARKEN_SKY|PLAY_BOSS_MUSIC
+    - run boss_warden_bossbar_handler
     - while <context.entity.is_spawned>:
       - define players_in_range <context.entity.location.find_players_within[32]>
       - define need_darkness <[players_in_range].filter[has_effect[darkness].not]>
       - wait 1t
       - cast darkness duration:60s <[need_darkness]>
-      - wait 1t
-      - bossbar world_boss_warden players:<[players_in_range]> update
+      #- wait 1t
       #- foreach <[players_in_range]>:
         #- flag <[value]> on_death:->:boss_warden_remove_bar if:<player.flag[on_death].contains[boss_warden_remove_bar].not.if_null[false]>
       - wait 1t
@@ -64,3 +63,26 @@ warden_boss_flag:
   debug: false
   script:
     - announce "<&font[adriftus:chat]><&chr[2001]><&r> <&7><&l><&lb><&4><&l>The Boss Warden has been defeated!<&7><&l><&rb><&r><&nl>     <&6>Mobs grow weaker in his absence"
+
+boss_warden_bossbar_handler:
+  type: task
+  debug: false
+  definitions: boss
+  script:
+    - while <[boss].is_spawned>:
+      - define targets <[boss].location.find_players_within[50]>
+      - if <[targets].size> > 1:
+        - if <server.current_bossbars.contains[world_boss_warden]>:
+          - bossbar world_boss_warden update players:<[targets]>
+        - else:
+          - bossbar create world_boss_warden "title:<&6>Warden Boss" progress:1 style:SOLID options:CREATE_FOG|DARKEN_SKY|PLAY_BOSS_MUSIC players:<[targets]>
+      - else:
+        - if <server.current_bossbars.contains[world_boss_warden]>:
+          - bossbar world_boss_warden remove
+      - wait 5s
+
+boss_warden_bossbar_update:
+  type: task
+  debug: false
+  script:
+        - bossbar world_boss_warden update progress:<context.entity.health_percentage.div[100]>
