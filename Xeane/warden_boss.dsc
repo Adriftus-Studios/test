@@ -25,7 +25,7 @@ warden_test:
           - stop if:<context.entity.is_spawned.not>
         - teleport <context.entity> <[players_visible].random.location.backward_flat[2]>
       - wait 1t
-    - define targets <context.entity.location.find_spawnable_blocks_within[12]>
+      - define targets <context.entity.location.find_spawnable_blocks_within[12]>
       - if <context.entity.is_spawned> && <[targets].size> > 1:
         - shoot falling_block[fallingblock_type=sculk_sensor;fallingblock_drop_item=false] destination:<[targets].random.center> origin:<context.entity.eye_location> save:block
       - wait 10s
