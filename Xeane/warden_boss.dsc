@@ -15,7 +15,7 @@ warden_boss_run:
   debug: false
   script:
     - wait 1t
-    - run boss_warden_bossbar_handler
+    - run boss_warden_bossbar_handler def:<context.entity>
     - while <context.entity.is_spawned>:
       - define players_in_range <context.entity.location.find_players_within[32]>
       - define need_darkness <[players_in_range].filter[has_effect[darkness].not]>
