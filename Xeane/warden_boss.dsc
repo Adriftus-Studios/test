@@ -5,6 +5,7 @@ warden_boss:
   flags:
     on_spawn: warden_boss_run
     on_entity_added: warden_boss_run
+    on_damaged: warden_boss_bossbar_update
     on_death: warden_boss_flag
   mechanisms:
     health_data: 1000/1000
@@ -14,18 +15,23 @@ warden_boss_run:
   debug: false
   script:
     - wait 1t
+    - bossbar create world_boss_warden "title:<&6>Warden Boss" progress:1 style:SOLID options:CREATE_FOG|DARKEN_SKY|PLAY_BOSS_MUSIC
     - while <context.entity.is_spawned>:
-      - define players_in_range <context.entity.location.find_players_within[30]>
+      - define players_in_range <context.entity.location.find_players_within[32]>
       - define need_darkness <[players_in_range].filter[has_effect[darkness].not]>
       - wait 1t
       - cast darkness duration:60s <[need_darkness]>
+      - wait 1t
+      - bossbar players:<[players_in_range]> update
+      #- foreach <[players_in_range]>:
+        #- flag <[value]> on_death:->:boss_warden_remove_bar if:<player.flag[on_death].contains[boss_warden_remove_bar].not.if_null[false]>
       - wait 1t
       - if <[last_location].exists> && <[last_location].distance[<context.entity.location>]> < 1 && <[players_visible].size> > 1:
         - repeat 20:
           - playeffect effect:redstone special_data:5|black quantity:20 offset:1,2,1 at:<context.entity.location.above>
           - wait 2t
           - stop if:<context.entity.is_spawned.not>
-        - teleport <context.entity> <[players_visible].random.location.backward_flat[2]>
+        - teleport <context.entity> <[players_in_range].random.location.backward_flat[2]>
       - wait 1t
       - define target <context.entity.location.find_spawnable_blocks_within[20].random>
       - if <context.entity.is_spawned> && <[target].exists> && <[target].find_blocks[sculk_sensor].within[5].size> < 2:
