@@ -27,7 +27,11 @@ warden_test:
       - wait 1t
       - define target <context.entity.location.find_spawnable_blocks_within[20].random>
       - if <context.entity.is_spawned> && <[targets].size> > 1 && <[target].location.find_blocks[sculk_sensor].within[5].size> < 2:
-        - shoot falling_block[fallingblock_type=sculk_sensor;fallingblock_drop_item=false] destination:<[targets].random.center> origin:<context.entity.eye_location> save:block
+        - repeat 20:
+          - playeffect effect:redstone special_data:5|black quantity:5 offset:0.5 at:<[target]>
+          - wait 2t
+          - stop if:<context.entity.is_spawned.not>
+        - modifyblock <[target]> sculk_sensor
       - wait 10s
 
 warden_debug:
