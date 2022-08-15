@@ -14,9 +14,9 @@ warden_test:
   script:
     - while <context.entity.is_spawned>:
       - define players_in_range <context.entity.location.find_players_within[30]>
-      - define players_visible <[players_in_range].filter[can_see[<context.entity>]]>
+      - define need_darkness <[players_in_range].filter[has_effect[darkness].not]>
       - wait 1t
-      - cast darkness duration:30s <[players_visible]>
+      - cast darkness duration:60s <[need_darkness]>
       - wait 1t
       - if <[last_location].exists> && <[last_location].distance[<context.entity.location>]> < 1 && <[players_visible].size> > 1:
         - repeat 20:
