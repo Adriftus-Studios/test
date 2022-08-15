@@ -26,11 +26,12 @@ warden_test:
         - teleport <context.entity> <[players_visible].random.location.backward_flat[2]>
       - wait 1t
       - define target <context.entity.location.find_spawnable_blocks_within[20].random>
-      - if <context.entity.is_spawned> && <[targets].size> > 1 && <[target].location.find_blocks[sculk_sensor].within[5].size> < 2:
-        - repeat 20:
-          - playeffect effect:redstone special_data:5|black quantity:5 offset:0.5 at:<[target]>
+      - if <context.entity.is_spawned> && <[target].exists> > 1 && <[target].location.find_blocks[sculk_sensor].within[5].size> < 2:
+        - define points <proc[define_curve1].context[<context.entity.eye_location>|<[target]>|90|90|1]>
+        - foreach <[points]> as:point:
+          - playeffect effect:redstone at:<[point]> offset:0.05 quantity:5 special_data:1.5|<player.flag[dwisp.data.color1]> targets:<[targets]>
+          - playeffect effect:redstone at:<[point]> offset:0.1 quantity:5 special_data:0.75|<player.flag[dwisp.data.color2]> targets:<[targets]>
           - wait 2t
-          - stop if:<context.entity.is_spawned.not>
         - modifyblock <[target]> sculk_sensor
       - wait 10s
 
