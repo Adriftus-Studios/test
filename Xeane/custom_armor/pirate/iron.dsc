@@ -1,39 +1,39 @@
-pirate/iron_helmet:
+iron_layer_helmet:
   type: item
   material: leather_helmet
   display name: <&4>Pirate Iron Helmet
   lore:
     - Let's Fuckin Go!
   mechanisms:
-    custom_model_data: 18
-    color: <color[#1203FD]>
+    custom_model_data: 19
+    color: <color[#COLOR]>
 
-pirate/iron_chestplate:
+iron_layer_chestplate:
   type: item
   material: leather_chestplate
   display name: <&4>Pirate Iron Chestplate
   lore:
     - Let's Fuckin Go!
   mechanisms:
-    custom_model_data: 18
-    color: <color[#1203FD]>
+    custom_model_data: 19
+    color: <color[#COLOR]>
 
-pirate/iron_leggings:
+iron_layer_leggings:
   type: item
   material: leather_leggings
   display name: <&4>Pirate Iron Leggings
   lore:
     - Let's Fuckin Go!
   mechanisms:
-    custom_model_data: 18
-    color: <color[#1203FD]>
+    custom_model_data: 19
+    color: <color[#COLOR]>
 
-pirate/iron_boots:
+iron_layer_boots:
   type: item
   material: leather_boots
   display name: <&4>Pirate Iron Boots
   lore:
     - Let's Fuckin Go!
   mechanisms:
-    custom_model_data: 18
-    color: <color[#1203FD]>
+    custom_model_data: 19
+    color: <color[#COLOR]>

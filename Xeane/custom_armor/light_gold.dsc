@@ -1,39 +1,39 @@
-light_gold_helmet:
+light_gold_layer_helmet:
   type: item
   material: leather_helmet
   display name: <&4>Light Gold Helmet
   lore:
     - Let's Fuckin Go!
   mechanisms:
-    custom_model_data: 19
-    color: <color[#1303FD]>
+    custom_model_data: 20
+    color: <color[#COLOR]>
 
-light_gold_chestplate:
+light_gold_layer_chestplate:
   type: item
   material: leather_chestplate
   display name: <&4>Light Gold Chestplate
   lore:
     - Let's Fuckin Go!
   mechanisms:
-    custom_model_data: 19
-    color: <color[#1303FD]>
+    custom_model_data: 20
+    color: <color[#COLOR]>
 
-light_gold_leggings:
+light_gold_layer_leggings:
   type: item
   material: leather_leggings
   display name: <&4>Light Gold Leggings
   lore:
     - Let's Fuckin Go!
   mechanisms:
-    custom_model_data: 19
-    color: <color[#1303FD]>
+    custom_model_data: 20
+    color: <color[#COLOR]>
 
-light_gold_boots:
+light_gold_layer_boots:
   type: item
   material: leather_boots
   display name: <&4>Light Gold Boots
   lore:
     - Let's Fuckin Go!
   mechanisms:
-    custom_model_data: 19
-    color: <color[#1303FD]>
+    custom_model_data: 20
+    color: <color[#COLOR]>

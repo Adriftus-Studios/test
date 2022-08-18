@@ -1,39 +1,39 @@
-royal_netherite_helmet:
+royal_netherite_layer_helmet:
   type: item
   material: leather_helmet
   display name: <&4>Royal Netherite Helmet
   lore:
     - Let's Fuckin Go!
   mechanisms:
-    custom_model_data: 33
-    color: <color[#2203FD]>
+    custom_model_data: 34
+    color: <color[#COLOR]>
 
-royal_netherite_chestplate:
+royal_netherite_layer_chestplate:
   type: item
   material: leather_chestplate
   display name: <&4>Royal Netherite Chestplate
   lore:
     - Let's Fuckin Go!
   mechanisms:
-    custom_model_data: 33
-    color: <color[#2203FD]>
+    custom_model_data: 34
+    color: <color[#COLOR]>
 
-royal_netherite_leggings:
+royal_netherite_layer_leggings:
   type: item
   material: leather_leggings
   display name: <&4>Royal Netherite Leggings
   lore:
     - Let's Fuckin Go!
   mechanisms:
-    custom_model_data: 33
-    color: <color[#2203FD]>
+    custom_model_data: 34
+    color: <color[#COLOR]>
 
-royal_netherite_boots:
+royal_netherite_layer_boots:
   type: item
   material: leather_boots
   display name: <&4>Royal Netherite Boots
   lore:
     - Let's Fuckin Go!
   mechanisms:
-    custom_model_data: 33
-    color: <color[#2203FD]>
+    custom_model_data: 34
+    color: <color[#COLOR]>

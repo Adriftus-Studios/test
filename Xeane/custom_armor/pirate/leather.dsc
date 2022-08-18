@@ -1,4 +1,4 @@
-pirate/leather_helmet:
+leather_layer_helmet:
   type: item
   material: leather_helmet
   display name: <&4>Pirate Leather Helmet
@@ -6,9 +6,9 @@ pirate/leather_helmet:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 6
-    color: <color[#0603FD]>
+    color: <color[#COLOR]>
 
-pirate/leather_chestplate:
+leather_layer_chestplate:
   type: item
   material: leather_chestplate
   display name: <&4>Pirate Leather Chestplate
@@ -16,9 +16,9 @@ pirate/leather_chestplate:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 6
-    color: <color[#0603FD]>
+    color: <color[#COLOR]>
 
-pirate/leather_leggings:
+leather_layer_leggings:
   type: item
   material: leather_leggings
   display name: <&4>Pirate Leather Leggings
@@ -26,9 +26,9 @@ pirate/leather_leggings:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 6
-    color: <color[#0603FD]>
+    color: <color[#COLOR]>
 
-pirate/leather_boots:
+leather_layer_boots:
   type: item
   material: leather_boots
   display name: <&4>Pirate Leather Boots
@@ -36,4 +36,4 @@ pirate/leather_boots:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 6
-    color: <color[#0603FD]>
+    color: <color[#COLOR]>

@@ -1,4 +1,4 @@
-heavy_leather_helmet:
+heavy_leather_layer_helmet:
   type: item
   material: leather_helmet
   display name: <&4>Heavy Leather Helmet
@@ -6,9 +6,9 @@ heavy_leather_helmet:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 3
-    color: <color[#0303FD]>
+    color: <color[#COLOR]>
 
-heavy_leather_chestplate:
+heavy_leather_layer_chestplate:
   type: item
   material: leather_chestplate
   display name: <&4>Heavy Leather Chestplate
@@ -16,9 +16,9 @@ heavy_leather_chestplate:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 3
-    color: <color[#0303FD]>
+    color: <color[#COLOR]>
 
-heavy_leather_leggings:
+heavy_leather_layer_leggings:
   type: item
   material: leather_leggings
   display name: <&4>Heavy Leather Leggings
@@ -26,9 +26,9 @@ heavy_leather_leggings:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 3
-    color: <color[#0303FD]>
+    color: <color[#COLOR]>
 
-heavy_leather_boots:
+heavy_leather_layer_boots:
   type: item
   material: leather_boots
   display name: <&4>Heavy Leather Boots
@@ -36,4 +36,4 @@ heavy_leather_boots:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 3
-    color: <color[#0303FD]>
+    color: <color[#COLOR]>

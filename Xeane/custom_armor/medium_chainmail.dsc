@@ -1,39 +1,39 @@
-medium_chainmail_helmet:
+medium_chainmail_layer_helmet:
   type: item
   material: leather_helmet
   display name: <&4>Medium Chainmail Helmet
   lore:
     - Let's Fuckin Go!
   mechanisms:
-    custom_model_data: 8
-    color: <color[#0803FD]>
+    custom_model_data: 9
+    color: <color[#COLOR]>
 
-medium_chainmail_chestplate:
+medium_chainmail_layer_chestplate:
   type: item
   material: leather_chestplate
   display name: <&4>Medium Chainmail Chestplate
   lore:
     - Let's Fuckin Go!
   mechanisms:
-    custom_model_data: 8
-    color: <color[#0803FD]>
+    custom_model_data: 9
+    color: <color[#COLOR]>
 
-medium_chainmail_leggings:
+medium_chainmail_layer_leggings:
   type: item
   material: leather_leggings
   display name: <&4>Medium Chainmail Leggings
   lore:
     - Let's Fuckin Go!
   mechanisms:
-    custom_model_data: 8
-    color: <color[#0803FD]>
+    custom_model_data: 9
+    color: <color[#COLOR]>
 
-medium_chainmail_boots:
+medium_chainmail_layer_boots:
   type: item
   material: leather_boots
   display name: <&4>Medium Chainmail Boots
   lore:
     - Let's Fuckin Go!
   mechanisms:
-    custom_model_data: 8
-    color: <color[#0803FD]>
+    custom_model_data: 9
+    color: <color[#COLOR]>

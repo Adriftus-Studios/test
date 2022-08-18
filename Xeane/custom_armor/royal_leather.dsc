@@ -1,4 +1,4 @@
-royal_leather_helmet:
+royal_leather_layer_helmet:
   type: item
   material: leather_helmet
   display name: <&4>Royal Leather Helmet
@@ -6,9 +6,9 @@ royal_leather_helmet:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 4
-    color: <color[#0403FD]>
+    color: <color[#COLOR]>
 
-royal_leather_chestplate:
+royal_leather_layer_chestplate:
   type: item
   material: leather_chestplate
   display name: <&4>Royal Leather Chestplate
@@ -16,9 +16,9 @@ royal_leather_chestplate:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 4
-    color: <color[#0403FD]>
+    color: <color[#COLOR]>
 
-royal_leather_leggings:
+royal_leather_layer_leggings:
   type: item
   material: leather_leggings
   display name: <&4>Royal Leather Leggings
@@ -26,9 +26,9 @@ royal_leather_leggings:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 4
-    color: <color[#0403FD]>
+    color: <color[#COLOR]>
 
-royal_leather_boots:
+royal_leather_layer_boots:
   type: item
   material: leather_boots
   display name: <&4>Royal Leather Boots
@@ -36,4 +36,4 @@ royal_leather_boots:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 4
-    color: <color[#0403FD]>
+    color: <color[#COLOR]>
