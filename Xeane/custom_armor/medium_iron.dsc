@@ -6,7 +6,7 @@ medium_iron_layer_helmet:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 15
-    color: <color[#COLOR]>
+    color: <color[#0F03FD]>
 
 medium_iron_layer_chestplate:
   type: item
@@ -16,7 +16,7 @@ medium_iron_layer_chestplate:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 15
-    color: <color[#COLOR]>
+    color: <color[#0F03FD]>
 
 medium_iron_layer_leggings:
   type: item
@@ -26,7 +26,7 @@ medium_iron_layer_leggings:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 15
-    color: <color[#COLOR]>
+    color: <color[#0F03FD]>
 
 medium_iron_layer_boots:
   type: item
@@ -36,4 +36,4 @@ medium_iron_layer_boots:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 15
-    color: <color[#COLOR]>
+    color: <color[#0F03FD]>

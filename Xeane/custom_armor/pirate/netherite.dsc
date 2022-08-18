@@ -6,7 +6,7 @@ netherite_layer_helmet:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 36
-    color: <color[#COLOR]>
+    color: <color[#2503FD]>
 
 netherite_layer_chestplate:
   type: item
@@ -16,7 +16,7 @@ netherite_layer_chestplate:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 36
-    color: <color[#COLOR]>
+    color: <color[#2503FD]>
 
 netherite_layer_leggings:
   type: item
@@ -26,7 +26,7 @@ netherite_layer_leggings:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 36
-    color: <color[#COLOR]>
+    color: <color[#2503FD]>
 
 netherite_layer_boots:
   type: item
@@ -36,4 +36,4 @@ netherite_layer_boots:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 36
-    color: <color[#COLOR]>
+    color: <color[#2503FD]>

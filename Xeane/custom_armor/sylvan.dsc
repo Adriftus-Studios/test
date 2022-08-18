@@ -6,7 +6,7 @@ sylvan_layer_helmet:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 7
-    color: <color[#COLOR]>
+    color: <color[#0703FD]>
 
 sylvan_layer_chestplate:
   type: item
@@ -16,7 +16,7 @@ sylvan_layer_chestplate:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 7
-    color: <color[#COLOR]>
+    color: <color[#0703FD]>
 
 sylvan_layer_leggings:
   type: item
@@ -26,7 +26,7 @@ sylvan_layer_leggings:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 7
-    color: <color[#COLOR]>
+    color: <color[#0703FD]>
 
 sylvan_layer_boots:
   type: item
@@ -36,4 +36,4 @@ sylvan_layer_boots:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 7
-    color: <color[#COLOR]>
+    color: <color[#0703FD]>

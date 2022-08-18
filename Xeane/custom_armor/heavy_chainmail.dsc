@@ -6,7 +6,7 @@ heavy_chainmail_layer_helmet:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 10
-    color: <color[#COLOR]>
+    color: <color[#0A03FD]>
 
 heavy_chainmail_layer_chestplate:
   type: item
@@ -16,7 +16,7 @@ heavy_chainmail_layer_chestplate:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 10
-    color: <color[#COLOR]>
+    color: <color[#0A03FD]>
 
 heavy_chainmail_layer_leggings:
   type: item
@@ -26,7 +26,7 @@ heavy_chainmail_layer_leggings:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 10
-    color: <color[#COLOR]>
+    color: <color[#0A03FD]>
 
 heavy_chainmail_layer_boots:
   type: item
@@ -36,4 +36,4 @@ heavy_chainmail_layer_boots:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 10
-    color: <color[#COLOR]>
+    color: <color[#0A03FD]>

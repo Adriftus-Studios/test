@@ -6,7 +6,7 @@ leather_layer_helmet:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 6
-    color: <color[#COLOR]>
+    color: <color[#0603FD]>
 
 leather_layer_chestplate:
   type: item
@@ -16,7 +16,7 @@ leather_layer_chestplate:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 6
-    color: <color[#COLOR]>
+    color: <color[#0603FD]>
 
 leather_layer_leggings:
   type: item
@@ -26,7 +26,7 @@ leather_layer_leggings:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 6
-    color: <color[#COLOR]>
+    color: <color[#0603FD]>
 
 leather_layer_boots:
   type: item
@@ -36,4 +36,4 @@ leather_layer_boots:
     - Let's Fuckin Go!
   mechanisms:
     custom_model_data: 6
-    color: <color[#COLOR]>
+    color: <color[#0603FD]>
