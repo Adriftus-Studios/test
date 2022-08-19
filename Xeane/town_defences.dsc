@@ -14,10 +14,13 @@ town_defence:
   debug: false
   entity_type: armor_stand
   mechanisms:
+    custom_name: Sentinel Tower
+    custom_name_visible: false
     marker: false
     visible: false
   flags:
     on_entity_added: custom_object_update
+    no_morb: true
 
 town_defence_item:
   type: item
