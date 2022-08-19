@@ -55,7 +55,7 @@ town_defence_add_target:
   definitions: town|target
   script:
     - stop if:<[town].has_flag[active_defences].not>
-    - flag town active_outlaws:->:<[target]>
+    - flag <[town]> active_outlaws:->:<[target]>
     - if <[town].flag[active_outlaws].size> == 1:
       - run town_defence_loop def:<[town]>
 
