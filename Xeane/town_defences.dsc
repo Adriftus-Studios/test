@@ -8,7 +8,6 @@ custom_object_town_defence:
   remove_task: town_defence_remove
   barrier_locations:
     - <[location]>
-    - <[location].above>
 
 town_defence:
   type: entity
