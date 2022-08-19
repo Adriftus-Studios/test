@@ -78,12 +78,12 @@ town_defence_after_place:
 town_defence_remove:
   type: task
   debug: false
+  definitions: entity
   script:
-    - define entity <context.location.flag[custom_object]>
     - flag <[entity].location.town> active_defences:<-:<[entity]>
     - if <[entity].location.town.flag[active_defences].is_empty>:
       - flag <[entity].location.town> active_defences:!
-    - run custom_object_remove defL<[entity]>
+    - run custom_object_remove def:<[entity]>
 
 
 town_defence_loop:
