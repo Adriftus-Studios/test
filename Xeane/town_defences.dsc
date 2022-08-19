@@ -37,10 +37,10 @@ town_defence_watch:
   type: world
   debug: false
   events:
-    on player enters town:
+    on towny player enters town:
       - if <context.town.outlaws.contains[<player>]>:
         - run town_defence_add_target def:<context.town>|<player>
-    on player exits town:
+    on towny player exits town:
       - if <context.town.has_flag[active_outlaws]> && <context.town.flag[active_outlaws].contains[<player>]>:
         - flag <context.town> active_outlaws:<-:<player>
         - if <context.town.flag[active_outlaws].is_empty>:
