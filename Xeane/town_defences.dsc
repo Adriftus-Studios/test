@@ -65,6 +65,7 @@ town_defence_checks:
 town_defence_after_place:
   type: task
   debug: false
+  definitions: entity
   script:
     - flag <[location].town> active_defences:->:<[entity]>
 
