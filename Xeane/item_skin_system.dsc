@@ -171,4 +171,4 @@ item_skin_system_skin_item:
   type: task
   debug: false
   script:
-    - inventory adjust slot:5 d:<context.inventory> custom_model_data:<context.item.custom_model_data>
+    - inventory set slot:5 d:<context.inventory> o:<context.inventory.slot[5].with[material=<context.item.material>;custom_model_data:<context.item.custom_model_data>;color=<context.item.color>]>
