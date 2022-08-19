@@ -91,9 +91,9 @@ town_defence_loop:
   debug: false
   definitions: town
   script:
-    - while <[town].has_flag[active_outlaws]> && <[town].has_flag[town_defences]>:
+    - while <[town].has_flag[active_outlaws]> && <[town].has_flag[active_defences]>:
       - foreach <[town].flag[active_outlaws]> as:outlaw:
-        - foreach <[town].flag[town_defences].filter[can_see[<[outlaw]>]]> as:defence:
+        - foreach <[town].flag[active_defences].filter[can_see[<[outlaw]>]]> as:defence:
           - run town_defence_attack def:<[defence]>|<[outlaw]>
           - wait 2t
         - wait 1t
