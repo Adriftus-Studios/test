@@ -14,7 +14,7 @@ town_defence:
   debug: false
   entity_type: armor_stand
   mechanisms:
-    marker: true
+    marker: false
     visible: false
   flags:
     on_entity_added: custom_object_update
