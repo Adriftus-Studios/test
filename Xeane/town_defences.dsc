@@ -16,6 +16,7 @@ town_defence:
   mechanisms:
     custom_name: Sentinel Tower
     custom_name_visible: true
+    marker: true
     visible: false
   flags:
     on_entity_added: custom_object_update
