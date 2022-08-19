@@ -171,4 +171,7 @@ item_skin_system_skin_item:
   type: task
   debug: false
   script:
-    - inventory set slot:5 d:<context.inventory> o:<context.inventory.slot[5].with[material=<context.item.material>].with[color=<context.item.color>].with[custom_model_data:<context.item.custom_model_data>]>
+    - define item <context.item.with[material=<context.item.material>]>
+    - adjust def:item material:<context.item.material>
+    - adjust def:item custom_model_data:<context.item.custom_model_data>
+    - inventory set slot:5 d:<context.inventory> o:<[item]>
