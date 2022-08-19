@@ -147,16 +147,16 @@ item_skin_system_update:
     - define inventory <context.inventory>
     - define material <[item].material>
     - if <[item].material.name.advanced_matches[*_leggings|*_boots|*_helmet|*_chestplate]>:
-      - define skin_map <script[item_skin_system_data].parsed_key[data.armor]>
+      - define skin_map <script[item_skin_system_data].parsed_key[armor]>
     - else:
-      - define skin_map <script[item_skin_system_data].parsed_key[data.weapons.<[material].name>]>
-    - define keys <[skin_map].keys>
+      - define skin_map <script[item_skin_system_data].parsed_key[weapons.<[material].name>]>
     - foreach <script.data_key[data.skin_slots]> as:slot:
-      - define key <[keys].get[<[loop_index]>].if_null[air]>
+      - define key <[skin_map].keys.get[<[loop_index]>]>
+      - define map <[skin_map.<[key]>]>
       - if <[key]> == air:
         - inventory set slot:<[slot]> d:<[inventory]> o:air
       - else:
-        - inventory set slot:<[slot]> d:<[inventory]> o:<[item].with[material=leather_<[material].after[_]>;custom_model_data=<[key]>;display=<[skin_map].get[<[key]>]>;flag=run_script:item_skin_system_skin_item]>
+        - inventory set slot:<[slot]> d:<[inventory]> o:<[item].with[material=leather_<[material].after[_]>;color=<[map].get[color]>;custom_model_data=<[map].get[CMD]>;display=<[key]>;flag=run_script:item_skin_system_skin_item]>
 
 item_skin_system_events:
   type: world
