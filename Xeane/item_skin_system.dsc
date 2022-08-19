@@ -1,21 +1,134 @@
 item_skin_system_data:
   type: data
-  diamond_axe:
-    1000: <&b>Celestial
-    1001: <&2>Blue
-    1002: <&b>Bright
-    1003: <&6>Nordic
-    1004: <&c>Viking
-    1005: <&d>Wizard
-    1006: <&4>Bloody
-    1007: <&e>Double
-    1008: <&b>Glowing
-    1009: <&7>Black Handle
-    1010: <&1>Natural
-    1011: <&b>Shimmering
-    1012: <&5>Fireman
-    1013: <&c>Battle
-    1014: <element[Christmas].color_gradient[from=<&c>;to=<&2>]>
+  weapons:
+    diamond_axe:
+      1000: <&b>Celestial
+      1001: <&2>Blue
+      1002: <&b>Bright
+      1003: <&6>Nordic
+      1004: <&c>Viking
+      1005: <&d>Wizard
+      1006: <&4>Bloody
+      1007: <&e>Double
+      1008: <&b>Glowing
+      1009: <&7>Black Handle
+      1010: <&1>Natural
+      1011: <&b>Shimmering
+      1012: <&5>Fireman
+      1013: <&c>Battle
+      1014: <element[Christmas].color_gradient[from=<&c>;to=<&2>]>
+  armor:
+    light_leather:
+      color: <color[#0103FD]>
+      CMD: 1
+    medium_leather:
+      color: <color[#0203FD]>
+      CMD: 2
+    heavy_leather:
+      color: <color[#0303FD]>
+      CMD: 3
+    royal_leather:
+      color: <color[#0403FD]>
+      CMD: 4
+    ninja_leather:
+      color: <color[#0503FD]>
+      CMD: 5
+    pirate_leather:
+      color: <color[#0603FD]>
+      CMD: 6
+    sylvan:
+      color: <color[#0703FD]>
+      CMD: 7
+    light_chainmail:
+      color: <color[#0803FD]>
+      CMD: 8
+    medium_chainmail:
+      color: <color[#0903FD]>
+      CMD: 9
+    heavy_chainmail:
+      color: <color[#0A03FD]>
+      CMD: 10
+    royal_chainmail:
+      color: <color[#0B03FD]>
+      CMD: 11
+    samurai_chainmail:
+      color: <color[#0C03FD]>
+      CMD: 12
+    pirate_chainmail:
+      color: <color[#0D03FD]>
+      CMD: 13
+    light_iron:
+      color: <color[#0E03FD]>
+      CMD: 14
+    medium_iron:
+      color: <color[#0F03FD]>
+      CMD: 15
+    heavy_iron:
+      color: <color[#1003FD]>
+      CMD: 16
+    royal_iron:
+      color: <color[#1103FD]>
+      CMD: 17
+    samurai_iron:
+      color: <color[#1203FD]>
+      CMD: 18
+    pirate_iron:
+      color: <color[#1303FD]>
+      CMD: 19
+    light_gold:
+      color: <color[#1403FD]>
+      CMD: 20
+    medium_gold:
+      color: <color[#1503FD]>
+      CMD: 21
+    heavy_gold:
+      color: <color[#1603FD]>
+      CMD: 22
+    royal_gold:
+      color: <color[#1703FD]>
+      CMD: 23
+    samurai_gold:
+      color: <color[#1803FD]>
+      CMD: 24
+    pirate_gold:
+      color: <color[#1903FD]>
+      CMD: 25
+    light_diamond:
+      color: <color[#1A03FD]>
+      CMD: 26
+    medium_diamond:
+      color: <color[#1B03FD]>
+      CMD: 27
+    heavy_diamond:
+      color: <color[#1C03FD]>
+      CMD: 28
+    royal_diamond:
+      color: <color[#1D03FD]>
+      CMD: 29
+    samurai_diamond:
+      color: <color[#1E03FD]>
+      CMD: 30
+    pirate_diamond:
+      color: <color[#1F03FD]>
+      CMD: 31
+    light_netherite:
+      color: <color[#2003FD]>
+      CMD: 32
+    medium_netherite:
+      color: <color[#2103FD]>
+      CMD: 33
+    heavy_netherite:
+      color: <color[#2203FD]>
+      CMD: 34
+    royal_netherite:
+      color: <color[#2303FD]>
+      CMD: 35
+    samurai_netherite:
+      color: <color[#2403FD]>
+      CMD: 36
+    pirate_netherite:
+      color: <color[#2503FD]>
+      CMD: 37
 
 item_skin_system_inventory:
   type: inventory
@@ -33,14 +146,17 @@ item_skin_system_update:
   script:
     - define inventory <context.inventory>
     - define material <[item].material>
-    - define skin_map <script[item_skin_system_data].parsed_key[<[material].name>]>
+    - if <[item].material.name.advanced_matches[*_leggings|*_boots|*_helmet|*_chestplate]>:
+      - define skin_map <script[item_skin_system_data].parsed_key[data.armor]>
+    - else:
+      - define skin_map <script[item_skin_system_data].parsed_key[data.weapons.<[material].name>]>
     - define keys <[skin_map].keys>
     - foreach <script.data_key[data.skin_slots]> as:slot:
       - define key <[keys].get[<[loop_index]>].if_null[air]>
       - if <[key]> == air:
         - inventory set slot:<[slot]> d:<[inventory]> o:air
       - else:
-        - inventory set slot:<[slot]> d:<[inventory]> o:<[item].with[custom_model_data=<[key]>;display=<[skin_map].get[<[key]>]>;flag=run_script:item_skin_system_skin_item]>
+        - inventory set slot:<[slot]> d:<[inventory]> o:<[item].with[material=leather_<[material].after[_]>;custom_model_data=<[key]>;display=<[skin_map].get[<[key]>]>;flag=run_script:item_skin_system_skin_item]>
 
 item_skin_system_events:
   type: world
