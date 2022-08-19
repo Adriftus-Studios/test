@@ -17,6 +17,9 @@ town_defence:
   mechanisms:
     custom_name: Sentinel Tower
     custom_name_visible: true
+  flags:
+    right_click_script: custom_object_place
+    custom_object: town_defence
 
 town_defence_item:
   type: item
