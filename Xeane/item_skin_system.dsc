@@ -19,114 +19,151 @@ item_skin_system_data:
       1014: <element[Christmas].color_gradient[from=<&c>;to=<&2>]>
   armor:
     light_leather:
+      display: <&e>Light Leather
       color: <color[#0103FD]>
       CMD: 1
     medium_leather:
+      display: <&e>Medium Leather
       color: <color[#0203FD]>
       CMD: 2
     heavy_leather:
+      display: <&e>Heavy Leather
       color: <color[#0303FD]>
       CMD: 3
     royal_leather:
+      display: <&e>Royal Leather
       color: <color[#0403FD]>
       CMD: 4
     ninja_leather:
+      display: <&e>Ninja Leather
       color: <color[#0503FD]>
       CMD: 5
     pirate_leather:
+      display: <&e>Pirate Leather
       color: <color[#0603FD]>
       CMD: 6
-    sylvan:
-      color: <color[#0703FD]>
-      CMD: 7
+    #sylvan:
+      #display: <&e>Sylvan
+      #color: <color[#0703FD]>
+      #CMD: 7
     light_chainmail:
+      display: <&e>Light Chainmail
       color: <color[#0803FD]>
       CMD: 8
     medium_chainmail:
+      display: <&e>Medium Chainmail
       color: <color[#0903FD]>
       CMD: 9
     heavy_chainmail:
+      display: <&e>Heavy Chainmail
       color: <color[#0A03FD]>
       CMD: 10
     royal_chainmail:
+      display: <&e>Royal Chainmail
       color: <color[#0B03FD]>
       CMD: 11
     samurai_chainmail:
+      display: <&e>Samurai Chainmail
       color: <color[#0C03FD]>
       CMD: 12
     pirate_chainmail:
+      display: <&e>Pirate Chainmail
       color: <color[#0D03FD]>
       CMD: 13
     light_iron:
+      display: <&e>Light Iron
       color: <color[#0E03FD]>
       CMD: 14
     medium_iron:
+      display: <&e>Medium Iron
       color: <color[#0F03FD]>
       CMD: 15
     heavy_iron:
+      display: <&e>Heavy Iron
       color: <color[#1003FD]>
       CMD: 16
     royal_iron:
+      display: <&e>Royal Iron
       color: <color[#1103FD]>
       CMD: 17
     samurai_iron:
+      display: <&e>Samurai Iron
       color: <color[#1203FD]>
       CMD: 18
     pirate_iron:
+      display: <&e>Pirate Iron
       color: <color[#1303FD]>
       CMD: 19
     light_gold:
+      display: <&e>Light Gold
       color: <color[#1403FD]>
       CMD: 20
     medium_gold:
+      display: <&e>Medium Gold
       color: <color[#1503FD]>
       CMD: 21
     heavy_gold:
+      display: <&e>Heavy Gold
       color: <color[#1603FD]>
       CMD: 22
     royal_gold:
+      display: <&e>Royal Gold
       color: <color[#1703FD]>
       CMD: 23
     samurai_gold:
+      display: <&e>Samurai Gold
       color: <color[#1803FD]>
       CMD: 24
     pirate_gold:
+      display: <&e>Pirate Gold
       color: <color[#1903FD]>
       CMD: 25
     light_diamond:
+      display: <&e>Light Diamond
       color: <color[#1A03FD]>
       CMD: 26
     medium_diamond:
+      display: <&e>Medium Diamond
       color: <color[#1B03FD]>
       CMD: 27
     heavy_diamond:
+      display: <&e>Heavy Diamond
       color: <color[#1C03FD]>
       CMD: 28
     royal_diamond:
+      display: <&e>Royal Diamond
       color: <color[#1D03FD]>
       CMD: 29
     samurai_diamond:
+      display: <&e>Samurai Diamond
       color: <color[#1E03FD]>
       CMD: 30
     pirate_diamond:
+      display: <&e>Pirate Diamond
       color: <color[#1F03FD]>
       CMD: 31
     light_netherite:
+      display: <&e>Light Netherite
       color: <color[#2003FD]>
       CMD: 32
     medium_netherite:
+      display: <&e>Medium Netherite
       color: <color[#2103FD]>
       CMD: 33
     heavy_netherite:
+      display: <&e>Heavy Netherite
       color: <color[#2203FD]>
       CMD: 34
     royal_netherite:
+      display: <&e>Royal Netherite
       color: <color[#2303FD]>
       CMD: 35
     samurai_netherite:
+      display: <&e>Samurai Netherite
       color: <color[#2403FD]>
       CMD: 36
     pirate_netherite:
+      display: <&e>Pirate Netherite
       color: <color[#2503FD]>
       CMD: 37
 
