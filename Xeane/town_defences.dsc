@@ -99,7 +99,7 @@ town_defence_loop:
         - wait 1t
       - wait 1t
     - wait 1t
-    - run town_defence_loop def:<[town]>
+    - run town_defence_loop def:<[town]> if:<[town].has_flag[active_outlaws]>
 
 town_defence_attack:
   type: task
