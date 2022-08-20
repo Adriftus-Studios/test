@@ -327,7 +327,7 @@ item_skin_system_data:
       GENERIC_KNOCKBACK_RESISTANCE:
           1:
             operation: ADD_NUMBER
-            amount: 1
+            amount: 0.1
             slot: feet
     netherite_leggings:
       GENERIC_ARMOR:
@@ -343,7 +343,7 @@ item_skin_system_data:
       GENERIC_KNOCKBACK_RESISTANCE:
           1:
             operation: ADD_NUMBER
-            amount: 1
+            amount: 0.1
             slot: legs
     netherite_chestplate:
       GENERIC_ARMOR:
@@ -359,7 +359,7 @@ item_skin_system_data:
       GENERIC_KNOCKBACK_RESISTANCE:
           1:
             operation: ADD_NUMBER
-            amount: 1
+            amount: 0.1
             slot: chest
     netherite_helmet:
       GENERIC_ARMOR:
@@ -375,7 +375,7 @@ item_skin_system_data:
       GENERIC_KNOCKBACK_RESISTANCE:
           1:
             operation: ADD_NUMBER
-            amount: 1
+            amount: 0.1
             slot: chest
 
 item_skin_system_inventory:
