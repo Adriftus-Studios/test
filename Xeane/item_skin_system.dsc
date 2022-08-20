@@ -428,4 +428,5 @@ item_skin_system_skin_item:
     - adjust def:item color:<context.item.color>
     - adjust def:item custom_model_data:<context.item.custom_model_data>
     - adjust def:item attribute_modifiers:<context.item.attribute_modifiers>
+    - flag <[item]> run_script:!
     - inventory set slot:5 d:<context.inventory> o:<[item]>
