@@ -441,6 +441,7 @@ item_skin_system_clear:
   debug: false
   script:
     - determine passively cancelled:false
+    - adjust <player> item_on_cursor:<context.item.with[flag=run_script:!]>
     - foreach <script[item_skin_system_update].data_key[data.skin_slots]>:
       - inventory set slot:<[value]> o:air d:<context.clicked_inventory>
-    - determine <context.item.with[flag=run_script:!]>
+    - determine air
