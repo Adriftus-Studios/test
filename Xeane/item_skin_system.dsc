@@ -166,6 +166,217 @@ item_skin_system_data:
       display: <&e>Pirate Netherite
       color: <color[#2503FD]>
       CMD: 37
+  vanilla_attributes:
+    ## Leather
+    leather_boots:
+      GENERIC_ARMOR:
+          1:
+            operation: ADD_NUMBER
+            amount: 1
+            slot: feet
+    leather_leggings:
+      GENERIC_ARMOR:
+          1:
+            operation: ADD_NUMBER
+            amount: 2
+            slot: legs
+    leather_chestplate:
+      GENERIC_ARMOR:
+          1:
+            operation: ADD_NUMBER
+            amount: 3
+            slot: chest
+    leather_helmet:
+      GENERIC_ARMOR:
+          1:
+            operation: ADD_NUMBER
+            amount: 1
+            slot: chest
+    ## Chainmail
+    chainmail_boots:
+      GENERIC_ARMOR:
+          1:
+            operation: ADD_NUMBER
+            amount: 1
+            slot: feet
+    chainmail_leggings:
+      GENERIC_ARMOR:
+          1:
+            operation: ADD_NUMBER
+            amount: 4
+            slot: legs
+    chainmail_chestplate:
+      GENERIC_ARMOR:
+          1:
+            operation: ADD_NUMBER
+            amount: 5
+            slot: chest
+    chainmail_helmet:
+      GENERIC_ARMOR:
+          1:
+            operation: ADD_NUMBER
+            amount: 2
+            slot: chest
+    ## Iron
+    iron_boots:
+      GENERIC_ARMOR:
+          1:
+            operation: ADD_NUMBER
+            amount: 2
+            slot: feet
+    iron_leggings:
+      GENERIC_ARMOR:
+          1:
+            operation: ADD_NUMBER
+            amount: 5
+            slot: legs
+    iron_chestplate:
+      GENERIC_ARMOR:
+          1:
+            operation: ADD_NUMBER
+            amount: 6
+            slot: chest
+    iron_helmet:
+      GENERIC_ARMOR:
+          1:
+            operation: ADD_NUMBER
+            amount: 2
+            slot: chest
+    ## Leather
+    golden_boots:
+      GENERIC_ARMOR:
+          1:
+            operation: ADD_NUMBER
+            amount: 1
+            slot: feet
+    golden_leggings:
+      GENERIC_ARMOR:
+          1:
+            operation: ADD_NUMBER
+            amount: 3
+            slot: legs
+    golden_chestplate:
+      GENERIC_ARMOR:
+          1:
+            operation: ADD_NUMBER
+            amount: 5
+            slot: chest
+    golden_helmet:
+      GENERIC_ARMOR:
+          1:
+            operation: ADD_NUMBER
+            amount: 2
+            slot: chest
+    ## DIAMOND
+    diamond_boots:
+      GENERIC_ARMOR:
+          1:
+            operation: ADD_NUMBER
+            amount: 3
+            slot: feet
+      GENERIC_ARMOR_TOUGHNESS:
+          1:
+            operation: ADD_NUMBER
+            amount: 2
+            slot: feet
+    diamond_leggings:
+      GENERIC_ARMOR:
+          1:
+            operation: ADD_NUMBER
+            amount: 6
+            slot: legs
+      GENERIC_ARMOR_TOUGHNESS:
+          1:
+            operation: ADD_NUMBER
+            amount: 2
+            slot: legs
+    diamond_chestplate:
+      GENERIC_ARMOR:
+          1:
+            operation: ADD_NUMBER
+            amount: 8
+            slot: chest
+      GENERIC_ARMOR_TOUGHNESS:
+          1:
+            operation: ADD_NUMBER
+            amount: 2
+            slot: chest
+    diamond_helmet:
+      GENERIC_ARMOR:
+          1:
+            operation: ADD_NUMBER
+            amount: 3
+            slot: chest
+      GENERIC_ARMOR_TOUGHNESS:
+          1:
+            operation: ADD_NUMBER
+            amount: 2
+            slot: chest
+    ## NETHERITE
+    netherite_boots:
+      GENERIC_ARMOR:
+          1:
+            operation: ADD_NUMBER
+            amount: 3
+            slot: feet
+      GENERIC_ARMOR_TOUGHNESS:
+          1:
+            operation: ADD_NUMBER
+            amount: 3
+            slot: feet
+      GENERIC_KNOCKBACK_RESISTANCE:
+          1:
+            operation: ADD_NUMBER
+            amount: 1
+            slot: feet
+    netherite_leggings:
+      GENERIC_ARMOR:
+          1:
+            operation: ADD_NUMBER
+            amount: 6
+            slot: legs
+      GENERIC_ARMOR_TOUGHNESS:
+          1:
+            operation: ADD_NUMBER
+            amount: 3
+            slot: legs
+      GENERIC_KNOCKBACK_RESISTANCE:
+          1:
+            operation: ADD_NUMBER
+            amount: 1
+            slot: feet
+    netherite_chestplate:
+      GENERIC_ARMOR:
+          1:
+            operation: ADD_NUMBER
+            amount: 8
+            slot: chest
+      GENERIC_ARMOR_TOUGHNESS:
+          1:
+            operation: ADD_NUMBER
+            amount: 3
+            slot: chest
+      GENERIC_KNOCKBACK_RESISTANCE:
+          1:
+            operation: ADD_NUMBER
+            amount: 1
+            slot: feet
+    netherite_helmet:
+      GENERIC_ARMOR:
+          1:
+            operation: ADD_NUMBER
+            amount: 3
+            slot: chest
+      GENERIC_ARMOR_TOUGHNESS:
+          1:
+            operation: ADD_NUMBER
+            amount: 3
+            slot: chest
+      GENERIC_KNOCKBACK_RESISTANCE:
+          1:
+            operation: ADD_NUMBER
+            amount: 1
+            slot: feet
 
 item_skin_system_inventory:
   type: inventory
@@ -182,7 +393,7 @@ item_skin_system_update:
   definitions: item
   script:
     - define inventory <context.inventory>
-    - define material <[item].material>
+    - define material <[item].flag[original_item].if_null[<[item].material>]>
     - if <[item].material.name.advanced_matches[*_leggings|*_boots|*_helmet|*_chestplate]>:
       - define skin_map <script[item_skin_system_data].parsed_key[armor]>
     - else:
@@ -197,8 +408,8 @@ item_skin_system_update:
         - adjust def:new_item material:leather_<[material].after[_]>
         - adjust def:item color:<[map].get[color]>
         - adjust def:new_item custom_model_data:<[map].get[CMD]>
-        - adjust def:new_item attribute_modifiers:<[item].attribute_modifiers>
-        - inventory set slot:<[slot]> d:<[inventory]> o:<[new_item].with[display=<[key]>;flag=run_script:item_skin_system_skin_item]>
+        - adjust def:new_item attribute_modifiers:<script[item_skin_system_data].data_key[vanilla_attributes.<[material]>]>
+        - inventory set slot:<[slot]> d:<[inventory]> o:<[new_item].with[display=<[key]>;flag=run_script:item_skin_system_skin_item;attribute_modifiers=<[modifiers]>]>
 
 item_skin_system_events:
   type: world
