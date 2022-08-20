@@ -420,10 +420,10 @@ item_skin_system_events:
   debug: false
   events:
     on player clicks in item_skin_system_inventory slot:5 bukkit_priority:HIGHEST ignorecancelled:true:
-      - stop if:<context.item.material.name.equals[air].not>
-      - determine passively cancelled:false
-      - define item <context.cursor_item>
-      - inject item_skin_system_update
+      - if <context.item.material.name> == air:
+        - determine passively cancelled:false
+        - define item <context.cursor_item>
+        - inject item_skin_system_update
 
 item_skin_system_skin_item:
   type: task
@@ -433,5 +433,14 @@ item_skin_system_skin_item:
     - adjust def:item color:<context.item.color>
     - adjust def:item custom_model_data:<context.item.custom_model_data>
     - adjust def:item attribute_modifiers:<context.item.attribute_modifiers>
-    - flag <[item]> run_script:!
+    - flag <[item]> run_script:item_skin_system_clear
     - inventory set slot:5 d:<context.inventory> o:<[item]>
+
+item_skin_system_clear:
+  type: task
+  debug: false
+  script:
+    - determine passively cancelled:false
+    - determine passively <context.item.with[flag=run_script:!]>
+    - foreach <script.data_key[data.skin_slots]>:
+      - inventory set slot:<[value]> o:air d:<context.clicked_inventory>
