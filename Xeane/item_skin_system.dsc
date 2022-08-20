@@ -409,7 +409,7 @@ item_skin_system_update:
         - adjust def:item color:<[map].get[color]>
         - adjust def:new_item custom_model_data:<[map].get[CMD]>
         - adjust def:new_item attribute_modifiers:<script[item_skin_system_data].data_key[vanilla_attributes.<[material]>]>
-        - inventory set slot:<[slot]> d:<[inventory]> o:<[new_item].with[display=<[map].get[display]>;flag=run_script:item_skin_system_skin_item;attribute_modifiers=<[modifiers]>]>
+        - inventory set slot:<[slot]> d:<[inventory]> "o:<[new_item].with[display=<[map].get[display]> <[material].after[_].to_titlecase>;flag=run_script:item_skin_system_skin_item;attribute_modifiers=<[modifiers]>]>"
 
 item_skin_system_events:
   type: world
