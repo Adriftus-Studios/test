@@ -442,5 +442,5 @@ item_skin_system_clear:
   script:
     - determine passively cancelled:false
     - determine passively <context.item.with[flag=run_script:!]>
-    - foreach <script.data_key[data.skin_slots]>:
+    - foreach <script[item_skin_system_update].data_key[data.skin_slots]>:
       - inventory set slot:<[value]> o:air d:<context.clicked_inventory>
