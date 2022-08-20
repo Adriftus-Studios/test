@@ -16,7 +16,7 @@ multitool_events:
         - case pickaxe:
           - inventory adjust slot:<player.held_item_slot> material:netherite_pickaxe
         - case shovel:
-          - stop if:<context.click.equals[RIGHT_CLICK_BLOCK]>
+          - stop if:<context.click_type.equals[RIGHT_CLICK_BLOCK]>
           - inventory adjust slot:<player.held_item_slot> material:netherite_shovel
         - case hoe:
           - inventory adjust slot:<player.held_item_slot> material:netherite_hoe
