@@ -393,7 +393,7 @@ item_skin_system_update:
   definitions: item
   script:
     - define inventory <context.inventory>
-    - define material <[item].flag[original_item].if_null[<[item].material>]>
+    - define material <[item].flag[original_item].if_null[<[item].material.name>]>
     - if <[item].material.name.advanced_matches[*_leggings|*_boots|*_helmet|*_chestplate]>:
       - define skin_map <script[item_skin_system_data].parsed_key[armor]>
     - else:
