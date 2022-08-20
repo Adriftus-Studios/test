@@ -420,6 +420,7 @@ item_skin_system_events:
   debug: false
   events:
     on player clicks in item_skin_system_inventory slot:5 bukkit_priority:HIGHEST ignorecancelled:true:
+      - stop if:<context.item.exists>
       - determine passively cancelled:false
       - define item <context.cursor_item>
       - inject item_skin_system_update
