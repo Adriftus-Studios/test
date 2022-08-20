@@ -410,7 +410,7 @@ item_skin_system_update:
       - else:
         - define new_item <[item]>
         - adjust def:new_item material:leather_<[material].after[_]>
-        - adjust def:item color:<[map].get[color]>
+        - adjust def:new_item color:<[map].get[color]>
         - adjust def:new_item custom_model_data:<[map].get[CMD]>
         - adjust def:new_item attribute_modifiers:<script[item_skin_system_data].data_key[vanilla_attributes.<[material]>]>
         - inventory set slot:<[slot]> d:<[inventory]> "o:<[new_item].with[display=<[map].get[display]> <[material].after[_].to_titlecase>;flag=run_script:item_skin_system_skin_item;attribute_modifiers=<[modifiers]>]>"
