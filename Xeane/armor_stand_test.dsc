@@ -28,10 +28,8 @@ armor_stand_teleport:
     - define as_pose_map <[entity].armor_pose_map.get[head]>
     - define head_direction <proc[armor_stand_get_direction].context[<[as_pose_map].y.mul[-1]>|<[as_pose_map].x>|<[as_pose_map].z.mul[-1]>]>
     #- define head_direction <proc[armor_stand_rot_around_y].context[<[head_direction]>|<[entity].location.yaw.to_radians>]>
-    - define new_x <[loc].x.add[<[head_direction].mul[1]>]>
-    - define new_y <[loc].y.add[<[head_direction].mul[1]>]>
-    - define new_z <[loc].z.add[<[head_direction].mul[1]>]>
-    - teleport <[tp_target]> <location[<[new_x]>,<[new_y]>,<[new_z]>,<[entity].world>]>
+    - define final_vector <[loc].add[<[head_direction]>]>
+    - teleport <[tp_target]> <[loc].add[<[final_vector]>]>
 
 armor_stand_get_direction:
   type: procedure
