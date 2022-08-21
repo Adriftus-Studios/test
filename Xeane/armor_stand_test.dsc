@@ -28,7 +28,7 @@ armor_stand_teleport:
     - define new_x <[entity].eye_location.x.add[<[head_direction].x.mul[<element[10].div[16]>]>]>
     - define new_y <[entity].eye_location.y.add[<[head_direction].y.mul[<element[10].div[16]>]>]>
     - define new_z <[entity].eye_location.z.add[<[head_direction].z.mul[<element[10].div[16]>]>]>
-    - teleport <[tp_target]> <location[<[new_x]>,<[new_y]>,<[new_z]>]>
+    - teleport <[tp_target]> <location[<[new_x]>,<[new_y]>,<[new_z]>,<[entity].world>]>
 
 armor_stand_get_direction:
   type: procedure
