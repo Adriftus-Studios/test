@@ -4,7 +4,7 @@ armor_stand_test:
   definitions: as
   script:
     - define origin <[as].eye_location.below[0.25]>
-    - spawn armor_stand[gravity=false] <[center]> save:as2
+    - spawn armor_stand[gravity=false] <[origin]> save:as2
     - define as2 <entry[as2].spawned_entity>
     - repeat 20 as:xDiff:
       - define x <util.pi.mul[<[xDiff].div[10]>]>
@@ -12,14 +12,14 @@ armor_stand_test:
         - define y <util.pi.mul[<[yDiff].div[10]>]>
         - repeat 20 as:zDiff:
           - define z <util.pi.mul[<[yDiff].div[10]>]>
-          - run armor_stand_teleport def:<[as]>|<[x]>|<[y]>|<[z]>
+          - run armor_stand_teleport def:<[as]>|<[x]>|<[y]>|<[z]>|<[as2]>
           - wait 1t
     - remove <[as2]>
 
 armor_stand_teleport:
   type: task
   debug: false
-  definitions: entity|x|y|z
+  definitions: entity|x|y|z|tp_target
   script:
     - define vector <[entity].eye_location.direction.vector>
     - define as_pose_map <[entity].armor_pose_map.get[head]>
@@ -28,7 +28,7 @@ armor_stand_teleport:
     - define new_x <[entity].eye_location.x.add[<[head_direction].x.mul[<element[10].div[16]>]>]>
     - define new_y <[entity].eye_location.y.add[<[head_direction].y.mul[<element[10].div[16]>]>]>
     - define new_z <[entity].eye_location.z.add[<[head_direction].z.mul[<element[10].div[16]>]>]>
-    - teleport <[entity]> <location[<[new_x]>,<[new_y]>,<[new_z]>]>
+    - teleport <[tp_target]> <location[<[new_x]>,<[new_y]>,<[new_z]>]>
 
 armor_stand_get_direction:
   type: procedure
