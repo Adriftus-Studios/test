@@ -26,7 +26,7 @@ armor_stand_teleport:
     - define loc <[entity].eye_location.below[0.25]>
     - define as_pose_map <[entity].armor_pose_map.get[head].round_to[2]>
     - define head_direction <proc[armor_stand_get_direction].context[<[as_pose_map].y.mul[-1]>|<[as_pose_map].x>|<[as_pose_map].z.mul[-1]>]>
-    #- define head_direction <proc[armor_stand_rot_around_y].context[<[head_direction]>|<[entity].location.yaw.to_radians>]>
+    - define head_direction <proc[armor_stand_rot_around_y].context[<[head_direction]>|<[entity].location.yaw.to_radians>]>
     - define final_loc <[loc].add[<[head_direction]>]>
     - teleport <[tp_target]> <[final_loc]>
 
