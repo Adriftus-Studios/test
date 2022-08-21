@@ -63,7 +63,7 @@ armor_stand_rot_around_y:
   debug: false
   definitions: vector|angle
   script:
-    #- define angle <[angle].mul[-1]>
+    - define angle <[angle].mul[-1]>
     - define cos <[angle].cos>
     - define sin <[angle].sin>
     - define x <[vector].x.mul[<[cos]>].sub[<[vector].z.mul[<[sin]>]>]>
