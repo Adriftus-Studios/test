@@ -24,11 +24,12 @@ armor_stand_teleport:
   script:
     - define vector <[entity].eye_location.direction.vector>
     - define loc <[entity].eye_location.below[0.25]>
+    - define loc_diff <[loc].sub[<[entity].location>]>
     - define as_pose_map <[entity].armor_pose_map.get[head].round_to[2]>
     - define head_direction <proc[armor_stand_get_direction].context[<[as_pose_map].y.mul[-1]>|<[as_pose_map].x>|<[as_pose_map].z.mul[-1]>]>
     - define head_direction <proc[armor_stand_rot_around_y].context[<[head_direction]>|<[entity].location.yaw.mul[-1].to_radians>]>
     - define final_loc <[loc].add[<[head_direction]>]>
-    - teleport <[tp_target]> <[final_loc]>
+    - teleport <[tp_target]> <[final_loc].sub[<[loc_diff]>]>
 
 armor_stand_get_direction:
   type: procedure
