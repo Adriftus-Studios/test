@@ -11,6 +11,6 @@ armor_stand_test:
       - repeat 20 as:yDiff:
         - define y <util.pi.mul[<[yDiff].div[10]>]>
         - adjust <[as]> armor_pose:[head=<[x]>,<[y]>,0.0]
-        - teleport <[as2]> <[center].add[<location[0,0.5,0].rotate_around_x[<[x]>]>].add[<location[0.5,0,0].rotate_around_y[<[y]>]>]>
+        - teleport <[as2]> <[center].add[<location[0,0.5,0].rotate_around_x[<[x]>]>].add[<location[0,0,0.5].rotate_around_y[<[y]>]>]>
         - wait 1t
     - remove <[as2]>
