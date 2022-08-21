@@ -23,11 +23,8 @@ armor_stand_teleport:
   definitions: entity|x|y|z|tp_target
   script:
     - define vector <[entity].eye_location.direction.vector>
-    - define loc <[entity].eye_location>
+    - define loc <[entity].eye_location.below[0.25]>
     - define vector <[loc].direction.vector>
-    - define loc <[loc].with_x[<[loc].x.add[<[vector.x].mul[<element[5].div[16]>]>]>]>
-    - define loc <[loc].with_y[<[loc].y.add[<element[22].div[16]>]>]>
-    - define loc <[loc].with_z[<[loc].z.add[<[vector.x].mul[<element[5].div[16]>]>]>]>
     - define as_pose_map <[entity].armor_pose_map.get[head]>
     - define head_direction <proc[armor_stand_get_direction].context[<[as_pose_map].y>|<[as_pose_map].x>|<[as_pose_map].z.mul[-1]>]>
     - define head_direction <proc[armor_stand_rot_around_y].context[<[head_direction]>|<[entity].location.yaw>]>
