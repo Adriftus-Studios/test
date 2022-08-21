@@ -6,12 +6,12 @@ armor_stand_test:
     - define origin <[as].eye_location.below[0.25]>
     - spawn armor_stand[gravity=false] <[origin]> save:as2
     - define as2 <entry[as2].spawned_entity>
-    - repeat 20 as:xDiff:
-      - define x <util.pi.mul[<[xDiff].div[10]>]>
-      - repeat 20 as:yDiff:
-        - define y <util.pi.mul[<[yDiff].div[10]>]>
-        - repeat 20 as:zDiff:
-          - define z <util.pi.mul[<[yDiff].div[10]>]>
+    - repeat 10 as:xDiff:
+      - define x <util.pi.mul[<[xDiff].div[5]>]>
+      - repeat 10 as:yDiff:
+        - define y <util.pi.mul[<[yDiff].div[5]>]>
+        - repeat 10 as:zDiff:
+          - define z <util.pi.mul[<[yDiff].div[5]>]>
           - adjust <[as]> armor_pose:[head=<[x]>,<[y]>,<[z]>]
           - run armor_stand_teleport def:<[as]>|<[x]>|<[y]>|<[z]>|<[as2]>
           - wait 1t
