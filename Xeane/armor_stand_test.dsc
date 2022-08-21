@@ -23,7 +23,7 @@ armor_stand_teleport:
   definitions: entity|x|y|z|tp_target
   script:
     - define vector <[entity].eye_location.direction.vector>
-    - define loc <[entity].eye_location.with_yaw[-90]>
+    - define loc <[entity].eye_location>
     - define vector <[loc].direction.vector>
     - define loc <[loc].with_x[<[loc].x.add[<[vector.x].mul[<element[5].div[16]>]>]>]>
     - define loc <[loc].with_y[<[loc].y.add[<element[22].div[16]>]>]>
