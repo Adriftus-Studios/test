@@ -38,7 +38,7 @@ armor_stand_get_direction:
   debug: false
   definitions: yaw|pitch|roll
   script:
-    - define v <location[0,-1,0]>
+    - define v <location[0,1,0]>
     - define v <[v].proc[armor_stand_rot_around_x].context[<[pitch]>]>
     - define v <[v].proc[armor_stand_rot_around_y].context[<[yaw]>]>
     - define v <[v].proc[armor_stand_rot_around_z].context[<[roll]>]>
