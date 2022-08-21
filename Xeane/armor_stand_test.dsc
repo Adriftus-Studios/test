@@ -23,12 +23,17 @@ armor_stand_teleport:
   definitions: entity|x|y|z|tp_target
   script:
     - define vector <[entity].eye_location.direction.vector>
+    - define loc <[entity].location>
+    - define vector <[loc].direction.vector>
+    - define loc <[loc].with_x[<[loc].x.add[<[vector.x].mul[<element[5].div[16]>]>]>]>
+    - define loc <[loc].with_y[<[loc].y.add[<element[22].div[16]>]>]>
+    - define loc <[loc].with_z[<[loc].z.add[<[vector.x].mul[<element[5].div[16]>]>]>]>
     - define as_pose_map <[entity].armor_pose_map.get[head]>
     - define head_direction <proc[armor_stand_get_direction].context[<[as_pose_map].y>|<[as_pose_map].x>|<[as_pose_map].z.mul[-1]>]>
     - define head_direction <proc[armor_stand_rot_around_y].context[<[head_direction]>|<[entity].location.yaw>]>
-    - define new_x <[entity].eye_location.x.add[<[head_direction].x.mul[<element[10].div[16]>]>]>
-    - define new_y <[entity].eye_location.y.add[<[head_direction].y.mul[<element[10].div[16]>]>]>
-    - define new_z <[entity].eye_location.z.add[<[head_direction].z.mul[<element[10].div[16]>]>]>
+    - define new_x <[loc].x.add[<[head_direction].x.mul[<element[10].div[16]>]>]>
+    - define new_y <[loc].y.add[<[head_direction].y.mul[<element[10].div[16]>]>]>
+    - define new_z <[loc].z.add[<[head_direction].z.mul[<element[10].div[16]>]>]>
     - teleport <[tp_target]> <location[<[new_x]>,<[new_y]>,<[new_z]>,<[entity].world>]>
 
 armor_stand_get_direction:
