@@ -30,7 +30,7 @@ armor_stand_teleport:
     - define head_direction <proc[armor_stand_rot_around_y].context[<[head_direction]>|<[entity].location.yaw.mul[-1].to_radians>]>
     - define final_loc <[loc].add[<[head_direction]>]>
     - teleport <[tp_target]> <[final_loc].sub[<[loc_diff]>]>
-    - adjust <[tp_target]> armor_pose:[head=<[as_pose_map].add[<util.pi>,<util.pi>,<util.pi.mul[-1]>]>]
+    - adjust <[tp_target]> armor_pose:[head=<[as_pose_map].add[<util.pi>,<util.pi.mul[-1]>,<util.pi.mul[-1]>]>]
 
 armor_stand_get_direction:
   type: procedure
