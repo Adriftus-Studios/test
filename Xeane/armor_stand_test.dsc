@@ -13,14 +13,14 @@ armor_stand_test:
         - repeat 10 as:zDiff:
           - define z <util.pi.mul[<[yDiff].div[5]>]>
           - adjust <[as]> armor_pose:[head=<[x]>,<[y]>,<[z]>]
-          - run armor_stand_teleport def:<[as]>|<[x]>|<[y]>|<[z]>|<[as2]>
+          - run armor_stand_teleport def:<[as]>|<[as2]>
           - wait 1t
     - remove <[as2]>
 
 armor_stand_teleport:
   type: task
   debug: false
-  definitions: entity|x|y|z|tp_target
+  definitions: entity|tp_target
   script:
     - define vector <[entity].eye_location.direction.vector>
     - define loc <[entity].eye_location.below[0.25]>
