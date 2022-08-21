@@ -12,7 +12,7 @@ armor_stand_test:
         - define y <util.pi.mul[<[yDiff].div[5]>]>
         - repeat 10 as:zDiff:
           - define z <util.pi.mul[<[yDiff].div[5]>]>
-          - adjust <[as]> armor_pose:[head=<[x]>,<[y]>,<[z]>]
+          - adjust <[as]> armor_pose:[head=<[x]>,<[y]>,0.0]
           - run armor_stand_teleport def:<[as]>|<[as2]>
           - wait 1t
     - remove <[as2]>
@@ -38,7 +38,7 @@ armor_stand_get_direction:
   debug: false
   definitions: yaw|pitch|roll
   script:
-    - define v <location[0,1,0]>
+    - define v <location[0,0.25,0]>
     - define v <[v].proc[armor_stand_rot_around_x].context[<[pitch]>]>
     - define v <[v].proc[armor_stand_rot_around_y].context[<[yaw]>]>
     - define v <[v].proc[armor_stand_rot_around_z].context[<[roll]>]>
