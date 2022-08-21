@@ -35,7 +35,7 @@ armor_stand_teleport:
 
 armor_stand_get_direction:
   type: procedure
-  debug: false
+  debug: true
   definitions: yaw|pitch|roll
   script:
     - define v <location[0,1,0]>
@@ -46,7 +46,7 @@ armor_stand_get_direction:
 
 armor_stand_rot_around_x:
   type: procedure
-  debug: false
+  debug: true
   definitions: vector|angle
   script:
     - define cos <[angle].cos>
@@ -57,7 +57,7 @@ armor_stand_rot_around_x:
 
 armor_stand_rot_around_y:
   type: procedure
-  debug: false
+  debug: true
   definitions: vector|angle
   script:
     - define angle <[angle].mul[-1]>
@@ -69,7 +69,7 @@ armor_stand_rot_around_y:
 
 armor_stand_rot_around_z:
   type: procedure
-  debug: false
+  debug: true
   definitions: vector|angle
   script:
     - define cos <[angle].cos>
