@@ -5,7 +5,7 @@ fishing_rod_diamond:
   lore:
   - <&6>A remarkably strong fishing rod
   - <&sp>
-  - <&6>Frank Level<&co> <&e>60
+  - <&6>Jade Level<&co> <&e>60
   mechanisms:
       custom_model_data: 6
   flags:

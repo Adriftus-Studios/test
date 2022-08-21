@@ -5,7 +5,7 @@ fishing_bait_clay:
   lore:
   - <&6>Gives a <&e>1<&pc> chance <&6>per catch <&6>to get a <&e>Dungeon Key<&6>.
   - <&sp>
-  - <&6>Frank Level<&co> <&e>41
+  - <&6>Jade Level<&co> <&e>41
   mechanisms:
     custom_model_data: 15
   recipes:

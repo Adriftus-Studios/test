@@ -5,7 +5,7 @@ fishing_bait_rabbit:
   lore:
   - <&6>Increases chance to <&e>catch items <&6>by <&e>10<&pc><&6>.
   - <&sp>
-  - <&6>Frank Level<&co> <&e>11
+  - <&6>Jade Level<&co> <&e>11
   mechanisms:
     custom_model_data: 5
   recipes:

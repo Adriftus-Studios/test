@@ -1,8 +1,8 @@
-fishbot_frank_menu:
+fishbot_Jade_menu:
   type: inventory
   debug: false
   inventory: chest
-  title: Frank's Inventory
+  title: Jade's Inventory
   size: 54
   gui: true
   slots:
@@ -13,7 +13,7 @@ fishbot_frank_menu:
     - [] [] [] [] [] [] [] [] []
     - [] [] [] [] [] [] [] [] []
 
-fishbot_frank_assignment:
+fishbot_Jade_assignment:
   type: assignment
   debug: false
   actions:
@@ -21,12 +21,12 @@ fishbot_frank_assignment:
     - trigger name:click state:true
     - trigger name:damage state:true
     on damage:
-    - inject fishbot_frank_speech
+    - inject fishbot_Jade_speech
     on click:
-    - inject fishbot_frank_speech
+    - inject fishbot_Jade_speech
 
 
-fishbot_frank_speech:
+fishbot_Jade_speech:
   type: task
   debug: false
   script:
@@ -38,5 +38,5 @@ fishbot_frank_speech:
     - stop
   - else:
     - narrate "<&6>Howdy there, how can I help you?"
-    - inventory open d:fishbot_frank_menu
+    - inventory open d:fishbot_Jade_menu
     - stop

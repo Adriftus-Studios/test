@@ -5,7 +5,7 @@ fishing_rod_netherite:
   lore:
   - <&6>A rod bathed in lava. Tough enough to survive anything.
   - <&sp>
-  - <&6>Frank Level<&co> <&e>80
+  - <&6>Jade Level<&co> <&e>80
   mechanisms:
       custom_model_data: 8
   flags:

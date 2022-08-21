@@ -151,7 +151,7 @@ fishbot_data_storage:
     100: 18300800
 
 
-  frank_unlocks:
+  Jade_unlocks:
     5:
       type: bait
       Obtained: killing sea life.
@@ -454,8 +454,8 @@ fishbot_data_storage:
       description: A nice lazy river wandering aimlessly through the plains.
       rate: 1
       attack_chance: 10
-      attack_repel_message: A wolf leapt at Frank from the shore, but only scratched the boat<&nl>(Durability left <number_left>/<boat_max>)
-      attack_succeed_message: A pack of wolves howled on shore startling Frank.<&nl>He dropped some fish.
+      attack_repel_message: A wolf leapt at Jade from the shore, but only scratched the boat<&nl>(Durability left <number_left>/<boat_max>)
+      attack_succeed_message: A pack of wolves howled on shore startling Jade.<&nl>He dropped some fish.
       attack_penalty: 0.9
       attack_damage: 1
       trash_chance: 66
@@ -484,7 +484,7 @@ fishbot_data_storage:
       duration: 480
       rate: 60
       attack_chance: 15
-      attack_succeed_message: Frank saw a Skeleton, in his haste to flee, he dropped some fish!
+      attack_succeed_message: Jade saw a Skeleton, in his haste to flee, he dropped some fish!
       attack_repel_message: A skeleton fired upon the boat, but its arrows had no effect! (Durability left <number_left>/<boat_max>)
       attack_penalty: 0.8
       attack_damage: 1

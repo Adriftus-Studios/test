@@ -6,7 +6,7 @@ fishing_rod_magnetic:
   - <&6>A heavy weight rod.
   - <&sp>
   - <&e>Increases item catch rate by 50<&pc>.
-  - <&6>Frank Level<&co> <&e>50
+  - <&6>Jade Level<&co> <&e>50
   mechanisms:
       custom_model_data: 5
   flags:

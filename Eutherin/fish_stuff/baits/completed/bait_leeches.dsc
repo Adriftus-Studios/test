@@ -5,7 +5,7 @@ fishing_bait_leech:
   lore:
   - <&6>Increases <&e>fishing rolls <&6>by <&e>5<&pc><&6>.
   - <&sp>
-  - <&6>Frank Level<&co> <&e>5
+  - <&6>Jade Level<&co> <&e>5
   mechanisms:
     custom_model_data: 3
   recipes:

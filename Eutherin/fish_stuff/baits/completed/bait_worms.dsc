@@ -5,7 +5,7 @@ fishing_bait_worm:
   lore:
   - <&6>Increases <&e>fishing rolls <&6>by <&e>2<&pc><&6>.
   - <&sp>
-  - <&6>Frank Level<&co> <&e>0
+  - <&6>Jade Level<&co> <&e>0
   recipes:
     1:
       type: shaped

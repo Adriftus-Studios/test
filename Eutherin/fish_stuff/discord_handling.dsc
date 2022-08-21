@@ -1,4 +1,11 @@
-rachela_link_user:
+connect_bot:
+    type: world
+    debug: false
+    events:
+      on server start:
+        - ~discordconnect id:jade token:<secret[jade]>
+
+jade_link_user:
   type: world
   debug: false
   events:
@@ -45,11 +52,11 @@ ingame_unlink:
       - narrate "<&c>You are not currently connected to discord."
       - stop
     - flag <player.flag[discord.account_linked]> minecraft.account_linked:!
-    - narrate "<&a>Unlinked from <player.flag[discord.account_linked].name>.<&nl><&6>A confirmation message has been sent to your DMs by Rachela."
-    - ~discordmessage id:rachela user:<player.flag[discord.account_linked]> "Your minecraft account (<player.name>) has been unlinked from Eutherin's Party Haus."
+    - narrate "<&a>Unlinked from <player.flag[discord.account_linked].name>.<&nl><&6>A confirmation message has been sent to your DMs by jade."
+    - ~discordmessage id:jade user:<player.flag[discord.account_linked]> "Your minecraft account (<player.name>) has been unlinked from Eutherin's Party Haus."
     - flag <player> discord.account_linked:!
 
-create_rachela_link:
+create_jade_link:
   type: task
   debug: false
   script:
@@ -60,17 +67,11 @@ create_rachela_link:
         description: Enter your minecraft account name CAREFULLY.
         required: true
 
-  - ~discordcommand id:Rachela create name:link "description:Enter your minecraft account name CAREFULLY.." group:182229178425278466 options:<[options]>
-  - ~discordcommand id:Rachela create name:link "description:Enter your minecraft account name CAREFULLY.." group:601677205445279744 options:<[options]>
-  - ~discordcommand id:Rachela create name:link "description:Enter your minecraft account name CAREFULLY.." group:626078288556851230 options:<[options]>
-  - ~discordcommand id:Rachela create name:link "description:Enter your minecraft account name CAREFULLY.." group:546895939781263360 options:<[options]>
+  - ~discordcommand id:jade create name:link "description:Enter your minecraft account name CAREFULLY.." group:626078288556851230 options:<[options]>
 
-create_rachela_unlink:
+create_jade_unlink:
   type: task
   debug: false
   script:
 
-  - ~discordcommand id:Rachela create name:unlink "description:Unlink associated accounts" group:182229178425278466
-  - ~discordcommand id:Rachela create name:unlink "description:Unlink associated accounts" group:601677205445279744
-  - ~discordcommand id:Rachela create name:unlink "description:Unlink associated accounts" group:626078288556851230
-  - ~discordcommand id:Rachela create name:unlink "description:Unlink associated accounts" group:546895939781263360
+  - ~discordcommand id:jade create name:unlink "description:Unlink associated accounts" group:626078288556851230

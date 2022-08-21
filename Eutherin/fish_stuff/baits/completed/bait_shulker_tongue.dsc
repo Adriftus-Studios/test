@@ -5,7 +5,7 @@ fishing_bait_shulker:
   lore:
   - <&6>Increases chance to <&e>catch fish <&6>by <&e>18<&pc><&6>.
   - <&sp>
-  - <&6>Frank Level<&co> <&e>61
+  - <&6>Jade Level<&co> <&e>61
   mechanisms:
     custom_model_data: 18
   recipes:

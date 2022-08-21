@@ -6,7 +6,7 @@ fishing_boat_ironclad:
   - <&6>An armored dinghy.
   - <&sp>
   - <&e>Increases fish catch rate by 3<&pc>.
-  - <&6>Frank Level<&co> <&e>20
+  - <&6>Jade Level<&co> <&e>20
   mechanisms:
     custom_model_data: 2
   flags:

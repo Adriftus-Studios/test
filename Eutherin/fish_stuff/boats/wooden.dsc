@@ -6,7 +6,7 @@ fishing_boat_wooden:
   - <&6>A cramped dinghy.
   - <&sp>
   - <&e>Increases fish catch rate by 6<&pc>.
-  - <&6>Frank Level<&co> <&e>10
+  - <&6>Jade Level<&co> <&e>10
   flags:
     trips: 10
 

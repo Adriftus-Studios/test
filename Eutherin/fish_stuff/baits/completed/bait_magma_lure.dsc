@@ -5,7 +5,7 @@ fishing_bait_magma:
   lore:
   - <&6>Increases <&e>fishing rolls <&6>by <&e>8<&pc><&6>.
   - <&sp>
-  - <&6>Frank Level<&co> <&e>21
+  - <&6>Jade Level<&co> <&e>21
   mechanisms:
     custom_model_data: 8
   recipes:

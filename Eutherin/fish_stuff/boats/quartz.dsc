@@ -6,7 +6,7 @@ fishing_boat_quartz:
   - <&6>Studded with Quartz Spikes
   - <&sp>
   - <&e>Increases fish catch rate by 6<&pc>.
-  - <&6>Frank Level<&co> <&e>50
+  - <&6>Jade Level<&co> <&e>50
   mechanisms:
     custom_model_data: 4
   flags:

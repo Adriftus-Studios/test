@@ -5,7 +5,7 @@ fishing_bait_mysterious:
   lore:
   - <&6>Increases chance to <&e>catch items <&6>by <&e>18<&pc><&6>.
   - <&sp>
-  - <&6>Frank Level<&co> <&e>71
+  - <&6>Jade Level<&co> <&e>71
   mechanisms:
     custom_model_data: 20
   recipes:

@@ -5,7 +5,7 @@ fishing_rod_wood:
   lore:
   - <&6> Your normal, every day rod
   - <&sp>
-  - <&6>Frank Level<&co> <&e>10
+  - <&6>Jade Level<&co> <&e>10
   flags:
     durability: 64
     trips: 10

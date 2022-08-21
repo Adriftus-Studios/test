@@ -6,7 +6,7 @@ fishing_rod_light:
   - <&6>The blank of this rod glows softly.
   - <&sp>
   - <&e>Increases legendary catch rate by 50<&pc>.
-  - <&6>Frank Level<&co> <&e>30
+  - <&6>Jade Level<&co> <&e>30
   mechanisms:
       custom_model_data: 3
   flags:

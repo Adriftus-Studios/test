@@ -5,7 +5,7 @@ fishing_rod_iron:
   lore:
   - <&6>A heavy duty fishing rod
   - <&sp>
-  - <&6>Frank Level<&co> <&e>20
+  - <&6>Jade Level<&co> <&e>20
   mechanisms:
       custom_model_data: 2
   flags:

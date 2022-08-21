@@ -14,47 +14,47 @@ fishbot_command_checking:
     - ~discordinteraction defer ephemeral:true interaction:<context.interaction>
 
     - if !<context.interaction.user.has_flag[minecraft.account_linked]>:
-      - ~discordinteraction reply interaction:<context.interaction> "Frank doesn't know who you are. Please /link your account in game!" ephemeral:true
+      - ~discordinteraction reply interaction:<context.interaction> "Jade doesn't know who you are. Please /link your account in game!" ephemeral:true
       - stop
 
     - define user <context.interaction.user.flag[minecraft.account_linked]>
 
     - if <[user].has_flag[fishbot.fishing_now]>:
-      - ~discordinteraction reply interaction:<context.interaction> "Frank is already out fishing." ephemeral:true
+      - ~discordinteraction reply interaction:<context.interaction> "Jade is already out fishing." ephemeral:true
       - stop
 
     - if <[user].flag[fishbot.caught_items].size> >= <element[27].add[<[user].flag[fishbot.barrel_expanded].if_null[0].mul[9]>]>:
-      - ~discordinteraction reply interaction:<context.interaction> "Frank doesn't have anywhere to put more fish. Please empty your barrel in game!" ephemeral:true
+      - ~discordinteraction reply interaction:<context.interaction> "Jade doesn't have anywhere to put more fish. Please empty your barrel in game!" ephemeral:true
       - stop
     - define config <script[fishbot_data_storage]>
     - define area <context.options.get[area].if_null[<[user].flag[fishbot.area_previous].if_null[plains]>]>
     - if !<[config].list_keys[area].contains_any[<[area]>]>:
-      - ~discordinteraction reply interaction:<context.interaction> "Frank doesn't know where that is." ephemeral:true
+      - ~discordinteraction reply interaction:<context.interaction> "Jade doesn't know where that is." ephemeral:true
       - stop
 
 
     - define key_count <[user].flag[fishbot.keys].if_null[0]>
     - if <[key_count]> < <[config].data_key[area.<[area]>.key_cost]>:
-      - ~discordinteraction reply interaction:<context.interaction> "Frank doesn't have enough keys to go there!" ephemeral:true
+      - ~discordinteraction reply interaction:<context.interaction> "Jade doesn't have enough keys to go there!" ephemeral:true
       - stop
 
-    - define npc_level <[user].flag[fishbot.frank.level].if_null[0]>
+    - define npc_level <[user].flag[fishbot.Jade.level].if_null[0]>
     - if <[npc_level]> < <[config].data_key[area.<[area]>.min_level]>:
-      - ~discordinteraction reply interaction:<context.interaction> "Frank doesn't feel safe going there yet." ephemeral:true
+      - ~discordinteraction reply interaction:<context.interaction> "Jade doesn't feel safe going there yet." ephemeral:true
       - stop
 
     - define boat none
     - if <context.options.get[boat].exists>:
       - define boat <context.options.get[boat]>
       - if !<[config].list_keys[boat].contains_any[<[boat]>]>:
-        - ~discordinteraction reply interaction:<context.interaction> "Frank doesn't know what kind of boat that is." ephemeral:true
+        - ~discordinteraction reply interaction:<context.interaction> "Jade doesn't know what kind of boat that is." ephemeral:true
         - stop
       - define boat_tier <[config].data_key[boat.<[boat].if_null[<[user].flag[fishbot.boat_previous]>]>.tier].if_null[0]>
       - if <[boat_tier]> < <[config].data_key[area.<[area]>.boat_tier]>:
-        - ~discordinteraction reply interaction:<context.interaction> "Frank's current boat just isn't up to the task." ephemeral:true
+        - ~discordinteraction reply interaction:<context.interaction> "Jade's current boat just isn't up to the task." ephemeral:true
         - stop
       - if !<[user].flag[fishbot.boats_stored].parse[script.name].after[fishing_boat_].contains_any_text[<[boat]>]>:
-        - ~discordinteraction reply interaction:<context.interaction> "Frank doesn't have that kind of boat." ephemeral:true
+        - ~discordinteraction reply interaction:<context.interaction> "Jade doesn't have that kind of boat." ephemeral:true
         - stop
 
 
@@ -69,25 +69,25 @@ fishbot_command_checking:
     - if <context.options.get[bait].exists>:
       - define bait <context.options.get[bait]>
       - if !<[config].list_keys[bait].contains_any[<[bait]>]>:
-        - ~discordinteraction reply interaction:<context.interaction> "Frank doesn't know what kind of bait that is." ephemeral:true
+        - ~discordinteraction reply interaction:<context.interaction> "Jade doesn't know what kind of bait that is." ephemeral:true
         - stop
       - if <[npc_level]> < <[config].data_key[bait.<[bait]>.level]>:
-        - ~discordinteraction reply interaction:<context.interaction> "Frank doesn't know how to use that bait correctly." ephemeral:true
+        - ~discordinteraction reply interaction:<context.interaction> "Jade doesn't know how to use that bait correctly." ephemeral:true
         - stop
       - if <[user].flag[fishbot.bait.<[bait]>]||0> == 0:
-        - ~discordinteraction reply interaction:<context.interaction> "Frank doesn't have that kind of bait." ephemeral:true
+        - ~discordinteraction reply interaction:<context.interaction> "Jade doesn't have that kind of bait." ephemeral:true
         - stop
 
 
     - define rod <context.options.get[rod]>
     - if !<[config].list_keys[rod].contains_any[<[rod]>]>:
-      - ~discordinteraction reply interaction:<context.interaction> "Frank doesn't know what kind of fishing rod that is." ephemeral:true
+      - ~discordinteraction reply interaction:<context.interaction> "Jade doesn't know what kind of fishing rod that is." ephemeral:true
       - stop
     - if <[npc_level]> < <[config].data_key[rod.<[rod]>.level]>:
-      - ~discordinteraction reply interaction:<context.interaction> "Frank doesn't know how to use that rod correctly." ephemeral:true
+      - ~discordinteraction reply interaction:<context.interaction> "Jade doesn't know how to use that rod correctly." ephemeral:true
       - stop
     - if !<[user].flag[fishbot.rods_stored].parse[script.name].after[fishing_rod_].contains_any_text[<[rod]>]>:
-      - ~discordinteraction reply interaction:<context.interaction> "Frank doesn't have that kind of rod." ephemeral:true
+      - ~discordinteraction reply interaction:<context.interaction> "Jade doesn't have that kind of rod." ephemeral:true
       - stop
 
 #- subtract 1 trip from the fishing rod
@@ -150,7 +150,7 @@ fishbot_command_checking:
     - define return_time <&sp><util.time_now.add[<[fishing_time]>s].format>
     - define message "**Area<&co>**<&sp><[area].to_titlecase><&nl>**Rod<&co>**<&sp><[rod_msg]><&nl>**Boat<&co>**<&sp><[boat_msg]><&nl>**Bait<&co>**<&sp><[bait_msg]><&sp>(Quantity:<&sp><[bait_quantity].if_null[N/A]>)<&nl>**Return Time<&co>**<[return_time]><[boost_message].if_null[]><[donor_messsge].if_null[]>"
     - define embed.color <color[0,254,255]>
-    - define embed.title "Frank is Setting Sail!"
+    - define embed.title "Jade is Setting Sail!"
     - define embed.thumbnail https://media.discordapp.net/attachments/692370842813726724/1005278267303006278/water-transportation.png
     - define embed.description "<[message]>"
     - ~discordinteraction reply interaction:<context.interaction> "He's on the way!" ephemeral:true
@@ -179,24 +179,24 @@ create_fishbot_command:
       1:
         type: string
         name: area
-        description: Where will Frank set sail? (Default last used.)
+        description: Where will Jade set sail? (Default last used.)
         required: true
 
       2:
         type: string
         name: rod
-        description: Which fishing rod Frank will use. (Default last used.)
+        description: Which fishing rod Jade will use. (Default last used.)
         required: false
 
       3:
         type: string
         name: boat
-        description: Which boat shall Frank take? (Default last used.)
+        description: Which boat shall Jade take? (Default last used.)
         required: false
 
       4:
         type: string
         name: bait
-        description: What bait you would like Frank to use. (Default last used.)
+        description: What bait you would like Jade to use. (Default last used.)
         required: false
-  - ~discordcommand id:Rachela create name:fish "description:Send frank on his way!" group:546895939781263360 options:<[options]>
+  - ~discordcommand id:Rachela create name:fish "description:Send Jade on his way!" group:546895939781263360 options:<[options]>

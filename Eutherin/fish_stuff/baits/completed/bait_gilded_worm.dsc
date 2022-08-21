@@ -5,7 +5,7 @@ fishing_bait_gilded:
   lore:
   - <&6>Increases chance to catch <&e>legendary fish <&6>to <&e>0.5<&pc><&6>.
   - <&sp>
-  - <&6>Frank Level<&co> <&e>25
+  - <&6>Jade Level<&co> <&e>25
   mechanisms:
     custom_model_data: 10
   recipes:
