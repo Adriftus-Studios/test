@@ -23,7 +23,7 @@ armor_stand_teleport:
   definitions: entity|x|y|z|tp_target
   script:
     - define vector <[entity].eye_location.direction.vector>
-    - define loc <[entity].location>
+    - define loc <[entity].eye_location.with_yaw[-90]>
     - define vector <[loc].direction.vector>
     - define loc <[loc].with_x[<[loc].x.add[<[vector.x].mul[<element[5].div[16]>]>]>]>
     - define loc <[loc].with_y[<[loc].y.add[<element[22].div[16]>]>]>
@@ -41,7 +41,7 @@ armor_stand_get_direction:
   debug: false
   definitions: yaw|pitch|roll
   script:
-    - define v <location[0,1,0]>
+    - define v <location[0,-1,0]>
     - define v <[v].proc[armor_stand_rot_around_x].context[<[pitch]>]>
     - define v <[v].proc[armor_stand_rot_around_y].context[<[yaw]>]>
     - define v <[v].proc[armor_stand_rot_around_z].context[<[roll]>]>
@@ -63,7 +63,7 @@ armor_stand_rot_around_y:
   debug: false
   definitions: vector|angle
   script:
-    - define angle <[angle].mul[-1]>
+    #- define angle <[angle].mul[-1]>
     - define cos <[angle].cos>
     - define sin <[angle].sin>
     - define x <[vector].x.mul[<[cos]>].sub[<[vector].z.mul[<[sin]>]>]>
