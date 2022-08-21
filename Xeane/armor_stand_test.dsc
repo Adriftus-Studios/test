@@ -27,7 +27,7 @@ armor_stand_teleport:
     - define vector <[loc].direction.vector>
     - define as_pose_map <[entity].armor_pose_map.get[head]>
     - define head_direction <proc[armor_stand_get_direction].context[<[as_pose_map].y>|<[as_pose_map].x>|<[as_pose_map].z.mul[-1]>]>
-    - define head_direction <proc[armor_stand_rot_around_y].context[<[head_direction]>|<[entity].location.yaw>]>
+    - define head_direction <proc[armor_stand_rot_around_y].context[<[head_direction]>|<[entity].location.yaw.to_radians>]>
     - define new_x <[loc].x.add[<[head_direction].x.mul[<element[10].div[16]>]>]>
     - define new_y <[loc].y.add[<[head_direction].y.mul[<element[10].div[16]>]>]>
     - define new_z <[loc].z.add[<[head_direction].z.mul[<element[10].div[16]>]>]>
