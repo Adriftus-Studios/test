@@ -6,7 +6,7 @@ fishing_rod_glass:
   - <&6>A light weight rod.
   - <&sp>
   - <&e>Increases fish catch rate by 50<&pc>.
-  - <&6>Frank Level<&co> <&e>40
+  - <&6>Jade Level<&co> <&e>40
   mechanisms:
       custom_model_data: 4
   flags:

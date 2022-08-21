@@ -5,7 +5,7 @@ fishing_bait_blinding:
   lore:
   - <&6>Increases chance to catch <&e>legendary fish <&6>to <&e>1.5<&pc><&6>.
   - <&sp>
-  - <&6>Frank Level<&co> <&e>91
+  - <&6>Jade Level<&co> <&e>91
   mechanisms:
     custom_model_data: 24
   recipes:

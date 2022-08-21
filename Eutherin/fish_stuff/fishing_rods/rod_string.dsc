@@ -5,7 +5,7 @@ fishing_rod_line:
   lore:
   - <&6>A very durable string
   - <&sp>
-  - <&6>Frank Level<&co> <&e>0
+  - <&6>Jade Level<&co> <&e>0
   mechanisms:
     custom_model_data: 1
   flags:

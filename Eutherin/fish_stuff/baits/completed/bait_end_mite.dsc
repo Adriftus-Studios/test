@@ -5,7 +5,7 @@ fishing_bait_endmite:
   lore:
   - <&6>Increases <&e>fishing rolls <&6>by <&e>10<&pc><&6>.
   - <&sp>
-  - <&6>Frank Level<&co> <&e>51
+  - <&6>Jade Level<&co> <&e>51
   mechanisms:
     custom_model_data: 16
   recipes:

@@ -5,7 +5,7 @@ fishing_bait_silverfish:
   lore:
   - <&6>Increases chance to <&e>catch fish <&6>by <&e>14<&pc><&6>.
   - <&sp>
-  - <&6>Frank Level<&co> <&e>31
+  - <&6>Jade Level<&co> <&e>31
   mechanisms:
     custom_model_data: 12
   recipes:

@@ -5,8 +5,8 @@ fishbot_baitsack_handling:
     on player clicks block location_flagged:fish_bait_sack:
       - determine passively cancelled
       - ratelimit <player> 2t
-      - inventory open d:frank_bait_inventory
-    on player clicks item in frank_bait_inventory*:
+      - inventory open d:Jade_bait_inventory
+    on player clicks item in Jade_bait_inventory*:
       - if <context.item.material.name> == gray_stained_glass_pane || <context.item.material.name||air> == air || <context.raw_slot> > 27:
         - stop
       - inventory open d:bait_inventory_<context.item.script.name.after[bait_counter_]>
@@ -27,7 +27,7 @@ fishbot_baitsack_handling:
             - define flag_path fishbot.bait.<context.inventory.script.name.after[bait_inventory_]>
             - flag <player> <[flag_path]>:<[amount]>
             - wait 2t
-            - inventory open d:frank_bait_inventory
+            - inventory open d:Jade_bait_inventory
     on player closes bait_inventory_*:
       - define amount <element[0]>
       - foreach <context.inventory.list_contents.exclude[standard_filler|standard_accept_button|standard_back_button|air]> as:item:
@@ -37,10 +37,10 @@ fishbot_baitsack_handling:
       - define flag_path fishbot.bait.<context.inventory.script.name.after[bait_inventory_]>
       - flag <player> <[flag_path]>:<[amount]>
 
-frank_bait_inventory:
+Jade_bait_inventory:
   type: inventory
   inventory: chest
-  title: Frank's Bait Sack
+  title: Jade's Bait Sack
   gui: true
   debug: false
   size: 27
@@ -59,7 +59,7 @@ bait_counter_worm:
   display name: <&f>Worms
   lore:
   - <&6>Current Count<&co> <&e><player.flag[fishbot.bait.worm]||0><&6>.
-  - <&6>Requires Frank level<&co><&e> <script[fishbot_data_storage].data_key[bait.worm.level]><&6>.
+  - <&6>Requires Jade level<&co><&e> <script[fishbot_data_storage].data_key[bait.worm.level]><&6>.
   - <&6>Obtained by<&co><&e> digging up dirt type blocks<&6>.
   - <&sp>
   - <&b>Left Click<&6> to add bait.
@@ -92,7 +92,7 @@ bait_counter_leech:
   display name: <&f>Leeches
   lore:
   - <&6>Current Count<&co> <&e><player.flag[fishbot.bait.leech]||0><&6>.
-  - <&6>Requires Frank level<&co><&e> <script[fishbot_data_storage].data_key[bait.leech.level]><&6>.
+  - <&6>Requires Jade level<&co><&e> <script[fishbot_data_storage].data_key[bait.leech.level]><&6>.
   - <&6>Obtained by<&co><&e> killing sea life<&6>.
   - <&sp>
   - <&b>Left Click<&6> to add bait.
@@ -125,7 +125,7 @@ bait_counter_rabbit:
   display name: <&f>Rabbits Feet
   lore:
   - <&6>Current Count<&co> <&e><player.flag[fishbot.bait.rabbit]||0><&6>.
-  - <&6>Requires Frank level<&co><&e> <script[fishbot_data_storage].data_key[bait.rabbit.level]><&6>.
+  - <&6>Requires Jade level<&co><&e> <script[fishbot_data_storage].data_key[bait.rabbit.level]><&6>.
   - <&6>Obtained by<&co><&e> killing rabbits<&6>.
   - <&sp>
   - <&b>Left Click<&6> to add bait.
@@ -158,7 +158,7 @@ bait_counter_chum:
   display name: <&f>Chum
   lore:
   - <&6>Current Count<&co> <&e><player.flag[fishbot.bait.chum]||0><&6>.
-  - <&6>Requires Frank level<&co><&e> <script[fishbot_data_storage].data_key[bait.chum.level]><&6>.
+  - <&6>Requires Jade level<&co><&e> <script[fishbot_data_storage].data_key[bait.chum.level]><&6>.
   - <&6>Obtained by<&co><&e> killing sea life, combining leeches<&6>.
   - <&sp>
   - <&b>Left Click<&6> to add bait.
@@ -191,7 +191,7 @@ bait_counter_magma:
   display name: <&f>Magma Lures
   lore:
   - <&6>Current Count<&co> <&e><player.flag[fishbot.bait.magma]||0><&6>.
-  - <&6>Requires Frank level<&co><&e> <script[fishbot_data_storage].data_key[bait.magma.level]><&6>.
+  - <&6>Requires Jade level<&co><&e> <script[fishbot_data_storage].data_key[bait.magma.level]><&6>.
   - <&6>Obtained by<&co><&e> killing magma cubes, combining magma cream<&6>.
   - <&sp>
   - <&b>Left Click<&6> to add bait.
@@ -225,7 +225,7 @@ bait_counter_gilded:
   display name: <&f>Gilded Worms
   lore:
   - <&6>Current Count<&co> <&e><player.flag[fishbot.bait.gilded]||0><&6>.
-  - <&6>Requires Frank level<&co><&e> <script[fishbot_data_storage].data_key[bait.gilded.level]><&6>.
+  - <&6>Requires Jade level<&co><&e> <script[fishbot_data_storage].data_key[bait.gilded.level]><&6>.
   - <&6>Obtained by<&co><&e> gilding worms<&6>.
   - <&sp>
   - <&b>Left Click<&6> to add bait.
@@ -258,7 +258,7 @@ bait_counter_silverfish:
   display name: <&f>Silverfish Bait
   lore:
   - <&6>Current Count<&co> <&e><player.flag[fishbot.bait.silverfish]||0><&6>.
-  - <&6>Requires Frank level<&co><&e> <script[fishbot_data_storage].data_key[bait.silverfish.level]><&6>.
+  - <&6>Requires Jade level<&co><&e> <script[fishbot_data_storage].data_key[bait.silverfish.level]><&6>.
   - <&6>Obtained by<&co><&e> killing silverfish<&6>.
   - <&sp>
   - <&b>Left Click<&6> to add bait.
@@ -291,7 +291,7 @@ bait_counter_slime:
   display name: <&f>Slime Balls
   lore:
   - <&6>Current Count<&co> <&e><player.flag[fishbot.bait.slime]||0><&6>.
-  - <&6>Requires Frank level<&co><&e> <script[fishbot_data_storage].data_key[bait.slime.level]><&6>.
+  - <&6>Requires Jade level<&co><&e> <script[fishbot_data_storage].data_key[bait.slime.level]><&6>.
   - <&6>Obtained by<&co><&e> killing slimes<&6>.
   - <&sp>
   - <&b>Left Click<&6> to add bait.
@@ -324,7 +324,7 @@ bait_counter_clay:
   display name: <&f>Clay Balls
   lore:
   - <&6>Current Count<&co> <&e><player.flag[fishbot.bait.clay]||0><&6>.
-  - <&6>Requires Frank level<&co><&e> <script[fishbot_data_storage].data_key[bait.clay.level]><&6>.
+  - <&6>Requires Jade level<&co><&e> <script[fishbot_data_storage].data_key[bait.clay.level]><&6>.
   - <&6>Obtained by<&co><&e> breaking clay blocks<&6>.
   - <&sp>
   - <&b>Left Click<&6> to add bait.
@@ -357,7 +357,7 @@ bait_counter_endmite:
   display name: <&f>Endmites
   lore:
   - <&6>Current Count<&co> <&e><player.flag[fishbot.bait.endmite]||0><&6>.
-  - <&6>Requires Frank level<&co><&e> <script[fishbot_data_storage].data_key[bait.endmite.level]><&6>.
+  - <&6>Requires Jade level<&co><&e> <script[fishbot_data_storage].data_key[bait.endmite.level]><&6>.
   - <&6>Obtained by<&co><&e> killing endmites, corrupting silverfish with end pearls<&6>.
   - <&sp>
   - <&b>Left Click<&6> to add bait.
@@ -390,7 +390,7 @@ bait_counter_shulker:
   display name: <&f>Shulker Tongues
   lore:
   - <&6>Current Count<&co> <&e><player.flag[fishbot.bait.shulker]||0><&6>.
-  - <&6>Requires Frank level<&co><&e> <script[fishbot_data_storage].data_key[bait.shulker.level]><&6>.
+  - <&6>Requires Jade level<&co><&e> <script[fishbot_data_storage].data_key[bait.shulker.level]><&6>.
   - <&6>Obtained by<&co><&e> killing shulkers<&6>.
   - <&sp>
   - <&b>Left Click<&6> to add bait.
@@ -423,7 +423,7 @@ bait_counter_mysterious:
   display name: <&f>Mysterious Shards
   lore:
   - <&6>Current Count<&co> <&e><player.flag[fishbot.bait.mysterious]||0><&6>.
-  - <&6>Requires Frank level<&co><&e> <script[fishbot_data_storage].data_key[bait.mysterious.level]><&6>.
+  - <&6>Requires Jade level<&co><&e> <script[fishbot_data_storage].data_key[bait.mysterious.level]><&6>.
   - <&6>Obtained by<&co><&e> killing humanoids<&6>.
   - <&sp>
   - <&b>Left Click<&6> to add bait.
@@ -456,7 +456,7 @@ bait_counter_golden:
   display name: <&f>Golden Fragments
   lore:
   - <&6>Current Count<&co> <&e><player.flag[fishbot.bait.golden]||0><&6>.
-  - <&6>Requires Frank level<&co><&e> <script[fishbot_data_storage].data_key[bait.golden.level]><&6>.
+  - <&6>Requires Jade level<&co><&e> <script[fishbot_data_storage].data_key[bait.golden.level]><&6>.
   - <&6>Obtained by<&co><&e> combining shulker tongues, mysterious shards<&6>.
   - <&sp>
   - <&b>Left Click<&6> to add bait.
@@ -489,7 +489,7 @@ bait_counter_blinding:
   display name: <&f>Blinding Shards
   lore:
   - <&6>Current Count<&co> <&e><player.flag[fishbot.bait.blinding]||0><&6>.
-  - <&6>Requires Frank level<&co><&e> <script[fishbot_data_storage].data_key[bait.blinding.level]><&6>.
+  - <&6>Requires Jade level<&co><&e> <script[fishbot_data_storage].data_key[bait.blinding.level]><&6>.
   - <&6>Obtained by<&co><&e> combining natural light items, and gilded fragments<&6>.
   - <&sp>
   - <&b>Left Click<&6> to add bait.

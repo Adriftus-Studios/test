@@ -6,7 +6,7 @@ fishing_rod_soul:
   - <&6>Powered by the countless souls trapped within.
   - <&sp>
   - <&e>Increases legendary catch rate by 100<&pc>.
-  - <&6>Frank Level<&co> <&e>95
+  - <&6>Jade Level<&co> <&e>95
   mechanisms:
       custom_model_data: 9
   flags:

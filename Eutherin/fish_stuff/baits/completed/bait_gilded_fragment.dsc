@@ -5,7 +5,7 @@ fishing_bait_golden:
   lore:
   - <&6>Increases chance to catch <&e>legendary fish <&6>to <&e>1<&pc><&6>.
   - <&sp>
-  - <&6>Frank Level<&co> <&e>81
+  - <&6>Jade Level<&co> <&e>81
   mechanisms:
     custom_model_data: 22
   recipes:

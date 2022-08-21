@@ -6,7 +6,7 @@ fishing_rod_golden:
   - <&6>The blank of this rod drips with opulence.
   - <&sp>
   - <&e>1<&pc> chance to catch a key each cast.
-  - <&6>Frank Level<&co> <&e>70
+  - <&6>Jade Level<&co> <&e>70
   mechanisms:
       custom_model_data: 7
   flags:

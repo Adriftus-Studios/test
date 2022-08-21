@@ -6,7 +6,7 @@ fishing_boat_netherite:
   - <&6>This boat is probably resistant to lava.
   - <&sp>
   - <&e>Increases fish catch rate by 12<&pc>.
-  - <&6>Frank Level<&co> <&e>40
+  - <&6>Jade Level<&co> <&e>40
   mechanisms:
     custom_model_data: 3
   flags:

@@ -6,7 +6,7 @@ fishing_boat_zeppelin:
   - <&6>The envy of the skies
   - <&sp>
   - <&e>Increases fish catch rate by 7.5<&pc>.
-  - <&6>Frank Level<&co> <&e>70
+  - <&6>Jade Level<&co> <&e>70
   mechanisms:
     custom_model_data: 6
   flags:

@@ -5,7 +5,7 @@ fishing_bait_chum:
   lore:
   - <&6>Increases chance to <&e>catch fish <&6>by <&e>10<&pc><&6>.
   - <&sp>
-  - <&6>Frank Level<&co> <&e>16
+  - <&6>Jade Level<&co> <&e>16
   mechanisms:
     custom_model_data: 6
   recipes:
