@@ -12,7 +12,7 @@ armor_stand_test:
         - define y <util.pi.mul[<[yDiff].div[10]>]>
         - repeat 20 as:zDiff:
           - define z <util.pi.mul[<[yDiff].div[10]>]>
-          - adjust <[as]> armor_pose:[head=<[x]>,<[y>,<[z]>]
+          - adjust <[as]> armor_pose:[head=<[x]>,<[y]>,<[z]>]
           - run armor_stand_teleport def:<[as]>|<[x]>|<[y]>|<[z]>|<[as2]>
           - wait 1t
     - remove <[as2]>
