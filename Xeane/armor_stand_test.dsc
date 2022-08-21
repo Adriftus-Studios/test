@@ -23,11 +23,11 @@ armor_stand_teleport:
   definitions: entity|tp_target
   script:
     - define vector <[entity].eye_location.direction.vector>
-    - define loc <[entity].eye_location.below[0.25]>
+    - define loc <[entity].eye_location.below[0.5]>
     - define vector <[loc].direction.vector>
     - define as_pose_map <[entity].armor_pose_map.get[head]>
     - define head_direction <proc[armor_stand_get_direction].context[<[as_pose_map].y>|<[as_pose_map].x>|<[as_pose_map].z.mul[-1]>]>
-    - define head_direction <proc[armor_stand_rot_around_y].context[<[head_direction]>|<[entity].location.yaw.to_radians>]>
+    #- define head_direction <proc[armor_stand_rot_around_y].context[<[head_direction]>|<[entity].location.yaw.to_radians>]>
     - define new_x <[loc].x.add[<[head_direction].x.mul[<element[10].div[16]>]>]>
     - define new_y <[loc].y.add[<[head_direction].y.mul[<element[10].div[16]>]>]>
     - define new_z <[loc].z.add[<[head_direction].z.mul[<element[10].div[16]>]>]>
@@ -38,7 +38,7 @@ armor_stand_get_direction:
   debug: false
   definitions: yaw|pitch|roll
   script:
-    - define v <location[0,0.25,0]>
+    - define v <location[0,1,0]>
     - define v <[v].proc[armor_stand_rot_around_x].context[<[pitch]>]>
     - define v <[v].proc[armor_stand_rot_around_y].context[<[yaw]>]>
     - define v <[v].proc[armor_stand_rot_around_z].context[<[roll]>]>
