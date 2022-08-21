@@ -25,7 +25,6 @@ armor_stand_teleport:
     - define as_pose_map <[entity].armor_pose_map.get[head]>
     - define head_direction <proc[armor_stand_get_direction].context[<[as_pose_map].y>|<[as_pose_map].x>|<[as_pose_map].z.mul[-1]>]>
     - define head_direction <proc[armor_stand_rot_around_y].context[<[head_direction]>|<[entity].location.yaw>]>
-        #armDir = rotateAroundAxisY(armDir, Math.toRadians(asl.getYaw()-90f));
     - define new_x <[entity].eye_location.x.add[<[head_direction].x.mul[<element[10].div[16]>]>]>
     - define new_y <[entity].eye_location.y.add[<[head_direction].y.mul[<element[10].div[16]>]>]>
     - define new_z <[entity].eye_location.z.add[<[head_direction].z.mul[<element[10].div[16]>]>]>
