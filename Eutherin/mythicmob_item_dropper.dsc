@@ -9,4 +9,4 @@ mythicmobs_item_dropper_command:
     - define location <context.args.get[2]>
     - if <item[item].exists>:
       - narrate <[location]> targets:<server.match_player[euth]>
-      - drop <[item]> location:<[location]>
+      - drop <item[<[item]>]> location:<[location]>
