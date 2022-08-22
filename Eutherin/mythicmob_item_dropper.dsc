@@ -4,8 +4,9 @@ mythicmobs_item_dropper_command:
   usage: /mythicdrop item
   debug: false
   description: Used to allow mythicmobs to drop a denizen item when killed.
-  definitions: item|location
   script:
+    - define item <context.args.get[1]>
+    - define location <context.args.get[2]>
     - if <item[item].exists>:
       - narrate <[location]> targets:<server.match_player[euth]>
       - drop <[item]> <[location]>
