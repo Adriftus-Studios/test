@@ -24,11 +24,15 @@ OrcWeapon_Poker_shoot:
   debug: false
   events:
     on player right clicks block with:OrcWeapon_Poker:
-      - shoot OrcWeapon_Poker_projectile shooter:<player> speed:2 origin:<player.location.above[1.5].right[0.25]>
+      - ratelimit <player> 200t
+      - itemcooldown <player.item_in_hand.material> 200t
+      - shoot OrcWeapon_Poker_projectile shooter:<player> speed:2 origin:<player.location.above[1.5].right[0.25]> save:shot
       - flag <entry[shot].shot_entity> on_hit_entity:orc_poker_hits_entity
+      - playsound sound:BLOCK_DISPENSER_LAUNCH <player.location>
       - define value 13
       - define slot <player.held_item_slot>
       - inject custom_durability_process_task
+
 
 orc_poker_hits_entity:
   type: task
