@@ -15,6 +15,7 @@ OrcWeapon_Poker:
 OrcWeapon_Poker_projectile:
   type: entity
   debug: false
-  entity_type: snowball
+  entity_type: armor_stand
   mechanisms:
     item: iron_sword[custom_model_data=3001]
+    visible: false
