@@ -25,7 +25,7 @@ OrcWeapon_Poker_shoot:
   events:
     on player right clicks block with:OrcWeapon_Poker:
       - ratelimit <player> 200t
-      - itemcooldown <player.item_in_hand.material> 200t
+      - itemcooldown <player.item_in_hand.material> duration:200t
       - shoot OrcWeapon_Poker_projectile shooter:<player> speed:2 origin:<player.location.above[1.5].right[0.25]> save:shot
       - flag <entry[shot].shot_entity> on_hit_entity:orc_poker_hits_entity
       - playsound sound:BLOCK_DISPENSER_LAUNCH <player.location>
