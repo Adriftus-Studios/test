@@ -18,4 +18,4 @@ orc_chopper_effect:
   events:
     after player damages entity with:OrcWeapon_Chopper chance:15:
       - determine passively <context.final_damage.mul[1.5]>
-      - narrate chopper_fired
+      - playsound sound:BLOCK_metal_hit <player.location> pitch:0.5 <context.victim.location>

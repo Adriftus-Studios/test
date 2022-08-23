@@ -19,4 +19,4 @@ orc_crusher_effect:
   events:
     on player damages entity with:OrcWeapon_Crusher chance:25:
       - cast slow <context.entity> duration:5s
-      - narrate crusher_fired
+      - playsound sound:ENTITY_IRON_GOLEM_REPAIR <player.location> pitch:2 <context.entity.location>
