@@ -15,7 +15,27 @@ OrcWeapon_Poker:
 OrcWeapon_Poker_projectile:
   type: entity
   debug: false
-  entity_type: armor_stand
+  entity_type: snowball
   mechanisms:
     item: iron_sword[custom_model_data=3001]
-    visible: false
+
+OrcWeapon_Poker_shoot:
+  type: task
+  debug: false
+  script:
+    - shoot OrcWeapon_Poker_projectile shooter:<player> save:shot
+    - flag <entry[shot].shot_entity> on_hit_entity:orc_poker_hits_entity
+    - define value 13
+    - define slot <player.held_item_slot>
+    - inject custom_durability_process_task
+
+orc_poker_hits_entity:
+  type: task
+  debug: false
+  script:
+    - if <context.hit_entity.location.town.exists>:
+      - if <context.hit_entity.location.town> != <context.projectile.shooter.town.if_null[null]>:
+        - stop
+    - if <list[armor_stand|item_frame|glow_item_frame].contains_any[<context.hit_entity.entity_type>]> == armor_stand || <context.hit_entity.script.exists>:
+      - stop
+    - hurt <context.hit_entity> 6 source:player
