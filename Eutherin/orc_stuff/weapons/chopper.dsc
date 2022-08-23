@@ -11,3 +11,11 @@ OrcWeapon_Chopper:
   debug: false
   mechanisms:
     custom_model_data: 3000
+
+orc_chopper_effect:
+  type: world
+  debug: false
+  events:
+    after player damages entity with:OrcWeapon_Chopper chance:15:
+      - determine passively <context.final_damage.mul[1.5]>
+      - narrate chopper_fired

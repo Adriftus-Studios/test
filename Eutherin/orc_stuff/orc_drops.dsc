@@ -32,9 +32,9 @@ mythic_drop_rates:
   type: data
   data:
     mob:
-      Orc: 100
-      OrcAdept: 100
-      OrcShaman: 100
-      OrcBerserker: 100
-      OrcChampion: 100
-      OrcBeastmaster: 100
+      Orc: 1
+      OrcAdept: 1
+      OrcShaman: 1
+      OrcBerserker: 1
+      OrcChampion: 1
+      OrcBeastmaster: 1

@@ -11,3 +11,12 @@ OrcWeapon_Crusher:
   debug: false
   mechanisms:
     custom_model_data: 3001
+
+
+orc_crusher_effect:
+  type: world
+  debug: false
+  events:
+    on player damages entity with:OrcWeapon_Crusher chance:25:
+      - cast slow <context.entity> duration:5s
+      - narrate crusher_fired
