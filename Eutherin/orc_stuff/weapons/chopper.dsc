@@ -19,4 +19,3 @@ orc_chopper_effect:
     on player damages entity with:OrcWeapon_Chopper chance:15:
       - playsound sound:BLOCK_WET_GRASS_HIT pitch:0.5 <context.entity.location>
       - determine passively <context.final_damage.mul[1.5]>
-      - narrate test
