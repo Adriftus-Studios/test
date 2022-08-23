@@ -24,7 +24,7 @@ OrcWeapon_Poker_shoot:
   debug: false
   events:
     on player right clicks block with:OrcWeapon_Poker:
-      - shoot OrcWeapon_Poker_projectile shooter:<player> save:shot
+      - shoot OrcWeapon_Poker_projectile shooter:<player> speed:2 origin:<player.location.above[1.5].right[0.25]>
       - flag <entry[shot].shot_entity> on_hit_entity:orc_poker_hits_entity
       - define value 13
       - define slot <player.held_item_slot>
