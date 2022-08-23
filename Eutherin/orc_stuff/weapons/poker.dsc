@@ -3,6 +3,7 @@ OrcWeapon_Poker:
   display name: <&f>Orc Poker
   lore:
   - <&6>Stick em with the pointy end.
+  - <&e>Right Click <&6>to throw.
   material: iron_sword
   flags:
     custom_durability:
@@ -24,8 +25,8 @@ OrcWeapon_Poker_shoot:
   debug: false
   events:
     on player right clicks block with:OrcWeapon_Poker:
-      - ratelimit <player> 200t
-      - itemcooldown <player.item_in_hand.material> duration:200t
+      - ratelimit <player> 100t
+      - itemcooldown <player.item_in_hand.material> duration:100t
       - shoot OrcWeapon_Poker_projectile shooter:<player> speed:2 origin:<player.location.above[1.5].right[0.25]> save:shot
       - flag <entry[shot].shot_entity> on_hit_entity:orc_poker_hits_entity
       - playsound sound:BLOCK_DISPENSER_LAUNCH <player.location>
