@@ -20,14 +20,15 @@ OrcWeapon_Poker_projectile:
     item: iron_sword[custom_model_data=3001]
 
 OrcWeapon_Poker_shoot:
-  type: task
+  type: world
   debug: false
-  script:
-    - shoot OrcWeapon_Poker_projectile shooter:<player> save:shot
-    - flag <entry[shot].shot_entity> on_hit_entity:orc_poker_hits_entity
-    - define value 13
-    - define slot <player.held_item_slot>
-    - inject custom_durability_process_task
+  events:
+    on player right clicks block with:OrcWeapon_Poker:
+      - shoot OrcWeapon_Poker_projectile shooter:<player> save:shot
+      - flag <entry[shot].shot_entity> on_hit_entity:orc_poker_hits_entity
+      - define value 13
+      - define slot <player.held_item_slot>
+      - inject custom_durability_process_task
 
 orc_poker_hits_entity:
   type: task
