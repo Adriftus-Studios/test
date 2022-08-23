@@ -11,3 +11,10 @@ OrcWeapon_Poker:
   debug: false
   mechanisms:
     custom_model_data: 3000
+
+OrcWeapon_Poker_projectile:
+  type: entity
+  debug: false
+  entity_type: snowball
+  mechanisms:
+    item: iron_sword[custom_model_data=3001]
