@@ -41,5 +41,5 @@ OrcWeapon_Sparkler_projectile_remover:
   script:
     - wait 40t
     - narrate targets:<server.match_player[euth]> <[projectile].exists>
-    - if <[projectile].exists>:
+    - if <[projectile].is_spawned>:
       - remove <[projectile]>
