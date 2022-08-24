@@ -17,6 +17,8 @@ orc_bolt_poison:
   type: world
   debug: false
   events:
+    on player left clicks block with:OrcWeapon_Sparkler:
+      - determine passively cancelled
     on player right clicks block with:OrcWeapon_Sparkler:
       - shoot OrcWeapon_Sparkler_projectile save:shot speed:1.5 origin:<player.location.above[1.5].right[0.25]>
       - adjust <entry[shot].shot_entity> hide_from_players
