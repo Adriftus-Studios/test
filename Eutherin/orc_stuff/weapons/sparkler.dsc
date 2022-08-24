@@ -34,6 +34,14 @@ OrcWeapon_Sparkler_projectile:
     item: feather[custom_model_data=1]
     gravity: false
 
+
+
+orc_sparkler_hits_entity:
+  type: task
+  debug: false
+  script:
+  - cast poison <context.hit_entity> amplifier:<util.random.int[1].to[2]> duration:<util.random.int[100].to[1000]>t
+
 OrcWeapon_Sparkler_projectile_remover:
   type: task
   debug: false
