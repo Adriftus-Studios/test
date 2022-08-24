@@ -23,6 +23,7 @@ orc_bolt_poison:
     on player damages entity with:OrcWeapon_Zapper:
       - determine passively cancelled
     on player right clicks block with:OrcWeapon_Zapper:
+      - ratelimit <player> 100t
       - shoot OrcWeapon_Zapper_projectile save:shot speed:1.5 origin:<player.location.above[1.5].right[0.25]>
       - adjust <entry[shot].shot_entity> hide_from_players
       - run OrcWeapon_Zapper_projectile_remover def.projectile:<entry[shot].shot_entity>
