@@ -17,6 +17,8 @@ orc_bolt_test:
   debug: false
   script:
   - shoot snowball save:shot
+  - flag <entry[shot].shot_entity> on_hit_entity:orc_poker_hits_entity
+  - flag <entry[shot].shot_entity> custom_damage.cause:<player.name><&sq><&6>Orcish<&sp>Spear.
   - while <entry[shot].shot_entity.is_spawned>:
     - playeffect effect:redstone quantity:10 special_data:2|0,250,0 at:<entry[shot].shot_entity.location> offset:0.15
     - playeffect effect:redstone at:<entry[shot].shot_entity.location> quantity:2 special_data:3|0,125,0 offset:0.2
