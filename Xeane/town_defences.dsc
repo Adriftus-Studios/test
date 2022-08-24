@@ -76,6 +76,8 @@ town_defence_after_place:
   script:
     - flag <[location].town> active_defences:->:<[entity]>
     - flag <[location].above> on_pistoned:->:cancel
+    - flag <[entity]> on_right_click:->:cancel
+    - flag <[entity]> on_damaged:->:cancel
 
 town_defence_remove:
   type: task
