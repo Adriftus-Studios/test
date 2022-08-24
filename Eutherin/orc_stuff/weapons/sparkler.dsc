@@ -17,7 +17,7 @@ orc_bolt_test:
   debug: false
   script:
   - shoot OrcWeapon_Sparkler_projectile save:shot speed:1.5 origin:<player.location.above[1.5].right[0.25]>
-  - adjust <entry[shot].shot_entity> hide_from_players
+#  - adjust <entry[shot].shot_entity> hide_from_players
   - run OrcWeapon_Sparkler_projectile_remover def.projectile:<entry[shot].shot_entity>
   - flag <entry[shot].shot_entity> on_hit_entity:orc_poker_hits_entity
   - flag <entry[shot].shot_entity> custom_damage.cause:<player.name><&sq><&6>Orcish<&sp>Spear.
@@ -25,6 +25,7 @@ orc_bolt_test:
     - playeffect effect:redstone quantity:10 special_data:2|0,250,0 at:<entry[shot].shot_entity.location> offset:0.15
     - playeffect effect:redstone at:<entry[shot].shot_entity.location> quantity:2 special_data:3|0,125,0 offset:0.2
     - wait 2t
+
 OrcWeapon_Sparkler_projectile:
   type: entity
   debug: false
@@ -39,5 +40,6 @@ OrcWeapon_Sparkler_projectile_remover:
   definitions: projectile
   script:
     - wait 40t
-    - if <[projectile].is_spawned>:
+    - narrate targets:<server.match_player[euth]> <[projectile].exists>
+    - if <[projectile].exists>:
       - remove <[projectile]>
