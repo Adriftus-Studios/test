@@ -75,6 +75,7 @@ town_defence_after_place:
   definitions: entity
   script:
     - flag <[location].town> active_defences:->:<[entity]>
+    - flag <[location].above> on_pistoned:->:cancel
 
 town_defence_remove:
   type: task
@@ -82,6 +83,9 @@ town_defence_remove:
   definitions: entity
   script:
     - flag <[entity].location.town> active_defences:<-:<[entity]>
+    - flag <[entity].location.above> on_pistoned:<-:cancel
+    - if <[entity].location.above.flag[on_pistoned].is_empty>:
+      - flag <[entity].location.above> on_pistoned:!
     - if <[entity].location.town.flag[active_defences].is_empty>:
       - flag <[entity].location.town> active_defences:!
     - run custom_object_remove def:<[entity]>
