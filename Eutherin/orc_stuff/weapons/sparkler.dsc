@@ -16,7 +16,7 @@ orc_bolt_test:
   type: task
   debug: false
   script:
-  - shoot snowball save:shot
+  - shoot snowball save:shot speed:1.5 origin:<player.location.above[1.5].right[0.25]>
   - flag <entry[shot].shot_entity> on_hit_entity:orc_poker_hits_entity
   - flag <entry[shot].shot_entity> custom_damage.cause:<player.name><&sq><&6>Orcish<&sp>Spear.
   - while <entry[shot].shot_entity.is_spawned>:
