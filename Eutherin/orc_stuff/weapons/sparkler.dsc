@@ -17,7 +17,7 @@ orc_bolt_test:
   debug: false
   script:
   - shoot OrcWeapon_Sparkler_projectile save:shot speed:1.5 origin:<player.location.above[1.5].right[0.25]>
-  - run OrcWeapon_Sparkler_projectile_remover def.proj:<entry[shot].shot_entity>
+  - run OrcWeapon_Sparkler_projectile_remover def.projectile:<entry[shot].shot_entity>
   - flag <entry[shot].shot_entity> on_hit_entity:orc_poker_hits_entity
   - flag <entry[shot].shot_entity> custom_damage.cause:<player.name><&sq><&6>Orcish<&sp>Spear.
   - while <entry[shot].shot_entity.is_spawned>:
@@ -35,8 +35,8 @@ OrcWeapon_Sparkler_projectile:
 OrcWeapon_Sparkler_projectile_remover:
   type: task
   debug: false
-  deefinitions: proj
+  definitions: projectile
   script:
     - wait 60t
-    - if <[proj].is_spawned>:
-      - remove <[proj]>
+    - if <[projectile].is_spawned>:
+      - remove <[projectile]>
