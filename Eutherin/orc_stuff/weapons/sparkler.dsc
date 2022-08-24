@@ -37,6 +37,6 @@ OrcWeapon_Sparkler_projectile_remover:
   debug: false
   deefinitions: proj
   script:
-    - wait 100t
+    - wait 60t
     - if <[proj].is_spawned>:
       - remove <[proj]>
