@@ -32,8 +32,9 @@ orc_bolt_poison:
       - inject custom_durability_process_task
       - while <entry[shot].shot_entity.is_spawned>:
         - playeffect effect:redstone quantity:10 special_data:2|0,250,0 at:<entry[shot].shot_entity.location> offset:0.15
+        - wait 1t
         - playeffect effect:redstone at:<entry[shot].shot_entity.location> quantity:2 special_data:3|0,125,0 offset:0.2
-        - wait 2t
+        - wait 1t
 
 
 OrcWeapon_Sparkler_projectile:
