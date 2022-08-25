@@ -18,11 +18,15 @@ wireless_lever_handle:
   script:
     - if <player.is_sneaking> && <context.location.exists>:
       - inventory flag slot:<player.held_item_slot> linked_location:<context.location>
+      - determine cancelled
 
 wireless_lever_place:
   type: task
   debug: false
   script:
+    - if !<context.item.has_flag[linked_location]>:
+      - narrate "<&c>Wireless Lever has no linked location"
+      - determine cancelled
     - wait 1t
     - if <context.location.material.name> == lever:
       - flag <context.location> on_break:wireless_lever_broken
