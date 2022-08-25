@@ -25,10 +25,10 @@ wireless_lever_place:
   type: task
   debug: false
   script:
-    - if !<context.item.has_flag[linked_location]>:
+    - if !<context.item_in_hand.has_flag[linked_location]>:
       - narrate "<&c>Wireless Lever has no linked location"
       - determine cancelled
-    - define location <context.item.flag[linked_location]>
+    - define location <context.item_in_hand.flag[linked_location]>
     - wait 1t
     - if <context.location.material.name> == lever:
       - flag <context.location> on_break:wireless_lever_broken
