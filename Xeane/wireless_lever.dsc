@@ -43,8 +43,10 @@ wireless_lever_toggle:
     - if <context.location.material.switched.exists>:
       - if <context.location.flag[linked_location].material.switched>:
         - switch <context.location.flag[linked_location]> state:off
+        - flag <context.location.flag[linked_location]> on_physics:cancel
       - else:
         - switch <context.location.flag[linked_location]> state:on
+        - flag <context.location.flag[linked_location]> on_physics:cancel
 
 wireless_lever_broken:
   type: task
