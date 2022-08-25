@@ -9,7 +9,7 @@ wireless_lever:
   - <&e>Place once Linked
   - <&c>DOES NOT WORK ON REDSTONE WIRE
   flags:
-    on_right_click: wireless_lever_handle
+    right_click_script: wireless_lever_handle
     on_place: wireless_lever_place
 
 wireless_lever_handle:
