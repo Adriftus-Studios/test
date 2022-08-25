@@ -43,10 +43,10 @@ wireless_lever_toggle:
     - if <context.location.material.switched.exists>:
       - if <context.location.flag[linked_location].material.switched>:
         - switch <context.location.flag[linked_location]> state:off
-        - flag <context.location.flag[linked_location]> on_redstone:cancel
+        - flag <context.location.flag[linked_location]> on_redstone:wireless_lever_determine_0
       - else:
         - switch <context.location.flag[linked_location]> state:on
-        - flag <context.location.flag[linked_location]> on_redstone:cancel
+        - flag <context.location.flag[linked_location]> on_redstone:wireless_lever_determine_1
 
 wireless_lever_broken:
   type: task
@@ -58,3 +58,15 @@ wireless_lever_broken:
       - flag <context.location> on_right_click:!
       - flag <context.location> linked_location:!
       - flag <context.location> on_physics:!
+
+wireless_lever_determine_0:
+  type: task
+  debug: false
+  script:
+    - determine 0
+
+wireless_lever_determine_1:
+  type: task
+  debug: false
+  script:
+    - determine 1
