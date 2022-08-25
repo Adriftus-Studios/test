@@ -53,3 +53,4 @@ wireless_lever_broken:
     - flag <context.location> on_break:!
     - flag <context.location> on_right_click:!
     - flag <context.location> linked_location:!
+    - flag <context.location> on_physics:!
