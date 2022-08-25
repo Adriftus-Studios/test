@@ -28,11 +28,12 @@ wireless_lever_place:
     - if !<context.item.has_flag[linked_location]>:
       - narrate "<&c>Wireless Lever has no linked location"
       - determine cancelled
+    - define location <context.item.flag[linked_location]>
     - wait 1t
     - if <context.location.material.name> == lever:
       - flag <context.location> on_break:wireless_lever_broken
       - flag <context.location> on_right_click:wireless_lever_toggle
-      - flag <context.location> linked_location:<context.item.flag[linked_location]>
+      - flag <context.location> linked_location:<[location]>
 
 wireless_lever_toggle:
   type: task
