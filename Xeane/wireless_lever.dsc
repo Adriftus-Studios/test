@@ -50,7 +50,9 @@ wireless_lever_broken:
   type: task
   debug: false
   script:
-    - flag <context.location> on_break:!
-    - flag <context.location> on_right_click:!
-    - flag <context.location> linked_location:!
-    - flag <context.location> on_physics:!
+    - wait 1t
+    - if <context.location.material.name> != lever:
+      - flag <context.location> on_break:!
+      - flag <context.location> on_right_click:!
+      - flag <context.location> linked_location:!
+      - flag <context.location> on_physics:!
