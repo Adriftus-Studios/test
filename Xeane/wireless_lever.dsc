@@ -40,8 +40,8 @@ wireless_lever_toggle:
   type: task
   debug: false
   script:
-    - if <context.location.material.switched>:
-      - if <context.location.flag[linked_location].material.switched.exists>:
+    - if <context.location.material.switched.exists>:
+      - if <context.location.flag[linked_location].material.switched>:
         - switch <context.location.flag[linked_location]> state:off
       - else:
         - switch <context.location.flag[linked_location]> state:on
