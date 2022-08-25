@@ -2,7 +2,7 @@ wireless_lever:
   type: item
   debug: false
   material: lever
-  display: <&c>Wireless Lever
+  display name: <&c>Wireless Lever
   lore:
   - <&e>Connects up to 2 chunks away
   - <&e>Sneak Right Click to link
