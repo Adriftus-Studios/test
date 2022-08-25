@@ -18,6 +18,7 @@ wireless_lever_handle:
   script:
     - if <player.is_sneaking> && <context.location.exists>:
       - inventory flag slot:<player.held_item_slot> linked_location:<context.location>
+      - narrate "<&a>Location Linked<&co> <&r><context.location.simple>"
       - determine cancelled
 
 wireless_lever_place:
