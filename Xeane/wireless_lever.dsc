@@ -32,6 +32,7 @@ wireless_lever_place:
     - wait 1t
     - if <context.location.material.name> == lever:
       - flag <context.location> on_break:wireless_lever_broken
+      - flag <context.location> on_physics:wireless_lever_broken
       - flag <context.location> on_right_click:wireless_lever_toggle
       - flag <context.location> linked_location:<[location]>
 
