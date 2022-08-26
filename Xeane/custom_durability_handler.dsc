@@ -1,6 +1,6 @@
 custom_durability_handler:
   type: world
-  debug: false
+  debug: true
   events:
     on player item_flagged:custom_durability.max takes damage:
       - define slot <context.slot>
