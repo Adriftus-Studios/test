@@ -13,5 +13,6 @@ custom_durability_handler:
       - else:
         - define new_lore "<[lore].include[<&7>Durability<&co> <context.item.flag[custom_durability.current]>/<context.item.flag[custom_durability.max]>]>"
       - inventory adjust slot:<context.slot> durability:<[custom_percentage].mul[<context.item.material.max_durability>]>
+      - inventory adjust slot:<context.slot> lore:<[new_lore]>
       - if <[custom_percentage]> > <[vanilla_percentage]>:
         - determine cancelled
