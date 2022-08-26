@@ -49,7 +49,7 @@ god_armor_chestplate:
             amount: 100
             slot: chest
 
-god_armor_chestplate:
+god_armor_boots:
   type: item
   material: netherite_boots
   display name: <&6>God Boots
