@@ -24,12 +24,15 @@ wireless_lever_handle:
         - narrate "<&c>Wireless Lever has no linked location"
         - determine cancelled
       - define location <context.item_in_hand.flag[linked_location]>
+      - take iteminhand quantity:1
       - wait 1t
       - if <context.location.material.name> == lever:
         - flag <context.location> on_break:wireless_lever_broken
         - flag <context.location> on_physics:wireless_lever_broken
         - flag <context.location> on_right_click:wireless_lever_toggle
         - flag <context.location> linked_location:<[location]>
+      - else:
+        - give wireless_lever
 
 wireless_lever_toggle:
   type: task
