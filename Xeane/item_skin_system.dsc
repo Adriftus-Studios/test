@@ -42,10 +42,10 @@ item_skin_system_data:
       display: <&e>Pirate Leather
       color: <color[#0603FD]>
       CMD: 6
-    #sylvan:
-      #display: <&e>Sylvan
-      #color: <color[#0703FD]>
-      #CMD: 7
+    sylvan:
+      display: <&e>Sylvan
+      color: <color[#0703FD]>
+      CMD: 7
     light_chainmail:
       display: <&e>Light Chainmail
       color: <color[#0803FD]>
@@ -499,5 +499,6 @@ item_skin_unlock:
     - if !<player.flag[cosmetics.<[type]>].if_null[<list>].contains[<[id]>]>:
       - take iteminhand quantity:1 if:<context.item.exists>
       - flag player cosmetics.<[type]>:->:<[id]>
+      - narrate "<&a>You have unlocked a new armor cosmetic set<&co> <[id].replace[_].with[<&sp>].to_titlecase>"
     - else:
       - narrate "<&c>You have already unlocked this."
