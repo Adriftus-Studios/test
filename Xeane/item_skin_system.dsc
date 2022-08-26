@@ -397,6 +397,7 @@ item_skin_system_update:
   script:
     - define inventory <context.inventory> if:<context.inventory.exists>
     - define inventory <player.open_inventory> if:<[inventory].exists.not>
+    - wait 1t
     - inventory clear d:<[inventory]>
     - inventory set slot:5 o:<[item]> d:<[inventory]>
     - if <[item].has_flag[original_item]>:
