@@ -64,7 +64,7 @@ wireless_lever_broken:
       - flag <context.location> on_right_click:!
       - flag <context.location> linked_location:!
       - flag <context.location> on_physics:!
-      - drop <item[wireless_lever]> <context.location>
+      - drop <item[wireless_lever]> quantity:1 <context.location>
 
 wireless_lever_determine_0:
   type: task
