@@ -7,7 +7,7 @@ skin_unlock_medium_diamond:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 27
-    color: #1B03FD
+    color: <color[#1B03FD]>
   data:
     recipe_book_category: gadgets.medium_diamond
   flags:

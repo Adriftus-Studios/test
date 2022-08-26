@@ -7,7 +7,7 @@ skin_unlock_medium_netherite:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 33
-    color: #2203FD
+    color: <color[#2203FD]>
   data:
     recipe_book_category: gadgets.medium_netherite
   flags:

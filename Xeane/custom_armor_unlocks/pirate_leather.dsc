@@ -7,7 +7,7 @@ skin_unlock_pirate_leather:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 6
-    color: #0603FD
+    color: <color[#0603FD]>
   data:
     recipe_book_category: gadgets.pirate_leather
   flags:

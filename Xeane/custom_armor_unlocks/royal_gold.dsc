@@ -7,7 +7,7 @@ skin_unlock_royal_gold:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 23
-    color: #1703FD
+    color: <color[#1703FD]>
   data:
     recipe_book_category: gadgets.royal_gold
   flags:

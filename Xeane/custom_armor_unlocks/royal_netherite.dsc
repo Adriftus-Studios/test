@@ -7,7 +7,7 @@ skin_unlock_royal_netherite:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 35
-    color: #2403FD
+    color: <color[#2403FD]>
   data:
     recipe_book_category: gadgets.royal_netherite
   flags:

@@ -7,7 +7,7 @@ skin_unlock_pirate_netherite:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 37
-    color: #2603FD
+    color: <color[#2603FD]>
   data:
     recipe_book_category: gadgets.pirate_netherite
   flags:

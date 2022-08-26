@@ -7,7 +7,7 @@ skin_unlock_heavy_leather:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 3
-    color: #0303FD
+    color: <color[#0303FD]>
   data:
     recipe_book_category: gadgets.heavy_leather
   flags:

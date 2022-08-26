@@ -7,7 +7,7 @@ skin_unlock_medium_chainmail:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 9
-    color: #0903FD
+    color: <color[#0903FD]>
   data:
     recipe_book_category: gadgets.medium_chainmail
   flags:

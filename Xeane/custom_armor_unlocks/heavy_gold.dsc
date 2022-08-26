@@ -7,7 +7,7 @@ skin_unlock_heavy_gold:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 22
-    color: #1603FD
+    color: <color[#1603FD]>
   data:
     recipe_book_category: gadgets.heavy_gold
   flags:

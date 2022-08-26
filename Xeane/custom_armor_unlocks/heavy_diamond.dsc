@@ -7,7 +7,7 @@ skin_unlock_heavy_diamond:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 28
-    color: #1C03FD
+    color: <color[#1C03FD]>
   data:
     recipe_book_category: gadgets.heavy_diamond
   flags:

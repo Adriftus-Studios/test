@@ -7,7 +7,7 @@ skin_unlock_pirate_chainmail:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 13
-    color: #0D03FD
+    color: <color[#0D03FD]>
   data:
     recipe_book_category: gadgets.pirate_chainmail
   flags:

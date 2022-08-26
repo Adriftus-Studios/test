@@ -7,7 +7,7 @@ skin_unlock_pirate_diamond:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 31
-    color: #2003FD
+    color: <color[#2003FD]>
   data:
     recipe_book_category: gadgets.pirate_diamond
   flags:

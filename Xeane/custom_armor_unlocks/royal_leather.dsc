@@ -7,7 +7,7 @@ skin_unlock_royal_leather:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 4
-    color: #0403FD
+    color: <color[#0403FD]>
   data:
     recipe_book_category: gadgets.royal_leather
   flags:

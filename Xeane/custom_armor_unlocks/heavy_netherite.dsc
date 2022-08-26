@@ -7,7 +7,7 @@ skin_unlock_heavy_netherite:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 34
-    color: #2303FD
+    color: <color[#2303FD]>
   data:
     recipe_book_category: gadgets.heavy_netherite
   flags:

@@ -7,7 +7,7 @@ skin_unlock_sylvan:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 7
-    color: #0703FD
+    color: <color[#0703FD]>
   data:
     recipe_book_category: gadgets.sylvan
   flags:

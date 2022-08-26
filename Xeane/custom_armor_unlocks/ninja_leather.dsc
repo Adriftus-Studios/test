@@ -7,7 +7,7 @@ skin_unlock_ninja_leather:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 5
-    color: #0503FD
+    color: <color[#0503FD]>
   data:
     recipe_book_category: gadgets.ninja_leather
   flags:
