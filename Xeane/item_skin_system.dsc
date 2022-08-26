@@ -431,7 +431,7 @@ item_skin_system_update:
     - else:
       - flag <[item]> original_item:<[item].material.name>
       - define material <[item].material.name>
-      - define durability <[item].durability.div[<[item].max_durability>].mul[<item[leather_<[material].after[_]>].max_durability>]>
+      - define durability <[item].durability.div[<[item].max_durability>].mul[<item[leather_<[material].after[_]>].max_durability>].round_down>
     - if <[item].material.name.advanced_matches[*_leggings|*_boots|*_helmet|*_chestplate]>:
       - define skin_map <script[item_skin_system_data].parsed_key[armor]>
       - define cosmetics <player.flag[cosmetics.armor].if_null[<list>]>
