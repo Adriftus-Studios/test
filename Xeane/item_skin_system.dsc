@@ -408,7 +408,7 @@ item_skin_system_update:
       - define skin_map <script[item_skin_system_data].parsed_key[weapons.<[material].name>]>
       - define cosmetics <player.flag[cosmetics.item].if_null[<list>]>
     - define page 1 if:<[page].exists.not>
-    - define slots <list[<script.data_key[data.slot_data.slots_used]>]>
+    - define slots <list[<script.data_key[data.skin_slots]>]>
     - define start <[page].sub[1].mul[<[slots].size>].add[1]>
     - define end <[slots].size.mul[<[page]>]>
     - foreach <[cosmetics].get[<[start]>].to[<[end]>]> as:skin_name:
