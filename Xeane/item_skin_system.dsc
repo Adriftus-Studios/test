@@ -417,7 +417,7 @@ item_skin_system_close:
   debug: false
   script:
     - if <context.inventory.slot[5].material.name> != air:
-      - give <context.inventory.slot[5]>
+      - give <context.inventory.slot[5].with[flag=run_script:!]>
 
 item_skin_system_update:
   type: task
