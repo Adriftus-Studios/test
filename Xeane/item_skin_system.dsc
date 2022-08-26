@@ -454,6 +454,7 @@ item_skin_system_events:
   debug: false
   events:
     on player clicks in item_skin_system_inventory slot:5 bukkit_priority:HIGHEST ignorecancelled:true:
+      - stop if:<context.clicked_inventory.equals[<player.inventory>]>
       - determine passively cancelled:false
       - if <context.item.material.name> == air:
         - define item <context.cursor_item>
