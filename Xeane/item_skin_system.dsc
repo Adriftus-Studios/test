@@ -427,9 +427,11 @@ item_skin_system_update:
     - inventory set slot:5 o:<[item].with_flag[run_script:item_skin_system_clear]> d:<[inventory]>
     - if <[item].has_flag[original_item]>:
       - define material <[item].flag[original_item]>
+      - define durability <[item].durability>
     - else:
       - flag <[item]> original_item:<[item].material.name>
       - define material <[item].material.name>
+      - define durability <[item].durability.div[<[item].max_durability>].mul[<item[leather_<[material].after[_]>].max_durability>]>
     - if <[item].material.name.advanced_matches[*_leggings|*_boots|*_helmet|*_chestplate]>:
       - define skin_map <script[item_skin_system_data].parsed_key[armor]>
       - define cosmetics <player.flag[cosmetics.armor].if_null[<list>]>
@@ -449,6 +451,7 @@ item_skin_system_update:
         - define new_item <[item]>
         - adjust def:new_item material:leather_<[material].after[_]>
         - adjust def:new_item color:<[map].get[color]>
+        - adjust def:new_item durability:<[durability]>
         - adjust def:new_item custom_model_data:<[map].get[CMD]>
         - adjust def:new_item attribute_modifiers:<script[item_skin_system_data].data_key[vanilla_attributes.<[material]>]>
         - inventory set slot:<[slots].get[<[loop_index]>]> d:<[inventory]> "o:<[new_item].with[display=<[map].get[display]> <[material].after[_].to_titlecase>;flag=run_script:item_skin_system_skin_item]>"
