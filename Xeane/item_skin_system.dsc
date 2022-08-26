@@ -479,3 +479,12 @@ item_skin_system_clear:
     - if <player.item_on_cursor.material.name> == air:
       - wait 1t
       - inventory clear d:<context.clicked_inventory>
+
+item_skin_customizer:
+  type: assignment
+  debug: false
+  actions:
+    on assignment:
+      - trigger name:click state:true
+    on click:
+      - inventory open d:ITEM_SKIN_SYSTEM_INVENTORY
