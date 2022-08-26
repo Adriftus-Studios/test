@@ -166,6 +166,31 @@ item_skin_system_data:
       display: <&e>Pirate Netherite
       color: <color[#2503FD]>
       CMD: 37
+  durability:
+    leather_leggings: 75
+    leather_chestplate: 80
+    leather_helmet: 55
+    leather_boots: 65
+    chainmail_leggings: 225
+    chainmail_chestplate: 240
+    chainmail_helmet: 165
+    chainmail_boots: 195
+    iron_leggings: 225
+    iron_chestplate: 240
+    iron_helmet: 165
+    iron_boots: 195
+    golden_leggings: 105
+    golden_chestplate: 112
+    golden_helmet: 77
+    golden_boots: 91
+    diamond_leggings: 495
+    diamond_chestplate: 528
+    diamond_helmet: 363
+    diamond_boots: 429
+    netherite_leggings: 555
+    netherite_chestplate: 592
+    netherite_helmet: 407
+    netherite_boots: 481
   vanilla_attributes:
     ## Leather
     leather_boots:
@@ -465,10 +490,12 @@ item_skin_system_skin_item:
   debug: false
   script:
     - define item <context.item.with[material=<context.item.material>]>
+    - define material <[item].flag[original_item]>
     - adjust def:item color:<context.item.color>
     - adjust def:item custom_model_data:<context.item.custom_model_data>
     - adjust def:item attribute_modifiers:<context.item.attribute_modifiers>
     - flag <[item]> run_script:item_skin_system_clear
+    - flag <[item]> custom_durability.max:<script[item_skin_system_data].data_key[durability.<[material]>]>
     - inventory set slot:5 d:<context.inventory> o:<[item]>
 
 item_skin_system_clear:
