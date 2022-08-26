@@ -54,6 +54,7 @@ wireless_lever_broken:
   type: task
   debug: false
   script:
+    - stop if:<context.location.material.name.equals[lever].not>
     - ratelimit <context.location> 1t
     - determine passively NOTHING
     - define switched <context.location.material.switched>
@@ -75,6 +76,7 @@ wireless_lever_physics:
   type: task
   debug: false
   script:
+    - stop if:<context.location.material.name.equals[lever].not>
     - ratelimit <context.location> 1t
     - define switched <context.location.material.switched>
     - modifyblock <context.location> air if:<context.new_material.name.equals[lever].not>
@@ -96,6 +98,7 @@ wireless_lever_liquid:
   type: task
   debug: false
   script:
+    - stop if:<context.destination.material.name.equals[lever].not>
     - ratelimit <context.destination> 1t
     - define switched <context.destination.material.switched>
     - modifyblock <context.destination> air if:<context.new_material.name.equals[lever].not>
@@ -117,6 +120,7 @@ wireless_lever_explode:
   type: task
   debug: false
   script:
+    - stop if:<context.block.material.name.equals[lever].not>
     - ratelimit <context.block> 1t
     - define switched <context.block.material.switched>
     - modifyblock <context.block> air if:<context.new_material.name.equals[lever].not>
