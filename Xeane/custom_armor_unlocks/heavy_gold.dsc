@@ -8,6 +8,8 @@ skin_unlock_heavy_gold:
   mechanisms:
     custom_model_data: 22
     color: 1603FD
+  data:
+    recipe_book_category: combat.heavy_gold
   flags:
     right_click_script: item_skin_unlock
     id: heavy_gold

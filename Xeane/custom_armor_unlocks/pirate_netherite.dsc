@@ -8,6 +8,8 @@ skin_unlock_pirate_netherite:
   mechanisms:
     custom_model_data: 37
     color: 2603FD
+  data:
+    recipe_book_category: combat.pirate_netherite
   flags:
     right_click_script: item_skin_unlock
     id: pirate_netherite

@@ -8,6 +8,8 @@ skin_unlock_medium_iron:
   mechanisms:
     custom_model_data: 15
     color: 0F03FD
+  data:
+    recipe_book_category: combat.medium_iron
   flags:
     right_click_script: item_skin_unlock
     id: medium_iron

@@ -8,6 +8,8 @@ skin_unlock_samurai_iron:
   mechanisms:
     custom_model_data: 18
     color: 1203FD
+  data:
+    recipe_book_category: combat.samurai_iron
   flags:
     right_click_script: item_skin_unlock
     id: samurai_iron

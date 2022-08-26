@@ -8,6 +8,8 @@ skin_unlock_light_netherite:
   mechanisms:
     custom_model_data: 32
     color: 2103FD
+  data:
+    recipe_book_category: combat.light_netherite
   flags:
     right_click_script: item_skin_unlock
     id: light_netherite

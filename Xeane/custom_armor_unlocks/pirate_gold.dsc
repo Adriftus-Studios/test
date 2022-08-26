@@ -8,6 +8,8 @@ skin_unlock_pirate_gold:
   mechanisms:
     custom_model_data: 25
     color: 1903FD
+  data:
+    recipe_book_category: combat.pirate_gold
   flags:
     right_click_script: item_skin_unlock
     id: pirate_gold

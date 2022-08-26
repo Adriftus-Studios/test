@@ -8,6 +8,8 @@ skin_unlock_royal_iron:
   mechanisms:
     custom_model_data: 17
     color: 1103FD
+  data:
+    recipe_book_category: combat.royal_iron
   flags:
     right_click_script: item_skin_unlock
     id: royal_iron

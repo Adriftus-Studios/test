@@ -8,6 +8,8 @@ skin_unlock_samurai_chainmail:
   mechanisms:
     custom_model_data: 12
     color: 0C03FD
+  data:
+    recipe_book_category: combat.samurai_chainmail
   flags:
     right_click_script: item_skin_unlock
     id: samurai_chainmail

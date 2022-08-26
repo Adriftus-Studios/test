@@ -8,6 +8,8 @@ skin_unlock_royal_leather:
   mechanisms:
     custom_model_data: 4
     color: 0403FD
+  data:
+    recipe_book_category: combat.royal_leather
   flags:
     right_click_script: item_skin_unlock
     id: royal_leather

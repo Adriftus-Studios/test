@@ -8,6 +8,8 @@ skin_unlock_royal_chainmail:
   mechanisms:
     custom_model_data: 11
     color: 0B03FD
+  data:
+    recipe_book_category: combat.royal_chainmail
   flags:
     right_click_script: item_skin_unlock
     id: royal_chainmail

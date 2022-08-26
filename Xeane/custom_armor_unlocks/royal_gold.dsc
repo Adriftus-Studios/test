@@ -8,6 +8,8 @@ skin_unlock_royal_gold:
   mechanisms:
     custom_model_data: 23
     color: 1703FD
+  data:
+    recipe_book_category: combat.royal_gold
   flags:
     right_click_script: item_skin_unlock
     id: royal_gold

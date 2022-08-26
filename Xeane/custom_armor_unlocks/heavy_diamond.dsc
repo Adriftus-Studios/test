@@ -8,6 +8,8 @@ skin_unlock_heavy_diamond:
   mechanisms:
     custom_model_data: 28
     color: 1C03FD
+  data:
+    recipe_book_category: combat.heavy_diamond
   flags:
     right_click_script: item_skin_unlock
     id: heavy_diamond
