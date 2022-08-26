@@ -52,6 +52,7 @@ wireless_lever_broken:
   type: task
   debug: false
   script:
+    - determine passively NOTHING
     - wait 1t
     - if <context.location.material.name> != lever:
       - if <context.location.material.switched>:
@@ -62,8 +63,7 @@ wireless_lever_broken:
       - flag <context.location> on_right_click:!
       - flag <context.location> linked_location:!
       - flag <context.location> on_physics:!
-      - determine passively NOTHING
-      - determine <item[wireless_lever]>
+      - drop <item[wireless_lever]> <context.location>
 
 wireless_lever_determine_0:
   type: task
