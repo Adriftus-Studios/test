@@ -3,7 +3,8 @@ custom_durability_handler:
   debug: false
   events:
     on player item_flagged:custom_durability.max takes damage:
-      - inventory flag slot:<context.slot> custom_duratbility.current:++
+      - define slot <context.slot>
+      - inventory flag slot:<[slot]> custom_durability.current:++
       - define custom_percentage <context.item.flag[custom_durability.current].div[<context.item.flag[custom_durability.max]>]>
       - define vanilla_percentage <context.item.durability.div[<context.item.max_durability>]>
       - define lore <context.item.lore.if_null[<list>]>
@@ -12,7 +13,7 @@ custom_durability_handler:
         - define new_lore "<[lore].overwrite[<&7>Durability<&co> <context.item.flag[custom_durability.current]>/<context.item.flag[custom_durability.max]>].at[<[placement]>]>"
       - else:
         - define new_lore "<[lore].include[<&7>Durability<&co> <context.item.flag[custom_durability.current]>/<context.item.flag[custom_durability.max]>]>"
-      - inventory adjust slot:<context.slot> durability:<[custom_percentage].mul[<context.item.material.max_durability>]>
-      - inventory adjust slot:<context.slot> lore:<[new_lore]>
+      - inventory adjust slot:<[slot]> durability:<[custom_percentage].mul[<context.item.material.max_durability>]>
+      - inventory adjust slot:<[slot]> lore:<[new_lore]>
       - if <[custom_percentage]> > <[vanilla_percentage]>:
         - determine cancelled
