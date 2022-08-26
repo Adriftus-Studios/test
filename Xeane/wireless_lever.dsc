@@ -73,7 +73,7 @@ wireless_lever_physics:
   script:
     - ratelimit <context.location> 1t
     - define switched <context.location.material.switched>
-    - modifyblock <context.location> air no_physics
+    - modifyblock <context.location> air no_physics if:<context.new_material.name.equals[lever].not>
     - wait 1t
     - if <context.location.material.name> != lever:
       - if <[switched]>:
