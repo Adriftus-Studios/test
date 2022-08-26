@@ -396,7 +396,7 @@ item_skin_system_update:
   definitions: item|page
   script:
     - define inventory <context.inventory> if:<context.inventory.exists>
-    - define inventory <player.open_inventory> if:<[inventory].exists>
+    - define inventory <player.open_inventory> if:<[inventory].exists.not>
     - if <[item].has_flag[original_item]>:
       - define material <[item].flag[original_item]>
     - else:
