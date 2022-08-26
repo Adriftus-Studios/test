@@ -391,7 +391,7 @@ item_skin_system_data:
           1:
             operation: ADD_NUMBER
             amount: 3
-            slot: chest
+            slot: head
       GENERIC_ARMOR_TOUGHNESS:
           1:
             operation: ADD_NUMBER
