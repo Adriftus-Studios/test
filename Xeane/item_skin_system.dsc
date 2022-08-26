@@ -216,7 +216,7 @@ item_skin_system_data:
           1:
             operation: ADD_NUMBER
             amount: 1
-            slot: chest
+            slot: head
     ## Chainmail
     chainmail_boots:
       GENERIC_ARMOR:
@@ -241,7 +241,7 @@ item_skin_system_data:
           1:
             operation: ADD_NUMBER
             amount: 2
-            slot: chest
+            slot: head
     ## Iron
     iron_boots:
       GENERIC_ARMOR:
@@ -266,7 +266,7 @@ item_skin_system_data:
           1:
             operation: ADD_NUMBER
             amount: 2
-            slot: chest
+            slot: head
     ## Leather
     golden_boots:
       GENERIC_ARMOR:
@@ -285,13 +285,13 @@ item_skin_system_data:
           1:
             operation: ADD_NUMBER
             amount: 5
-            slot: chest
+            slot: head
     golden_helmet:
       GENERIC_ARMOR:
           1:
             operation: ADD_NUMBER
             amount: 2
-            slot: chest
+            slot: head
     ## DIAMOND
     diamond_boots:
       GENERIC_ARMOR:
@@ -331,12 +331,12 @@ item_skin_system_data:
           1:
             operation: ADD_NUMBER
             amount: 3
-            slot: chest
+            slot: head
       GENERIC_ARMOR_TOUGHNESS:
           1:
             operation: ADD_NUMBER
             amount: 2
-            slot: chest
+            slot: head
     ## NETHERITE
     netherite_boots:
       GENERIC_ARMOR:
@@ -396,12 +396,12 @@ item_skin_system_data:
           1:
             operation: ADD_NUMBER
             amount: 3
-            slot: chest
+            slot: head
       GENERIC_KNOCKBACK_RESISTANCE:
           1:
             operation: ADD_NUMBER
             amount: 0.1
-            slot: chest
+            slot: head
 
 item_skin_system_inventory:
   type: inventory
