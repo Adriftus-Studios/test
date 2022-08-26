@@ -9,7 +9,7 @@ skin_unlock_pirate_iron:
     custom_model_data: 19
     color: 1303FD
   data:
-    recipe_book_category: combat.pirate_iron
+    recipe_book_category: gadgets.pirate_iron
   flags:
     right_click_script: item_skin_unlock
     id: pirate_iron

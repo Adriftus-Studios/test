@@ -9,7 +9,7 @@ skin_unlock_medium_gold:
     custom_model_data: 21
     color: 1503FD
   data:
-    recipe_book_category: combat.medium_gold
+    recipe_book_category: gadgets.medium_gold
   flags:
     right_click_script: item_skin_unlock
     id: medium_gold

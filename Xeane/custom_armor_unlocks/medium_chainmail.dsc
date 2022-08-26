@@ -9,7 +9,7 @@ skin_unlock_medium_chainmail:
     custom_model_data: 9
     color: 0903FD
   data:
-    recipe_book_category: combat.medium_chainmail
+    recipe_book_category: gadgets.medium_chainmail
   flags:
     right_click_script: item_skin_unlock
     id: medium_chainmail

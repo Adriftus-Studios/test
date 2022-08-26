@@ -9,7 +9,7 @@ skin_unlock_light_leather:
     custom_model_data: 1
     color: 0103FD
   data:
-    recipe_book_category: combat.light_leather
+    recipe_book_category: gadgets.light_leather
   flags:
     right_click_script: item_skin_unlock
     id: light_leather

@@ -9,7 +9,7 @@ skin_unlock_samurai_netherite:
     custom_model_data: 36
     color: 2503FD
   data:
-    recipe_book_category: combat.samurai_netherite
+    recipe_book_category: gadgets.samurai_netherite
   flags:
     right_click_script: item_skin_unlock
     id: samurai_netherite

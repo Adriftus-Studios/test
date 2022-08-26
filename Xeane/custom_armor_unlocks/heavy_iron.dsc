@@ -9,7 +9,7 @@ skin_unlock_heavy_iron:
     custom_model_data: 16
     color: 1003FD
   data:
-    recipe_book_category: combat.heavy_iron
+    recipe_book_category: gadgets.heavy_iron
   flags:
     right_click_script: item_skin_unlock
     id: heavy_iron

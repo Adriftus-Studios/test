@@ -9,7 +9,7 @@ skin_unlock_sylvan:
     custom_model_data: 7
     color: 0703FD
   data:
-    recipe_book_category: combat.sylvan
+    recipe_book_category: gadgets.sylvan
   flags:
     right_click_script: item_skin_unlock
     id: sylvan

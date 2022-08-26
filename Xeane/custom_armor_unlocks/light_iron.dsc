@@ -9,7 +9,7 @@ skin_unlock_light_iron:
     custom_model_data: 14
     color: 0E03FD
   data:
-    recipe_book_category: combat.light_iron
+    recipe_book_category: gadgets.light_iron
   flags:
     right_click_script: item_skin_unlock
     id: light_iron

@@ -9,7 +9,7 @@ skin_unlock_light_gold:
     custom_model_data: 20
     color: 1403FD
   data:
-    recipe_book_category: combat.light_gold
+    recipe_book_category: gadgets.light_gold
   flags:
     right_click_script: item_skin_unlock
     id: light_gold

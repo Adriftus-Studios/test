@@ -9,7 +9,7 @@ skin_unlock_light_diamond:
     custom_model_data: 26
     color: 1A03FD
   data:
-    recipe_book_category: combat.light_diamond
+    recipe_book_category: gadgets.light_diamond
   flags:
     right_click_script: item_skin_unlock
     id: light_diamond

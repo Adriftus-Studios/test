@@ -9,7 +9,7 @@ skin_unlock_light_chainmail:
     custom_model_data: 8
     color: 0803FD
   data:
-    recipe_book_category: combat.light_chainmail
+    recipe_book_category: gadgets.light_chainmail
   flags:
     right_click_script: item_skin_unlock
     id: light_chainmail

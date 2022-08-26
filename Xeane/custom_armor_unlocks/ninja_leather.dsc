@@ -9,7 +9,7 @@ skin_unlock_ninja_leather:
     custom_model_data: 5
     color: 0503FD
   data:
-    recipe_book_category: combat.ninja_leather
+    recipe_book_category: gadgets.ninja_leather
   flags:
     right_click_script: item_skin_unlock
     id: ninja_leather

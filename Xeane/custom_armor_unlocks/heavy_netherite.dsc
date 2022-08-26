@@ -9,7 +9,7 @@ skin_unlock_heavy_netherite:
     custom_model_data: 34
     color: 2303FD
   data:
-    recipe_book_category: combat.heavy_netherite
+    recipe_book_category: gadgets.heavy_netherite
   flags:
     right_click_script: item_skin_unlock
     id: heavy_netherite

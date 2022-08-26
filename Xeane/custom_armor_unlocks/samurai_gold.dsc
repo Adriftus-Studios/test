@@ -9,7 +9,7 @@ skin_unlock_samurai_gold:
     custom_model_data: 24
     color: 1803FD
   data:
-    recipe_book_category: combat.samurai_gold
+    recipe_book_category: gadgets.samurai_gold
   flags:
     right_click_script: item_skin_unlock
     id: samurai_gold

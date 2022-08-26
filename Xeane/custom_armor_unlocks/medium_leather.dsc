@@ -9,7 +9,7 @@ skin_unlock_medium_leather:
     custom_model_data: 2
     color: 0203FD
   data:
-    recipe_book_category: combat.medium_leather
+    recipe_book_category: gadgets.medium_leather
   flags:
     right_click_script: item_skin_unlock
     id: medium_leather

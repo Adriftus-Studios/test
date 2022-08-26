@@ -9,7 +9,7 @@ skin_unlock_pirate_chainmail:
     custom_model_data: 13
     color: 0D03FD
   data:
-    recipe_book_category: combat.pirate_chainmail
+    recipe_book_category: gadgets.pirate_chainmail
   flags:
     right_click_script: item_skin_unlock
     id: pirate_chainmail

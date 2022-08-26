@@ -9,7 +9,7 @@ skin_unlock_samurai_diamond:
     custom_model_data: 30
     color: 1F03FD
   data:
-    recipe_book_category: combat.samurai_diamond
+    recipe_book_category: gadgets.samurai_diamond
   flags:
     right_click_script: item_skin_unlock
     id: samurai_diamond

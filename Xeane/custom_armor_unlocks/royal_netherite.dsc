@@ -9,7 +9,7 @@ skin_unlock_royal_netherite:
     custom_model_data: 35
     color: 2403FD
   data:
-    recipe_book_category: combat.royal_netherite
+    recipe_book_category: gadgets.royal_netherite
   flags:
     right_click_script: item_skin_unlock
     id: royal_netherite

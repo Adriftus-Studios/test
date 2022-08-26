@@ -9,7 +9,7 @@ skin_unlock_pirate_diamond:
     custom_model_data: 31
     color: 2003FD
   data:
-    recipe_book_category: combat.pirate_diamond
+    recipe_book_category: gadgets.pirate_diamond
   flags:
     right_click_script: item_skin_unlock
     id: pirate_diamond

@@ -9,7 +9,7 @@ skin_unlock_pirate_leather:
     custom_model_data: 6
     color: 0603FD
   data:
-    recipe_book_category: combat.pirate_leather
+    recipe_book_category: gadgets.pirate_leather
   flags:
     right_click_script: item_skin_unlock
     id: pirate_leather

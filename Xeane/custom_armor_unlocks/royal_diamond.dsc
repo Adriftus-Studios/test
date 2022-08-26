@@ -9,7 +9,7 @@ skin_unlock_royal_diamond:
     custom_model_data: 29
     color: 1D03FD
   data:
-    recipe_book_category: combat.royal_diamond
+    recipe_book_category: gadgets.royal_diamond
   flags:
     right_click_script: item_skin_unlock
     id: royal_diamond

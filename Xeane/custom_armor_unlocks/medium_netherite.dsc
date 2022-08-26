@@ -9,7 +9,7 @@ skin_unlock_medium_netherite:
     custom_model_data: 33
     color: 2203FD
   data:
-    recipe_book_category: combat.medium_netherite
+    recipe_book_category: gadgets.medium_netherite
   flags:
     right_click_script: item_skin_unlock
     id: medium_netherite
