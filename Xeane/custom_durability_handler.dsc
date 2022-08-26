@@ -6,7 +6,7 @@ custom_durability_handler:
       - inventory flag slot:<context.slot> custom_duratbility.current:--
       - define custom_percentage <context.item.flag[custom_durability.current].div[<context.item.flag[custom_durability.max]>]>
       - define vanilla_percentage <context.item.durability.div[<context.item.max_durability>]>
-      - define lore <context.item.lore>
+      - define lore <context.item.lore.if_null[<list>]>
       - define placement <[lore].find_match[<&7>Durability*]>
       - if <[placement]> != -1:
         - define new_lore "<[lore].overwrite[<&7>Durability<&co> <context.item.flag[custom_durability.current]>/<context.item.flag[custom_durability.max]>].at[<[placement]>]>"
