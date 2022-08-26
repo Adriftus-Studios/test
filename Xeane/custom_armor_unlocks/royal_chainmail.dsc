@@ -7,7 +7,7 @@ skin_unlock_royal_chainmail:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 11
-    color: 0B03FD
+    color: #0B03FD
   data:
     recipe_book_category: gadgets.royal_chainmail
   flags:

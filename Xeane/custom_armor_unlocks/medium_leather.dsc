@@ -7,7 +7,7 @@ skin_unlock_medium_leather:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 2
-    color: 0203FD
+    color: #0203FD
   data:
     recipe_book_category: gadgets.medium_leather
   flags:

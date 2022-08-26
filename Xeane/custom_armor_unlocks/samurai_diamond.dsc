@@ -7,7 +7,7 @@ skin_unlock_samurai_diamond:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 30
-    color: 1F03FD
+    color: #1F03FD
   data:
     recipe_book_category: gadgets.samurai_diamond
   flags:

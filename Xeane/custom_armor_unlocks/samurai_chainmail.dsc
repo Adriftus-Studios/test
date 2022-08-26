@@ -7,7 +7,7 @@ skin_unlock_samurai_chainmail:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 12
-    color: 0C03FD
+    color: #0C03FD
   data:
     recipe_book_category: gadgets.samurai_chainmail
   flags:

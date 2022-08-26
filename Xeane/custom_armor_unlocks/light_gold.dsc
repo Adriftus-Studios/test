@@ -7,7 +7,7 @@ skin_unlock_light_gold:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 20
-    color: 1403FD
+    color: #1403FD
   data:
     recipe_book_category: gadgets.light_gold
   flags:

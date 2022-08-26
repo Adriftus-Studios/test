@@ -7,7 +7,7 @@ skin_unlock_medium_iron:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 15
-    color: 0F03FD
+    color: #0F03FD
   data:
     recipe_book_category: gadgets.medium_iron
   flags:

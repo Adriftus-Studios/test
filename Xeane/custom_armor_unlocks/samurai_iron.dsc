@@ -7,7 +7,7 @@ skin_unlock_samurai_iron:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 18
-    color: 1203FD
+    color: #1203FD
   data:
     recipe_book_category: gadgets.samurai_iron
   flags:

@@ -7,7 +7,7 @@ skin_unlock_heavy_chainmail:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 10
-    color: 0A03FD
+    color: #0A03FD
   data:
     recipe_book_category: gadgets.heavy_chainmail
   flags:

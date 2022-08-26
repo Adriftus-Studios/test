@@ -7,7 +7,7 @@ skin_unlock_light_leather:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 1
-    color: 0103FD
+    color: #0103FD
   data:
     recipe_book_category: gadgets.light_leather
   flags:

@@ -7,7 +7,7 @@ skin_unlock_pirate_iron:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 19
-    color: 1303FD
+    color: #1303FD
   data:
     recipe_book_category: gadgets.pirate_iron
   flags:

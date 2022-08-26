@@ -7,7 +7,7 @@ skin_unlock_royal_diamond:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 29
-    color: 1D03FD
+    color: #1D03FD
   data:
     recipe_book_category: gadgets.royal_diamond
   flags:

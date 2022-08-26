@@ -7,7 +7,7 @@ skin_unlock_heavy_iron:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 16
-    color: 1003FD
+    color: #1003FD
   data:
     recipe_book_category: gadgets.heavy_iron
   flags:

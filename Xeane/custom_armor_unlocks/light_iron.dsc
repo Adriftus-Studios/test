@@ -7,7 +7,7 @@ skin_unlock_light_iron:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 14
-    color: 0E03FD
+    color: #0E03FD
   data:
     recipe_book_category: gadgets.light_iron
   flags:

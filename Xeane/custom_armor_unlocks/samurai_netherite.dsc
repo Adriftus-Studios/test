@@ -7,7 +7,7 @@ skin_unlock_samurai_netherite:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 36
-    color: 2503FD
+    color: #2503FD
   data:
     recipe_book_category: gadgets.samurai_netherite
   flags:

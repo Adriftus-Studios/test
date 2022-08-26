@@ -7,7 +7,7 @@ skin_unlock_samurai_gold:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 24
-    color: 1803FD
+    color: #1803FD
   data:
     recipe_book_category: gadgets.samurai_gold
   flags:

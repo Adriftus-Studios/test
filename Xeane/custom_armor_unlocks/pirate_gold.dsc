@@ -7,7 +7,7 @@ skin_unlock_pirate_gold:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 25
-    color: 1903FD
+    color: #1903FD
   data:
     recipe_book_category: gadgets.pirate_gold
   flags:

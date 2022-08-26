@@ -7,7 +7,7 @@ skin_unlock_royal_iron:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 17
-    color: 1103FD
+    color: #1103FD
   data:
     recipe_book_category: gadgets.royal_iron
   flags:

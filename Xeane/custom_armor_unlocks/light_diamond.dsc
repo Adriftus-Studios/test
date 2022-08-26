@@ -7,7 +7,7 @@ skin_unlock_light_diamond:
   - <&b>Apply at Spawn!
   mechanisms:
     custom_model_data: 26
-    color: 1A03FD
+    color: #1A03FD
   data:
     recipe_book_category: gadgets.light_diamond
   flags:
