@@ -59,6 +59,7 @@ wireless_lever_broken:
       - flag <context.location> on_right_click:!
       - flag <context.location> linked_location:!
       - flag <context.location> on_physics:!
+      - determine passively NOTHING
       - determine <item[wireless_lever]>
 
 wireless_lever_determine_0:
