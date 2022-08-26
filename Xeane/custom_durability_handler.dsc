@@ -15,7 +15,7 @@ custom_durability_handler:
       - if <[custom_percentage]> >= 1:
         - stop
       - else if <[custom_percentage]> < <[vanilla_percentage]>:
-        - determine cancelled
+        - determine passively cancelled
       - else:
         - inventory adjust slot:<[slot]> durability:<[custom_percentage].mul[<context.item.material.max_durability>]>
       - inventory adjust slot:<[slot]> lore:<[new_lore]>
