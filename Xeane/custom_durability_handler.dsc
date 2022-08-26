@@ -14,7 +14,7 @@ custom_durability_handler:
       - else:
         - define new_lore "<[lore].include[<&7>Durability<&co> <context.item.flag[custom_durability.max].sub[<[custom_durability]>]>/<context.item.flag[custom_durability.max]>]>"
       - if <[custom_percentage]> >= 1:
-        - stop
+        - determine 1000
       - else if <[custom_percentage]> < <[vanilla_percentage]>:
         - determine passively cancelled
       - else:
