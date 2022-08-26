@@ -76,6 +76,7 @@ wireless_lever_physics:
   type: task
   debug: false
   script:
+    - announce <context.location.material.name>
     - ratelimit <context.location> 1t
     - define switched <context.location.material.switched>
     - modifyblock <context.location> air if:<context.new_material.name.equals[lever].not>
