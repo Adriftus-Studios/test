@@ -403,10 +403,10 @@ item_skin_system_update:
       - define material <[item].material.name>
     - if <[item].material.name.advanced_matches[*_leggings|*_boots|*_helmet|*_chestplate]>:
       - define skin_map <script[item_skin_system_data].parsed_key[armor]>
-      - define cosmetics <player.flag[cosmetics.armor]>
+      - define cosmetics <player.flag[cosmetics.armor].if_null[<list>]>
     - else:
       - define skin_map <script[item_skin_system_data].parsed_key[weapons.<[material].name>]>
-      - define cosmetics <player.flag[cosmetics.item]>
+      - define cosmetics <player.flag[cosmetics.item].if_null[<list>]>
     - define page 1 if:<[page].exists.not>
     - define slots <list[<script.data_key[data.slot_data.slots_used]>]>
     - define start <[page].sub[1].mul[<[slots].size>].add[1]>
