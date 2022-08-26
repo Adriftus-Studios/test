@@ -390,7 +390,10 @@ item_skin_system_update:
   debug: false
   data:
     skin_slots: 20|21|22|23|24|25|26|29|30|31|32|33|34|35|38|39|40|41|42|43|44
-  definitions: item
+    slot_data:
+      next_page: 54
+      previous_page: 46
+  definitions: item|page
   script:
     - define inventory <context.inventory>
     - if <[item].has_flag[original_item]>:
@@ -400,11 +403,17 @@ item_skin_system_update:
       - define material <[item].material.name>
     - if <[item].material.name.advanced_matches[*_leggings|*_boots|*_helmet|*_chestplate]>:
       - define skin_map <script[item_skin_system_data].parsed_key[armor]>
+      - define cosmetics <player.flag[cosmetics.armor]>
     - else:
       - define skin_map <script[item_skin_system_data].parsed_key[weapons.<[material].name>]>
-    - foreach <script.data_key[data.skin_slots]> as:slot:
-      - define key <[skin_map].keys.get[<[loop_index]>]>
-      - define map <[skin_map.<[key]>]>
+      - define cosmetics <player.flag[cosmetics.item]>
+    - define page 1 if:<[page].exists.not>
+    - define slots <list[<script.data_key[data.slot_data.slots_used]>]>
+    - define start <[page].sub[1].mul[<[slots].size>].add[1]>
+    - define end <[slots].size.mul[<[page]>]>
+    - foreach <[cosmetics].get[<[start]>].to[<[end]>]> as:skin_name:
+      - define key <[skin_name]>
+      - define map <[skin_map].get[<[skin_name]>]>
       - if <[key]> == air:
         - inventory set slot:<[slot]> d:<[inventory]> o:air
       - else:
@@ -414,6 +423,27 @@ item_skin_system_update:
         - adjust def:new_item custom_model_data:<[map].get[CMD]>
         - adjust def:new_item attribute_modifiers:<script[item_skin_system_data].data_key[vanilla_attributes.<[material]>]>
         - inventory set slot:<[slot]> d:<[inventory]> "o:<[new_item].with[display=<[map].get[display]> <[material].after[_].to_titlecase>;flag=run_script:item_skin_system_skin_item]>"
+
+
+    # Next Page Button
+    - if <[cosmetics].size> > <[end]>:
+      - inventory set slot:<script.data_key[data.slot_data.next_page]> o:<item[leather_horse_armor].with[hides=all;display_name=<&a>Next<&sp>Page;flag=run_script:item_skin_system_next_page;color=green;custom_model_data=7;flag=page:<[page]>]> d:<[inventory]>
+
+    # Previous Page Button
+    - if <[page]> != 1:
+      - inventory set slot:<script.data_key[data.slot_data.previous_page]> o:<item[leather_horse_armor].with[hides=all;display_name=<&a>Previous<&sp>Page;flag=run_script:item_skin_system_previous_page;color=green;custom_model_data=6;flag=page:<[page]>]> d:<[inventory]>
+
+item_skin_system_next_page:
+  type: task
+  debug: false
+  script:
+    - run item_skin_system_update def:<context.inventory.slot[5]>|<context.item.flag[page].add[1]>
+
+item_skin_system_previous_page:
+  type: task
+  debug: false
+  script:
+    - run item_skin_system_update def:<context.inventory.slot[5]>|<context.item.flag[page].sub[1]>
 
 item_skin_system_events:
   type: world
