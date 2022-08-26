@@ -1,4 +1,4 @@
-skin_unlock_gold:
+skin_unlock_pirate_gold:
   type: item
   material: leather_helmet
   display name: <&b>COSMETIC<&co><&6> Pirate Gold Set
@@ -10,5 +10,5 @@ skin_unlock_gold:
     color: 1903FD
   flags:
     right_click_script: item_skin_unlock
-    id: gold
+    id: pirate_gold
     type: armor

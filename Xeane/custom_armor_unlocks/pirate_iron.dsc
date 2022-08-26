@@ -1,4 +1,4 @@
-skin_unlock_iron:
+skin_unlock_pirate_iron:
   type: item
   material: leather_helmet
   display name: <&b>COSMETIC<&co><&6> Pirate Iron Set
@@ -10,5 +10,5 @@ skin_unlock_iron:
     color: 1303FD
   flags:
     right_click_script: item_skin_unlock
-    id: iron
+    id: pirate_iron
     type: armor

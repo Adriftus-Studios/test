@@ -1,4 +1,4 @@
-netherite_helmet:
+pirate_netherite_helmet:
   type: item
   material: leather_helmet
   display name: <&4>Pirate Netherite Helmet
@@ -8,7 +8,7 @@ netherite_helmet:
     custom_model_data: 37
     color: <color[#2603FD]>
 
-netherite_chestplate:
+pirate_netherite_chestplate:
   type: item
   material: leather_chestplate
   display name: <&4>Pirate Netherite Chestplate
@@ -18,7 +18,7 @@ netherite_chestplate:
     custom_model_data: 37
     color: <color[#2603FD]>
 
-netherite_leggings:
+pirate_netherite_leggings:
   type: item
   material: leather_leggings
   display name: <&4>Pirate Netherite Leggings
@@ -28,7 +28,7 @@ netherite_leggings:
     custom_model_data: 37
     color: <color[#2603FD]>
 
-netherite_boots:
+pirate_netherite_boots:
   type: item
   material: leather_boots
   display name: <&4>Pirate Netherite Boots

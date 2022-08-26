@@ -1,14 +1,14 @@
-skin_unlock_chainmail:
+skin_unlock_pirate_leather:
   type: item
   material: leather_helmet
-  display name: <&b>COSMETIC<&co><&6> Pirate Chainmail Set
+  display name: <&b>COSMETIC<&co><&6> Pirate Leather Set
   lore:
   - <&e>Right Click while holding
   - <&b>Apply at Spawn!
   mechanisms:
-    custom_model_data: 13
-    color: 0D03FD
+    custom_model_data: 6
+    color: 0603FD
   flags:
     right_click_script: item_skin_unlock
-    id: chainmail
+    id: pirate_leather
     type: armor
