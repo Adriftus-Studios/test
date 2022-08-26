@@ -53,9 +53,10 @@ wireless_lever_broken:
   debug: false
   script:
     - determine passively NOTHING
+    - define switched <context.location.material.switched>
     - wait 1t
     - if <context.location.material.name> != lever:
-      - if <context.location.material.switched>:
+      - if <[switched]>:
         - modifyblock <context.location.flag[linked_location]> air
         - flag <context.location.flag[linked_location]> on_break:!
         - flag <context.location.flag[linked_location]> on_pistoned:!
