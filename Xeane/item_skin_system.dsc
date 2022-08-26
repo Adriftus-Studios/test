@@ -395,7 +395,7 @@ item_skin_system_update:
       previous_page: 46
   definitions: item|page
   script:
-    - define inventory <context.inventory>
+    - define inventory <context.clicked_inventory>
     - if <[item].has_flag[original_item]>:
       - define material <[item].flag[original_item]>
     - else:
