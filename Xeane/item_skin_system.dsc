@@ -409,6 +409,15 @@ item_skin_system_inventory:
   inventory: chest
   size: 54
   gui: true
+  data:
+    on_close: item_skin_system_close
+
+item_skin_system_close:
+  type: task
+  debug: false
+  script:
+    - if <context.inventory.slot[5].material.name> != air:
+      - give <context.inventory.slot[5]>
 
 item_skin_system_update:
   type: task
