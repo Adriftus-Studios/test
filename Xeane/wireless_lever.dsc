@@ -36,7 +36,7 @@ wireless_lever_toggle:
   debug: false
   script:
     - if <context.location.material.switched.exists>:
-      - if <context.location.flag[linked_location].material.switched>:
+      - if <context.location.material.switched>:
         - modifyblock <context.location.flag[linked_location]> air
         - flag <context.location.flag[linked_location]> on_break:!
       - else:
