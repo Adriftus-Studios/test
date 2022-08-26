@@ -17,4 +17,4 @@ custom_durability_handler:
       - if <[custom_percentage]> < <[vanilla_percentage]>:
         - determine cancelled
       - else:
-        - determine <[vanilla_percentage].sub[<[custom_percentage]>].mul[<context.item.material.max_durability.round_down>]>
+        - determine <[vanilla_percentage].sub[<[custom_percentage]>].mul[<context.item.material.max_durability.round_down>].abs>
