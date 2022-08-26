@@ -5,7 +5,7 @@ command_playtime:
   usage: /playtime (Name)
   script:
   - if <context.args.size> < 1:
-      - narrate "<light_purple><bold><player.name> Has <duration[<player.statistic[PLAY_ONE_MINUTE]>t].in_hours.round.format> Hours Of Playtime."
+      - narrate "<light_purple><bold><player.name> Has <duration[<player.statistic[PLAY_ONE_MINUTE]>t].in_hours.round> Hours Of Playtime."
       - stop
   - define player <server.match_player[<context.args.get[1]>].if_null[null]>
   - if <[player]> = null:
