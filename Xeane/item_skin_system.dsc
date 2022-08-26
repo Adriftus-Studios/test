@@ -496,4 +496,8 @@ item_skin_unlock:
   script:
     - define id <context.item.flag[id]> if:<[id].exists.not>
     - define type <context.item.flag[type]> if:<[type].exists.not>
-    - flag player cosmetics.<[type]>:->:<[id]>
+    - if !<player.flag[cosmetics.<[type]>].if_null[<list>].contains[<[id]>]>:
+      - take iteminhand quantity:1 if:<context.item.exists>
+      - flag player cosmetics.<[type]>:->:<[id]>
+    - else:
+      - narrate "<&c>You have already unlocked this."
