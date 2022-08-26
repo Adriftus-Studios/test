@@ -101,7 +101,7 @@ wireless_lever_liquid:
     - stop if:<context.destination.material.name.equals[lever].not>
     - ratelimit <context.destination> 1t
     - define switched <context.destination.material.switched>
-    - modifyblock <context.destination> air if:<context.new_material.name.equals[lever].not>
+    - modifyblock <context.destination> air
     - wait 1t
     - if <context.destination.material.name> != lever:
       - if <[switched]>:
