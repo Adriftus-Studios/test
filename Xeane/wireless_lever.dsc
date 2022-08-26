@@ -30,7 +30,7 @@ wireless_lever_handle:
         - flag <context.location> on_break:wireless_lever_broken
         - flag <context.location> on_physics:wireless_lever_physics
         - flag <context.location> on_liquid_spreads:wireless_lever_liquid
-        - flag <context.location> on_explodes:wireless_lever_physics
+        - flag <context.location> on_explodes:wireless_lever_explode
         - flag <context.location> on_right_click:wireless_lever_toggle
         - flag <context.location> linked_location:<[location]>
       - else:
@@ -112,6 +112,27 @@ wireless_lever_liquid:
       - flag <context.destination> on_liquid_spreads:!
       - flag <context.destination> on_explode:!
       - drop <item[wireless_lever]> quantity:1 <context.destination>
+
+wireless_lever_explode:
+  type: task
+  debug: false
+  script:
+    - ratelimit <context.block> 1t
+    - define switched <context.block.material.switched>
+    - modifyblock <context.block> air if:<context.new_material.name.equals[lever].not>
+    - wait 1t
+    - if <context.block.material.name> != lever:
+      - if <[switched]>:
+        - modifyblock <context.block.flag[linked_location]> air
+        - flag <context.block.flag[linked_location]> on_break:!
+        - flag <context.block.flag[linked_location]> on_pistoned:!
+      - flag <context.block> on_break:!
+      - flag <context.block> on_right_click:!
+      - flag <context.block> linked_location:!
+      - flag <context.block> on_physics:!
+      - flag <context.block> on_liquid_spreads:!
+      - flag <context.block> on_explode:!
+      - drop <item[wireless_lever]> quantity:1 <context.block>
 
 wireless_lever_determine_0:
   type: task
