@@ -538,6 +538,6 @@ item_skin_unlock:
     - if !<player.flag[cosmetics.<[type]>].if_null[<list>].contains[<[id]>]>:
       - take iteminhand quantity:1 if:<context.item.exists>
       - flag player cosmetics.<[type]>:->:<[id]>
-      - narrate "<&a>You have unlocked a new armor cosmetic set<&co> <[id].replace[_].with[<&sp>].to_titlecase>"
+      - narrate "<&a>You have unlocked a new armor cosmetic set<&co><&6> <[id].replace[_].with[<&sp>].to_titlecase>"
     - else:
       - narrate "<&c>You have already unlocked this."
