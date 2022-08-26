@@ -39,9 +39,11 @@ wireless_lever_toggle:
       - if <context.location.material.switched>:
         - modifyblock <context.location.flag[linked_location]> air
         - flag <context.location.flag[linked_location]> on_break:!
+        - flag <context.location.flag[linked_location]> on_pistoned:!
       - else:
         - modifyblock <context.location.flag[linked_location]> redstone_block
         - flag <context.location.flag[linked_location]> on_break:determine_nothing
+        - flag <context.location.flag[linked_location]> on_pistoned:cancel
 
 wireless_lever_broken:
   type: task
