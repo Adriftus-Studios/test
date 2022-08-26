@@ -4,7 +4,7 @@ custom_durability_handler:
   events:
     on player item_flagged:custom_durability.max takes damage:
       - define slot <context.slot>
-      - inventory flag slot:<[slot]> custom_durability.current:++
+      - inventory flag slot:<[slot]> custom_durability.current:+:<context.damage>
       - define custom_percentage <context.item.flag[custom_durability.current].div[<context.item.flag[custom_durability.max]>]>
       - define vanilla_percentage <context.item.durability.div[<context.item.max_durability>]>
       - define lore <context.item.lore.if_null[<list>]>
