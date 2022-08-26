@@ -51,10 +51,15 @@ wireless_lever_broken:
   script:
     - wait 1t
     - if <context.location.material.name> != lever:
+      - if <context.location.material.switched>:
+        - modifyblock <context.location.flag[linked_location]> air
+        - flag <context.location.flag[linked_location]> on_break:!
+        - flag <context.location.flag[linked_location]> on_pistoned:!
       - flag <context.location> on_break:!
       - flag <context.location> on_right_click:!
       - flag <context.location> linked_location:!
       - flag <context.location> on_physics:!
+      - determine <item[wireless_lever]>
 
 wireless_lever_determine_0:
   type: task
