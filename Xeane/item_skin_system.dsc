@@ -440,6 +440,7 @@ item_skin_system_update:
     - else:
       - flag <[item]> original_item:<[item].material.name>
       - define material <[item].material.name>
+      - adjust def:item "lore:<[item].lore.if_null[<list>].include[<&7>Original Item<&co> <[item].material.name.replace[_].with[<&sp>].to_titlecase>]>"
       - define durability <[item].durability.div[<[item].max_durability>].mul[<item[leather_<[material].after[_]>].max_durability>].round_down>
     - if <[item].material.name.advanced_matches[*_leggings|*_boots|*_helmet|*_chestplate]>:
       - define skin_map <script[item_skin_system_data].parsed_key[armor]>
