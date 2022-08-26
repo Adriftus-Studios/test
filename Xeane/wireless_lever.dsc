@@ -121,7 +121,7 @@ wireless_lever_explode:
     - stop if:<context.block.material.name.equals[lever].not>
     - ratelimit <context.block> 1t
     - define switched <context.block.material.switched>
-    - modifyblock <context.block> air if:<context.new_material.name.equals[lever].not>
+    - modifyblock <context.block> air
     - wait 1t
     - if <context.block.material.name> != lever:
       - if <[switched]>:
