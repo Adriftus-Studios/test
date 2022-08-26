@@ -28,7 +28,7 @@ wireless_lever_handle:
       - wait 1t
       - if <context.location.material.name> == lever:
         - flag <context.location> on_break:wireless_lever_broken
-        - flag <context.location> on_physics:wireless_lever_broken
+        - flag <context.location> on_physics:wireless_lever_physics
         - flag <context.location> on_right_click:wireless_lever_toggle
         - flag <context.location> linked_location:<[location]>
       - else:
@@ -66,6 +66,23 @@ wireless_lever_broken:
       - flag <context.location> linked_location:!
       - flag <context.location> on_physics:!
       - drop <item[wireless_lever]> quantity:1 <context.location>
+
+wireless_lever_physics:
+  type: task
+  debug: false
+  script:
+    - ratelimit <context.location> 1t
+    - define switched <context.location.material.switched>
+    - if <[switched]>:
+      - modifyblock <context.location.flag[linked_location]> air
+      - flag <context.location.flag[linked_location]> on_break:!
+      - flag <context.location.flag[linked_location]> on_pistoned:!
+    - flag <context.location> on_break:!
+    - flag <context.location> on_right_click:!
+    - flag <context.location> linked_location:!
+    - flag <context.location> on_physics:!
+    - drop <item[wireless_lever]> quantity:1 <context.location>
+    - modifyblock <context.location> air no_physics
 
 wireless_lever_determine_0:
   type: task
