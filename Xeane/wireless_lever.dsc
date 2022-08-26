@@ -52,6 +52,7 @@ wireless_lever_broken:
   type: task
   debug: false
   script:
+    - ratelimit <context.location> 1t
     - determine passively NOTHING
     - define switched <context.location.material.switched>
     - wait 1t
