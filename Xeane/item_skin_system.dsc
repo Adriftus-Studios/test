@@ -488,3 +488,12 @@ item_skin_customizer:
       - trigger name:click state:true
     on click:
       - inventory open d:ITEM_SKIN_SYSTEM_INVENTORY
+
+item_skin_unlock:
+  type: task
+  debug: false
+  definitions: type|id
+  script:
+    - define id <context.item.flag[id]> if:<[id].exists.not>
+    - define type <context.item.flag[type]> if:<[type].exists.not>
+    - flag player cosmetics.<[type]>:->:<[id]>

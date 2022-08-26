@@ -1,4 +1,4 @@
-diamond_layer_helmet:
+diamond_helmet:
   type: item
   material: leather_helmet
   display name: <&4>Pirate Diamond Helmet
@@ -8,7 +8,7 @@ diamond_layer_helmet:
     custom_model_data: 31
     color: <color[#2003FD]>
 
-diamond_layer_chestplate:
+diamond_chestplate:
   type: item
   material: leather_chestplate
   display name: <&4>Pirate Diamond Chestplate
@@ -18,7 +18,7 @@ diamond_layer_chestplate:
     custom_model_data: 31
     color: <color[#2003FD]>
 
-diamond_layer_leggings:
+diamond_leggings:
   type: item
   material: leather_leggings
   display name: <&4>Pirate Diamond Leggings
@@ -28,7 +28,7 @@ diamond_layer_leggings:
     custom_model_data: 31
     color: <color[#2003FD]>
 
-diamond_layer_boots:
+diamond_boots:
   type: item
   material: leather_boots
   display name: <&4>Pirate Diamond Boots

@@ -1,4 +1,4 @@
-royal_iron_layer_helmet:
+royal_iron_helmet:
   type: item
   material: leather_helmet
   display name: <&4>Royal Iron Helmet
@@ -8,7 +8,7 @@ royal_iron_layer_helmet:
     custom_model_data: 17
     color: <color[#1103FD]>
 
-royal_iron_layer_chestplate:
+royal_iron_chestplate:
   type: item
   material: leather_chestplate
   display name: <&4>Royal Iron Chestplate
@@ -18,7 +18,7 @@ royal_iron_layer_chestplate:
     custom_model_data: 17
     color: <color[#1103FD]>
 
-royal_iron_layer_leggings:
+royal_iron_leggings:
   type: item
   material: leather_leggings
   display name: <&4>Royal Iron Leggings
@@ -28,7 +28,7 @@ royal_iron_layer_leggings:
     custom_model_data: 17
     color: <color[#1103FD]>
 
-royal_iron_layer_boots:
+royal_iron_boots:
   type: item
   material: leather_boots
   display name: <&4>Royal Iron Boots

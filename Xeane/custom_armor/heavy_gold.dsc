@@ -1,4 +1,4 @@
-heavy_gold_layer_helmet:
+heavy_gold_helmet:
   type: item
   material: leather_helmet
   display name: <&4>Heavy Gold Helmet
@@ -8,7 +8,7 @@ heavy_gold_layer_helmet:
     custom_model_data: 22
     color: <color[#1603FD]>
 
-heavy_gold_layer_chestplate:
+heavy_gold_chestplate:
   type: item
   material: leather_chestplate
   display name: <&4>Heavy Gold Chestplate
@@ -18,7 +18,7 @@ heavy_gold_layer_chestplate:
     custom_model_data: 22
     color: <color[#1603FD]>
 
-heavy_gold_layer_leggings:
+heavy_gold_leggings:
   type: item
   material: leather_leggings
   display name: <&4>Heavy Gold Leggings
@@ -28,7 +28,7 @@ heavy_gold_layer_leggings:
     custom_model_data: 22
     color: <color[#1603FD]>
 
-heavy_gold_layer_boots:
+heavy_gold_boots:
   type: item
   material: leather_boots
   display name: <&4>Heavy Gold Boots

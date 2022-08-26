@@ -1,4 +1,4 @@
-samurai_diamond_layer_helmet:
+samurai_diamond_helmet:
   type: item
   material: leather_helmet
   display name: <&4>Samurai Diamond Helmet
@@ -8,7 +8,7 @@ samurai_diamond_layer_helmet:
     custom_model_data: 30
     color: <color[#1F03FD]>
 
-samurai_diamond_layer_chestplate:
+samurai_diamond_chestplate:
   type: item
   material: leather_chestplate
   display name: <&4>Samurai Diamond Chestplate
@@ -18,7 +18,7 @@ samurai_diamond_layer_chestplate:
     custom_model_data: 30
     color: <color[#1F03FD]>
 
-samurai_diamond_layer_leggings:
+samurai_diamond_leggings:
   type: item
   material: leather_leggings
   display name: <&4>Samurai Diamond Leggings
@@ -28,7 +28,7 @@ samurai_diamond_layer_leggings:
     custom_model_data: 30
     color: <color[#1F03FD]>
 
-samurai_diamond_layer_boots:
+samurai_diamond_boots:
   type: item
   material: leather_boots
   display name: <&4>Samurai Diamond Boots

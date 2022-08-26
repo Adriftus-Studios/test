@@ -1,4 +1,4 @@
-sylvan_layer_helmet:
+sylvan_helmet:
   type: item
   material: leather_helmet
   display name: <&4>Sylvan Helmet
@@ -8,7 +8,7 @@ sylvan_layer_helmet:
     custom_model_data: 7
     color: <color[#0703FD]>
 
-sylvan_layer_chestplate:
+sylvan_chestplate:
   type: item
   material: leather_chestplate
   display name: <&4>Sylvan Chestplate
@@ -18,7 +18,7 @@ sylvan_layer_chestplate:
     custom_model_data: 7
     color: <color[#0703FD]>
 
-sylvan_layer_leggings:
+sylvan_leggings:
   type: item
   material: leather_leggings
   display name: <&4>Sylvan Leggings
@@ -28,7 +28,7 @@ sylvan_layer_leggings:
     custom_model_data: 7
     color: <color[#0703FD]>
 
-sylvan_layer_boots:
+sylvan_boots:
   type: item
   material: leather_boots
   display name: <&4>Sylvan Boots

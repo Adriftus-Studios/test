@@ -1,4 +1,4 @@
-royal_netherite_layer_helmet:
+royal_netherite_helmet:
   type: item
   material: leather_helmet
   display name: <&4>Royal Netherite Helmet
@@ -8,7 +8,7 @@ royal_netherite_layer_helmet:
     custom_model_data: 35
     color: <color[#2403FD]>
 
-royal_netherite_layer_chestplate:
+royal_netherite_chestplate:
   type: item
   material: leather_chestplate
   display name: <&4>Royal Netherite Chestplate
@@ -18,7 +18,7 @@ royal_netherite_layer_chestplate:
     custom_model_data: 35
     color: <color[#2403FD]>
 
-royal_netherite_layer_leggings:
+royal_netherite_leggings:
   type: item
   material: leather_leggings
   display name: <&4>Royal Netherite Leggings
@@ -28,7 +28,7 @@ royal_netherite_layer_leggings:
     custom_model_data: 35
     color: <color[#2403FD]>
 
-royal_netherite_layer_boots:
+royal_netherite_boots:
   type: item
   material: leather_boots
   display name: <&4>Royal Netherite Boots

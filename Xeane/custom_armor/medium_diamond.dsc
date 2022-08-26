@@ -1,4 +1,4 @@
-medium_diamond_layer_helmet:
+medium_diamond_helmet:
   type: item
   material: leather_helmet
   display name: <&4>Medium Diamond Helmet
@@ -8,7 +8,7 @@ medium_diamond_layer_helmet:
     custom_model_data: 27
     color: <color[#1B03FD]>
 
-medium_diamond_layer_chestplate:
+medium_diamond_chestplate:
   type: item
   material: leather_chestplate
   display name: <&4>Medium Diamond Chestplate
@@ -18,7 +18,7 @@ medium_diamond_layer_chestplate:
     custom_model_data: 27
     color: <color[#1B03FD]>
 
-medium_diamond_layer_leggings:
+medium_diamond_leggings:
   type: item
   material: leather_leggings
   display name: <&4>Medium Diamond Leggings
@@ -28,7 +28,7 @@ medium_diamond_layer_leggings:
     custom_model_data: 27
     color: <color[#1B03FD]>
 
-medium_diamond_layer_boots:
+medium_diamond_boots:
   type: item
   material: leather_boots
   display name: <&4>Medium Diamond Boots

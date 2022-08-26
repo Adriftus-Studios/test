@@ -1,4 +1,4 @@
-gold_layer_helmet:
+gold_helmet:
   type: item
   material: leather_helmet
   display name: <&4>Pirate Gold Helmet
@@ -8,7 +8,7 @@ gold_layer_helmet:
     custom_model_data: 25
     color: <color[#1903FD]>
 
-gold_layer_chestplate:
+gold_chestplate:
   type: item
   material: leather_chestplate
   display name: <&4>Pirate Gold Chestplate
@@ -18,7 +18,7 @@ gold_layer_chestplate:
     custom_model_data: 25
     color: <color[#1903FD]>
 
-gold_layer_leggings:
+gold_leggings:
   type: item
   material: leather_leggings
   display name: <&4>Pirate Gold Leggings
@@ -28,7 +28,7 @@ gold_layer_leggings:
     custom_model_data: 25
     color: <color[#1903FD]>
 
-gold_layer_boots:
+gold_boots:
   type: item
   material: leather_boots
   display name: <&4>Pirate Gold Boots

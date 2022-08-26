@@ -1,4 +1,4 @@
-light_netherite_layer_helmet:
+light_netherite_helmet:
   type: item
   material: leather_helmet
   display name: <&4>Light Netherite Helmet
@@ -8,7 +8,7 @@ light_netherite_layer_helmet:
     custom_model_data: 32
     color: <color[#2103FD]>
 
-light_netherite_layer_chestplate:
+light_netherite_chestplate:
   type: item
   material: leather_chestplate
   display name: <&4>Light Netherite Chestplate
@@ -18,7 +18,7 @@ light_netherite_layer_chestplate:
     custom_model_data: 32
     color: <color[#2103FD]>
 
-light_netherite_layer_leggings:
+light_netherite_leggings:
   type: item
   material: leather_leggings
   display name: <&4>Light Netherite Leggings
@@ -28,7 +28,7 @@ light_netherite_layer_leggings:
     custom_model_data: 32
     color: <color[#2103FD]>
 
-light_netherite_layer_boots:
+light_netherite_boots:
   type: item
   material: leather_boots
   display name: <&4>Light Netherite Boots

@@ -1,4 +1,4 @@
-heavy_diamond_layer_helmet:
+heavy_diamond_helmet:
   type: item
   material: leather_helmet
   display name: <&4>Heavy Diamond Helmet
@@ -8,7 +8,7 @@ heavy_diamond_layer_helmet:
     custom_model_data: 28
     color: <color[#1C03FD]>
 
-heavy_diamond_layer_chestplate:
+heavy_diamond_chestplate:
   type: item
   material: leather_chestplate
   display name: <&4>Heavy Diamond Chestplate
@@ -18,7 +18,7 @@ heavy_diamond_layer_chestplate:
     custom_model_data: 28
     color: <color[#1C03FD]>
 
-heavy_diamond_layer_leggings:
+heavy_diamond_leggings:
   type: item
   material: leather_leggings
   display name: <&4>Heavy Diamond Leggings
@@ -28,7 +28,7 @@ heavy_diamond_layer_leggings:
     custom_model_data: 28
     color: <color[#1C03FD]>
 
-heavy_diamond_layer_boots:
+heavy_diamond_boots:
   type: item
   material: leather_boots
   display name: <&4>Heavy Diamond Boots

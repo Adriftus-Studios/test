@@ -1,4 +1,4 @@
-iron_layer_helmet:
+iron_helmet:
   type: item
   material: leather_helmet
   display name: <&4>Pirate Iron Helmet
@@ -8,7 +8,7 @@ iron_layer_helmet:
     custom_model_data: 19
     color: <color[#1303FD]>
 
-iron_layer_chestplate:
+iron_chestplate:
   type: item
   material: leather_chestplate
   display name: <&4>Pirate Iron Chestplate
@@ -18,7 +18,7 @@ iron_layer_chestplate:
     custom_model_data: 19
     color: <color[#1303FD]>
 
-iron_layer_leggings:
+iron_leggings:
   type: item
   material: leather_leggings
   display name: <&4>Pirate Iron Leggings
@@ -28,7 +28,7 @@ iron_layer_leggings:
     custom_model_data: 19
     color: <color[#1303FD]>
 
-iron_layer_boots:
+iron_boots:
   type: item
   material: leather_boots
   display name: <&4>Pirate Iron Boots

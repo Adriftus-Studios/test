@@ -1,4 +1,4 @@
-medium_iron_layer_helmet:
+medium_iron_helmet:
   type: item
   material: leather_helmet
   display name: <&4>Medium Iron Helmet
@@ -8,7 +8,7 @@ medium_iron_layer_helmet:
     custom_model_data: 15
     color: <color[#0F03FD]>
 
-medium_iron_layer_chestplate:
+medium_iron_chestplate:
   type: item
   material: leather_chestplate
   display name: <&4>Medium Iron Chestplate
@@ -18,7 +18,7 @@ medium_iron_layer_chestplate:
     custom_model_data: 15
     color: <color[#0F03FD]>
 
-medium_iron_layer_leggings:
+medium_iron_leggings:
   type: item
   material: leather_leggings
   display name: <&4>Medium Iron Leggings
@@ -28,7 +28,7 @@ medium_iron_layer_leggings:
     custom_model_data: 15
     color: <color[#0F03FD]>
 
-medium_iron_layer_boots:
+medium_iron_boots:
   type: item
   material: leather_boots
   display name: <&4>Medium Iron Boots

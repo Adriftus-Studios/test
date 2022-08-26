@@ -1,4 +1,4 @@
-heavy_netherite_layer_helmet:
+heavy_netherite_helmet:
   type: item
   material: leather_helmet
   display name: <&4>Heavy Netherite Helmet
@@ -8,7 +8,7 @@ heavy_netherite_layer_helmet:
     custom_model_data: 34
     color: <color[#2303FD]>
 
-heavy_netherite_layer_chestplate:
+heavy_netherite_chestplate:
   type: item
   material: leather_chestplate
   display name: <&4>Heavy Netherite Chestplate
@@ -18,7 +18,7 @@ heavy_netherite_layer_chestplate:
     custom_model_data: 34
     color: <color[#2303FD]>
 
-heavy_netherite_layer_leggings:
+heavy_netherite_leggings:
   type: item
   material: leather_leggings
   display name: <&4>Heavy Netherite Leggings
@@ -28,7 +28,7 @@ heavy_netherite_layer_leggings:
     custom_model_data: 34
     color: <color[#2303FD]>
 
-heavy_netherite_layer_boots:
+heavy_netherite_boots:
   type: item
   material: leather_boots
   display name: <&4>Heavy Netherite Boots

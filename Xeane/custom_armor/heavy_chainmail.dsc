@@ -1,4 +1,4 @@
-heavy_chainmail_layer_helmet:
+heavy_chainmail_helmet:
   type: item
   material: leather_helmet
   display name: <&4>Heavy Chainmail Helmet
@@ -8,7 +8,7 @@ heavy_chainmail_layer_helmet:
     custom_model_data: 10
     color: <color[#0A03FD]>
 
-heavy_chainmail_layer_chestplate:
+heavy_chainmail_chestplate:
   type: item
   material: leather_chestplate
   display name: <&4>Heavy Chainmail Chestplate
@@ -18,7 +18,7 @@ heavy_chainmail_layer_chestplate:
     custom_model_data: 10
     color: <color[#0A03FD]>
 
-heavy_chainmail_layer_leggings:
+heavy_chainmail_leggings:
   type: item
   material: leather_leggings
   display name: <&4>Heavy Chainmail Leggings
@@ -28,7 +28,7 @@ heavy_chainmail_layer_leggings:
     custom_model_data: 10
     color: <color[#0A03FD]>
 
-heavy_chainmail_layer_boots:
+heavy_chainmail_boots:
   type: item
   material: leather_boots
   display name: <&4>Heavy Chainmail Boots

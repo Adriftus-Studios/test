@@ -1,4 +1,4 @@
-chainmail_layer_helmet:
+chainmail_helmet:
   type: item
   material: leather_helmet
   display name: <&4>Pirate Chainmail Helmet
@@ -8,7 +8,7 @@ chainmail_layer_helmet:
     custom_model_data: 13
     color: <color[#0D03FD]>
 
-chainmail_layer_chestplate:
+chainmail_chestplate:
   type: item
   material: leather_chestplate
   display name: <&4>Pirate Chainmail Chestplate
@@ -18,7 +18,7 @@ chainmail_layer_chestplate:
     custom_model_data: 13
     color: <color[#0D03FD]>
 
-chainmail_layer_leggings:
+chainmail_leggings:
   type: item
   material: leather_leggings
   display name: <&4>Pirate Chainmail Leggings
@@ -28,7 +28,7 @@ chainmail_layer_leggings:
     custom_model_data: 13
     color: <color[#0D03FD]>
 
-chainmail_layer_boots:
+chainmail_boots:
   type: item
   material: leather_boots
   display name: <&4>Pirate Chainmail Boots

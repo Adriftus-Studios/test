@@ -1,4 +1,4 @@
-samurai_chainmail_layer_helmet:
+samurai_chainmail_helmet:
   type: item
   material: leather_helmet
   display name: <&4>Samurai Chainmail Helmet
@@ -8,7 +8,7 @@ samurai_chainmail_layer_helmet:
     custom_model_data: 12
     color: <color[#0C03FD]>
 
-samurai_chainmail_layer_chestplate:
+samurai_chainmail_chestplate:
   type: item
   material: leather_chestplate
   display name: <&4>Samurai Chainmail Chestplate
@@ -18,7 +18,7 @@ samurai_chainmail_layer_chestplate:
     custom_model_data: 12
     color: <color[#0C03FD]>
 
-samurai_chainmail_layer_leggings:
+samurai_chainmail_leggings:
   type: item
   material: leather_leggings
   display name: <&4>Samurai Chainmail Leggings
@@ -28,7 +28,7 @@ samurai_chainmail_layer_leggings:
     custom_model_data: 12
     color: <color[#0C03FD]>
 
-samurai_chainmail_layer_boots:
+samurai_chainmail_boots:
   type: item
   material: leather_boots
   display name: <&4>Samurai Chainmail Boots

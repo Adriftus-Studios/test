@@ -1,4 +1,4 @@
-light_diamond_layer_helmet:
+light_diamond_helmet:
   type: item
   material: leather_helmet
   display name: <&4>Light Diamond Helmet
@@ -8,7 +8,7 @@ light_diamond_layer_helmet:
     custom_model_data: 26
     color: <color[#1A03FD]>
 
-light_diamond_layer_chestplate:
+light_diamond_chestplate:
   type: item
   material: leather_chestplate
   display name: <&4>Light Diamond Chestplate
@@ -18,7 +18,7 @@ light_diamond_layer_chestplate:
     custom_model_data: 26
     color: <color[#1A03FD]>
 
-light_diamond_layer_leggings:
+light_diamond_leggings:
   type: item
   material: leather_leggings
   display name: <&4>Light Diamond Leggings
@@ -28,7 +28,7 @@ light_diamond_layer_leggings:
     custom_model_data: 26
     color: <color[#1A03FD]>
 
-light_diamond_layer_boots:
+light_diamond_boots:
   type: item
   material: leather_boots
   display name: <&4>Light Diamond Boots

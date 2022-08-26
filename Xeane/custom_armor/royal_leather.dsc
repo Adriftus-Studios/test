@@ -1,4 +1,4 @@
-royal_leather_layer_helmet:
+royal_leather_helmet:
   type: item
   material: leather_helmet
   display name: <&4>Royal Leather Helmet
@@ -8,7 +8,7 @@ royal_leather_layer_helmet:
     custom_model_data: 4
     color: <color[#0403FD]>
 
-royal_leather_layer_chestplate:
+royal_leather_chestplate:
   type: item
   material: leather_chestplate
   display name: <&4>Royal Leather Chestplate
@@ -18,7 +18,7 @@ royal_leather_layer_chestplate:
     custom_model_data: 4
     color: <color[#0403FD]>
 
-royal_leather_layer_leggings:
+royal_leather_leggings:
   type: item
   material: leather_leggings
   display name: <&4>Royal Leather Leggings
@@ -28,7 +28,7 @@ royal_leather_layer_leggings:
     custom_model_data: 4
     color: <color[#0403FD]>
 
-royal_leather_layer_boots:
+royal_leather_boots:
   type: item
   material: leather_boots
   display name: <&4>Royal Leather Boots

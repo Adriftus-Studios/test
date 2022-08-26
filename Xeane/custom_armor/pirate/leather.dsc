@@ -1,4 +1,4 @@
-leather_layer_helmet:
+leather_helmet:
   type: item
   material: leather_helmet
   display name: <&4>Pirate Leather Helmet
@@ -8,7 +8,7 @@ leather_layer_helmet:
     custom_model_data: 6
     color: <color[#0603FD]>
 
-leather_layer_chestplate:
+leather_chestplate:
   type: item
   material: leather_chestplate
   display name: <&4>Pirate Leather Chestplate
@@ -18,7 +18,7 @@ leather_layer_chestplate:
     custom_model_data: 6
     color: <color[#0603FD]>
 
-leather_layer_leggings:
+leather_leggings:
   type: item
   material: leather_leggings
   display name: <&4>Pirate Leather Leggings
@@ -28,7 +28,7 @@ leather_layer_leggings:
     custom_model_data: 6
     color: <color[#0603FD]>
 
-leather_layer_boots:
+leather_boots:
   type: item
   material: leather_boots
   display name: <&4>Pirate Leather Boots

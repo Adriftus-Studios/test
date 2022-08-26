@@ -1,4 +1,4 @@
-samurai_iron_layer_helmet:
+samurai_iron_helmet:
   type: item
   material: leather_helmet
   display name: <&4>Samurai Iron Helmet
@@ -8,7 +8,7 @@ samurai_iron_layer_helmet:
     custom_model_data: 18
     color: <color[#1203FD]>
 
-samurai_iron_layer_chestplate:
+samurai_iron_chestplate:
   type: item
   material: leather_chestplate
   display name: <&4>Samurai Iron Chestplate
@@ -18,7 +18,7 @@ samurai_iron_layer_chestplate:
     custom_model_data: 18
     color: <color[#1203FD]>
 
-samurai_iron_layer_leggings:
+samurai_iron_leggings:
   type: item
   material: leather_leggings
   display name: <&4>Samurai Iron Leggings
@@ -28,7 +28,7 @@ samurai_iron_layer_leggings:
     custom_model_data: 18
     color: <color[#1203FD]>
 
-samurai_iron_layer_boots:
+samurai_iron_boots:
   type: item
   material: leather_boots
   display name: <&4>Samurai Iron Boots

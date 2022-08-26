@@ -1,4 +1,4 @@
-medium_gold_layer_helmet:
+medium_gold_helmet:
   type: item
   material: leather_helmet
   display name: <&4>Medium Gold Helmet
@@ -8,7 +8,7 @@ medium_gold_layer_helmet:
     custom_model_data: 21
     color: <color[#1503FD]>
 
-medium_gold_layer_chestplate:
+medium_gold_chestplate:
   type: item
   material: leather_chestplate
   display name: <&4>Medium Gold Chestplate
@@ -18,7 +18,7 @@ medium_gold_layer_chestplate:
     custom_model_data: 21
     color: <color[#1503FD]>
 
-medium_gold_layer_leggings:
+medium_gold_leggings:
   type: item
   material: leather_leggings
   display name: <&4>Medium Gold Leggings
@@ -28,7 +28,7 @@ medium_gold_layer_leggings:
     custom_model_data: 21
     color: <color[#1503FD]>
 
-medium_gold_layer_boots:
+medium_gold_boots:
   type: item
   material: leather_boots
   display name: <&4>Medium Gold Boots

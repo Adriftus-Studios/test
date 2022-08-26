@@ -1,4 +1,4 @@
-samurai_netherite_layer_helmet:
+samurai_netherite_helmet:
   type: item
   material: leather_helmet
   display name: <&4>Samurai Netherite Helmet
@@ -8,7 +8,7 @@ samurai_netherite_layer_helmet:
     custom_model_data: 36
     color: <color[#2503FD]>
 
-samurai_netherite_layer_chestplate:
+samurai_netherite_chestplate:
   type: item
   material: leather_chestplate
   display name: <&4>Samurai Netherite Chestplate
@@ -18,7 +18,7 @@ samurai_netherite_layer_chestplate:
     custom_model_data: 36
     color: <color[#2503FD]>
 
-samurai_netherite_layer_leggings:
+samurai_netherite_leggings:
   type: item
   material: leather_leggings
   display name: <&4>Samurai Netherite Leggings
@@ -28,7 +28,7 @@ samurai_netherite_layer_leggings:
     custom_model_data: 36
     color: <color[#2503FD]>
 
-samurai_netherite_layer_boots:
+samurai_netherite_boots:
   type: item
   material: leather_boots
   display name: <&4>Samurai Netherite Boots
