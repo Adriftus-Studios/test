@@ -474,7 +474,7 @@ item_skin_system_clear:
   type: task
   debug: false
   script:
-    - adjust <player> item_on_cursor:<context.item.with[flag=run_script:!]>
-    - foreach <script[item_skin_system_update].data_key[data.skin_slots]>:
-      - inventory set slot:<[value]> o:air d:<context.clicked_inventory>
-    - determine air
+    - determine passively <context.item.with[flag=run_script:!]>
+    - if <player.item_on_cursor.material.name> == air:
+      - wait 1t
+      - inventory clear d:<context.clicked_inventory>
