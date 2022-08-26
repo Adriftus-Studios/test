@@ -41,7 +41,7 @@ wireless_lever_toggle:
         - flag <context.location.flag[linked_location]> on_break:!
       - else:
         - modifyblock <context.location.flag[linked_location]> redstone_block
-        - flag <context.location.flag[linked_location]> on_break:no_drops
+        - flag <context.location.flag[linked_location]> on_break:determine_nothing
 
 wireless_lever_broken:
   type: task
