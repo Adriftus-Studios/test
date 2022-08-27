@@ -34,6 +34,8 @@ town_defence_item:
   flags:
     right_click_script: custom_object_place
     custom_object: town_defence
+  mechanisms:
+    custom_model_data: 1000
 
 town_defence_watch:
   type: world
