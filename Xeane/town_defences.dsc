@@ -15,7 +15,7 @@ town_defence:
   entity_type: armor_stand
   mechanisms:
     custom_name: Sentinel Tower
-    custom_name_visible: false
+    custom_name_visible: true
     marker: false
     visible: false
     gravity: false
