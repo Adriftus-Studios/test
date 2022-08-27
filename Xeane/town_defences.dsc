@@ -17,7 +17,7 @@ town_defence:
     custom_name: Sentinel Tower
     custom_name_visible: false
     marker: false
-    visible: falsed
+    visible: false
     gravity: false
     equipment: air|air|air|feather[custom_model_data=1000]
   flags:
