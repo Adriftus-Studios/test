@@ -14,7 +14,7 @@ town_defence:
   debug: false
   entity_type: armor_stand
   mechanisms:
-    custom_name: Sentinel Tower
+    custom_name: <&c>Sentinel Tower
     custom_name_visible: true
     marker: false
     visible: false
