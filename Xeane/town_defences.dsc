@@ -18,6 +18,7 @@ town_defence:
     custom_name_visible: false
     marker: false
     visible: false
+    equipment: air|air|air|feather[custom_model_data=1000]
   flags:
     on_entity_added: custom_object_update
     no_morb: true
