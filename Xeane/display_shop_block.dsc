@@ -7,6 +7,7 @@ display_shop_block:
   - <&a>Place<&7> to create a new empty shop.
   data:
     recipe_book_category: gadgets.shop
+  no_id: true
   recipes:
     1:
       type: shaped
