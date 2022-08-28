@@ -37,6 +37,15 @@ town_defence_item:
     custom_object: town_defence
   mechanisms:
     custom_model_data: 1000
+  data:
+    recipe_book_category: gadgets.turret1
+  recipes:
+    1:
+      type: shaped
+      input:
+        - compressed_amythest_block|compressed_obisdian|compressed_amythest_block
+        -  air|compressed_emerald_block|air
+        - compressed_amythest_block|compressed_obsidan|compressed_amythest_block
 
 town_defence_watch:
   type: world
@@ -110,7 +119,7 @@ town_defence_loop:
             - flag <[town]> active_outlaws:!
             - stop
           - foreach next
-        - foreach <[town].flag[active_defences].filter[can_see[<[outlaw]>]]> as:defence:
+        - foreach <[town].flag[active_defences].filter[is_spawned].filter[can_see[<[outlaw]>]]> as:defence:
           - run town_defence_attack def:<[defence]>|<[outlaw]>
           - wait 2t
         - wait 1t
