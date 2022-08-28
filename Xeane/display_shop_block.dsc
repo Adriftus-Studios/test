@@ -16,5 +16,3 @@ display_shop_block:
       - glass|ender_eye|glass
       - steel|gold|steel
       - double_compressed_obsidian|double_compressed_obsidian|double_compressed_obsidian
-  mechanisms:
-    custom_model_data: 0
