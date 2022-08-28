@@ -2,7 +2,7 @@ display_shop_block:
   type: item
   debug: false
   material: end_portal_frame
-  display: <&b><&l>Display Shop
+  display name: <&b><&l>Display Shop
   lore:
   - <&a>Place<&7> to create a new empty shop.
   data:
