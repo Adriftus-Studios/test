@@ -4,7 +4,7 @@ display_shop_block:
   material: end_portal_frame
   display name: <&b><&l>Display Shop
   lore:
-  - 
+  - ""
   - <&a>Place <&7>to create a new empty shop.
   data:
     recipe_book_category: gadgets.shop
@@ -16,3 +16,5 @@ display_shop_block:
       - glass|ender_eye|glass
       - steel|gold|steel
       - double_compressed_obsidian|double_compressed_obsidian|double_compressed_obsidian
+  mechanisms:
+    custom_model_data: 0
