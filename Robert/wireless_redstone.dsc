@@ -11,7 +11,7 @@ set_location_task:
     script:
         - if <player.is_sneaking>:
             - inventory flag slot:<player.held_item_slot> update_location:<context.location>
-            - narrate "<&a> Location Linked to <context.loction.simple>"
+            - narrate "<&a> Location Linked to <context.location.simple>"
             - determine cancelled
         - else:
             - stop
