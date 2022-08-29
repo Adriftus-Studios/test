@@ -12,6 +12,7 @@ set_location_task:
         - if <player.is_sneaking>:
             - inventory flag slot:<player.held_item_slot> update_location:<context.location>
             - narrate "<&a> Location Linked to <context.location.simple>"
+            - define location <context.item_in_hand.flag[update_location]>
             - determine cancelled
         - else:
             - determine cancelled
@@ -19,4 +20,4 @@ set_location_task:
 activate_location_task:
     type: task
     script:
-        - modifyblock <context.item_in_hand.flag[update_location]> redstone_block
+        - modifyblock <player.item_in_hand.flag[update_location]> redstone_block
