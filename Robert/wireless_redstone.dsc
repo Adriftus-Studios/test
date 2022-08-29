@@ -21,3 +21,4 @@ activate_location_task:
     type: task
     script:
         - modifyblock <player.item_in_hand.flag[update_location]> redstone_block
+        - showfake air <player.item_in_hand.flag[update_location]> players:<server.online_players>
