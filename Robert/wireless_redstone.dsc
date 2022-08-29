@@ -14,9 +14,9 @@ set_location_task:
             - narrate "<&a> Location Linked to <context.location.simple>"
             - determine cancelled
         - else:
-            - stop
+            - determine cancelled
 
 activate_location_task:
     type: task
     script:
-        - modifyblock <context.item_in_hand.flag[update_location]> redstone_block
+        - modifyblock <player.item_in_hand.flag[update_location]> redstone_block
