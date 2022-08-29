@@ -19,4 +19,4 @@ set_location_task:
 activate_location_task:
     type: task
     script:
-        - modifyblock <player.item_in_hand.flag[update_location]> redstone_block
+        - modifyblock <context.item_in_hand.flag[update_location]> redstone_block
