@@ -82,13 +82,17 @@ lock_permissions:
 lock_apply:
     type: task
     debug: false
+    data:
+        lockable:
+            - chest
+            - barrel
+            - brewing_stand
     script:
         - stop if:<player.is_sneaking>
         # If location is a town and the player is not a resident in the town, stop
         - stop if:<context.location.town.residents.contains[<player>].not||false>
         - stop if:<player.worldguard.can_build[<context.location>].not||false>
-        # Only for blocks with an inventory
-        - stop if:<context.location.inventory.exists.not>
+        - stop if:<context.location.material.name.is_in[<script.data_key[data].get[lockable]>].not>
         - stop if:<context.location.has_flag[locks.level]>
         - determine passively cancelled
         - if <context.location.material.name> == trapped_chest:
