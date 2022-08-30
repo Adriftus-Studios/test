@@ -30,7 +30,7 @@ imprint_key_manage_players:
             - stop if:<context.entity.is_player.not>
             - determine passively cancelled
             - if <context.item.flag[locks.location].flag[locks.allowed].size||0> >= 27:
-                - narrate "<&c>Can't add anyone else to that container! :(" targets:<player>
+                - narrate "<red>Can't add anyone else to that container! :(" targets:<player>
                 - log "<player.name> maxed out perm'd players at <context.location.proc[get_basic_name]> (<context.location.material.proc[get_basic_name]>)." info file:logs/locks.log
                 - stop
             - if <context.item.flag[locks.location].flag[locks.allowed].contains[<context.entity>]||false>:
@@ -55,7 +55,7 @@ imprint_key_manage_players:
             - define inv <inventory[lock_permissions].include[<item[air]>]>
             - inventory open d:<[inv]>
             - foreach <context.location.flag[locks.allowed].exclude[<player>]> as:target:
-                - give to:<[inv]> "player_head[skull_skin=<[target].skull_skin>;custom_model_data=1;display=<&f><[target].proc[get_player_display_name]>;flag=run_script:lock_remove_access;flag=person:<[target]>;flag=location:<context.location>;lore=<list_single[<white>Left click to remove.]>]"
+                - give to:<[inv]> "player_head[skull_skin=<[target].skull_skin>;custom_model_data=1;display=<white><[target].proc[get_player_display_name]>;flag=run_script:lock_remove_access;flag=person:<[target]>;flag=location:<context.location>;lore=<list_single[<white>Left click to remove.]>]"
             - log "<player.name> began editing perms of <context.location.proc[get_basic_name]> (<context.location.material.proc[get_basic_name]>)." info file:logs/locks.log
 
 lock_remove_access:
@@ -108,7 +108,7 @@ lock_apply:
         # No double chests
         - if <context.location.half.is_in[LEFT|RIGHT]||false>:
             - log "<player.name> was denied a lock at <[locf]> because it was a double chest." info file:logs/locks.log
-            - narrate "<&c>You cannot apply a lock to a double chest!"
+            - narrate "<red>You cannot apply a lock to a double chest!"
             - playsound <player> sound:entity_villager_no
             - stop
         - take item:<context.item> quantity:1 from:<player.inventory>
@@ -117,15 +117,15 @@ lock_apply:
         - flag <context.location> locks.allowed:<list_single[<player>]>
         - flag <context.location> locks.uuid:<[uuid]>
         - define ls <context.location.round_down>
-        - narrate "<context.item.display||<context.item.material.name.to_titlecase||Basic> Lock><&r><green> applied to <context.location.material.name.replace[_].with[ ].to_titlecase> at <[ls].x> <[ls].y> <[ls].z>!"
-        - define lore "<list[<&f><bold>Location<&co> <context.location.proc[get_basic_name]>|<empty>|<&f>Right click another player to give them access.|<&f>Right click the container to manage who can access it.|Shift right click the container to remove the lock.|<empty>|<&f><underline>You do not need this key to open the container.]>"
+        - narrate "<context.item.display||<context.item.material.name.to_titlecase||Basic> Lock><reset><green> applied to <context.location.material.name.replace[_].with[ ].to_titlecase> at <[ls].x> <[ls].y> <[ls].z>!"
+        - define lore "<list[<white><bold>Location<&co> <context.location.proc[get_basic_name]>|<empty>|<white>Right click another player to give them access.|<white>Right click the container to manage who can access it.|Shift right click the container to remove the lock.|<empty>|<white><underline>You do not need this key to open the container.]>"
         - define key "<item[imprint_key].with_single[display_name=<[mat].proc[get_basic_name]> Imprint Key].with_single[lore=<[lore]>].with_flag[locks.location:<context.location>].with_flag[locks.original_owner:<player>].with_flag[locks.uuid:<[uuid]>]>"
         - give <[key]> quantity:1 to:<player> slot:<player.held_item_slot>
 
 basic_lock_pick:
     type: item
     material: stick
-    display name: <&f>Lock Pick
+    display name: <white>Lock Pick
     flags:
         locks_pick:
             level: basic
@@ -150,7 +150,7 @@ lock_pick_events:
             - define locf <context.location.proc[get_basic_name]>
             - define matf <context.location.material.proc[get_basic_name]>
             - if <context.location.town.residents.contains[<player>]>:
-                - narrate "<&c>Whoa! You can't pick this lock because it is from a different town!"
+                - narrate "<red>Whoa! You can't pick this lock because it is from a different town!"
                 - playsound <player> sound:entity_villager_no
                 - log "<player.name> tried to lock pick a lock at <[locf]> but failed because it belongs to town <context.location.town.proc[get_basic_name]>." info file:logs/locks.log
                 - stop
@@ -185,7 +185,7 @@ locked_container_events:
                 - narrate "<yellow>You broke the lock that was on this block!"
                 - playsound <context.location> sound:block_chain_break pitch:2.0
             - else:
-                - narrate "<&c>You can't break this <context.location.material.proc[get_basic_name]> because it's locked!"
+                - narrate "<red>You can't break this <context.location.material.proc[get_basic_name]> because it's locked!"
                 - playsound <context.location> sound:entity_villager_no pitch:0.7
                 - determine cancelled
         on item moves from inventory to inventory:
