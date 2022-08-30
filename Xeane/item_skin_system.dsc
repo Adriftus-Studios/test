@@ -494,7 +494,7 @@ item_skin_system_events:
   type: world
   debug: false
   events:
-    on player clicks in item_skin_system_inventory slot:48 bukkit_priority:HIGHEST ignorecancelled:true:
+    on player clicks in item_skin_system_inventory slot:48|52 bukkit_priority:HIGHEST ignorecancelled:true:
       - stop if:<context.clicked_inventory.equals[<player.inventory>]>
       - determine passively cancelled:false
       - if <context.item.material.name> == air:
