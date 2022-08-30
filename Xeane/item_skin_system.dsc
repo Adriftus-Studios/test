@@ -498,7 +498,7 @@ item_skin_system_events:
       - stop if:<context.clicked_inventory.equals[<player.inventory>]>
       - determine passively cancelled:false
       - if <context.slot> == 48 && <context.clicked_inventory.slot[52].material.name> != air:
-        - give <context.clicked_inventory.slot[52]> to:<player.inventory>
+        - give <context.clicked_inventory.slot[52].with[flag=run_script:!]> to:<player.inventory>
       - if <context.item.material.name> == air:
         - define item <context.cursor_item>
         - inject item_skin_system_update
