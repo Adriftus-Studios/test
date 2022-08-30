@@ -20,5 +20,7 @@ get_basic_name:
         - case Location:
             - define c <[c].round_down>
             - determine "<[c].x> <[c].y> <[c].z> in the <[c].world.world_type.proc[get_basic_name]>."
+        - case Inventory:
+            - determine <[c].title.if_null[<[c].inventory_type.proc[get_basic_name]>]>
         - default:
             - determine UNSUPPORTED_<[c].object_type.to_uppercase>_OBJECT_ERROR
