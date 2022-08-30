@@ -407,6 +407,7 @@ item_skin_system_inventory:
   type: inventory
   debug: false
   inventory: chest
+  title: <&f><&font[adriftus:cosmetics_guis]><&chr[F808]><&chr[3000]>
   size: 54
   gui: true
   data:
@@ -416,14 +417,16 @@ item_skin_system_close:
   type: task
   debug: false
   script:
-    - if <context.inventory.slot[5].material.name> != air:
-      - give <context.inventory.slot[5].with[flag=run_script:!]>
+    - if <context.inventory.slot[48].material.name> != air:
+      - give <context.inventory.slot[48].with[flag=run_script:!]>
+    - if <context.inventory.slot[52].material.name> != air:
+      - give <context.inventory.slot[52].with[flag=run_script:!]>
 
 item_skin_system_update:
   type: task
   debug: false
   data:
-    skin_slots: 20|21|22|23|24|25|26|29|30|31|32|33|34|35|38|39|40|41|42|43|44
+    skin_slots: 11|12|13|14|15|16|17|20|21|22|23|24|25|26|29|30|31|32|33|34|35
     slot_data:
       next_page: 54
       previous_page: 46
@@ -433,7 +436,7 @@ item_skin_system_update:
     - define inventory <player.open_inventory> if:<[inventory].exists.not>
     - wait 1t
     - inventory clear d:<[inventory]>
-    - inventory set slot:5 o:<[item].with_flag[run_script:item_skin_system_clear]> d:<[inventory]>
+    - inventory set slot:48 o:<[item].with_flag[run_script:item_skin_system_clear]> d:<[inventory]>
     - if <[item].has_flag[original_item]>:
       - define material <[item].flag[original_item]>
       - define durability <[item].durability>
@@ -479,21 +482,25 @@ item_skin_system_next_page:
   type: task
   debug: false
   script:
-    - run item_skin_system_update def:<context.inventory.slot[5]>|<context.item.flag[page].add[1]>
+    - run item_skin_system_update def:<context.inventory.slot[48]>|<context.item.flag[page].add[1]>
 
 item_skin_system_previous_page:
   type: task
   debug: false
   script:
-    - run item_skin_system_update def:<context.inventory.slot[5]>|<context.item.flag[page].sub[1]>
+    - run item_skin_system_update def:<context.inventory.slot[48]>|<context.item.flag[page].sub[1]>
 
 item_skin_system_events:
   type: world
   debug: false
   events:
-    on player clicks in item_skin_system_inventory slot:5 bukkit_priority:HIGHEST ignorecancelled:true:
+    on player clicks in item_skin_system_inventory slot:48|52 bukkit_priority:HIGHEST ignorecancelled:true:
       - stop if:<context.clicked_inventory.equals[<player.inventory>]>
       - determine passively cancelled:false
+      - if <context.slot> == 48 && <context.clicked_inventory.slot[52].material.name> != air:
+        - give <context.clicked_inventory.slot[52].with[flag=run_script:!]> to:<player.inventory>
+      - if <context.slot> == 52 && <context.clicked_inventory.slot[48].material.name> != air:
+        - determine cancelled
       - if <context.item.material.name> == air:
         - define item <context.cursor_item>
         - inject item_skin_system_update
@@ -509,7 +516,8 @@ item_skin_system_skin_item:
     - adjust def:item attribute_modifiers:<context.item.attribute_modifiers>
     - flag <[item]> run_script:item_skin_system_clear
     - flag <[item]> custom_durability.max:<script[item_skin_system_data].data_key[durability.<[material]>]>
-    - inventory set slot:5 d:<context.inventory> o:<[item]>
+    - inventory set slot:52 d:<context.inventory> o:<[item]>
+    - inventory set slot:48 d:<context.inventory> o:air
 
 item_skin_system_clear:
   type: task
