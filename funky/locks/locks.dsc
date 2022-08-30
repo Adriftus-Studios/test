@@ -88,21 +88,23 @@ lock_apply:
             - barrel
             - brewing_stand
     script:
+        - define mat <context.location.material>
         - stop if:<player.is_sneaking>
         # If location is a town and the player is not a resident in the town, stop
         - stop if:<context.location.town.residents.contains[<player>].not||false>
         - stop if:<player.worldguard.can_build[<context.location>].not||false>
-        - stop if:<context.location.material.name.is_in[<script.data_key[data].get[lockable]>].not>
+        - stop if:<[mat].name.is_in[<script.data_key[data].get[lockable]>].not>
         - stop if:<context.location.has_flag[locks.level]>
         - determine passively cancelled
-        - if <context.location.material.name> == trapped_chest:
-            - log "<player.name> was denied a lock and hurt at <context.location.simple> because it was a trapped chest. ROFL." info file:logs/locks.log
+        - define locf <context.location.proc[get_basic_name]>
+        - if <[mat].name> == trapped_chest:
+            - log "<player.name> was denied a lock and hurt at <[locf]> because it was a trapped chest. ROFL." info file:logs/locks.log
             - hurt 5 <player> cause:MAGIC source:<player>
             - playsound <player> sound:entity_ghast_scream
             - stop
         # No double chests
         - if <context.location.half.is_in[LEFT|RIGHT]||false>:
-            - log "<player.name> was denied a lock at <context.location.simple> because it was a double chest." info file:logs/locks.log
+            - log "<player.name> was denied a lock at <[locf]> because it was a double chest." info file:logs/locks.log
             - narrate "<&c>You cannot apply a lock to a double chest!"
             - playsound <player> sound:entity_villager_no
             - stop
@@ -112,18 +114,9 @@ lock_apply:
         - flag <context.location> locks.allowed:<list_single[<player>]>
         - flag <context.location> locks.uuid:<[uuid]>
         - define ls <context.location.round_down>
-        - narrate "<context.item.display||<context.item.material.name.to_titlecase||Basic> Lock><&r><green> applied to <context.location.material.name.to_titlecase> at <[ls].x> <[ls].y> <[ls].z>!"
-        - define key "<item[imprint_key].with_single[display_name=<context.location.material.name.to_titlecase> Imprint Key]>"
-        - define key "<[key].with[lore=<&f><bold>Location: <[ls].x> <[ls].y> <[ls].z>]>"
-        - define key <[key].with[lore=<[key].lore.include[<empty>]>]>
-        - define key "<[key].with[lore=<[key].lore.include[<&f>Right click another player to give them access.]>]>"
-        - define key "<[key].with[lore=<[key].lore.include[<&f>Right click the container to manage who can access it.]>]>"
-        - define key "<[key].with[lore=<[key].lore.include[<&f>Shift right click the container to remove the lock.]>]>"
-        - define key <[key].with[lore=<[key].lore.include[<empty>]>]>
-        - define key "<[key].with[lore=<[key].lore.include[<&f><underline>You do not need this key to open the container.]>]>"
-        - define key <[key].with_flag[locks.location:<context.location>]>
-        - define key <[key].with_flag[locks.original_owner:<player>]>
-        - define key <[key].with_flag[locks.uuid:<[uuid]>]>
+        - narrate "<context.item.display||<context.item.material.name.to_titlecase||Basic> Lock><&r><green> applied to <context.location.material.name.replace[_].with[ ].to_titlecase> at <[ls].x> <[ls].y> <[ls].z>!"
+        - define lore "<list[<&f><bold>Location<&co> <context.location.proc[get_basic_name]>|<empty>|<&f>Right click another player to give them access.|<&f>Right click the container to manage who can access it.|Shift right click the container to remove the lock.|<empty>|<&f><underline>You do not need this key to open the container.]>"
+        - define key "<item[imprint_key].with_single[display_name=<[mat].proc[get_basic_name]> Imprint Key].with_single[lore=<[lore]>].with_flag[locks.location:<context.location>].with_flag[locks.original_owner:<player>].with_flag[locks.uuid:<[uuid]>]>"
         - give <[key]> quantity:1 to:<player> slot:<player.held_item_slot>
 
 basic_lock_pick:
@@ -151,10 +144,12 @@ lock_pick_events:
             - stop if:<player.is_sneaking.not>
             - stop if:<context.location.flag[locks.allowed].contains[<player>]||false>
             - stop if:<player.worldguard.can_build[<context.location>].not||false>
+            - define locf <context.location.proc[get_basic_name]>
+            - define matf <context.location.material.proc[get_basic_name]>
             - if <context.location.town.residents.contains[<player>]>:
                 - narrate "<&c>Whoa! You can't pick this lock because it is from a different town!"
                 - playsound <player> sound:entity_villager_no
-                - log "<player.name> tried to lock pick a lock at <context.location.simple> but failed because it belongs to town <context.location.town.name>." info file:logs/locks.log
+                - log "<player.name> tried to lock pick a lock at <[locf]> but failed because it belongs to town <context.location.town.proc[get_basic_name]>." info file:logs/locks.log
                 - stop
             ## Chance == chance of failure
             - choose <context.item.flag[locks_pick.level]>:
@@ -162,18 +157,18 @@ lock_pick_events:
                     - define chance 90
                 - case admin:
                     - define chance 0
-                    - log "<player.name> used an admin lock pick at <context.location.simple> (<context.location.material.name>)." info file:logs/locks.log
+                    - log "<player.name> used an admin lock pick at <[locf]> (<[matf]>)." info file:logs/locks.log
                 - default:
                     - define chance 80
             - if <util.random_chance[<[chance]>]>:
                 - take item:<context.item> from:<player.inventory> quantity:1
-                - narrate "<red>Your <context.item.display||<context.item.material.name.replace[_].with[ ]>> broke!"
+                - narrate "<red>Your <context.item.proc[get_basic_name]> broke!"
                 - playsound <context.location> sound:entity_item_break pitch:2.0
-                - log "<player.name> broke a lock pick at <context.location.simple> (<context.location.material.name>)." info file:logs/locks.log
+                - log "<player.name> broke a lock pick at <[locf]> (<[matf]>)." info file:logs/locks.log
                 - stop
             - flag <context.location> locks:!
             - narrate "<green>You picked the lock!"
-            - log "<player.name> picked a lock at <context.location.simple> (<context.location.material.name>)!" info file:logs/locks.log
+            - log "<player.name> picked a lock at <[locf]> (<[matf]>)!" info file:logs/locks.log
             - mcmmo add xp skill:repair quantity:<util.random.int[10].to[50]> player:<player> if:<proc[mcmmo_installed]||false>
             - playsound <context.location> sound:block_chain_break pitch:0.5 volume:2.0
 
@@ -184,8 +179,11 @@ locked_container_events:
         on player breaks block location_flagged:locks.allowed:
             - if <context.location.flag[locks.allowed].contains[<player>]>:
                 - flag <context.location> locks:!
+                - narrate "<yellow>You broke the lock that was on this block!"
+                - playsound <context.location> sound:block_chain_break pitch:2.0
             - else:
-                - narrate "You can't break this <context.location.material.name.replace[_].with[ ].to_titlecase> because it's locked!"
+                - narrate "<&c>You can't break this <context.location.material.proc[get_basic_name]> because it's locked!"
+                - playsound <context.location> sound:entity_villager_no pitch:0.7
                 - determine cancelled
         on item moves from inventory to inventory:
             - if <context.origin.location.has_flag[locks.allowed]>:

@@ -1,0 +1,24 @@
+get_basic_name:
+    type: procedure
+    definitions: c
+    script:
+    - choose <[c].object_type>:
+        - case Element:
+            - determine "<[c].strip_color.replace[_].with[ ].to_titlecase>"
+        - case Material:
+            - determine "<[c].name.replace[_].with[ ].to_titlecase>"
+        - case Item:
+            - determine "<[c].display.strip_color.if_null[<[c].material.name.replace[_].with[ ].to_titlecase>]>"
+        - case Entity Player:
+            - determine <[c].name.strip_color.if_null[<[c].entity_type.name>]>
+        - case Town Nation:
+            - determine "<[c].name.replace[_].with[ ].strip_color.to_titlecase>"
+        - case List:
+            - determine <[c].parse_tag[<[parse_value].proc[get_basic_name]>]>
+        - case Map:
+            - determine <[c].parse_value_tag[<[parse_value].proc[get_basic_name]>]>
+        - case Location:
+            - define c <[c].round_down>
+            - determine "<[c].x> <[c].y> <[c].z> in the <[c].world.world_type.proc[get_basic_name]>."
+        - default:
+            - determine UNSUPPORTED_<[c].object_type.to_uppercase>_OBJECT_ERROR
