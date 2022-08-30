@@ -1,22 +1,149 @@
 item_skin_system_data:
   type: data
   weapons:
-    diamond_axe:
-      1000: <&b>Celestial
-      1001: <&2>Blue
-      1002: <&b>Bright
-      1003: <&6>Nordic
-      1004: <&c>Viking
-      1005: <&d>Wizard
-      1006: <&4>Bloody
-      1007: <&e>Double
-      1008: <&b>Glowing
-      1009: <&7>Black Handle
-      1010: <&1>Natural
-      1011: <&b>Shimmering
-      1012: <&5>Fireman
-      1013: <&c>Battle
-      1014: <element[Christmas].color_gradient[from=<&c>;to=<&2>]>
+    sword:
+      wooden_broadsword: 10001
+      wooden_dagger: 10002
+      wooden_katana: 10003
+      wooden_greatsword: 10004
+      wooden_glaive: 10005
+      wooden_spear: 10006
+      wooden_cutlass: 10007
+      wooden_odachi: 10008
+      iron_broadsword: 10028
+      iron_dagger: 10029
+      iron_katana: 10030
+      iron_greatsword: 10031
+      iron_glaive: 10032
+      iron_spear: 10033
+      iron_cutlass: 10034
+      iron_odachi: 10035
+      golden_broadsword: 10055
+      golden_dagger: 10056
+      golden_katana: 10057
+      golden_greatsword: 10058
+      golden_glaive: 10059
+      golden_spear: 10060
+      golden_cutlass: 10061
+      golden_odachi: 10062
+      diamond_broadsword: 10082
+      diamond_dagger: 10083
+      diamond_katana: 10084
+      diamond_greatsword: 10085
+      diamond_glaive: 10086
+      diamond_spear: 10087
+      diamond_cutlass: 10088
+      diamond_odachi: 10089
+      netherite_broadsword: 10109
+      netherite_dagger: 10110
+      netherite_katana: 10111
+      netherite_greatsword: 10112
+      netherite_glaive: 10113
+      netherite_spear: 10114
+      netherite_cutlass: 10115
+      netherite_odachi: 10116
+    axe:
+      wooden_broadaxe: 10009
+      wooden_hatchet: 10010
+      wooden_ono: 10011
+      wooden_battleaxe: 10012
+      wooden_halberd: 10013
+      iron_broadaxe: 10036
+      iron_hatchet: 10037
+      iron_ono: 10038
+      iron_battleaxe: 10039
+      iron_halberd: 10040
+      golden_broadaxe: 10063
+      golden_hatchet: 10064
+      golden_ono: 10065
+      golden_battleaxe: 10066
+      golden_halberd: 10067
+      diamond_broadaxe: 10090
+      diamond_hatchet: 10091
+      diamond_ono: 10092
+      diamond_battleaxe: 10093
+      diamond_halberd: 10094
+      netherite_broadaxe: 10117
+      netherite_hatchet: 10118
+      netherite_ono: 10119
+      netherite_battleaxe: 10120
+      netherite_halberd: 10121
+    hoe:
+      wooden_handscythe: 10024
+      wooden_sickle: 10025
+      wooden_kama: 10026
+      wooden_greatscythe: 10027
+      iron_handscythe: 10051
+      iron_sickle: 10052
+      iron_kama: 10053
+      iron_greatscythe: 10054
+      golden_handscythe: 10078
+      golden_sickle: 10079
+      golden_kama: 10080
+      golden_greatscythe: 10081
+      diamond_handscythe: 10105
+      diamond_sickle: 10106
+      diamond_kama: 10107
+      diamond_greatscythe: 10108
+      netherite_handscythe: 10132
+      netherite_sickle: 10133
+      netherite_kama: 10134
+      netherite_greatscythe: 10135
+    pickaxe:
+      wooden_mattock: 10018
+      wooden_mallet: 10019
+      wooden_sledge: 10020
+      wooden_battleaxe: 10021
+      wooden_halberd: 10022
+      wooden_spear: 10023
+      iron_mattock: 10045
+      iron_mallet: 10046
+      iron_sledge: 10047
+      iron_battleaxe: 10048
+      iron_halberd: 10049
+      iron_spear: 10050
+      golden_mattock: 10072
+      golden_mallet: 10073
+      golden_sledge: 10074
+      golden_battleaxe: 10075
+      golden_halberd: 10076
+      golden_spear: 10077
+      diamond_mattock: 10099
+      diamond_mallet: 10100
+      diamond_sledge: 10101
+      diamond_battleaxe: 10102
+      diamond_halberd: 10103
+      diamond_spear: 10104
+      netherite_mattock: 10126
+      netherite_mallet: 10127
+      netherite_sledge: 10128
+      netherite_battleaxe: 10129
+      netherite_halberd: 10130
+      netherite_spear: 10131
+    shovel:
+      wooden_trencher: 10014
+      wooden_pitchfork: 10015
+      wooden_spade: 10016
+      wooden_warffork: 10017
+      iron_trencher: 10041
+      iron_pitchfork: 10042
+      iron_spade: 10043
+      iron_warffork: 10044
+      golden_trencher: 10068
+      golden_pitchfork: 10069
+      golden_spade: 10070
+      golden_warffork: 10071
+      diamond_trencher: 10095
+      diamond_pitchfork: 10096
+      diamond_spade: 10097
+      diamond_warffork: 10098
+      netherite_trencher: 10122
+      netherite_pitchfork: 10123
+      netherite_spade: 10124
+      netherite_warffork: 10125
+
+
+
   armor:
     light_leather:
       display: <&e>Light Leather
@@ -449,8 +576,8 @@ item_skin_system_update:
       - define skin_map <script[item_skin_system_data].parsed_key[armor]>
       - define cosmetics <player.flag[cosmetics.armor].if_null[<list>]>
     - else:
-      - define skin_map <script[item_skin_system_data].parsed_key[weapons.<[material].name>]>
-      - define cosmetics <player.flag[cosmetics.item].if_null[<list>]>
+      - define skin_map <script[item_skin_system_data].parsed_key[weapons.<[material].name.after[_]>]>
+      - define cosmetics <player.flag[cosmetics.tool].if_null[<list>]>
     - define page 1 if:<[page].exists.not>
     - define slots <list[<script.data_key[data.skin_slots]>]>
     - define start <[page].sub[1].mul[<[slots].size>].add[1]>
