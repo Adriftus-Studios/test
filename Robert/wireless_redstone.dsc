@@ -21,6 +21,5 @@ activate_location_task:
     type: task
     script:
         - define location <player.item_in_hand.flag[update_location]>
-        - if <[location].material.switched>:
-            - modifyblock <[location]> redstone_block
-            - showfake air <[location]> players:<server.online_players> d:-214748364
+        - modifyblock <[location]> redstone_block
+        - showfake air <[location]> players:<server.online_players> d:20s
