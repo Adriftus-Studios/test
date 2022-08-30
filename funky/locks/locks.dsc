@@ -30,7 +30,7 @@ imprint_key_manage_players:
             - stop if:<context.entity.is_player.not>
             - determine passively cancelled
             - if <context.item.flag[locks.location].flag[locks.allowed].size||0> >= 27:
-                - narrate "<red>Can't add anyone else to that container! :(" targets:<player>
+                - narrate "<red>Can't add anyone else to that container! <&co>(" targets:<player>
                 - log "<player.name> maxed out perm'd players at <context.location.proc[get_basic_name]> (<context.location.material.proc[get_basic_name]>)." info file:logs/locks.log
                 - stop
             - if <context.item.flag[locks.location].flag[locks.allowed].contains[<context.entity>]||false>:
