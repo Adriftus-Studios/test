@@ -86,6 +86,10 @@ lock_apply:
         lockable:
             - chest
             - barrel
+            - furnace
+            - blast_furnace
+            - smoker
+            - hopper
             - brewing_stand
     script:
         - define mat <context.location.material>
