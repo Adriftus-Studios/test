@@ -26,7 +26,7 @@ imprint_key_manage_players:
     debug: false
     events:
         on player right clicks entity with:item_flagged:locks.location:
-            - ratelimit <player> 1t
+            - ratelimit <player> 10t
             - stop if:<context.entity.is_player.not>
             - determine passively cancelled
             - if <context.item.flag[locks.location].flag[locks.allowed].size||0> >= 27:
@@ -42,7 +42,7 @@ imprint_key_manage_players:
             - log "<player.name> granted perms of <context.location.proc[get_basic_name]> (<context.location.material.proc[get_basic_name]>) to <context.entity.proc[get_basic_name]>." info file:logs/locks.log
             - narrate "<green>Granted access to <context.entity.proc[get_basic_name]>." targets:<player>
         on player right clicks block with:item_flagged:locks.location:
-            - ratelimit <player> 1t
+            - ratelimit <player> 5t
             - stop if:<context.item.flag[locks.location].equals[<context.location>].not||true>
             - determine passively cancelled
             - if <player.is_sneaking>:
