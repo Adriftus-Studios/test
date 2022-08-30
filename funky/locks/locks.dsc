@@ -31,16 +31,16 @@ imprint_key_manage_players:
             - determine passively cancelled
             - if <context.item.flag[locks.location].flag[locks.allowed].size||0> >= 27:
                 - narrate "<&c>Can't add anyone else to that container! :(" targets:<player>
-                - log "<player.name> maxed out perm'd players at <context.location.simple> (<context.location.material.name>)." info file:logs/locks.log
+                - log "<player.name> maxed out perm'd players at <context.location.proc[get_basic_name]> (<context.location.material.proc[get_basic_name]>)." info file:logs/locks.log
                 - stop
             - if <context.item.flag[locks.location].flag[locks.allowed].contains[<context.entity>]||false>:
                 - flag <context.item.flag[locks.location]> <context.item.flag[locks.allowed]>:<-:<context.entity>
-                - narrate "<green>Removed access from <context.entity.name>." targets:<player>
-                - log "<player.name> removed perms of <context.location.simple> (<context.location.material.name>) from <context.entity.name>." info file:logs/locks.log
+                - narrate "<green>Removed access from <context.entity.proc[get_basic_name]>." targets:<player>
+                - log "<player.name> removed perms of <context.location.proc[get_basic_name]> (<context.location.material.proc[get_basic_name]>) from <context.entity.proc[get_basic_name]>." info file:logs/locks.log
                 - stop
             - flag <context.item.flag[locks.location]> locks.allowed:->:<context.entity>
-            - log "<player.name> granted perms of <context.location.simple> (<context.location.material.name>) to <context.entity.name>." info file:logs/locks.log
-            - narrate "<green>Granted access to <context.entity.name>." targets:<player>
+            - log "<player.name> granted perms of <context.location.proc[get_basic_name]> (<context.location.material.proc[get_basic_name]>) to <context.entity.proc[get_basic_name]>." info file:logs/locks.log
+            - narrate "<green>Granted access to <context.entity.proc[get_basic_name]>." targets:<player>
         on player right clicks block with:item_flagged:locks.location:
             - ratelimit <player> 1t
             - stop if:<context.item.flag[locks.location].equals[<context.location>].not||true>
@@ -49,14 +49,14 @@ imprint_key_manage_players:
                 - narrate "<green>Removed <context.location.flag[locks.level].if_null[basic].to_titlecase> Lock!"
                 - drop <context.location.flag[locks.level].if_null[basic]>_lock <context.location.above[1]> quantity:1
                 - playsound <context.location> sound:block_chain_break pitch:2.0
-                - log "<player.name> removed <context.location.flag[locks.level]> lock from <context.location.simple> (<context.location.material.name>)." info file:logs/locks.log
+                - log "<player.name> removed <context.location.flag[locks.level]> lock from <context.location.simple> (<context.location.material.proc[get_basic_name]>)." info file:logs/locks.log
                 - flag <context.location> locks:!
                 - stop
             - define inv <inventory[lock_permissions].include[<item[air]>]>
             - inventory open d:<[inv]>
             - foreach <context.location.flag[locks.allowed].exclude[<player>]> as:target:
                 - give to:<[inv]> "player_head[skull_skin=<[target].skull_skin>;custom_model_data=1;display=<&f><[target].proc[get_player_display_name]>;flag=run_script:lock_remove_access;flag=person:<[target]>;flag=location:<context.location>;lore=<list_single[<white>Left click to remove.]>]"
-            - log "<player.name> began editing perms of <context.location.simple> (<context.location.material.name>)." info file:logs/locks.log
+            - log "<player.name> began editing perms of <context.location.proc[get_basic_name]> (<context.location.material.proc[get_basic_name]>)." info file:logs/locks.log
 
 lock_remove_access:
     type: task
@@ -64,10 +64,9 @@ lock_remove_access:
     script:
         - take item:<context.item> from:<context.inventory>
         - flag <context.item.flag[location]> locks.allowed:<-:<context.item.flag[person]>
-        - narrate "<green>Removed access from <context.item.flag[person].name||ERROR>."
-        - define ls <context.item.flag[location].round_down>
-        - narrate "You got your access removed from the <context.item.flag[location].material.name.to_lowercase> at <[ls].x> <[ls].y> <[ls].z>!" targets:<context.item.flag[person]> if:<context.item.flag[person].is_online>
-        - log "<player.name> removed perms of <context.item.flag[location].simple> (<context.item.flag[location].material.name>) from <context.item.flag[person].name>." info file:logs/locks.log
+        - narrate "<green>Removed access from <context.item.flag[person].proc[get_basic_name]||ERROR>."
+        - narrate "You got your access removed from the <context.item.flag[location].material.proc[get_basic_name].to_lowercase> at <context.item.flag[location].proc[get_basic_name]>!" targets:<context.item.flag[person]> if:<context.item.flag[person].is_online>
+        - log "<player.name> removed perms of <context.item.flag[location].proc[get_basic_name]> (<context.item.flag[location].material.proc[get_basic_name]>) from <context.item.flag[person].proc[get_basic_name]>." info file:logs/locks.log
 
 lock_permissions:
     type: inventory
