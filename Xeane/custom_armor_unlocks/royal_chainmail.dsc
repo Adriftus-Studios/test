@@ -1,4 +1,4 @@
-skin_unlock_royal_chainmail:
+skin_unlock_royal_chainmail_item:
   type: item
   material: leather_helmet
   display name: <&b>COSMETIC<&co><&6> Royal Chainmail Set

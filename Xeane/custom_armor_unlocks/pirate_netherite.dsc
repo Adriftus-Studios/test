@@ -1,4 +1,4 @@
-skin_unlock_pirate_netherite:
+skin_unlock_pirate_netherite_item:
   type: item
   material: leather_helmet
   display name: <&b>COSMETIC<&co><&6> Pirate Netherite Set

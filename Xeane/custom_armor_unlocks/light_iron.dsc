@@ -1,4 +1,4 @@
-skin_unlock_light_iron:
+skin_unlock_light_iron_item:
   type: item
   material: leather_helmet
   display name: <&b>COSMETIC<&co><&6> Light Iron Set

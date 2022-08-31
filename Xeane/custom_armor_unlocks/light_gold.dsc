@@ -1,4 +1,4 @@
-skin_unlock_light_gold:
+skin_unlock_light_gold_item:
   type: item
   material: leather_helmet
   display name: <&b>COSMETIC<&co><&6> Light Gold Set
