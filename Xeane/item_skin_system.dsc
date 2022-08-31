@@ -593,7 +593,7 @@ item_skin_system_update:
         - define key <[skin_name]>
         - define CMD <[skin_map].get[<[skin_name]>]>
         - define new_item <[item].with[custom_model_data=<[CMD]>]>
-        - inventory set slot:<[slots].get[<[loop_index]>]> d:<[inventory]> "o:<[new_item].with[display=<[map].get[display]> <[material].after[_].to_titlecase>;flag=run_script:item_skin_system_skin_item]>"
+        - inventory set slot:<[slots].get[<[loop_index]>]> d:<[inventory]> "o:<[new_item].with[display=<[map].get[display]> <[material].after[_].to_titlecase>;flag=run_script:item_skin_system_skin_item_tool]>"
 
 
     # Next Page Button
@@ -642,6 +642,15 @@ item_skin_system_skin_item:
     - adjust def:item attribute_modifiers:<context.item.attribute_modifiers>
     - flag <[item]> run_script:item_skin_system_clear
     - flag <[item]> custom_durability.max:<script[item_skin_system_data].data_key[durability.<[material]>]>
+    - inventory set slot:52 d:<context.inventory> o:<[item]>
+    - inventory set slot:48 d:<context.inventory> o:air
+
+item_skin_system_skin_item_tool:
+  type: task
+  debug: false
+  script:
+    - define item <context.item>
+    - flag <[item]> run_script:item_skin_system_clear
     - inventory set slot:52 d:<context.inventory> o:<[item]>
     - inventory set slot:48 d:<context.inventory> o:air
 
