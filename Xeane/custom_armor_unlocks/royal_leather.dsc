@@ -11,9 +11,9 @@ skin_unlock_royal_leather_item:
   data:
     recipe_book_category: gadgets.royal_leather
   flags:
-    right_click_script: item_skin_unlock_armor
-    id: royal_leather
-    type: armor
+    right_click_script: item_skin_unlock
+    armor: <list[royal_leather]>
+    tools: list<[leather_spear|leather_halberd|leather_warffork|leather_warhammer|leather_greatscythe|leather_odachi]>
   recipes:
     1:
       type: shaped

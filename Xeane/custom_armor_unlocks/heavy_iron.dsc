@@ -11,9 +11,9 @@ skin_unlock_heavy_iron_item:
   data:
     recipe_book_category: gadgets.heavy_iron
   flags:
-    right_click_script: item_skin_unlock_armor
-    id: heavy_iron
-    type: armor
+    right_click_script: item_skin_unlock
+    armor: <list[heavy_iron]>
+    tools: list<[iron_greatsword|iron_battleaxe|iron_sledge]>
   recipes:
     1:
       type: shaped

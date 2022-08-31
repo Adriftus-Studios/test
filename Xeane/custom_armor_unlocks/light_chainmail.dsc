@@ -11,9 +11,9 @@ skin_unlock_light_chainmail_item:
   data:
     recipe_book_category: gadgets.light_chainmail
   flags:
-    right_click_script: item_skin_unlock_armor
-    id: light_chainmail
-    type: armor
+    right_click_script: item_skin_unlock
+    armor: <list[light_chainmail]>
+    tools: list<[chainmail_dagger|chainmail_hatchet|chainmail_pitchfork|chainmail_mallet|chainmail_sickle]>
   recipes:
     1:
       type: shaped

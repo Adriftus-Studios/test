@@ -11,9 +11,9 @@ skin_unlock_samurai_gold_item:
   data:
     recipe_book_category: gadgets.samurai_gold
   flags:
-    right_click_script: item_skin_unlock_armor
-    id: samurai_gold
-    type: armor
+    right_click_script: item_skin_unlock
+    armor: <list[samurai_gold]>
+    tools: list<[golden_katana|golden_ono|golden_spade|golden_kama]>
   recipes:
     1:
       type: shaped

@@ -11,9 +11,9 @@ skin_unlock_royal_diamond_item:
   data:
     recipe_book_category: gadgets.royal_diamond
   flags:
-    right_click_script: item_skin_unlock_armor
-    id: royal_diamond
-    type: armor
+    right_click_script: item_skin_unlock
+    armor: <list[royal_diamond]>
+    tools: list<[diamond_spear|diamond_halberd|diamond_warffork|diamond_warhammer|diamond_greatscythe|diamond_odachi]>
   recipes:
     1:
       type: shaped

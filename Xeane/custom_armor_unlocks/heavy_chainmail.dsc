@@ -11,9 +11,9 @@ skin_unlock_heavy_chainmail_item:
   data:
     recipe_book_category: gadgets.heavy_chainmail
   flags:
-    right_click_script: item_skin_unlock_armor
-    id: heavy_chainmail
-    type: armor
+    right_click_script: item_skin_unlock
+    armor: <list[heavy_chainmail]>
+    tools: list<[chainmail_greatsword|chainmail_battleaxe|chainmail_sledge]>
   recipes:
     1:
       type: shaped

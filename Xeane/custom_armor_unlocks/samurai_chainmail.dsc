@@ -11,9 +11,9 @@ skin_unlock_samurai_chainmail_item:
   data:
     recipe_book_category: gadgets.samurai_chainmail
   flags:
-    right_click_script: item_skin_unlock_armor
-    id: samurai_chainmail
-    type: armor
+    right_click_script: item_skin_unlock
+    armor: <list[samurai_chainmail]>
+    tools: list<[chainmail_katana|chainmail_ono|chainmail_spade|chainmail_kama]>
   recipes:
     1:
       type: shaped

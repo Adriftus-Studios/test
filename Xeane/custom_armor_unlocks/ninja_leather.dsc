@@ -11,9 +11,9 @@ skin_unlock_ninja_leather_item:
   data:
     recipe_book_category: gadgets.ninja_leather
   flags:
-    right_click_script: item_skin_unlock_armor
-    id: ninja_leather
-    type: armor
+    right_click_script: item_skin_unlock
+    armor: <list[ninja_leather]>
+    tools: list<[leather_katana|leather_ono|leather_spade|leather_kama]>
   recipes:
     1:
       type: shaped

@@ -11,9 +11,9 @@ skin_unlock_heavy_diamond_item:
   data:
     recipe_book_category: gadgets.heavy_diamond
   flags:
-    right_click_script: item_skin_unlock_armor
-    id: heavy_diamond
-    type: armor
+    right_click_script: item_skin_unlock
+    armor: <list[heavy_diamond]>
+    tools: list<[diamond_greatsword|diamond_battleaxe|diamond_sledge]>
   recipes:
     1:
       type: shaped

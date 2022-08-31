@@ -11,9 +11,9 @@ skin_unlock_heavy_netherite_item:
   data:
     recipe_book_category: gadgets.heavy_netherite
   flags:
-    right_click_script: item_skin_unlock_armor
-    id: heavy_netherite
-    type: armor
+    right_click_script: item_skin_unlock
+    armor: <list[heavy_netherite]>
+    tools: list<[netherite_greatsword|netherite_battleaxe|netherite_sledge]>
   recipes:
     1:
       type: shaped

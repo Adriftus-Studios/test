@@ -11,9 +11,9 @@ skin_unlock_royal_iron_item:
   data:
     recipe_book_category: gadgets.royal_iron
   flags:
-    right_click_script: item_skin_unlock_armor
-    id: royal_iron
-    type: armor
+    right_click_script: item_skin_unlock
+    armor: <list[royal_iron]>
+    tools: list<[iron_spear|iron_halberd|iron_warffork|iron_warhammer|iron_greatscythe|iron_odachi]>
   recipes:
     1:
       type: shaped

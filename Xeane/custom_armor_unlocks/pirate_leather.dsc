@@ -11,9 +11,9 @@ skin_unlock_pirate_leather_item:
   data:
     recipe_book_category: gadgets.pirate_leather
   flags:
-    right_click_script: item_skin_unlock_armor
-    id: pirate_leather
-    type: armor
+    right_click_script: item_skin_unlock
+    armor: <list[pirate_leather]>
+    tools: list<[leather_cutlass]>
   recipes:
     1:
       type: shaped

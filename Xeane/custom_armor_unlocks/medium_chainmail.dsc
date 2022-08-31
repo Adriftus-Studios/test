@@ -11,9 +11,9 @@ skin_unlock_medium_chainmail_item:
   data:
     recipe_book_category: gadgets.medium_chainmail
   flags:
-    right_click_script: item_skin_unlock_armor
-    id: medium_chainmail
-    type: armor
+    right_click_script: item_skin_unlock
+    armor: <list[medium_chainmail]>
+    tools: list<[chainmail_broadsword|chainmail_broadaxe|chainmail_trencher|chainmail_mattock|chainmail_handscythe]>
   recipes:
     1:
       type: shaped

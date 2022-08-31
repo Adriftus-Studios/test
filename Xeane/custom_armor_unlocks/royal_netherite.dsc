@@ -11,9 +11,9 @@ skin_unlock_royal_netherite_item:
   data:
     recipe_book_category: gadgets.royal_netherite
   flags:
-    right_click_script: item_skin_unlock_armor
-    id: royal_netherite
-    type: armor
+    right_click_script: item_skin_unlock
+    armor: <list[royal_netherite]>
+    tools: list<[netherite_spear|netherite_halberd|netherite_warffork|netherite_warhammer|netherite_greatscythe|netherite_odachi]>
   recipes:
     1:
       type: shaped

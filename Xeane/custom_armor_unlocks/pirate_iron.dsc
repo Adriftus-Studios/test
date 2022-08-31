@@ -11,9 +11,9 @@ skin_unlock_pirate_iron_item:
   data:
     recipe_book_category: gadgets.pirate_iron
   flags:
-    right_click_script: item_skin_unlock_armor
-    id: pirate_iron
-    type: armor
+    right_click_script: item_skin_unlock
+    armor: <list[pirate_iron]>
+    tools: list<[iron_cutlass]>
   recipes:
     1:
       type: shaped

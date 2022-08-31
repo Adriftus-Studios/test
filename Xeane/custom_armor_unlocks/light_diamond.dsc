@@ -11,9 +11,9 @@ skin_unlock_light_diamond_item:
   data:
     recipe_book_category: gadgets.light_diamond
   flags:
-    right_click_script: item_skin_unlock_armor
-    id: light_diamond
-    type: armor
+    right_click_script: item_skin_unlock
+    armor: <list[light_diamond]>
+    tools: list<[diamond_dagger|diamond_hatchet|diamond_pitchfork|diamond_mallet|diamond_sickle]>
   recipes:
     1:
       type: shaped

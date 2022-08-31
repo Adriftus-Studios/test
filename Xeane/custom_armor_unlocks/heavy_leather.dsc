@@ -11,9 +11,9 @@ skin_unlock_heavy_leather_item:
   data:
     recipe_book_category: gadgets.heavy_leather
   flags:
-    right_click_script: item_skin_unlock_armor
-    id: heavy_leather
-    type: armor
+    right_click_script: item_skin_unlock
+    armor: <list[heavy_leather]>
+    tools: list<[leather_greatsword|leather_battleaxe|leather_sledge]>
   recipes:
     1:
       type: shaped

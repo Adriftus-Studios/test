@@ -11,9 +11,9 @@ skin_unlock_heavy_gold_item:
   data:
     recipe_book_category: gadgets.heavy_gold
   flags:
-    right_click_script: item_skin_unlock_armor
-    id: heavy_gold
-    type: armor
+    right_click_script: item_skin_unlock
+    armor: <list[heavy_gold]>
+    tools: list<[golden_greatsword|golden_battleaxe|golden_sledge]>
   recipes:
     1:
       type: shaped

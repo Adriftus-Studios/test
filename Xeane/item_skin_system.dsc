@@ -672,6 +672,19 @@ item_skin_customizer:
     on click:
       - inventory open d:ITEM_SKIN_SYSTEM_INVENTORY
 
+item_skin_unlock:
+  type: task
+  debug: false
+  script:
+    - determine passively cancelled
+    - if <context.item.has_flag[armors]>:
+      - foreach <context.item.flag[armors]>:
+        - run item_skin_unlock_armor <[value]>
+    - if <context.item.has_flag[tools]>:
+      - foreach <context.item.flag[tools]>:
+        - run item_skin_unlock_tool def:<[value].before[.]>|<[value].after[.]>
+    - take iteminhand quantity:1
+
 item_skin_unlock_armor:
   type: task
   debug: false
@@ -679,7 +692,6 @@ item_skin_unlock_armor:
   script:
     - define id <context.item.flag[id]> if:<[id].exists.not>
     - if !<player.flag[cosmetics.armor].if_null[<list>].contains[<[id]>]>:
-      - take iteminhand quantity:1 if:<context.item.exists>
       - flag player cosmetics.armor:->:<[id]>
       - narrate "<&a>You have unlocked a new armor cosmetic set<&co><&6> <[id].replace[_].with[<&sp>].to_titlecase>"
     - else:
@@ -693,8 +705,7 @@ item_skin_unlock_tool:
     - define id <context.item.flag[id]> if:<[id].exists.not>
     - define type <context.item.flag[type]> if:<[type].exists.not>
     - if !<player.flag[cosmetics.<[type]>].if_null[<list>].contains[<[id]>]>:
-      - take iteminhand quantity:1 if:<context.item.exists>
       - flag player cosmetics.tool.<[type]>:->:<[id]>
-      - narrate "<&a>You have unlocked a new armor cosmetic set<&co><&6> <[id].replace[_].with[<&sp>].to_titlecase>"
+      - narrate "<&a>You have unlocked a new tool cosmetic<&co><&6> <[id].replace[_].with[<&sp>].to_titlecase>"
     - else:
       - narrate "<&c>You have already unlocked this."

@@ -11,9 +11,9 @@ skin_unlock_medium_leather_item:
   data:
     recipe_book_category: gadgets.medium_leather
   flags:
-    right_click_script: item_skin_unlock_armor
-    id: medium_leather
-    type: armor
+    right_click_script: item_skin_unlock
+    armor: <list[medium_leather]>
+    tools: list<[leather_broadsword|leather_broadaxe|leather_trencher|leather_mattock|leather_handscythe]>
   recipes:
     1:
       type: shaped

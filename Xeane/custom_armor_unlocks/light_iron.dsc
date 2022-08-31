@@ -11,9 +11,9 @@ skin_unlock_light_iron_item:
   data:
     recipe_book_category: gadgets.light_iron
   flags:
-    right_click_script: item_skin_unlock_armor
-    id: light_iron
-    type: armor
+    right_click_script: item_skin_unlock
+    armor: <list[light_iron]>
+    tools: list<[iron_dagger|iron_hatchet|iron_pitchfork|iron_mallet|iron_sickle]>
   recipes:
     1:
       type: shaped

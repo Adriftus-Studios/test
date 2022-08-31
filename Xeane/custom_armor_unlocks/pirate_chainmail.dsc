@@ -11,9 +11,9 @@ skin_unlock_pirate_chainmail_item:
   data:
     recipe_book_category: gadgets.pirate_chainmail
   flags:
-    right_click_script: item_skin_unlock_armor
-    id: pirate_chainmail
-    type: armor
+    right_click_script: item_skin_unlock
+    armor: <list[pirate_chainmail]>
+    tools: list<[chainmail_cutlass]>
   recipes:
     1:
       type: shaped

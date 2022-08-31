@@ -11,9 +11,9 @@ skin_unlock_royal_gold_item:
   data:
     recipe_book_category: gadgets.royal_gold
   flags:
-    right_click_script: item_skin_unlock_armor
-    id: royal_gold
-    type: armor
+    right_click_script: item_skin_unlock
+    armor: <list[royal_gold]>
+    tools: list<[golden_spear|golden_halberd|golden_warffork|golden_warhammer|golden_greatscythe|golden_odachi]>
   recipes:
     1:
       type: shaped

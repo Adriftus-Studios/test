@@ -11,9 +11,9 @@ skin_unlock_pirate_diamond_item:
   data:
     recipe_book_category: gadgets.pirate_diamond
   flags:
-    right_click_script: item_skin_unlock_armor
-    id: pirate_diamond
-    type: armor
+    right_click_script: item_skin_unlock
+    armor: <list[pirate_diamond]>
+    tools: list<[diamond_cutlass]>
   recipes:
     1:
       type: shaped
