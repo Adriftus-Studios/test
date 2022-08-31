@@ -33,6 +33,7 @@ lock_apply:
         - stop if:<context.location.has_flag[locks.level]>
         - determine passively cancelled
         - define locf <context.location.proc[get_basic_name]>
+        - narrate <[mat]>
         - if <[mat].name> == trapped_chest:
             - log "<player.name> was denied a lock and hurt at <[locf]> because it was a trapped chest. ROFL." info file:logs/locks.log
             - hurt 5 <player> cause:MAGIC source:<player>
