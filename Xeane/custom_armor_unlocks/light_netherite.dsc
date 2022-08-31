@@ -13,7 +13,7 @@ skin_unlock_light_netherite_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[light_netherite]>
-    tools: <list[netherite_dagger|netherite_hatchet|netherite_pitchfork|netherite_mallet|netherite_sickle]>
+    tools: <list[sword.netherite_dagger|axe.netherite_hatchet|shovel.netherite_pitchfork|pickaxe.netherite_mallet|hoe.netherite_sickle]>
   recipes:
     1:
       type: shaped

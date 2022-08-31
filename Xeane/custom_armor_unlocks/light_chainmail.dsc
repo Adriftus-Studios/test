@@ -13,7 +13,7 @@ skin_unlock_light_chainmail_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[light_chainmail]>
-    tools: <list[chainmail_dagger|chainmail_hatchet|chainmail_pitchfork|chainmail_mallet|chainmail_sickle]>
+    tools: <list[sword.chainmail_dagger|axe.chainmail_hatchet|shovel.chainmail_pitchfork|pickaxe.chainmail_mallet|hoe.chainmail_sickle]>
   recipes:
     1:
       type: shaped

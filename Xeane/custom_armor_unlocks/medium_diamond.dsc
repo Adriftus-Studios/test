@@ -13,7 +13,7 @@ skin_unlock_medium_diamond_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[medium_diamond]>
-    tools: <list[diamond_broadsword|diamond_broadaxe|diamond_trencher|diamond_mattock|diamond_handscythe]>
+    tools: <list[sword.diamond_broadsword|axe.diamond_broadaxe|shovel.diamond_trencher|pickaxe.diamond_mattock|hoe.diamond_handscythe]>
   recipes:
     1:
       type: shaped

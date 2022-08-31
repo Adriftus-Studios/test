@@ -13,7 +13,7 @@ skin_unlock_heavy_diamond_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[heavy_diamond]>
-    tools: <list[diamond_greatsword|diamond_battleaxe|diamond_sledge]>
+    tools: <list[sword.diamond_greatsword|axe.diamond_battleaxe|pickaxe.diamond_sledge]>
   recipes:
     1:
       type: shaped

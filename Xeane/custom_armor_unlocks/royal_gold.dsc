@@ -13,7 +13,7 @@ skin_unlock_royal_gold_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[royal_gold]>
-    tools: <list[golden_spear|golden_halberd|golden_warffork|golden_warhammer|golden_greatscythe|golden_odachi]>
+    tools: <list[sword.golden_spear|axe.golden_halberd|shovel.golden_warffork|pickaxe.golden_warhammer|hoe.golden_greatscythe|sword.golden_odachi]>
   recipes:
     1:
       type: shaped

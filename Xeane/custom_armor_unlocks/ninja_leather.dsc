@@ -13,7 +13,7 @@ skin_unlock_ninja_leather_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[ninja_leather]>
-    tools: <list[leather_katana|leather_ono|leather_spade|leather_kama]>
+    tools: <list[sword.leather_katana|axe.leather_ono|shovel.leather_spade|hoe.leather_kama]>
   recipes:
     1:
       type: shaped

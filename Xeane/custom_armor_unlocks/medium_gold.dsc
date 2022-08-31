@@ -13,7 +13,7 @@ skin_unlock_medium_gold_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[medium_gold]>
-    tools: <list[golden_broadsword|golden_broadaxe|golden_trencher|golden_mattock|golden_handscythe]>
+    tools: <list[sword.golden_broadsword|axe.golden_broadaxe|shovel.golden_trencher|pickaxe.golden_mattock|hoe.golden_handscythe]>
   recipes:
     1:
       type: shaped

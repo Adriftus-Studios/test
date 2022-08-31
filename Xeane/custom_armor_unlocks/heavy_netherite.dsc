@@ -13,7 +13,7 @@ skin_unlock_heavy_netherite_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[heavy_netherite]>
-    tools: <list[netherite_greatsword|netherite_battleaxe|netherite_sledge]>
+    tools: <list[sword.netherite_greatsword|axe.netherite_battleaxe|pickaxe.netherite_sledge]>
   recipes:
     1:
       type: shaped

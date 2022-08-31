@@ -13,7 +13,7 @@ skin_unlock_heavy_gold_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[heavy_gold]>
-    tools: <list[golden_greatsword|golden_battleaxe|golden_sledge]>
+    tools: <list[sword.golden_greatsword|axe.golden_battleaxe|pickaxe.golden_sledge]>
   recipes:
     1:
       type: shaped

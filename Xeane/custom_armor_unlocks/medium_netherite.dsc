@@ -13,7 +13,7 @@ skin_unlock_medium_netherite_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[medium_netherite]>
-    tools: <list[netherite_broadsword|netherite_broadaxe|netherite_trencher|netherite_mattock|netherite_handscythe]>
+    tools: <list[sword.netherite_broadsword|axe.netherite_broadaxe|shovel.netherite_trencher|pickaxe.netherite_mattock|hoe.netherite_handscythe]>
   recipes:
     1:
       type: shaped

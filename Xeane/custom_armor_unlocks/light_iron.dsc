@@ -13,7 +13,7 @@ skin_unlock_light_iron_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[light_iron]>
-    tools: <list[iron_dagger|iron_hatchet|iron_pitchfork|iron_mallet|iron_sickle]>
+    tools: <list[sword.iron_dagger|axe.iron_hatchet|shovel.iron_pitchfork|pickaxe.iron_mallet|hoe.iron_sickle]>
   recipes:
     1:
       type: shaped

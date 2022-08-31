@@ -678,6 +678,9 @@ item_skin_unlock:
   script:
     - determine passively cancelled
     - if <context.item.has_flag[armors]>:
+      - if !<player.flag[cosmetics.armor].if_null[<list>].contains[<context.item.flag[armors]>]>:
+        - narrate "<&c>You have already unlocked this."
+        - stop
       - foreach <context.item.flag[armors]>:
         - run item_skin_unlock_armor <[value]>
     - if <context.item.has_flag[tools]>:
@@ -690,7 +693,6 @@ item_skin_unlock_armor:
   debug: false
   definitions: id
   script:
-    - define id <context.item.flag[id]> if:<[id].exists.not>
     - if !<player.flag[cosmetics.armor].if_null[<list>].contains[<[id]>]>:
       - flag player cosmetics.armor:->:<[id]>
       - narrate "<&a>You have unlocked a new armor cosmetic set<&co><&6> <[id].replace[_].with[<&sp>].to_titlecase>"
@@ -702,8 +704,6 @@ item_skin_unlock_tool:
   debug: false
   definitions: type|id
   script:
-    - define id <context.item.flag[id]> if:<[id].exists.not>
-    - define type <context.item.flag[type]> if:<[type].exists.not>
     - if !<player.flag[cosmetics.<[type]>].if_null[<list>].contains[<[id]>]>:
       - flag player cosmetics.tool.<[type]>:->:<[id]>
       - narrate "<&a>You have unlocked a new tool cosmetic<&co><&6> <[id].replace[_].with[<&sp>].to_titlecase>"

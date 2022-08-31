@@ -13,7 +13,7 @@ skin_unlock_medium_iron_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[medium_iron]>
-    tools: <list[iron_broadsword|iron_broadaxe|iron_trencher|iron_mattock|iron_handscythe]>
+    tools: <list[sword.iron_broadsword|axe.iron_broadaxe|shovel.iron_trencher|pickaxe.iron_mattock|hoe.iron_handscythe]>
   recipes:
     1:
       type: shaped

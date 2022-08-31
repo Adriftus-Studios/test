@@ -13,7 +13,7 @@ skin_unlock_royal_netherite_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[royal_netherite]>
-    tools: <list[netherite_spear|netherite_halberd|netherite_warffork|netherite_warhammer|netherite_greatscythe|netherite_odachi]>
+    tools: <list[sword.netherite_spear|axe.netherite_halberd|shovel.netherite_warffork|pickaxe.netherite_warhammer|hoe.netherite_greatscythe|sword.netherite_odachi]>
   recipes:
     1:
       type: shaped

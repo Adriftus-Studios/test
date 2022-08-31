@@ -13,7 +13,7 @@ skin_unlock_pirate_diamond_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[pirate_diamond]>
-    tools: <list[diamond_cutlass]>
+    tools: <list[sword.diamond_cutlass]>
   recipes:
     1:
       type: shaped

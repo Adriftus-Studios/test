@@ -13,7 +13,7 @@ skin_unlock_royal_leather_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[royal_leather]>
-    tools: <list[leather_spear|leather_halberd|leather_warffork|leather_warhammer|leather_greatscythe|leather_odachi]>
+    tools: <list[sword.leather_spear|axe.leather_halberd|shovel.leather_warffork|pickaxe.leather_warhammer|hoe.leather_greatscythe|sword.leather_odachi]>
   recipes:
     1:
       type: shaped
