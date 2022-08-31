@@ -206,16 +206,16 @@ lock_pick_events:
                 - playsound <player> sound:entity_villager_no
                 - log "<player.name> tried to lock pick a lock at <[locf]> but failed because it belongs to town <context.location.town.proc[get_name]>." info file:logs/locks.log
                 - stop
-            ## Chance == chance of failure
+            ## Chance == chance of success
             - choose <context.item.flag[locks_pick.level]>:
                 - case basic:
-                    - define chance 95
+                    - define chance 5
                 - case admin:
-                    - define chance 0
+                    - define chance 100
                     - log "<player.name> used an admin lock pick at <[locf]> (<[matf]>)!" info file:logs/locks.log
                 - default:
-                    - define chance 95
-            - if <util.random_chance[<[chance]>]>:
+                    - define chance 5
+            - if !<util.random_chance[<[chance]>]>:
                 - take item:<context.item> from:<player.inventory> quantity:1
                 - narrate "<red>Your <context.item.proc[get_name]> broke!"
                 - playsound <context.location> sound:entity_item_break pitch:2.0
