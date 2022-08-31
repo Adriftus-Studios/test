@@ -120,8 +120,9 @@ imprint_key_manage_players:
             - log "<player.name> granted perms of <context.location.proc[get_basic_name]> (<context.location.material.proc[get_basic_name]>) to <context.entity.proc[get_basic_name]>." info file:logs/locks.log
             - narrate "<green>Granted access to <context.entity.proc[get_basic_name]>." targets:<player>
         on player right clicks block with:item_flagged:locks.location:
-            - stop if:<context.item.flag[locks.location].equals[<context.location>].not||true>
             - determine passively cancelled
+            - stop if:<context.item.flag[locks.location].equals[<context.location>].not||true>
+            - stop if:<context.item.flag[locks.uuid].equals[<context.location.flag[locks.uuid]>].not>
             - if <player.is_sneaking>:
                 - narrate "<green>Removed <context.location.flag[locks.level].if_null[basic].to_titlecase> Lock!"
                 - drop <context.location.flag[locks.level].if_null[basic]>_lock <context.location.above[1]> quantity:1
