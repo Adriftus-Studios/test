@@ -1,4 +1,4 @@
-get_basic_name:
+get_name:
     type: procedure
     definitions: c
     script:
@@ -24,3 +24,9 @@ get_basic_name:
             - determine <[c].title.if_null[<[c].inventory_type.proc[get_basic_name]>]>
         - default:
             - determine UNSUPPORTED_<[c].object_type.to_uppercase>_OBJECT_ERROR
+
+get_lower_name:
+    type: procedure
+    definitions: c
+    script:
+        - determine <[c].proc[get_name].to_lowercase>
