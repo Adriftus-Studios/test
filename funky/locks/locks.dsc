@@ -53,7 +53,7 @@ lock_apply:
         - define ls <context.location.round_down>
         - narrate "<context.item.display||<context.item.material.name.to_titlecase||Basic> Lock><reset><green> applied to <context.location.material.name.replace[_].with[ ].to_titlecase> at <[ls].x> <[ls].y> <[ls].z>!"
         - define lore "<list[<white><bold>Location<&co> <context.location.proc[get_basic_name]>|<empty>|<white>Right click another player to give them access.|<white>Right click the container to manage who can access it.|Shift right click the container to remove the lock.|<empty>|<white><underline>You do not need this key to open the container.]>"
-        - define key "<item[imprint_key].with_single[display_name=<[mat].proc[get_basic_name]> Imprint Key].with_single[lore=<[lore]>].with_flag[locks.location:<context.location>].with_flag[locks.original_owner:<player>].with_flag[locks.uuid:<[uuid]>]>"
+        - define key "<item[imprint_key].with_single[display_name=<white><[mat].proc[get_basic_name]> Imprint Key].with_single[lore=<[lore]>].with_flag[locks.location:<context.location>].with_flag[locks.original_owner:<player>].with_flag[locks.uuid:<[uuid]>]>"
         - give <[key]> quantity:1 to:<player> slot:<player.held_item_slot>
 
 locked_container_events:
@@ -90,7 +90,7 @@ locked_container_events:
         on piston retracts:
             - determine cancelled if:<context.blocks.filter_tag[<[filter_value].has_flag[locks.allowed]>].any>
         ##Misc events
-        on player places basic_lock:
+        on player places basic_lock|imprint_key:
             - determine cancelled
 
 imprint_key:
@@ -125,7 +125,6 @@ imprint_key_manage_players:
             - narrate "<green>Granted access to <context.entity.proc[get_basic_name]>." targets:<player>
         on player right clicks block with:item_flagged:locks.location:
             - determine passively cancelled
-            - stop if:<context.location.material.name.equals[air]>
             - if <context.item.flag[locks.location].equals[<context.location>].not||true>:
                 - narrate "<red>This key isn't for this block!"
                 - playsound <player> sound:block_chest_close pitch:2.0
