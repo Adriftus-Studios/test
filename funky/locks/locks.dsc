@@ -42,6 +42,7 @@ lock_apply:
         - if <[mat].name> == trapped_chest:
             - log "<player.name> was denied a lock and hurt at <[locf]> because it was a trapped chest. ROFL." info file:logs/locks.log
             - hurt 5 <player> cause:MAGIC
+            - push <player> destination:<player.eye_location.backward_flat[5].above[5]> no_rotate
             - playsound <player> sound:entity_ghast_scream pitch:2.0
             - take item:<context.item> quantity:1 from:<player.inventory>
             - stop
