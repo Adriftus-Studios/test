@@ -182,6 +182,7 @@ lock_pick_events:
             - stop if:<player.is_sneaking.not>
             - stop if:<context.location.flag[locks.allowed].contains[<player>]||false>
             - stop if:<player.worldguard.can_build[<context.location>].not||false>
+            - determine passively cancelled
             - define locf <context.location.proc[get_basic_name]>
             - define matf <context.location.material.proc[get_basic_name]>
             - if <context.location.town.residents.contains[<player>]>:
