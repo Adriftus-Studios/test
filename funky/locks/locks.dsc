@@ -180,6 +180,7 @@ lock_pick_basic:
     flags:
         locks_pick:
             level: basic
+            chance: 5
 
 lock_pick_admin:
     type: item
@@ -188,6 +189,7 @@ lock_pick_admin:
     flags:
         locks_pick:
             level: admin
+            chance: 100
 
 lock_pick_events:
     type: world
@@ -207,14 +209,8 @@ lock_pick_events:
                 - log "<player.name> tried to lock pick a lock at <[locf]> but failed because it belongs to town <context.location.town.proc[get_name]>." info file:logs/locks.log
                 - stop
             ## Chance == chance of success
-            - choose <context.item.flag[locks_pick.level]>:
-                - case basic:
-                    - define chance 5
-                - case admin:
-                    - define chance 100
-                    - log "<player.name> used an admin lock pick at <[locf]> (<[matf]>)!" info file:logs/locks.log
-                - default:
-                    - define chance 5
+            - define chance <context.item.flag[locks_pick.chance]||5>
+            - log "<player.name> used an admin lock pick at <[locf]> (<[matf]>)!" info file:logs/locks.log if:<context.item.flag[locks_pick.level].equals[admin]>
             - if !<util.random_chance[<[chance]>]>:
                 - take item:<context.item> from:<player.inventory> quantity:1
                 - narrate "<red>Your <context.item.proc[get_name]> broke!"
@@ -224,5 +220,5 @@ lock_pick_events:
             - flag <context.location> locks:!
             - narrate "<green>You picked the lock!"
             - log "<player.name> picked a lock at <[locf]> (<[matf]>)!" info file:logs/locks.log
-            - mcmmo add xp skill:repair quantity:<util.random.int[50].to[100]> player:<player> if:<proc[mcmmo_installed]||false>
+            - mcmmo add xp skill:repair quantity:<element[100].sub[<context.item.flag[locks_pick.chance]>]> player:<player> if:<proc[mcmmo_installed]||false>
             - playsound <context.location> sound:block_chain_break pitch:0.5 volume:2.0
