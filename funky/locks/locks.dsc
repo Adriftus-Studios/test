@@ -122,7 +122,9 @@ imprint_key_manage_players:
         on player right clicks block with:item_flagged:locks.location:
             - determine passively cancelled
             - stop if:<context.item.flag[locks.location].equals[<context.location>].not||true>
-            - stop if:<context.item.flag[locks.uuid].equals[<context.location.flag[locks.uuid]>].not>
+            - if <context.item.flag[locks.uuid].equals[<context.location.flag[locks.uuid]>].not>:
+                - narrate "<red>This lock is outdated!"
+                - stop
             - if <player.is_sneaking>:
                 - narrate "<green>Removed <context.location.flag[locks.level].if_null[basic].to_titlecase> Lock!"
                 - drop <context.location.flag[locks.level].if_null[basic]>_lock <context.location.above[1]> quantity:1
