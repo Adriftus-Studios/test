@@ -593,7 +593,7 @@ item_skin_system_update:
         - define key <[skin_name]>
         - define CMD <[skin_map].get[<[skin_name]>]>
         - define new_item <[item].with[custom_model_data=<[CMD]>]>
-        - inventory set slot:<[slots].get[<[loop_index]>]> d:<[inventory]> "o:<[new_item].with[display=<[map].get[display]> <[material].after[_].to_titlecase>;flag=run_script:item_skin_system_skin_item_tool]>"
+        - inventory set slot:<[slots].get[<[loop_index]>]> d:<[inventory]> "o:<[new_item].with[display=<[key].replace[_].with[<&sp>].to_titlecase> <[material].after[_].to_titlecase>;flag=run_script:item_skin_system_skin_item_tool]>"
 
 
     # Next Page Button
