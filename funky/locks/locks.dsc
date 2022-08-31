@@ -71,7 +71,7 @@ locked_container_events:
                 - playsound <context.location> sound:entity_villager_no pitch:0.7
                 - determine cancelled
         on player right clicks block location_flagged:locks.allowed:
-            - if !<context.location.flag[locks.allowed].contains[<player>]> && <context.item.has_flag[locks_pick.level]>:
+            - if !<context.location.flag[locks.allowed].contains[<player>]> && !<context.item.has_flag[locks_pick.level]>:
                 - narrate "<red>Hey! You can't open this! It belongs to <context.location.flag[locks.original_owner].proc[get_basic_name]>!"
                 - playsound <context.location> sound:entity_villager_no pitch:1.3
                 - determine cancelled
