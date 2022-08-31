@@ -568,7 +568,7 @@ item_skin_system_update:
       - define type armor
     - else:
       - define skin_map <script[item_skin_system_data].parsed_key[tools.<[material].after[_]>]>
-      - define cosmetics <player.flag[cosmetics.tool].if_null[<list>]>
+      - define cosmetics <player.flag[cosmetics.tool.<[material].after[_]>].if_null[<list>]>
       - define type tool
     - define page 1 if:<[page].exists.not>
     - define slots <list[<script.data_key[data.skin_slots]>]>
