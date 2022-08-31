@@ -73,7 +73,8 @@ locked_container_events:
         on player right clicks block location_flagged:locks.allowed:
             - if !<context.location.flag[locks.allowed].contains[<player>]>:
                 - narrate "<red>Hey! You can't open this! It belongs to <context.location.flag[locks.original_owner].proc[get_basic_name]>!"
-                - playsound <context.location> sound:block_chain_break pitch:2.0
+                - playsound <context.location> sound:entity_villager_no pitch:1.3
+                - determine cancelled
         on item moves from inventory to inventory:
             - if <context.origin.location.has_flag[locks.allowed]>:
                 - determine cancelled
