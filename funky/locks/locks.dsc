@@ -67,12 +67,12 @@ locked_container_events:
                 - narrate "<yellow>You broke the lock that was on this block!"
                 - playsound <context.location> sound:block_chain_break pitch:2.0
             - else:
-                - narrate "<red>You can't break this <context.location.material.proc[get_basic_name]> because it's locked!"
+                - narrate "<red>You can't break this <context.location.material.proc[get_basic_name].to_lowercase> because it's locked!"
                 - playsound <context.location> sound:entity_villager_no pitch:0.7
                 - determine cancelled
         on player right clicks block location_flagged:locks.allowed:
             - if !<context.location.flag[locks.allowed].contains[<player>]> && !<context.item.has_flag[locks_pick.level]>:
-                - narrate "<red>Hey! You can't open this! It belongs to <context.location.flag[locks.original_owner].proc[get_basic_name]>!"
+                - narrate "<red>Hey! You can't open this! It belongs to <context.location.flag[locks.original_owner].proc[get_basic_name]||ERROR! CONTACT ADMINS!>!"
                 - playsound <context.location> sound:entity_villager_no pitch:1.3
                 - determine cancelled
         on item moves from inventory to inventory:
