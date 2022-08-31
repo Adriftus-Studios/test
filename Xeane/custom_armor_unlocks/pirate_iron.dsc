@@ -13,7 +13,7 @@ skin_unlock_pirate_iron_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[pirate_iron]>
-    tools: list<[iron_cutlass]>
+    tools: <list[iron_cutlass]>
   recipes:
     1:
       type: shaped

@@ -13,7 +13,7 @@ skin_unlock_samurai_gold_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[samurai_gold]>
-    tools: list<[golden_katana|golden_ono|golden_spade|golden_kama]>
+    tools: <list[golden_katana|golden_ono|golden_spade|golden_kama]>
   recipes:
     1:
       type: shaped

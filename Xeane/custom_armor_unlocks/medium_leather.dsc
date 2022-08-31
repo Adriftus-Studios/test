@@ -13,7 +13,7 @@ skin_unlock_medium_leather_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[medium_leather]>
-    tools: list<[leather_broadsword|leather_broadaxe|leather_trencher|leather_mattock|leather_handscythe]>
+    tools: <list[leather_broadsword|leather_broadaxe|leather_trencher|leather_mattock|leather_handscythe]>
   recipes:
     1:
       type: shaped

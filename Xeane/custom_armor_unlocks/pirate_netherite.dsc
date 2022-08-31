@@ -13,7 +13,7 @@ skin_unlock_pirate_netherite_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[pirate_netherite]>
-    tools: list<[netherite_cutlass]>
+    tools: <list[netherite_cutlass]>
   recipes:
     1:
       type: shaped

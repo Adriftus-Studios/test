@@ -13,7 +13,7 @@ skin_unlock_samurai_netherite_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[samurai_netherite]>
-    tools: list<[netherite_katana|netherite_ono|netherite_spade|netherite_kama]>
+    tools: <list[netherite_katana|netherite_ono|netherite_spade|netherite_kama]>
   recipes:
     1:
       type: shaped

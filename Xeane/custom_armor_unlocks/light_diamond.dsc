@@ -13,7 +13,7 @@ skin_unlock_light_diamond_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[light_diamond]>
-    tools: list<[diamond_dagger|diamond_hatchet|diamond_pitchfork|diamond_mallet|diamond_sickle]>
+    tools: <list[diamond_dagger|diamond_hatchet|diamond_pitchfork|diamond_mallet|diamond_sickle]>
   recipes:
     1:
       type: shaped

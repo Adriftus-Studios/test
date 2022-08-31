@@ -13,7 +13,7 @@ skin_unlock_royal_iron_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[royal_iron]>
-    tools: list<[iron_spear|iron_halberd|iron_warffork|iron_warhammer|iron_greatscythe|iron_odachi]>
+    tools: <list[iron_spear|iron_halberd|iron_warffork|iron_warhammer|iron_greatscythe|iron_odachi]>
   recipes:
     1:
       type: shaped

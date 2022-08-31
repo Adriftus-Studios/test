@@ -13,7 +13,7 @@ skin_unlock_light_gold_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[light_gold]>
-    tools: list<[golden_dagger|golden_hatchet|golden_pitchfork|golden_mallet|golden_sickle]>
+    tools: <list[golden_dagger|golden_hatchet|golden_pitchfork|golden_mallet|golden_sickle]>
   recipes:
     1:
       type: shaped

@@ -13,7 +13,7 @@ skin_unlock_samurai_iron_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[samurai_iron]>
-    tools: list<[iron_katana|iron_ono|iron_spade|iron_kama]>
+    tools: <list[iron_katana|iron_ono|iron_spade|iron_kama]>
   recipes:
     1:
       type: shaped
