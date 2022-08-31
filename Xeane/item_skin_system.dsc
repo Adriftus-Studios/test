@@ -1,6 +1,6 @@
 item_skin_system_data:
   type: data
-  weapons:
+  tools:
     sword:
       wooden_broadsword: 10001
       wooden_dagger: 10002
@@ -10,38 +10,38 @@ item_skin_system_data:
       wooden_spear: 10006
       wooden_cutlass: 10007
       wooden_odachi: 10008
-      iron_broadsword: 10028
-      iron_dagger: 10029
-      iron_katana: 10030
-      iron_greatsword: 10031
-      iron_glaive: 10032
-      iron_spear: 10033
-      iron_cutlass: 10034
-      iron_odachi: 10035
-      golden_broadsword: 10055
-      golden_dagger: 10056
-      golden_katana: 10057
-      golden_greatsword: 10058
-      golden_glaive: 10059
-      golden_spear: 10060
-      golden_cutlass: 10061
-      golden_odachi: 10062
-      diamond_broadsword: 10082
-      diamond_dagger: 10083
-      diamond_katana: 10084
-      diamond_greatsword: 10085
-      diamond_glaive: 10086
-      diamond_spear: 10087
-      diamond_cutlass: 10088
-      diamond_odachi: 10089
-      netherite_broadsword: 10109
-      netherite_dagger: 10110
-      netherite_katana: 10111
-      netherite_greatsword: 10112
-      netherite_glaive: 10113
-      netherite_spear: 10114
-      netherite_cutlass: 10115
-      netherite_odachi: 10116
+      iron_broadsword: 10026
+      iron_dagger: 10027
+      iron_katana: 10028
+      iron_greatsword: 10029
+      iron_glaive: 10030
+      iron_spear: 10031
+      iron_cutlass: 10032
+      iron_odachi: 10033
+      golden_broadsword: 10051
+      golden_dagger: 10052
+      golden_katana: 10053
+      golden_greatsword: 10054
+      golden_glaive: 10055
+      golden_spear: 10056
+      golden_cutlass: 10057
+      golden_odachi: 10058
+      diamond_broadsword: 10076
+      diamond_dagger: 10077
+      diamond_katana: 10078
+      diamond_greatsword: 10079
+      diamond_glaive: 10080
+      diamond_spear: 10081
+      diamond_cutlass: 10082
+      diamond_odachi: 10083
+      netherite_broadsword: 10101
+      netherite_dagger: 10102
+      netherite_katana: 10103
+      netherite_greatsword: 10104
+      netherite_glaive: 10105
+      netherite_spear: 10106
+      netherite_cutlass: 10107
+      netherite_odachi: 10108
     axe:
       wooden_broadaxe: 10009
       wooden_hatchet: 10010
@@ -93,33 +93,23 @@ item_skin_system_data:
       wooden_mattock: 10018
       wooden_mallet: 10019
       wooden_sledge: 10020
-      wooden_battleaxe: 10021
-      wooden_halberd: 10022
-      wooden_spear: 10023
-      iron_mattock: 10045
-      iron_mallet: 10046
-      iron_sledge: 10047
-      iron_battleaxe: 10048
-      iron_halberd: 10049
-      iron_spear: 10050
-      golden_mattock: 10072
-      golden_mallet: 10073
-      golden_sledge: 10074
-      golden_battleaxe: 10075
-      golden_halberd: 10076
-      golden_spear: 10077
-      diamond_mattock: 10099
-      diamond_mallet: 10100
-      diamond_sledge: 10101
-      diamond_battleaxe: 10102
-      diamond_halberd: 10103
-      diamond_spear: 10104
-      netherite_mattock: 10126
-      netherite_mallet: 10127
-      netherite_sledge: 10128
-      netherite_battleaxe: 10129
-      netherite_halberd: 10130
-      netherite_spear: 10131
+      wooden_warhammer: 10021
+      iron_mattock: 10043
+      iron_mallet: 10044
+      iron_sledge: 10045
+      iron_warhammer: 10046
+      golden_mattock: 10068
+      golden_mallet: 10069
+      golden_sledge: 10070
+      golden_warhammer: 10071
+      diamond_mattock: 10093
+      diamond_mallet: 10094
+      diamond_sledge: 10095
+      diamond_warhammer: 10096
+      netherite_mattock: 10118
+      netherite_mallet: 10119
+      netherite_sledge: 10120
+      netherite_warhammer: 10121
     shovel:
       wooden_trencher: 10014
       wooden_pitchfork: 10015
@@ -575,26 +565,35 @@ item_skin_system_update:
     - if <[item].material.name.advanced_matches[*_leggings|*_boots|*_helmet|*_chestplate]>:
       - define skin_map <script[item_skin_system_data].parsed_key[armor]>
       - define cosmetics <player.flag[cosmetics.armor].if_null[<list>]>
+      - define type armor
     - else:
-      - define skin_map <script[item_skin_system_data].parsed_key[weapons.<[material].name.after[_]>]>
+      - define skin_map <script[item_skin_system_data].parsed_key[tools.<[material].after[_]>]>
       - define cosmetics <player.flag[cosmetics.tool].if_null[<list>]>
+      - define type tool
     - define page 1 if:<[page].exists.not>
     - define slots <list[<script.data_key[data.skin_slots]>]>
     - define start <[page].sub[1].mul[<[slots].size>].add[1]>
     - define end <[slots].size.mul[<[page]>]>
-    - foreach <[cosmetics].get[<[start]>].to[<[end]>]> as:skin_name:
-      - define key <[skin_name]>
-      - define map <[skin_map].get[<[skin_name]>]>
-      - if <[key]> == air:
-        - inventory set slot:<[slots].get[<[loop_index]>]> d:<[inventory]> o:air
-      - else:
-        - define new_item <[item]>
-        - adjust def:new_item material:leather_<[material].after[_]>
-        - adjust def:new_item color:<[map].get[color]>
-        - adjust def:new_item durability:<[durability]>
-        - adjust def:new_item custom_model_data:<[map].get[CMD]>
-        - adjust def:new_item attribute_modifiers:<script[item_skin_system_data].data_key[vanilla_attributes.<[material]>]>
-        - inventory set slot:<[slots].get[<[loop_index]>]> d:<[inventory]> "o:<[new_item].with[display=<[map].get[display]> <[material].after[_].to_titlecase>;flag=run_script:item_skin_system_skin_item]>"
+    - if <[type]> == armor:
+      - foreach <[cosmetics].get[<[start]>].to[<[end]>].if_null[<list>]> as:skin_name:
+        - define key <[skin_name]>
+        - define map <[skin_map].get[<[skin_name]>]>
+        - if <[key]> == air:
+          - inventory set slot:<[slots].get[<[loop_index]>]> d:<[inventory]> o:air
+        - else:
+          - define new_item <[item]>
+          - adjust def:new_item material:leather_<[material].after[_]>
+          - adjust def:new_item color:<[map].get[color]>
+          - adjust def:new_item durability:<[durability]>
+          - adjust def:new_item custom_model_data:<[map].get[CMD]>
+          - adjust def:new_item attribute_modifiers:<script[item_skin_system_data].data_key[vanilla_attributes.<[material]>]>
+          - inventory set slot:<[slots].get[<[loop_index]>]> d:<[inventory]> "o:<[new_item].with[display=<[map].get[display]> <[material].after[_].to_titlecase>;flag=run_script:item_skin_system_skin_item]>"
+    - else:
+      - foreach <[cosmetics].get[<[start]>].to[<[end]>].if_null[<list>]> as:skin_name:
+        - define key <[skin_name]>
+        - define CMD <[skin_map].get[<[skin_name]>]>
+        - define new_item <[item].with[custom_model_data=<[CMD]>]>
+        - inventory set slot:<[slots].get[<[loop_index]>]> d:<[inventory]> "o:<[new_item].with[display=<[key].replace[_].with[<&sp>].to_titlecase> <[material].after[_].to_titlecase>;flag=run_script:item_skin_system_skin_item_tool]>"
 
 
     # Next Page Button
@@ -643,6 +642,15 @@ item_skin_system_skin_item:
     - adjust def:item attribute_modifiers:<context.item.attribute_modifiers>
     - flag <[item]> run_script:item_skin_system_clear
     - flag <[item]> custom_durability.max:<script[item_skin_system_data].data_key[durability.<[material]>]>
+    - inventory set slot:52 d:<context.inventory> o:<[item]>
+    - inventory set slot:48 d:<context.inventory> o:air
+
+item_skin_system_skin_item_tool:
+  type: task
+  debug: false
+  script:
+    - define item <context.item>
+    - flag <[item]> run_script:item_skin_system_clear
     - inventory set slot:52 d:<context.inventory> o:<[item]>
     - inventory set slot:48 d:<context.inventory> o:air
 
