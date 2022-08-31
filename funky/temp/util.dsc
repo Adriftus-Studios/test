@@ -22,10 +22,18 @@ get_name:
             - determine "<[c].x> <[c].y> <[c].z> in the <[c].world.environment.to_lowercase.proc[get_basic_name].to_lowercase.replace[normal].with[overworld]>"
         - case Inventory:
             - determine <[c].title.if_null[<[c].inventory_type.proc[get_basic_name]>]>
+        - case World:
+            - determine "<[c].name.replace[_].with[ ]>"
         - default:
             - determine UNSUPPORTED_<[c].object_type.to_uppercase>_OBJECT_ERROR
 
 get_lower_name:
+    type: procedure
+    definitions: c
+    script:
+        - determine <[c].proc[get_name].to_lowercase>
+
+get_world_location_name:
     type: procedure
     definitions: c
     script:
