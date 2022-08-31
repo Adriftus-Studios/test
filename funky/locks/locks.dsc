@@ -7,7 +7,6 @@ basic_lock:
     enchantments:
         - UNBREAKING:1
     flags:
-        on_placed: cancel
         right_click_script: lock_apply
         locks:
             level: basic
@@ -90,7 +89,9 @@ locked_container_events:
             - determine cancelled if:<context.blocks.filter_tag[<[filter_value].has_flag[locks.allowed]>].any>
         on piston retracts:
             - determine cancelled if:<context.blocks.filter_tag[<[filter_value].has_flag[locks.allowed]>].any>
-
+        ##Misc events
+        on player places basic_lock:
+            - determine cancelled
 imprint_key:
     type: item
     material: tripwire_hook
