@@ -40,7 +40,7 @@ lock_apply:
             - playsound <player> sound:entity_ghast_scream
             - stop
         # No double chests
-        - if <context.location.half.is_in[LEFT|RIGHT]||false>:
+        - if <context.location.material.half.is_in[LEFT|RIGHT]||false>:
             - log "<player.name> was denied a lock at <[locf]> because it was a double chest." info file:logs/locks.log
             - narrate "<red>You cannot apply a lock to a double chest!"
             - playsound <player> sound:entity_villager_no
