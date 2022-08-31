@@ -49,6 +49,7 @@ lock_apply:
         - define uuid <util.random_uuid>
         - flag <context.location> locks.level:<context.item.flag[locks.level]||basic>
         - flag <context.location> locks.allowed:<list_single[<player>]>
+        - flag <context.location> locks.original_owner:<player>
         - flag <context.location> locks.uuid:<[uuid]>
         - define ls <context.location.round_down>
         - narrate "<context.item.display||<context.item.material.name.to_titlecase||Basic> Lock><reset><green> applied to <context.location.material.name.replace[_].with[ ].to_titlecase> at <[ls].x> <[ls].y> <[ls].z>!"
