@@ -37,8 +37,9 @@ lock_apply:
         - define locf <context.location.proc[get_name]>
         - if <[mat].name> == trapped_chest:
             - log "<player.name> was denied a lock and hurt at <[locf]> because it was a trapped chest. ROFL." info file:logs/locks.log
-            - hurt 5 <player> cause:MAGIC source:<player>
-            - playsound <player> sound:entity_ghast_scream
+            - hurt 5 <player> cause:MAGIC
+            - playsound <player> sound:entity_ghast_scream pitch:2.0
+            - take item:<context.item> quantity:1 from:<player.inventory>
             - stop
         # No double chests
         - if <context.location.material.half.is_in[LEFT|RIGHT]||false>:
@@ -85,8 +86,6 @@ locked_container_events:
         on block burns location_flagged:locks.allowed:
             - determine cancelled
         on block spreads location_flagged:locks.allowed:
-            - determine cancelled
-        on cauldron level changes location_flagged:locks.allowed:
             - determine cancelled
         on piston extends:
             - determine cancelled if:<context.blocks.filter_tag[<[filter_value].has_flag[locks.allowed]>].any>
@@ -206,12 +205,12 @@ lock_pick_events:
             ## Chance == chance of failure
             - choose <context.item.flag[locks_pick.level]>:
                 - case basic:
-                    - define chance 90
+                    - define chance 95
                 - case admin:
                     - define chance 0
                     - log "<player.name> used an admin lock pick at <[locf]> (<[matf]>)!" info file:logs/locks.log
                 - default:
-                    - define chance 80
+                    - define chance 95
             - if <util.random_chance[<[chance]>]>:
                 - take item:<context.item> from:<player.inventory> quantity:1
                 - narrate "<red>Your <context.item.proc[get_name]> broke!"
