@@ -7,6 +7,8 @@ royal_emblem:
   - <&e>Used to craft <&6>Royal <&e>cosmetics
   mechanisms:
     custom_model_data: 701
+  data:
+    recipe_book_category: misc.skins1
   recipes:
     1:
       type: shapeless
@@ -21,6 +23,8 @@ pirate_eye_patch:
   - <&e>Used to craft <&c>Pirate <&e>cosmetics
   mechanisms:
     custom_model_data: 700
+  data:
+    recipe_book_category: misc.skins2
   recipes:
     1:
       type: shapeless
@@ -35,6 +39,8 @@ samurai_headband:
   - <&e>Used to craft <&d>Samurai <&e>cosmetics
   mechanisms:
     custom_model_data: 702
+  data:
+    recipe_book_category: misc.skins3
   recipes:
     1:
       type: shapeless
