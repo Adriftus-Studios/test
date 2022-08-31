@@ -1,4 +1,4 @@
-skin_unlock_pirate_diamond:
+skin_unlock_pirate_diamond_item:
   type: item
   material: leather_helmet
   display name: <&b>COSMETIC<&co><&6> Pirate Diamond Set

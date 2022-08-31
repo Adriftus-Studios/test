@@ -1,4 +1,4 @@
-skin_unlock_medium_leather:
+skin_unlock_medium_leather_item:
   type: item
   material: leather_helmet
   display name: <&b>COSMETIC<&co><&6> Medium Leather Set

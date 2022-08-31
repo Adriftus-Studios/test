@@ -1,4 +1,4 @@
-skin_unlock_light_diamond:
+skin_unlock_light_diamond_item:
   type: item
   material: leather_helmet
   display name: <&b>COSMETIC<&co><&6> Light Diamond Set

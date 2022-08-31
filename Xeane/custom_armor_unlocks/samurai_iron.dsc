@@ -1,4 +1,4 @@
-skin_unlock_samurai_iron:
+skin_unlock_samurai_iron_item:
   type: item
   material: leather_helmet
   display name: <&b>COSMETIC<&co><&6> Samurai Iron Set

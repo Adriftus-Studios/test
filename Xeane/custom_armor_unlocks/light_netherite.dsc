@@ -1,4 +1,4 @@
-skin_unlock_light_netherite:
+skin_unlock_light_netherite_item:
   type: item
   material: leather_helmet
   display name: <&b>COSMETIC<&co><&6> Light Netherite Set
