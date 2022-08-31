@@ -121,9 +121,13 @@ imprint_key_manage_players:
             - narrate "<green>Granted access to <context.entity.proc[get_basic_name]>." targets:<player>
         on player right clicks block with:item_flagged:locks.location:
             - determine passively cancelled
-            - stop if:<context.item.flag[locks.location].equals[<context.location>].not||true>
+            - if <context.item.flag[locks.location].equals[<context.location>].not||true>:
+                - narrate "<red>This key isn't for this block!"
+                - playsound sound:block_chest_close pitch:2.0
+                - stop
             - if <context.item.flag[locks.uuid].equals[<context.location.flag[locks.uuid]>].not>:
-                - narrate "<red>This lock is outdated!"
+                - narrate "<red>This key is outdated!"
+                - playsound sound:block_chest_close pitch:2.0
                 - stop
             - if <player.is_sneaking>:
                 - narrate "<green>Removed <context.location.flag[locks.level].if_null[basic].to_titlecase> Lock!"
