@@ -92,6 +92,7 @@ locked_container_events:
         ##Misc events
         on player places basic_lock:
             - determine cancelled
+
 imprint_key:
     type: item
     material: tripwire_hook
@@ -110,11 +111,13 @@ imprint_key_manage_players:
             - determine passively cancelled
             - if <context.item.flag[locks.location].flag[locks.allowed].size||0> >= 27:
                 - narrate "<red>Can't add anyone else to that container! <&co>(" targets:<player>
+                - playsound <player> sound:entity_experience_orb_pickup
                 - log "<player.name> maxed out perm'd players at <context.location.proc[get_basic_name]> (<context.location.material.proc[get_basic_name]>)." info file:logs/locks.log
                 - stop
             - if <context.item.flag[locks.location].flag[locks.allowed].contains[<context.entity>]||false>:
                 - flag <context.item.flag[locks.location]> <context.item.flag[locks.allowed]>:<-:<context.entity>
                 - narrate "<green>Removed access from <context.entity.proc[get_basic_name]>." targets:<player>
+                - playsound <player> sound:entity_experience_orb_pickup
                 - log "<player.name> removed perms of <context.location.proc[get_basic_name]> (<context.location.material.proc[get_basic_name]>) from <context.entity.proc[get_basic_name]>." info file:logs/locks.log
                 - stop
             - flag <context.item.flag[locks.location]> locks.allowed:->:<context.entity>
@@ -124,11 +127,11 @@ imprint_key_manage_players:
             - determine passively cancelled
             - if <context.item.flag[locks.location].equals[<context.location>].not||true>:
                 - narrate "<red>This key isn't for this block!"
-                - playsound sound:block_chest_close pitch:2.0
+                - playsound <player> sound:block_chest_close pitch:2.0
                 - stop
             - if <context.item.flag[locks.uuid].equals[<context.location.flag[locks.uuid]>].not>:
                 - narrate "<red>This key is outdated!"
-                - playsound sound:block_chest_close pitch:2.0
+                - playsound <player> sound:block_chest_close pitch:2.0
                 - stop
             - if <player.is_sneaking>:
                 - narrate "<green>Removed <context.location.flag[locks.level].if_null[basic].to_titlecase> Lock!"
