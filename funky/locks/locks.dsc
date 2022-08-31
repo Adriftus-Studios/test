@@ -58,7 +58,6 @@ lock_apply:
         - flag <context.location> locks.allowed:<list_single[<player>]>
         - flag <context.location> locks.original_owner:<player>
         - flag <context.location> locks.uuid:<[uuid]>
-        - define ls <context.location.round_down>
         - narrate "<context.item.display||<context.item.material.name.to_titlecase||Basic> Lock><reset><green> applied to <context.location.proc[get_name]>!"
         - define lore "<list[<white><bold>Location<&co> <context.location.proc[get_name]>|<empty>|<white>Right click another player to give them access.|<white>Right click the container to manage who can access it.|<white>Shift right click the container to remove the lock.|<empty>|<white><underline>You do not need this key to open the container.]>"
         - define key "<item[imprint_key].with_single[display_name=<white><[mat].proc[get_name]> Imprint Key].with_single[lore=<[lore]>].with_flag[locks.location:<context.location>].with_flag[locks.original_owner:<player>].with_flag[locks.uuid:<[uuid]>]>"
@@ -80,7 +79,7 @@ locked_container_events:
                 - determine cancelled
         on player right clicks block location_flagged:locks.allowed:
             - if !<context.location.flag[locks.allowed].contains[<player>]> && !<context.item.has_flag[locks_pick.level]>:
-                - narrate "<red>Hey! You can't open this! It belongs to <context.location.flag[locks.original_owner].proc[get_name]||ERROR! CONTACT ADMINS!>!"
+                - narrate "<red>Hey! You can't interact with this! It belongs to <context.location.flag[locks.original_owner].proc[get_name]||ERROR! CONTACT ADMINS!>!"
                 - playsound <context.location> sound:block_chest_locked pitch:1.3
                 - determine cancelled
         on item moves from inventory to inventory:
@@ -97,7 +96,7 @@ locked_container_events:
         on piston retracts:
             - determine cancelled if:<context.blocks.filter_tag[<[filter_value].has_flag[locks.allowed]>].any>
         ##Misc events
-        on player places basic_lock|imprint_key:
+        on player places item_flagged:locks:
             - determine cancelled
 
 imprint_key:
