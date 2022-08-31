@@ -125,6 +125,7 @@ imprint_key_manage_players:
             - narrate "<green>Granted access to <context.entity.proc[get_basic_name]>." targets:<player>
         on player right clicks block with:item_flagged:locks.location:
             - determine passively cancelled
+            - stop if:<context.location.material.name.equals[air]>
             - if <context.item.flag[locks.location].equals[<context.location>].not||true>:
                 - narrate "<red>This key isn't for this block!"
                 - playsound <player> sound:block_chest_close pitch:2.0
