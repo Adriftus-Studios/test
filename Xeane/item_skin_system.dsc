@@ -672,7 +672,20 @@ item_skin_customizer:
     on click:
       - inventory open d:ITEM_SKIN_SYSTEM_INVENTORY
 
-item_skin_unlock:
+item_skin_unlock_armor:
+  type: task
+  debug: false
+  definitions: id
+  script:
+    - define id <context.item.flag[id]> if:<[id].exists.not>
+    - if !<player.flag[cosmetics.armor].if_null[<list>].contains[<[id]>]>:
+      - take iteminhand quantity:1 if:<context.item.exists>
+      - flag player cosmetics.armor:->:<[id]>
+      - narrate "<&a>You have unlocked a new armor cosmetic set<&co><&6> <[id].replace[_].with[<&sp>].to_titlecase>"
+    - else:
+      - narrate "<&c>You have already unlocked this."
+
+item_skin_unlock_tool:
   type: task
   debug: false
   definitions: type|id
@@ -681,7 +694,7 @@ item_skin_unlock:
     - define type <context.item.flag[type]> if:<[type].exists.not>
     - if !<player.flag[cosmetics.<[type]>].if_null[<list>].contains[<[id]>]>:
       - take iteminhand quantity:1 if:<context.item.exists>
-      - flag player cosmetics.<[type]>:->:<[id]>
+      - flag player cosmetics.tool.<[type]>:->:<[id]>
       - narrate "<&a>You have unlocked a new armor cosmetic set<&co><&6> <[id].replace[_].with[<&sp>].to_titlecase>"
     - else:
       - narrate "<&c>You have already unlocked this."

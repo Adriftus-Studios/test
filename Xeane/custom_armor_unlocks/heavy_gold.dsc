@@ -11,6 +11,13 @@ skin_unlock_heavy_gold:
   data:
     recipe_book_category: gadgets.heavy_gold
   flags:
-    right_click_script: item_skin_unlock
+    right_click_script: item_skin_unlock_armor
     id: heavy_gold
     type: armor
+  recipes:
+    1:
+      type: shaped
+      input:
+      - triple_compressed_golden_block|triple_compressed_golden_block|triple_compressed_golden_block
+      - triple_compressed_golden_block|chest|triple_compressed_golden_block
+      - triple_compressed_golden_block|triple_compressed_golden_block|triple_compressed_golden_block

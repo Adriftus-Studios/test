@@ -11,6 +11,13 @@ skin_unlock_light_chainmail:
   data:
     recipe_book_category: gadgets.light_chainmail
   flags:
-    right_click_script: item_skin_unlock
+    right_click_script: item_skin_unlock_armor
     id: light_chainmail
     type: armor
+  recipes:
+    1:
+      type: shaped
+      input:
+      - compressed_iron_ingot|compressed_iron_ingot|compressed_iron_ingot
+      - compressed_iron_ingot|chest|compressed_iron_ingot
+      - compressed_iron_ingot|compressed_iron_ingot|compressed_iron_ingot

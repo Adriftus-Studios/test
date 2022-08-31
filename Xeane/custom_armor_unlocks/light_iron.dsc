@@ -11,6 +11,13 @@ skin_unlock_light_iron:
   data:
     recipe_book_category: gadgets.light_iron
   flags:
-    right_click_script: item_skin_unlock
+    right_click_script: item_skin_unlock_armor
     id: light_iron
     type: armor
+  recipes:
+    1:
+      type: shaped
+      input:
+      - compressed_iron_block|compressed_iron_block|compressed_iron_block
+      - compressed_iron_block|chest|compressed_iron_block
+      - compressed_iron_block|compressed_iron_block|compressed_iron_block

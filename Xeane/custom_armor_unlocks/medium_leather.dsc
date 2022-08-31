@@ -11,6 +11,13 @@ skin_unlock_medium_leather:
   data:
     recipe_book_category: gadgets.medium_leather
   flags:
-    right_click_script: item_skin_unlock
+    right_click_script: item_skin_unlock_armor
     id: medium_leather
     type: armor
+  recipes:
+    1:
+      type: shaped
+      input:
+      - double_compressed_leather|double_compressed_leather|double_compressed_leather
+      - double_compressed_leather|chest|double_compressed_leather
+      - double_compressed_leather|double_compressed_leather|double_compressed_leather

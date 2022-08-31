@@ -11,6 +11,13 @@ skin_unlock_pirate_iron:
   data:
     recipe_book_category: gadgets.pirate_iron
   flags:
-    right_click_script: item_skin_unlock
+    right_click_script: item_skin_unlock_armor
     id: pirate_iron
     type: armor
+  recipes:
+    1:
+      type: shaped
+      input:
+      - triple_compressed_iron_block|triple_compressed_iron_block|triple_compressed_iron_block
+      - triple_compressed_iron_block|pirate_eye_patch|triple_compressed_iron_block
+      - triple_compressed_iron_block|triple_compressed_iron_block|triple_compressed_iron_block

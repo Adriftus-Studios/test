@@ -11,6 +11,13 @@ skin_unlock_ninja_leather:
   data:
     recipe_book_category: gadgets.ninja_leather
   flags:
-    right_click_script: item_skin_unlock
+    right_click_script: item_skin_unlock_armor
     id: ninja_leather
     type: armor
+  recipes:
+    1:
+      type: shaped
+      input:
+      - triple_compressed_leather|triple_compressed_leather|triple_compressed_leather
+      - triple_compressed_leather|samurai_headband|triple_compressed_leather
+      - triple_compressed_leather|triple_compressed_leather|triple_compressed_leather

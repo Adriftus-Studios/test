@@ -11,6 +11,13 @@ skin_unlock_light_diamond:
   data:
     recipe_book_category: gadgets.light_diamond
   flags:
-    right_click_script: item_skin_unlock
+    right_click_script: item_skin_unlock_armor
     id: light_diamond
     type: armor
+  recipes:
+    1:
+      type: shaped
+      input:
+      - compressed_diamond_block|compressed_diamond_block|compressed_diamond_block
+      - compressed_diamond_block|chest|compressed_diamond_block
+      - compressed_diamond_block|compressed_diamond_block|compressed_diamond_block
