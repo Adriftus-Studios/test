@@ -11,6 +11,13 @@ skin_unlock_heavy_netherite:
   data:
     recipe_book_category: gadgets.heavy_netherite
   flags:
-    right_click_script: item_skin_unlock
+    right_click_script: item_skin_unlock_armor
     id: heavy_netherite
     type: armor
+  recipes:
+    1:
+      type: shaped
+      input:
+      - triple_compressed_netherite_ingot|triple_compressed_netherite_ingot|triple_compressed_netherite_ingot
+      - triple_compressed_netherite_ingot|chest|triple_compressed_netherite_ingot
+      - triple_compressed_netherite_ingot|triple_compressed_netherite_ingot|triple_compressed_netherite_ingot

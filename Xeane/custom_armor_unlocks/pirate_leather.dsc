@@ -11,6 +11,13 @@ skin_unlock_pirate_leather:
   data:
     recipe_book_category: gadgets.pirate_leather
   flags:
-    right_click_script: item_skin_unlock
+    right_click_script: item_skin_unlock_armor
     id: pirate_leather
     type: armor
+  recipes:
+    1:
+      type: shaped
+      input:
+      - triple_compressed_leather|triple_compressed_leather|triple_compressed_leather
+      - triple_compressed_leather|pirate_eye_patch|triple_compressed_leather
+      - triple_compressed_leather|triple_compressed_leather|triple_compressed_leather

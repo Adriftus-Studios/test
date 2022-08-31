@@ -11,6 +11,13 @@ skin_unlock_royal_iron:
   data:
     recipe_book_category: gadgets.royal_iron
   flags:
-    right_click_script: item_skin_unlock
+    right_click_script: item_skin_unlock_armor
     id: royal_iron
     type: armor
+  recipes:
+    1:
+      type: shaped
+      input:
+      - triple_compressed_iron_block|triple_compressed_iron_block|triple_compressed_iron_block
+      - triple_compressed_iron_block|royal_crest|triple_compressed_iron_block
+      - triple_compressed_iron_block|triple_compressed_iron_block|triple_compressed_iron_block

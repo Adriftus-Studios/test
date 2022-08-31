@@ -11,6 +11,13 @@ skin_unlock_samurai_netherite:
   data:
     recipe_book_category: gadgets.samurai_netherite
   flags:
-    right_click_script: item_skin_unlock
+    right_click_script: item_skin_unlock_armor
     id: samurai_netherite
     type: armor
+  recipes:
+    1:
+      type: shaped
+      input:
+      - triple_compressed_netherite_ingot|triple_compressed_netherite_ingot|triple_compressed_netherite_ingot
+      - triple_compressed_netherite_ingot|samurai_headband|triple_compressed_netherite_ingot
+      - triple_compressed_netherite_ingot|triple_compressed_netherite_ingot|triple_compressed_netherite_ingot

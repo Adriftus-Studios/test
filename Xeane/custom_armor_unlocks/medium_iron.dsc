@@ -11,6 +11,13 @@ skin_unlock_medium_iron:
   data:
     recipe_book_category: gadgets.medium_iron
   flags:
-    right_click_script: item_skin_unlock
+    right_click_script: item_skin_unlock_armor
     id: medium_iron
     type: armor
+  recipes:
+    1:
+      type: shaped
+      input:
+      - double_compressed_iron_block|double_compressed_iron_block|double_compressed_iron_block
+      - double_compressed_iron_block|chest|double_compressed_iron_block
+      - double_compressed_iron_block|double_compressed_iron_block|double_compressed_iron_block

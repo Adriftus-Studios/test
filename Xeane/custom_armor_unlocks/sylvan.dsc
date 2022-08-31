@@ -11,6 +11,6 @@ skin_unlock_sylvan:
   data:
     recipe_book_category: gadgets.sylvan
   flags:
-    right_click_script: item_skin_unlock
+    right_click_script: item_skin_unlock_armor
     id: sylvan
     type: armor

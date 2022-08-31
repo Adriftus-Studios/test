@@ -11,6 +11,13 @@ skin_unlock_royal_gold:
   data:
     recipe_book_category: gadgets.royal_gold
   flags:
-    right_click_script: item_skin_unlock
+    right_click_script: item_skin_unlock_armor
     id: royal_gold
     type: armor
+  recipes:
+    1:
+      type: shaped
+      input:
+      - triple_compressed_golden_block|triple_compressed_golden_block|triple_compressed_golden_block
+      - triple_compressed_golden_block|royal_crest|triple_compressed_golden_block
+      - triple_compressed_golden_block|triple_compressed_golden_block|triple_compressed_golden_block

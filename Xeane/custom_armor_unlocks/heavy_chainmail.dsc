@@ -11,6 +11,13 @@ skin_unlock_heavy_chainmail:
   data:
     recipe_book_category: gadgets.heavy_chainmail
   flags:
-    right_click_script: item_skin_unlock
+    right_click_script: item_skin_unlock_armor
     id: heavy_chainmail
     type: armor
+  recipes:
+    1:
+      type: shaped
+      input:
+      - triple_compressed_iron_ingot|triple_compressed_iron_ingot|triple_compressed_iron_ingot
+      - triple_compressed_iron_ingot|chest|triple_compressed_iron_ingot
+      - triple_compressed_iron_ingot|triple_compressed_iron_ingot|triple_compressed_iron_ingot

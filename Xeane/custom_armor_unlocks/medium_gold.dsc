@@ -11,6 +11,13 @@ skin_unlock_medium_gold:
   data:
     recipe_book_category: gadgets.medium_gold
   flags:
-    right_click_script: item_skin_unlock
+    right_click_script: item_skin_unlock_armor
     id: medium_gold
     type: armor
+  recipes:
+    1:
+      type: shaped
+      input:
+      - double_compressed_golden_block|double_compressed_golden_block|double_compressed_golden_block
+      - double_compressed_golden_block|chest|double_compressed_golden_block
+      - double_compressed_golden_block|double_compressed_golden_block|double_compressed_golden_block
