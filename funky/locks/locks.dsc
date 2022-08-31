@@ -25,6 +25,10 @@ lock_apply:
             - brewing_stand
             - trapped_chest
             - *_box
+            - lever
+            - button
+            - dispenser
+            - dropper
     script:
         - define mat <context.location.material>
         - stop if:<player.is_sneaking>
