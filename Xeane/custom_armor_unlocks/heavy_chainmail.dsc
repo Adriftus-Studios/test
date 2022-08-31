@@ -13,7 +13,7 @@ skin_unlock_heavy_chainmail_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[heavy_chainmail]>
-    tools: <list[sword.chainmail_greatsword|axe.chainmail_battleaxe|pickaxe.chainmail_sledge]>
+    tools: <list[sword.stone_greatsword|axe.stone_battleaxe|pickaxe.stone_sledge]>
   recipes:
     1:
       type: shaped

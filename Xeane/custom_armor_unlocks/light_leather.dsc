@@ -13,7 +13,7 @@ skin_unlock_light_leather_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[light_leather]>
-    tools: <list[sword.leather_dagger|axe.leather_hatchet|shovel.leather_pitchfork|pickaxe.leather_mallet|hoe.leather_sickle]>
+    tools: <list[sword.wooden_dagger|axe.wooden_hatchet|shovel.wooden_pitchfork|pickaxe.wooden_mallet|hoe.wooden_sickle]>
   recipes:
     1:
       type: shaped

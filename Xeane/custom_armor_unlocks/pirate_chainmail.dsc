@@ -13,7 +13,7 @@ skin_unlock_pirate_chainmail_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[pirate_chainmail]>
-    tools: <list[sword.chainmail_cutlass]>
+    tools: <list[sword.stone_cutlass]>
   recipes:
     1:
       type: shaped

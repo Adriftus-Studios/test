@@ -13,7 +13,7 @@ skin_unlock_pirate_leather_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[pirate_leather]>
-    tools: <list[sword.leather_cutlass]>
+    tools: <list[sword.wooden_cutlass]>
   recipes:
     1:
       type: shaped

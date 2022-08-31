@@ -10,129 +10,156 @@ item_skin_system_data:
       wooden_spear: 10006
       wooden_cutlass: 10007
       wooden_odachi: 10008
-      iron_broadsword: 10026
-      iron_dagger: 10027
-      iron_katana: 10028
-      iron_greatsword: 10029
-      iron_glaive: 10030
-      iron_spear: 10031
-      iron_cutlass: 10032
-      iron_odachi: 10033
-      golden_broadsword: 10051
-      golden_dagger: 10052
-      golden_katana: 10053
-      golden_greatsword: 10054
-      golden_glaive: 10055
-      golden_spear: 10056
-      golden_cutlass: 10057
-      golden_odachi: 10058
-      diamond_broadsword: 10076
-      diamond_dagger: 10077
-      diamond_katana: 10078
-      diamond_greatsword: 10079
-      diamond_glaive: 10080
-      diamond_spear: 10081
-      diamond_cutlass: 10082
-      diamond_odachi: 10083
-      netherite_broadsword: 10101
-      netherite_dagger: 10102
-      netherite_katana: 10103
-      netherite_greatsword: 10104
-      netherite_glaive: 10105
-      netherite_spear: 10106
-      netherite_cutlass: 10107
-      netherite_odachi: 10108
+      stone_broadsword: 10026
+      stone_dagger: 10027
+      stone_katana: 10028
+      stone_greatsword: 10029
+      stone_glaive: 10030
+      stone_spear: 10031
+      stone_cutlass: 10032
+      stone_odachi: 10033
+      iron_broadsword: 10051
+      iron_dagger: 10052
+      iron_katana: 10053
+      iron_greatsword: 10054
+      iron_glaive: 10055
+      iron_spear: 10056
+      iron_cutlass: 10057
+      iron_odachi: 10058
+      golden_broadsword: 10076
+      golden_dagger: 10077
+      golden_katana: 10078
+      golden_greatsword: 10079
+      golden_glaive: 10080
+      golden_spear: 10081
+      golden_cutlass: 10082
+      golden_odachi: 10083
+      diamond_broadsword: 10101
+      diamond_dagger: 10102
+      diamond_katana: 10103
+      diamond_greatsword: 10104
+      diamond_glaive: 10105
+      diamond_spear: 10106
+      diamond_cutlass: 10107
+      diamond_odachi: 10108
+      netherite_broadsword: 10126
+      netherite_dagger: 10127
+      netherite_katana: 10128
+      netherite_greatsword: 10129
+      netherite_glaive: 10130
+      netherite_spear: 10131
+      netherite_cutlass: 10132
+      netherite_odachi: 10133
+
     axe:
       wooden_broadaxe: 10009
       wooden_hatchet: 10010
       wooden_ono: 10011
       wooden_battleaxe: 10012
       wooden_halberd: 10013
-      iron_broadaxe: 10036
-      iron_hatchet: 10037
-      iron_ono: 10038
-      iron_battleaxe: 10039
-      iron_halberd: 10040
-      golden_broadaxe: 10063
-      golden_hatchet: 10064
-      golden_ono: 10065
-      golden_battleaxe: 10066
-      golden_halberd: 10067
-      diamond_broadaxe: 10090
-      diamond_hatchet: 10091
-      diamond_ono: 10092
-      diamond_battleaxe: 10093
-      diamond_halberd: 10094
-      netherite_broadaxe: 10117
-      netherite_hatchet: 10118
-      netherite_ono: 10119
-      netherite_battleaxe: 10120
-      netherite_halberd: 10121
+      stone_broadaxe: 10034
+      stone_hatchet: 10035
+      stone_ono: 10036
+      stone_battleaxe: 10037
+      stone_halberd: 10038
+      iron_broadaxe: 10059
+      iron_hatchet: 10060
+      iron_ono: 10061
+      iron_battleaxe: 10062
+      iron_halberd: 10063
+      golden_broadaxe: 10084
+      golden_hatchet: 10085
+      golden_ono: 10086
+      golden_battleaxe: 10087
+      golden_halberd: 10088
+      diamond_broadaxe: 10109
+      diamond_hatchet: 10110
+      diamond_ono: 10111
+      diamond_battleaxe: 10112
+      diamond_halberd: 10113
+      netherite_broadaxe: 10134
+      netherite_hatchet: 10135
+      netherite_ono: 10136
+      netherite_battleaxe: 10137
+      netherite_halberd: 10138
+
     hoe:
-      wooden_handscythe: 10024
-      wooden_sickle: 10025
-      wooden_kama: 10026
-      wooden_greatscythe: 10027
-      iron_handscythe: 10051
-      iron_sickle: 10052
-      iron_kama: 10053
-      iron_greatscythe: 10054
-      golden_handscythe: 10078
-      golden_sickle: 10079
-      golden_kama: 10080
-      golden_greatscythe: 10081
-      diamond_handscythe: 10105
-      diamond_sickle: 10106
-      diamond_kama: 10107
-      diamond_greatscythe: 10108
-      netherite_handscythe: 10132
-      netherite_sickle: 10133
-      netherite_kama: 10134
-      netherite_greatscythe: 10135
+      wooden_handscythe: 10022
+      wooden_sickle: 10023
+      wooden_kama: 10024
+      wooden_greatscythe: 10025
+      stone_handscythe: 10047
+      stone_sickle: 10048
+      stone_kama: 10049
+      stone_greatscythe: 10050
+      iron_handscythe: 10072
+      iron_sickle: 10073
+      iron_kama: 10074
+      iron_greatscythe: 10075
+      golden_handscythe: 10097
+      golden_sickle: 10098
+      golden_kama: 10099
+      golden_greatscythe: 10100
+      diamond_handscythe: 10122
+      diamond_sickle: 10123
+      diamond_kama: 10124
+      diamond_greatscythe: 10125
+      netherite_handscythe: 10147
+      netherite_sickle: 10148
+      netherite_kama: 10149
+      netherite_greatscythe: 10150
+
     pickaxe:
       wooden_mattock: 10018
       wooden_mallet: 10019
       wooden_sledge: 10020
       wooden_warhammer: 10021
-      iron_mattock: 10043
-      iron_mallet: 10044
-      iron_sledge: 10045
-      iron_warhammer: 10046
-      golden_mattock: 10068
-      golden_mallet: 10069
-      golden_sledge: 10070
-      golden_warhammer: 10071
-      diamond_mattock: 10093
-      diamond_mallet: 10094
-      diamond_sledge: 10095
-      diamond_warhammer: 10096
-      netherite_mattock: 10118
-      netherite_mallet: 10119
-      netherite_sledge: 10120
-      netherite_warhammer: 10121
+      stone_mattock: 10043
+      stone_mallet: 10044
+      stone_sledge: 10045
+      stone_warhammer: 10046
+      iron_mattock: 10068
+      iron_mallet: 10069
+      iron_sledge: 10070
+      iron_warhammer: 10071
+      golden_mattock: 10093
+      golden_mallet: 10094
+      golden_sledge: 10095
+      golden_warhammer: 10096
+      diamond_mattock: 10118
+      diamond_mallet: 10119
+      diamond_sledge: 10120
+      diamond_warhammer: 10121
+      netherite_mattock: 10143
+      netherite_mallet: 10144
+      netherite_sledge: 10145
+      netherite_warhammer: 10146
+
     shovel:
       wooden_trencher: 10014
       wooden_pitchfork: 10015
       wooden_spade: 10016
       wooden_warffork: 10017
-      iron_trencher: 10041
-      iron_pitchfork: 10042
-      iron_spade: 10043
-      iron_warffork: 10044
-      golden_trencher: 10068
-      golden_pitchfork: 10069
-      golden_spade: 10070
-      golden_warffork: 10071
-      diamond_trencher: 10095
-      diamond_pitchfork: 10096
-      diamond_spade: 10097
-      diamond_warffork: 10098
-      netherite_trencher: 10122
-      netherite_pitchfork: 10123
-      netherite_spade: 10124
-      netherite_warffork: 10125
-
-
+      stone_trencher: 10039
+      stone_pitchfork: 10040
+      stone_spade: 10041
+      stone_warffork: 10042
+      iron_trencher: 10064
+      iron_pitchfork: 10065
+      iron_spade: 10066
+      iron_warffork: 10067
+      golden_trencher: 10089
+      golden_pitchfork: 10090
+      golden_spade: 10091
+      golden_warffork: 10092
+      diamond_trencher: 10114
+      diamond_pitchfork: 10115
+      diamond_spade: 10116
+      diamond_warffork: 10117
+      netherite_trencher: 10139
+      netherite_pitchfork: 10140
+      netherite_spade: 10141
+      netherite_warffork: 10142
 
   armor:
     light_leather:

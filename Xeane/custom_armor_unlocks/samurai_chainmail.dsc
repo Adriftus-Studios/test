@@ -13,7 +13,7 @@ skin_unlock_samurai_chainmail_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[samurai_chainmail]>
-    tools: <list[sword.chainmail_katana|axe.chainmail_ono|shovel.chainmail_spade|hoe.chainmail_kama]>
+    tools: <list[sword.stone_katana|axe.stone_ono|shovel.stone_spade|hoe.stone_kama]>
   recipes:
     1:
       type: shaped

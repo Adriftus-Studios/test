@@ -13,7 +13,7 @@ skin_unlock_heavy_leather_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[heavy_leather]>
-    tools: <list[sword.leather_greatsword|axe.leather_battleaxe|pickaxe.leather_sledge]>
+    tools: <list[sword.wooden_greatsword|axe.wooden_battleaxe|pickaxe.wooden_sledge]>
   recipes:
     1:
       type: shaped

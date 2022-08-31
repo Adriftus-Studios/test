@@ -13,7 +13,7 @@ skin_unlock_medium_leather_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[medium_leather]>
-    tools: <list[sword.leather_broadsword|axe.leather_broadaxe|shovel.leather_trencher|pickaxe.leather_mattock|hoe.leather_handscythe]>
+    tools: <list[sword.wooden_broadsword|axe.wooden_broadaxe|shovel.wooden_trencher|pickaxe.wooden_mattock|hoe.wooden_handscythe]>
   recipes:
     1:
       type: shaped

@@ -13,7 +13,7 @@ skin_unlock_royal_chainmail_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[royal_chainmail]>
-    tools: <list[sword.chainmail_spear|axe.chainmail_halberd|shovel.chainmail_warffork|pickaxe.chainmail_warhammer|hoe.chainmail_greatscythe|sword.chainmail_odachi]>
+    tools: <list[sword.stone_spear|axe.stone_halberd|shovel.stone_warffork|pickaxe.stone_warhammer|hoe.stone_greatscythe|sword.stone_odachi]>
   recipes:
     1:
       type: shaped

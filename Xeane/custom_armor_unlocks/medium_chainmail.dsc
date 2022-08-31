@@ -13,7 +13,7 @@ skin_unlock_medium_chainmail_item:
   flags:
     right_click_script: item_skin_unlock
     armor: <list[medium_chainmail]>
-    tools: <list[sword.chainmail_broadsword|axe.chainmail_broadaxe|shovel.chainmail_trencher|pickaxe.chainmail_mattock|hoe.chainmail_handscythe]>
+    tools: <list[sword.stone_broadsword|axe.stone_broadaxe|shovel.stone_trencher|pickaxe.stone_mattock|hoe.stone_handscythe]>
   recipes:
     1:
       type: shaped
