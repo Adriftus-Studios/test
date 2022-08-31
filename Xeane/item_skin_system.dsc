@@ -565,25 +565,34 @@ item_skin_system_update:
     - if <[item].material.name.advanced_matches[*_leggings|*_boots|*_helmet|*_chestplate]>:
       - define skin_map <script[item_skin_system_data].parsed_key[armor]>
       - define cosmetics <player.flag[cosmetics.armor].if_null[<list>]>
+      - define type armor
     - else:
       - define skin_map <script[item_skin_system_data].parsed_key[tools.<[material].after[_]>]>
       - define cosmetics <player.flag[cosmetics.tool].if_null[<list>]>
+      - define type tool
     - define page 1 if:<[page].exists.not>
     - define slots <list[<script.data_key[data.skin_slots]>]>
     - define start <[page].sub[1].mul[<[slots].size>].add[1]>
     - define end <[slots].size.mul[<[page]>]>
-    - foreach <[cosmetics].get[<[start]>].to[<[end]>].if_null[<list>]> as:skin_name:
-      - define key <[skin_name]>
-      - define map <[skin_map].get[<[skin_name]>]>
-      - if <[key]> == air:
-        - inventory set slot:<[slots].get[<[loop_index]>]> d:<[inventory]> o:air
-      - else:
-        - define new_item <[item]>
-        - adjust def:new_item material:leather_<[material].after[_]>
-        - adjust def:new_item color:<[map].get[color]>
-        - adjust def:new_item durability:<[durability]>
-        - adjust def:new_item custom_model_data:<[map].get[CMD]>
-        - adjust def:new_item attribute_modifiers:<script[item_skin_system_data].data_key[vanilla_attributes.<[material]>]>
+    - if <[type]> == armor:
+      - foreach <[cosmetics].get[<[start]>].to[<[end]>].if_null[<list>]> as:skin_name:
+        - define key <[skin_name]>
+        - define map <[skin_map].get[<[skin_name]>]>
+        - if <[key]> == air:
+          - inventory set slot:<[slots].get[<[loop_index]>]> d:<[inventory]> o:air
+        - else:
+          - define new_item <[item]>
+          - adjust def:new_item material:leather_<[material].after[_]>
+          - adjust def:new_item color:<[map].get[color]>
+          - adjust def:new_item durability:<[durability]>
+          - adjust def:new_item custom_model_data:<[map].get[CMD]>
+          - adjust def:new_item attribute_modifiers:<script[item_skin_system_data].data_key[vanilla_attributes.<[material]>]>
+          - inventory set slot:<[slots].get[<[loop_index]>]> d:<[inventory]> "o:<[new_item].with[display=<[map].get[display]> <[material].after[_].to_titlecase>;flag=run_script:item_skin_system_skin_item]>"
+    - else:
+      - foreach <[cosmetics].get[<[start]>].to[<[end]>].if_null[<list>]> as:skin_name:
+        - define key <[skin_name]>
+        - define CMD <[skin_map].get[<[skin_name]>]>
+        - define new_item <[item].with[custom_model_data=<[CMD]>]>
         - inventory set slot:<[slots].get[<[loop_index]>]> d:<[inventory]> "o:<[new_item].with[display=<[map].get[display]> <[material].after[_].to_titlecase>;flag=run_script:item_skin_system_skin_item]>"
 
 
