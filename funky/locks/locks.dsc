@@ -59,7 +59,7 @@ lock_apply:
         - flag <context.location> locks.original_owner:<player>
         - flag <context.location> locks.uuid:<[uuid]>
         - narrate "<context.item.display||<context.item.material.name.to_titlecase||Basic> Lock><reset><green> applied to <context.location.proc[get_name]>!"
-        - define lore "<list[<white><bold>Location<&co> <context.location.proc[get_name]>|<empty>|<white>Right click another player to give them access.|<white>Right click the container to manage who can access it.|<white>Shift right click the container to remove the lock.|<empty>|<white><underline>You do not need this key to open the container.]>"
+        - define lore "<list[<white><bold>Location<&co> <context.location.proc[get_name]>.|<empty>|<white>Right click another player to give them access.|<white>Right click the container to manage who can access it.|<white>Shift right click the container to remove the lock.|<empty>|<white><underline>You do not need this key to open the container.]>"
         - define key "<item[imprint_key].with_single[display_name=<white><[mat].proc[get_name]> Imprint Key].with_single[lore=<[lore]>].with_flag[locks.location:<context.location>].with_flag[locks.original_owner:<player>].with_flag[locks.uuid:<[uuid]>]>"
         - playsound <context.location> sound:block_chain_place pitch:0.5
         - drop <[key]> <context.location.above[1]> quantity:1
@@ -145,6 +145,7 @@ imprint_key_manage_players:
                 - playsound <context.location> sound:block_chain_break pitch:2.0
                 - log "<player.name> removed <context.location.flag[locks.level]> lock from <context.location.simple> (<context.location.material.proc[get_name]>)." info file:logs/locks.log
                 - flag <context.location> locks:!
+                - take iteminhand quantity:1
                 - stop
             - define inv <inventory[lock_permissions].include[<item[air]>]>
             - inventory open d:<[inv]>
