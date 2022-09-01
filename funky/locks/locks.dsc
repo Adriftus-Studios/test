@@ -141,7 +141,7 @@ imprint_key_manage_players:
                 - stop
             - if <player.is_sneaking>:
                 - narrate "<green>Removed <context.location.flag[locks.level].if_null[basic].to_titlecase> Lock!"
-                - drop <context.location.flag[locks.level].if_null[basic]>_lock <context.location.above[1]> quantity:1
+                - drop lock_<context.location.flag[locks.level].if_null[basic]> <context.location.above[1]> quantity:1
                 - playsound <context.location> sound:block_chain_break pitch:2.0
                 - log "<player.name> removed <context.location.flag[locks.level]> lock from <context.location.simple> (<context.location.material.proc[get_name]>)." info file:logs/locks.log
                 - flag <context.location> locks:!
