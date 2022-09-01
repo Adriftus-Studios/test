@@ -35,7 +35,7 @@ lock_apply:
         # If location is a town and the player is not a resident in the town, stop
         - stop if:<context.location.town.residents.contains[<player>].not||false>
         - stop if:<player.worldguard.can_build[<context.location>].not||false>
-        - stop if:<script.data_key[data].get[lockable].filter_tag[<context.location.material.name.advanced_matches[<[filter_value]>]>].any>
+        - stop if:<script.data_key[data].get[lockable].filter_tag[<context.location.material.name.advanced_matches[<[filter_value]>]>].any.not>
         - stop if:<context.location.has_flag[locks.level]>
         - determine passively cancelled
         - define locf <context.location.proc[get_name]>
