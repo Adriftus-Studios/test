@@ -26,7 +26,7 @@ lock_apply:
             - trapped_chest
             - *_box
             - lever
-            - button
+            - *_button
             - dispenser
             - dropper
             - lectern
