@@ -10,7 +10,7 @@ get_name:
         - case Item:
             - determine "<[c].display.strip_color.if_null[<[c].material.name.replace[_].with[ ].to_titlecase>]>"
         - case Entity Player:
-            - determine <[c].name.strip_color.if_null[<[c].entity_type.name>]>
+            - determine <[c].name.strip_color.if_null[<[c].entity_type.proc[get_name]>]>
         - case Town Nation:
             - determine "<[c].name.replace[_].with[ ].strip_color.to_titlecase>"
         - case List:
