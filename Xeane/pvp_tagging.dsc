@@ -26,6 +26,6 @@ PvP_Bossbar:
   script:
     - bossbar create PvP_<[player].uuid> "title:<&4>PvP Timer" color:red progress:<[player].flag_expiration[pvp].from_now.in_milliseconds.div[<duration[30s].in_milliseconds>]> players:<[player]>
     - while <[player].has_flag[pvp]> && <[player].is_online>:
-      - bossbar update PvP_<[player].uuid> "title:<&4>PvP<&co> <[player].flag_expiration[pvp].from_now.in_seconds> seconds" progress:<[player].flag_expiration[pvp].from_now.in_milliseconds.div[<duration[30s].in_milliseconds>]>
+      - bossbar update PvP_<[player].uuid> "title:<&4>PvP<&co> <[player].flag_expiration[pvp].from_now.in_seconds.round> seconds" progress:<[player].flag_expiration[pvp].from_now.in_milliseconds.div[<duration[30s].in_milliseconds>]>
       - wait 1s
     - bossbar remove PvP_<[player].uuid>
