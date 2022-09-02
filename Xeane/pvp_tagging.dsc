@@ -24,7 +24,7 @@ PvP_Bossbar:
   debug: false
   definitions: player
   script:
-    - bossbar create PvP_<[player].uuid> color:red progress:<[player].flag_expiration[pvp].from_now.in_milliseconds.div[<duration[30s].in_milliseconds>]> players:<[player]>
+    - bossbar create PvP_<[player].uuid> "title:<&4>PvP Timer" color:red progress:<[player].flag_expiration[pvp].from_now.in_milliseconds.div[<duration[30s].in_milliseconds>]> players:<[player]>
     - while <[player].has_flag[pvp]> && <[player].is_online>:
       - bossbar update PvP_<[player].uuid> progress:<[player].flag_expiration[pvp].from_now.in_milliseconds.div[<duration[30s].in_milliseconds>]>
       - wait 1s
