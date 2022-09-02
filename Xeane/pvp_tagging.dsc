@@ -5,8 +5,10 @@ PvP_tagging:
     on player damages player:
       - if !<context.entity.has_flag[pvp]>:
         - define targets:->:<context.entity
+        - narrate "<&e><&l>You have entered PvP, do not log out!" targets:<context.entity>
       - if !<context.damager.has_flag[pvp]>:
         - define targets:->:<context.damager
+        - narrate "<&e><&l>You have entered PvP, do not log out!" targets:<context.damager>
       - title "title:<&4>PvP Flagged" fade_in:10t stay:1s fade_out:10t targets:<[targets]>
       - flag <context.damager>|<context.entity> pvp expire:30s
       - if !<server.current_bossbars.contains[PvP_<context.damager.uuid>]>:
