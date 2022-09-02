@@ -29,6 +29,11 @@ lock_apply:
             - button
             - dispenser
             - dropper
+            - lectern
+            - bookshelf
+            - *door
+            - *gate
+            - ender_chest
     script:
         - define mat <context.location.material>
         - stop if:<player.is_sneaking>
@@ -37,6 +42,7 @@ lock_apply:
         - stop if:<player.worldguard.can_build[<context.location>].not||false>
         - stop if:<script.data_key[data].get[lockable].filter_tag[<context.location.material.name.advanced_matches[<[filter_value]>]>].any.not>
         - stop if:<context.location.has_flag[locks.level]>
+        - stop if:<context.location.other_block.has_flag[locks.redirect]||false>
         - determine passively cancelled
         - define locf <context.location.proc[get_name]>
         - if <[mat].name> == trapped_chest:
@@ -47,11 +53,8 @@ lock_apply:
             - take item:<context.item> quantity:1 from:<player.inventory>
             - stop
         # No double chests
-        - if <context.location.material.half.is_in[LEFT|RIGHT]||false>:
-            - log "<player.name> was denied a lock at <[locf]> because it was a double chest." info file:logs/locks.log
-            - narrate "<red>You cannot apply a lock to a double chest!"
-            - playsound <player> sound:entity_villager_no
-            - stop
+        - if <context.location.other_block.exists>:
+            - flag <context.location.other_block> locks.redirect:<context.location>
         - take item:<context.item> quantity:1 from:<player.inventory>
         - define uuid <util.random_uuid>
         - flag <context.location> locks.level:<context.item.flag[locks.level]||basic>
@@ -77,24 +80,39 @@ locked_container_events:
                 - narrate "<red>You can't break this <context.location.material.proc[get_lower_name]> because it's locked!"
                 - playsound <context.location> sound:block_chest_locked pitch:0.7
                 - determine cancelled
+        on player breaks block location_flagged:locks.redirect:
+            - if <context.location.other_block.flag[locks.allowed].contains[<player>]>:
+                - flag <context.location.other_block> locks:!
+                - flag <context.location> locks:!
+                - narrate "<yellow>You broke the lock that was on this block!"
+                - playsound <context.location> sound:block_chain_break pitch:2.0
+            - else:
+                - narrate "<red>You can't break this <context.location.material.proc[get_lower_name]> because it's locked!"
+                - playsound <context.location> sound:block_chest_locked pitch:0.7
+                - determine cancelled
         on player right clicks block location_flagged:locks.allowed:
             - if !<context.location.flag[locks.allowed].contains[<player>]> && !<context.item.has_flag[locks_pick.level]>:
                 - narrate "<red>Hey! You can't interact with this! It belongs to <context.location.flag[locks.original_owner].proc[get_name]||ERROR! CONTACT ADMINS!>!"
                 - playsound <context.location> sound:block_chest_locked pitch:1.3
                 - determine cancelled
-        on item moves from inventory to inventory:
-            - if <context.origin.location.has_flag[locks.allowed]>:
+        on player right clicks block location_flagged:locks.redirect:
+            - if !<context.location.other_block.flag[locks.allowed].contains[<player>]> && !<context.item.has_flag[locks_pick.level]>:
+                - narrate "<red>Hey! You can't interact with this! It belongs to <context.location.flag[locks.original_owner].proc[get_name]||ERROR! CONTACT ADMINS!>!"
+                - playsound <context.location> sound:block_chest_locked pitch:1.3
                 - determine cancelled
-        on block destroyed by explosion location_flagged:locks.allowed:
+        on item moves from inventory to inventory:
+            - if <context.origin.location.has_flag[locks.allowed]> || <context.origin.location.other_block.has_flag[locks.redirect]||false>:
+                - determine cancelled
+        on block destroyed by explosion location_flagged:locks:
             - determine cancelled
-        on block burns location_flagged:locks.allowed:
+        on block burns location_flagged:locks:
             - determine cancelled
-        on block spreads location_flagged:locks.allowed:
+        on block spreads location_flagged:locks:
             - determine cancelled
         on piston extends:
-            - determine cancelled if:<context.blocks.filter_tag[<[filter_value].has_flag[locks.allowed]>].any>
+            - determine cancelled if:<context.blocks.filter_tag[<[filter_value].has_flag[locks]>].any>
         on piston retracts:
-            - determine cancelled if:<context.blocks.filter_tag[<[filter_value].has_flag[locks.allowed]>].any>
+            - determine cancelled if:<context.blocks.filter_tag[<[filter_value].has_flag[locks]>].any>
         ##Misc events
         on player places item_flagged:locks:
             - determine cancelled
@@ -131,26 +149,28 @@ imprint_key_manage_players:
             - narrate "<green>Granted access to <context.entity.proc[get_name]>." targets:<player>
         on player right clicks block with:item_flagged:locks.location:
             - determine passively cancelled
-            - if <context.item.flag[locks.location].equals[<context.location>].not||true>:
+            - if <context.item.flag[locks.location].equals[<context.location>].not||true> && <context.item.flag[locks.location].other_block.equals[<context.location>].not||true>:
                 - narrate "<red>This key isn't for this block!"
                 - playsound <player> sound:block_chest_close pitch:2.0
                 - stop
-            - if <context.item.flag[locks.uuid].equals[<context.location.flag[locks.uuid]>].not>:
+            - if <context.item.flag[locks.uuid].equals[<context.location.flag[locks.uuid]>].not> || <context.item.flag[locks.uuid].equals[<context.location.other_block.flag[locks.uuid]>].not>:
                 - narrate "<red>This key is outdated!"
                 - playsound <player> sound:block_chest_close pitch:2.0
                 - stop
             - if <player.is_sneaking>:
-                - narrate "<green>Removed <context.location.flag[locks.level].if_null[basic].to_titlecase> Lock!"
-                - drop lock_<context.location.flag[locks.level].if_null[basic]> <context.location.above[1]> quantity:1
+                - if <context.location.other_block.exists>:
+                    - flag <context.location.other_block> locks:!
+                - narrate "<green>Removed <context.location.flag[locks.level].if_null[<context.location.other_block.flag[locks.level]>].proc[get_name]> Lock!"
+                - drop lock_<context.location.flag[locks.level].if_null[<context.location.other_block.flag[locks.level]>]||basic> <context.location.above[1]> quantity:1
                 - playsound <context.location> sound:block_chain_break pitch:2.0
-                - log "<player.name> removed <context.location.flag[locks.level]> lock from <context.location.simple> (<context.location.material.proc[get_name]>)." info file:logs/locks.log
+                - log "<player.name> removed <context.location.flag[locks.level].if_null[<context.location.other_block.flag[locks.level]>]> lock from <context.location.simple> (<context.location.material.proc[get_name]>)." info file:logs/locks.log
                 - flag <context.location> locks:!
                 - take iteminhand quantity:1
                 - stop
             - define inv <inventory[lock_permissions].include[<item[air]>]>
             - inventory open d:<[inv]>
             - playsound <player> sound:block_chest_open pitch:2.0
-            - foreach <context.location.flag[locks.allowed].exclude[<player>]> as:target:
+            - foreach <context.location.flag[locks.allowed].if_null[<context.location.other_block.flag[locks.allowed]>].exclude[<player>]> as:target:
                 - give to:<[inv]> "player_head[skull_skin=<[target].skull_skin>;custom_model_data=1;display=<white><[target].proc[get_player_display_name]>;flag=run_script:lock_remove_access;flag=person:<[target]>;flag=location:<context.location>;lore=<list_single[<white>Left click to remove.]>]"
             - log "<player.name> began editing perms of <context.location.proc[get_name]> (<context.location.material.proc[get_name]>)." info file:logs/locks.log
 
@@ -196,7 +216,7 @@ lock_pick_events:
     type: world
     debug: false
     events:
-        on player right clicks block location_flagged:locks.level with:item_flagged:locks_pick.level:
+        on player right clicks block location_flagged:locks with:item_flagged:locks_pick.level:
             - if <player.is_sneaking.not>:
                 - determine cancelled
             - stop if:<context.location.flag[locks.allowed].contains[<player>]||false>
@@ -218,6 +238,8 @@ lock_pick_events:
                 - playsound <context.location> sound:entity_item_break pitch:2.0
                 - log "<player.name> broke a lock pick at <[locf]> (<[matf]>)." info file:logs/locks.log
                 - stop
+            - if <context.location.other_block.exists>:
+                - flag <context.location.other_block> locks:!
             - flag <context.location> locks:!
             - narrate "<green>You picked the lock!"
             - log "<player.name> picked a lock at <[locf]> (<[matf]>)!" info file:logs/locks.log
