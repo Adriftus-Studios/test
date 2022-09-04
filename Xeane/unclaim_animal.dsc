@@ -27,3 +27,10 @@ breeder_tool:
     right_click_entity: breeder_tool_use
   data:
     recipe_book_category: tools.animal_tool
+  recipes:
+    1:
+      type: shaped
+      input:
+      - air|iron_ingot|air
+      - iron_ingot|iron_ingot|iron_ingot
+      - air|stick|air
