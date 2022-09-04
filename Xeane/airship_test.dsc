@@ -141,6 +141,7 @@ nomad_airship_up:
   type: task
   debug: false
   script:
+    - announce FIRED
     - while <player.location.is_within[<context.area>]> && <player.is_spawned> && !<player.is_sneaking>:
       - adjust <player> velocity:<context.area.center.sub[<player.location>].div[10].with_y[0.6]>
       - wait 1t
@@ -149,6 +150,7 @@ nomad_airship_down:
   type: task
   debug: false
   script:
+    - announce FIRED
     - flag player no_fall_damage_once expire:15s
 
 nomad_airship_elevator_added:
