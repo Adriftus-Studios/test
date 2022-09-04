@@ -142,6 +142,7 @@ nomad_airship_up:
   debug: false
   script:
     - announce FIRED
+    - wait 1t
     - adjust <player> velocity:0,1,0
     - while <player.location.is_in[<context.area>]> && <player.is_spawned> && !<player.is_sneaking>:
       - adjust <player> velocity:<context.area.center.sub[<player.location>].div[10].with_y[0.6]>
