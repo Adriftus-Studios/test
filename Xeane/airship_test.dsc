@@ -43,6 +43,7 @@ airship_move:
     - define final_cuboid <[pos1].to_cuboid[<[pos2]>]>
     - adjust <[Xeane]> we_selection:<[final_cuboid]>
     - execute as_player "rg create nomad_airship_<[id]>" player:<[Xeane]>
+    - wait 1t
     - execute as_server "rg flag nomad_airship_<[id]> interact allow"
 
     # Paste New Airship
