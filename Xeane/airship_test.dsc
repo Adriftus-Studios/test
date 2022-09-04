@@ -9,7 +9,8 @@ airship_move:
     - if !<server.match_player[Xeane].exists>:
       - narrate "<&c>Unable to move Airship at this time"
       - stop
-
+    - if <[exact_location].world.name> != <server.worlds.first.name>:
+      - narrate "<&c>Cannot move Airship outside of it's world."
     # Build Old Cuboid
     - define Xeane <server.match_player[Xeane]>
     - define current_location <server.flag[nomad_airship.<[id]>.location]>
