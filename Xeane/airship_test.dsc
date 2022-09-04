@@ -44,7 +44,7 @@ airship_move:
     - adjust <[Xeane]> we_selection:<[final_cuboid]>
     - execute as_player "rg create nomad_airship_<[id]>" player:<[Xeane]>
     - wait 1t
-    - execute as_server "rg flag nomad_airship_<[id]> interact allow"
+    - execute as_server "rg flag nomad_airship_<[id]> interact allow-w <[new_location].world.name>"
 
     # Paste New Airship
     - schematic create area:<[old_cuboid]> name:nomad_airship_<[id]> <[current_location]>
@@ -72,4 +72,4 @@ airship_create:
     - define Xeane <server.match_player[Xeane]>
     - adjust <[Xeane]> we_selection:<[final_cuboid]>
     - execute as_player "rg create nomad_airship_<[id]>" player:<[Xeane]>
-    - execute as_server "rg flag nomad_airship_<[id]> interact allow"
+    - execute as_server "rg flag nomad_airship_<[id]> interact allow -w <[location].world.name>"
