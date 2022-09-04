@@ -59,10 +59,10 @@ airship_move:
     # Paste New Airship
     - schematic create area:<[old_cuboid]> name:nomad_airship_<[id]> <[current_location]>
     - wait 1t
+    - flag server nomad_airship.<[id]>.location:<[new_location]>
     - ~run airship_create_elevators def:<[id]>
     - wait 1t
     - ~schematic paste <[new_location]> name:nomad_airship_<[id]> delayed
-    - flag server nomad_airship.<[id]>.location:<[new_location]>
     - wait 1t
     - define new_lever <[new_location].add[-3,1,-2]>
     - flag <[new_lever]> on_right_click:nomad_airship_toggle_lever
