@@ -106,6 +106,7 @@ airship_create_elevators:
     - spawn nomad_airship_elevator_down <[elevator2]> save:elevator_down
     - flag <entry[elevator_up].spawned_entity>|<entry[elevator_down].spawned_entity> nomad_airship_id:<[id]>
     - flag <entry[elevator_up].spawned_entity>|<entry[elevator_down].spawned_entity> nomad_airship_location:<server.flag[nomad_airship.<[id]>.location]>
+    - flag server nomad_airship.<[id]>.elevators:|:<entry[elevator_up].spawned_entity>|<entry[elevator_down].spawned_entity>
     - note <[elevator1].to_cuboid[<[location].add[0,0,-1]>]> as:nomad_airship_<[id]>_elevator_up
     - note <[elevator2].to_cuboid[<[location].add[0,0,2]>]> as:nomad_airship_<[id]>_elevator_down
     - flag <cuboid[nomad_airship_<[id]>_elevator_up]> player_enters:nomad_airship_up
