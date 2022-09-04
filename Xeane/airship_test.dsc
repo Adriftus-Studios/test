@@ -122,6 +122,7 @@ nomad_airship_elevator_up:
     gravity: false
   flags:
     on_entity_added: nomad_airship_elevator_added
+    elevator_type: up
 
 nomad_airship_elevator_down:
   type: entity
@@ -133,6 +134,7 @@ nomad_airship_elevator_down:
     gravity: false
   flags:
     on_entity_added: nomad_airship_elevator_added
+    elevator_type: down
 
 nomad_airship_up:
   type: task
@@ -147,3 +149,16 @@ nomad_airship_down:
   debug: false
   script:
     - flag player no_fall_damage_once expire:15s
+
+nomad_airship_elevator_added:
+  type: task
+  debug: false
+  script:
+    - wait 5t
+    - if !<context.entity.is_spawned>:
+      - stop
+    - define id <context.entity.flag[nomad_airship_id]>
+    - if <context.entity.flag[nomad_airship_location]> != <server.flag[nomad_airship.<[id]>.location]>:
+      - remove <context.entity>
+      - stop
+    - define type <context.entity.flag[type]>
