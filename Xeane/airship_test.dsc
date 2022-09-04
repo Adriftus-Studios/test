@@ -54,6 +54,9 @@ airship_move:
     - wait 1t
     - ~modifyblock <[old_cuboid].blocks> air delayed
 
+    # Cleanup
+    - schematic unload name:nomad_airship_<[id]>
+
 airship_create:
   type: task
   debug: false
