@@ -23,4 +23,4 @@ unclaim_animal_stick:
   mechanisms:
     custom_model_data: 1000
   flags:
-    right_click_script: unclaim_animal_use
+    right_click_entity: unclaim_animal_use
