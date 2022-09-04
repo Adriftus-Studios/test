@@ -48,7 +48,8 @@ airship_move:
     # Paste New Airship
     - schematic create area:<[old_cuboid]> name:nomad_airship_<[id]> <[current_location]>
     - wait 1t
-    - ~schematic paste <[exact_location]> name:nomad_airship_<[id]> delayed <[new_location]>
+    - ~schematic paste <[new_location]> name:nomad_airship_<[id]> delayed
+    - flag server nomand_airship.<[id]>.location:<[new_location]>
 
     # Remove Old Airship
     - wait 1t
