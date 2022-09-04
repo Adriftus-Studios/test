@@ -11,6 +11,9 @@ airship_move:
       - stop
     - if <[exact_location].world.name> != <server.worlds.first.name>:
       - narrate "<&c>Cannot move Airship outside of it's world."
+    - if <[exact_location].distance[<server.flag[nomad_airship.<[id]>.location]>]> < 500:
+      - narrate "<&c>You cannot move the airship less than 500 blocks"
+      - stop
     # Build Old Cuboid
     - define Xeane <server.match_player[Xeane]>
     - define current_location <server.flag[nomad_airship.<[id]>.location]>
