@@ -46,8 +46,9 @@ airship_move:
     - execute as_server "rg flag nomad_airship_<[id]> interact allow"
 
     # Paste New Airship
+    - schematic create area:<[old_cuboid]> name:nomad_airship_<[id]>
     - wait 1t
-    - schematic paste <[exact_location]>
+    - ~schematic paste <[exact_location]> name:nomad_airship_<[id]> delayed
 
     # Remove Old Airship
     - wait 1t
