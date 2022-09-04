@@ -1,4 +1,4 @@
-unclaim_animal_use:
+breeder_tool_use:
   type: task
   debug: false
   script:
@@ -13,15 +13,17 @@ unclaim_animal_use:
         - flag <context.entity> remove_owner expire:10s
         - narrate "<&a>Click again to remove your ownership of this animal."
 
-unclaim_animal_stick:
+breeder_tool:
   type: item
   debug: false
   material: stick
-  display name: <&a>Taming Tool
+  display name: <&a>Breeder Tool
   lore:
   - <&e>A Tool for Animal Handlers
   - <&a>Right Click an Animal
   mechanisms:
     custom_model_data: 1000
   flags:
-    right_click_entity: unclaim_animal_use
+    right_click_entity: breeder_tool_use
+  data:
+    recipe_book_category: tools.animal_tool
