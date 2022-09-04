@@ -1,6 +1,6 @@
 airship_move:
   type: task
-  debug: true
+  debug: false
   definitions: id|exact_location
   script:
     - if !<server.has_flag[nomad_airship.<[id]>]>:
