@@ -2,6 +2,7 @@ unclaim_animal_use:
   type: task
   debug: false
   script:
+      - ratelimit <player> 1t
       - stop if:<context.entity.owner.exists.not>
       - stop if:<context.entity.owner.equals[<player>].not>
       - determine passively cancelled
@@ -10,7 +11,7 @@ unclaim_animal_use:
         - narrate "<&a>You have given up ownership of this animal."
       - else:
         - flag <context.entity> remove_owner expire:10s
-        - narrate "<&a>Sneak Punch again to remove your ownership of this animal."
+        - narrate "<&a>Click again to remove your ownership of this animal."
 
 unclaim_animal_stick:
   type: item
