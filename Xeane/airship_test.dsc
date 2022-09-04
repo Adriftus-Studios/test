@@ -14,7 +14,7 @@ airship_move:
     - define Xeane <server.match_player[Xeane]>
     - define current_location <server.flag[nomad_airship.<[id]>.location]>
     - define pos1 <[current_location].add[-20,-20,-40]>
-    - define pos2 <[current_location].add[20,50,40]>
+    - define pos2 <[current_location].add[20,50,50]>
     - define old_cuboid <[pos1].to_cuboid[<[pos2]>]>
     - wait 1t
 
@@ -46,9 +46,9 @@ airship_move:
     - execute as_server "rg flag nomad_airship_<[id]> interact allow"
 
     # Paste New Airship
-    - schematic create area:<[old_cuboid]> name:nomad_airship_<[id]>
+    - schematic create area:<[old_cuboid]> name:nomad_airship_<[id]> <[current_location]>
     - wait 1t
-    - ~schematic paste <[exact_location]> name:nomad_airship_<[id]> delayed
+    - ~schematic paste <[exact_location]> name:nomad_airship_<[id]> delayed <[new_location]>
 
     # Remove Old Airship
     - wait 1t
