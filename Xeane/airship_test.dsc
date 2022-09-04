@@ -59,7 +59,7 @@ airship_create:
   definitions: id|location
   script:
     - flag server nomad_airship.<[id]>.location:<[location]>
-    - schematic paste location:<[location]>
+    - schematic paste location:<[location]> name:airship
     - define pos1 <[location].add[-20,-20,-40]>
     - define pos2 <[location].add[20,50,40]>
     - define old_cuboid <[pos1].to_cuboid[<[pos2]>]>
