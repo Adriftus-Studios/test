@@ -13,8 +13,8 @@ airship_move:
     # Build Old Cuboid
     - define Xeane <server.match_player[Xeane]>
     - define current_location <server.flag[nomad_airship.<[id]>.location]>
-    - define pos1 <[current_location].add[-20,-20,-40]>
-    - define pos2 <[current_location].add[20,50,50]>
+    - define pos1 <[current_location].add[-20,-20,-50]>
+    - define pos2 <[current_location].add[20,50,40]>
     - define old_cuboid <[pos1].to_cuboid[<[pos2]>]>
     - wait 1t
 
