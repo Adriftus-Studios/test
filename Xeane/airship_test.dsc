@@ -28,6 +28,11 @@ airship_move:
     - define pos2 <[exact_location].add[20,50,40]>
     - define new_cuboid <[pos1].to_cuboid[<[pos2]>]>
 
+    # Town Check in new cuboid
+    - if <[new_cuboid].has_town>:
+      - narrate "<&c>Too Close to Town to sail to target."
+      - stop
+
     # Determine if viable location
     - define chunks <[new_cuboid].chunks>
     - chunkload <[chunks]> duration:10s
@@ -48,7 +53,7 @@ airship_move:
     - adjust <[Xeane]> we_selection:<[final_cuboid]>
     - execute as_player "rg create nomad_airship_<[id]>" player:<[Xeane]>
     - wait 1t
-    - execute as_server "rg flag nomad_airship_<[id]> -w <[new_location].world.name> interact allow -w <[new_location].world.name>"
+    - execute as_server "rg flag nomad_airship_<[id]> -w <[new_location].world.name> interact allow"
     - execute as_server "rg flag nomad_airship_<[id]> -w <[new_location].world.name> chest-access allow"
 
     # Paste New Airship
@@ -56,9 +61,16 @@ airship_move:
     - wait 1t
     - ~schematic paste <[new_location]> name:nomad_airship_<[id]> delayed
     - flag server nomad_airship.<[id]>.location:<[new_location]>
+    - wait 1t
+    - define new_lever <[new_location].add[-3,1,-2]>
+    - flag <[new_lever]> on_right_click:nomad_airship_toggle_lever
+    - flag <[new_lever]> nomad_airship_id:<[id]>
 
     # Remove Old Airship
     - wait 1t
+    - define current_lever <[current_location].add[-3,1,-2]>
+    - flag <[current_lever]> on_right_click:!
+    - flag <[current_lever]> nomad_airship_id:!
     - ~modifyblock <[old_cuboid].blocks> air delayed
 
     # Cleanup
@@ -73,8 +85,63 @@ airship_create:
     - schematic paste location:<[location]> name:airship
     - define pos1 <[location].add[-20,-20,-40]>
     - define pos2 <[location].add[20,50,40]>
-    - define old_cuboid <[pos1].to_cuboid[<[pos2]>]>
+    - define cuboid <[pos1].to_cuboid[<[pos2]>]>
     - define Xeane <server.match_player[Xeane]>
-    - adjust <[Xeane]> we_selection:<[final_cuboid]>
+    - adjust <[Xeane]> we_selection:<[cuboid]>
     - execute as_player "rg create nomad_airship_<[id]>" player:<[Xeane]>
     - execute as_server "rg flag nomad_airship_<[id]> interact allow -w <[location].world.name>"
+
+airship_create_elevators:
+  type: task
+  debug: false
+  definitions: id
+  script:
+    - define location <server.flag[nomad_airship.<[id]>.location]>
+    - define elevator1 <[location].add[0,0,-1].highest.center.above[0.51]>
+    - define elevator2 <[location].add[0,0,2].highest.center.above[0.51]>
+    - define lever_position <[location].add[-3,1,-2]>
+    - spawn nomad_airship_elevator_up <[elevator1]> save:elevator_up
+    - spawn nomad_airship_elevator_down <[elevator2]> save:elevator_down
+    - flag <entry[elevator_up].spawned_entity>|<entry[elevator_down].spawned_entity> nomad_airship_id:<[id]>
+    - flag <entry[elevator_up].spawned_entity>|<entry[elevator_down].spawned_entity> nomad_airship_location:<server.flag[nomad_airship.<[id]>.location]>
+    - note <[elevator1].to_cuboid[<[location].add[0,0,-1]>]> as:nomad_airship_<[id]>_elevator_up
+    - note <[elevator2].to_cuboid[<[location].add[0,0,2]>]> as:nomad_airship_<[id]>_elevator_down
+    - flag <cuboid[nomad_airship_<[id]>_elevator_up]> player_enter:nomad_airship_up
+    - flag <cuboid[nomad_airship_<[id]>_elevator_down]> player_enter:nomad_airship_down
+    - run nomad_airship_elevator_particles def:<entry[elevator_up].spawned_entity>|<entry[elevator_down].spawned_entity>
+
+nomad_airship_elevator_up:
+  type: entity
+  debug: false
+  entity_type: armor_stand
+  mechanisms:
+    marker: true
+    visible: false
+    gravity: false
+  flags:
+    on_entity_added: nomad_airship_elevator_added
+
+nomad_airship_elevator_down:
+  type: entity
+  debug: false
+  entity_type: armor_stand
+  mechanisms:
+    marker: true
+    visible: false
+    gravity: false
+  flags:
+    on_entity_added: nomad_airship_elevator_added
+
+nomad_airship_up:
+  type: task
+  debug: false
+  script:
+    - while <player.location.is_within[<context.area>]> && <player.is_spawned> && !<player.is_sneaking>:
+      - adjust <player> velocity:<context.area.center.sub[<player.location>].div[10].with_y[0.6]>
+      - wait 1t
+
+nomad_airship_down:
+  type: task
+  debug: false
+  script:
+    - flag player no_fall_damage_once expire:15s
