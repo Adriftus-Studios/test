@@ -37,7 +37,7 @@ airship_move:
     - if <[highest].add[80]> > 319:
       - narrate "<&c>Unsafe destination for Airship"
       - stop
-    - define new_location <[exact_location].add[0,<[highest].add[30]>,0]>
+    - define new_location <[exact_location].with_y[<[highest].add[30]>]>
     - define pos1 <[new_location].add[-20,-20,-40]>
     - define pos2 <[new_location].add[20,50,40]>
     - define final_cuboid <[pos1].to_cuboid[<[pos2]>]>
