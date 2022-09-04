@@ -59,6 +59,8 @@ airship_move:
     # Paste New Airship
     - schematic create area:<[old_cuboid]> name:nomad_airship_<[id]> <[current_location]>
     - wait 1t
+    - ~run airship_create_elevators def:<[id]>
+    - wait 1t
     - ~schematic paste <[new_location]> name:nomad_airship_<[id]> delayed
     - flag server nomad_airship.<[id]>.location:<[new_location]>
     - wait 1t
