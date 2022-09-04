@@ -2,10 +2,10 @@ unclaim_animal_use:
   type: task
   debug: false
   script:
+      - determine passively cancelled
       - ratelimit <player> 1t
       - stop if:<context.entity.owner.exists.not>
       - stop if:<context.entity.owner.equals[<player>].not>
-      - determine passively cancelled
       - if <context.entity.has_flag[remove_owner]>:
         - adjust <context.entity> owner
         - narrate "<&a>You have given up ownership of this animal."
