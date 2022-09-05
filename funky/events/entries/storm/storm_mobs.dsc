@@ -4,7 +4,7 @@ storm_entity:
     mechanisms:
         custom_name: <aqua>Storm Entity
         custom_name_visible: true
-        speed: 2
+        speed: 0.2
 
 storm_entity_disguise:
     type: world
