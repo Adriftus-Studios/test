@@ -293,11 +293,11 @@ ship_command:
         - if <context.args.size> < 2:
           - narrate "<&c>Not enough arguments <&7>- <&e>Use Tab Complete"
           - stop
-        - if <player.flag[nomad.leader.locations].keys.contains[<context.args.second>]>:
-          - run airship_move def:<[id]>|<player.flag[nomad.leader.locations.<context.args.second>]>
+        - if <player.flag[nomad.leader.locations].keys.contains[<context.args.get[2]>]>:
+          - run airship_move def:<[id]>|<player.flag[nomad.leader.locations.<context.args.get[2]>]>
           - narrate "<&a>Sailing Ship to <context.args.second>..."
           - stop
-        - else if <context.args.first> == coordinates:
+        - else if <context.args.get[2]> == coordinates:
           - if <context.args.size> < 2 || !<context.args.get[3].is_integer> || !<context.args.get[4].is_integer>:
             - narrate "<&c>Not enough arguments <&7>- <&e>/ship sail coordinates (X) (Z)"
             - stop
