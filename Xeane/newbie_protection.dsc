@@ -4,6 +4,7 @@ new_player_protections:
   events:
     on player dies bukkit_priority:lowest priority:-1 flagged:newbie:
       - determine cancelled
+      - wait 1t
       - teleport <server.worlds.first.spawn_location>
       - narrate "<&a>- <&b>New Player Protection <&a>-"
       - narrate "<&a>You have been saved from death"
