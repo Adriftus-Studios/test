@@ -92,7 +92,7 @@ airship_move:
     - define current_lever <[current_location].add[-3,1,-2]>
     - flag <[current_lever]> on_right_click:!
     - flag <[current_lever]> nomad_airship_id:!
-    - ~modifyblock <[old_cuboid].blocks[*_carpet|*torch|lever|triphook_wire|*_bed|lantern|*sign]> air delayed
+    - ~modifyblock <[old_cuboid].blocks[*_carpet|*torch|lever|triphook_wire|*_bed|lantern|*sign|bell|*azalea]> air delayed
     - wait 1t
     - ~modifyblock <[old_cuboid].blocks> air delayed
 
