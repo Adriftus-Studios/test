@@ -284,7 +284,7 @@ ship_command:
     - define id <player.flag[nomad.leader.id]>
     - choose <context.args.first>:
       - case summon:
-        - if <server.flag[nomad_airship.<[id]>.last_moved].from_now.in_hours> > 4:
+        - if <server.flag[nomad_airship.<[id]>.last_moved].from_now.in_hours.if_null[0]> > 4:
           - narrate "<&a>Summoning Ship..."
           - run airship_move def:<[id]>|<player.location.forward_flat[2]>
         - else:
