@@ -74,6 +74,17 @@ airship_move:
     - flag <[new_lever]> on_right_click:nomad_airship_toggle_lever
     - flag <[new_lever]> nomad_airship_id:<[id]>
 
+    # Teleport all players
+    - foreach <cuboid[nomad_airship_<[id]>_area].players>:
+      - define relative <[value].location.sub[<[current_location]>]>
+      - teleport <[value]> <[new_location].add[<[relative]>]>
+
+    # Teleport offline players
+    - wait 1t
+    - foreach <server.flag[nomad_airship.<[id]>.offline_players].if_null[<list>]>:
+      - define relative <[value].location.sub[<[current_location]>]>
+      - adjust <[value]> location:<[new_location].add[<[relative]>]>
+
     # Remove Old Airship
     - wait 1t
     - chunkload <server.flag[nomad_airship.<[id]>.chunks]> duration:10s
@@ -99,6 +110,9 @@ airship_create:
     - define Xeane <server.match_player[Xeane]>
     - flag server nomad_airship.<[id]>.chunks:<[cuboid].chunks>
     - adjust <[Xeane]> we_selection:<[cuboid]>
+    - note <[cuboid]> as:nomad_airship_<[id]>_area
+    - flag <cuboid[nomad_airship_<[id]>_area]> nomad_airship_id:<[id]>
+    - flag <cuboid[nomad_airship_<[id]>_area]> player_leaves:nomad_airship_offline_tracker
     - execute as_player "rg create nomad_airship_<[id]>" player:<[Xeane]>
     - execute as_server "rg flag nomad_airship_<[id]> -w <[location].world.name> interact allow"
     - execute as_server "rg flag nomad_airship_<[id]> -w <[location].world.name> chest-access allow"
@@ -224,3 +238,12 @@ nomad_airship_remote_toggle_lever:
     - chunkload <[lever_location].chunk> if:<[lever_location].chunk.is_loaded.not>
     - adjustblock <[lever_location]> switched:<[lever_location].material.switched.not>
     - run nomad_airship_toggle_lever def:<[id]>
+
+nomad_airship_offline_tracker:
+  type: task
+  debug: false
+  script:
+    - if <context.cause> == QUIT:
+      - flag server nomad_airship.<context.area.flag[nomad_airship_id]>.offline_players:->:<player>
+    - else if <context.cause> == JOIN:
+      - flag server nomad_airship.<context.area.flag[nomad_airship_id]>.offline_players:<-:<player>
