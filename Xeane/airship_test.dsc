@@ -166,7 +166,7 @@ nomad_airship_elevator_added:
     - if <context.entity.flag[nomad_airship_location]> != <server.flag[nomad_airship.<[id]>.location]>:
       - remove <context.entity>
       - stop
-    - define type <context.entity.flag[type]>
+    - run nomad_airship_elevator_particles def:<[id]>
 
 nomad_airship_elevator_particles:
   type: task
