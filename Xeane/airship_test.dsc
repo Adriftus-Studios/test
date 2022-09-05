@@ -176,7 +176,7 @@ nomad_airship_elevator_particles:
     - define location <server.flag[nomad_airship.<[id]>.location]>
     - define blocks_up <cuboid[nomad_airship_<[id]>_elevator_up].blocks.parse[center]>
     - define blocks_up2 <cuboid[nomad_airship_<[id]>_elevator_up].blocks.parse[center]>
-    - define blocks_up3 <cuboid[nomad_airship_<[id]>_elevator_up].min.center.below[0.49]>
+    - define blocks_up3 <cuboid[nomad_airship_<[id]>_elevator_up].min.center.below[1.49]>
     - define blocks_down1 <cuboid[nomad_airship_<[id]>_elevator_down].blocks.parse[center]>
     - define blocks_down2 <cuboid[nomad_airship_<[id]>_elevator_down].blocks.parse[center]>
     - define targets <[blocks_up3].find_players_within[120]>
