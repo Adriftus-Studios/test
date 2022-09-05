@@ -47,10 +47,14 @@ airship_move:
     - if <[highest].add[80]> > 319:
       - narrate "<&c>Unsafe destination for Airship"
       - stop
+    
+    # Final Cuboid
     - define new_location <[exact_location].with_y[<[highest].add[30]>]>
     - define pos1 <[new_location].add[-20,-20,-40]>
     - define pos2 <[new_location].add[20,50,40]>
     - define final_cuboid <[pos1].to_cuboid[<[pos2]>]>
+
+    # Create Worldguard region
     - adjust <[Xeane]> we_selection:<[final_cuboid]>
     - execute as_player "rg create nomad_airship_<[id]>" player:<[Xeane]>
     - wait 1t
@@ -71,6 +75,7 @@ airship_move:
 
     # Remove Old Airship
     - wait 1t
+    - chunkload <server.flag[nomad_airship.<[id]>.chunks]> duration:10s
     - define current_lever <[current_location].add[-3,1,-2]>
     - flag <[current_lever]> on_right_click:!
     - flag <[current_lever]> nomad_airship_id:!
@@ -78,6 +83,7 @@ airship_move:
 
     # Cleanup
     - schematic unload name:nomad_airship_<[id]>
+    - flag server nomad_airship.<[id]>.chunks:<[new_cuboid].chunks>
 
 airship_create:
   type: task
@@ -90,6 +96,7 @@ airship_create:
     - define pos2 <[location].add[20,50,40]>
     - define cuboid <[pos1].to_cuboid[<[pos2]>]>
     - define Xeane <server.match_player[Xeane]>
+    - flag server nomad_airship.<[id]>.chunks:<[cuboid].chunks>
     - adjust <[Xeane]> we_selection:<[cuboid]>
     - execute as_player "rg create nomad_airship_<[id]>" player:<[Xeane]>
     - execute as_server "rg flag nomad_airship_<[id]> -w <[location].world.name> interact allow"
@@ -148,7 +155,6 @@ nomad_airship_up:
   type: task
   debug: false
   script:
-    - announce FIRED
     - wait 1t
     - adjust <player> velocity:0,1,0
     - while <player.location.is_in[<context.area>]> && <player.is_spawned> && !<player.is_sneaking>:
@@ -159,14 +165,12 @@ nomad_airship_top:
   type: task
   debug: false
   script:
-    - announce TOPFIRED
     - adjust <player> velocity:<location[-0.5,0.1,0]>
 
 nomad_airship_down:
   type: task
   debug: false
   script:
-    - announce FIRED
     - cast slow_falling duration:15s
 
 nomad_airship_elevator_added:
