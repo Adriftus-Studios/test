@@ -15,3 +15,15 @@ storm_event_events:
                         - define t <[p].location.chunk.surface_blocks.random>
                     - strike <[t]> silent
                     - playsound <[t]> sound:entity_generic_explode volume:0.8 pitch:2.0
+        on entity damaged server_flagged:events.active.storm:
+            - define c <context.cause>
+            - define d <context.final_damage>
+            - stop if:<[c].exists.not>
+            - if <[c]> in FIRE|FIRE_TICK|HOT_FLOOR|LAVA:
+                - determine <[d].div[3]>
+            - else if <[c]> in DRYOUT:
+                - determine <[d].div[5]>
+            - else if <[c]> in FREEZE|LIGHTNING|DRAGON_BREATH:
+                - determine <[d].mul[1.5]>
+            - else if <[c]> in MELTING:
+                - determine <[d].mul[100]>
