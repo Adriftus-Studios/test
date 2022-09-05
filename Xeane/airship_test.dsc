@@ -28,7 +28,7 @@ airship_move:
 
     # Build New Cuboid
     - execute as_player "rg remove nomad_airship_<[id]>" player:<[Xeane]>
-    - define pos1 <[exact_location].add[-20,-20,-40]>
+    - define pos1 <[exact_location].add[-20,-20,-50]>
     - define pos2 <[exact_location].add[20,50,40]>
     - define new_cuboid <[pos1].to_cuboid[<[pos2]>]>
 
@@ -54,7 +54,7 @@ airship_move:
 
     # Final Cuboid
     - define new_location <[exact_location].with_y[<[highest].add[50]>]>
-    - define pos1 <[new_location].add[-20,-20,-40]>
+    - define pos1 <[new_location].add[-20,-20,-50]>
     - define pos2 <[new_location].add[20,50,40]>
     - define final_cuboid <[pos1].to_cuboid[<[pos2]>]>
 
