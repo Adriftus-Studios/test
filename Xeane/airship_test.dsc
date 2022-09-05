@@ -51,7 +51,7 @@ airship_move:
     - if <[highest].add[100]> > 319:
       - narrate "<&c>Unsafe destination for Airship"
       - stop
-    
+
     # Final Cuboid
     - define new_location <[exact_location].with_y[<[highest].add[50]>]>
     - define pos1 <[new_location].add[-20,-20,-40]>
@@ -288,12 +288,15 @@ ship_command:
     - define id <player.flag[nomad.leader.id]>
     - choose <context.args.first>:
       - case summon:
-        - if !<server.has_flag[nomad_airship.<[id]>.last_moved]> || <server.flag[nomad_airship.<[id]>.last_moved].from_now.in_hours> > 4:
+        - if <player.has_permission[adriftus.nomad.bypass_cooldown]> || !<server.has_flag[nomad_airship.<[id]>.last_moved]> || <server.flag[nomad_airship.<[id]>.last_moved].from_now.in_hours> > 4:
           - narrate "<&a>Summoning Ship..."
           - run airship_move def:<[id]>|<player.location.forward_flat[4]>
         - else:
           - narrate "<&c>You must wait <&e><server.flag[nomad_airship.<[id]>.last_moved].add[4h].from_now.formatted><&c> before moving the ship again."
       - case sail:
+        - if !<player.has_permission[adriftus.nomad.bypass_cooldown]> && <server.has_flag[nomad_airship.<[id]>.last_moved]> && <server.flag[nomad_airship.<[id]>.last_moved].from_now.in_hours> < 4:
+          - narrate "<&c>You must wait <&e><server.flag[nomad_airship.<[id]>.last_moved].add[4h].from_now.formatted><&c> before moving the ship again."
+          - stop
         - if <context.args.size> < 2:
           - narrate "<&c>Not enough arguments <&7>- <&e>Use Tab Complete"
           - stop
