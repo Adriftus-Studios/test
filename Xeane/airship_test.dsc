@@ -294,8 +294,8 @@ ship_command:
           - narrate "<&c>Not enough arguments <&7>- <&e>Use Tab Complete"
           - stop
         - if <player.flag[nomad.leader.locations].keys.contains[<context.args.second>]>:
-          - run airship_move def:<[id]>|<player.flag[nomad.leader.locations.<context.args.first>]>
-          - narrate "<&a>Sailing Ship to <context.args.first>..."
+          - run airship_move def:<[id]>|<player.flag[nomad.leader.locations.<context.args.second>]>
+          - narrate "<&a>Sailing Ship to <context.args.second>..."
           - stop
         - else if <context.args.first> == coordinates:
           - if <context.args.size> < 2 || !<context.args.get[3].is_integer> || !<context.args.get[4].is_integer>:
