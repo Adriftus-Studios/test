@@ -14,7 +14,7 @@ airship_move:
     - if <[exact_location].distance[<server.flag[nomad_airship.<[id]>.location]>]> < 500:
       - narrate "<&c>You cannot move the airship less than 500 blocks"
       - stop
-    - if <server.flag[nomad_airship.<[id]>.location].distance[<[exact_location]>]> > <server.flag[nomad_airship.<[id]>.location].world.border_size>:
+    - if <server.flag[nomad_airship.<[id]>.location].world.border_center.distance[<[exact_location]>]> > <server.flag[nomad_airship.<[id]>.location].world.border_size>:
       - narrate "<&c>Destination is outside world border."
       - stop
 
