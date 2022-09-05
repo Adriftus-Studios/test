@@ -7,8 +7,9 @@ storm_event_events:
                 - weather <[w]> thunder
         - foreach <server.online_players> as:p:
             - foreach next if:<[p].location.world.thundering.not>
-            - if <util.random_chance[95]>:
-                - if <[p].location.find_blocks[lightning_rod].within[35].any>:
-                    - strike <[p].location.find_blocks[lightning_rod].within[35].random>
-                - else:
-                    - strike <[p].location.chunk.surface_blocks.random>
+            - repeat <util.random.int[1].to[5]>:
+                - if <util.random_chance[15]>:
+                    - if <[p].location.find_blocks[lightning_rod].within[35].any>:
+                        - strike <[p].location.find_blocks[lightning_rod].within[35].random>
+                    - else:
+                        - strike <[p].location.chunk.surface_blocks.random>
