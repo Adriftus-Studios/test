@@ -21,5 +21,8 @@ storm_entity_events:
         on storm_entity dies:
             - determine NO_DROPS
         on entity damaged by storm_entity:
-            - determine <context.final_damage.div[3]>
-            - strike <context.entity.location> silent
+            - strike <context.entity.location>
+        after storm_entity added to world:
+            - while <context.entity.exists>:
+                - attack <context.entity> target:<context.entity.location.find_players_within[300].first>
+                - wait 3s
