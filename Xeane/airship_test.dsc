@@ -99,6 +99,10 @@ airship_move:
     # Cleanup
     - schematic unload name:nomad_airship_<[id]>
     - flag server nomad_airship.<[id]>.chunks:<[new_cuboid].chunks>
+    - note <[final_cuboid]> as:nomad_airship_<[id]>_area
+    - flag <cuboid[nomad_airship_<[id]>_area]> nomad_airship_id:<[id]>
+    - flag <cuboid[nomad_airship_<[id]>_area]> player_leaves:nomad_airship_offline_tracker
+    - flag <cuboid[nomad_airship_<[id]>_area]> player_enters:nomad_airship_offline_tracker
 
 airship_create:
   type: task
@@ -116,6 +120,7 @@ airship_create:
     - note <[cuboid]> as:nomad_airship_<[id]>_area
     - flag <cuboid[nomad_airship_<[id]>_area]> nomad_airship_id:<[id]>
     - flag <cuboid[nomad_airship_<[id]>_area]> player_leaves:nomad_airship_offline_tracker
+    - flag <cuboid[nomad_airship_<[id]>_area]> player_enters:nomad_airship_offline_tracker
     - execute as_player "rg create nomad_airship_<[id]>" player:<[Xeane]>
     - execute as_server "rg flag nomad_airship_<[id]> -w <[location].world.name> interact allow"
     - execute as_server "rg flag nomad_airship_<[id]> -w <[location].world.name> chest-access allow"
