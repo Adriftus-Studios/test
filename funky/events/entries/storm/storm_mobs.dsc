@@ -7,7 +7,7 @@ storm_entity:
         speed: 0.35
         age: baby
         equipments:
-            helmet: lightning_rod
+            helmet: end_rod
             chestplate: air
             leggings: air
             boots: air
