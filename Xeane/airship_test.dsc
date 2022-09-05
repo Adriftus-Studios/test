@@ -160,7 +160,7 @@ nomad_airship_top:
   debug: false
   script:
     - announce TOPFIRED
-    - adjust <player> velocity:<location[-0.5,0.25,0]>
+    - adjust <player> velocity:<location[-0.5,0.1,0]>
 
 nomad_airship_down:
   type: task
