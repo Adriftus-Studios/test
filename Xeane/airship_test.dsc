@@ -161,6 +161,7 @@ nomad_airship_down:
   type: task
   debug: false
   script:
+    - stop if:<server.flag[nomad_airship.<context.area.flag[nomad_airship_id]>.elevator_status].not>
     - cast slow_falling duration:15s
 
 nomad_airship_elevator_added:
