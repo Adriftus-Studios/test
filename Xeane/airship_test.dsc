@@ -293,7 +293,7 @@ ship_command:
         - if <context.args.size> < 2:
           - narrate "<&c>Not enough arguments <&7>- <&e>Use Tab Complete"
           - stop
-        - if <player.flag[nomad.leader.locations].keys.contains[<context.args.first>]>:
+        - if <player.flag[nomad.leader.locations].keys.contains[<context.args.second>]>:
           - run airship_move def:<[id]>|<player.flag[nomad.leader.locations.<context.args.first>]>
           - narrate "<&a>Sailing Ship to <context.args.first>..."
           - stop
