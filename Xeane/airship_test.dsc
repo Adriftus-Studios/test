@@ -180,9 +180,9 @@ nomad_airship_elevator_particles:
     - define blocks_down1 <cuboid[nomad_airship_<[id]>_elevator_down].blocks.parse[center]>
     - define blocks_down2 <cuboid[nomad_airship_<[id]>_elevator_down].blocks.parse[center]>
     - while <server.flag[nomad_airship.<[id]>.location]> == <[location]> && <server.flag[nomad_airship.<[id]>.location].chunk.is_loaded>:
-      - playeffect <[blocks_up].random[5]> offset:3 effect:DRAGON_BREATH quantity:2 velocity:<location[0,0.7,0]> targets:<server.online_players>
-      - playeffect <[blocks_up2].random[5]> offset:3 effect:END_ROD quantity:2 velocity:<location[0,0.7,0]> targets:<server.online_players>
-      - playeffect <[blocks_up3].random[2]> offset:1 effect:DRAGON_BREATH quantity:5 offset:0.5,0.1,0.5 targets:<server.online_players>
-      - playeffect <[blocks_down1].random[2]> offset:3 effect:DRAGON_BREATH quantity:2 velocity:<location[0,-0.7,0]> targets:<server.online_players>
-      - playeffect <[blocks_down2].random[2]> offset:3 effect:END_ROD quantity:2 velocity:<location[0,-0.7,0]> targets:<server.online_players>
+      - playeffect <[blocks_up].random[5]> offset:1 effect:DRAGON_BREATH quantity:2 velocity:<location[0,0.7,0]> targets:<server.online_players>
+      - playeffect <[blocks_up2].random[5]> offset:1 effect:END_ROD quantity:2 velocity:<location[0,0.7,0]> targets:<server.online_players>
+      - playeffect <[blocks_up3].random[2]> offset:0.5,0.1,0.5 effect:DRAGON_BREATH quantity:5 targets:<server.online_players>
+      - playeffect <[blocks_down1].random[2]> offset:1 effect:DRAGON_BREATH quantity:2 velocity:<location[0,-0.7,0]> targets:<server.online_players>
+      - playeffect <[blocks_down2].random[2]> offset:1 effect:END_ROD quantity:2 velocity:<location[0,-0.7,0]> targets:<server.online_players>
       - wait 3t
