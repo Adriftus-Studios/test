@@ -94,6 +94,8 @@ airship_create:
     - execute as_player "rg create nomad_airship_<[id]>" player:<[Xeane]>
     - execute as_server "rg flag nomad_airship_<[id]> -w <[location].world.name> interact allow"
     - execute as_server "rg flag nomad_airship_<[id]> -w <[location].world.name> chest-access allow"
+    - wait 1t
+    - ~run airship_create_elevators def:<[id]>
 
 airship_create_elevators:
   type: task
@@ -190,7 +192,7 @@ nomad_airship_elevator_particles:
     - define blocks_up3 <cuboid[nomad_airship_<[id]>_elevator_up].min.center.below[1.49]>
     - define blocks_down1 <cuboid[nomad_airship_<[id]>_elevator_down].blocks.parse[center]>
     - define blocks_down2 <cuboid[nomad_airship_<[id]>_elevator_down].blocks.parse[center]>
-    - define blocks_down3 <cuboid[nomad_airship_<[id]>_elevator_up].max.center.above[1.49]>
+    - define blocks_down3 <cuboid[nomad_airship_<[id]>_elevator_down].max.center.above[2.49]>
     - define targets <[blocks_up3].find_players_within[120]>
     - while <server.flag[nomad_airship.<[id]>.elevator_status]> && <server.flag[nomad_airship.<[id]>.location]> == <[location]> && <server.flag[nomad_airship.<[id]>.location].chunk.is_loaded>:
       - if <[loop_index].mod[10]> == 0:
