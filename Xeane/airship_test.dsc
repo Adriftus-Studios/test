@@ -92,7 +92,7 @@ airship_move:
     - define current_lever <[current_location].add[-3,1,-2]>
     - flag <[current_lever]> on_right_click:!
     - flag <[current_lever]> nomad_airship_id:!
-    - ~modifyblock <[old_cuboid].blocks[*_carpet|*torch|lever|triphook_wire|*_bed|lantern|*sign|bell|*azalea|*_door]> air delayed
+    - ~modifyblock <[old_cuboid].blocks[*_carpet|*torch|lever|tripwire_hook|*_bed|lantern|*sign|bell|*azalea|*_door|*_pressure_plate]> air no_physics delayed
     - wait 1t
     - ~modifyblock <[old_cuboid].blocks> air delayed
 
@@ -167,10 +167,11 @@ nomad_airship_up:
   type: task
   debug: false
   script:
-    - stop if:<server.flag[nomad_airship.<context.area.flag[nomad_airship_id]>.elevator_status].not>
+    - define id <context.area.flag[nomad_airship_id]>
+    - stop if:<server.flag[nomad_airship.<[id]>.elevator_status].not>
     - wait 1t
     - adjust <player> velocity:0,1,0
-    - while <player.location.is_in[<context.area>]> && <player.is_spawned> && !<player.is_sneaking>:
+    - while <player.location.is_in[<context.area>]> && <player.is_spawned> && <server.flag[nomad_airship.<[id]>.elevator_status]>:
       - adjust <player> velocity:<context.area.center.sub[<player.location>].div[10].with_y[0.6]>
       - wait 1t
 
@@ -283,7 +284,7 @@ ship_command:
     - define id <player.flag[nomad.leader.id]>
     - choose <context.args.first>:
       - case summon:
-        - if <server.flag[nomad_ship.<[id]>.last_moved].duration_since.in_hours> > 4:
+        - if <server.flag[nomad_ship.<[id]>.last_moved].from_now.in_hours> > 4:
           - narrate "<&a>Summoning Ship..."
           - run airship_move def:<[id]>|<player.location.forward_flat[2]>
         - else:
