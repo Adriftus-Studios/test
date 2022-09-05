@@ -114,10 +114,9 @@ airship_create_elevators:
     - define lever_position <[location].add[-3,1,-2]>
     - flag server nomad_airship.<[id]>.elevator_status
     - spawn nomad_airship_elevator_up <[elevator1]> save:elevator_up
-    - spawn nomad_airship_elevator_down <[elevator2]> save:elevator_down
-    - flag <entry[elevator_up].spawned_entity>|<entry[elevator_down].spawned_entity> nomad_airship_id:<[id]>
-    - flag <entry[elevator_up].spawned_entity>|<entry[elevator_down].spawned_entity> nomad_airship_location:<server.flag[nomad_airship.<[id]>.location]>
-    - flag server nomad_airship.<[id]>.elevators:|:<entry[elevator_up].spawned_entity>|<entry[elevator_down].spawned_entity>
+    - flag <entry[elevator_up].spawned_entity> nomad_airship_id:<[id]>
+    - flag <entry[elevator_up].spawned_entity> nomad_airship_location:<server.flag[nomad_airship.<[id]>.location]>
+    - flag server nomad_airship.<[id]>.elevators:|:<entry[elevator_up].spawned_entity>
     - note <[elevator1].to_cuboid[<[location].add[0,0,-1].below>]> as:nomad_airship_<[id]>_elevator_up
     - note <[location].add[0,1,-1].to_cuboid[<[location].add[0,0,-1]>]> as:nomad_airship_<[id]>_elevator_top
     - note <[location].add[0,2,2].to_cuboid[<[location].add[0,-1,2]>]> as:nomad_airship_<[id]>_elevator_down
@@ -141,17 +140,6 @@ nomad_airship_elevator_up:
     on_entity_added: nomad_airship_elevator_added
     elevator_type: up
 
-nomad_airship_elevator_down:
-  type: entity
-  debug: false
-  entity_type: armor_stand
-  mechanisms:
-    marker: true
-    visible: false
-    gravity: false
-  flags:
-    on_entity_added: nomad_airship_elevator_added
-    elevator_type: down
 
 nomad_airship_up:
   type: task
@@ -168,7 +156,7 @@ nomad_airship_top:
   type: task
   debug: false
   script:
-    - adjust <player> velocity:<location[-0.5,0.1,0]>
+    - adjust <player> velocity:<location[-0.1,0.1,0]>
 
 nomad_airship_down:
   type: task
