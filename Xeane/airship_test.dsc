@@ -286,7 +286,7 @@ ship_command:
       - case summon:
         - if !<server.has_flag[nomad_airship.<[id]>.last_moved]> || <server.flag[nomad_airship.<[id]>.last_moved].from_now.in_hours> > 4:
           - narrate "<&a>Summoning Ship..."
-          - run airship_move def:<[id]>|<player.location.forward_flat[2]>
+          - run airship_move def:<[id]>|<player.location.forward_flat[4]>
         - else:
           - narrate "<&c>You must wait <&e><server.flag[nomad_airship.<[id]>.last_moved].add[4h].from_now.formatted><&c> before moving the ship again."
       - case sail:
