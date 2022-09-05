@@ -208,7 +208,8 @@ nomad_airship_toggle_lever:
   script:
     - wait 1t
     - define id <context.location.flag[nomad_airship_id]> if:<[id].exists.not>
-    - if <context.location.material.switched>:
+    - define lever_location <server.flag[nomad_airship.<[id]>.location].add[-3,1,-2]>
+    - if <[lever_location].material.switched>:
       - run nomad_airship_elevator_particles def:<[id]> if:<server.flag[nomad_airship.<[id]>.elevator_status].not>
     - else:
       - flag server nomad_airship.<[id]>.elevator_status:false
