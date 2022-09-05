@@ -70,6 +70,7 @@ airship_move:
     - ~schematic paste <[new_location]> name:nomad_airship_<[id]> delayed
     - wait 1t
     - define new_lever <[new_location].add[-3,1,-2]>
+    - adjustblock <[new_lever]> switched:true
     - flag <[new_lever]> on_right_click:nomad_airship_toggle_lever
     - flag <[new_lever]> nomad_airship_id:<[id]>
 
