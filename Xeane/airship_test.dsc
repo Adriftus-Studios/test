@@ -78,7 +78,7 @@ airship_move:
     # Teleport all players
     - foreach <cuboid[nomad_airship_<[id]>_area].players>:
       - define relative <[value].location.sub[<[current_location]>]>
-      - teleport <[value]> <[new_location].add[<[relative]>]>
+      - teleport <[value]> <[new_location].add[<[relative]>].with_pose[<[value]>]>
 
     # Teleport offline players
     - wait 1t
