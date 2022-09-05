@@ -4,17 +4,15 @@ command_playtime:
   description: Used to find Playtime of player
   usage: /playtime (Name)
   script:
-  - if <context.args.size> < 1:
-      - narrate "<green><bold><player.name> Has <duration[<player.statistic[PLAY_ONE_MINUTE]>t].in_hours.round> Hours Of Playtime."
+  - if !<player.has_permission[adriftus.staff]> || <context.args.size> < 1:
+      - narrate "<&e>You have played for <&b><duration[<player.statistic[PLAY_ONE_MINUTE]>t].formatted><&e>."
       - stop
-  - define player <server.match_player[<context.args.get[1]>].if_null[null]>
-  - if <[player]> = null:
-    - narrate "<red><bold>Please Use A Name Who is Online"
-    - stop
   - else:
-    - if <Player.has_permission[adriftus.staff]>:
-      - narrate "<green><bold><[player].name> Has <duration[<[player].statistic[PLAY_ONE_MINUTE]>t].in_hours.round> Hours Of Playtime."
+    - define target <server.match_player[<context.args.get[1]>].if_null[null]>
+    - if <[target]> = null:
+      - narrate "<&c>Unknown Player<&co><&e> <context.args.get[1]>"
+      - stop
     - else:
-      - narrate "<green><bold><player.name> Has <duration[<player.statistic[PLAY_ONE_MINUTE]>t].in_hours.round> Hours Of Playtime."
+      - narrate "<&a><[target].name> has played for <duration[<player.statistic[PLAY_ONE_MINUTE]>t].formatted><&e>."
 
 

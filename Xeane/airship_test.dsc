@@ -65,6 +65,7 @@ airship_move:
     - schematic create area:<[old_cuboid]> name:nomad_airship_<[id]> <[current_location]>
     - wait 1t
     - flag server nomad_airship.<[id]>.location:<[new_location]>
+    - flag server nomad_airship.<[id]>.last_moved:<util.time_now>
     - ~run airship_create_elevators def:<[id]>
     - wait 1t
     - ~schematic paste <[new_location]> name:nomad_airship_<[id]> delayed
@@ -91,6 +92,8 @@ airship_move:
     - define current_lever <[current_location].add[-3,1,-2]>
     - flag <[current_lever]> on_right_click:!
     - flag <[current_lever]> nomad_airship_id:!
+    - ~modifyblock <[old_cuboid].blocks[*_carpet|*torch|lever|triphook_wire|*_bed|lantern|*sign]> air delayed
+    - wait 1t
     - ~modifyblock <[old_cuboid].blocks> air delayed
 
     # Cleanup
@@ -247,3 +250,36 @@ nomad_airship_offline_tracker:
       - flag server nomad_airship.<context.area.flag[nomad_airship_id]>.offline_players:->:<player>
     - else if <context.cause> == JOIN:
       - flag server nomad_airship.<context.area.flag[nomad_airship_id]>.offline_players:<-:<player>
+
+ship_command:
+  type: command
+  name: nomad_ship
+  aliases:
+  - nms
+  usage: /nomad_ship
+  description: Nomadic Leaders
+  permissions: adriftus.nomad.leader
+  data:
+    tab_complete:
+      2:
+        summon: no_arguments
+        save: <list>
+        toggle: no_arguments
+        sail: <player.flag[nomad.leader.locations].keys.if_null[<list>].include[coordinates]>
+  tab completions:
+    1: save|summon|toggle|sail
+    2: <script.parsed_key[data.tab_complete.2.<context.args.get[1]>].if_null[invalid_argument]>
+  script:
+    - if !<player.has_flag[nomad.leader.id]>:
+      - narrate "<&c>Only a Nomadic Leader can use this."
+      - stop
+    - if <context.args.size> < 1:
+      - narrate "<&c>Not enough arguments <&7>- <&e>Use Tab Complete"
+    - define id <player.flag[nomad.leader.id]>
+    - choose <context.args.first>:
+      - case summon:
+        - if <server.flag[nomad_ship.<[id]>.last_moved].duration_since.in_hours> > 4:
+          - narrate "<&a>Summoning Ship..."
+          - run airship_move def:<[id]>|<player.location.forward_flat[2]>
+        - else:
+          - narrate "<&c>You must wait <server.flag[nomad_ship.<[id]>.last_moved].add[4h].from_now.formatted>"
