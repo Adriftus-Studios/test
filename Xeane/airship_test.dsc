@@ -14,6 +14,7 @@ airship_move:
     - if <[exact_location].distance[<server.flag[nomad_airship.<[id]>.location]>]> < 500:
       - narrate "<&c>You cannot move the airship less than 500 blocks"
       - stop
+
     # Build Old Cuboid
     - define Xeane <server.match_player[Xeane]>
     - define current_location <server.flag[nomad_airship.<[id]>.location]>
@@ -91,7 +92,8 @@ airship_create:
     - define Xeane <server.match_player[Xeane]>
     - adjust <[Xeane]> we_selection:<[cuboid]>
     - execute as_player "rg create nomad_airship_<[id]>" player:<[Xeane]>
-    - execute as_server "rg flag nomad_airship_<[id]> interact allow -w <[location].world.name>"
+    - execute as_server "rg flag nomad_airship_<[id]> -w <[location].world.name> interact allow"
+    - execute as_server "rg flag nomad_airship_<[id]> -w <[location].world.name> chest-access allow"
 
 airship_create_elevators:
   type: task
@@ -187,7 +189,8 @@ nomad_airship_elevator_particles:
         - define targets <[blocks_up3].find_players_within[120]>
       - playeffect <[blocks_up].random[5]> offset:1 effect:DRAGON_BREATH quantity:2 velocity:<location[0,0.7,0]> targets:<[targets]>
       - playeffect <[blocks_up2].random[5]> offset:1 effect:END_ROD quantity:2 velocity:<location[0,0.7,0]> targets:<[targets]>
-      - playeffect <[blocks_up3]> offset:0.5,0.1,0.5 effect:DRAGON_BREATH quantity:5 targets:<[targets]>
+      - playeffect <[blocks_up3]> offset:0.5,0.1,0.5 effect:DRAGON_BREATH quantity:5 velocity:<location[0,0.7,0]> targets:<[targets]>
       - playeffect <[blocks_down1].random[2]> offset:1 effect:DRAGON_BREATH quantity:2 velocity:<location[0,-0.7,0]> targets:<[targets]>
       - playeffect <[blocks_down2].random[2]> offset:1 effect:END_ROD quantity:2 velocity:<location[0,-0.7,0]> targets:<[targets]>
+      - playeffect <[blocks_up3]> offset:0.5,0.1,0.5 effect:DRAGON_BREATH quantity:5 velocity:<location[0,-0.7,0]> targets:<[targets]>
       - wait 3t
