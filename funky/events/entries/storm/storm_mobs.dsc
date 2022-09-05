@@ -6,7 +6,7 @@ storm_entity:
         custom_name_visible: true
         speed: 0.35
         age: baby
-        equipments:
+        equipment:
             helmet: end_rod
             chestplate: air
             leggings: air
