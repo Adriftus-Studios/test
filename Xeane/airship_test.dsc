@@ -112,7 +112,6 @@ airship_create_elevators:
     - define location <server.flag[nomad_airship.<[id]>.location]>
     - define elevator1 <[location].add[0,0,-1].highest.center.above[0.51]>
     - define lever_position <[location].add[-3,1,-2]>
-    - flag server nomad_airship.<[id]>.elevator_status
     - spawn nomad_airship_elevator_up <[elevator1]> save:elevator_up
     - flag <entry[elevator_up].spawned_entity> nomad_airship_id:<[id]>
     - flag <entry[elevator_up].spawned_entity> nomad_airship_location:<server.flag[nomad_airship.<[id]>.location]>
@@ -182,6 +181,7 @@ nomad_airship_elevator_particles:
   debug: false
   definitions: id
   script:
+    - flag server nomad_airship.<[id]>.elevator_status
     - define location <server.flag[nomad_airship.<[id]>.location]>
     - define blocks_up <cuboid[nomad_airship_<[id]>_elevator_up].blocks.parse[center]>
     - define blocks_up2 <cuboid[nomad_airship_<[id]>_elevator_up].blocks.parse[center]>
@@ -204,6 +204,6 @@ nomad_airship_toggle_lever:
   script:
     - wait 1t
     - if <context.location.material.switched>:
-      - flag server nomad_airship.<context.location.flag[nomad_airship_id]>.elevator_status:true
+      - run nomad_airship_elevator_particles
     - else:
       - flag server nomad_airship.<context.location.flag[nomad_airship_id]>.elevator_status:false
