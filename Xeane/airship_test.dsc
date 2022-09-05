@@ -65,6 +65,10 @@ airship_move:
     - execute as_server "rg flag nomad_airship_<[id]> -w <[new_location].world.name> interact allow"
     - execute as_server "rg flag nomad_airship_<[id]> -w <[new_location].world.name> chest-access allow"
 
+    # Blind Players at Destination
+    - define target_players <[new_location].find_players_within[140]>
+    - title title:<&f><&font[adriftus:overlay]><&chr[1004]><&chr[F801]><&chr[1004]> fade_in:5t stay:1s fade_out:1.5s targets:<[target_players]>
+
     # Paste New Airship
     - schematic create area:<[old_cuboid]> name:nomad_airship_<[id]> <[current_location]>
     - wait 1t
@@ -80,6 +84,7 @@ airship_move:
     - flag <[new_lever]> nomad_airship_id:<[id]>
 
     # Teleport all players
+    - title title:<&color[#000000]><&font[adriftus:overlay]><&chr[1004]><&chr[F801]><&chr[1004]> fade_in:5t stay:1s fade_out:1.5s targets:<cuboid[nomad_airship_<[id]>_area].players>
     - foreach <cuboid[nomad_airship_<[id]>_area].players>:
       - define relative <[value].location.sub[<[current_location]>]>
       - teleport <[value]> <[new_location].add[<[relative]>].with_pose[<[value]>]>
