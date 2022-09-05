@@ -14,7 +14,7 @@ airship_move:
     - if <[exact_location].distance[<server.flag[nomad_airship.<[id]>.location]>]> < 500:
       - narrate "<&c>You cannot move the airship less than 500 blocks"
       - stop
-    - if <server.flag[nomad_airship.<[id]>.location].world.border_center.distance[<[exact_location]>]> > <server.flag[nomad_airship.<[id]>.location].world.border_size>:
+    - if <server.flag[nomad_airship.<[id]>.location].world.border_center.distance[<[exact_location]>]> > <server.flag[nomad_airship.<[id]>.location].world.border_size.sub[100]>:
       - narrate "<&c>Destination is outside world border."
       - stop
 
@@ -297,8 +297,8 @@ ship_command:
           - narrate "<&c>Not enough arguments <&7>- <&e>Use Tab Complete"
           - stop
         - if <player.flag[nomad.leader.locations].keys.contains[<context.args.get[2]>]>:
-          - run airship_move def:<[id]>|<player.flag[nomad.leader.locations.<context.args.get[2]>]>
           - narrate "<&a>Sailing Ship to <context.args.get[2]>..."
+          - run airship_move def:<[id]>|<player.flag[nomad.leader.locations.<context.args.get[2]>]>
           - stop
         - else if <context.args.get[2]> == coordinates:
           - if <context.args.size> < 2 || !<context.args.get[3].is_integer> || !<context.args.get[4].is_integer>:
@@ -306,8 +306,8 @@ ship_command:
             - stop
           - else:
             - define location <location[<context.args.get[3]>,0,<context.args.get[4]>,<server.flag[nomad_airship.<[id]>.location].world.name>]>
-            - run airship_move def:<[id]>|<[location]>
             - narrate "<&a>Sailing Ship to <[location].simple>..."
+            - run airship_move def:<[id]>|<[location]>
             - stop
         - else:
           - narrate "<&c>Unknown Destination<&co> <&e><context.args.get[2]>"
