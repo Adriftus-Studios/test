@@ -68,6 +68,7 @@ airship_move:
     # Blind Players at Destination
     - define target_players <[new_location].find_players_within[140]>
     - title title:<&f><&font[adriftus:overlay]><&chr[1004]><&chr[F801]><&chr[1004]> fade_in:5t stay:1s fade_out:1.5s targets:<[target_players]>
+    - wait 5t
 
     # Paste New Airship
     - schematic create area:<[old_cuboid]> name:nomad_airship_<[id]> <[current_location]>
@@ -85,7 +86,7 @@ airship_move:
     - adjustblock <[new_lever]> switched:true
     - flag <[new_lever]> on_right_click:nomad_airship_toggle_lever
     - flag <[new_lever]> nomad_airship_id:<[id]>
-    - wait 5s
+    - wait 5t
 
     # Teleport all players
     - foreach <cuboid[nomad_airship_<[id]>_area].players>:
