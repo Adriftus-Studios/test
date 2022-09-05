@@ -39,8 +39,9 @@ airship_move:
 
     # Determine if viable location
     - define chunks <[new_cuboid].chunks>
-    - chunkload <[chunks]> duration:10s
-    - wait 1t
+    - if <[chunks].filter[is_loaded.not].size> > 1:
+      - chunkload <[chunks]> duration:10s
+      - wait 1s
     - define highest -64
     - foreach <[chunks]>:
       - define this_high <[value].height_map.highest>
