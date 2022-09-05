@@ -204,6 +204,6 @@ nomad_airship_toggle_lever:
   script:
     - wait 1t
     - if <context.location.material.switched>:
-      - run nomad_airship_elevator_particles if:<server.flag[nomad_airship.<[id]>.elevator_status].not>
+      - run nomad_airship_elevator_particles def:<context.location.flag[nomad_airship_id]> if:<server.flag[nomad_airship.<context.location.flag[nomad_airship_id]>.elevator_status].not>
     - else:
       - flag server nomad_airship.<context.location.flag[nomad_airship_id]>.elevator_status:false
