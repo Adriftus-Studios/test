@@ -14,7 +14,7 @@ storm_event_events:
                     - else:
                         - define t <[p].location.chunk.surface_blocks.random>
                     - strike <[t]> silent
-                    - playsound <[t]> sound:entity_generic_explode volume:0.8 pitch:2.0
+                    - playsound <[t]> sound:entity_generic_explode volume:0.5
         on entity damaged server_flagged:events.active.storm:
             - define c <context.cause>
             - define d <context.final_damage>
@@ -27,3 +27,5 @@ storm_event_events:
                 - determine <[d].mul[1.5]>
             - else if <[c]> in MELTING:
                 - determine <[d].mul[100]>
+        on entity combusts server_flagged:events.active.storm:
+            - determine cancelled if:<context.entity.entity_type.equals[PLAYER].not>
