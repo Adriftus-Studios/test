@@ -204,9 +204,22 @@ nomad_airship_elevator_particles:
 nomad_airship_toggle_lever:
   type: task
   debug: false
+  definitions: id
   script:
     - wait 1t
+    - define id <context.location.flag[nomad_airship_id]> if:<[id].exists.not>
     - if <context.location.material.switched>:
-      - run nomad_airship_elevator_particles def:<context.location.flag[nomad_airship_id]> if:<server.flag[nomad_airship.<context.location.flag[nomad_airship_id]>.elevator_status].not>
+      - run nomad_airship_elevator_particles def:<[id]> if:<server.flag[nomad_airship.<[id]>.elevator_status].not>
     - else:
-      - flag server nomad_airship.<context.location.flag[nomad_airship_id]>.elevator_status:false
+      - flag server nomad_airship.<[id]>.elevator_status:false
+
+nomad_airship_remote_toggle_lever:
+  type: task
+  debug: false
+  definitions: id
+  script:
+    - define id <context.item.flag[id]> if:<[id].exists.not>
+    - define lever_location <server.flag[nomad_airship.<[id]>.location].add[-3,1,-2]>
+    - chunkload <[lever_location].chunk> if:<[lever_location].chunk.is_loaded.not>
+    - adjustblock <[lever_location]> switched:<[lever_location].material.switched.not>
+    - run nomad_airship_toggle_lever def:<[id]>
