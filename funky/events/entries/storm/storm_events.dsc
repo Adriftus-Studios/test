@@ -17,7 +17,7 @@ storm_event_events:
                     - playsound <[t]> sound:entity_generic_explode volume:0.5
             - if <[p].location.light.sky> == 15 && <util.random_chance[25]>:
                 - cast slow <[p]> amplifier:2 duration:<util.random.int[3].to[10]>
-                - playsound <[p].location> sound:item_bucket_empty pitch:2.0 volume:1.0 sound_category:WEATHER
+                - playsound <[p].location> sound:item_bucket_empty pitch:2.0 volume:2.0 sound_category:WEATHER
         on entity damaged server_flagged:events.active.storm:
             - define c <context.cause>
             - define d <context.final_damage>
