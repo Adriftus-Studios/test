@@ -33,7 +33,7 @@ airship_move:
     - define new_cuboid <[pos1].to_cuboid[<[pos2]>]>
 
     # Town Check in new cuboid
-    - if <[new_cuboid].has_town>:
+    - if !<player.has_permission[adriftus.nomad.bypass_towny]> && <[new_cuboid].has_town>:
       - narrate "<&c>Too Close to Town to sail to target."
       - stop
 
