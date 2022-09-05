@@ -314,5 +314,5 @@ ship_command:
         - if <context.args.size> < 2:
           - narrate "<&c>Not enough arguments <&7>- <&e>Use Tab Complete"
           - stop
-        - flag player nomad.leader.location.<context.args.get[2]>:<player.location.forward_flat[4]>
+        - flag player nomad.leader.locations.<context.args.get[2]>:<player.location.forward_flat[4]>
         - narrate "<&e>You have saved this location as<&co><&a> <context.args.get[2]>"
