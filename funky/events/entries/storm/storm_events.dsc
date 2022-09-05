@@ -10,6 +10,8 @@ storm_event_events:
             - repeat <util.random.int[1].to[5]>:
                 - if <util.random_chance[15]>:
                     - if <[p].location.find_blocks[lightning_rod].within[35].any>:
-                        - strike <[p].location.find_blocks[lightning_rod].within[35].random>
+                        - define t <[p].location.find_blocks[lightning_rod].within[35].random>
                     - else:
-                        - strike <[p].location.chunk.surface_blocks.random>
+                        - define t <[p].location.chunk.surface_blocks.random>
+                    - strike <[t]> silent
+                    - playsound <[t]> sound:entity_generic_explode volume:0.8 pitch:2.0
