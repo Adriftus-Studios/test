@@ -284,11 +284,11 @@ ship_command:
     - define id <player.flag[nomad.leader.id]>
     - choose <context.args.first>:
       - case summon:
-        - if <server.flag[nomad_ship.<[id]>.last_moved].from_now.in_hours> > 4:
+        - if <server.flag[nomad_airship.<[id]>.last_moved].from_now.in_hours> > 4:
           - narrate "<&a>Summoning Ship..."
           - run airship_move def:<[id]>|<player.location.forward_flat[2]>
         - else:
-          - narrate "<&c>You must wait <server.flag[nomad_ship.<[id]>.last_moved].add[4h].from_now.formatted>"
+          - narrate "<&c>You must wait <server.flag[nomad_airship.<[id]>.last_moved].add[4h].from_now.formatted>"
       - case sail:
         - if <context.args.size> < 2:
           - narrate "<&c>Not enough arguments <&7>- <&e>Use Tab Complete"
