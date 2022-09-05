@@ -295,7 +295,7 @@ ship_command:
           - stop
         - if <player.flag[nomad.leader.locations].keys.contains[<context.args.get[2]>]>:
           - run airship_move def:<[id]>|<player.flag[nomad.leader.locations.<context.args.get[2]>]>
-          - narrate "<&a>Sailing Ship to <context.args.second>..."
+          - narrate "<&a>Sailing Ship to <context.args.get[2]>..."
           - stop
         - else if <context.args.get[2]> == coordinates:
           - if <context.args.size> < 2 || !<context.args.get[3].is_integer> || !<context.args.get[4].is_integer>:
