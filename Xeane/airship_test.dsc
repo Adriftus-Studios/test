@@ -288,7 +288,7 @@ ship_command:
           - narrate "<&a>Summoning Ship..."
           - run airship_move def:<[id]>|<player.location.forward_flat[2]>
         - else:
-          - narrate "<&c>You must wait <server.flag[nomad_airship.<[id]>.last_moved].add[4h].from_now.formatted>"
+          - narrate "<&c>You must wait <&e><server.flag[nomad_airship.<[id]>.last_moved].add[4h].from_now.formatted><&c> before moving the ship again."
       - case sail:
         - if <context.args.size> < 2:
           - narrate "<&c>Not enough arguments <&7>- <&e>Use Tab Complete"
