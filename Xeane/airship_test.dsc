@@ -289,3 +289,30 @@ ship_command:
           - run airship_move def:<[id]>|<player.location.forward_flat[2]>
         - else:
           - narrate "<&c>You must wait <server.flag[nomad_ship.<[id]>.last_moved].add[4h].from_now.formatted>"
+      - case sail:
+        - if <context.args.size> < 2:
+          - narrate "<&c>Not enough arguments <&7>- <&e>Use Tab Complete"
+          - stop
+        - if <player.flag[nomad.leader.locations].keys.contains[<context.args.first>]>:
+          - run airship_move def:<[id]>|<player.flag[nomad.leader.locations.<context.args.first>]>
+          - narrate "<&a>Sailing Ship to <context.args.first>..."
+          - stop
+        - else if <context.args.first> == coordinates:
+          - if <context.args.size> < 2 || !<context.args.get[3].is_integer> || !<context.args.get[4].is_integer>:
+            - narrate "<&c>Not enough arguments <&7>- <&e>/ship sail coordinates (X) (Z)"
+            - stop
+          - else:
+            - define location <location[<context.args.get[3]>,0,<context.args.get[4]>,<server.flag[nomad_airship.<[id]>.location].world.name>]>
+            - run airship_move def:<[id]>|<[location]>
+            - narrate "<&a>Sailing Ship to <[location].simple>..."
+            - stop
+        - else:
+          - narrate "<&c>Unknown Destination<&co> <&e><context.args.get[2]>"
+      - case toggle:
+        - run nomad_airship_remote_toggle_lever def:<[id]>
+      - case save:
+        - if <context.args.size> < 2:
+          - narrate "<&c>Not enough arguments <&7>- <&e>Use Tab Complete"
+          - stop
+        - flag player nomad.leader.location.<context.args.get[2]>:<player.location.forward_flat[4]>
+        - narrate "<&e>You have saved this location as<&co><&a> <context.args.get[2]>"
