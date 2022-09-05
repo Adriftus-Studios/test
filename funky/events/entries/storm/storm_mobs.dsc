@@ -7,9 +7,19 @@ storm_entity:
         speed: 0.28
         age: baby
         equipment:
-            helmet: end_rod
+            helmet: light_blue_stained_glass
             chestplate: <list[diamond|wooden|golden|netherite|stone|iron].random>_chestplate
             leggings: <list[diamond|wooden|golden|netherite|stone|iron].random>_leggings
             boots: <list[diamond|wooden|golden|netherite|stone|iron].random>_boots
         item_in_hand: <list[diamond|wooden|golden|netherite|stone|iron].random>_<list[shovel|pickaxe|hoe|sword|axe].random>
         item_in_offhand: <list[diamond|wooden|golden|netherite|stone|iron].random>_<list[shovel|pickaxe|hoe|sword|axe].random>
+
+storm_entity_events:
+    type: world
+    debug: false
+    events:
+        on storm_entity dies:
+            - determine NO_DROPS
+        on entity damaged by storm_entity:
+            - determine <context.final_damage.div[3]>
+            - strike <context.entity.location> silent
