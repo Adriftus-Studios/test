@@ -108,7 +108,7 @@ airship_create_elevators:
     - flag <entry[elevator_up].spawned_entity>|<entry[elevator_down].spawned_entity> nomad_airship_id:<[id]>
     - flag <entry[elevator_up].spawned_entity>|<entry[elevator_down].spawned_entity> nomad_airship_location:<server.flag[nomad_airship.<[id]>.location]>
     - flag server nomad_airship.<[id]>.elevators:|:<entry[elevator_up].spawned_entity>|<entry[elevator_down].spawned_entity>
-    - note <[elevator1].to_cuboid[<[location].add[0,0,-1]>]> as:nomad_airship_<[id]>_elevator_up
+    - note <[elevator1].to_cuboid[<[location].add[0,0,-1].below>]> as:nomad_airship_<[id]>_elevator_up
     - note <[elevator2].to_cuboid[<[location].add[0,0,2]>]> as:nomad_airship_<[id]>_elevator_down
     - flag <cuboid[nomad_airship_<[id]>_elevator_up]> player_enters:nomad_airship_up
     - flag <cuboid[nomad_airship_<[id]>_elevator_down]> player_enters:nomad_airship_down
@@ -180,6 +180,7 @@ nomad_airship_elevator_particles:
     - define blocks_up3 <cuboid[nomad_airship_<[id]>_elevator_up].min.center.below[1.49]>
     - define blocks_down1 <cuboid[nomad_airship_<[id]>_elevator_down].blocks.parse[center]>
     - define blocks_down2 <cuboid[nomad_airship_<[id]>_elevator_down].blocks.parse[center]>
+    - define blocks_up3 <cuboid[nomad_airship_<[id]>_elevator_up].max.center.above[1.49]>
     - define targets <[blocks_up3].find_players_within[120]>
     - while <server.flag[nomad_airship.<[id]>.elevator_status]> && <server.flag[nomad_airship.<[id]>.location]> == <[location]> && <server.flag[nomad_airship.<[id]>.location].chunk.is_loaded>:
       - if <[loop_index].mod[10]> == 0:
