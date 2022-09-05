@@ -83,7 +83,7 @@ airship_move:
     - adjustblock <[new_lever]> switched:true
     - flag <[new_lever]> on_right_click:nomad_airship_toggle_lever
     - flag <[new_lever]> nomad_airship_id:<[id]>
-    - wait 5t
+    - wait 7t
 
     # Teleport all players
     - foreach <cuboid[nomad_airship_<[id]>_area].players>:
