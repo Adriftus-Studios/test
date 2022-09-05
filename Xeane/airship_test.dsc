@@ -102,7 +102,7 @@ airship_create_elevators:
     - define elevator1 <[location].add[0,0,-1].highest.center.above[0.51]>
     - define elevator2 <[location].add[0,0,2].highest.center.above[0.51]>
     - define lever_position <[location].add[-3,1,-2]>
-    - flag server nomad_airship.<[id]>.elevators
+    - flag server nomad_airship.<[id]>.elevator_status
     - spawn nomad_airship_elevator_up <[elevator1]> save:elevator_up
     - spawn nomad_airship_elevator_down <[elevator2]> save:elevator_down
     - flag <entry[elevator_up].spawned_entity>|<entry[elevator_down].spawned_entity> nomad_airship_id:<[id]>
@@ -181,7 +181,7 @@ nomad_airship_elevator_particles:
     - define blocks_down1 <cuboid[nomad_airship_<[id]>_elevator_down].blocks.parse[center]>
     - define blocks_down2 <cuboid[nomad_airship_<[id]>_elevator_down].blocks.parse[center]>
     - define targets <[blocks_up3].find_players_within[120]>
-    - while <server.flag[nomad_airship.<[id]>.elevators]> && <server.flag[nomad_airship.<[id]>.location]> == <[location]> && <server.flag[nomad_airship.<[id]>.location].chunk.is_loaded>:
+    - while <server.flag[nomad_airship.<[id]>.elevator_status]> && <server.flag[nomad_airship.<[id]>.location]> == <[location]> && <server.flag[nomad_airship.<[id]>.location].chunk.is_loaded>:
       - if <[loop_index].mod[10]> == 0:
         - define targets <[blocks_up3].find_players_within[120]>
       - playeffect <[blocks_up].random[5]> offset:1 effect:DRAGON_BREATH quantity:2 velocity:<location[0,0.7,0]> targets:<[targets]>
