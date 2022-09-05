@@ -111,7 +111,6 @@ airship_create_elevators:
   script:
     - define location <server.flag[nomad_airship.<[id]>.location]>
     - define elevator1 <[location].add[0,0,-1].highest.center.above[0.51]>
-    - define elevator2 <[location].add[0,0,2].highest.center.above[0.51]>
     - define lever_position <[location].add[-3,1,-2]>
     - flag server nomad_airship.<[id]>.elevator_status
     - spawn nomad_airship_elevator_up <[elevator1]> save:elevator_up
@@ -121,10 +120,13 @@ airship_create_elevators:
     - flag server nomad_airship.<[id]>.elevators:|:<entry[elevator_up].spawned_entity>|<entry[elevator_down].spawned_entity>
     - note <[elevator1].to_cuboid[<[location].add[0,0,-1].below>]> as:nomad_airship_<[id]>_elevator_up
     - note <[location].add[0,1,-1].to_cuboid[<[location].add[0,0,-1]>]> as:nomad_airship_<[id]>_elevator_top
-    - note <[elevator2].to_cuboid[<[location].add[0,0,2]>]> as:nomad_airship_<[id]>_elevator_down
+    - note <[location].add[0,2,2].to_cuboid[<[location].add[0,-1,2]>]> as:nomad_airship_<[id]>_elevator_down
     - flag <cuboid[nomad_airship_<[id]>_elevator_up]> player_enters:nomad_airship_up
     - flag <cuboid[nomad_airship_<[id]>_elevator_top]> player_enters:nomad_airship_top
     - flag <cuboid[nomad_airship_<[id]>_elevator_down]> player_enters:nomad_airship_down
+    - flag <cuboid[nomad_airship_<[id]>_elevator_up]> nomad_airship_id:<[id]>
+    - flag <cuboid[nomad_airship_<[id]>_elevator_top]> nomad_airship_id:<[id]>
+    - flag <cuboid[nomad_airship_<[id]>_elevator_down]> nomad_airship_id:<[id]>
     - run nomad_airship_elevator_particles def:<[id]>
 
 nomad_airship_elevator_up:
@@ -155,6 +157,7 @@ nomad_airship_up:
   type: task
   debug: false
   script:
+    - stop if:<server.flag[nomad_airship.<context.area.flag[nomad_airship_id]>.elevator_status].not>
     - wait 1t
     - adjust <player> velocity:0,1,0
     - while <player.location.is_in[<context.area>]> && <player.is_spawned> && !<player.is_sneaking>:
@@ -195,9 +198,7 @@ nomad_airship_elevator_particles:
     - define blocks_up <cuboid[nomad_airship_<[id]>_elevator_up].blocks.parse[center]>
     - define blocks_up2 <cuboid[nomad_airship_<[id]>_elevator_up].blocks.parse[center]>
     - define blocks_up3 <cuboid[nomad_airship_<[id]>_elevator_up].min.center.below[1.49]>
-    - define blocks_down1 <cuboid[nomad_airship_<[id]>_elevator_down].blocks.parse[center]>
-    - define blocks_down2 <cuboid[nomad_airship_<[id]>_elevator_down].blocks.parse[center]>
-    - define blocks_down3 <cuboid[nomad_airship_<[id]>_elevator_down].max.center.above[1.49]>
+    - define blocks_down1 <cuboid[nomad_airship_<[id]>_elevator_down].max.center.above[1.49]>
     - define targets <[blocks_up3].find_players_within[120]>
     - while <server.flag[nomad_airship.<[id]>.elevator_status]> && <server.flag[nomad_airship.<[id]>.location]> == <[location]> && <server.flag[nomad_airship.<[id]>.location].chunk.is_loaded>:
       - if <[loop_index].mod[10]> == 0:
@@ -205,7 +206,16 @@ nomad_airship_elevator_particles:
       - playeffect <[blocks_up].random[5]> offset:1 effect:DRAGON_BREATH quantity:2 velocity:<location[0,0.2,0]> targets:<[targets]>
       - playeffect <[blocks_up2].random[5]> offset:1 effect:END_ROD quantity:2 velocity:<location[0,0.7,0]> targets:<[targets]>
       - playeffect <[blocks_up3]> offset:0.5,0.1,0.5 effect:DRAGON_BREATH quantity:5 velocity:<location[0,0.7,0]> targets:<[targets]>
-      - playeffect <[blocks_down1].random[2]> offset:1 effect:DRAGON_BREATH quantity:2 velocity:<location[0,-0.7,0]> targets:<[targets]>
-      - playeffect <[blocks_down2].random[2]> offset:1 effect:END_ROD quantity:2 velocity:<location[0,-0.7,0]> targets:<[targets]>
-      - playeffect <[blocks_down3]> offset:0.5,0.1,0.5 effect:DRAGON_BREATH quantity:5 velocity:<location[0,-0.2,0]> targets:<[targets]>
+      - playeffect <[blocks_down1]> offset:1 effect:DRAGON_BREATH quantity:5 velocity:<location[0,-0.1,0]> targets:<[targets]>
+      - playeffect <[blocks_down1]> offset:1 effect:END_ROD quantity:5 velocity:<location[0,-0.1,0]> targets:<[targets]>
       - wait 3t
+
+nomad_airship_toggle_lever:
+  type: task
+  debug: false
+  script:
+    - wait 1t
+    - if <context.location.material.switched>:
+      - flag server nomad_airship.<context.location.flag[nomad_airship_id]>.elevator_status
+    - else:
+      - flag server nomad_airship.<context.location.flag[nomad_airship_id]>.elevator_status:!
