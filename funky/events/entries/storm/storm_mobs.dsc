@@ -21,6 +21,7 @@ storm_entity_events:
         on storm_entity dies:
             - determine NO_DROPS
         on entity damaged by storm_entity:
+            - determine passively <context.final_damage.div[3]>
             - strike <context.entity.location>
         after storm_entity added to world:
             - while <context.entity.exists>:
