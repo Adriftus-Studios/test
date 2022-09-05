@@ -185,7 +185,7 @@ nomad_airship_elevator_particles:
         - define targets <[blocks_up3].find_players_within[120]>
       - playeffect <[blocks_up].random[5]> offset:1 effect:DRAGON_BREATH quantity:2 velocity:<location[0,0.7,0]> targets:<[targets]>
       - playeffect <[blocks_up2].random[5]> offset:1 effect:END_ROD quantity:2 velocity:<location[0,0.7,0]> targets:<[targets]>
-      - playeffect <[blocks_up3].random[2]> offset:0.5,0.1,0.5 effect:DRAGON_BREATH quantity:5 targets:<[targets]>
+      - playeffect <[blocks_up3]> offset:0.5,0.1,0.5 effect:DRAGON_BREATH quantity:5 targets:<[targets]>
       - playeffect <[blocks_down1].random[2]> offset:1 effect:DRAGON_BREATH quantity:2 velocity:<location[0,-0.7,0]> targets:<[targets]>
       - playeffect <[blocks_down2].random[2]> offset:1 effect:END_ROD quantity:2 velocity:<location[0,-0.7,0]> targets:<[targets]>
       - wait 3t
