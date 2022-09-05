@@ -7,10 +7,10 @@ storm_entity:
         speed: 0.28
         age: baby
         equipment:
-            helmet: light_blue_stained_glass
-            chestplate: <list[diamond|wooden|golden|netherite|stone|iron].random>_chestplate
-            leggings: <list[diamond|wooden|golden|netherite|stone|iron].random>_leggings
-            boots: <list[diamond|wooden|golden|netherite|stone|iron].random>_boots
+            helmet: blue_stained_glass
+            chestplate: <list[diamond|wooden|golden|netherite|stone|iron|chainmail].random>_chestplate
+            leggings: <list[diamond|wooden|golden|netherite|stone|iron|chainmail].random>_leggings
+            boots: <list[diamond|wooden|golden|netherite|stone|iron|chainmail].random>_boots
         item_in_hand: <list[diamond|wooden|golden|netherite|stone|iron].random>_<list[shovel|pickaxe|hoe|sword|axe].random>
         item_in_offhand: <list[diamond|wooden|golden|netherite|stone|iron].random>_<list[shovel|pickaxe|hoe|sword|axe].random>
 
