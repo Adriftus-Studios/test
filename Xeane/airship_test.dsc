@@ -111,9 +111,10 @@ airship_create_elevators:
     - flag <entry[elevator_up].spawned_entity>|<entry[elevator_down].spawned_entity> nomad_airship_location:<server.flag[nomad_airship.<[id]>.location]>
     - flag server nomad_airship.<[id]>.elevators:|:<entry[elevator_up].spawned_entity>|<entry[elevator_down].spawned_entity>
     - note <[elevator1].to_cuboid[<[location].add[0,0,-1]>]> as:nomad_airship_<[id]>_elevator_up
-    - note <[location].add[0,1,-1].below.to_cuboid[<[location].add[0,0,-1].below>]> as:nomad_airship_<[id]>_elevator_up
+    - note <[location].add[0,1,-1].below.to_cuboid[<[location].add[0,0,-1].below>]> as:nomad_airship_<[id]>_elevator_top
     - note <[elevator2].to_cuboid[<[location].add[0,0,2]>]> as:nomad_airship_<[id]>_elevator_down
     - flag <cuboid[nomad_airship_<[id]>_elevator_up]> player_enters:nomad_airship_up
+    - flag <cuboid[nomad_airship_<[id]>_elevator_top]> player_enters:nomad_airship_top
     - flag <cuboid[nomad_airship_<[id]>_elevator_down]> player_enters:nomad_airship_down
     - run nomad_airship_elevator_particles def:<[id]>
 
@@ -152,7 +153,7 @@ nomad_airship_up:
       - adjust <player> velocity:<context.area.center.sub[<player.location>].div[10].with_y[0.6]>
       - wait 1t
 
-nomad_airship_up2:
+nomad_airship_top:
   type: task
   debug: false
   script:
