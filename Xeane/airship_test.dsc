@@ -78,7 +78,7 @@ airship_move:
     - flag server nomad_airship.<[id]>.last_moved:<util.time_now>
     - ~run airship_create_elevators def:<[id]>
     - wait 1t
-    - ~schematic paste <[new_location]> name:nomad_airship_<[id]> delayed
+    - ~schematic paste <[new_location]> name:nomad_airship_<[id]> delayed noair
     - wait 1t
     - title title:<&color[#000000]><&font[adriftus:overlay]><&chr[1004]><&chr[F802]><&chr[1004]> fade_in:5t stay:1s fade_out:1.5s targets:<[current_location].find_players_within[140].exclude[<cuboid[nomad_airship_<[id]>_area].players>]>
     - title title:<&color[#000000]><&font[adriftus:overlay]><&chr[1004]><&chr[F802]><&chr[1004]> fade_in:5t stay:1s fade_out:1.5s targets:<cuboid[nomad_airship_<[id]>_area].players>
