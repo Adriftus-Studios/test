@@ -44,12 +44,12 @@ airship_move:
       - if <[this_high]> > <[highest]>:
         - define highest <[this_high]>
       - wait 1t
-    - if <[highest].add[80]> > 319:
+    - if <[highest].add[100]> > 319:
       - narrate "<&c>Unsafe destination for Airship"
       - stop
     
     # Final Cuboid
-    - define new_location <[exact_location].with_y[<[highest].add[30]>]>
+    - define new_location <[exact_location].with_y[<[highest].add[50]>]>
     - define pos1 <[new_location].add[-20,-20,-40]>
     - define pos2 <[new_location].add[20,50,40]>
     - define final_cuboid <[pos1].to_cuboid[<[pos2]>]>
@@ -155,6 +155,7 @@ nomad_airship_top:
   type: task
   debug: false
   script:
+    - stop if:<server.flag[nomad_airship.<context.area.flag[nomad_airship_id]>.elevator_status].not>
     - adjust <player> velocity:<location[-0.1,0.1,0]>
 
 nomad_airship_down:
