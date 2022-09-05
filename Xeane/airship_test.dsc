@@ -64,6 +64,7 @@ airship_move:
     - wait 1t
     - execute as_server "rg flag nomad_airship_<[id]> -w <[new_location].world.name> interact allow"
     - execute as_server "rg flag nomad_airship_<[id]> -w <[new_location].world.name> chest-access allow"
+    - execute as_server "rg flag nomad_airship_<[id]> -w <[new_location].world.name> town-creation allow"
 
     # Blind Players at Destination
     - define target_players <[new_location].find_players_within[140]>
@@ -137,6 +138,7 @@ airship_create:
     - execute as_player "rg create nomad_airship_<[id]>" player:<[Xeane]>
     - execute as_server "rg flag nomad_airship_<[id]> -w <[location].world.name> interact allow"
     - execute as_server "rg flag nomad_airship_<[id]> -w <[location].world.name> chest-access allow"
+    - execute as_server "rg flag nomad_airship_<[id]> -w <[new_location].world.name> town-creation allow"
     - wait 1t
     - ~run airship_create_elevators def:<[id]>
 
