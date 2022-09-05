@@ -69,7 +69,7 @@ airship_move:
     # Blind Players at Destination
     - define target_players <[new_location].find_players_within[140]>
     - title title:<&f><&font[adriftus:overlay]><&chr[1004]><&chr[F801]><&chr[1004]> fade_in:5t stay:1s fade_out:1.5s targets:<[target_players]>
-    - wait 5t
+    - wait 7t
 
     # Paste New Airship
     - schematic create area:<[old_cuboid]> name:nomad_airship_<[id]> <[current_location]>
