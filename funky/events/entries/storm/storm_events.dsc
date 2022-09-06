@@ -7,15 +7,15 @@ storm_event_events:
                     - weather <[w]> thunder
             - foreach <server.online_players> as:p:
                 - foreach next if:<[p].location.world.thundering.not>
-                - repeat <util.random.int[1].to[5]>:
-                    - if <util.random_chance[15]>:
+                - repeat <util.random.int[1].to[4]>:
+                    - if <util.random_chance[10]>:
                         - if <[p].location.find_blocks[lightning_rod].within[35].any>:
                             - define t <[p].location.find_blocks[lightning_rod].within[35].random>
                         - else:
                             - define t <[p].location.chunk.surface_blocks.random>
                         - strike <[t]> silent
                         - playsound <[t]> sound:entity_generic_explode volume:0.5
-                        - spawn storm_entity <[t].up[1]> target:<[p]> if:<util.random_chance[25]>
+                        - spawn storm_entity <[t].up[1]> target:<[p]> if:<util.random_chance[15]>
                 - if <[p].location.light.sky> == 15 && <util.random_chance[25]>:
                     - cast slow <[p]> amplifier:2 duration:<util.random.int[3].to[10]>
                     - playsound <[p].location> sound:item_bucket_empty pitch:2.0 volume:2.0 sound_category:WEATHER
