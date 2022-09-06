@@ -44,12 +44,12 @@ event:
         - define a <context.args>
         - if <[a].size> < 1:
             - narrate <gray>/<script.data_key[name]>
-            - narrate <white><script.data_key[description]>
-            - narrate "<white>Usage: <script.data_key[usage]>"
+            - narrate <white><script.data_key[description].parsed>
+            - narrate "<white>Usage: <script.data_key[usage].parsed>"
             - stop
         - else if <[a].size> > 3:
             - narrate "<red>Too many arguments!"
-            - narrate "<red>Usage: <script.data_key[usage]>"
+            - narrate "<red>Usage: <script.data_key[usage].parsed>"
             - stop
         - if ( <[a].size> == 1 || <[a].get[2]> == all ) && <[a].get[1]> == stop:
             - flag server events.active:!
