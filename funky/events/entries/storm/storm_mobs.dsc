@@ -3,7 +3,7 @@ storm_entity:
     entity_type: drowned
     mechanisms:
         custom_name: <aqua>Storm Entity
-        custom_name_visible: true
+        custom_name_visible: false
         speed: 0.23
         age: baby
         equipment:
@@ -26,5 +26,5 @@ storm_entity_events:
         after storm_entity added to world:
             - while <context.entity.exists>:
                 - attack <context.entity> target:<context.entity.location.find_players_within[300].first>
-                - cast <context.entity> invisiblity duration:100s
+                - cast invisiblity <context.entity> duration:100s hide_particles no_ambient no_icon
                 - wait 3s
