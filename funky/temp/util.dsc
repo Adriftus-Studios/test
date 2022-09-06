@@ -5,8 +5,10 @@ human_to_bool:
         - choose <[c].to_lowercase>:
             - case true on yes positive yeah yup accurate correct:
                 - determine true
-            - default:
+            - case false off no negative nope nup inaccurate incorrect:
                 - determine false
+            - default:
+                - determine neither
 
 get_name:
     type: procedure
