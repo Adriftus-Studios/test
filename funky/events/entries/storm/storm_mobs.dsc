@@ -26,4 +26,5 @@ storm_entity_events:
         after storm_entity added to world:
             - while <context.entity.exists>:
                 - attack <context.entity> target:<context.entity.location.find_players_within[300].first>
+                - cast <context.entity> invisiblity duration:100s
                 - wait 3s
