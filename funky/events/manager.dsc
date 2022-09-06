@@ -77,6 +77,7 @@ event:
                     - run event_start def.event:<[a].get[2]> def.duration:<[a].get[3]>
                 - else:
                     - run event_start def.event:<[a].get[2]>
+                - narrate "<green>Started <[a].get[2]>!"
             - case stop:
                 - if <server.flag[events.active].keys.if_null[<list>].contains[<[a].get[2]>].not>:
                     - narrate "<red>That event isn't currently active!"
