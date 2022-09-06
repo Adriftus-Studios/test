@@ -13,6 +13,8 @@ storm_entity:
             boots: <item[<list[golden|iron|chainmail].random>_boots].with_single[enchantments=<map[depth_strider=1000]>]>
         item_in_hand: <list[wooden|golden|stone|iron].random>_<list[shovel|pickaxe|hoe|sword|axe].random>
         item_in_offhand: <list[wooden|golden|stone|iron].random>_<list[shovel|pickaxe|hoe|sword|axe].random>
+        potion_effects:
+            - <map[type=INVISIBILITY;amplifier=0;duration=1639s;ambient=false;particles=false;icon=false]>
 
 storm_entity_events:
     type: world
@@ -26,5 +28,4 @@ storm_entity_events:
         after storm_entity added to world:
             - while <context.entity.exists>:
                 - attack <context.entity> target:<context.entity.location.find_players_within[300].first>
-                - cast invisiblity <context.entity> duration:100s hide_particles no_ambient no_icon
                 - wait 3s
