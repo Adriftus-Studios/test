@@ -38,7 +38,7 @@ event:
     permission: events.event_command
     tab completions:
         1: start|stop|disable|enable
-        2: <server.flag[events.registered]>
+        2: <server.flag[events.registered].keys>
         3: <script[event_entry_<context.args.get[2]>].data_key[info].get[duration].invert.keys>
     script:
         - define a <context.args>
