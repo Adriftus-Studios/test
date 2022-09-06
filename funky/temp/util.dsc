@@ -1,3 +1,13 @@
+human_to_bool:
+    type: procedure
+    definitions: c
+    script:
+        - choose <[c].to_lowercase>:
+            - case true on yes positive yeah yup accurate correct:
+                - determine true
+            - default:
+                - determine false
+
 get_name:
     type: procedure
     definitions: c
