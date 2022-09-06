@@ -33,5 +33,5 @@ storm_event_events:
                 - determine <[d].mul[100]>
         on entity combusts server_flagged:events.active.storm:
             - determine cancelled if:<context.entity.entity_type.equals[PLAYER].not>
-        after zombie|drowned|skeleton spawns server_flagged:events.active.storm chance:15:
+        after drowned spawns server_flagged:events.active.storm:
             - adjust <context.entity> item_in_hand:trident

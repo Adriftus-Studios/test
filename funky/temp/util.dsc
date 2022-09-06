@@ -36,6 +36,8 @@ get_name:
             - determine <[c].title.if_null[<[c].inventory_type.proc[get_name]>]>
         - case World:
             - determine "<[c].name.replace[_].with[ ]>"
+        - case Script:
+            - determine <[c].name.proc[get_name]>
         - default:
             - determine UNSUPPORTED_<[c].object_type.to_uppercase>_OBJECT_ERROR
 
