@@ -4,15 +4,15 @@ storm_entity:
     mechanisms:
         custom_name: <aqua>Storm Entity
         custom_name_visible: true
-        speed: 0.28
+        speed: 0.23
         age: baby
         equipment:
             helmet: blue_stained_glass
-            chestplate: <list[diamond|golden|netherite|iron|chainmail].random>_chestplate
-            leggings: <list[diamond|golden|netherite|iron|chainmail].random>_leggings
-            boots: <list[diamond|golden|netherite|iron|chainmail].random>_boots
-        item_in_hand: <list[diamond|wooden|golden|netherite|stone|iron].random>_<list[shovel|pickaxe|hoe|sword|axe].random>
-        item_in_offhand: <list[diamond|wooden|golden|netherite|stone|iron].random>_<list[shovel|pickaxe|hoe|sword|axe].random>
+            chestplate: <list[golden|iron|chainmail].random>_chestplate
+            leggings: <list[golden|iron|chainmail].random>_leggings
+            boots: <item[<list[golden|iron|chainmail].random>_boots].with_single[enchantments=<map[depth_strider=1000]>]>
+        item_in_hand: <list[wooden|golden|stone|iron].random>_<list[shovel|pickaxe|hoe|sword|axe].random>
+        item_in_offhand: <list[wooden|golden|stone|iron].random>_<list[shovel|pickaxe|hoe|sword|axe].random>
 
 storm_entity_events:
     type: world
