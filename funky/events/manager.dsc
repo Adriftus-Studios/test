@@ -3,7 +3,7 @@ event_start:
     definitions: event|duration
     script:
     - if <[event]> not in <server.flag[events.registered].if_null[<list>]>:
-        - narrate "<red>Unknown event '<[event]>'!"
+        - narrate "<red>Unknown event <&sq><[event]><&sq>!"
     - if <[duration].exists.not>:
         - define min <duration[<script[event_entry_<[event]>].data_key[info].deep_get[duration.min]>]||<duration[1d]>>
         - define max <duration[<script[event_entry_<[event]>].data_key[info].deep_get[duration.max]>]||<duration[1d]>>
@@ -51,11 +51,24 @@ event_command:
             - narrate "<red>Too many arguments!"
             - narrate "<red>Usage: <script.data_key[usage]>"
             - stop
-        - if <[a].size> == 1 && <[a].get[1]> == stop:
+        - if ( <[a].size> == 1 || <[a].get[2]> == all ) && <[a].get[1]> == stop:
             - flag server events.active:!
             - narrate "<green>Stopped all events!"
             - stop
-        - if <[a].get[2]||null> not in <server.flag[events.registered]>:
+        - else if <[a].size> == 1 && <[a].get[1]> == disable:
+            - flag server events.disabled:<server.flag[events.registered]>
+            - narrate "<green>Disabled all available events."
+            - stop
+        - else if <[a].size> == 1 && <[a].get[1]> == enable:
+            - flag server events.disabled:!
+            - narrate "<green>Enabled all available events."
+        - if <[a].get[1]> == start && <[a].get[2]> == all:
+            - foreach <server.flag[events.registered]> as:e:
+                - if <[a].get[3].exists>:
+                    - run event_start def.event:<[e]> def.duration:<[a].get[3]>
+                - else:
+                    - run event_start def.event:<[e]>
+        - else if <[a].get[2]||null> not in <server.flag[events.registered]>:
             - narrate "<red>Unknown event <&sq><[a].get[2]><&sq>!"
             - stop
         - choose <[a].get[1]>:
@@ -80,4 +93,4 @@ event_command:
                     - stop
                 - flag server events.disabled:<-:<[a].get[2]>
             - default:
-                - narrate "<red>Unknown argument <&sq><[a].get[1]><&sq>"
+                - narrate "<red>Unknown argument <&sq><[a].get[1]><&sq>!"
