@@ -30,7 +30,7 @@ event_registry:
                 - flag server events.pool:<server.flag[events.pool].include[<[e].name.after[event_entry_].repeat_as_list[<[e].data_key[info].get[weight]>]>]>
                 - announce to_console "<green>Registed event <[e].after[event_entry_]> with weight <[e].data_key[info].get[weight]>!"
 
-event_command:
+event:
     type: command
     name: event
     description: Start, stop, disable, or enable an event.
