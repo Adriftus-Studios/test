@@ -59,8 +59,8 @@ airship_move:
     - define final_cuboid <[pos1].to_cuboid[<[pos2]>]>
 
     # Create Worldguard region
-    - adjust <[Xeane]> we_selection:<[final_cuboid]>
-    - execute as_player "rg create nomad_airship_<[id]>" player:<[Xeane]>
+    - adjust <player> we_selection:<[final_cuboid]>
+    - execute as_op "rg create nomad_airship_<[id]>"
     - wait 1t
     - execute as_server "rg flag nomad_airship_<[id]> -w <[new_location].world.name> interact allow"
     - execute as_server "rg flag nomad_airship_<[id]> -w <[new_location].world.name> chest-access allow"
@@ -128,7 +128,10 @@ airship_create:
     - define pos1 <[location].add[-20,-20,-40]>
     - define pos2 <[location].add[20,50,40]>
     - define cuboid <[pos1].to_cuboid[<[pos2]>]>
-    - define Xeane <server.match_player[Xeane]>
+    - define Xeane <server.match_player[Xeane].if_null[null]>
+    - if <[Xeane]> == null:
+      - narrate "<&c>Nope!"
+      - stop
     - flag server nomad_airship.<[id]>.chunks:<[cuboid].chunks>
     - adjust <[Xeane]> we_selection:<[cuboid]>
     - note <[cuboid]> as:nomad_airship_<[id]>_area
