@@ -8,7 +8,12 @@ event_start:
         - define min <duration[<script[event_entry_<[event]>].data_key[info].deep_get[duration.min]>]||<duration[1d]>>
         - define max <duration[<script[event_entry_<[event]>].data_key[info].deep_get[duration.max]>]||<duration[1d]>>
         - define duration <duration[<util.random.int[<[min].in_ticks>].to[<[max].in_ticks>]>t]>
-    - announce <script[event_entry_<[event]>].data_key[info].get[warning_message].parsed> if:<script[event_entry_<[event]>].data_key[info].get[warning_message].exists>
+    - if <script[event_entry_<[event]>].data_key[info].get[warning_message].exists>:
+        - define wm <script[event_entry_<[event]>].data_key[info].get[warning_message]>
+        - if <[wm].object_type> == List:
+            - announce <script[event_entry_<[event]>].data_key[info].get[warning_message].random.parsed>
+        - else:
+            - announce <script[event_entry_<[event]>].data_key[info].get[warning_message].parsed>
     - wait 10s
     - flag server events.active.<[event]> expire:<[duration]>
 
