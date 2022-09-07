@@ -8,7 +8,7 @@ human_to_bool:
             - case false off no negative nope nup inaccurate incorrect:
                 - determine false
             - default:
-                - determine neither
+                - determine unknown
 
 get_name:
     type: procedure
@@ -45,10 +45,12 @@ get_lower_name:
     type: procedure
     definitions: c
     script:
+        # get name but in lowercase
         - determine <[c].proc[get_name].to_lowercase>
 
 get_world_location_name:
     type: procedure
     definitions: c
     script:
+        # get location name but with the world name instead of the environment
         - determine <[c].proc[get_name].to_lowercase>

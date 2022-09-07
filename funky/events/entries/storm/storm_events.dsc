@@ -19,6 +19,9 @@ storm_event_events:
                 - if <[p].location.light.sky> == 15 && <util.random_chance[25]>:
                     - cast slow <[p]> amplifier:2 duration:<util.random.int[3].to[10]>
                     - playsound <[p].location> sound:item_bucket_empty pitch:2.0 volume:2.0 sound_category:WEATHER
+                    - if <[p].has_flag[events.data.storm.rain_warning_cooldown].not>:
+                        - narrate "<dark_blue>You feel as if the rain itself is pulling you down..." targets:<[p]>
+                        - flag <[p]> events.data.storm.rain_warning_cooldown expire:10m
         on entity damaged server_flagged:events.active.storm:
             - define c <context.cause>
             - define d <context.final_damage>

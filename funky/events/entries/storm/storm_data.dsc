@@ -6,4 +6,4 @@ event_entry_storm:
             min: 1d
         name: <script.proc[get_name]>
         weight: 1
-        warning_message: <aqua><bold>The air feels humid, and thick gray clouds begin to fill the sky.
+        warning_message: <dark_aqua><bold>The air feels humid, and thick gray clouds begin to fill the sky.

@@ -21,11 +21,14 @@ storm_entity_events:
     debug: false
     events:
         on storm_entity dies:
+            # you dont get their armor, bitch
             - determine NO_DROPS
         on entity damaged by storm_entity:
+            # make primary damage type lightning
             - determine passively <context.final_damage.div[3]>
             - strike <context.entity.location>
         after storm_entity added to world:
             - while <context.entity.exists>:
+                # make them super aggressive for absolutely no reason
                 - attack <context.entity> target:<context.entity.location.find_players_within[300].first>
                 - wait 3s
