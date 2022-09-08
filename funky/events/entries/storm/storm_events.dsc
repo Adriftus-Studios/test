@@ -41,4 +41,4 @@ storm_event_events:
             - adjust <context.entity> item_in_offhand:trident
         on block drops dirt from breaking server_flagged:events.active.storm:
             - determine passively cancelled
-            - drop mud <context.location>
+            - drop mud <context.location.center>
