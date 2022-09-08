@@ -2,7 +2,11 @@
 
 random_basic_helmet:
     type: procedure
-    data: <list[leather|chainmail|iron|golden]>
+    data:
+        - leather
+        - chainmail
+        - iron
+        - gold
     script:
         - determine <script.data_key[data].random>_helmet
 random_helmet:
@@ -12,7 +16,11 @@ random_helmet:
 
 random_basic_chestplate:
     type: procedure
-    data: <list[leather|chainmail|iron|golden]>
+    data:
+        - leather
+        - chainmail
+        - iron
+        - gold
     script:
         - determine <script.data_key[data].random>_chestplate
 random_chestplate:
@@ -22,7 +30,11 @@ random_chestplate:
 
 random_basic_leggings:
     type: procedure
-    data: <list[leather|chainmail|iron|golden]>
+    data:
+        - leather
+        - chainmail
+        - iron
+        - gold
     script:
         - determine <script.data_key[data].random>_leggings
 random_leggings:
@@ -32,7 +44,11 @@ random_leggings:
 
 random_basic_boots:
     type: procedure
-    data: <list[leather|chainmail|iron|golden]>
+    data:
+        - leather
+        - chainmail
+        - iron
+        - gold
     script:
         - determine <script.data_key[data].random>_boots
 random_boots:
@@ -42,7 +58,11 @@ random_boots:
 
 random_basic_sword:
     type: procedure
-    data: <list[wooden|stone|iron|golden]>
+    data:
+        - wood
+        - stone
+        - iron
+        - golden
     script:
         - determine <script.data_key[data].random>_sword
 random_sword:
@@ -52,7 +72,11 @@ random_sword:
 
 random_basic_pickaxe:
     type: procedure
-    data: <list[wooden|stone|iron|golden]>
+    data:
+        - wood
+        - stone
+        - iron
+        - golden
     script:
         - determine <script.data_key[data].random>_pickaxe
 random_pickaxe:
@@ -62,7 +86,11 @@ random_pickaxe:
 
 random_basic_axe:
     type: procedure
-    data: <list[wooden|stone|iron|golden]>
+    data:
+        - wood
+        - stone
+        - iron
+        - golden
     script:
         - determine <script.data_key[data].random>_axe
 random_axe:
@@ -72,7 +100,11 @@ random_axe:
 
 random_basic_shovel:
     type: procedure
-    data: <list[wooden|stone|iron|golden]>
+    data:
+        - wood
+        - stone
+        - iron
+        - golden
     script:
         - determine <script.data_key[data].random>_shovel
 random_shovel:
@@ -82,7 +114,11 @@ random_shovel:
 
 random_basic_hoe:
     type: procedure
-    data: <list[wooden|stone|iron|golden]>
+    data:
+        - wood
+        - stone
+        - iron
+        - golden
     script:
         - determine <script.data_key[data].random>_hoe
 random_hoe:
