@@ -59,7 +59,7 @@ random_boots:
 random_basic_sword:
     type: procedure
     data:
-        - wood
+        - wooden
         - stone
         - iron
         - golden
@@ -73,7 +73,7 @@ random_sword:
 random_basic_pickaxe:
     type: procedure
     data:
-        - wood
+        - wooden
         - stone
         - iron
         - golden
@@ -87,7 +87,7 @@ random_pickaxe:
 random_basic_axe:
     type: procedure
     data:
-        - wood
+        - wooden
         - stone
         - iron
         - golden
@@ -101,7 +101,7 @@ random_axe:
 random_basic_shovel:
     type: procedure
     data:
-        - wood
+        - wooden
         - stone
         - iron
         - golden
@@ -115,7 +115,7 @@ random_shovel:
 random_basic_hoe:
     type: procedure
     data:
-        - wood
+        - wooden
         - stone
         - iron
         - golden
