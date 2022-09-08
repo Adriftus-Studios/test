@@ -81,7 +81,7 @@ event:
             - stop
         # if the action is start, and the event is "all", then go through all events and start them
         - if <[a].get[1]> == start && <[a].get[2]> == all:
-            - foreach <server.flag[events.registered]> as:e:
+            - foreach <server.flag[events.registered].keys> as:e:
                 - if <[a].get[3].exists>:
                     - run event_start def.event:<[e]> def.duration:<[a].get[3]>
                     - narrate "<green>Started <[e]> for <[a].get[3].as[duration].formatted>!"
@@ -90,6 +90,7 @@ event:
                     - narrate "<green>Started <[e]> for a randomly chosen duration!"
             - narrate <empty>
             - narrate "<green>Started all events!"
+            - stop
         # if the event specified doesn't exist, stop
         - else if <[a].get[2]||null> not in <server.flag[events.registered]>:
             - narrate "<red>Unknown event <&sq><[a].get[2].if_null[ ]><&sq>!"
