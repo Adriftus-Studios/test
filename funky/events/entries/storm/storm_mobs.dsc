@@ -8,11 +8,11 @@ storm_entity:
         age: baby
         equipment:
             helmet: blue_stained_glass
-            chestplate: <proc[random_basic_chestplate]>
-            leggings: <proc[random_basic_leggings]>
-            boots: <proc[random_basic_boots]>
-        item_in_hand: <proc[random_basic_tool]>
-        item_in_offhand: <proc[random_basic_tool]>
+            chestplate: <proc[random_basic_chestplate].as[item]>
+            leggings: <proc[random_basic_leggings].as[item]>
+            boots: <proc[random_basic_boots].as[item]>
+        item_in_hand: <proc[random_basic_tool].as[item]>
+        item_in_offhand: <proc[random_basic_tool].as[item]>
         potion_effects:
             - <map[type=INVISIBILITY;amplifier=0;duration=1639s;ambient=false;particles=false;icon=false]>
 
