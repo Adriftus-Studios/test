@@ -8,11 +8,11 @@ storm_entity:
         age: baby
         equipment:
             helmet: blue_stained_glass
-            chestplate: <list[golden|iron|chainmail].random>_chestplate
-            leggings: <list[golden|iron|chainmail].random>_leggings
-            boots: <item[<list[golden|iron|chainmail].random>_boots].with_single[enchantments=<map[depth_strider=1000]>]>
-        item_in_hand: <list[wooden|golden|stone|iron].random>_<list[shovel|pickaxe|hoe|sword|axe].random>
-        item_in_offhand: <list[wooden|golden|stone|iron].random>_<list[shovel|pickaxe|hoe|sword|axe].random>
+            chestplate: <proc[random_basic_chestplate]>
+            leggings: <proc[random_basic_leggings]>
+            boots: <proc[random_basic_boots]>
+        item_in_hand: <proc[random_basic_tool]>
+        item_in_offhand: <proc[random_basic_tool]>
         potion_effects:
             - <map[type=INVISIBILITY;amplifier=0;duration=1639s;ambient=false;particles=false;icon=false]>
 

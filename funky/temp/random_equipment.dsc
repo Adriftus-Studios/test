@@ -112,8 +112,8 @@ random_armor:
 random_basic_tool:
     type: procedure
     script:
-        - determine <list[<proc[random_basic_sword]>|<proc[random_basic_axe]>|<proc[random_basic_shovel]>|<proc[random_basic_hoe]>|<proc[random_basic_pickaxe]>]>
+        - determine <list[<proc[random_basic_sword]>|<proc[random_basic_axe]>|<proc[random_basic_shovel]>|<proc[random_basic_hoe]>|<proc[random_basic_pickaxe]>].random>
 random_tool:
     type: procedure
     script:
-        - determine <list[<proc[random_sword]>|<proc[random_axe]>|<proc[random_shovel]>|<proc[random_hoe]>|<proc[random_pickaxe]>]>
+        - determine <list[<proc[random_sword]>|<proc[random_axe]>|<proc[random_shovel]>|<proc[random_hoe]>|<proc[random_pickaxe]>].random>

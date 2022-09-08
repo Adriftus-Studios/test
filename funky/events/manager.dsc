@@ -92,9 +92,9 @@ event:
             - narrate "<green>Started all events!"
         # if the event specified doesn't exist, stop
         - else if <[a].get[2]||null> not in <server.flag[events.registered]>:
-            - narrate "<red>Unknown event <&sq><[a].get[2]><&sq>!"
+            - narrate "<red>Unknown event <&sq><[a].get[2].if_null[ ]><&sq>!"
             - narrate "<red>Available Events:"
-            - foreach <server.flag[events.registered].keys.if_null[None]> as:e:
+            - foreach <server.flag[events.registered].keys.if_null[<list_single[None]>]> as:e:
                 - narrate "<red>- <[e]>"
             - stop
         # after edge cases, go through normal cases
@@ -112,7 +112,7 @@ event:
                 - if <server.flag[events.active].keys.if_null[<list>].contains[<[a].get[2]>].not>:
                     - narrate "<red><[a].get[2]> event isn't currently active!"
                     - narrate "<red>Currently Active Events:"
-                    - foreach <server.flag[events.active].keys.if_null[<list[None]>]> as:e:
+                    - foreach <server.flag[events.active].keys.if_null[<list_single[None]>]> as:e:
                         - narrate "<red>- <[e]>"
                     - stop
                 - flag server events.active.<[a].get[2]>:!
@@ -122,7 +122,7 @@ event:
                 - if <server.flag[events.disabled].contains[<[a].get[2]>]>:
                     - narrate "<red>That event is already disabled!"
                     - narrate "<red>Currently Disabled Events:"
-                    - foreach <server.flag[events.disabled].if_null[<list[None]>]> as:e:
+                    - foreach <server.flag[events.disabled].if_null[<list_single[None]>]> as:e:
                         - narrate "<red>- <[e]>"
                     - stop
                 - flag server events.disabled:->:<[a].get[2]>
@@ -132,7 +132,7 @@ event:
                 - if <server.flag[events.disabled].contains[<[a].get[2]>].not>:
                     - narrate "<red>That event isn't disabled!"
                     - narrate "<red>Currently Disabled Events:"
-                    - foreach <server.flag[events.disabled].if_null[<list[None]>]> as:e:
+                    - foreach <server.flag[events.disabled].if_null[<list_single[None]>]> as:e:
                         - narrate "<red>- <[e]>"
                     - stop
                 - flag server events.disabled:<-:<[a].get[2]>
