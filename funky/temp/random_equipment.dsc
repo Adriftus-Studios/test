@@ -6,7 +6,7 @@ random_basic_helmet:
         - leather
         - chainmail
         - iron
-        - gold
+        - golden
     script:
         - determine <script.data_key[data].random>_helmet
 random_helmet:
@@ -20,7 +20,7 @@ random_basic_chestplate:
         - leather
         - chainmail
         - iron
-        - gold
+        - golden
     script:
         - determine <script.data_key[data].random>_chestplate
 random_chestplate:
@@ -34,7 +34,7 @@ random_basic_leggings:
         - leather
         - chainmail
         - iron
-        - gold
+        - golden
     script:
         - determine <script.data_key[data].random>_leggings
 random_leggings:
@@ -48,7 +48,7 @@ random_basic_boots:
         - leather
         - chainmail
         - iron
-        - gold
+        - golden
     script:
         - determine <script.data_key[data].random>_boots
 random_boots:
