@@ -38,6 +38,7 @@ storm_event_events:
             - determine cancelled if:<context.entity.entity_type.equals[PLAYER].not>
         after zombie|skeleton spawns server_flagged:events.active.storm:
             - adjust <context.entity> item_in_hand:trident
+            - adjust <context.entity> item_in_offhand:trident
         on block drops dirt from breaking server_flagged:events.active.storm:
             - determine passively cancelled
             - drop mud <context.location>
