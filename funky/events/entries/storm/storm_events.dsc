@@ -39,6 +39,8 @@ storm_event_events:
         after zombie|skeleton spawns server_flagged:events.active.storm:
             - adjust <context.entity> item_in_hand:trident
             - adjust <context.entity> item_in_offhand:trident
+        after creeper spawns server_flagged:events.active.storm:
+            - adjust <context.entity> powered:true
         on block drops dirt from breaking server_flagged:events.active.storm:
             - determine passively cancelled
             - drop mud <context.location.center>
