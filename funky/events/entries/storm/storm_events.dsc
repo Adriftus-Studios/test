@@ -20,7 +20,7 @@ storm_event_events:
                     - cast slow <[p]> amplifier:2 duration:<util.random.int[3].to[10]>
                     - playsound <[p].location> sound:item_bucket_empty pitch:2.0 volume:2.0 sound_category:WEATHER
                     - if <[p].has_flag[events.data.storm.rain_warning_cooldown].not>:
-                        - narrate "<dark_blue>You feel as if the rain itself is pulling you down..." targets:<[p]>
+                        - narrate "<blue><bold>You feel as if the rain itself is pulling you down..." targets:<[p]>
                         - flag <[p]> events.data.storm.rain_warning_cooldown expire:10m
         on entity damaged server_flagged:events.active.storm:
             - define c <context.cause>
@@ -41,6 +41,5 @@ storm_event_events:
             - adjust <context.entity> item_in_offhand:trident
         after creeper spawns server_flagged:events.active.storm:
             - adjust <context.entity> powered:true
-        on block drops dirt from breaking server_flagged:events.active.storm:
-            - determine passively cancelled
-            - drop mud <context.location.center>
+        on player breaks dirt|coarse_dirt|grass_block with:item_enchanted:!silk_touch server_flagged:events.active.storm:
+            - determine <list_single[<item[mud]>]>
