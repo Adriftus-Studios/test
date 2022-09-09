@@ -7,6 +7,12 @@ get_weighted_response:
     # output: a random item from the list
     #/example
     # item
+
+    # how does weighting work?
+    # if you have a list consisting of a golden nugget with weight of 3,
+    # an emerald with weight of 1, and a diamond with weight of 1,
+    # you will get golden nuggets 75% of the time, emeralds 12.5% of the time,
+    # and diamonds 12.5% of the time.
     script:
         - define origin <[c]>
         - define c <[c].parse_tag[<[c].after[<&co>]>]>
