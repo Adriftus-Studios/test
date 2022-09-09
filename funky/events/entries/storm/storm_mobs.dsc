@@ -21,8 +21,10 @@ storm_entity_events:
     debug: false
     events:
         on storm_entity dies:
-            # you dont get their armor, bitch
-            - determine NO_DROPS
+            - definemap loot:
+                storm_shard: 0.1
+                air: 35
+            - determine <item[<[loot].proc[get_weighted_response_from_map]>]>
         on entity damaged by storm_entity:
             # make primary damage type lightning
             - determine passively <context.final_damage.div[3]>
