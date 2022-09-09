@@ -10,10 +10,8 @@ get_weighted_response:
     script:
         - define origin <[c]>
         - define c <[c].parse_tag[<[c].after[<&co>]>]>
-        - define lowest <[c].lowest>
-        - define highest <[c].highest>
-        - define val <util.random.decimal[<[lowest]>].to[<[highest]>]>
-        - define check <[highest]>
+        - define val <util.random.decimal[<[c].lowest>].to[<[c].highest>]>
+        - define check <[c].highest>
         - foreach <[c]> as:i:
             - if <[check]> <= <[val]>:
                 # return the item of <[i]>
