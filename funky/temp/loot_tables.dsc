@@ -18,12 +18,12 @@ get_weighted_response_from_list:
         - define origin <[c]>
         - define c <[c].parse_tag[<[c].after[<&co>]>]>
         - define val <util.random.decimal[<[c].lowest>].to[<[c].highest>]>
-        - define check <[c].lowest>
-        - foreach <[c].random[<[c].size>]> as:i:
+        - define check <[c].highest>
+        - foreach <[c].alphanumeric.reverse> as:i:
             - if <[val]> <= <[check]>:
                 # return the item of <[i]>
-                - determine <[origin].get[<[c].find[<[i]>]>].before[<&co>]>
-            - define check <[check].add[<[i]>]>
+                - determine <[origin].find_all_matches[<[c].find[<[i]>]>].first.before[<&co>]>
+            - define check <[check].sub[<[i]>]>
         # theoretically, this determine should NEVER be reached, but it's here just in case something goes horribly wrong
         - determine <[origin].random.before[<&co>]>
 
