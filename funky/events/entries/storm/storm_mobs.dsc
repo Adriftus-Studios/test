@@ -2,7 +2,7 @@ storm_entity:
     type: entity
     entity_type: drowned
     mechanisms:
-        custom_name: <aqua>Storm Entity
+        custom_name: <aqua>Myrskyn Kokonaisuus
         custom_name_visible: false
         speed: 0.23
         age: baby
