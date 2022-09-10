@@ -26,9 +26,7 @@ storm_entity_events:
                 air: 35
             - determine <item[<[loot].proc[get_weighted_response_from_map]>]>
         on entity damaged by storm_entity:
-            # make primary damage type lightning
-            - determine passively <context.final_damage.div[3]>
-            - strike <context.entity.location>
+            - playeffect <context.entity.eye_location> effect:electric_spark quantity:35 offset:0.5,0.5,0.5
         after storm_entity added to world:
             - while <context.entity.exists>:
                 # make them super aggressive for absolutely no reason
