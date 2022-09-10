@@ -16,7 +16,7 @@ storm_summon:
     material: prismarine_crystals
     display name: <bold><aqua>Myrskyjumalan Kristalli
     lore:
-    - <element[Niin kuin sade ja lumi tulevat alas taivaasta, eivätkä palaa siihen kastelematta maata ja saattamalla sen kukoistamaan, niin että se tuottaa siementä kylväjälle ja leipää syöjälle.].split_lines_by_width[100].parse_tag[<gray><[parse_value]>]>
+    - <element[Niin kuin sade ja lumi tulevat alas taivaasta, eivätkä palaa siihen kastelematta maata ja saattamalla sen kukoistamaan, niin että se tuottaa siementä kylväjälle ja leipää syöjälle.].split_lines_by_width[100].parse_tag[<[parse_value].color[<gray>]>]>
     enchantments:
         - UNBREAKING:1
     mechanisms:
