@@ -9,10 +9,11 @@ get_weighted_response_from_list:
     # baked_potato
 
     # how does weighting work?
-    # if you have a list consisting of a golden nugget with weight of 3,
-    # an emerald with weight of 1, and a diamond with weight of 1,
-    # you will get golden nuggets 75% of the time, emeralds 12.5% of the time,
-    # and diamonds 12.5% of the time.
+    # if you list make a list of values and values and weight and such
+    # then values and stuff with divide and youll get a super cool item
+    # and then youll get a random item from the list
+    # and then youll get a random item from the list
+    # and then youll get a random item from the list
     script:
         - define origin <[c]>
         - define c <[c].parse_tag[<[c].after[<&co>]>]>
