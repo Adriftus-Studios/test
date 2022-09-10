@@ -23,7 +23,7 @@ get_weighted_response_from_list:
             - if <[val]> >= <[check]>:
                 - determine <[origin].find_all_matches[<[c].find[<[i]>]>].first.before[<&co>]>
             - define check <[check].sub[<[i]>]>
-        - determine <queue.last_command>
+        - determine <[c]>_<[origin]>_<[check]>_<[val]>
 
 generate_weight_list:
     type: procedure
