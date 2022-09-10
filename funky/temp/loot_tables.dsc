@@ -24,8 +24,6 @@ get_weighted_response_from_list:
                 # return the item of <[i]>
                 - determine <[origin].find_all_matches[<[c].find[<[i]>]>].first.before[<&co>]>
             - define check <[check].sub[<[i]>]>
-        # theoretically, this determine should NEVER be reached, but it's here just in case something goes horribly wrong
-        - determine <[origin].random.before[<&co>]>
 
 generate_weight_list:
     type: procedure
