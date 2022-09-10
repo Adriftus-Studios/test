@@ -20,8 +20,7 @@ get_weighted_response_from_list:
         - define val <util.random.decimal[<[c].lowest>].to[<[c].highest>]>
         - define check <[c].highest>
         - foreach <[c].alphanumeric> as:i:
-            - if <[val]> <= <[check]>:
-                # return the item of <[i]>
+            - if <[val]> >= <[check]>:
                 - determine <[origin].find_all_matches[<[c].find[<[i]>]>].first.before[<&co>]>
             - define check <[check].sub[<[i]>]>
 
