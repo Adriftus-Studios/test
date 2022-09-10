@@ -16,7 +16,7 @@ get_weighted_response_from_list:
     # and then youll get a random item from the list
     script:
         - define origin <[c]>
-        - define c <[c].parse_tag[<[parse_value].after[<&co>]>]>
+        - define c <[c].parse_tag[<[parse_value].after[<&co>].as_decimal>]>
         - define val <util.random.decimal[<[c].lowest>].to[<[c].highest>]>
         - define check <[c].highest>
         - foreach <[c].alphanumeric> as:i:
