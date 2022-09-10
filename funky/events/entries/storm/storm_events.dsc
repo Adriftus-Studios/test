@@ -41,5 +41,6 @@ storm_event_events:
             - adjust <context.entity> item_in_offhand:trident
         after creeper spawns server_flagged:events.active.storm:
             - adjust <context.entity> powered:true
-        on player breaks dirt|coarse_dirt|grass_block with:item_enchanted:!silk_touch server_flagged:events.active.storm:
+        on player breaks dirt|coarse_dirt|grass_block server_flagged:events.active.storm:
+            - stop if:<context.item.enchantment_types.contains[SILK_TOUCH]>
             - determine <list_single[<item[mud]>]>
