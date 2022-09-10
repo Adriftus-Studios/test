@@ -25,8 +25,9 @@ storm_entity_events:
                 storm_shard: 0.1
                 air: 35
             - determine <item[<[loot].proc[get_weighted_response_from_map]>]>
-        on entity damaged by storm_entity:
-            - playeffect <context.entity.eye_location> effect:electric_spark quantity:35 offset:0.5,0.5,0.5
+        after entity damaged by storm_entity:
+            - playeffect <proc[define_zigzag].context[<context.entity.eye_location>|<context.damager.eye_location>|2]> effect:enchantment_table quantity:5
+            - playsound <context.damager.location> sound:block_enchantment_table_use pitch:2.0 volume:1.0
         after storm_entity added to world:
             - while <context.entity.exists>:
                 # make them super aggressive for absolutely no reason
