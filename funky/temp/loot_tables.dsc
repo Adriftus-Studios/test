@@ -19,7 +19,7 @@ get_weighted_response_from_list:
         - define c <[c].parse_tag[<[c].after[<&co>]>]>
         - define val <util.random.decimal[<[c].lowest>].to[<[c].highest>]>
         - define check <[c].highest>
-        - foreach <[c].alphanumeric.reverse> as:i:
+        - foreach <[c].alphanumeric> as:i:
             - if <[val]> <= <[check]>:
                 # return the item of <[i]>
                 - determine <[origin].find_all_matches[<[c].find[<[i]>]>].first.before[<&co>]>
