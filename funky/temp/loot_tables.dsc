@@ -22,6 +22,7 @@ get_weighted_response_from_list:
         - foreach <[c].numerical> as:i:
             - if <[val].is_more_than_or_equal_to[<[check]>]>:
                 - determine <[origin].find_all_matches[<[c].find[<[i]>]>].first.before[<&co>]>
+            - define check <[check].sub[<[i]>]>
         - determine <[c]>_<[origin]>_<[check]>_<[val]>
 
 generate_weight_list:
