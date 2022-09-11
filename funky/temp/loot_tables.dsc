@@ -15,15 +15,7 @@ get_weighted_response_from_list:
     # and then youll get a random item from the list
     # and then youll get a random item from the list
     script:
-        - define origin <[c]>
-        - define c <[c].parse_tag[<[parse_value].after[<&co>].as_decimal>]>
-        - define val <util.random.decimal[0].to[<[c].highest>]>
-        - define check <[c].highest>
-        - foreach <[c].numerical> as:i:
-            - if <[val].is_more_than_or_equal_to[<[check]>]>:
-                - determine <[origin].find_all_matches[<[c].find[<[i]>]>].first.before[<&co>]>
-            - define check <[check].sub[<[i]>]>
-        - determine <[c]>_<[origin]>_<[check]>_<[val]>
+        - determine <[c].random.before[<&co>]>
 
 generate_weight_list:
     type: procedure
