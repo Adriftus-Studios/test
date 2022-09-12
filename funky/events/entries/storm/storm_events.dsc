@@ -47,3 +47,8 @@ storm_event_events:
         on player breaks dirt|coarse_dirt|grass_block server_flagged:events.active.storm:
             - stop if:<context.item.enchantment_types.contains[SILK_TOUCH]>
             - determine <list_single[<item[mud]>]>
+        on animal spawns server_flagged:events.active.storm chance:10:
+            - determine passively cancelled
+            - spawn slime <context.location>
+        after squid dies server_flagged:events.active.storm chance:10:
+            - explode <context.location> power:5
