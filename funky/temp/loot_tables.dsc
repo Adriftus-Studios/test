@@ -15,7 +15,14 @@ get_weighted_response_from_list:
     # and then youll get a random item from the list
     # and then youll get a random item from the list
     script:
-        - determine <[c].random.before[<&co>]>
+        # n: numerical values
+        - define n <[c].parse_tag[<[parse_value].after_last[<&co>]>]>
+        - while <[n].filter_tag[<[filter_value].contains[.]>].any>:
+            - define n <[n].parse_tag[<[parse_value].mul[10]>]>
+        - define o <list>
+        - foreach <[n]> as:i:
+            - define o <[o].include[<[c].get[<[loop_index]>].repeat_as_list[<[i]>]>]>
+        - determine <[o].random[1]>
 
 generate_weight_list:
     type: procedure
