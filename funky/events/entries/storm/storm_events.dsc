@@ -20,7 +20,10 @@ storm_event_events:
                     - cast slow <[p]> amplifier:2 duration:<util.random.int[3].to[10]>
                     - playsound <[p].location> sound:item_bucket_empty pitch:2.0 volume:2.0 sound_category:WEATHER
                     - if <[p].has_flag[events.data.storm.rain_warning_cooldown].not>:
-                        - narrate "<blue><bold>You feel as if the rain itself is pulling you down..." targets:<[p]>
+                        - random:
+                            - narrate "<blue><bold>You feel as if the rain itself is pulling you down..." targets:<[p]>
+                            - narrate "<blue><bold>The rain is getting heavier..." targets:<[p]>
+                            - narrate "<blue><bold>You feel very cold." targets:<[p]>
                         - flag <[p]> events.data.storm.rain_warning_cooldown expire:10m
         on entity damaged server_flagged:events.active.storm:
             - define c <context.cause>
