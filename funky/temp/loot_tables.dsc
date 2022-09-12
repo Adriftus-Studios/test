@@ -22,7 +22,7 @@ get_weighted_response_from_list:
         - define o <list>
         - foreach <[n]> as:i:
             - define o <[o].include[<[c].get[<[loop_index]>].repeat_as_list[<[i]>]>]>
-        - determine <[o].random[1]>
+        - determine <[o].random>
 
 generate_weight_list:
     type: procedure
