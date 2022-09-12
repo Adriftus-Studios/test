@@ -44,7 +44,7 @@ event:
     tab completions:
         1: start|stop|disable|enable
         2: <server.flag[events.registered].keys.include[all]>
-        3: <script[event_entry_<context.args.get[2]>].data_key[info].get[duration].invert.keys>
+        3: <script[event_entry_<context.args.get[2]>].data_key[info].get[duration].invert.keys.if_null[<list[1d|2d|3d]>]>
     script:
         # define "a" as the arguments for convenience
         - define a <context.args>
