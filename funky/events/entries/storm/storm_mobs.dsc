@@ -74,3 +74,12 @@ storm_entity_ranged_events:
             - determine passively cancelled
             - playsound <context.entity.location> sound:entity_llama_hurt pitch:1.0 volume:1.0
             - push <context.entity> destination:<context.entity.eye_location.backward>
+
+slimes_during_storm:
+    type: world
+    debug: false
+    events:
+        on animal spawns server_flagged:events.active.storm:
+            - stop if:<util.random_chance[10].not>
+            - determine passively cancelled
+            - spawn slime <context.location>
