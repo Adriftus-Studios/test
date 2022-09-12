@@ -21,7 +21,7 @@ get_weighted_response_from_list:
             - define n <[n].parse_tag[<[parse_value].mul[10]>]>
         - define o <list>
         - foreach <[n]> as:i:
-            - define o:->:<[c].get[<[loop_index]>].repeat_as_list[<[i]>]>
+            - define o <[o].include[<[c].get[<[loop_index]>].repeat_as_list[<[i]>]>]>
         - determine <[o].random.before_last[<&co>]>
 
 generate_weight_list:
