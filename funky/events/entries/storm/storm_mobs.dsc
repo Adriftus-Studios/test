@@ -20,7 +20,7 @@ storm_entity_events:
     type: world
     debug: false
     events:
-        on storm_entity dies:
+        on storm_entity killed by player:
             - definemap loot:
                 storm_shard: 0.1
                 air: 35
