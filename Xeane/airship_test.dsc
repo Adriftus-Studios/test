@@ -29,6 +29,7 @@ airship_move:
       - stop
     - if <[exact_location].world.name> != <server.worlds.first.name>:
       - narrate "<&c>Cannot move Airship outside of it's world."
+      - stop
     - if <[exact_location].distance[<server.flag[airships.ship.<[id]>.location]>]> < 500:
       - narrate "<&c>You cannot move the airship less than 500 blocks"
       - stop
