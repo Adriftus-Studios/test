@@ -97,8 +97,6 @@ airship_move:
     - foreach <[old_cuboid].chunks>:
       - define cuboid <[value].cuboid>
       - define mini_cuboid <[cuboid].min.with_y[<[final_low_y]>].to_cuboid[<[cuboid].max.with_y[<[final_high_y]>]>]>
-      - announce LOW<&co><[final_low_y]>
-      - announce HIGH<&co><[final_high_y]>
       - schematic create area:<[mini_cuboid]> name:airship_<[id]>_<[loop_index]> <[current_location]>
       - define schematic_count:++
       - wait 1t
@@ -118,7 +116,6 @@ airship_move:
     - repeat <[schematic_count]>:
       - schematic paste <[new_location]> name:airship_<[id]>_<[value]> noair
       - wait 1t
-    - title title:<&f><&font[adriftus:overlay]><&chr[1004]><&chr[F802]><&chr[1004]> fade_in:5t stay:1s fade_out:1.5s targets:<[current_location].find_players_within[140].exclude[<cuboid[airship_<[id]>].players>]>
     - title title:<&color[#000000]><&font[adriftus:overlay]><&chr[1004]><&chr[F802]><&chr[1004]> fade_in:5t stay:1s fade_out:1.5s targets:<cuboid[airship_<[id]>].players>
     - wait 1t
     - define new_lever <[new_location].add[-3,1,-2]>
@@ -150,9 +147,15 @@ airship_move:
     - define current_lever <[current_location].add[-3,1,-2]>
     - flag <[current_lever]> on_right_click:!
     - flag <[current_lever]> airship_id:!
-    - ~modifyblock <[old_cuboid].blocks[*_carpet|*torch|lever|tripwire_hook|*_bed|lantern|*sign|bell|*azalea|*_door|*_pressure_plate|*_banner]> air no_physics delayed
-    - wait 1t
-    - ~modifyblock <[old_cuboid].blocks> air delayed
+    - title title:<&f><&font[adriftus:overlay]><&chr[1004]><&chr[F802]><&chr[1004]> fade_in:5t stay:<[old_cuboid].chunks.size.mul[2].add[5]>t fade_out:1.5s targets:<[current_location].find_players_within[140]>
+    - wait 4t
+    - foreach <[old_cuboid].chunks>:
+      - define cuboid <[value].cuboid>
+      - define mini_cuboid <[cuboid].min.with_y[<[final_low_y]>].to_cuboid[<[cuboid].max.with_y[<[final_high_y]>]>]>
+      - ~modifyblock <[mini_cuboid].blocks[*_carpet|*torch|lever|tripwire_hook|*_bed|lantern|*sign|bell|*azalea|*_door|*_pressure_plate|*_banner]> air no_physics delayed
+      - wait 1t
+      - ~modifyblock <[mini_cuboid].blocks> air delayed
+      - wait 1t
 
     # Cleanup
     - repeat <[schematic_count]>:
