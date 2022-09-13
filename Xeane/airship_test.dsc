@@ -16,6 +16,8 @@ add_airship_type:
     - flag server airships.data.<[id]>.higher_z:<schematic[<[id]>].length.sub[<[origin].z>]>
     - flag server airships.data.<[id]>.lower_z:-<[origin].z.add[1]>
     - flag server airships.data.<[id]>.sailing_height:50
+    - flag server airships.data.<[id]>.schematic:<[filename]>
+    - flag server airships.data.<[id]>.type:<[type]>
 
 airship_move:
   type: task
@@ -36,13 +38,15 @@ airship_move:
     
     # Get Schematic Data
     - define type <server.flag[airships.ship.<[id]>.type]>
+    - define airship_type <[type]>_airship
     - define current_location <server.flag[airships.ship.<[id]>.location]>
-    - define higher_y <server.flag[airships.data.<[type]>.higher_y]>
-    - define lower_y <server.flag[airships.data.<[type]>.lower_y]>
-    - define higher_x <server.flag[airships.data.<[type]>.higher_x]>
-    - define lower_x <server.flag[airships.data.<[type]>.lower_x]>
-    - define higher_z <server.flag[airships.data.<[type]>.higher_z]>
-    - define lower_z <server.flag[airships.data.<[type]>.lower_z]>
+    - define higher_y <server.flag[airships.data.<[airship_type]>.higher_y]>
+    - define lower_y <server.flag[airships.data.<[airship_type]>.lower_y]>
+    - define higher_x <server.flag[airships.data.<[airship_type]>.higher_x]>
+    - define lower_x <server.flag[airships.data.<[airship_type]>.lower_x]>
+    - define higher_z <server.flag[airships.data.<[airship_type]>.higher_z]>
+    - define lower_z <server.flag[airships.data.<[airship_type]>.lower_z]>
+    - define sailing_height <server.flag[airships.data.<[airship_type]>.sailing_height]>
 
     # Build Old Cuboid
     - define pos1 <[current_location].add[<[lower_x].add[-20]>,<[lower_y].add[-20]>,<[lower_z]>].add[-20]>
@@ -71,12 +75,12 @@ airship_move:
       - if <[this_high]> > <[highest]>:
         - define highest <[this_high]>
       - wait 1t
-    - if <[highest].add[100]> > 319:
+    - if <[highest].add[<[sailing_height].add[<[lower_y].abs.add[<[higher_y]>]>]>].add[2]> > 319:
       - narrate "<&c>Unsafe destination for Airship"
       - stop
 
     # Final Cuboid
-    - define new_location <[exact_location].with_y[<[highest].add[<[lower_y].abs>].add[<server.flag[airships.data.<[type]>.sailing_height]>]>]>
+    - define new_location <[exact_location].with_y[<[highest].add[<[lower_y].abs>].add[<[sailing_height]>]>]>
     - define pos1 <[new_location].add[<[lower_x].add[-20]>,<[lower_y].add[-20]>,<[lower_z]>].add[-20]>
     - define pos2 <[new_location].add[<[higher_x].add[20]>,<[higher_y].add[20]>,<[higher_z]>].add[20]>
     - define final_cuboid <[pos1].to_cuboid[<[pos2]>]>
@@ -122,25 +126,25 @@ airship_move:
     - wait 5t
 
     # Teleport all players
-    - foreach <cuboid[nomad_airship_<[id]>_area].players>:
+    - foreach <cuboid[airship_<[type]>_<[id]>].players>:
       - define relative <[value].location.sub[<[current_location]>]>
       - teleport <[value]> <[new_location].add[<[relative]>].with_pose[<[value]>]>
 
     # Teleport Other Entities
     - wait 1t
-    - foreach <cuboid[nomad_airship_<[id]>_area].entities[!player]>:
+    - foreach <cuboid[airship_<[type]>_<[id]>].entities[!player]>:
       - define relative <[value].location.sub[<[current_location]>]>
       - teleport <[value]> <[new_location].add[<[relative]>].with_pose[<[value]>]>
 
     # Teleport offline players
     - wait 1t
-    - foreach <server.flag[nomad_airship.<[id]>.offline_players].if_null[<list>]>:
+    - foreach <server.flag[airships.ship.<[id]>.offline_players].if_null[<list>]>:
       - define relative <[value].location.sub[<[current_location]>]>
       - adjust <[value]> location:<[new_location].add[<[relative]>]>
 
     # Remove Old Airship
     - wait 1t
-    - chunkload <server.flag[nomad_airship.<[id]>.chunks]> duration:10s
+    - chunkload <server.flag[airships.ship.<[id]>.chunks]> duration:10s
     - define current_lever <[current_location].add[-3,1,-2]>
     - flag <[current_lever]> on_right_click:!
     - flag <[current_lever]> nomad_airship_id:!
@@ -149,35 +153,79 @@ airship_move:
     - ~modifyblock <[old_cuboid].blocks> air delayed
 
     # Cleanup
-    - schematic unload name:nomad_airship_<[id]>
-    - flag server nomad_airship.<[id]>.chunks:<[new_cuboid].chunks>
-    - note <[final_cuboid]> as:nomad_airship_<[id]>_area
-    - flag <cuboid[nomad_airship_<[id]>_area]> nomad_airship_id:<[id]>
-    - flag <cuboid[nomad_airship_<[id]>_area]> player_leaves:nomad_airship_offline_tracker
-    - flag <cuboid[nomad_airship_<[id]>_area]> player_enters:nomad_airship_offline_tracker
+    - repeat <[schematic_count]>:
+      - schematic unload name:airship_<[id]>_<[value]>
+      - wait 1t
+    - flag server airships.ship.<[id]>.chunks:<[new_cuboid].chunks>
+    - note <[final_cuboid]> as:airship_<[type]>_<[id]>
+    - flag <cuboid[airship_<[type]>_<[id]>]> airship_id:<[id]>
+    - flag <cuboid[airship_<[type]>_<[id]>]> airship_type:<[type]>
+    - flag <cuboid[airship_<[type]>_<[id]>]> player_leaves:nomad_airship_offline_tracker
+    - flag <cuboid[airship_<[type]>_<[id]>]> player_enters:nomad_airship_offline_tracker
 
 airship_create:
   type: task
   debug: false
-  definitions: id|location
+  definitions: type|id|location
   script:
-    - flag server nomad_airship.<[id]>.location:<[location]>
-    - schematic paste location:<[location]> name:airship
-    - define pos1 <[location].add[-20,-20,-40]>
-    - define pos2 <[location].add[20,50,40]>
-    - define cuboid <[pos1].to_cuboid[<[pos2]>]>
-    - flag server nomad_airship.<[id]>.chunks:<[cuboid].chunks>
-    - adjust <player> we_selection:<[cuboid]>
-    - note <[cuboid]> as:nomad_airship_<[id]>_area
-    - flag <cuboid[nomad_airship_<[id]>_area]> nomad_airship_id:<[id]>
-    - flag <cuboid[nomad_airship_<[id]>_area]> player_leaves:nomad_airship_offline_tracker
-    - flag <cuboid[nomad_airship_<[id]>_area]> player_enters:nomad_airship_offline_tracker
-    - execute as_player "rg create nomad_airship_<[id]>" player:<[Xeane]>
-    - execute as_server "rg flag nomad_airship_<[id]> -w <[location].world.name> interact allow"
-    - execute as_server "rg flag nomad_airship_<[id]> -w <[location].world.name> chest-access allow"
-    - execute as_server "rg flag nomad_airship_<[id]> -w <[location].world.name> town-creation deny"
-    - execute as_server "rg flag nomad_airship_<[id]> -w <[location].world.name> tnt deny"
-    - execute as_server "rg flag nomad_airship_<[id]> -w <[location].world.name> fire-spread deny"
+    # Schematic Handling
+    - stop if:<server.has_flag[airships.data.<[type]>_airship].not>
+    - if !<schematic.list.contains[<[type]>_airship]>:
+      - ~schematic load filename:<server.flag[airships.data.<[type]>_airship.schematic]> name:<[type]>_airship
+      - wait 1t
+
+    # Defining Data
+    - define airship_type <[type]>_airship
+    - define sailing_height <server.flag[airships.data.<[airship_type]>.sailing_height]>
+    - define higher_y <server.flag[airships.data.<[airship_type]>.higher_y]>
+    - define lower_y <server.flag[airships.data.<[airship_type]>.lower_y]>
+    - define higher_x <server.flag[airships.data.<[type]>.higher_x]>
+    - define lower_x <server.flag[airships.data.<[type]>.lower_x]>
+    - define higher_z <server.flag[airships.data.<[type]>.higher_z]>
+    - define lower_z <server.flag[airships.data.<[type]>.lower_z]>
+    - wait 1t
+
+    # Cuboid Building/Determining Height Map
+    - define cuboid <schematic[<[airship_type]>].cuboid[<[location]>]>
+    - define chunks <[cuboid].chunks>
+    - if <[chunks].filter[is_loaded.not].size> > 1:
+      - chunkload <[chunks]> duration:10s
+      - wait 1s
+    - define highest -64
+    - foreach <[chunks]>:
+      - define this_high <[value].height_map.highest>
+      - if <[this_high]> > <[highest]>:
+        - define highest <[this_high]>
+      - wait 1t
+    - if <[highest].add[<[sailing_height].add[<[lower_y].abs.add[<[higher_y]>]>]>].add[2]> > 319:
+      - narrate "<&c>Unsafe location for Airship"
+      - stop
+
+    # Build Final Cuboid
+    - define new_location <[location].with_y[<[highest].add[<[lower_y].abs>].add[<[sailing_height]>]>]>
+    - define pos1 <[new_location].add[<[lower_x].add[-20]>,<[lower_y].add[-20]>,<[lower_z]>].add[-20]>
+    - define pos2 <[new_location].add[<[higher_x].add[20]>,<[higher_y].add[20]>,<[higher_z]>].add[20]>
+    - define final_cuboid <[pos1].to_cuboid[<[pos2]>]>
+
+    # Schematic Pasting
+    - ~schematic paste location:<[new_location]> name:<[type]>_airship
+    - wait 1t
+
+    # Cuboid Building
+    - flag server airships.ship.<[id]>.chunks:<[final_cuboid].chunks>
+    - adjust <player> we_selection:<[final_cuboid]>
+    - note <[cuboid]> as:airship_<[type]>_<[id]>
+    - flag <cuboid[airship_<[type]>_<[id]>]> nomad_airship_id:<[id]>
+    - flag <cuboid[airship_<[type]>_<[id]>]> player_leaves:nomad_airship_offline_tracker
+    - flag <cuboid[airship_<[type]>_<[id]>]> player_enters:nomad_airship_offline_tracker
+
+    # World Guard Region
+    - execute as_op "rg create airship_<[type]>_<[id]>"
+    - execute as_server "rg flag airship_<[type]>_<[id]> -w <[location].world.name> interact allow"
+    - execute as_server "rg flag airship_<[type]>_<[id]> -w <[location].world.name> chest-access allow"
+    - execute as_server "rg flag airship_<[type]>_<[id]> -w <[location].world.name> town-creation deny"
+    - execute as_server "rg flag airship_<[type]>_<[id]> -w <[location].world.name> tnt deny"
+    - execute as_server "rg flag airship_<[type]>_<[id]> -w <[location].world.name> fire-spread deny"
     - wait 1t
     - ~run airship_create_elevators def:<[id]>
 
@@ -186,25 +234,25 @@ airship_create_elevators:
   debug: false
   definitions: id
   script:
-    - define location <server.flag[nomad_airship.<[id]>.location]>
+    - define location <server.flag[airships.ship.<[id]>.location]>
     - define elevator1 <[location].add[0,0,-1].highest.center.above[0.51]>
     - define lever_position <[location].add[-3,1,-2]>
-    - spawn nomad_airship_elevator_up <[elevator1]> save:elevator_up
-    - flag <entry[elevator_up].spawned_entity> nomad_airship_id:<[id]>
-    - flag <entry[elevator_up].spawned_entity> nomad_airship_location:<server.flag[nomad_airship.<[id]>.location]>
+    - spawn airship_elevator_up <[elevator1]> save:elevator_up
+    - flag <entry[elevator_up].spawned_entity> airship_id:<[id]>
+    - flag <entry[elevator_up].spawned_entity> airship_location:<server.flag[airships.ship.<[id]>.location]>
     - flag server nomad_airship.<[id]>.elevators:|:<entry[elevator_up].spawned_entity>
-    - note <[elevator1].to_cuboid[<[location].add[0,0,-1].below>]> as:nomad_airship_<[id]>_elevator_up
-    - note <[location].add[0,1,-1].to_cuboid[<[location].add[0,0,-1]>]> as:nomad_airship_<[id]>_elevator_top
-    - note <[location].add[0,2,2].to_cuboid[<[location].add[0,-1,2]>]> as:nomad_airship_<[id]>_elevator_down
-    - flag <cuboid[nomad_airship_<[id]>_elevator_up]> player_enters:nomad_airship_up
-    - flag <cuboid[nomad_airship_<[id]>_elevator_top]> player_enters:nomad_airship_top
-    - flag <cuboid[nomad_airship_<[id]>_elevator_down]> player_enters:nomad_airship_down
-    - flag <cuboid[nomad_airship_<[id]>_elevator_up]> nomad_airship_id:<[id]>
-    - flag <cuboid[nomad_airship_<[id]>_elevator_top]> nomad_airship_id:<[id]>
-    - flag <cuboid[nomad_airship_<[id]>_elevator_down]> nomad_airship_id:<[id]>
+    - note <[elevator1].to_cuboid[<[location].add[0,0,-1].below>]> as:airship_<[id]>_elevator_up
+    - note <[location].add[0,1,-1].to_cuboid[<[location].add[0,0,-1]>]> as:airship_<[id]>_elevator_top
+    - note <[location].add[0,2,2].to_cuboid[<[location].add[0,-1,2]>]> as:airship_<[id]>_elevator_down
+    - flag <cuboid[airship_<[id]>_elevator_up]> player_enters:nomad_airship_up
+    - flag <cuboid[airship_<[id]>_elevator_top]> player_enters:nomad_airship_top
+    - flag <cuboid[airship_<[id]>_elevator_down]> player_enters:nomad_airship_down
+    - flag <cuboid[airship_<[id]>_elevator_up]> airship_id:<[id]>
+    - flag <cuboid[airship_<[id]>_elevator_top]> airship_id:<[id]>
+    - flag <cuboid[airship_<[id]>_elevator_down]> airship_id:<[id]>
     - run nomad_airship_elevator_particles def:<[id]>
 
-nomad_airship_elevator_up:
+airship_elevator_up:
   type: entity
   debug: false
   entity_type: armor_stand
@@ -221,11 +269,11 @@ nomad_airship_up:
   type: task
   debug: false
   script:
-    - define id <context.area.flag[nomad_airship_id]>
-    - stop if:<server.flag[nomad_airship.<[id]>.elevator_status].not>
+    - define id <context.area.flag[airship_id]>
+    - stop if:<server.flag[airships.ship.<[id]>.elevator_status].not>
     - wait 1t
     - adjust <player> velocity:0,1,0
-    - while <player.location.is_in[<context.area>]> && <player.is_spawned> && <server.flag[nomad_airship.<[id]>.elevator_status]>:
+    - while <player.location.is_in[<context.area>]> && <player.is_spawned> && <server.flag[airships.ship.<[id]>.elevator_status]>:
       - adjust <player> velocity:<context.area.center.sub[<player.location>].div[10].with_y[0.6]>
       - wait 1t
 
@@ -233,14 +281,14 @@ nomad_airship_top:
   type: task
   debug: false
   script:
-    - stop if:<server.flag[nomad_airship.<context.area.flag[nomad_airship_id]>.elevator_status].not>
+    - stop if:<server.flag[airships.ship.<context.area.flag[airship_id]>.elevator_status].not>
     - adjust <player> velocity:<location[-0.1,0.1,0]>
 
 nomad_airship_down:
   type: task
   debug: false
   script:
-    - stop if:<server.flag[nomad_airship.<context.area.flag[nomad_airship_id]>.elevator_status].not>
+    - stop if:<server.flag[airships.ship.<context.area.flag[airship_id]>.elevator_status].not>
     - cast slow_falling duration:15s
 
 nomad_airship_elevator_added:
@@ -250,8 +298,8 @@ nomad_airship_elevator_added:
     - wait 5t
     - if !<context.entity.is_spawned>:
       - stop
-    - define id <context.entity.flag[nomad_airship_id]>
-    - if <context.entity.flag[nomad_airship_location]> != <server.flag[nomad_airship.<[id]>.location]>:
+    - define id <context.entity.flag[airship_id]>
+    - if <context.entity.flag[airship_location]> != <server.flag[nomad_airship.<[id]>.location]>:
       - remove <context.entity>
       - stop
     - run nomad_airship_elevator_particles def:<[id]>
@@ -262,13 +310,13 @@ nomad_airship_elevator_particles:
   definitions: id
   script:
     - flag server nomad_airship.<[id]>.elevator_status
-    - define location <server.flag[nomad_airship.<[id]>.location]>
-    - define blocks_up <cuboid[nomad_airship_<[id]>_elevator_up].blocks.parse[center]>
-    - define blocks_up2 <cuboid[nomad_airship_<[id]>_elevator_up].blocks.parse[center]>
-    - define blocks_up3 <cuboid[nomad_airship_<[id]>_elevator_up].min.center.below[1.49]>
-    - define blocks_down1 <cuboid[nomad_airship_<[id]>_elevator_down].max.center.below[0.8]>
+    - define location <server.flag[airships.ship.<[id]>.location]>
+    - define blocks_up <cuboid[airship_<[id]>_elevator_up].blocks.parse[center]>
+    - define blocks_up2 <cuboid[airship_<[id]>_elevator_up].blocks.parse[center]>
+    - define blocks_up3 <cuboid[airship_<[id]>_elevator_up].min.center.below[1.49]>
+    - define blocks_down1 <cuboid[airship_<[id]>_elevator_down].max.center.below[0.8]>
     - define targets <[blocks_up3].find_players_within[120]>
-    - while <server.flag[nomad_airship.<[id]>.elevator_status]> && <server.flag[nomad_airship.<[id]>.location]> == <[location]> && <server.flag[nomad_airship.<[id]>.location].chunk.is_loaded>:
+    - while <server.flag[airships.ship.<[id]>.elevator_status]> && <server.flag[airships.ship.<[id]>.location]> == <[location]> && <server.flag[airships.ship.<[id]>.location].chunk.is_loaded>:
       - if <[loop_index].mod[10]> == 0:
         - define targets <[blocks_up3].find_players_within[120]>
       - playeffect <[blocks_up].random[5]> offset:1 effect:DRAGON_BREATH quantity:2 velocity:<location[0,0.2,0]> targets:<[targets]>
@@ -284,12 +332,12 @@ nomad_airship_toggle_lever:
   definitions: id
   script:
     - wait 1t
-    - define id <context.location.flag[nomad_airship_id]> if:<[id].exists.not>
-    - define lever_location <server.flag[nomad_airship.<[id]>.location].add[-3,1,-2]>
+    - define id <context.location.flag[airship_id]> if:<[id].exists.not>
+    - define lever_location <server.flag[airships.ship.<[id]>.location].add[-3,1,-2]>
     - if <[lever_location].material.switched>:
-      - run nomad_airship_elevator_particles def:<[id]> if:<server.flag[nomad_airship.<[id]>.elevator_status].not>
+      - run nomad_airship_elevator_particles def:<[id]> if:<server.flag[airships.ship.<[id]>.elevator_status].not>
     - else:
-      - flag server nomad_airship.<[id]>.elevator_status:false
+      - flag server airships.ship.<[id]>.elevator_status:false
 
 nomad_airship_remote_toggle_lever:
   type: task
@@ -297,7 +345,7 @@ nomad_airship_remote_toggle_lever:
   definitions: id
   script:
     - define id <context.item.flag[id]> if:<[id].exists.not>
-    - define lever_location <server.flag[nomad_airship.<[id]>.location].add[-3,1,-2]>
+    - define lever_location <server.flag[airships.ship.<[id]>.location].add[-3,1,-2]>
     - chunkload <[lever_location].chunk> if:<[lever_location].chunk.is_loaded.not>
     - adjustblock <[lever_location]> switched:<[lever_location].material.switched.not>
     - run nomad_airship_toggle_lever def:<[id]>
@@ -307,9 +355,9 @@ nomad_airship_offline_tracker:
   debug: false
   script:
     - if <context.cause> == QUIT:
-      - flag server nomad_airship.<context.area.flag[nomad_airship_id]>.offline_players:->:<player>
+      - flag server airships.ship.<context.area.flag[airship_id]>.offline_players:->:<player>
     - else if <context.cause> == JOIN:
-      - flag server nomad_airship.<context.area.flag[nomad_airship_id]>.offline_players:<-:<player>
+      - flag server airships.ship.<context.area.flag[airship_id]>.offline_players:<-:<player>
 
 ship_command:
   type: command
