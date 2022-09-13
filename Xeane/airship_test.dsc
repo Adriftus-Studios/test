@@ -97,6 +97,8 @@ airship_move:
     - foreach <[old_cuboid].chunks>:
       - define cuboid <[value].cuboid>
       - define mini_cuboid <[cuboid].min.with_y[<[final_low_y]>].to_cuboid[<[cuboid].max.with_y[<[final_high_y]>]>]>
+      - announce LOW<&co><[final_low_y]>
+      - announce LOW<&co><[final_high_y]>
       - schematic create area:<[mini_cuboid]> name:airship_<[id]>_<[loop_index]> <[current_location]>
       - define schematic_count:++
       - wait 1t
