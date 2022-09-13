@@ -192,6 +192,7 @@ airship_move:
       - flag <[old_lever]> airship_id:!
       - flag <[new_lever]> on_right_click:airship_toggle_lever
       - flag <[new_lever]> airship_id:<[id]>
+      - flag server airships.ship.<[id]>.elevator_lever:<[new_lever]>
     - wait 1t
 
     # Blind Players at Destination
