@@ -209,11 +209,6 @@ airship_move:
       - schematic paste <[new_location]> name:airship_<[id]>_<[value]> noair
       - wait 1t
     - title title:<&color[#000000]><&font[adriftus:overlay]><&chr[1004]><&chr[F802]><&chr[1004]> fade_in:5t stay:1s fade_out:1.5s targets:<cuboid[airship_<[id]>].players>
-    - wait 1t
-    - define new_lever <[new_location].add[<server.flag>]>
-    - adjustblock <[new_lever]> switched:true
-    - flag <[new_lever]> on_right_click:airship_toggle_lever
-    - flag <[new_lever]> airship_id:<[id]>
     - wait 5t
 
     # Teleport all players
@@ -343,7 +338,7 @@ airship_create_elevators:
     - flag server airships.ship.<[id]>.cuboids:!
     - define location <server.flag[airships.ship.<[id]>.location]>
     - flag server airships.ship.<[id]>.elevators.entities:!
-    - foreach <server.flag[airships.data.<[airship_type]>.elevators.data]> as:
+    - foreach <server.flag[airships.data.<[airship_type]>.elevators.data]>:
       - define type <[value].get[type]>
       - define offset <[value].get[location]>
       - if <[type]> == up:
