@@ -30,8 +30,8 @@ airship_add_elevator_spot:
       type: <[type]>
       exit_direction: <[exit_direction].if_null[none]>
   script:
-    - if !<server.has_flag[airships.data.<[airship_type]>]>:
-      - narrate "<&c>Unknown Airship Type<&co><&e> <[airship_type]>"
+    - if !<server.has_flag[airships.data.<[airship_type]>_airship]>:
+      - narrate "<&c>Unknown Airship Type<&co><&e> <[airship_type]>_airship"
       - stop
     - define relative_location <server.flag[airships.ship.<[id]>.location].sub[<[location]>]>
     - flag server airships.data.<[airship_type]>_airship.elevators.data:->:<script.parsed_key[data.elevator_map]>
