@@ -437,7 +437,7 @@ airship_elevator_particles:
     - define up_count 0
     - define down_count 0
     - foreach <server.flag[airships.ship.<[id]>.cuboids]>:
-      - choose <[value].flag[type]>:
+      - choose <cuboid[<[value]>].flag[type]>:
         - case up:
           - define blocks_up:->:<[value].blocks.parse[center]>
           - define blocks_up_bottom:->:<[value].min.center.below[0.5]>
