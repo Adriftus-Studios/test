@@ -60,7 +60,7 @@ airship_move:
     - define new_cuboid <[pos1].to_cuboid[<[pos2]>]>
 
     # Town Check in new cuboid
-    - if !<player.has_permission[adriftus.nomad.bypass_towny]> && <[new_cuboid].has_town>:
+    - if !<player.has_permission[adriftus.airship.bypass_towny]> && <[new_cuboid].has_town>:
       - narrate "<&c>Too Close to Town to sail to target."
       - stop
 
@@ -116,13 +116,13 @@ airship_move:
     - repeat <[schematic_count]>:
       - schematic paste <[new_location]> name:airship_<[id]>_<[value]> noair
       - wait 1t
-    - title title:<&f><&font[adriftus:overlay]><&chr[1004]><&chr[F802]><&chr[1004]> fade_in:5t stay:1s fade_out:1.5s targets:<[current_location].find_players_within[140].exclude[<cuboid[nomad_airship_<[id]>_area].players>]>
-    - title title:<&color[#000000]><&font[adriftus:overlay]><&chr[1004]><&chr[F802]><&chr[1004]> fade_in:5t stay:1s fade_out:1.5s targets:<cuboid[nomad_airship_<[id]>_area].players>
+    - title title:<&f><&font[adriftus:overlay]><&chr[1004]><&chr[F802]><&chr[1004]> fade_in:5t stay:1s fade_out:1.5s targets:<[current_location].find_players_within[140].exclude[<cuboid[airship_<[id]>].players>]>
+    - title title:<&color[#000000]><&font[adriftus:overlay]><&chr[1004]><&chr[F802]><&chr[1004]> fade_in:5t stay:1s fade_out:1.5s targets:<cuboid[airship_<[id]>].players>
     - wait 1t
     - define new_lever <[new_location].add[-3,1,-2]>
     - adjustblock <[new_lever]> switched:true
-    - flag <[new_lever]> on_right_click:nomad_airship_toggle_lever
-    - flag <[new_lever]> nomad_airship_id:<[id]>
+    - flag <[new_lever]> on_right_click:airship_toggle_lever
+    - flag <[new_lever]> airship_id:<[id]>
     - wait 5t
 
     # Teleport all players
@@ -147,7 +147,7 @@ airship_move:
     - chunkload <server.flag[airships.ship.<[id]>.chunks]> duration:10s
     - define current_lever <[current_location].add[-3,1,-2]>
     - flag <[current_lever]> on_right_click:!
-    - flag <[current_lever]> nomad_airship_id:!
+    - flag <[current_lever]> airship_id:!
     - ~modifyblock <[old_cuboid].blocks[*_carpet|*torch|lever|tripwire_hook|*_bed|lantern|*sign|bell|*azalea|*_door|*_pressure_plate|*_banner]> air no_physics delayed
     - wait 1t
     - ~modifyblock <[old_cuboid].blocks> air delayed
@@ -157,11 +157,11 @@ airship_move:
       - schematic unload name:airship_<[id]>_<[value]>
       - wait 1t
     - flag server airships.ship.<[id]>.chunks:<[new_cuboid].chunks>
-    - note <[final_cuboid]> as:airship_<[type]>_<[id]>
-    - flag <cuboid[airship_<[type]>_<[id]>]> airship_id:<[id]>
-    - flag <cuboid[airship_<[type]>_<[id]>]> airship_type:<[type]>
-    - flag <cuboid[airship_<[type]>_<[id]>]> player_leaves:nomad_airship_offline_tracker
-    - flag <cuboid[airship_<[type]>_<[id]>]> player_enters:nomad_airship_offline_tracker
+    - note <[final_cuboid]> as:airship_<[id]>
+    - flag <cuboid[airship_<[id]>]> airship_id:<[id]>
+    - flag <cuboid[airship_<[id]>]> airship_type:<[type]>
+    - flag <cuboid[airship_<[id]>]> player_leaves:airship_offline_tracker
+    - flag <cuboid[airship_<[id]>]> player_enters:airship_offline_tracker
 
 airship_create:
   type: task
@@ -208,6 +208,7 @@ airship_create:
     - define final_cuboid <[pos1].to_cuboid[<[pos2]>]>
 
     # Schematic Pasting
+    - ~run airship_create_elevators def:<[id]>
     - ~schematic paste location:<[new_location]> name:<[type]>_airship
     - wait 1t
 
@@ -216,10 +217,10 @@ airship_create:
     - flag server airships.ship.<[id]>.location:<[new_location]>
     - flag server airships.ship.<[id]>.elevator_status
     - adjust <player> we_selection:<[final_cuboid]>
-    - note <[cuboid]> as:airship_<[type]>_<[id]>
-    - flag <cuboid[airship_<[type]>_<[id]>]> nomad_airship_id:<[id]>
-    - flag <cuboid[airship_<[type]>_<[id]>]> player_leaves:nomad_airship_offline_tracker
-    - flag <cuboid[airship_<[type]>_<[id]>]> player_enters:nomad_airship_offline_tracker
+    - note <[cuboid]> as:airship_<[id]>
+    - flag <cuboid[airship_<[id]>]> airship_id:<[id]>
+    - flag <cuboid[airship_<[id]>]> player_leaves:airship_offline_tracker
+    - flag <cuboid[airship_<[id]>]> player_enters:airship_offline_tracker
 
     # World Guard Region
     - execute as_op "rg create airship_<[type]>_<[id]>"
@@ -229,7 +230,6 @@ airship_create:
     - execute as_server "rg flag airship_<[type]>_<[id]> -w <[location].world.name> tnt deny"
     - execute as_server "rg flag airship_<[type]>_<[id]> -w <[location].world.name> fire-spread deny"
     - wait 1t
-    - ~run airship_create_elevators def:<[id]>
 
 airship_create_elevators:
   type: task
@@ -239,22 +239,22 @@ airship_create_elevators:
     - define location <server.flag[airships.ship.<[id]>.location]>
     - define elevator1 <[location].add[0,0,-1].highest.center.above[0.51]>
     - define lever_position <[location].add[-3,1,-2]>
-    - spawn airship_elevator_up <[elevator1]> save:elevator_up
+    - spawn airship_elevator_up_entity <[elevator1]> save:elevator_up
     - flag <entry[elevator_up].spawned_entity> airship_id:<[id]>
     - flag <entry[elevator_up].spawned_entity> airship_location:<server.flag[airships.ship.<[id]>.location]>
-    - flag server nomad_airship.<[id]>.elevators:|:<entry[elevator_up].spawned_entity>
+    - flag server airships.ship.<[id]>.elevators:|:<entry[elevator_up].spawned_entity>
     - note <[elevator1].to_cuboid[<[location].add[0,0,-1].below>]> as:airship_<[id]>_elevator_up
     - note <[location].add[0,1,-1].to_cuboid[<[location].add[0,0,-1]>]> as:airship_<[id]>_elevator_top
     - note <[location].add[0,2,2].to_cuboid[<[location].add[0,-1,2]>]> as:airship_<[id]>_elevator_down
-    - flag <cuboid[airship_<[id]>_elevator_up]> player_enters:nomad_airship_up
-    - flag <cuboid[airship_<[id]>_elevator_top]> player_enters:nomad_airship_top
-    - flag <cuboid[airship_<[id]>_elevator_down]> player_enters:nomad_airship_down
+    - flag <cuboid[airship_<[id]>_elevator_up]> player_enters:airship_elevator_up
+    - flag <cuboid[airship_<[id]>_elevator_top]> player_enters:airship_elevator_top
+    - flag <cuboid[airship_<[id]>_elevator_down]> player_enters:airship_elevator_down
     - flag <cuboid[airship_<[id]>_elevator_up]> airship_id:<[id]>
     - flag <cuboid[airship_<[id]>_elevator_top]> airship_id:<[id]>
     - flag <cuboid[airship_<[id]>_elevator_down]> airship_id:<[id]>
-    - run nomad_airship_elevator_particles def:<[id]>
+    - run airship_elevator_particles def:<[id]>
 
-airship_elevator_up:
+airship_elevator_up_entity:
   type: entity
   debug: false
   entity_type: armor_stand
@@ -263,11 +263,11 @@ airship_elevator_up:
     visible: false
     gravity: false
   flags:
-    on_entity_added: nomad_airship_elevator_added
+    on_entity_added: airship_elevator_added
     elevator_type: up
 
 
-nomad_airship_up:
+airship_elevator_up:
   type: task
   debug: false
   script:
@@ -279,21 +279,21 @@ nomad_airship_up:
       - adjust <player> velocity:<context.area.center.sub[<player.location>].div[10].with_y[0.6]>
       - wait 1t
 
-nomad_airship_top:
+airship_elevator_top:
   type: task
   debug: false
   script:
     - stop if:<server.flag[airships.ship.<context.area.flag[airship_id]>.elevator_status].not>
     - adjust <player> velocity:<location[-0.1,0.1,0]>
 
-nomad_airship_down:
+airship_elevator_down:
   type: task
   debug: false
   script:
     - stop if:<server.flag[airships.ship.<context.area.flag[airship_id]>.elevator_status].not>
     - cast slow_falling duration:15s
 
-nomad_airship_elevator_added:
+airship_elevator_added:
   type: task
   debug: false
   script:
@@ -301,17 +301,17 @@ nomad_airship_elevator_added:
     - if !<context.entity.is_spawned>:
       - stop
     - define id <context.entity.flag[airship_id]>
-    - if <context.entity.flag[airship_location]> != <server.flag[nomad_airship.<[id]>.location]>:
+    - if <context.entity.flag[airship_location]> != <server.flag[airships.ship.<[id]>.location]>:
       - remove <context.entity>
       - stop
-    - run nomad_airship_elevator_particles def:<[id]>
+    - run airship_elevator_particles def:<[id]>
 
-nomad_airship_elevator_particles:
+airship_elevator_particles:
   type: task
   debug: false
   definitions: id
   script:
-    - flag server nomad_airship.<[id]>.elevator_status
+    - flag server airships.ship.<[id]>.elevator_status
     - define location <server.flag[airships.ship.<[id]>.location]>
     - define blocks_up <cuboid[airship_<[id]>_elevator_up].blocks.parse[center]>
     - define blocks_up2 <cuboid[airship_<[id]>_elevator_up].blocks.parse[center]>
@@ -328,7 +328,7 @@ nomad_airship_elevator_particles:
       - playeffect <[blocks_down1]> offset:1 effect:END_ROD quantity:5 velocity:<location[0,-0.2,0]> targets:<[targets]>
       - wait 3t
 
-nomad_airship_toggle_lever:
+airship_toggle_lever:
   type: task
   debug: false
   definitions: id
@@ -337,11 +337,11 @@ nomad_airship_toggle_lever:
     - define id <context.location.flag[airship_id]> if:<[id].exists.not>
     - define lever_location <server.flag[airships.ship.<[id]>.location].add[-3,1,-2]>
     - if <[lever_location].material.switched>:
-      - run nomad_airship_elevator_particles def:<[id]> if:<server.flag[airships.ship.<[id]>.elevator_status].not>
+      - run airship_elevator_particles def:<[id]> if:<server.flag[airships.ship.<[id]>.elevator_status].not>
     - else:
       - flag server airships.ship.<[id]>.elevator_status:false
 
-nomad_airship_remote_toggle_lever:
+airship_remote_toggle_lever:
   type: task
   debug: false
   definitions: id
@@ -350,9 +350,9 @@ nomad_airship_remote_toggle_lever:
     - define lever_location <server.flag[airships.ship.<[id]>.location].add[-3,1,-2]>
     - chunkload <[lever_location].chunk> if:<[lever_location].chunk.is_loaded.not>
     - adjustblock <[lever_location]> switched:<[lever_location].material.switched.not>
-    - run nomad_airship_toggle_lever def:<[id]>
+    - run airship_toggle_lever def:<[id]>
 
-nomad_airship_offline_tracker:
+airship_offline_tracker:
   type: task
   debug: false
   script:
