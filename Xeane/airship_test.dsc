@@ -21,7 +21,7 @@ add_airship_type:
 
 airship_move:
   type: task
-  debug: false
+  debug: true
   definitions: id|exact_location
   script:
     - if !<server.has_flag[airships.ship.<[id]>]>:
@@ -126,13 +126,13 @@ airship_move:
     - wait 5t
 
     # Teleport all players
-    - foreach <cuboid[airship_<[type]>_<[id]>].players>:
+    - foreach <cuboid[airship_<[id]>].players>:
       - define relative <[value].location.sub[<[current_location]>]>
       - teleport <[value]> <[new_location].add[<[relative]>].with_pose[<[value]>]>
 
     # Teleport Other Entities
     - wait 1t
-    - foreach <cuboid[airship_<[type]>_<[id]>].entities[!player]>:
+    - foreach <cuboid[airship_<[id]>].entities[!player]>:
       - define relative <[value].location.sub[<[current_location]>]>
       - teleport <[value]> <[new_location].add[<[relative]>].with_pose[<[value]>]>
 
