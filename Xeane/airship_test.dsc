@@ -42,8 +42,8 @@ airship_set_elevator_lever:
     flag_map:
       location: <[relative_location]>
   script:
-    - if !<server.has_flag[airships.data.<[airship_type]>]>:
-      - narrate "<&c>Unknown Airship Type<&co><&e> <[airship_type]>"
+    - if !<server.has_flag[airships.data.<[airship_type]>_airship]>:
+      - narrate "<&c>Unknown Airship Type<&co><&e> <[airship_type]>_airship"
     - flag server airships.data.<[airship_type]>_airship.elevator_lever:<server.flag[airships.ship.<[id]>.location].sub[<[location]>]>
 
 airship_add_static_flags:
