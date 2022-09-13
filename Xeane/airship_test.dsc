@@ -340,8 +340,9 @@ airship_create_elevators:
       - foreach <server.flag[airships.ship.<[id]>.cuboids]>:
         - note remove as:<[value]>
       - wait 1t
+    - flag server airships.ship.<[id]>.cuboids:!
     - define location <server.flag[airships.ship.<[id]>.location]>
-    - flag srever airships.ship.<[id]>.elevators.entities:!
+    - flag server airships.ship.<[id]>.elevators.entities:!
     - foreach <server.flag[airships.data.<[airship_type]>.elevators.data]> as:
       - define type <[value].get[type]>
       - define offset <[value].get[location]>
