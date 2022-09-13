@@ -59,8 +59,8 @@ airship_add_static_flags:
       value: <[value]>
       location: <[relative_location]>
   script:
-    - if !<server.has_flag[airships.data.<[airship_type]>]>:
-      - narrate "<&c>Unknown Airship Type<&co><&e> <[airship_type]>"
+    - if !<server.has_flag[airships.data.<[airship_type]>_airship]>:
+      - narrate "<&c>Unknown Airship Type<&co><&e> <[airship_type]>_airship"
       - stop
     - define relative_location <server.flag[airships.ship.<[id]>.location].sub[<[location]>]>
     - flag server airships.data.<[airship_type]>_airship.static_flags:->:<script.parsed_key[data.flag_map]>
@@ -75,8 +75,8 @@ airship_add_moving_flags:
       default_value: <[default]>
       location: <[relative_location]>
   script:
-    - if !<server.has_flag[airships.data.<[airship_type]>]>:
-      - narrate "<&c>Unknown Airship Type<&co><&e> <[airship_type]>"
+    - if !<server.has_flag[airships.data.<[airship_type]>_airship]>:
+      - narrate "<&c>Unknown Airship Type<&co><&e> <[airship_type]>_airship"
       - stop
     - define relative_location <server.flag[airships.ship.<[id]>.location].sub[<[location]>]>
     - flag server airships.data.<[airship_type]>_airship.moving_flags:->:<script.parsed_key[data.flag_map]>
