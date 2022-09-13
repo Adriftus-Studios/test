@@ -214,6 +214,7 @@ airship_create:
     # Cuboid Building
     - flag server airships.ship.<[id]>.chunks:<[final_cuboid].chunks>
     - flag server airships.ship.<[id]>.location:<[new_location]>
+    - flag server airships.ship.<[id]>.elevator_status:true
     - adjust <player> we_selection:<[final_cuboid]>
     - note <[cuboid]> as:airship_<[type]>_<[id]>
     - flag <cuboid[airship_<[type]>_<[id]>]> nomad_airship_id:<[id]>
