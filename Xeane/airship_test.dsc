@@ -33,7 +33,7 @@ airship_add_elevator_spot:
     - if !<server.has_flag[airships.data.<[airship_type]>_airship]>:
       - narrate "<&c>Unknown Airship Type<&co><&e> <[airship_type]>_airship"
       - stop
-    - define relative_location <server.flag[airships.ship.<[id]>.location].sub[<[location]>]>
+    - define relative_location <[location].sub[<server.flag[airships.ship.<[id]>.location]>]>
     - flag server airships.data.<[airship_type]>_airship.elevators.data:->:<script.parsed_key[data.elevator_map]>
 
 airship_set_elevator_lever:
@@ -62,7 +62,7 @@ airship_add_static_flags:
     - if !<server.has_flag[airships.data.<[airship_type]>_airship]>:
       - narrate "<&c>Unknown Airship Type<&co><&e> <[airship_type]>_airship"
       - stop
-    - define relative_location <server.flag[airships.ship.<[id]>.location].sub[<[location]>]>
+    - define relative_location <[location].sub[<server.flag[airships.ship.<[id]>.location]>]>
     - flag server airships.data.<[airship_type]>_airship.static_flags:->:<script.parsed_key[data.flag_map]>
 
 airship_add_moving_flags:
@@ -78,7 +78,7 @@ airship_add_moving_flags:
     - if !<server.has_flag[airships.data.<[airship_type]>_airship]>:
       - narrate "<&c>Unknown Airship Type<&co><&e> <[airship_type]>_airship"
       - stop
-    - define relative_location <server.flag[airships.ship.<[id]>.location].sub[<[location]>]>
+    - define relative_location <[location].sub[<server.flag[airships.ship.<[id]>.location]>]>
     - flag server airships.data.<[airship_type]>_airship.moving_flags:->:<script.parsed_key[data.flag_map]>
 
 airship_move:
