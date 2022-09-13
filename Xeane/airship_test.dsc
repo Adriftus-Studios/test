@@ -1,39 +1,58 @@
-airship_types_data:
-  type: data
-  
+# Adds a new type of airship
+# filename is the schematic's filename
+add_airship_type:
+  type: task
+  debug: false
+  definitions: filename|type
+  script:
+    - ~schematic load filename:<[filename]> id:<[type]>_airship
+    - define id <[type]>_airship
+    - stop if:<schematic.list.contains[<[id]>].not>
+    - define origin <schematic[<[id]>].origin>
+    - flag server airships.data.<[id]>.higher_y:<schematic[<[id]>].height.sub[<[origin].y>]>
+    - flag server airships.data.<[id]>.lower_y:-<[origin].y.add[1]>
+    - flag server airships.data.<[id]>.higher_x:<schematic[<[id]>].width.sub[<[origin].x>]>
+    - flag server airships.data.<[id]>.lower_x:-<[origin].x.add[1]>
+    - flag server airships.data.<[id]>.higher_z:<schematic[<[id]>].length.sub[<[origin].z>]>
+    - flag server airships.data.<[id]>.lower_z:-<[origin].z.add[1]>
+    - flag server airships.data.<[id]>.sailing_height:50
 
 airship_move:
   type: task
   debug: false
   definitions: id|exact_location
   script:
-    - if !<server.has_flag[nomad_airship.<[id]>]>:
+    - if !<server.has_flag[airships.ship.<[id]>]>:
       - narrate "<&c>CRITICAL ERROR - REPORT TO XEANE"
-      - stop
-    - if !<server.match_player[Xeane].exists>:
-      - narrate "<&c>Unable to move Airship at this time"
       - stop
     - if <[exact_location].world.name> != <server.worlds.first.name>:
       - narrate "<&c>Cannot move Airship outside of it's world."
-    - if <[exact_location].distance[<server.flag[nomad_airship.<[id]>.location]>]> < 500:
+    - if <[exact_location].distance[<server.flag[airships.ship.<[id]>.location]>]> < 500:
       - narrate "<&c>You cannot move the airship less than 500 blocks"
       - stop
-    - if <server.flag[nomad_airship.<[id]>.location].world.border_center.distance[<[exact_location]>]> > <server.flag[nomad_airship.<[id]>.location].world.border_size.sub[100]>:
+    - if <server.flag[airships.ship.<[id]>.location].world.border_center.distance[<[exact_location]>]> > <server.flag[airships.ship.<[id]>.location].world.border_size.sub[100]>:
       - narrate "<&c>Destination is outside world border."
       - stop
+    
+    # Get Schematic Data
+    - define type <server.flag[airships.ship.<[id]>.type]>
+    - define current_location <server.flag[airships.ship.<[id]>.location]>
+    - define higher_y <server.flag[airships.data.<[type]>.higher_y]>
+    - define lower_y <server.flag[airships.data.<[type]>.lower_y]>
+    - define higher_x <server.flag[airships.data.<[type]>.higher_x]>
+    - define lower_x <server.flag[airships.data.<[type]>.lower_x]>
+    - define higher_z <server.flag[airships.data.<[type]>.higher_z]>
+    - define lower_z <server.flag[airships.data.<[type]>.lower_z]>
 
     # Build Old Cuboid
-    - define Xeane <server.match_player[Xeane]>
-    - define current_location <server.flag[nomad_airship.<[id]>.location]>
-    - define pos1 <[current_location].add[-20,-20,-50]>
-    - define pos2 <[current_location].add[20,50,40]>
+    - define pos1 <[current_location].add[<[lower_x].add[-20]>,<[lower_y].add[-20]>,<[lower_z]>].add[-20]>
+    - define pos2 <[current_location].add[<[higher_x].add[20]>,<[higher_y].add[20]>,<[higher_z]>].add[20]>
     - define old_cuboid <[pos1].to_cuboid[<[pos2]>]>
     - wait 1t
 
     # Build New Cuboid
-    - execute as_player "rg remove nomad_airship_<[id]>" player:<[Xeane]>
-    - define pos1 <[exact_location].add[-20,-20,-50]>
-    - define pos2 <[exact_location].add[20,50,40]>
+    - define pos1 <[exact_location].add[<[lower_x].add[-20]>,<[lower_y].add[-20]>,<[lower_z]>].add[-20]>
+    - define pos2 <[exact_location].add[<[higher_x].add[20]>,<[higher_y].add[20]>,<[higher_z]>].add[20]>
     - define new_cuboid <[pos1].to_cuboid[<[pos2]>]>
 
     # Town Check in new cuboid
@@ -57,31 +76,43 @@ airship_move:
       - stop
 
     # Final Cuboid
-    - define new_location <[exact_location].with_y[<[highest].add[50]>]>
-    - define pos1 <[new_location].add[-20,-20,-50]>
-    - define pos2 <[new_location].add[20,50,40]>
+    - define new_location <[exact_location].with_y[<[highest].add[<[lower_y].abs>].add[<server.flag[airships.data.<[type]>.sailing_height]>]>]>
+    - define pos1 <[new_location].add[<[lower_x].add[-20]>,<[lower_y].add[-20]>,<[lower_z]>].add[-20]>
+    - define pos2 <[new_location].add[<[higher_x].add[20]>,<[higher_y].add[20]>,<[higher_z]>].add[20]>
     - define final_cuboid <[pos1].to_cuboid[<[pos2]>]>
 
     # Create Worldguard region
     - adjust <player> we_selection:<[final_cuboid]>
-    - execute as_op "rg create nomad_airship_<[id]>"
+    - execute as_op "rg redefine airship_<[id]>" silent
     - wait 1t
+
+    # Scehmatic the Ship
+    - define schematic_count 0
+    - define final_low_y <[final_cuboid].min.y.add[20]>
+    - define final_high_y <[final_cuboid].max.y.add[-20]>
+    - foreach <[old_cuboid].chunks>:
+      - define cuboid <[value].cuboid>
+      - define mini_cuboid <[cuboid].min.with_y[<[final_low_y]>].to_cuboid[<[cuboid].max.with_y[<[final_high_y]>]>]>
+      - schematic create area:<[mini_cuboid]> name:airship_<[id]>_<[loop_index]> <[current_location]>
+      - define schematic_count:++
+      - wait 1t
+    - flag server airships.ship.<[id]>.location:<[new_location]>
+    - flag server airships.ship.<[id]>.last_moved:<util.time_now>
 
     # Blind Players at Destination
     - define target_players <[new_location].find_players_within[140]>
-    - title title:<&f><&font[adriftus:overlay]><&chr[1004]><&chr[F801]><&chr[1004]> fade_in:5t stay:1s fade_out:1.5s targets:<[target_players]>
+    - title title:<&f><&font[adriftus:overlay]><&chr[1004]><&chr[F801]><&chr[1004]> fade_in:5t stay:<[schematic_count].add[10]>t fade_out:1.5s targets:<[target_players]>
     - wait 7t
 
-    # Paste New Airship
-    - schematic create area:<[old_cuboid]> name:nomad_airship_<[id]> <[current_location]>
-    - wait 1t
-    - flag server nomad_airship.<[id]>.location:<[new_location]>
-    - flag server nomad_airship.<[id]>.last_moved:<util.time_now>
+    # Place Elevators
     - ~run airship_create_elevators def:<[id]>
     - wait 1t
-    - ~schematic paste <[new_location]> name:nomad_airship_<[id]> delayed noair
-    - wait 1t
-    - title title:<&color[#000000]><&font[adriftus:overlay]><&chr[1004]><&chr[F802]><&chr[1004]> fade_in:5t stay:1s fade_out:1.5s targets:<[current_location].find_players_within[140].exclude[<cuboid[nomad_airship_<[id]>_area].players>]>
+
+    # Paste New Airship
+    - repeat <[schematic_count]>:
+      - schematic paste <[new_location]> name:airship_<[id]>_<[value]> noair
+      - wait 1t
+    - title title:<&f><&font[adriftus:overlay]><&chr[1004]><&chr[F802]><&chr[1004]> fade_in:5t stay:1s fade_out:1.5s targets:<[current_location].find_players_within[140].exclude[<cuboid[nomad_airship_<[id]>_area].players>]>
     - title title:<&color[#000000]><&font[adriftus:overlay]><&chr[1004]><&chr[F802]><&chr[1004]> fade_in:5t stay:1s fade_out:1.5s targets:<cuboid[nomad_airship_<[id]>_area].players>
     - wait 1t
     - define new_lever <[new_location].add[-3,1,-2]>
