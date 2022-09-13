@@ -49,14 +49,14 @@ airship_move:
     - define sailing_height <server.flag[airships.data.<[airship_type]>.sailing_height]>
 
     # Build Old Cuboid
-    - define pos1 <[current_location].add[<[lower_x].add[-20]>,<[lower_y].add[-20]>,<[lower_z]>].add[-20]>
-    - define pos2 <[current_location].add[<[higher_x].add[20]>,<[higher_y].add[20]>,<[higher_z]>].add[20]>
+    - define pos1 <[current_location].add[<[lower_x].add[-20]>,<[lower_y].add[-20]>,<[lower_z].add[-20]>]>
+    - define pos2 <[current_location].add[<[higher_x].add[20]>,<[higher_y].add[20]>,<[higher_z].add[20]>]>
     - define old_cuboid <[pos1].to_cuboid[<[pos2]>]>
     - wait 1t
 
     # Build New Cuboid
-    - define pos1 <[exact_location].add[<[lower_x].add[-20]>,<[lower_y].add[-20]>,<[lower_z]>].add[-20]>
-    - define pos2 <[exact_location].add[<[higher_x].add[20]>,<[higher_y].add[20]>,<[higher_z]>].add[20]>
+    - define pos1 <[exact_location].add[<[lower_x].add[-20]>,<[lower_y].add[-20]>,<[lower_z].add[-20]>]>
+    - define pos2 <[exact_location].add[<[higher_x].add[20]>,<[higher_y].add[20]>,<[higher_z].add[20]>]>
     - define new_cuboid <[pos1].to_cuboid[<[pos2]>]>
 
     # Town Check in new cuboid
@@ -81,8 +81,8 @@ airship_move:
 
     # Final Cuboid
     - define new_location <[exact_location].with_y[<[highest].add[<[lower_y].abs>].add[<[sailing_height]>]>]>
-    - define pos1 <[new_location].add[<[lower_x].add[-20]>,<[lower_y].add[-20]>,<[lower_z]>].add[-20]>
-    - define pos2 <[new_location].add[<[higher_x].add[20]>,<[higher_y].add[20]>,<[higher_z]>].add[20]>
+    - define pos1 <[new_location].add[<[lower_x].add[-20]>,<[lower_y].add[-20]>,<[lower_z].add[-20]>]>
+    - define pos2 <[new_location].add[<[higher_x].add[20]>,<[higher_y].add[20]>,<[higher_z].add[20]>]>
     - define final_cuboid <[pos1].to_cuboid[<[pos2]>]>
 
     # Create Worldguard region
@@ -203,8 +203,8 @@ airship_create:
 
     # Build Final Cuboid
     - define new_location <[location].with_y[<[highest].add[<[lower_y].abs>].add[<[sailing_height]>]>]>
-    - define pos1 <[new_location].add[<[lower_x].add[-20]>,<[lower_y].add[-20]>,<[lower_z]>].add[-20]>
-    - define pos2 <[new_location].add[<[higher_x].add[20]>,<[higher_y].add[20]>,<[higher_z]>].add[20]>
+    - define pos1 <[new_location].add[<[lower_x].add[-20]>,<[lower_y].add[-20]>,<[lower_z].add[-20]>]>
+    - define pos2 <[new_location].add[<[higher_x].add[20]>,<[higher_y].add[20]>,<[higher_z].add[20]>]>
     - define final_cuboid <[pos1].to_cuboid[<[pos2]>]>
 
     # Schematic Pasting
