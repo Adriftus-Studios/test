@@ -5,7 +5,7 @@ add_airship_type:
   debug: false
   definitions: filename|type
   script:
-    - ~schematic load filename:<[filename]> id:<[type]>_airship
+    - ~schematic load filename:<[filename]> name:<[type]>_airship
     - define id <[type]>_airship
     - stop if:<schematic.list.contains[<[id]>].not>
     - define origin <schematic[<[id]>].origin>
