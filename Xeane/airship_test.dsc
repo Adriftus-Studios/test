@@ -186,8 +186,8 @@ airship_move:
 
     # Elevator Lever
     - if <server.has_flag[airships.data.<[airship_type]>.elevator_lever]>:
-      - define old_lever <[current_location].add[<server.flag[airships.ship.<[id]>.elevator_lever]>]>
-      - define new_lever <[new_location].add[<server.flag[airships.ship.<[id]>.elevator_lever]>]>
+      - define old_lever <[current_location].add[<server.flag[airships.data.<[airship_type]>.elevator_lever]>]>
+      - define new_lever <[new_location].add[<server.flag[airships.data.<[airship_type]>.elevator_lever]>]>
       - flag <[old_lever]> on_right_click:!
       - flag <[old_lever]> airship_id:!
       - flag <[new_lever]> on_right_click:airship_toggle_lever
