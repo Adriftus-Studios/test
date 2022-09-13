@@ -92,13 +92,13 @@ airship_move:
 
     # Scehmatic the Ship
     - define schematic_count 0
-    - define final_low_y <[final_cuboid].min.y.add[20]>
-    - define final_high_y <[final_cuboid].max.y.add[-20]>
+    - define final_low_y <[old_cuboid].min.y.add[20]>
+    - define final_high_y <[old_cuboid].max.y.add[-20]>
     - foreach <[old_cuboid].chunks>:
       - define cuboid <[value].cuboid>
       - define mini_cuboid <[cuboid].min.with_y[<[final_low_y]>].to_cuboid[<[cuboid].max.with_y[<[final_high_y]>]>]>
       - announce LOW<&co><[final_low_y]>
-      - announce LOW<&co><[final_high_y]>
+      - announce HIGH<&co><[final_high_y]>
       - schematic create area:<[mini_cuboid]> name:airship_<[id]>_<[loop_index]> <[current_location]>
       - define schematic_count:++
       - wait 1t
