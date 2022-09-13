@@ -207,15 +207,17 @@ airship_create:
     - define pos2 <[new_location].add[<[higher_x].add[20]>,<[higher_y].add[20]>,<[higher_z].add[20]>]>
     - define final_cuboid <[pos1].to_cuboid[<[pos2]>]>
 
+    # Setting Server Flags
+    - flag server airships.ship.<[id]>.chunks:<[final_cuboid].chunks>
+    - flag server airships.ship.<[id]>.location:<[new_location]>
+    - flag server airships.ship.<[id]>.elevator_status
+
     # Schematic Pasting
     - ~run airship_create_elevators def:<[id]>
     - ~schematic paste location:<[new_location]> name:<[type]>_airship
     - wait 1t
 
     # Cuboid Building
-    - flag server airships.ship.<[id]>.chunks:<[final_cuboid].chunks>
-    - flag server airships.ship.<[id]>.location:<[new_location]>
-    - flag server airships.ship.<[id]>.elevator_status
     - adjust <player> we_selection:<[final_cuboid]>
     - note <[cuboid]> as:airship_<[id]>
     - flag <cuboid[airship_<[id]>]> airship_id:<[id]>
