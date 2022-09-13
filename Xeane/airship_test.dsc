@@ -148,7 +148,7 @@ airship_move:
     - execute as_op "rg redefine airship_<[id]>" silent
     - wait 1t
 
-    # Scehmatic the Ship
+    # Schematic the Ship
     - define schematic_count 0
     - define final_low_y <[old_cuboid].min.y.add[20]>
     - define final_high_y <[old_cuboid].max.y.add[-20]>
@@ -161,11 +161,9 @@ airship_move:
     - flag server airships.ship.<[id]>.location:<[new_location]>
     - flag server airships.ship.<[id]>.last_moved:<util.time_now>
 
-    # Blind Players at Destination
-    - define target_players <[new_location].find_players_within[140]>
-    - title title:<&f><&font[adriftus:overlay]><&chr[1004]><&chr[F801]><&chr[1004]> fade_in:5t stay:<[schematic_count].add[10]>t fade_out:1.5s targets:<[target_players]>
-    - wait 7t
-
+    # Set Movement Data
+    - flag server airships.ship.<[id]>.location:<[new_location]>
+    - flag server airships.ship.<[id]>.last_moved:<util.time_now>
     # Handle Location Flags
     # Static Flags
     - if <server.has_flag[airships.data.<[airship_type]>.static_flags]>:
@@ -191,6 +189,11 @@ airship_move:
       - flag <[new_lever]> on_right_click:airship_toggle_lever
       - flag <[new_lever]> airship_id:<[id]>
     - wait 1t
+
+    # Blind Players at Destination
+    - define target_players <[new_location].find_players_within[140]>
+    - title title:<&f><&font[adriftus:overlay]><&chr[1004]><&chr[F801]><&chr[1004]> fade_in:5t stay:<[schematic_count].add[10]>t fade_out:1.5s targets:<[target_players]>
+    - wait 5t
 
     # Place Elevators
     - if <server.has_flag[airships.data.<[airship_type]>.elevators.data]>:
@@ -229,9 +232,6 @@ airship_move:
     # Remove Old Airship
     - wait 1t
     - chunkload <server.flag[airships.ship.<[id]>.chunks]> duration:10s
-    - define current_lever <[current_location].add[-3,1,-2]>
-    - flag <[current_lever]> on_right_click:!
-    - flag <[current_lever]> airship_id:!
     - title title:<&f><&font[adriftus:overlay]><&chr[1004]><&chr[F802]><&chr[1004]> fade_in:5t stay:<[old_cuboid].chunks.size.mul[2].add[5]>t fade_out:1.5s targets:<[current_location].find_players_within[140]>
     - wait 4t
     - foreach <[old_cuboid].chunks>:
