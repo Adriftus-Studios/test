@@ -1,11 +1,12 @@
 # Adds a new type of airship
 # filename is the schematic's filename
-add_airship_type:
+airship_type:
   type: task
   debug: false
   definitions: filename|type
   script:
-    - ~schematic load filename:<[filename]> name:<[type]>_airship
+    - if !<schematic.list.contains[<[type]>_airship]>:
+      - ~schematic load filename:<[filename]> name:<[type]>_airship
     - define id <[type]>_airship
     - stop if:<schematic.list.contains[<[id]>].not>
     - define origin <schematic[<[id]>].origin>
@@ -18,6 +19,62 @@ add_airship_type:
     - flag server airships.data.<[id]>.sailing_height:50
     - flag server airships.data.<[id]>.schematic:<[filename]>
     - flag server airships.data.<[id]>.type:<[type]>
+
+airship_add_elevator_spot:
+  type: task
+  debug: false
+  definitions: airship_type|id|type|location
+  data:
+    elevator_map:
+      location: <[relative_location]>
+      type: <[type]>
+  script:
+    - if !<server.has_flag[airships.data.<[airship_type]>]>:
+      - narrate "<&c>Unknown Airship Type<&co><&e> <[airship_type]>"
+    - define relative_location <server.flag[airships.ship.<[id]>.location].sub[<[location]>]>
+    - flag server airships.data.<[airship_type]>_airship.elevators.data:->:<script.parsed_key[data.elevator_map]>
+
+airship_set_elevator_lever:
+  type: task
+  debug: false
+  definitions: airship_type|id|location
+  data:
+    flag_map:
+      location: <[relative_location]>
+  script:
+    - if !<server.has_flag[airships.data.<[airship_type]>]>:
+      - narrate "<&c>Unknown Airship Type<&co><&e> <[airship_type]>"
+    - flag server airships.data.<[airship_type]>_airship.elevator_lever:<server.flag[airships.ship.<[id]>.location].sub[<[location]>]>
+
+airship_add_static_flags:
+  type: task
+  debug: false
+  definitions: airship_type|id|name|value|location
+  data:
+    flag_map:
+      name: <[name]>
+      value: <[value]>
+      location: <[relative_location]>
+  script:
+    - if !<server.has_flag[airships.data.<[airship_type]>]>:
+      - narrate "<&c>Unknown Airship Type<&co><&e> <[airship_type]>"
+    - define relative_location <server.flag[airships.ship.<[id]>.location].sub[<[location]>]>
+    - flag server airships.data.<[airship_type]>_airship.static_flags:->:<script.parsed_key[data.flag_map]>
+
+airship_add_moving_flags:
+  type: task
+  debug: false
+  definitions: airship_type|id|name|default|location
+  data:
+    flag_map:
+      name: <[name]>
+      default_value: <[default]>
+      location: <[relative_location]>
+  script:
+    - if !<server.has_flag[airships.data.<[airship_type]>]>:
+      - narrate "<&c>Unknown Airship Type<&co><&e> <[airship_type]>"
+    - define relative_location <server.flag[airships.ship.<[id]>.location].sub[<[location]>]>
+    - flag server airships.data.<[airship_type]>_airship.moving_flags:->:<script.parsed_key[data.flag_map]>
 
 airship_move:
   type: task
@@ -109,9 +166,36 @@ airship_move:
     - title title:<&f><&font[adriftus:overlay]><&chr[1004]><&chr[F801]><&chr[1004]> fade_in:5t stay:<[schematic_count].add[10]>t fade_out:1.5s targets:<[target_players]>
     - wait 7t
 
-    # Place Elevators
-    - ~run airship_create_elevators def:<[id]>
+    # Handle Location Flags
+    # Static Flags
+    - if <server.has_flag[airships.data.<[airship_type]>.static_flags]>:
+      - foreach <server.flag[airships.data.<[airship_type]>.static_flags]> as:map:
+        - wait 1t if:<[loop_index].mod[10].equals[0]>
+        - flag <[current_location].add[<[map].get[location]>]> <[map].get[name]>:!
+        - flag <[new_location].add[<[map].get[location]>]> <[map].get[name]>:<[map].get[value]>
+
+    # Moving Flags
+    - if <server.has_flag[airships.data.<[airship_type]>.moving_flags]>:
+      - foreach <server.flag[airships.data.<[airship_type]>.moving_flags]> as:map:
+        - wait 1t if:<[loop_index].mod[10].equals[0]>
+        - define value <[current_location].add[<[map].get[location]>].flag[<[map].get[name]>].if_null[<[map].get[default_value]>]>
+        - flag <[current_location].add[<[map].get[location]>]> <[map].get[name]>:!
+        - flag <[new_location].add[<[map].get[location]>]> <[map].get[name]>:<[value]>
+
+    # Elevator Lever
+    - if <server.has_flag[airships.data.<[airship_type]>.elevator_lever]>:
+      - define old_lever <[current_location].add[<server.flag[airships.ship.<[id]>.elevator_lever]>]>
+      - define new_lever <[new_location].add[<server.flag[airships.ship.<[id]>.elevator_lever]>]>
+      - flag <[old_lever]> on_right_click:!
+      - flag <[old_lever]> airship_id:!
+      - flag <[new_lever]> on_right_click:airship_toggle_lever
+      - flag <[new_lever]> airship_id:<[id]>
     - wait 1t
+
+    # Place Elevators
+    - if <server.has_flag[airships.data.<[airship_type]>.elevators.data]>:
+      - ~run airship_create_elevators def:<[id]>|<[airship_type]>
+      - wait 1t
 
     # Paste New Airship
     - repeat <[schematic_count]>:
@@ -119,7 +203,7 @@ airship_move:
       - wait 1t
     - title title:<&color[#000000]><&font[adriftus:overlay]><&chr[1004]><&chr[F802]><&chr[1004]> fade_in:5t stay:1s fade_out:1.5s targets:<cuboid[airship_<[id]>].players>
     - wait 1t
-    - define new_lever <[new_location].add[-3,1,-2]>
+    - define new_lever <[new_location].add[<server.flag>]>
     - adjustblock <[new_lever]> switched:true
     - flag <[new_lever]> on_right_click:airship_toggle_lever
     - flag <[new_lever]> airship_id:<[id]>
@@ -220,7 +304,9 @@ airship_create:
     - flag server airships.ship.<[id]>.type:<[type]>
 
     # Schematic Pasting
-    - ~run airship_create_elevators def:<[id]>
+    - if <server.has_flag[airships.data.<[airship_type]>.elevators]>:
+      - ~run airship_create_elevators def:<[id]>
+    - wait 1t
     - ~schematic paste location:<[new_location]> name:<[type]>_airship
     - wait 1t
 
@@ -243,24 +329,44 @@ airship_create:
 airship_create_elevators:
   type: task
   debug: false
-  definitions: id
+  definitions: id|airship_type
   script:
+    - stop if:<server.has_flag[airships.data.<[airship_type]>.elevators].not>
+    - if <server.has_flag[airships.ship.<[id]>.cuboids]>:
+      - foreach <server.flag[airships.ship.<[id]>.cuboids]>:
+        - note remove as:<[value]>
+      - wait 1t
     - define location <server.flag[airships.ship.<[id]>.location]>
-    - define elevator1 <[location].add[0,0,-1].highest.center.above[0.51]>
-    - define lever_position <[location].add[-3,1,-2]>
-    - spawn airship_elevator_up_entity <[elevator1]> save:elevator_up
-    - flag <entry[elevator_up].spawned_entity> airship_id:<[id]>
-    - flag <entry[elevator_up].spawned_entity> airship_location:<server.flag[airships.ship.<[id]>.location]>
-    - flag server airships.ship.<[id]>.elevators:|:<entry[elevator_up].spawned_entity>
-    - note <[elevator1].to_cuboid[<[location].add[0,0,-1].below>]> as:airship_<[id]>_elevator_up
-    - note <[location].add[0,1,-1].to_cuboid[<[location].add[0,0,-1]>]> as:airship_<[id]>_elevator_top
-    - note <[location].add[0,2,2].to_cuboid[<[location].add[0,-1,2]>]> as:airship_<[id]>_elevator_down
-    - flag <cuboid[airship_<[id]>_elevator_up]> player_enters:airship_elevator_up
-    - flag <cuboid[airship_<[id]>_elevator_top]> player_enters:airship_elevator_top
-    - flag <cuboid[airship_<[id]>_elevator_down]> player_enters:airship_elevator_down
-    - flag <cuboid[airship_<[id]>_elevator_up]> airship_id:<[id]>
-    - flag <cuboid[airship_<[id]>_elevator_top]> airship_id:<[id]>
-    - flag <cuboid[airship_<[id]>_elevator_down]> airship_id:<[id]>
+    - flag srever airships.ship.<[id]>.elevators.entities:!
+    - foreach <server.flag[airships.data.<[airship_type]>.elevators.data]> as:
+      - define type <[value].get[type]>
+      - define offset <[value].get[location]>
+      - if <[type]> == up:
+        - define position <[location].add[<[offset]>].highest.center.above[0.51]>
+        - spawn airship_elevator_up_entity <[position]> save:this_elevator
+        - flag <entry[this_elevator].spawned_entity> airship_id:<[id]>
+        - flag <entry[this_elevator].spawned_entity> airship_location:<server.flag[airships.ship.<[id]>.location]>
+        - flag server airships.ship.<[id]>.elevators.entities:->:<entry[this_elevator].spawned_entity>
+        - note <[position].to_cuboid[<[location].add[<[offset]>].below>]> as:airship_<[id]>_elevator_<[loop_index]>
+        - flag <cuboid[airship_<[id]>_elevator_<[loop_index]>]> player_enters:airship_elevator_up
+        - flag <cuboid[airship_<[id]>_elevator_<[loop_index]>]> type:up
+        - flag <cuboid[airship_<[id]>_elevator_<[loop_index]>]> airship_id:<[id]>
+        - flag server airships.ship.<[id]>.cuboids:->:airship_<[id]>_elevator_<[loop_index]>
+        - note <[location].add[<[offset]>].to_cuboid[<[location].add[<[offset].above[2]>]>]> as:airship_<[id]>_elevator_<[loop_index]>_top
+        - flag <cuboid[airship_<[id]>_elevator_<[loop_index]>_top]> player_enters:airship_elevator_top
+        - flag <cuboid[airship_<[id]>_elevator_<[loop_index]>_top]> type:top
+        - flag <cuboid[airship_<[id]>_elevator_<[loop_index]>_top]> airship_id:<[id]>
+        - flag server airships.ship.<[id]>.cuboids:->:airship_<[id]>_elevator_<[loop_index]>_top
+      - else:
+        - define position <[location].add[<[offset]>]>
+        - note <[position].to_cuboid[<[position].above[2]>]> as:airship_<[id]>_elevator_<[loop_index]>
+        - flag <cuboid[airship_<[id]>_elevator_<[loop_index]>]> player_enters:airship_elevator_down
+        - flag <cuboid[airship_<[id]>_elevator_<[loop_index]>]> type:down
+        - flag <cuboid[airship_<[id]>_elevator_<[loop_index]>]> airship_id:<[id]>
+        - flag server airships.ship.<[id]>.cuboids:->:airship_<[id]>_elevator_<[loop_index]>
+      - define final_count <[loop_index]>
+      - wait 1t
+    - flag server airships.ship.<[id]>.elevators.count:<[final_count]>
     - run airship_elevator_particles def:<[id]>
 
 airship_elevator_up_entity:
@@ -322,19 +428,29 @@ airship_elevator_particles:
   script:
     - flag server airships.ship.<[id]>.elevator_status
     - define location <server.flag[airships.ship.<[id]>.location]>
-    - define blocks_up <cuboid[airship_<[id]>_elevator_up].blocks.parse[center]>
-    - define blocks_up2 <cuboid[airship_<[id]>_elevator_up].blocks.parse[center]>
-    - define blocks_up3 <cuboid[airship_<[id]>_elevator_up].min.center.below[1.49]>
-    - define blocks_down1 <cuboid[airship_<[id]>_elevator_down].max.center.below[0.8]>
-    - define targets <[blocks_up3].find_players_within[120]>
+    - define up_count 0
+    - define down_count 0
+    - foreach <server.flag[airships.ship.<[id]>.cuboids]>:
+      - choose <[value].flag[type]>:
+        - case up:
+          - define blocks_up:->:<[value].blocks.parse[center]>
+          - define blocks_up_bottom:->:<[value].min.center.below[0.5]>
+          - define up_count:++
+        - case down:
+          - define blocks_down:->:<[value].max.center.below[0.5]>
+          - define down_count:++
+    - wait 1t
+    - define random_final_up <[up_count].mul[5]>
+    - define random_final_down <[down_count].mul[5]>
+    - define targets <[location].find_players_within[180]>
     - while <server.flag[airships.ship.<[id]>.elevator_status]> && <server.flag[airships.ship.<[id]>.location]> == <[location]> && <server.flag[airships.ship.<[id]>.location].chunk.is_loaded>:
       - if <[loop_index].mod[10]> == 0:
-        - define targets <[blocks_up3].find_players_within[120]>
-      - playeffect <[blocks_up].random[5]> offset:1 effect:DRAGON_BREATH quantity:2 velocity:<location[0,0.2,0]> targets:<[targets]>
-      - playeffect <[blocks_up2].random[5]> offset:1 effect:END_ROD quantity:2 velocity:<location[0,0.7,0]> targets:<[targets]>
-      - playeffect <[blocks_up3]> offset:0.5,0.1,0.5 effect:DRAGON_BREATH quantity:5 velocity:<location[0,0.7,0]> targets:<[targets]>
-      - playeffect <[blocks_down1]> offset:1 effect:DRAGON_BREATH quantity:5 velocity:<location[0,-0.035,0]> targets:<[targets]>
-      - playeffect <[blocks_down1]> offset:1 effect:END_ROD quantity:5 velocity:<location[0,-0.2,0]> targets:<[targets]>
+        - define targets <[location].below[50].find_players_within[180]>
+      - playeffect <[blocks_up].random[<[random_final_up]>]> offset:1 effect:DRAGON_BREATH quantity:2 velocity:<location[0,0.2,0]> targets:<[targets]>
+      - playeffect <[blocks_up].random[<[random_final_up]>]> offset:1 effect:END_ROD quantity:2 velocity:<location[0,0.7,0]> targets:<[targets]>
+      - playeffect <[blocks_up_bottom]> offset:0.5,0.1,0.5 effect:DRAGON_BREATH quantity:5 velocity:<location[0,0.7,0]> targets:<[targets]>
+      - playeffect <[blocks_down].random[<[random_final_down]>]> offset:1 effect:DRAGON_BREATH quantity:5 velocity:<location[0,-0.035,0]> targets:<[targets]>
+      - playeffect <[blocks_down].random[<[random_final_down]>]> offset:1 effect:END_ROD quantity:5 velocity:<location[0,-0.2,0]> targets:<[targets]>
       - wait 3t
 
 airship_toggle_lever:
@@ -344,7 +460,7 @@ airship_toggle_lever:
   script:
     - wait 1t
     - define id <context.location.flag[airship_id]> if:<[id].exists.not>
-    - define lever_location <server.flag[airships.ship.<[id]>.location].add[-3,1,-2]>
+    - define lever_location <server.flag[airships.ship.<[id]>.lever_location]>
     - if <[lever_location].material.switched>:
       - run airship_elevator_particles def:<[id]> if:<server.flag[airships.ship.<[id]>.elevator_status].not>
     - else:
@@ -356,7 +472,7 @@ airship_remote_toggle_lever:
   definitions: id
   script:
     - define id <context.item.flag[id]> if:<[id].exists.not>
-    - define lever_location <server.flag[airships.ship.<[id]>.location].add[-3,1,-2]>
+    - define lever_location <server.flag[airships.ship.<[id]>.lever_location]>
     - chunkload <[lever_location].chunk> if:<[lever_location].chunk.is_loaded.not>
     - adjustblock <[lever_location]> switched:<[lever_location].material.switched.not>
     - run airship_toggle_lever def:<[id]>
