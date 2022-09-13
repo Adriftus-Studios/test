@@ -211,7 +211,7 @@ airship_create:
     - flag server airships.ship.<[id]>.chunks:<[final_cuboid].chunks>
     - flag server airships.ship.<[id]>.location:<[new_location]>
     - flag server airships.ship.<[id]>.elevator_status
-    - flag server airships.ship.<[id]>.type:<[airship_type]>
+    - flag server airships.ship.<[id]>.type:<[type]>
 
     # Schematic Pasting
     - ~run airship_create_elevators def:<[id]>
