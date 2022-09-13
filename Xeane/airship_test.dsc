@@ -307,7 +307,7 @@ airship_create:
     - if <server.has_flag[airships.data.<[airship_type]>.elevators]>:
       - ~run airship_create_elevators def:<[id]>
     - wait 1t
-    - ~schematic paste location:<[new_location]> name:<[type]>_airship
+    - ~schematic paste location:<[new_location]> name:<[type]>_airship delayed
     - wait 1t
 
     # Cuboid Building
@@ -318,12 +318,12 @@ airship_create:
     - flag <cuboid[airship_<[id]>]> player_enters:airship_offline_tracker
 
     # World Guard Region
-    - execute as_op "rg create airship_<[type]>_<[id]>"
-    - execute as_server "rg flag airship_<[type]>_<[id]> -w <[location].world.name> interact allow"
-    - execute as_server "rg flag airship_<[type]>_<[id]> -w <[location].world.name> chest-access allow"
-    - execute as_server "rg flag airship_<[type]>_<[id]> -w <[location].world.name> town-creation deny"
-    - execute as_server "rg flag airship_<[type]>_<[id]> -w <[location].world.name> tnt deny"
-    - execute as_server "rg flag airship_<[type]>_<[id]> -w <[location].world.name> fire-spread deny"
+    - execute as_op "rg create airship_<[id]>"
+    - execute as_server "rg flag airship_<[id]> -w <[location].world.name> interact allow"
+    - execute as_server "rg flag airship_<[id]> -w <[location].world.name> chest-access allow"
+    - execute as_server "rg flag airship_<[id]> -w <[location].world.name> town-creation deny"
+    - execute as_server "rg flag airship_<[id]> -w <[location].world.name> tnt deny"
+    - execute as_server "rg flag airship_<[id]> -w <[location].world.name> fire-spread deny"
     - wait 1t
 
 airship_create_elevators:
