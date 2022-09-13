@@ -463,7 +463,7 @@ airship_toggle_lever:
   script:
     - wait 1t
     - define id <context.location.flag[airship_id]> if:<[id].exists.not>
-    - define lever_location <server.flag[airships.ship.<[id]>.lever_location]>
+    - define lever_location <server.flag[airships.ship.<[id]>.elevator_lever]>
     - if <[lever_location].material.switched>:
       - run airship_elevator_particles def:<[id]> if:<server.flag[airships.ship.<[id]>.elevator_status].not>
     - else:
@@ -475,7 +475,7 @@ airship_remote_toggle_lever:
   definitions: id
   script:
     - define id <context.item.flag[id]> if:<[id].exists.not>
-    - define lever_location <server.flag[airships.ship.<[id]>.lever_location]>
+    - define lever_location <server.flag[airships.ship.<[id]>.elevator_lever]>
     - chunkload <[lever_location].chunk> if:<[lever_location].chunk.is_loaded.not>
     - adjustblock <[lever_location]> switched:<[lever_location].material.switched.not>
     - run airship_toggle_lever def:<[id]>
