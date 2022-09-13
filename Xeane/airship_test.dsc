@@ -163,12 +163,11 @@ airship_move:
       - schematic create area:<[mini_cuboid]> name:airship_<[id]>_<[loop_index]> <[current_location]>
       - define schematic_count:++
       - wait 1t
-    - flag server airships.ship.<[id]>.location:<[new_location]>
-    - flag server airships.ship.<[id]>.last_moved:<util.time_now>
 
     # Set Movement Data
     - flag server airships.ship.<[id]>.location:<[new_location]>
     - flag server airships.ship.<[id]>.last_moved:<util.time_now>
+
     # Handle Location Flags
     # Static Flags
     - if <server.has_flag[airships.data.<[airship_type]>.static_flags]>:
