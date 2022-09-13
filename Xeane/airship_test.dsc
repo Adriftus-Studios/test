@@ -1,3 +1,7 @@
+airship_types_data:
+  type: data
+  
+
 airship_move:
   type: task
   debug: false
@@ -62,9 +66,6 @@ airship_move:
     - adjust <player> we_selection:<[final_cuboid]>
     - execute as_op "rg create nomad_airship_<[id]>"
     - wait 1t
-    - execute as_server "rg flag nomad_airship_<[id]> -w <[new_location].world.name> interact allow"
-    - execute as_server "rg flag nomad_airship_<[id]> -w <[new_location].world.name> chest-access allow"
-    - execute as_server "rg flag nomad_airship_<[id]> -w <[new_location].world.name> town-creation allow"
 
     # Blind Players at Destination
     - define target_players <[new_location].find_players_within[140]>
@@ -91,6 +92,12 @@ airship_move:
 
     # Teleport all players
     - foreach <cuboid[nomad_airship_<[id]>_area].players>:
+      - define relative <[value].location.sub[<[current_location]>]>
+      - teleport <[value]> <[new_location].add[<[relative]>].with_pose[<[value]>]>
+
+    # Teleport Other Entities
+    - wait 1t
+    - foreach <cuboid[nomad_airship_<[id]>_area].entities[!player]>:
       - define relative <[value].location.sub[<[current_location]>]>
       - teleport <[value]> <[new_location].add[<[relative]>].with_pose[<[value]>]>
 
@@ -128,12 +135,8 @@ airship_create:
     - define pos1 <[location].add[-20,-20,-40]>
     - define pos2 <[location].add[20,50,40]>
     - define cuboid <[pos1].to_cuboid[<[pos2]>]>
-    - define Xeane <server.match_player[Xeane].if_null[null]>
-    - if <[Xeane]> == null:
-      - narrate "<&c>Nope!"
-      - stop
     - flag server nomad_airship.<[id]>.chunks:<[cuboid].chunks>
-    - adjust <[Xeane]> we_selection:<[cuboid]>
+    - adjust <player> we_selection:<[cuboid]>
     - note <[cuboid]> as:nomad_airship_<[id]>_area
     - flag <cuboid[nomad_airship_<[id]>_area]> nomad_airship_id:<[id]>
     - flag <cuboid[nomad_airship_<[id]>_area]> player_leaves:nomad_airship_offline_tracker
@@ -141,7 +144,9 @@ airship_create:
     - execute as_player "rg create nomad_airship_<[id]>" player:<[Xeane]>
     - execute as_server "rg flag nomad_airship_<[id]> -w <[location].world.name> interact allow"
     - execute as_server "rg flag nomad_airship_<[id]> -w <[location].world.name> chest-access allow"
-    - execute as_server "rg flag nomad_airship_<[id]> -w <[new_location].world.name> town-creation allow"
+    - execute as_server "rg flag nomad_airship_<[id]> -w <[location].world.name> town-creation deny"
+    - execute as_server "rg flag nomad_airship_<[id]> -w <[location].world.name> tnt deny"
+    - execute as_server "rg flag nomad_airship_<[id]> -w <[location].world.name> fire-spread deny"
     - wait 1t
     - ~run airship_create_elevators def:<[id]>
 
