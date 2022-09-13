@@ -23,11 +23,12 @@ airship_type:
 airship_add_elevator_spot:
   type: task
   debug: false
-  definitions: airship_type|id|type|location
+  definitions: airship_type|id|type|location|exit_direction
   data:
     elevator_map:
       location: <[relative_location]>
       type: <[type]>
+      exit_direction: <[exit_direction].if_null[none]>
   script:
     - if !<server.has_flag[airships.data.<[airship_type]>]>:
       - narrate "<&c>Unknown Airship Type<&co><&e> <[airship_type]>"
@@ -359,6 +360,7 @@ airship_create_elevators:
         - note <[location].add[<[offset]>].to_cuboid[<[location].add[<[offset].above[2]>]>]> as:airship_<[id]>_elevator_<[loop_index]>_top
         - flag <cuboid[airship_<[id]>_elevator_<[loop_index]>_top]> player_enters:airship_elevator_top
         - flag <cuboid[airship_<[id]>_elevator_<[loop_index]>_top]> type:top
+        - flag <cuboid[airship_<[id]>_elevator_<[loop_index]>_top]> direction:<[value].get[exit_direction]>
         - flag <cuboid[airship_<[id]>_elevator_<[loop_index]>_top]> airship_id:<[id]>
         - flag server airships.ship.<[id]>.cuboids:->:airship_<[id]>_elevator_<[loop_index]>_top
       - else:
@@ -403,7 +405,7 @@ airship_elevator_top:
   debug: false
   script:
     - stop if:<server.flag[airships.ship.<context.area.flag[airship_id]>.elevator_status].not>
-    - adjust <player> velocity:<location[-0.1,0.1,0]>
+    - adjust <player> velocity:<context.area.flag[exit_direction]>
 
 airship_elevator_down:
   type: task
