@@ -36,7 +36,7 @@ airship_move:
     - if <server.flag[airships.ship.<[id]>.location].world.border_center.distance[<[exact_location]>]> > <server.flag[airships.ship.<[id]>.location].world.border_size.sub[100]>:
       - narrate "<&c>Destination is outside world border."
       - stop
-    
+
     # Get Schematic Data
     - define type <server.flag[airships.ship.<[id]>.type]>
     - define airship_type <[type]>_airship
@@ -153,9 +153,9 @@ airship_move:
     - foreach <[old_cuboid].chunks>:
       - define cuboid <[value].cuboid>
       - define mini_cuboid <[cuboid].min.with_y[<[final_low_y]>].to_cuboid[<[cuboid].max.with_y[<[final_high_y]>]>]>
-      - ~modifyblock <[mini_cuboid].blocks[*_carpet|*torch|lever|tripwire_hook|*_bed|lantern|*sign|bell|*azalea|*_door|*_pressure_plate|*_banner]> air no_physics delayed
+      - modifyblock <[mini_cuboid].blocks[*_carpet|*torch|lever|tripwire_hook|*_bed|lantern|*sign|bell|*azalea|*_door|*_pressure_plate|*_banner]> air no_physics
       - wait 1t
-      - ~modifyblock <[mini_cuboid].blocks> air delayed
+      - modifyblock <[mini_cuboid].blocks> air
       - wait 1t
 
     # Cleanup
