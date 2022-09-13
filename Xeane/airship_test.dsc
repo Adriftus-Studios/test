@@ -179,10 +179,10 @@ airship_create:
     - define sailing_height <server.flag[airships.data.<[airship_type]>.sailing_height]>
     - define higher_y <server.flag[airships.data.<[airship_type]>.higher_y]>
     - define lower_y <server.flag[airships.data.<[airship_type]>.lower_y]>
-    - define higher_x <server.flag[airships.data.<[type]>.higher_x]>
-    - define lower_x <server.flag[airships.data.<[type]>.lower_x]>
-    - define higher_z <server.flag[airships.data.<[type]>.higher_z]>
-    - define lower_z <server.flag[airships.data.<[type]>.lower_z]>
+    - define higher_x <server.flag[airships.data.<[airship_type]>.higher_x]>
+    - define lower_x <server.flag[airships.data.<[airship_type]>.lower_x]>
+    - define higher_z <server.flag[airships.data.<[airship_type]>.higher_z]>
+    - define lower_z <server.flag[airships.data.<[airship_type]>.lower_z]>
     - wait 1t
 
     # Cuboid Building/Determining Height Map
