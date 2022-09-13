@@ -439,12 +439,14 @@ airship_elevator_particles:
     - foreach <server.flag[airships.ship.<[id]>.cuboids].parse[as[cuboid]]>:
       - choose <[value].flag[type]>:
         - case up:
-          - define blocks_up:->:<[value].blocks.parse[center]>
+          - define blocks_up:|:<[value].blocks.parse[center]>
           - define blocks_up_bottom:->:<[value].min.center.below[0.5]>
           - define up_count:++
         - case down:
-          - define blocks_down:->:<[value].max.center.below[0.5]>
+          - define blocks_down:|:<[value].max.center.below[0.5]>
           - define down_count:++
+        - default:
+          - foreach next
     - wait 1t
     - define random_final_up <[up_count].mul[5]>
     - define random_final_down <[down_count].mul[5]>
