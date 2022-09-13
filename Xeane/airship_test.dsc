@@ -47,7 +47,7 @@ airship_set_elevator_lever:
     - if !<server.has_flag[airships.data.<[airship_type]>_airship]>:
       - narrate "<&c>Unknown Airship Type<&co><&e> <[airship_type]>_airship"
       - stop
-    - flag server airships.data.<[airship_type]>_airship.elevator_lever:<server.flag[airships.ship.<[id]>.location].sub[<[location]>]>
+    - flag server airships.data.<[airship_type]>_airship.elevator_lever:<[location].sub[<server.flag[airships.ship.<[id]>.location]>]>
 
 airship_add_static_flags:
   type: task
@@ -360,7 +360,7 @@ airship_create_elevators:
         - note <[location].add[<[offset]>].to_cuboid[<[location].add[<[offset].above[2]>]>]> as:airship_<[id]>_elevator_<[loop_index]>_top
         - flag <cuboid[airship_<[id]>_elevator_<[loop_index]>_top]> player_enters:airship_elevator_top
         - flag <cuboid[airship_<[id]>_elevator_<[loop_index]>_top]> type:top
-        - flag <cuboid[airship_<[id]>_elevator_<[loop_index]>_top]> direction:<[value].get[exit_direction]>
+        - flag <cuboid[airship_<[id]>_elevator_<[loop_index]>_top]> exit_direction:<[value].get[exit_direction]>
         - flag <cuboid[airship_<[id]>_elevator_<[loop_index]>_top]> airship_id:<[id]>
         - flag server airships.ship.<[id]>.cuboids:->:airship_<[id]>_elevator_<[loop_index]>_top
       - else:
