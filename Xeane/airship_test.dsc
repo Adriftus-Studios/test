@@ -257,7 +257,7 @@ airship_move:
 
 airship_create:
   type: task
-  debug: false
+  debug: true
   definitions: type|id|location
   script:
     # Schematic Handling
