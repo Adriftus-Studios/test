@@ -29,7 +29,7 @@ storm_entity_events:
             - playeffect <proc[define_zigzag].context[<context.entity.eye_location>|<context.damager.eye_location>|2]> effect:enchantment_table quantity:5
             - playsound <context.damager.location> sound:block_enchantment_table_use pitch:2.0 volume:1.0
         after storm_entity added to world:
-            - while <context.entity.exists>:
+            - while <context.entity.is_spawned>:
                 # make them super aggressive for absolutely no reason
                 - attack <context.entity> target:<context.entity.location.find_players_within[300].first>
                 - wait 3s
@@ -65,7 +65,7 @@ storm_entity_ranged_events:
             - playeffect <proc[define_zigzag].context[<context.entity.eye_location>|<context.damager.eye_location>|2]> effect:enchantment_table quantity:5
             - playsound <context.damager.location> sound:block_enchantment_table_use pitch:2.0 volume:1.0
         after storm_entity_ranged added to world:
-            - while <context.entity.exists>:
+            - while <context.entity.is_spawned>:
                 # make them super aggressive for absolutely no reason
                 - attack <context.entity> target:<context.entity.location.find_players_within[300].first>
                 - wait 3s
