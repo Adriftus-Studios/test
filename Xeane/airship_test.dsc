@@ -35,7 +35,7 @@ airship_add_elevator_spot:
     - if !<server.has_flag[airships.data.<[airship_type]>_airship]>:
       - narrate "<&c>Unknown Airship Type<&co><&e> <[airship_type]>_airship"
       - stop
-    - define relative_location <[location].sub[<server.flag[airships.ship.<[id]>.location]>]>
+    - define relative_location <[location].center.sub[<server.flag[airships.ship.<[id]>.location]>]>
     - flag server airships.data.<[airship_type]>_airship.elevators.data:->:<script.parsed_key[data.elevator_map]>
 
 airship_set_elevator_lever:
@@ -49,7 +49,7 @@ airship_set_elevator_lever:
     - if !<server.has_flag[airships.data.<[airship_type]>_airship]>:
       - narrate "<&c>Unknown Airship Type<&co><&e> <[airship_type]>_airship"
       - stop
-    - flag server airships.data.<[airship_type]>_airship.elevator_lever:<[location].sub[<server.flag[airships.ship.<[id]>.location]>]>
+    - flag server airships.data.<[airship_type]>_airship.elevator_lever:<[location].center.sub[<server.flag[airships.ship.<[id]>.location]>]>
 
 airship_add_static_flags:
   type: task
@@ -64,7 +64,7 @@ airship_add_static_flags:
     - if !<server.has_flag[airships.data.<[airship_type]>_airship]>:
       - narrate "<&c>Unknown Airship Type<&co><&e> <[airship_type]>_airship"
       - stop
-    - define relative_location <[location].sub[<server.flag[airships.ship.<[id]>.location]>]>
+    - define relative_location <[location].center.sub[<server.flag[airships.ship.<[id]>.location]>]>
     - flag server airships.data.<[airship_type]>_airship.static_flags:->:<script.parsed_key[data.flag_map]>
 
 airship_add_moving_flags:
@@ -80,7 +80,7 @@ airship_add_moving_flags:
     - if !<server.has_flag[airships.data.<[airship_type]>_airship]>:
       - narrate "<&c>Unknown Airship Type<&co><&e> <[airship_type]>_airship"
       - stop
-    - define relative_location <[location].sub[<server.flag[airships.ship.<[id]>.location]>]>
+    - define relative_location <[location].center.sub[<server.flag[airships.ship.<[id]>.location]>]>
     - flag server airships.data.<[airship_type]>_airship.moving_flags:->:<script.parsed_key[data.flag_map]>
 
 airship_move:
@@ -309,7 +309,7 @@ airship_create:
     - if <server.has_flag[airships.data.<[airship_type]>.elevators]>:
       - ~run airship_create_elevators def:<[id]>
     - wait 1t
-    - ~schematic paste location:<[new_location]> name:<[type]>_airship delayed
+    - schematic paste location:<[new_location]> name:<[type]>_airship
     - wait 1t
 
     # Cuboid Building
