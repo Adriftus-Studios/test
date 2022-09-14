@@ -167,7 +167,7 @@ airship_move:
       - wait 1t
 
     # Set Movement Data
-    - flag server airships.ship.<[id]>.location:<[new_location]>
+    - flag server airships.ship.<[id]>.location:<[new_location].center>
     - flag server airships.ship.<[id]>.last_moved:<util.time_now>
 
     # Handle Location Flags
