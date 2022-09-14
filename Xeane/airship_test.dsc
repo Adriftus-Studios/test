@@ -554,3 +554,12 @@ ship_command:
           - stop
         - flag player nomad.leader.locations.<context.args.get[2]>:<player.location.forward_flat[4]>
         - narrate "<&e>You have saved this location as<&co><&a> <context.args.get[2]>"
+
+##TASKS
+
+airship_check_owner:
+  type: task
+  debug: false
+  script:
+    - if <context.location.has_flag[owner]> && <context.location.flag[owner].parsed> != <player.uuid>:
+      - determine cancelled
