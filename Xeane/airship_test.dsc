@@ -132,8 +132,9 @@ airship_move:
     # Determine if viable location
     - define chunks <[new_cuboid].partial_chunks>
     - if <[chunks].filter[is_loaded.not].size> > 1:
-      - chunkload <[chunks]> duration:10s
-      - wait 1s
+      - foreach <[chunks]>:
+        - chunkload <[value]> duration:10s
+        - wait 2t
     - define highest -64
     - foreach <[chunks]>:
       - define this_high <[value].height_map.highest>
@@ -233,7 +234,9 @@ airship_move:
 
     # Remove Old Airship
     - wait 1t
-    - chunkload <server.flag[airships.ship.<[id]>.chunks]> duration:10s
+    - foreach <server.flag[airships.ship.<[id]>.chunks]>:
+      - chunkload <[value]> duration:10s
+      - wait 2t
     - title title:<&f><&font[adriftus:overlay]><&chr[1004]><&chr[F802]><&chr[1004]> fade_in:5t stay:<[old_cuboid].chunks.size.mul[2].add[5]>t fade_out:1.5s targets:<[current_location].find_players_within[140]>
     - wait 4t
     - foreach <[old_cuboid].chunks>:
