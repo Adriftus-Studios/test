@@ -1,3 +1,5 @@
+##ADD BED LOCATION TRANSFER
+
 # Adds a new type of airship
 # filename is the schematic's filename
 airship_type:
