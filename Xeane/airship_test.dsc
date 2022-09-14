@@ -130,7 +130,7 @@ airship_move:
       - stop
 
     # Determine if viable location
-    - define chunks <[new_cuboid].chunks>
+    - define chunks <[new_cuboid].partial_chunks>
     - if <[chunks].filter[is_loaded.not].size> > 1:
       - chunkload <[chunks]> duration:10s
       - wait 1s
@@ -279,7 +279,7 @@ airship_create:
 
     # Cuboid Building/Determining Height Map
     - define cuboid <schematic[<[airship_type]>].cuboid[<[location]>]>
-    - define chunks <[cuboid].chunks>
+    - define chunks <[cuboid].partial_chunks>
     - if <[chunks].filter[is_loaded.not].size> > 1:
       - chunkload <[chunks]> duration:10s
       - wait 1s
