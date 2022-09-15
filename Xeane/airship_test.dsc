@@ -83,6 +83,20 @@ airship_add_moving_flags:
     - define relative_location <[location].center.sub[<server.flag[airships.ship.<[id]>.location]>]>
     - flag server airships.data.<[airship_type]>_airship.moving_flags:->:<script.parsed_key[data.flag_map]>
 
+airship_add_bed_spawn:
+  type: task
+  debug: false
+  definitions: airship_type|id|location
+  script:
+    - if !<server.has_flag[airships.data.<[airship_type]>_airship]>:
+      - narrate "<&c>Unknown Airship Type<&co><&e> <[airship_type]>_airship"
+      - stop
+    - define relative_location <[location].center.sub[<server.flag[airships.ship.<[id]>.location]>]>
+    - run airship_add_static_flags def:<[airship_type]>|<[id]>|on_right_click|airship_set_bed_spawn|<[relative_location]>
+    - run airship_add_static_flags def:<[airship_type]>|<[id]>|airship_id|<&lt>id<&gt>|<[relative_location]>
+    - flag <[location]> on_right_click:airship_set_bed_spawn
+    - flag <[location]> airship_id:<[id]>
+
 airship_move:
   type: task
   debug: false
@@ -177,7 +191,7 @@ airship_move:
       - foreach <server.flag[airships.data.<[airship_type]>.static_flags]> as:map:
         - wait 1t if:<[loop_index].mod[10].equals[0]>
         - flag <[current_location].add[<[map].get[location]>]> <[map].get[name]>:!
-        - flag <[new_location].add[<[map].get[location]>]> <[map].get[name]>:<[map].get[value]>
+        - flag <[new_location].add[<[map].get[location]>]> <[map].get[name]>:<[map].get[value].parsed>
 
     # Moving Flags
     - if <server.has_flag[airships.data.<[airship_type]>.moving_flags]>:
@@ -213,7 +227,16 @@ airship_move:
       - schematic paste <[new_location]> name:airship_<[id]>_<[value]> noair
       - wait 1t
     - title title:<&color[#000000]><&font[adriftus:overlay]><&chr[1004]><&chr[F802]><&chr[1004]> fade_in:5t stay:1s fade_out:1.5s targets:<cuboid[airship_<[id]>].players>
-    - wait 5t
+    - wait 4t
+
+    # Move Bed Spawns
+    - foreach <server.flag[airships.id.<[id]>.bed_spawns].keys> as:offset:
+      - foreach <server.flag[airships.id.<[id]>.bed_spawns.<[offset]>]>:
+        - if <[value].bed_spawn.simple> == <[current_location].add[<[offset]>].simple>:
+          - adjust <[value]> bed_spawn_location:<[new_location].add[<[offset]>]>
+        - else:
+          - flag server airships.id.<[id]>.bed_spawns.<[offset]>:<-:<[value]>
+    - wait 1t
 
     # Teleport all players
     - foreach <cuboid[airship_<[id]>].players>:
@@ -486,15 +509,6 @@ airship_remote_toggle_lever:
     - adjustblock <[lever_location]> switched:<[lever_location].material.switched.not>
     - run airship_toggle_lever def:<[id]>
 
-airship_offline_tracker:
-  type: task
-  debug: false
-  script:
-    - if <context.cause> == QUIT:
-      - flag server airships.ship.<context.area.flag[airship_id]>.offline_players:->:<player>
-    - else if <context.cause> == JOIN:
-      - flag server airships.ship.<context.area.flag[airship_id]>.offline_players:<-:<player>
-
 ship_command:
   type: command
   name: nomad_ship
@@ -560,9 +574,27 @@ ship_command:
 
 ##TASKS
 
+airship_offline_tracker:
+  type: task
+  debug: false
+  script:
+    - if <context.cause> == QUIT:
+      - flag server airships.ship.<context.area.flag[airship_id]>.offline_players:->:<player>
+    - else if <context.cause> == JOIN:
+      - flag server airships.ship.<context.area.flag[airship_id]>.offline_players:<-:<player>
+
 airship_check_owner:
   type: task
   debug: false
   script:
     - if <context.location.has_flag[owner]> && <context.location.flag[owner].parsed> != <player.uuid>:
       - determine cancelled
+
+airship_set_bed_spawn:
+  type: task
+  debug: false
+  script:
+    - wait 1t
+    - if <player.bed_spawn.simple> == <context.location.simple> || <player.bed_spawn.simple> == <context.location.other_block.simple>:
+      - define airship_id <context.location.flag[airship_id]>
+      - flag server airships.ship.<context.location.flag[airship_id]>.bed_spawns.<player.bed_spawn.center.sub[<server.flag[airships.ship.<[airship_id]>.location]>]>:->:<player>
