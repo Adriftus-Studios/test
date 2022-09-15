@@ -241,7 +241,7 @@ airship_move:
     # Teleport all players
     - foreach <cuboid[airship_<[id]>].players>:
       - define relative <[value].location.sub[<[current_location]>]>
-      - teleport <[value]> <[new_location].add[<[relative]>].with_pose[<[value]>]>
+      - teleport <[value]> <[new_location].add[<[relative]>].above[0.26].with_pose[<[value]>]>
 
     # Teleport Other Entities
     - wait 1t
