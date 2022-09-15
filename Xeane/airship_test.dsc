@@ -596,4 +596,4 @@ airship_set_bed_spawn:
     - wait 1t
     - if <player.bed_spawn.distance[<context.location>]> < 1.25 || <player.bed_spawn.other_block.distance[<context.location>]> < 1.25:
       - define airship_id <context.location.flag[airship_id]>
-      - flag server airships.ship.<context.location.flag[airship_id]>.bed_spawns.<player>:<player.bed_spawn.center.sub[<server.flag[airships.ship.<[airship_id]>.location]>]>
+      - flag server airships.ship.<context.location.flag[airship_id]>.bed_spawns.<player>:<context.location.center.sub[<server.flag[airships.ship.<[airship_id]>.location]>]>
