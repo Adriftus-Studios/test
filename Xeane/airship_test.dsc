@@ -230,12 +230,11 @@ airship_move:
     - wait 4t
 
     # Move Bed Spawns
-    - foreach <server.flag[airships.id.<[id]>.bed_spawns].keys> as:offset:
-      - foreach <server.flag[airships.id.<[id]>.bed_spawns.<[offset]>]>:
-        - if <[value].bed_spawn.simple> == <[current_location].add[<[offset]>].simple>:
-          - adjust <[value]> bed_spawn_location:<[new_location].add[<[offset]>]>
-        - else:
-          - flag server airships.id.<[id]>.bed_spawns.<[offset]>:<-:<[value]>
+    - foreach <server.flag[airships.id.<[id]>.bed_spawns]> key:player as:offset:
+      - if <[value].as[player].bed_spawn.simple> == <[current_location].add[<[offset]>].simple>:
+        - adjust <[value]> bed_spawn_location:<[new_location].add[<[offset]>]>
+      - else:
+        - flag server airships.id.<[id]>.bed_spawns.<[player]>:!
     - wait 1t
 
     # Teleport all players
@@ -595,6 +594,6 @@ airship_set_bed_spawn:
   debug: true
   script:
     - wait 1t
-    - if <player.bed_spawn.simple> == <context.location.simple> || <player.bed_spawn.simple> == <context.location.other_block.simple>:
+    - if <player.bed_spawn.distance[<context.location>]> < 1.25 || <player.bed_spawn.other_block.distance[<context.location>]> < 1.25:
       - define airship_id <context.location.flag[airship_id]>
-      - flag server airships.ship.<context.location.flag[airship_id]>.bed_spawns.<player.bed_spawn.center.sub[<server.flag[airships.ship.<[airship_id]>.location]>]>:->:<player>
+      - flag server airships.ship.<context.location.flag[airship_id]>.bed_spawns.<player>:<player.bed_spawn.center.sub[<server.flag[airships.ship.<[airship_id]>.location]>]>
