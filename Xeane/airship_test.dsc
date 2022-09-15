@@ -592,7 +592,7 @@ airship_check_owner:
 
 airship_set_bed_spawn:
   type: task
-  debug: false
+  debug: true
   script:
     - wait 1t
     - if <player.bed_spawn.simple> == <context.location.simple> || <player.bed_spawn.simple> == <context.location.other_block.simple>:
