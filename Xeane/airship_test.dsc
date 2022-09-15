@@ -92,8 +92,8 @@ airship_add_bed_spawn:
       - narrate "<&c>Unknown Airship Type<&co><&e> <[airship_type]>_airship"
       - stop
     - define relative_location <[location].center.sub[<server.flag[airships.ship.<[id]>.location]>]>
-    - run airship_add_static_flags def:<[airship_type]>|<[id]>|on_right_click|airship_set_bed_spawn|<[relative_location]>
-    - run airship_add_static_flags def:<[airship_type]>|<[id]>|airship_id|<&lt><&lb>id<&rb><&gt>|<[relative_location]>
+    - run airship_add_static_flags def:<[airship_type]>|<[id]>|on_right_click|airship_set_bed_spawn|<[location]>
+    - run airship_add_static_flags def:<[airship_type]>|<[id]>|airship_id|<&lt><&lb>id<&rb><&gt>|<[location]>
     - flag <[location]> on_right_click:airship_set_bed_spawn
     - flag <[location]> airship_id:<[id]>
 
