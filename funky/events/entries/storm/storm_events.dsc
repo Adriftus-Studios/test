@@ -50,5 +50,5 @@ storm_event_events:
         on animal spawns server_flagged:events.active.storm chance:10:
             - determine passively cancelled
             - spawn slime <context.location>
-        after squid dies server_flagged:events.active.storm chance:10:
+        after squid|glow_squid dies server_flagged:events.active.storm chance:10:
             - explode <context.location> power:5
