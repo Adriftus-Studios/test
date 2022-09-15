@@ -93,7 +93,7 @@ airship_add_bed_spawn:
       - stop
     - define relative_location <[location].center.sub[<server.flag[airships.ship.<[id]>.location]>]>
     - run airship_add_static_flags def:<[airship_type]>|<[id]>|on_right_click|airship_set_bed_spawn|<[relative_location]>
-    - run airship_add_static_flags def:<[airship_type]>|<[id]>|airship_id|<&lt>id<&gt>|<[relative_location]>
+    - run airship_add_static_flags def:<[airship_type]>|<[id]>|airship_id|<&lt><&lb>id<&rb><&gt>|<[relative_location]>
     - flag <[location]> on_right_click:airship_set_bed_spawn
     - flag <[location]> airship_id:<[id]>
 
