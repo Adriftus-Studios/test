@@ -227,9 +227,9 @@ airship_move:
 
     # Paste New Airship
     - repeat <[schematic_count]>:
-      - ~schematic paste <[new_location]> name:airship_<[id]>_1<[value]> noair
+      - schematic paste <[new_location]> name:airship_<[id]>_1<[value]> noair
       - wait 1t
-      - ~schematic paste <[new_location]> name:airship_<[id]>_2<[value]> noair
+      - schematic paste <[new_location]> name:airship_<[id]>_2<[value]> noair
       - wait 1t
     - title title:<&color[#000000]><&font[adriftus:overlay]><&chr[1004]><&chr[F802]><&chr[1004]> fade_in:5t stay:1s fade_out:1.5s targets:<cuboid[airship_<[id]>].players>
     - wait 4t
