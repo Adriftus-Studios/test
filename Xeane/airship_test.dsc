@@ -598,7 +598,7 @@ airship_set_bed_spawn:
   debug: true
   script:
     - wait 1t
-    - if !<player.bed_spawn>:
+    - if !<player.bed_spawn.exists>:
       - narrate "<&c>Bed Unsuitable"
       - stop
     - if <context.location.distance[<player.bed_spawn>]> < 2.75 || <context.location.other_block.distance[<player.bed_spawn>]> < 2.75:
