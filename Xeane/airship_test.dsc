@@ -281,12 +281,14 @@ airship_move:
       - wait 1t
       - define mini_cuboid <[cuboid].min.with_y[<[final_middle_y]>].to_cuboid[<[cuboid].max.with_y[<[final_high_y]>]>]>
       - modifyblock <[mini_cuboid].blocks[*_carpet|*torch|lever|tripwire_hook|*_bed|lantern|*sign|bell|*azalea|*_door|*_pressure_plate|*_banner]> air no_physics
+      - wait 1t
       - modifyblock <[mini_cuboid].blocks[!air]> air
       - wait 1t
 
     # Cleanup
     - repeat <[schematic_count]>:
-      - schematic unload name:airship_<[id]>_<[value]>
+      - schematic unload name:airship_<[id]>_1<[value]>
+      - schematic unload name:airship_<[id]>_2<[value]>
       - wait 1t
     - flag server airships.ship.<[id]>.chunks:<[new_cuboid].chunks>
     - note <[final_cuboid]> as:airship_<[id]>
