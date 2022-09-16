@@ -160,7 +160,7 @@ airship_move:
       - stop
 
     # Final Cuboid
-    - define new_location <[exact_location].with_y[<[highest].add[<[lower_y].abs>].add[<[sailing_height]>]>]>
+    - define new_location <[exact_location].with_y[<[highest].add[<[lower_y].abs>].add[<[sailing_height]>]>].center>
     - define pos1 <[new_location].add[<[lower_x].add[-20]>,<[lower_y].add[-20]>,<[lower_z].add[-20]>]>
     - define pos2 <[new_location].add[<[higher_x].add[20]>,<[higher_y].add[20]>,<[higher_z].add[20]>]>
     - define final_cuboid <[pos1].to_cuboid[<[pos2]>]>
