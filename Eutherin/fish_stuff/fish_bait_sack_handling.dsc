@@ -5,8 +5,8 @@ fishbot_baitsack_handling:
     on player clicks block location_flagged:fish_bait_sack:
       - determine passively cancelled
       - ratelimit <player> 2t
-      - inventory open d:Jade_bait_inventory
-    on player clicks item in Jade_bait_inventory*:
+      - inventory open d:jade_bait_inventory
+    on player clicks item in jade_bait_inventory*:
       - if <context.item.material.name> == gray_stained_glass_pane || <context.item.material.name||air> == air || <context.raw_slot> > 27:
         - stop
       - inventory open d:bait_inventory_<context.item.script.name.after[bait_counter_]>
@@ -27,7 +27,7 @@ fishbot_baitsack_handling:
             - define flag_path fishbot.bait.<context.inventory.script.name.after[bait_inventory_]>
             - flag <player> <[flag_path]>:<[amount]>
             - wait 2t
-            - inventory open d:Jade_bait_inventory
+            - inventory open d:jade_bait_inventory
     on player closes bait_inventory_*:
       - define amount <element[0]>
       - foreach <context.inventory.list_contents.exclude[standard_filler|standard_accept_button|standard_back_button|air]> as:item:
@@ -37,7 +37,7 @@ fishbot_baitsack_handling:
       - define flag_path fishbot.bait.<context.inventory.script.name.after[bait_inventory_]>
       - flag <player> <[flag_path]>:<[amount]>
 
-Jade_bait_inventory:
+jade_bait_inventory:
   type: inventory
   inventory: chest
   title: Jade's Bait Sack
