@@ -396,7 +396,7 @@ airship_create_elevators:
       - define final_count <[loop_index]>
       - wait 1t
     - flag server airships.ship.<[id]>.elevators.count:<[final_count]>
-    - run airship_elevator_particles def:<[id]>
+    - run airship_elevator_particles def:<[id]> if:<server.has_flag[airships.ship.<[id]>.elevator_status]>
 
 airship_elevator_up_entity:
   type: entity
