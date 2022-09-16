@@ -173,11 +173,14 @@ airship_move:
     # Schematic the Ship
     - define schematic_count 0
     - define final_low_y <[old_cuboid].min.y.add[20]>
+    - define final_middle_y <[old_cuboid].center.y>
     - define final_high_y <[old_cuboid].max.y.add[-20]>
     - foreach <[old_cuboid].chunks>:
       - define cuboid <[value].cuboid>
-      - define mini_cuboid <[cuboid].min.with_y[<[final_low_y]>].to_cuboid[<[cuboid].max.with_y[<[final_high_y]>]>]>
-      - schematic create area:<[mini_cuboid]> name:airship_<[id]>_<[loop_index]> <[current_location]>
+      - define mini_cuboid <[cuboid].min.with_y[<[final_low_y]>].to_cuboid[<[cuboid].max.with_y[<[final_middle_y]>]>]>
+      - schematic create area:<[mini_cuboid]> name:airship_<[id]>_1<[loop_index]> <[current_location]>
+      - define mini_cuboid <[cuboid].min.with_y[<[final_middle_y]>].to_cuboid[<[cuboid].max.with_y[<[final_high_y]>]>]>
+      - schematic create area:<[mini_cuboid]> name:airship_<[id]>_2<[loop_index]> <[current_location]>
       - define schematic_count:++
       - wait 1t
 
@@ -224,7 +227,9 @@ airship_move:
 
     # Paste New Airship
     - repeat <[schematic_count]>:
-      - ~schematic paste <[new_location]> name:airship_<[id]>_<[value]> noair
+      - ~schematic paste <[new_location]> name:airship_<[id]>_1<[value]> noair
+      - wait 1t
+      - ~schematic paste <[new_location]> name:airship_<[id]>_2<[value]> noair
       - wait 1t
     - title title:<&color[#000000]><&font[adriftus:overlay]><&chr[1004]><&chr[F802]><&chr[1004]> fade_in:5t stay:1s fade_out:1.5s targets:<cuboid[airship_<[id]>].players>
     - wait 4t
