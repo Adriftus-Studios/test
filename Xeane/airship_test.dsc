@@ -494,7 +494,7 @@ airship_elevator_particles:
 
 airship_toggle_lever:
   type: task
-  debug: false
+  debug: true
   definitions: id
   script:
     - wait 1t
