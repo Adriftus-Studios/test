@@ -594,6 +594,9 @@ airship_set_bed_spawn:
   debug: true
   script:
     - wait 1t
+    - if !<player.bed_spawn>:
+      - narrate "<&c>Bed Unsuitable"
+      - stop
     - if <context.location.distance[<player.bed_spawn>]> < 2.75 || <context.location.other_block.distance[<player.bed_spawn>]> < 2.75:
       - define airship_id <context.location.flag[airship_id]>
       - flag server airships.ship.<context.location.flag[airship_id]>.bed_spawns.<player>:<context.location.center.sub[<server.flag[airships.ship.<[airship_id]>.location]>]>
