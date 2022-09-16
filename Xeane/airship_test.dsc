@@ -217,7 +217,7 @@ airship_move:
 
     # Blind Players at Destination
     - define target_players <[new_location].find_players_within[140]>
-    - title title:<&f><&font[adriftus:overlay]><&chr[1004]><&chr[F801]><&chr[1004]> fade_in:5t stay:<[schematic_count].add[10]>t fade_out:1.5s targets:<[target_players]>
+    - title title:<&f><&font[adriftus:overlay]><&chr[1004]><&chr[F801]><&chr[1004]> fade_in:5t stay:<[schematic_count].mul[2].add[10]>t fade_out:1.5s targets:<[target_players]>
     - wait 5t
 
     # Place Elevators
@@ -272,18 +272,17 @@ airship_move:
     - foreach <server.flag[airships.ship.<[id]>.chunks]>:
       - chunkload <[value]> duration:10s
       - wait 2t
-    - title title:<&f><&font[adriftus:overlay]><&chr[1004]><&chr[F802]><&chr[1004]> fade_in:5t stay:<[old_cuboid].chunks.size.mul[4].add[5]>t fade_out:1.5s targets:<[current_location].find_players_within[140]>
+    - title title:<&f><&font[adriftus:overlay]><&chr[1004]><&chr[F802]><&chr[1004]> fade_in:5t stay:<[old_cuboid].chunks.size.mul[3].add[5]>t fade_out:1.5s targets:<[current_location].find_players_within[140]>
     - wait 4t
     - foreach <[old_cuboid].chunks>:
       - define cuboid <[value].cuboid>
       - define mini_cuboid <[cuboid].min.with_y[<[final_low_y]>].to_cuboid[<[cuboid].max.with_y[<[final_middle_y]>]>]>
       - modifyblock <[mini_cuboid].blocks[*_carpet|*torch|lever|tripwire_hook|*_bed|lantern|*sign|bell|*azalea|*_door|*_pressure_plate|*_banner]> air no_physics
       - wait 1t
-      - modifyblock <[mini_cuboid].blocks[!air]> air
-      - wait 1t
       - define mini_cuboid <[cuboid].min.with_y[<[final_middle_y]>].to_cuboid[<[cuboid].max.with_y[<[final_high_y]>]>]>
       - modifyblock <[mini_cuboid].blocks[*_carpet|*torch|lever|tripwire_hook|*_bed|lantern|*sign|bell|*azalea|*_door|*_pressure_plate|*_banner]> air no_physics
       - wait 1t
+      - define mini_cuboid <[cuboid].min.with_y[<[final_low_y]>].to_cuboid[<[cuboid].max.with_y[<[final_high_y]>]>]>
       - modifyblock <[mini_cuboid].blocks[!air]> air
       - wait 1t
 
