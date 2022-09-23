@@ -60,17 +60,12 @@ create_jade_link:
         description: Enter your minecraft account name CAREFULLY.
         required: true
 
-  - ~discordcommand id:Jade create name:link "description:Enter your minecraft account name CAREFULLY.." group:182229178425278466 options:<[options]>
-  - ~discordcommand id:Jade create name:link "description:Enter your minecraft account name CAREFULLY.." group:601677205445279744 options:<[options]>
   - ~discordcommand id:Jade create name:link "description:Enter your minecraft account name CAREFULLY.." group:626078288556851230 options:<[options]>
-  - ~discordcommand id:Jade create name:link "description:Enter your minecraft account name CAREFULLY.." group:546895939781263360 options:<[options]>
 
 create_jade_unlink:
   type: task
   debug: false
   script:
 
-  - ~discordcommand id:Jade create name:unlink "description:Unlink associated accounts" group:182229178425278466
-  - ~discordcommand id:Jade create name:unlink "description:Unlink associated accounts" group:601677205445279744
   - ~discordcommand id:Jade create name:unlink "description:Unlink associated accounts" group:626078288556851230
-  - ~discordcommand id:Jade create name:unlink "description:Unlink associated accounts" group:546895939781263360
+
