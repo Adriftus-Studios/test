@@ -35,6 +35,13 @@ jade_key_item:
   - <&6>Current Keys<&co> <&e><player.flag[fishbot.keys]>
   - <&b>Click<&6> to add more.
 
+jade_key_canceller:
+  type: world
+  debug: false
+  events:
+    on player right clicks block with:jade_key_item:
+      - determine passively cancelled
+
 jade_boost_info:
   type: item
   debug: false
