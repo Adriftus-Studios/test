@@ -108,12 +108,79 @@ jade_sunday:
   mechanisms:
     skull_skin: 33d885df-8840-422c-8ebf-a97a2ae0566c|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDVhM2E0MDRjY2RiNDBhZWI3MzY1MTQ3ZjBmY2YyNDkyY2ZkNjliNzgxZmMwYjI4ODNkMWM5YjljMzdlM2NlZiJ9fX0=
   lore:
-  - <&e>First Weekend<&6><&co> <&e>Catch rate increased by 20<&pc><&6>.
-  - <&e>Second Weekend<&6><&co> <&e>Item Chance increased by 20<&pc><&6>.
-  - <&e>Third Weekend<&6><&co> <&e>Fish Chance increased by 20<&pc><&6>.
-  - <&e>Fourth Weekend<&6><&co> <&e>Experience increased by 30<&pc><&6>.
-  - <&e>Fifth Weekend<&6><&co> <&e>Legendary Fish chance increased by 4<&pc><&6>.
+  - <&e>First <&6>Weekend<&co> <&e>Catch rate increased by 20<&pc><&6>.
+  - <&e>Second <&6>Weekend<&co> <&e>Item Chance increased by 20<&pc><&6>.
+  - <&e>Third <&6>Weekend<&co> <&e>Fish Chance increased by 20<&pc><&6>.
+  - <&e>Fourth <&6>Weekend<&co> <&e>Experience increased by 30<&pc><&6>.
+  - <&e>Fifth <&6>Weekend<&co> <&e>Legendary Fish chance increased by 4<&pc><&6>.
 
+jade_monday:
+  type: item
+  debug: false
+  material: player_head
+  display name: <&6>Monday<&co>
+  mechanisms:
+    skull_skin: 33d885df-8840-422c-8ebf-a97a2ae0566c|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODQzMGIwMmIxNTVlNjY5MjczYTc3ODQwYjA3ZjQ1M2U3OWIzOTQ4OTBhNGQ2MGI0MGM3YWMzMGFhNzhmZTkzNiJ9fX0=
+  lore:
+  - <&e>Speed Fishing<&6><&co>
+  - <&6>-10<&pc><&e>Catch Time<&6>.
+  - <&6>+10<&pc><&e>Catch Rate<&6>.
+
+jade_tuesday:
+  type: item
+  debug: false
+  material: player_head
+  display name: <&6>Tuesday<&co>
+  mechanisms:
+    skull_skin: 33d885df-8840-422c-8ebf-a97a2ae0566c|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmJlODE3ODkyZjgxYTdhMTUyYTQxZTE5ZWQyMzY0YmRkNTNhNWNlMjVjZTA3M2UxZWVlOWVjMTRmNDNjZmRiOCJ9fX0=
+  lore:
+  - <&6>No Bonuses
+
+jade_wednesday:
+  type: item
+  debug: false
+  material: player_head
+  display name: <&6>Wednesday<&co>
+  mechanisms:
+    skull_skin: 33d885df-8840-422c-8ebf-a97a2ae0566c|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjczZmY2YzU3YzBjNjM3MWY5ZTU5ZWVjYWY0NzdlNzE0M2Q1NjgyZTEwZGE0ZTRkODJlYjBjYjI0ZGNiYWQxYSJ9fX0=
+  lore:
+  - <&e>Good Fishing<&6><&co>
+  - <&6>25<&pc> increased <&e>Good Catch Chance<&6>.
+
+jade_thursday:
+  type: item
+  debug: false
+  material: player_head
+  display name: <&6>Thursday<&co>
+  mechanisms:
+    skull_skin: 33d885df-8840-422c-8ebf-a97a2ae0566c|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZmJlODE3ODkyZjgxYTdhMTUyYTQxZTE5ZWQyMzY0YmRkNTNhNWNlMjVjZTA3M2UxZWVlOWVjMTRmNDNjZmRiOCJ9fX0=
+  lore:
+  - <&6>No Bonuses
+
+jade_friday:
+  type: item
+  debug: false
+  material: player_head
+  display name: <&6>Friday<&co>
+  mechanisms:
+    skull_skin: 33d885df-8840-422c-8ebf-a97a2ae0566c|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzY4NDc0ZjJiZGJiYjNmNjEzZWU5YTcxMDJiNzZkZDRjZTk2YjQ4ZjJkZmZmNGUxNTM3OGM2M2E1Y2MzY2Q3ZSJ9fX0=
+  lore:
+  - <&e>Peaceful Fishing<&6><&co>
+  - <&6>10<&pc> decreased <&e>Attack Chance<&6>.
+
+jade_saturday:
+  type: item
+  debug: false
+  material: player_head
+  display name: <&6>Saturday<&co>
+  mechanisms:
+    skull_skin: 33d885df-8840-422c-8ebf-a97a2ae0566c|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDVhM2E0MDRjY2RiNDBhZWI3MzY1MTQ3ZjBmY2YyNDkyY2ZkNjliNzgxZmMwYjI4ODNkMWM5YjljMzdlM2NlZiJ9fX0=
+  lore:
+  - <&e>First <&6>Weekend<&co> <&e>Catch rate increased by 20<&pc><&6>.
+  - <&e>Second <&6>Weekend<&co> <&e>Item Chance increased by 20<&pc><&6>.
+  - <&e>Third <&6>Weekend<&co> <&e>Fish Chance increased by 20<&pc><&6>.
+  - <&e>Fourth <&6>Weekend<&co> <&e>Experience increased by 30<&pc><&6>.
+  - <&e>Fifth <&6>Weekend<&co> <&e>Legendary Fish chance increased by 4<&pc><&6>.
 
 fishbot_jade_key_inventory:
   type: inventory
