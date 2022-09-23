@@ -7,7 +7,7 @@ fishbot_jade_menu:
   gui: true
   slots:
     - [] [] [] [] [jade_skull_item] [] [] [] []
-    - [] [jade_key_item] [] [] [] [] [] [] []
+    - [] [jade_key_item] [] [] [] [] [] [jade_event_item] []
     - [] [] [] [] [] [] [] [] []
     - [] [] [] [] [] [] [] [] []
     - [] [] [] [] [] [] [] [] []
@@ -23,6 +23,14 @@ jade_skull_item:
   lore:
     - <&6>Jade<&sq>s level<&co> <&e><player.flag[fishbot.jade.level]>
     - <&6>Experience to level<&co> <&e><script[fishbot_data_storage].data_key[exp_per_level.<player.flag[fishbot.jade.level]>].sub[<player.flag[fishbot.jade.experience_earned]>]> <&6>(<&e><player.flag[fishbot.jade.experience_earned].div[<script[fishbot_data_storage].data_key[exp_per_level.<player.flag[fishbot.jade.level]>]>]><&pc><&6>)
+
+jade_event_item:
+  type: item
+  debug: false
+  material: clock
+  display name: <&6>Jades Calendar
+  lore:
+  - <&b>Click<&6> to see the scheduled events.
 
 jade_key_item:
   type: item
@@ -72,13 +80,39 @@ fishbot_jade_speech:
     - inventory open d:fishbot_jade_menu
     - stop
 
-fishbot_jade_open_keyring:
+fishbot_jade_item_events:
   type: world
   debug: false
   events:
     on player clicks jade_key_item in inventory:
       - determine passively cancelled
       - inventory open d:fishbot_jade_key_inventory
+    on player clicks jade_event_item in inventory:
+      - determine passively cancelled
+      - inventory open d:fishbot_jade_event_inventory
+
+fishbot_jade_event_inventory:
+  type: inventory
+  debug: false
+  inventory: chest
+  title: Jade's Schedule
+  size: 9
+  slots:
+  - [standard_accept_button] [standard_filler] [jade_sunday] [jade_monday] [jade_tuesday] [jade_wednesday] [jade_thursday] [jade_friday] [jade_saturday]
+
+jade_sunday:
+  type: item
+  debug: false
+  material: player_head
+  display name: <&6>Sunday<&co>
+  mechanisms:
+    skull_skin: 33d885df-8840-422c-8ebf-a97a2ae0566c|eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDVhM2E0MDRjY2RiNDBhZWI3MzY1MTQ3ZjBmY2YyNDkyY2ZkNjliNzgxZmMwYjI4ODNkMWM5YjljMzdlM2NlZiJ9fX0=
+  lore:
+  - <&e>First Weekend<&6><&co> <&e>Catch rate increased by 20<&pc><&6>.
+  - <&e>Second Weekend<&6><&co> <&e>Item Chance increased by 20<&pc><&6>.
+  - <&e>Third Weekend<&6><&co> <&e>Fish Chance increased by 20<&pc><&6>.
+  - <&e>Fourth Weekend<&6><&co> <&e>Experience increased by 30<&pc><&6>.
+  - <&e>Fifth Weekend<&6><&co> <&e>Legendary Fish chance increased by 4<&pc><&6>.
 
 
 fishbot_jade_key_inventory:
