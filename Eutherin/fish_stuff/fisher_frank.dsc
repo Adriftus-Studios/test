@@ -105,7 +105,7 @@ fishbot_jade_event_inventory_events:
   debug: false
   type: world
   events:
-    on player clicks standard_back_button in fishbot_jade_event_inventory_events:
+    on player clicks standard_back_button in fishbot_jade_event_inventory:
       - inventory open d:fishbot_jade_menu
 
 jade_sunday:
