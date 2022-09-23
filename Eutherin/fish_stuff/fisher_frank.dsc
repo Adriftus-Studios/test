@@ -30,17 +30,10 @@ jade_key_item:
   material: tripwire_hook
   mechanisms:
     custom_model_data: 1
-  display name: Jades Key Ring
+  display name: <&6>Jades Key Ring
   lore:
   - <&6>Current Keys<&co> <&e><player.flag[fishbot.keys]>
   - <&b>Click<&6> to add more.
-
-jade_key_canceller:
-  type: world
-  debug: false
-  events:
-    on player right clicks block with:jade_key_item:
-      - determine passively cancelled
 
 jade_boost_info:
   type: item
