@@ -29,7 +29,7 @@ fishbot_jade_level_up_event:
   debug: false
   definitions: player|jade_level_current|user
   script:
-    - ~discordmessage channel:1004632880976236575 id:rachela "Jade has leveled up to <[jade_level_current].if_null[1]> <&lt>@<[user].flag[discord.account_linked].id><&gt>"
+    - ~discordmessage channel:1004632880976236575 id:jade "Jade has leveled up to <[jade_level_current].if_null[1]> <&lt>@<[user].flag[discord.account_linked].id><&gt>"
     - define config <script[fishbot_data_storage]>
     - if <[config].list_keys[jade_unlocks].contains_any[<[jade_level_current]>]>:
       - define path jade_unlocks.<[jade_level_current]>
@@ -60,7 +60,7 @@ fishbot_jade_level_up_event:
 
       - define embed.color <color[0,254,255]>
       - define embed.description "<[message]>"
-      - ~discordmessage channel:1004632880976236575 id:rachela "<discord_embed.with_map[<[embed]>]>"
+      - ~discordmessage channel:1004632880976236575 id:jade "<discord_embed.with_map[<[embed]>]>"
 
       ##fires the advancement task for the given multiple of 10
 #    - if <[jade_level_current]> == 0:

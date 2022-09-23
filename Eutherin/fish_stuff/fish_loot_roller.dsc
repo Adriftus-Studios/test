@@ -130,7 +130,7 @@ fishbot_loot_calculator:
     - define message:->:<&nl>Oh<&sp>no!<&sp>Jade<&sq>s<&sp><[rod].to_titlecase><&sp>Fishing<&sp>Rod<&sp>broke
   - define embed.description "<&lt>@<[user].flag[discord.account_linked].id><&gt><&nl><[message].separated_by[<&nl>]><&nl><&nl><&lt>a<&co>experience_orb<&co>1004596803217395722<&gt> Jade Gained <[experience]> XP"
 
-  - ~discordmessage channel:<[channel]> id:rachela "<discord_embed.with_map[<[embed]>]>"
+  - ~discordmessage channel:<[channel]> id:jade "<discord_embed.with_map[<[embed]>]>"
 
   #- give item and clear processing flag.
   - if <[user].is_online>:

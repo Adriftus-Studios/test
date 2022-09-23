@@ -6,11 +6,11 @@ jade_privatifier:
         - ~discordinteraction reply interaction:<context.interaction> "Please wait 10 seconds between public command usage!" ephemeral:true
         - stop
       - if !<context.options.get[private].if_null[false]>:
-        - ~discordmessage channel:<context.channel> id:rachela "<discord_embed.with_map[<[embed]>]>"
+        - ~discordmessage channel:<context.channel> id:jade "<discord_embed.with_map[<[embed]>]>"
         - flag <context.interaction.user> fishbot_ratelimiter expire:200t
         - ~discordinteraction delete interaction:<context.interaction>
       - else:
-        - ~discordmessage user:<context.interaction.user> id:rachela "<discord_embed.with_map[<[embed]>]>"
+        - ~discordmessage user:<context.interaction.user> id:jade "<discord_embed.with_map[<[embed]>]>"
         - ~discordinteraction reply interaction:<context.interaction> "Please see your DMs for the requested information!" ephemeral:true
 
 
@@ -25,7 +25,7 @@ create_fishbot_area_command:
         description: Shall I DM this information?
         required: false
 
-  - ~discordcommand id:Rachela create name:jade_areas "description:Where can Jade fish?" group:546895939781263360 options:<[options]>
+  - ~discordcommand id:Jade create name:jade_areas "description:Where can Jade fish?" group:626078288556851230 options:<[options]>
 
 fishbot_area_command_handler:
   type: world
@@ -64,7 +64,7 @@ create_fishbot_rod_command:
         description: Shall I DM this information?
         required: false
 
-  - ~discordcommand id:Rachela create name:jade_rods "description:What rods can Jade use?" group:546895939781263360 options:<[options]>
+  - ~discordcommand id:Jade create name:jade_rods "description:What rods can Jade use?" group:626078288556851230 options:<[options]>
 
 fishbot_rod_command_handler:
   type: world
@@ -93,7 +93,7 @@ create_fishbot_boat_command:
         description: Shall I DM this information?
         required: false
 
-  - ~discordcommand id:Rachela create name:jade_boat "description:Which boats can Jade use?" group:546895939781263360 options:<[options]>
+  - ~discordcommand id:Jade create name:jade_boat "description:Which boats can Jade use?" group:626078288556851230 options:<[options]>
 
 fishbot_boat_command_handler:
   type: world
@@ -122,7 +122,7 @@ create_fishbot_bait_command:
         description: Shall I DM this information?
         required: false
 
-  - ~discordcommand id:Rachela create name:jade_bait "description:Which baits can Jade use?" group:546895939781263360 options:<[options]>
+  - ~discordcommand id:Jade create name:jade_bait "description:Which baits can Jade use?" group:626078288556851230 options:<[options]>
 
 fishbot_bait_command_handler:
   type: world
@@ -150,7 +150,7 @@ create_fishbot_jade_command:
         description: Shall I DM this information?
         required: false
 
-  - ~discordcommand id:Rachela create name:jade "description:Information about Jade." group:546895939781263360 options:<[options]>
+  - ~discordcommand id:Jade create name:jade "description:Information about Jade." group:626078288556851230 options:<[options]>
 
 fishbot_jade_command_handler:
   type: world

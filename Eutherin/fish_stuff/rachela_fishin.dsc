@@ -165,7 +165,7 @@ fishbot_command_checking:
     - define embed.thumbnail https://media.discordapp.net/attachments/692370842813726724/1005278267303006278/water-transportation.png
     - define embed.description "<[message]>"
     - ~discordinteraction reply interaction:<context.interaction> "He's on the way!" ephemeral:true
-    - ~discordmessage channel:<[channel]> id:rachela "<discord_embed.with_map[<[embed]>]>"
+    - ~discordmessage channel:<[channel]> id:jade "<discord_embed.with_map[<[embed]>]>"
 
 
     - if <[user].is_online>:
@@ -210,4 +210,4 @@ create_fishbot_command:
         name: bait
         description: What bait you would like Jade to use. (Default last used.)
         required: false
-  - ~discordcommand id:Rachela create name:fish "description:Send jade on his way!" group:546895939781263360 options:<[options]>
+  - ~discordcommand id:Jade create name:fish "description:Send jade on his way!" group:626078288556851230 options:<[options]>

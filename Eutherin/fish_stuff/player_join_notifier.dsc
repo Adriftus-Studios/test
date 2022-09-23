@@ -1,4 +1,4 @@
-rachela_link_notifier:
+jade_link_notifier:
   type: world
   debug: true
   events:
