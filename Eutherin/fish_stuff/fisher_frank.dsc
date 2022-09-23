@@ -107,7 +107,6 @@ fishbot_jade_key_inventory_events:
     on player clicks item in fishbot_jade_key_inventory:
       - if <context.item.material.name> == gray_stained_glass_pane || <context.item.material.name||air> == air || <context.raw_slot> > 27:
         - stop
-      - inventory open d:fishbot_jade_menu
     on player clicks item in fishbot_jade_key_inventory*:
       - if <context.item.script.name||null> != fishing_dungeon_key && <context.item.material.name> != air:
         - determine passively cancelled
