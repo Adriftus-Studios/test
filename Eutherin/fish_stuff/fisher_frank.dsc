@@ -97,8 +97,16 @@ fishbot_jade_event_inventory:
   inventory: chest
   title: Jade's Schedule
   size: 9
+  gui: true
   slots:
-  - [standard_accept_button] [standard_filler] [jade_sunday] [jade_monday] [jade_tuesday] [jade_wednesday] [jade_thursday] [jade_friday] [jade_saturday]
+  - [standard_back_button] [standard_filler] [jade_sunday] [jade_monday] [jade_tuesday] [jade_wednesday] [jade_thursday] [jade_friday] [jade_saturday]
+
+fishbot_jade_event_inventory_events:
+  debug: false
+  type: world
+  events:
+    on player clicks standard_back_button in fishbot_jade_event_inventory_events:
+      - inventory open d:fishbot_jade_menu
 
 jade_sunday:
   type: item
