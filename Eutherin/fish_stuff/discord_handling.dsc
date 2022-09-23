@@ -48,4 +48,3 @@ ingame_unlink:
     - narrate "<&a>Unlinked from <player.flag[discord.account_linked].name>.<&nl><&6>A confirmation message has been sent to your DMs by Jade."
     - ~discordmessage id:jade user:<player.flag[discord.account_linked]> "Your minecraft account (<player.name>) has been unlinked from Adriftus."
     - flag <player> discord.account_linked:!
-
