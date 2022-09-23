@@ -46,7 +46,7 @@ ingame_unlink:
       - stop
     - flag <player.flag[discord.account_linked]> minecraft.account_linked:!
     - narrate "<&a>Unlinked from <player.flag[discord.account_linked].name>.<&nl><&6>A confirmation message has been sent to your DMs by Jade."
-    - ~discordmessage id:jade user:<player.flag[discord.account_linked]> "Your minecraft account (<player.name>) has been unlinked from Eutherin's Party Haus."
+    - ~discordmessage id:jade user:<player.flag[discord.account_linked]> "Your minecraft account (<player.name>) has been unlinked from Adriftus."
     - flag <player> discord.account_linked:!
 
 create_jade_link:

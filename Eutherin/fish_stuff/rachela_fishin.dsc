@@ -19,12 +19,6 @@ fishbot_command_checking:
 
     - define user <context.interaction.user.flag[minecraft.account_linked]>
 
-    ##retrieve data from primary server.
-    - ~webget 15.204.142.144:25581?server=test&tag=<[user].flag[fishbot]> save:name
-    - define map <util.parse_yaml[<entry[name].result>]>
-    - announce <[map]>
-
-
     - if <[user].has_flag[fishbot.fishing_now]>:
       - ~discordinteraction reply interaction:<context.interaction> "Jade is already out fishing." ephemeral:true
       - stop
@@ -210,4 +204,4 @@ create_fishbot_command:
         name: bait
         description: What bait you would like Jade to use. (Default last used.)
         required: false
-  - ~discordcommand id:Jade create name:fish "description:Send jade on his way!" group:626078288556851230 options:<[options]>
+  - ~discordcommand id:jade create name:fish "description:Send jade on his way!" group:546895939781263360 options:<[options]>
