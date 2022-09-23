@@ -11,3 +11,4 @@ fishbot_join_event:
       - if !<player.has_flag[fishbot.jade.experience_earned]>:
         - flag <player> fishbot.jade.experience_earned:0
         - flag <player> fishbot.jade.level:1
+        - flag <player> fishbot.keys:0
