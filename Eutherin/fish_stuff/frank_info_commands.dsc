@@ -13,20 +13,6 @@ jade_privatifier:
         - ~discordmessage user:<context.interaction.user> id:jade "<discord_embed.with_map[<[embed]>]>"
         - ~discordinteraction reply interaction:<context.interaction> "Please see your DMs for the requested information!" ephemeral:true
 
-
-create_fishbot_area_command:
-  type: task
-  debug: false
-  script:
-  - definemap options:
-      1:
-        type: boolean
-        name: private
-        description: Shall I DM this information?
-        required: false
-
-  - ~discordcommand id:Jade create name:jade_areas "description:Where can Jade fish?" group:626078288556851230 options:<[options]>
-
 fishbot_area_command_handler:
   type: world
   debug: false
@@ -52,20 +38,6 @@ fishbot_area_command_handler:
 
       - inject jade_privatifier
 
-
-create_fishbot_rod_command:
-  type: task
-  debug: false
-  script:
-  - definemap options:
-      1:
-        type: boolean
-        name: private
-        description: Shall I DM this information?
-        required: false
-
-  - ~discordcommand id:Jade create name:jade_rods "description:What rods can Jade use?" group:626078288556851230 options:<[options]>
-
 fishbot_rod_command_handler:
   type: world
   debug: false
@@ -82,19 +54,6 @@ fishbot_rod_command_handler:
       - inject jade_privatifier
 
 
-create_fishbot_boat_command:
-  type: task
-  debug: false
-  script:
-  - definemap options:
-      1:
-        type: boolean
-        name: private
-        description: Shall I DM this information?
-        required: false
-
-  - ~discordcommand id:Jade create name:jade_boat "description:Which boats can Jade use?" group:626078288556851230 options:<[options]>
-
 fishbot_boat_command_handler:
   type: world
   debug: false
@@ -110,20 +69,6 @@ fishbot_boat_command_handler:
 
       - inject jade_privatifier
 
-
-create_fishbot_bait_command:
-  type: task
-  debug: false
-  script:
-  - definemap options:
-      1:
-        type: boolean
-        name: private
-        description: Shall I DM this information?
-        required: false
-
-  - ~discordcommand id:Jade create name:jade_bait "description:Which baits can Jade use?" group:626078288556851230 options:<[options]>
-
 fishbot_bait_command_handler:
   type: world
   debug: false
@@ -138,19 +83,6 @@ fishbot_bait_command_handler:
       - define embed.description "<[message].separated_by[<&nl>]>"
 
       - inject jade_privatifier
-
-create_fishbot_jade_command:
-  type: task
-  debug: false
-  script:
-  - definemap options:
-      1:
-        type: boolean
-        name: private
-        description: Shall I DM this information?
-        required: false
-
-  - ~discordcommand id:Jade create name:jade "description:Information about Jade." group:626078288556851230 options:<[options]>
 
 fishbot_jade_command_handler:
   type: world
@@ -184,15 +116,3 @@ fishbot_jade_command_handler:
       - define embed.description "<[message]>"
 
       - inject jade_privatifier
-
-
-
-create_fishbot_jade_commands:
-  type: task
-  debug: false
-  script:
-  - inject create_fishbot_jade_command
-  - inject create_fishbot_bait_command
-  - inject create_fishbot_boat_command
-  - inject create_fishbot_rod_command
-  - inject create_fishbot_area_command
