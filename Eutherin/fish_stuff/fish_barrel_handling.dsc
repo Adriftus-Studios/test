@@ -7,7 +7,7 @@ fishbot_barrel_handling:
       - ratelimit <player> 2t
       - inventory open d:jade_catch_inventory_<player.flag[fishbot.barrel_expanded].if_null[0]>
     on player clicks item in jade_catch_inventory_*:
-      - if <context.item.material.name> == air:
+      - if <list[air|gray_stained_glass_pane].contains_any[<context.item.material.name>]>:
         - stop
       - if <context.raw_slot> < 55:
         - ratelimit <player> 5t
