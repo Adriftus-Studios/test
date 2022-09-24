@@ -10,6 +10,7 @@ fishbot_baitsack_handling:
       - if <context.item.material.name> == gray_stained_glass_pane || <context.item.material.name||air> == air || <context.raw_slot> > 27:
         - stop
       - inventory open d:bait_inventory_<context.item.script.name.after[bait_counter_]>
+      - playsound sound:UI_BUTTON_CLICK <player>
     on player clicks item in bait_inventory_*:
       - if <context.item.script.name.after[fishing_bait_]||null> != <context.inventory.script.name.after[bait_inventory_]> && <context.item.material.name> != air:
         - determine passively cancelled
@@ -20,6 +21,7 @@ fishbot_baitsack_handling:
             - stop
           - case standard_accept_button standard_back_button:
             - define amount <element[0]>
+            - playsound sound:UI_BUTTON_CLICK <player>
             - foreach <context.inventory.list_contents.exclude[standard_filler|standard_accept_button|standard_back_button|air]> as:item:
               - if <list[standard_filler|standard_accept_button|standard_back_button|null].contains_any[<[item].script.name||null>]>:
                 - foreach next

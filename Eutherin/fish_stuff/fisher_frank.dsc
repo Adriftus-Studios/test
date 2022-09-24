@@ -28,7 +28,7 @@ jade_event_item:
   type: item
   debug: false
   material: clock
-  display name: <&6>Jades Calendar
+  display name: <&6>Jades Scheedule
   lore:
   - <&b>Click<&6> to see the scheduled events.
 
@@ -77,6 +77,7 @@ fishbot_jade_speech:
     - stop
   - else:
     - narrate "<&6>Howdy there, how can I help you?"
+    - wait 10t
     - inventory open d:fishbot_jade_menu
     - stop
 
@@ -86,9 +87,11 @@ fishbot_jade_item_events:
   events:
     on player clicks jade_key_item in inventory:
       - determine passively cancelled
+      - playsound sound:UI_BUTTON_CLICK <player.location>
       - inventory open d:fishbot_jade_key_inventory
     on player clicks jade_event_item in inventory:
       - determine passively cancelled
+      - playsound sound:UI_BUTTON_CLICK <player.location>
       - inventory open d:fishbot_jade_event_inventory
 
 fishbot_jade_event_inventory:
@@ -107,6 +110,7 @@ fishbot_jade_event_inventory_events:
   events:
     on player clicks standard_back_button in fishbot_jade_event_inventory:
       - inventory open d:fishbot_jade_menu
+      - playsound sound:UI_BUTTON_CLICK <player.location>
 
 jade_sunday:
   type: item
@@ -232,6 +236,7 @@ fishbot_jade_key_inventory_events:
               - define amount <[amount].add[<[item].quantity>]>
             - flag <player> fishbot.keys:<[amount]>
             - wait 2t
+            - playsound sound:UI_BUTTON_CLICK <player.location>
             - inventory open d:fishbot_jade_menu
     on player closes fishbot_jade_key_inventory:
       - define amount <element[0]>

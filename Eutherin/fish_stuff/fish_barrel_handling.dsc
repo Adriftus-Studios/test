@@ -15,6 +15,7 @@ fishbot_barrel_handling:
           - narrate "<&c>Please make some room in your inventory"
           - stop
         - take slot:<context.slot> from:<context.inventory>
+        - playsound sound:UI_BUTTON_CLICK <player>
         - give <context.item>
     on player closes jade_catch_inventory_*:
       - flag <player> fishbot.caught_items:<context.inventory.exclude_item[standard_filler].list_contents>

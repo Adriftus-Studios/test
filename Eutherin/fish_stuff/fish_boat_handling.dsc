@@ -41,6 +41,7 @@ fishbot_boat_stand_handling:
                 - foreach next
               - define boat_list:->:<[item]>
             - flag <player> fishbot.boats_stored:<[boat_list]>
+            - playsound sound:UI_BUTTON_CLICK <player>
             - wait 2t
             - inventory close
     on player closes jade_boat_inventory_*:

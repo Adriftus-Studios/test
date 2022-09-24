@@ -24,6 +24,7 @@ fishbot_rod_stand_handling:
                 - foreach next
               - define rod_list:->:<[item]>
             - flag <player> fishbot.rods_stored:<[rod_list]>
+            - playsound sound:UI_BUTTON_CLICK <player>
             - wait 2t
             - inventory close
     on player closes jade_rod_inventory_*:
