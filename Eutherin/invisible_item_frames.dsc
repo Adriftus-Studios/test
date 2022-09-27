@@ -4,7 +4,7 @@ invisible_item_frame:
   debug: false
   display name: <&r>Invisible Item Frame
   data:
-    recipe_book_category: decor.invisible_item_frame
+    recipe_book_category: decor.invisible_item_frame1
   mechanisms:
     invisible: true
   recipes:
