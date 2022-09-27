@@ -4,9 +4,10 @@ prismatic_dye:
   material: green_dye
   display name: <&6>Prismatic Dye
   lore:
-  - <&e>This strange metallic liquid imbues different objects with mysterious properties.
+  - <&e>A strange metallic liquid.
+  - <&e>Imbues different objects with mysterious properties.
   mechanisms:
-    custom_model_data: 1
+    custom_model_data: 1000
   recipes:
     1:
       type: shapeless
