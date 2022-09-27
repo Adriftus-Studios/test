@@ -10,7 +10,7 @@ confetti_ball:
   recipes:
     1:
       type: shapeless
-      output_quantity: 1
+      output_quantity: 16
       input: prismatic_dye|snowball
 
 confetti_ball_shooter:
@@ -19,6 +19,7 @@ confetti_ball_shooter:
   events:
     on player right clicks block with:confetti_ball:
       - determine passively cancelled
+      - take iteminhand
       - ratelimit <player> 2t
       - playsound sound:ENTITY_SNOWBALL_THROW <player.location> pitch:0.1 volume:0.4
       - shoot snowball[item=snowball[custom_model_data=1]] speed:2 script:confetti_explosion
