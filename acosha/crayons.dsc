@@ -50,7 +50,6 @@ crayon_drawing:
       - adjust <entry[crayon].spawned_entity> framed:<item[leather_horse_armor].with[custom_model_data=21;color=<[color]>]>
       - flag <entry[crayon].spawned_entity> on_damaged:crayon_breaking
       - inject custom_durability_process_task
-      - narrate <player.item_in_hand.flag[custom_durability.current]>
       - if <player.item_in_hand.script.name.starts_with[crayon].if_null[false]> && <player.item_in_hand.flag[custom_durability.current].mod[4]> == 0:
         - inventory adjust slot:<player.held_item_slot> custom_model_data:<player.item_in_hand.custom_model_data.sub[1]>
 
