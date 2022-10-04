@@ -12,6 +12,7 @@ custom_dispense_inventory_process:
   debug: false
   script:
     - define inventory_contents <context.location.inventory.list_contents>
+    - wait 5t
     - foreach <[inventory_contents]> as:item:
       - if !<[item].has_flag[custom_dispense]>:
         - foreach next
