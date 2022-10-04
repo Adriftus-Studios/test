@@ -2,7 +2,7 @@ dispenser_instrument_Cow_Bell:
   type: item
   material: feather
   mechanisms:
-    custom_model_data: 1
+    custom_model_data: 1002
   display name: <&b>Cow Bell
   flags:
     custom_dispense: note
