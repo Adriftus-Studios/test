@@ -13,9 +13,9 @@ dispenser_instrument_Bell:
       type: shaped
       output_quantity: 1
       input:
-        - Gold_ingot|air|stick
-        - Gold_block|air|Gold_block
-        - Stick|air|Gold_ingot
+        - stick|stick|stick
+        - Gold_ingot|Gold_ingot|gold_nugget
+        - Gold_ingot|air|
   data:
     recipe_book_category: decor.instrument.bells
 
