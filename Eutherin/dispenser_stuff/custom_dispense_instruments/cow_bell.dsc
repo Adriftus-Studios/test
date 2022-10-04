@@ -16,7 +16,7 @@ dispenser_instrument_Cow_Bell:
       output_quantity: 1
       input:
         - air|copper_block|air
-        - copper_block|gold_ingot|copper_block
-        - copper_block|gold_nugget|copper_block
+        - copper_block|steel_ingot|copper_block
+        - copper_block|iron_nugget|copper_block
   data:
     recipe_book_category: decor.instrument.cow_bell
