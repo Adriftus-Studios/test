@@ -2,7 +2,7 @@ dispenser_instrument_banjo:
   type: item
   material: feather
   mechanisms:
-    custom_model_data: 1000
+    custom_model_data: 2000
   display name: <&b>Banjo
   flags:
     custom_dispense: note

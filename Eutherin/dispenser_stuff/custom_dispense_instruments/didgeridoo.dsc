@@ -2,7 +2,7 @@ dispenser_instrument_Didgeridoo:
   type: item
   material: feather
   mechanisms:
-    custom_model_data: 1003
+    custom_model_data: 2003
   display name: <&b>Didgeridoo
   flags:
     custom_dispense: note

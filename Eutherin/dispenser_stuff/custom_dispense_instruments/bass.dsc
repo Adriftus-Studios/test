@@ -2,7 +2,7 @@ dispenser_instrument_Bass:
   type: item
   material: feather
   mechanisms:
-    custom_model_data: 1006
+    custom_model_data: 2006
   display name: <&b>Bass
   flags:
     custom_dispense: note

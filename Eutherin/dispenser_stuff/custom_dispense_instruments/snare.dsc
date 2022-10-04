@@ -2,7 +2,7 @@ dispenser_instrument_Snare:
   type: item
   material: feather
   mechanisms:
-    custom_model_data: 1005
+    custom_model_data: 2005
   display name: <&b>Snare
   flags:
     custom_dispense: note
