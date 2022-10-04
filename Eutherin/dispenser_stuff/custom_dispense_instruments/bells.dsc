@@ -14,7 +14,7 @@ dispenser_instrument_Bell:
       output_quantity: 1
       input:
         - stick|stick|stick
-        - Gold_ingot|Gold_ingot|gold_nugget
+        - Gold_block|Gold_ingot|gold_nugget
         - Gold_ingot|air|air
   data:
     recipe_book_category: decor.instrument.bells
