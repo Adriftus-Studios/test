@@ -12,9 +12,9 @@ safety_n_t_placer:
         - wait 1s
         - while <entry[safe_tnt].spawned_entity.is_spawned||false> && !<entry[safe_tnt].spawned_entity.location.find_entities[player|wolf|cat|parrot|allay].within[8].is_empty>:
           - adjust <entry[safe_tnt].spawned_entity> fuse_ticks:60
+          - playsound <entry[safe_tnt].spawned_entity.location> sound:ENTITY_GENERIC_EXTINGUISH_FIRE
           - wait 1s
-          - narrate Boomfailed
-        - narrate KABOOM
+        - playsound <entry[safe_tnt].spawned_entity.location> sound:entity_tnt_primed
 
 safety_n_t_item:
   type: item
@@ -24,8 +24,8 @@ safety_n_t_item:
     recipe_book_category: gadgets.safety_n_t
   display name: <&6>Safety_N_T
   lore:
-  - <&e>Garuanteed<&6>* not to explode you or friends!
-  - <&6>*Adriftus trading co not liable for loss of life or injury
+  - <&e>Guaranteed<&6>* not to explode you or friends!
+  - <&6>*Adriftus trading co not liable for injuries, loss of life, limb, pet, or firstborn.
   recipes:
     1:
       type: shaped
