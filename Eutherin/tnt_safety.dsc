@@ -5,10 +5,10 @@ safety_n_t_placer:
     on player right clicks block with:safety_n_t_item:
       - determine passively cancelled
       - take iteminhand
-      - spawn primed_tnt <context.location.above[1]> save:safe_tnt
+      - spawn primed_tnt <context.location.above[.25]> save:safe_tnt
       - waituntil <entry[safe_tnt].spawned_entity.is_on_ground>
       - wait 1s
-      - while <entry[safe_tnt].spawned_entity.is_spawned||false> && !<entry[safe_tnt].spawned_entity.location.find_entities[player|wolf|cat].within[5].is_empty>:
+      - while <entry[safe_tnt].spawned_entity.is_spawned||false> && !<entry[safe_tnt].spawned_entity.location.find_entities[player|wolf|cat|parrot|allay].within[6].is_empty>:
         - adjust <entry[safe_tnt].spawned_entity> fuse_ticks:60
         - wait 1s
         - narrate Boomfailed
