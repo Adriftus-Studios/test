@@ -5,7 +5,7 @@ safety_n_t_placer:
     on player right clicks block with:safety_n_t_item:
       - determine passively cancelled
       - narrate <context.location.material.name>
-      - if <context.location.material.name> != air:
+      - if <context.location.material.name.if_null[air]> != air:
         - take iteminhand
         - spawn primed_tnt <context.location.center.above[.5]> save:safe_tnt
         - waituntil <entry[safe_tnt].spawned_entity.is_on_ground>
