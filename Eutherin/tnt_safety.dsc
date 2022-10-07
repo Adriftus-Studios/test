@@ -16,6 +16,7 @@ safety_n_t_placer:
           - playsound <entry[safe_tnt].spawned_entity.location> sound:entity_tnt_primed
           - wait 1s
         - playsound <entry[safe_tnt].spawned_entity.location> sound:ENTITY_GENERIC_EXTINGUISH_FIRE
+        - stop
       - ratelimit <player> 10t
       - narrate "<&4>There is another Safety-N-T nearby, please wait for that to detonate first."
 
