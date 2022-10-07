@@ -4,7 +4,6 @@ safety_n_t_placer:
   events:
     on player right clicks block with:safety_n_t_item:
       - determine passively cancelled
-      - narrate <context.location.material.name>
       - if <context.location.material.name.if_null[air]> != air:
         - take iteminhand
         - spawn primed_tnt <context.location.center.above[.5]> save:safe_tnt
@@ -12,9 +11,9 @@ safety_n_t_placer:
         - wait 1s
         - while <entry[safe_tnt].spawned_entity.is_spawned||false> && !<entry[safe_tnt].spawned_entity.location.find_entities[player|wolf|cat|parrot|allay].within[8].is_empty>:
           - adjust <entry[safe_tnt].spawned_entity> fuse_ticks:60
-          - playsound <entry[safe_tnt].spawned_entity.location> sound:ENTITY_GENERIC_EXTINGUISH_FIRE
+          - playsound <entry[safe_tnt].spawned_entity.location> sound:entity_tnt_primed
           - wait 1s
-        - playsound <entry[safe_tnt].spawned_entity.location> sound:entity_tnt_primed
+        - playsound <entry[safe_tnt].spawned_entity.location> sound:ENTITY_GENERIC_EXTINGUISH_FIRE
 
 safety_n_t_item:
   type: item
