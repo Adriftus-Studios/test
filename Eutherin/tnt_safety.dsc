@@ -4,7 +4,7 @@ safety_n_t_placer:
   events:
     on player right clicks block with:safety_n_t_item:
       - determine passively cancelled
-      - if <context.location.material.name.if_null[air]> != air:
+      - if <context.location.material.name.if_null[air]> == air:
         - stop
       - if <context.location.find_entities[primed_tnt].within[8].is_empty>:
         - take iteminhand
