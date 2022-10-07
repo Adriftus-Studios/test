@@ -20,7 +20,15 @@ safety_n_t_item:
   type: item
   debug: false
   material: tnt
+  data:
+    recipe_book_category: tools.gadgets.safety_n_t
   display name: <&6>Safety_N_T
   lore:
   - <&e>Garuanteed<&6>* not to explode you or friends!
   - <&6>*Adriftus trading co not liable for loss of life or injury
+  recipes:
+    1:
+      type: shaped
+      output_quantity: 1
+      input:
+      - clock|string|tnt
