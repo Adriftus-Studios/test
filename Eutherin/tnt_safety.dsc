@@ -14,6 +14,8 @@ safety_n_t_placer:
           - playsound <entry[safe_tnt].spawned_entity.location> sound:entity_tnt_primed
           - wait 1s
         - playsound <entry[safe_tnt].spawned_entity.location> sound:ENTITY_GENERIC_EXTINGUISH_FIRE
+      - ratelimit <player> 10t
+      - narrate "<&4>There is another Safety N T nearby, please wait for that to detonate first."
 
 safety_n_t_item:
   type: item
@@ -21,10 +23,11 @@ safety_n_t_item:
   material: tnt
   data:
     recipe_book_category: gadgets.safety_n_t
-  display name: <&6>Safety_N_T
+  display name: <&6>Safety-N-T
   lore:
   - <&e>Guaranteed<&6>* not to explode you or friends!
-  - <&6>*Adriftus trading co not liable for injuries, loss of life, limb, pet, or firstborn.
+  - <&6>*Adriftus trading co not liable for<&co>
+  - <&6>Injuries, loss of life, limb, pet, or firstborn.
   recipes:
     1:
       type: shaped
