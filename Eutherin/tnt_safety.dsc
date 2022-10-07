@@ -8,7 +8,7 @@ safety_n_t_placer:
         - stop
       - if <context.location.find_entities[primed_tnt].within[8].is_empty>:
         - take iteminhand
-        - spawn primed_tnt <context.relative> save:safe_tnt
+        - spawn primed_tnt <context.relative.center> save:safe_tnt
         - waituntil <entry[safe_tnt].spawned_entity.is_on_ground>
         - wait 1s
         - while <entry[safe_tnt].spawned_entity.is_spawned||false> && !<entry[safe_tnt].spawned_entity.location.find_entities[player|wolf|cat|parrot|allay].within[8].is_empty>:
