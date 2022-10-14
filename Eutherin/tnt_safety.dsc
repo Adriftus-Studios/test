@@ -10,22 +10,25 @@ safety_n_t_placer:
         - take iteminhand
         - define location <context.relative>
         - inject Primed_safety_n_t_task
-
-Primed_safety_n_t_task:
-    Type: task
-    Debug: false
-    Script:
-      - spawn primed_tnt <[location].center> save:safe_tnt
-      - waituntil <entry[safe_tnt].spawned_entity.is_on_ground>
-      - wait 1s
-      - while <entry[safe_tnt].spawned_entity.is_spawned||false> && !<entry[safe_tnt].spawned_entity.location.find_entities[player|wolf|cat|parrot|allay|axolotl].within[8].is_empty>:
-        - adjust <entry[safe_tnt].spawned_entity> fuse_ticks:60
-        - playsound <entry[safe_tnt].spawned_entity.location> sound:entity_tnt_primed
-        - wait 1s
-      - playsound <entry[safe_tnt].spawned_entity.location> sound:ENTITY_GENERIC_EXTINGUISH_FIRE
-      - stop
+        - stop
       - ratelimit <player> 10t
       - narrate "<&4>There is another Safety-N-T nearby, please wait for that to detonate first."
+
+
+Primed_safety_n_t_task:
+  Type: task
+  Debug: false
+  Definitions: location
+  Script:
+    - spawn primed_tnt <[location].center> save:safe_tnt
+    - waituntil <entry[safe_tnt].spawned_entity.is_on_ground>
+    - wait 1s
+    - while <entry[safe_tnt].spawned_entity.is_spawned||false> && !<entry[safe_tnt].spawned_entity.location.find_entities[player|wolf|cat|parrot|allay|axolotl].within[8].is_empty>:
+      - adjust <entry[safe_tnt].spawned_entity> fuse_ticks:60
+      - playsound <entry[safe_tnt].spawned_entity.location> sound:entity_tnt_primed
+      - wait 1s
+    - playsound <entry[safe_tnt].spawned_entity.location> sound:ENTITY_GENERIC_EXTINGUISH_FIRE
+    - stop
 
 safety_n_t_dispense:
   Type: world
@@ -34,8 +37,9 @@ safety_n_t_dispense:
     On block dispenses safety_n_t_item:
       - if !<context.location.find_entities[primed_tnt].within[8].is_empty>:
         - determine passively cancelled
-      - determine passively air
       - define location <context.velocity>
+      - determine passively air
+      - inject Primed_safety_n_t_task
 
 safety_n_t_item:
   type: item
