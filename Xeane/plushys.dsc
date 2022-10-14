@@ -47,9 +47,7 @@ plushies_placed:
 plushy_display_open_gui:
   type: task
   script:
-  - if <player.is_sneaking> && <context.entity.flag[owner]> == <player.uuid>:
     - run cosmetic_selection_inventory_open def:plushies
-    - determine passively cancelled
 
 plushies_equip:
   type: task
