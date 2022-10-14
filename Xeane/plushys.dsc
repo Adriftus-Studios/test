@@ -82,6 +82,7 @@ plushy_entity:
     custom_name_visible: true
     visible: false
     gravity: false
+    is_small: true
     equipment:
       helmet: <script[plush_default].data_key[display_data.material]>
   flags:
