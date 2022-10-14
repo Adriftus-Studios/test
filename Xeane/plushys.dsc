@@ -56,14 +56,14 @@ plushies_equip:
     - if <player.has_flag[plushy_display]>:
       - define id <context.item.flag[cosmetic]>
       - define script <server.flag[plushies.ids.<[id]>]>
-      - adjust <player.flag[plushy_display]> equipment:air|air|air|<[script].data_key[plush_data.model_id]>
+      - adjust <player.flag[plushy_display]> equipment:air|air|air|<[script].data_key[display_data.material]>
 
 plushies_remove:
   type: task
   definitions: id
   script:
     - if <player.has_flag[plushy_display]>:
-      - adjust <player.flag[plushy_display]> equipment:air|air|air|<script[plush_default].data_key[plush_data.model_id]>
+      - adjust <player.flag[plushy_display]> equipment:air|air|air|<script[plush_default].data_key[display_data.material]>
 
 plushies_unlock:
   type: task
