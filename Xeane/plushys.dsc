@@ -32,7 +32,7 @@ plushies_checks:
   type: task
   debug: false
   script:
-    - if <plugin[towny].exists> && ( !<context.location.has_town> || <context.location.resident> != <player> ):
+    - if <plugin[towny].exists> && ( !<context.location.has_town> || <context.location.towny.resident> != <player> ):
       - narrate "<&c>Unable to place Plushies in areas you do not own"
       - stop
 
