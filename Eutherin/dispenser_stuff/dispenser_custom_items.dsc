@@ -5,6 +5,7 @@ dispenser_custom_handling:
     on block dispenses item:
       - if <context.item.has_flag[custom_dispense]>:
         - determine passively cancelled
+        - wait 5t
         - inject custom_dispense_inventory_process
 
 custom_dispense_inventory_process:
@@ -15,7 +16,6 @@ custom_dispense_inventory_process:
     - if <context.location.has_flag[doorchime]>:
       - stop
     - flag <context.location> doorchime expire:500t
-    - wait 5t
     - foreach <[inventory_contents]> as:item:
       - if !<[item].has_flag[custom_dispense]>:
         - foreach next
