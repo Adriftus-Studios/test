@@ -35,7 +35,7 @@ OrcWeapon_Poker_shoot:
       - define slot <player.held_item_slot>
       - inject custom_durability_process_task
     on player left clicks block with:OrcWeapon_Poker:
-      - define hit at:<player.eye_location.ray_trace[range=4;entities=*;fluids=true;nonsolids=true;default=null;raysize=0.25]||null>
+      - define hit at:<player.precise_target[4]>
       - if <[hit]> != null:
           - playeffect effect:flame offset:0 at:<[hit].points_between[<[hit].forward[2]>].distance[0.2]>
 
