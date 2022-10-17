@@ -12,6 +12,9 @@ custom_dispense_inventory_process:
   debug: false
   script:
     - define inventory_contents <context.location.inventory.list_contents>
+    - if <context.location.has_flag[doorchime]>:
+      - stop
+    - flag <context.location> doorchime expire:500t
     - wait 5t
     - foreach <[inventory_contents]> as:item:
       - if !<[item].has_flag[custom_dispense]>:
@@ -27,3 +30,4 @@ custom_dispense_inventory_process:
         - define particle <[item].flag[particle]>
         - define color <[item].flag[color]>
         - playeffect <[particle]> color:<[color]> <context.location>
+    - flag <context.location> doorchime:!
