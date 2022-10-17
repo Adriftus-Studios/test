@@ -2,7 +2,7 @@ dispenser_instrument_Chime:
   type: item
   material: feather
   mechanisms:
-    custom_model_data: 1
+    custom_model_data: 2007
   display name: <&b>Chimes
   flags:
     custom_dispense: note

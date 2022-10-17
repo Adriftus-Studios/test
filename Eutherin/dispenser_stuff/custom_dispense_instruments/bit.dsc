@@ -2,7 +2,7 @@ dispenser_instrument_bit:
   type: item
   material: feather
   mechanisms:
-    custom_model_data: 1
+    custom_model_data: 2015
   display name: <&b>Bit
   flags:
     custom_dispense: note

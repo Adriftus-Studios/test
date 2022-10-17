@@ -2,7 +2,7 @@ dispenser_instrument_Pling:
   type: item
   material: feather
   mechanisms:
-    custom_model_data: 1
+    custom_model_data: 2012
   display name: <&b>Pling
   flags:
     custom_dispense: note

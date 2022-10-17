@@ -2,7 +2,7 @@ dispenser_instrument_Harp:
   type: item
   material: feather
   mechanisms:
-    custom_model_data: 1
+    custom_model_data: 2009
   display name: <&b>Harp
   flags:
     custom_dispense: note
