@@ -2,7 +2,7 @@ dispenser_instrument_BaseDrum:
   type: item
   material: feather
   mechanisms:
-    custom_model_data: 1
+    custom_model_data: 2014
   display name: <&b>Base Drum
   flags:
     custom_dispense: note

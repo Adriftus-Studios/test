@@ -2,7 +2,7 @@ dispenser_instrument_Xylophone:
   type: item
   material: feather
   mechanisms:
-    custom_model_data: 1
+    custom_model_data: 2013
   display name: <&b>Xylophone
   flags:
     custom_dispense: note
