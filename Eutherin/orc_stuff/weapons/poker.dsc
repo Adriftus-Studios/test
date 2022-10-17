@@ -36,7 +36,7 @@ OrcWeapon_Poker_shoot:
       - inject custom_durability_process_task
     on player left clicks block with:OrcWeapon_Poker:
       - playeffect offset:0 at:<player.eye_location.right[0.25].down[0.25].points_between[<player.eye_location.forward[4]>].distance[0.2]> effect:CRIT
-      - define target at:<player.precise_target[4]>
+      - define target <player.precise_target[4]>
       - if <[target].if_null[null]> != null:
         - hurt <[target]> source:<player> 6
 
