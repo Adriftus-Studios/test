@@ -3,7 +3,7 @@ OrcWeapon_Poker:
   display name: <&f>Orc Poker
   lore:
   - <&6>Stick em with the pointy end.
-  - <&e>Right Click <&6>to throw.
+  - <&6>Increased <&e>Range IV<&6>.
   material: iron_sword
   flags:
     custom_durability:
@@ -24,16 +24,16 @@ OrcWeapon_Poker_shoot:
   type: world
   debug: false
   events:
-    on player right clicks block with:OrcWeapon_Poker:
-      - ratelimit <player> 100t
-      - itemcooldown <player.item_in_hand.material> duration:100t
-      - shoot OrcWeapon_Poker_projectile shooter:<player> speed:2 origin:<player.location.above[1.5].right[0.25]> save:shot
-      - flag <entry[shot].shot_entity> on_hit_entity:orc_poker_hits_entity
-      - flag <entry[shot].shot_entity> custom_damage.cause:<player.name><&sq><&6>Orcish<&sp>Spear.
-      - playsound sound:BLOCK_DISPENSER_LAUNCH <player.location>
-      - define value 13
-      - define slot <player.held_item_slot>
-      - inject custom_durability_process_task
+#    on player right clicks block with:OrcWeapon_Poker:
+#      - ratelimit <player> 100t
+#      - itemcooldown <player.item_in_hand.material> duration:100t
+#      - shoot OrcWeapon_Poker_projectile shooter:<player> speed:2 origin:<player.location.above[1.5].right[0.25]> save:shot
+#      - flag <entry[shot].shot_entity> on_hit_entity:orc_poker_hits_entity
+#      - flag <entry[shot].shot_entity> custom_damage.cause:<player.name><&sq><&6>Orcish<&sp>Spear.
+#      - playsound sound:BLOCK_DISPENSER_LAUNCH <player.location>
+#      - define value 13
+#      - define slot <player.held_item_slot>
+#      - inject custom_durability_process_task
     on player left clicks block with:OrcWeapon_Poker:
       - determine passively cancelled
       - ratelimit <player> 12t
