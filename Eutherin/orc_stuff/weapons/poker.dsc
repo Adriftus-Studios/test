@@ -35,6 +35,8 @@ OrcWeapon_Poker_shoot:
       - define slot <player.held_item_slot>
       - inject custom_durability_process_task
     on player left clicks block with:OrcWeapon_Poker:
+      - determine passively cancelled
+      - ratelimit <player> 12t
       - playeffect offset:0 at:<player.eye_location.right[0.25].down[0.25].points_between[<player.eye_location.forward[4]>].distance[0.2]> effect:CRIT
       - define target <player.precise_target[4]||null>
       - if <[target]> != null:
