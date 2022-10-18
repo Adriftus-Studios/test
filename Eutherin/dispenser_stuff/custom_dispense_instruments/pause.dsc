@@ -2,7 +2,7 @@ dispenser_pause:
   type: item
   material: feather
   mechanisms:
-    custom_model_data: 1
+    custom_model_data: 2016
   display name: <&b>Dispenser Pause
   flags:
     custom_dispense: pause
