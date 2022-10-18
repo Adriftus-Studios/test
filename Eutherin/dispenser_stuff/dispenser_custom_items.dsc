@@ -28,7 +28,7 @@ custom_dispense_inventory_process:
         - wait <[item].flag[pause_duration]>t
       - else if <[item].flag[custom_dispense]> == confetti:
         - define direction <context.location.material.direction>
-        - define location <context.location.center.add[<context.velocity.simple.normalize>]>
+        - define location <context.location.center.add[<context.velocity.normalize>]>
         - inject confetti_charge_task
       - else if <[item].flag[custom_dispense]> == visual:
         - define particle <[item].flag[particle]>
