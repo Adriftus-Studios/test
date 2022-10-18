@@ -10,3 +10,13 @@ dispenser_instrument_Flute:
     instrument: Flute
   lore:
   - <&6>Current Pitch<&co> <&e>F♯ <&6>(<&e>0.5<&6>)
+  recipes:
+    1:
+      type: shaped
+      output_quantity: 1
+      input:
+        - stick|blackstone_button|air
+        - stick|stone_button|air
+        - stick|blackstone_button|air
+  data:
+    recipe_book_category: decor.instrument.flute

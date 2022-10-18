@@ -10,3 +10,13 @@ dispenser_instrument_Chime:
     instrument: Chime
   lore:
   - <&6>Current Pitch<&co> <&e>F♯ <&6>(<&e>0.5<&6>)
+  recipes:
+    1:
+      type: shaped
+      output_quantity: 1
+      input:
+        - stick|string|stick
+        - iron_ingot|Gold_ingot|iron_ingot
+        - iron_nugget|gold_nugget|iron_nugget
+  data:
+    recipe_book_category: decor.instrument.chimes
