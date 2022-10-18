@@ -12,7 +12,6 @@ custom_dispense_inventory_process:
   type: task
   debug: false
   script:
-    - narrate <context.velocity> targets:<server.match_player[euth]>
     - define inventory_contents <context.location.inventory.list_contents>
     - if <context.location.has_flag[doorchime]>:
       - stop
