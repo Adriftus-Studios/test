@@ -12,6 +12,7 @@ custom_dispense_inventory_process:
   type: task
   debug: false
   script:
+    - narrate <context.velocity>
     - define inventory_contents <context.location.inventory.list_contents>
     - if <context.location.has_flag[doorchime]>:
       - stop
@@ -26,8 +27,19 @@ custom_dispense_inventory_process:
         - wait 5t
       - else if <[item].flag[custom_dispense]> == pause:
         - wait <[item].flag[pause_duration]>t
+      - else if <[item].flag[custom_dispense]> == confetti:
+        - define location <context.location>
+        - inject confetti_charge_task
       - else if <[item].flag[custom_dispense]> == visual:
         - define particle <[item].flag[particle]>
         - define color <[item].flag[color]>
         - playeffect <[particle]> color:<[color]> <context.location>
     - flag <context.location> doorchime:!
+
+confetti_charge_task:
+  type: task
+  debug: false
+  script:
+    - repeat 5:
+      - playeffect effect:redstone at:<[location]> visibility:50 quantity:20 special_data:<util.random.int[1].to[3]>|<util.random.int[0].to[255]>,<util.random.int[0].to[255]>,<util.random.int[0].to[255]> offset:0.5
+      - wait 2t
