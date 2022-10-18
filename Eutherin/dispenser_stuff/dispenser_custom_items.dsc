@@ -40,6 +40,6 @@ confetti_charge_task:
   type: task
   debug: false
   script:
-    - repeat 5:
-      - playeffect effect:redstone at:<[location]> visibility:50 quantity:20 special_data:<util.random.int[1].to[3]>|<util.random.int[0].to[255]>,<util.random.int[0].to[255]>,<util.random.int[0].to[255]> offset:0.5
-      - wait 2t
+    - repeat 3:
+      - playeffect effect:redstone at:<[location]> visibility:50 quantity:20 special_data:<util.random.int[1].to[3]>|<util.random.int[100].to[255]>,<util.random.int[100].to[255]>,<util.random.int[100].to[255]> offset:0.5
+      - wait 5t
