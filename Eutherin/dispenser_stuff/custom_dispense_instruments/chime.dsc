@@ -17,6 +17,6 @@ dispenser_instrument_Chime:
       input:
         - stick|string|stick
         - iron_ingot|Gold_ingot|iron_ingot
-        - iron_nugget|gold_nugget|iron_nugget
+        - iron_ingot|Gold_ingot|iron_ingot
   data:
     recipe_book_category: decor.instrument.chimes
