@@ -9,7 +9,16 @@ dispenser_pause:
     pause_duration: 5
   lore:
   - <&6>Current Pause<&co> <&e>5 Ticks <&6>(<&e>0.25s<&6>)
-
+  recipes:
+    1:
+      type: shaped
+      output_quantity: 1
+      input:
+        - steel_ingot|white_wool/orange_wool/magenta_wool/light_blue_wool/yellow_wool/lime_wool/pink_wool/gray_wool/light_gray_wool/cyan_wool/purple_wool/blue_wool/brown_wool/green_wool/red_wool/black_wool|steel_ingot
+        - white_wool/orange_wool/magenta_wool/light_blue_wool/yellow_wool/lime_wool/pink_wool/gray_wool/light_gray_wool/cyan_wool/purple_wool/blue_wool/brown_wool/green_wool/red_wool/black_wool|diamond|white_wool/orange_wool/magenta_wool/light_blue_wool/yellow_wool/lime_wool/pink_wool/gray_wool/light_gray_wool/cyan_wool/purple_wool/blue_wool/brown_wool/green_wool/red_wool/black_wool
+        - steel_ingot|white_wool/orange_wool/magenta_wool/light_blue_wool/yellow_wool/lime_wool/pink_wool/gray_wool/light_gray_wool/cyan_wool/purple_wool/blue_wool/brown_wool/green_wool/red_wool/black_wool|steel_ingot
+  data:
+    recipe_book_category: decor.instrument.pause
 dispenser_pause_incrementer:
   type: world
   debug: false
