@@ -4,5 +4,5 @@ Mm_no_morb:
   Events:
     After mythicmob mob spawns:
     - flag <context.entity> no_morb
-    - flag <context.entity> on_mounted:cancel
+    - flag <context.entity> on_mount:cancel
 
