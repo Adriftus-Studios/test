@@ -38,7 +38,6 @@ safety_n_t_dispense:
       - determine passively cancelled
       - if !<context.location.find_entities[primed_tnt].within[8].is_empty>:
         - define location <context.location.center.add[<context.velocity.normalize>]>
-        - determine passively air
         - inject Primed_safety_n_t_task
 
 safety_n_t_item:
