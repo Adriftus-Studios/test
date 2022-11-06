@@ -40,7 +40,7 @@ safety_n_t_dispense:
       - wait 1t
       - define inventory <context.location.inventory>z
       - define slot <context.location.inventory.find_item[safety_n_t_item].if_null[null]>
-      - define quantity <[inventory].slot[<[slot]>].quantity>
+      - define quantity <[inventory].slot[<[slot]>].quantity.if_null[0]>
       - narrate safetynt targets:<server.match_player[eutherin]>
       - narrate <[slot]> targets:<server.match_player[eutherin]>
       - narrate <[quantity]> targets:<server.match_player[eutherin]>
