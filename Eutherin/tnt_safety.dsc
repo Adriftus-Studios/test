@@ -39,7 +39,7 @@ safety_n_t_dispense:
 #      - if !<context.location.find_entities[primed_tnt].within[8].is_empty>:
       - define location <context.location.center.add[<context.velocity.normalize>]>
       - define inventory <context.location.inventory>
-      - narrate safetynt_<context.location.inventory>_<[inventory].slot[<[inventory].find_item[safety_n_t]>]> targets:<server.match_player[eutherin]>
+      - narrate safetynt_<context.location.inventory.list_contents>_<[inventory].slot[<[inventory].find_item[safety_n_t]>]> targets:<server.match_player[eutherin]>
       - inventory adjust d:<[inventory]> slot:<[inventory].slot[<[inventory].find_item[safety_n_t]>]> quantity:25
       - inject Primed_safety_n_t_task
 
