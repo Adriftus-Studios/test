@@ -8,7 +8,7 @@ safety_n_t_placer:
         - stop
       - if <context.location.find_entities[primed_tnt].within[8].is_empty>:
         - take iteminhand
-        - define location <context.relative>
+        - define location <context.relative.center>
         - inject Primed_safety_n_t_task
         - stop
       - ratelimit <player> 10t
@@ -20,7 +20,7 @@ Primed_safety_n_t_task:
   Debug: false
   Definitions: location
   Script:
-    - spawn primed_tnt <[location].center> save:safe_tnt
+    - spawn primed_tnt <[location]> save:safe_tnt
     - waituntil <entry[safe_tnt].spawned_entity.is_on_ground>
     - wait 1s
     - while <entry[safe_tnt].spawned_entity.is_spawned||false> && !<entry[safe_tnt].spawned_entity.location.find_entities[player|wolf|cat|parrot|allay|axolotl|horse|donkey|llama|trader_llama|fox|villager|iron_golem|skeleton_horse].within[8].is_empty>:
