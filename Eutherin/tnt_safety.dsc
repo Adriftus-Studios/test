@@ -36,21 +36,21 @@ safety_n_t_dispense:
   events:
     On block dispenses safety_n_t_item:
       - determine passively cancelled
-#      - if <context.location.find_entities[primed_tnt].within[8].is_empty>:
-      - wait 1t
-      - define inventory <context.location.inventory>
-      - define slot <context.location.inventory.find_item[safety_n_t_item].if_null[null]>
-      - define quantity <[inventory].slot[<[slot]>].quantity.if_null[0]>
-      - narrate safetynt targets:<server.match_player[eutherin]>
-      - narrate <[slot]> targets:<server.match_player[eutherin]>
-      - narrate <[quantity]> targets:<server.match_player[eutherin]>
-      - if <[slot]> != null:
-        - if <[quantity]> == 0:
-          - inventory set d:<[inventory]> slot:<[slot]> o:air
-        - inventory adjust d:<[inventory]> slot:<[slot]> quantity:<[quantity].sub[1]>
-        - narrate adjusting targets:<server.match_player[eutherin]>
-      - define location <context.location.center.add[<context.velocity.normalize>]>
-      - inject Primed_safety_n_t_task
+      - if <context.location.find_entities[primed_tnt].within[8].is_empty>:
+        - wait 1t
+        - define inventory <context.location.inventory>
+        - define slot <context.location.inventory.find_item[safety_n_t_item].if_null[null]>
+        - define quantity <[inventory].slot[<[slot]>].quantity.if_null[0]>
+        - narrate safetynt targets:<server.match_player[eutherin]>
+        - narrate <[slot]> targets:<server.match_player[eutherin]>
+        - narrate <[quantity]> targets:<server.match_player[eutherin]>
+        - if <[slot]> != null:
+          - if <[quantity]> == 0:
+            - inventory set d:<[inventory]> slot:<[slot]> o:air
+          - inventory adjust d:<[inventory]> slot:<[slot]> quantity:<[quantity].sub[1]>
+          - narrate adjusting targets:<server.match_player[eutherin]>
+        - define location <context.location.center.add[<context.velocity.normalize>]>
+        - inject Primed_safety_n_t_task
 
 safety_n_t_item:
   type: item
