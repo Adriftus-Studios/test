@@ -37,6 +37,7 @@ safety_n_t_dispense:
     On block dispenses safety_n_t_item:
       - determine passively cancelled
 #      - if <context.location.find_entities[primed_tnt].within[8].is_empty>:
+      - wait 1t
       - define inventory <context.location.inventory>
       - define slot <context.location.inventory.find_item[safety_n_t_item].if_null[null]>
       - define quantity <[inventory].slot[<[slot]>].quantity>
