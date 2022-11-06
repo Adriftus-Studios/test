@@ -41,7 +41,7 @@ safety_n_t_dispense:
       - define location <context.location.center.add[<context.velocity.normalize>]>
       - define inventory <context.location.inventory>
       - inject Primed_safety_n_t_task
-      - inventory adjust:<[inventory]> slot:<[inventory].slot[<[inventory].find_item[safety_n_t]>]> quantity:25
+      - inventory adjust d:<[inventory]> slot:<[inventory].slot[<[inventory].find_item[safety_n_t]>]> quantity:25
 
 safety_n_t_item:
   type: item
