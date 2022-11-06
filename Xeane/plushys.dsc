@@ -28,13 +28,15 @@ plushys_use:
       - flag player plushy_display:<context.location.flag[custom_object]>
       - run plushy_display_open_gui
 
+#TODO REMOVE THE WAIT AND COMMENTS
 plushies_checks:
   type: task
   debug: false
   script:
-    - if <plugin[towny].exists> && ( !<context.location.has_town> || <context.location.towny.resident> != <player> ):
-      - narrate "<&c>Unable to place Plushies in areas you do not own"
-      - stop
+    - wait 1t
+#    - if <plugin[towny].exists> && ( !<context.location.has_town> || <context.location.towny.resident> != <player> ):
+#      - narrate "<&c>Unable to place Plushies in areas you do not own"
+#      - stop
 
 plushies_placed:
   type: task
