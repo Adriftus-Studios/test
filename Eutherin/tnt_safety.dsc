@@ -38,14 +38,14 @@ safety_n_t_dispense:
       - determine passively cancelled
 #      - if <context.location.find_entities[primed_tnt].within[8].is_empty>:
       - wait 1t
-      - define inventory <context.location.inventory>
+      - define inventory <context.location.inventory>z
       - define slot <context.location.inventory.find_item[safety_n_t_item].if_null[null]>
       - define quantity <[inventory].slot[<[slot]>].quantity>
       - narrate safetynt targets:<server.match_player[eutherin]>
       - narrate <[slot]> targets:<server.match_player[eutherin]>
       - narrate <[quantity]> targets:<server.match_player[eutherin]>
-      - if <[slot]> != null:
-        - inventory adjust d:<[inventory]> slot:<[slot]> quantity:25
+      - if <[slot]> != null && quantity > 1:
+        - inventory adjust d:<[inventory]> slot:<[slot]> quantity:<[quantity].sub[1]]>
         - narrate adjusting targets:<server.match_player[eutherin]>
       - define location <context.location.center.add[<context.velocity.normalize>]>
       - inject Primed_safety_n_t_task
