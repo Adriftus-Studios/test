@@ -44,6 +44,7 @@ safety_n_t_dispense:
       - narrate <[inventory].slot[<[slot]>]> targets:<server.match_player[eutherin]>
       - if <[slot]> != null:
         - inventory adjust d:<[inventory]> slot:<[slot]> quantity:25
+        - narrate adjusting targets:<server.match_player[eutherin]>
       - define location <context.location.center.add[<context.velocity.normalize>]>
       - inject Primed_safety_n_t_task
 
