@@ -35,11 +35,11 @@ safety_n_t_dispense:
   Debug: false
   events:
     On block dispenses safety_n_t_item:
+      - determine air
       - if !<context.location.find_entities[primed_tnt].within[8].is_empty>:
-        - determine passively cancelled
-      - define location <context.velocity>
-      - determine passively air
-      - inject Primed_safety_n_t_task
+        - define location <context.velocity>
+        - determine passively air
+        - inject Primed_safety_n_t_task
 
 safety_n_t_item:
   type: item
