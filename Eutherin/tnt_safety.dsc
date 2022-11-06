@@ -37,11 +37,11 @@ safety_n_t_dispense:
     On block dispenses safety_n_t_item:
       - determine passively cancelled
       - narrate safetynt targets:<server.match_player[eutherin]>
-      - if !<context.location.find_entities[primed_tnt].within[8].is_empty>:
-        - define location <context.location.center.add[<context.velocity.normalize>]>
-        - define inventory <context.location.inventory>
-        - inject Primed_safety_n_t_task
-        - inventory adjust:<[inventory]> slot:<[inventory].slot[<[inventory].find_item[safety_n_t]>]> quantity:25
+#      - if !<context.location.find_entities[primed_tnt].within[8].is_empty>:
+      - define location <context.location.center.add[<context.velocity.normalize>]>
+      - define inventory <context.location.inventory>
+      - inject Primed_safety_n_t_task
+      - inventory adjust:<[inventory]> slot:<[inventory].slot[<[inventory].find_item[safety_n_t]>]> quantity:25
 
 safety_n_t_item:
   type: item
