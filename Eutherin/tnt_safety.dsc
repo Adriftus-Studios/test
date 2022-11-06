@@ -38,7 +38,7 @@ safety_n_t_dispense:
       - determine passively cancelled
 #      - if <context.location.find_entities[primed_tnt].within[8].is_empty>:
       - wait 1t
-      - define inventory <context.location.inventory>z
+      - define inventory <context.location.inventory>
       - define slot <context.location.inventory.find_item[safety_n_t_item].if_null[null]>
       - define quantity <[inventory].slot[<[slot]>].quantity.if_null[0]>
       - narrate safetynt targets:<server.match_player[eutherin]>
