@@ -35,11 +35,11 @@ safety_n_t_dispense:
   Debug: false
   events:
     On block dispenses safety_n_t_item:
-      - determine passively cancelled
+      - determine passively air
       - narrate safetynt targets:<server.match_player[eutherin]>
-#      - if !<context.location.find_entities[primed_tnt].within[8].is_empty>:
-      - define location <context.location.center.add[<context.velocity.normalize>]>
-      - inject Primed_safety_n_t_task
+      - if !<context.location.find_entities[primed_tnt].within[8].is_empty>:
+        - define location <context.location.center.add[<context.velocity.normalize>]>
+        - inject Primed_safety_n_t_task
 
 safety_n_t_item:
   type: item
