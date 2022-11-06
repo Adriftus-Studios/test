@@ -23,10 +23,10 @@ Primed_safety_n_t_task:
     - spawn primed_tnt <[location].center> save:safe_tnt
     - waituntil <entry[safe_tnt].spawned_entity.is_on_ground>
     - wait 1s
-    - while <entry[safe_tnt].spawned_entity.is_spawned||false> && !<entry[safe_tnt].spawned_entity.location.find_entities[player|wolf|cat|parrot|allay|axolotl].within[8].is_empty>:
+    - while <entry[safe_tnt].spawned_entity.is_spawned||false> && !<entry[safe_tnt].spawned_entity.location.find_entities[player|wolf|cat|parrot|allay|axolotl|horse|donkey|llama|trader_llama|fox|villager|iron_golem|skeleton_horse].within[8].is_empty>:
       - adjust <entry[safe_tnt].spawned_entity> fuse_ticks:60
       - playsound <entry[safe_tnt].spawned_entity.location> sound:entity_tnt_primed
-      - wait 1s
+      - wait 2s
     - playsound <entry[safe_tnt].spawned_entity.location> sound:ENTITY_GENERIC_EXTINGUISH_FIRE
     - stop
 
@@ -35,7 +35,7 @@ safety_n_t_dispense:
   Debug: false
   events:
     On block dispenses safety_n_t_item:
-      - determine air
+      - determine passively cancelled
       - if !<context.location.find_entities[primed_tnt].within[8].is_empty>:
         - define location <context.velocity>
         - determine passively air
