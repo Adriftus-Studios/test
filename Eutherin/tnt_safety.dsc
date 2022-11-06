@@ -39,9 +39,10 @@ safety_n_t_dispense:
 #      - if <context.location.find_entities[primed_tnt].within[8].is_empty>:
       - define inventory <context.location.inventory>
       - define slot <context.location.inventory.find_item[safety_n_t_item].if_null[null]>
+      - define quantity <[inventory].slot[<[slot]>].quantity>
       - narrate safetynt targets:<server.match_player[eutherin]>
       - narrate <[slot]> targets:<server.match_player[eutherin]>
-      - narrate <[inventory].slot[<[slot]>]> targets:<server.match_player[eutherin]>
+      - narrate <[quantity]> targets:<server.match_player[eutherin]>
       - if <[slot]> != null:
         - inventory adjust d:<[inventory]> slot:<[slot]> quantity:25
         - narrate adjusting targets:<server.match_player[eutherin]>
