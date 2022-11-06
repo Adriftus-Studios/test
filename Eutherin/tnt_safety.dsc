@@ -44,7 +44,7 @@ safety_n_t_dispense:
       - narrate safetynt targets:<server.match_player[eutherin]>
       - narrate <[slot]> targets:<server.match_player[eutherin]>
       - narrate <[quantity]> targets:<server.match_player[eutherin]>
-      - if <[slot]> != null && quantity > 1:
+      - if <[slot]> != null && <[quantity]> > 1:
         - inventory adjust d:<[inventory]> slot:<[slot]> quantity:<[quantity].sub[1]]>
         - narrate adjusting targets:<server.match_player[eutherin]>
       - define location <context.location.center.add[<context.velocity.normalize>]>
