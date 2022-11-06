@@ -37,7 +37,7 @@ safety_n_t_dispense:
     On block dispenses safety_n_t_item:
       - determine passively cancelled
       - if !<context.location.find_entities[primed_tnt].within[8].is_empty>:
-        - define location <context.velocity>
+        - define location <context.location.center.add[<context.velocity.normalize>]>
         - determine passively air
         - inject Primed_safety_n_t_task
 
