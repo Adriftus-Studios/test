@@ -33,7 +33,7 @@ Primed_safety_n_t_task:
 safety_n_t_dispense:
   Type: world
   Debug: false
-  Script:
+  events:
     On block dispenses safety_n_t_item:
       - if !<context.location.find_entities[primed_tnt].within[8].is_empty>:
         - determine passively cancelled
