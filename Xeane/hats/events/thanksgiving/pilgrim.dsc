@@ -19,5 +19,6 @@ pilgrim_normal_unlocker:
   debug: false
   events:
     on player right clicks block with:hat_pilgrim_normal_item using:hand:
+      - narrate pilgrim_hat_normal
       - take iteminhand
       - run hats_unlock def:hat_pilgrim_normal player:<player>

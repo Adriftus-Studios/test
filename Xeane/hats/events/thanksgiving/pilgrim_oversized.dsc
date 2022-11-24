@@ -18,7 +18,7 @@ pilgrim_oversize_unlocker:
   type: world
   debug: false
   events:
-    on player right clicks block with:hat_pilgrim_oversized using:hand:
-      - narrate pilgrim_hat
+    on player right clicks block with:hat_pilgrim_oversized_item using:hand:
+      - narrate pilgrim_hat_oversized
       - take iteminhand
       - run hats_unlock def:hat_pilgrim_oversized player:<player>
