@@ -1,4 +1,4 @@
-dispenser_instrument_Flute:
+dispenser_instrument_flute:
   type: item
   material: feather
   mechanisms:

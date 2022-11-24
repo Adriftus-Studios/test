@@ -1,4 +1,4 @@
-dispenser_instrument_Harp:
+dispenser_instrument_harp:
   type: item
   material: feather
   mechanisms:
