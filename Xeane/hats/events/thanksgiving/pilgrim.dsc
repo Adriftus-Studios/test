@@ -13,5 +13,11 @@ hat_pilgrim_normal_item:
   display name: <&a>Pilgrim hat
   mechanisms:
     custom_model_data: 1
-  flags:
-    on_right_click: run hat_unlock def:hat_pilgrim_normal
+
+pilgrim_normal_unlocker:
+  type: world
+  debug: false
+  events:
+    on player right clicks block with:hat_pilgrim_normal_item using:hand:
+      - take iteminhand
+      - run hats_unlock def:hat_pilgrim_normal player:<player>
