@@ -24,5 +24,5 @@ pilgrim_oversize_unlocker:
       - narrate "<&6>You have unlocked the <&e>Oversized Pilgrim Hat<&6>!"
       - narrate "<&6>Thank you for taking the time out of your holidays to celebrate with us here at Adriftus."
       - take iteminhand
-      - run hat_unlock def:hat_pilgrim_oversized player:<player>
+      - run hat_unlock def:oversized_pilgrim_hat player:<player>
       - playsound sound:ENTITY_CHICKEN_AMBIENT <player.location> pitch:1.5
