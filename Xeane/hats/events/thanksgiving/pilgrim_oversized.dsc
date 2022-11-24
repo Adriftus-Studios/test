@@ -1,7 +1,7 @@
-hat_pilgrim_oversized:
+hat_pilgrim_2022_oversized:
   type: data
   hat_data:
-    id: oversized_pilgrim_hat
+    id: pilgrim_2022_oversized
     material: clock[custom_model_data=1]
     description: <&a>Thanks for taking the time to celebrate with us!
     display_name: <&a>Oversized Pilgrim Hat (2022)

@@ -1,7 +1,7 @@
-hat_pilgrim_normal:
+hat_pilgrim_2022_normal:
   type: data
   hat_data:
-    id: pilgrim_hat
+    id: pilgrim_2022_normal
     material: clock[custom_model_data=1]
     description: <&a>Thanks for taking the time to celebrate with us!
     display_name: <&a>Pilgrim Hat (2022)
