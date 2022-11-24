@@ -7,7 +7,7 @@ dispenser_instrument_flute:
   flags:
     custom_dispense: note
     pitch: 0.5
-    instrument: Flute
+    instrument: flute
   lore:
   - <&6>Current Pitch<&co> <&e>F♯ <&6>(<&e>0.5<&6>)
   recipes:
