@@ -10,9 +10,11 @@ hat_pilgrim_normal:
 hat_pilgrim_normal_item:
   type: item
   material: clock
-  display name: <&a>Pilgrim hat
+  display name: <&a>Pilgrim Hat (2022)
   mechanisms:
     custom_model_data: 1
+  lore:
+  - <&a>Thanks for taking the time to celebrate with us!
 
 pilgrim_normal_unlocker:
   type: world

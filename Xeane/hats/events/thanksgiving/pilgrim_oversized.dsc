@@ -10,9 +10,11 @@ hat_pilgrim_oversized:
 hat_pilgrim_oversized_item:
   type: item
   material: clock
-  display name: <&a>Pilgrim hat (Oversized)
+  display name: <&a>Oversized Pilgrim Hat (2022)
   mechanisms:
     custom_model_data: 2
+  lore:
+  - <&a>Thanks for taking the time to celebrate with us!
 
 pilgrim_oversize_unlocker:
   type: world
