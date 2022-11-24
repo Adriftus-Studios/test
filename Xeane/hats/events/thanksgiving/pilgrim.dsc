@@ -19,6 +19,8 @@ pilgrim_normal_unlocker:
   debug: false
   events:
     on player right clicks block with:hat_pilgrim_normal_item using:hand:
-      - narrate pilgrim_hat_normal
+      - narrate "<&6>You have unlocked the <&e>Oversized Pilgrim Hat<&6>!"
+      - narrate "<&6>Thank you for taking the time out of your holidays to celebrate with us here at Adriftus."
       - take iteminhand
-      - run hats_unlock def:hat_pilgrim_normal player:<player>
+      - run hat_unlock def:hat_pilgrim_normal player:<player>
+      - playsound sound:ENTITY_CHICKEN_AMBIENT <player.location> pitch:1.5
