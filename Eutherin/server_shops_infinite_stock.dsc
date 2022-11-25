@@ -12,6 +12,11 @@ server_shops_config:
   Wasteland_Will:
     - trade[result=tipped_arrow[potion_effects=[type=instant_damage;upgraded=false;extended=false]];inputs=orc_tooth[quantity=5];max_uses=9999]
     - trade[result=tipped_arrow[potion_effects=[type=instant_damage;upgraded=true;extended=false]];inputs=orc_tooth[quantity=5];max_uses=9999]
+    - trade[result=tipped_arrow[potion_effects=[type=weakness;upgraded=false;extended=false]];inputs=orc_tooth[quantity=5];max_uses=9999]
+    - trade[result=tipped_arrow[potion_effects=[type=weakness;upgraded=true;extended=false]];inputs=orc_tooth[quantity=5];max_uses=9999]
+    - trade[result=tipped_arrow[potion_effects=[type=slowness;upgraded=false;extended=false]];inputs=orc_tooth[quantity=5];max_uses=9999]
+    - trade[result=tipped_arrow[potion_effects=[type=slowness;upgraded=true;extended=false]];inputs=orc_tooth[quantity=5];max_uses=9999]
+    - trade[result=tipped_arrow[potion_effects=[type=slowness;upgraded=false;extended=true]];inputs=orc_tooth[quantity=5];max_uses=9999]
 
 server_shop:
   type: assignment
