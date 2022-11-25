@@ -10,7 +10,8 @@ server_shops_config:
     - trade[result=thanksgiving_cornucopia[quantity=1];inputs=thanksgiving_turkey_token[quantity=30];max_uses=9999]
     - trade[result=thanksgiving_hat_joke[quantity=1];inputs=thanksgiving_turkey_token[quantity=64]|thanksgiving_turkey_token[quantity=11];max_uses=9999]
   Wasteland_Will:
-    - trade[result=tipped_arrow[potion_effects=[type=strength;upgraded=false;extended=true]];inputs=orc_tooth[quantity=5];max_uses=9999]
+    - trade[result=tipped_arrow[potion_effects=[type=instant_damage;upgraded=false;extended=false]];inputs=orc_tooth[quantity=5];max_uses=9999]
+    - trade[result=tipped_arrow[potion_effects=[type=instant_damage;upgraded=true;extended=false]];inputs=orc_tooth[quantity=5];max_uses=9999]
 
 server_shop:
   type: assignment
